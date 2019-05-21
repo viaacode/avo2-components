@@ -1,10 +1,12 @@
 import { addDecorator, configure } from '@storybook/react';
+import { jsxDecorator } from 'storybook-addon-jsx';
 import { withPropsTable } from 'storybook-addon-react-docgen';
 
-const req = require.context('../src', true, /.stories.tsx$/);
+addDecorator(withPropsTable);
+addDecorator(jsxDecorator);
 
 function loadStories() {
-	addDecorator(withPropsTable);
+	const req = require.context('../src', true, /.stories.tsx$/);
 	req.keys().forEach(req);
 }
 
