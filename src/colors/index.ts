@@ -1,0 +1,31 @@
+export const COLORS = {
+	GRAYS: {
+		900: '#0F171D',
+		800: '#1D2B35',
+		700: '#2B414F',
+		600: '#385265',
+		500: '#45647B',
+		400: '#557891',
+		300: '#7894A7',
+		200: '#9CAFBD',
+		150: '#BAC7D1',
+		100: '#D6DEE3',
+		50: '#EDEFF2',
+	},
+	PRIMARY: {
+		ORANGE: '#F96830',
+		BLUE: '#3A586F',
+		GREY: '#DBDBDB',
+		SKYBLUE: '#3FB1D6',
+	},
+	SECONDARY: {
+		ORANGE: '#D03F06',
+		OCEANGREEN: '#57C2A0',
+		JUNIPER: '#678588',
+		SKYBLUE: '#7CAACF',
+		GREEN_500: '#1FC5A0',
+		GREEN_200: '#5AD6BB',
+		RED_500: '#FF1744',
+		RED_200: '#FF5B7A',
+	},
+};
