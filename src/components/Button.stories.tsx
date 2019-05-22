@@ -7,5 +7,6 @@ import { action } from '../helpers/action';
 import { Button } from './Button';
 
 storiesOf('Button', module)
+	.addParameters({ jest: ['Button'] })
 	.add('With text', () => <Button onClick={action('onClick')}>Click me!</Button>)
 	.add('With emojis', () => <Button onClick={action('onClick')}>🐝 🎈 😬</Button>);
