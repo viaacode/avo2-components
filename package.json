@@ -13,7 +13,7 @@
     "typescript": "3.4.5"
   },
   "scripts": {
-    "start": "start-storybook -p 3000",
+    "start": "start-storybook -p 4000",
     "build": "build-storybook -o build",
     "test": "react-scripts test",
     "test:output": "react-scripts test --json --outputFile=.storybook/test-results.json",
