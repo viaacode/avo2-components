@@ -8,25 +8,31 @@ function getFileName(path) {
 	return path.split("/").pop();
 }
 
+function stripExtension(fileName) {
+	return fileName.split(".").slice(0, -1).join(".")
+}
+
 function getCategory(path, fileName) {
-	// the category is the foldername above the file
+	// the type is the foldername above the file
 	return path
 		.replace(fileName, "")
 		.replace(directory, "")
 		.replace(/\//g, "");
 }
 
-glob(`${directory}/**/*`, function (err, res) {
+glob(`${directory}/**/*.*`, function (err, res) {
 	if (err) {
 		console.error(err);
 	} else {
 		const icons = res.map((path) => {
-			const name = getFileName(path);
-			const category = getCategory(path, name);
+			const fileName = getFileName(path);
+			const name = stripExtension(fileName);
+			const type = getCategory(path, fileName);
 
 			return {
+				fileName,
 				name,
-				category
+				type
 			};
 		})
 
