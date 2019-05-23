@@ -33,8 +33,8 @@ stories.forEach(([title, icons]: any) =>
 			<h1>{title}</h1>
 			<div className="c-styleguide-svg-icons__category">
 				<div className="c-styleguide-svg-icons__type">
-					{icons.map(({ name, type }: { name: string; type: any }) => (
-						<div className="c-styleguide-svg-icon">
+					{icons.map(({ name, type }: { name: string; type: any }, index: number) => (
+						<div className="c-styleguide-svg-icon" key={index}>
 							<Fragment>
 								<Icon name={name} type={type} />
 								<code>{name}</code>

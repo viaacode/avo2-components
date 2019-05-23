@@ -18,8 +18,8 @@ export const SwatchBlock: FunctionComponent<SwatchBlockProps> = ({
 	<Fragment>
 		{title && <h1>{title}</h1>}
 		<SwatchList>
-			{colors.map(({ name, value }) => (
-				<Swatch color={value} name={name} />
+			{colors.map(({ name, value }, index) => (
+				<Swatch key={index} color={value} name={name} />
 			))}
 		</SwatchList>
 	</Fragment>
