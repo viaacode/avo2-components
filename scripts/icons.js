@@ -18,7 +18,7 @@ function getCategory(path, fileName) {
 
 glob(`${directory}/**/*`, function (err, res) {
 	if (err) {
-		console.log('Error', err);
+		console.error(err);
 	} else {
 		const icons = res.map((path) => {
 			const name = getFileName(path);
