@@ -5,26 +5,29 @@ const glob = require('glob');
 const directory = process.argv[2];
 
 function getFileName(path) {
-	return path.split("/").pop();
+	return path.split('/').pop();
 }
 
 function stripExtension(fileName) {
-	return fileName.split(".").slice(0, -1).join(".")
+	return fileName
+		.split('.')
+		.slice(0, -1)
+		.join('.');
 }
 
 function getCategory(path, fileName) {
 	// the type is the foldername above the file
 	return path
-		.replace(fileName, "")
-		.replace(directory, "")
-		.replace(/\//g, "");
+		.replace(fileName, '')
+		.replace(directory, '')
+		.replace(/\//g, '');
 }
 
-glob(`${directory}/**/*.svg`, function (err, res) {
+glob(`${directory}/**/*.svg`, function(err, res) {
 	if (err) {
 		console.error(err);
 	} else {
-		const icons = res.map((path) => {
+		const icons = res.map(path => {
 			const fileName = getFileName(path);
 			const name = stripExtension(fileName);
 			const type = getCategory(path, fileName);
@@ -32,9 +35,9 @@ glob(`${directory}/**/*.svg`, function (err, res) {
 			return {
 				fileName,
 				name,
-				type
+				type,
 			};
-		})
+		});
 
 		const data = JSON.stringify(icons, null, 2);
 
