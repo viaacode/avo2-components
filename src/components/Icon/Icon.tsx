@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactComponentElement } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
@@ -10,7 +10,7 @@ export interface IconProps {
 }
 
 export const Icon: FunctionComponent<IconProps> = ({ name, type }: IconProps) => {
-	const NamedIcon = (Icons as any)[toPascalCase(name)];
+	const IconToRender = (Icons as any)[toPascalCase(name)];
 
 	function getIconName() {
 		const base = 'o-svg-icon';
@@ -23,7 +23,7 @@ export const Icon: FunctionComponent<IconProps> = ({ name, type }: IconProps) =>
 	function toPascalCase(string: string) {
 		return string
 			.replace(/(^\w)/, first => first.toUpperCase())
-			.replace(/(\-\w)/g, match => match[1].toUpperCase());
+			.replace(/(-\w)/g, match => match[1].toUpperCase());
 	}
 
 	// converts PascalCase to kebab-case
@@ -35,12 +35,14 @@ export const Icon: FunctionComponent<IconProps> = ({ name, type }: IconProps) =>
 	}
 
 	return (
-		<div
-			className={classNames('o-svg-icon', getIconName(), {
-				'o-svg-icon-multicolor': type === 'multicolor',
-			})}
-		>
-			<NamedIcon />
-		</div>
+		IconToRender && (
+			<div
+				className={classNames('o-svg-icon', getIconName(), {
+					'o-svg-icon-multicolor': type === 'multicolor',
+				})}
+			>
+				<IconToRender />
+			</div>
+		)
 	);
 };

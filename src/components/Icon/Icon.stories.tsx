@@ -23,8 +23,12 @@ const stories = [
 	['All icons', iconList],
 ];
 
+const story = storiesOf('Icons', module);
+
+story.addParameters({ jest: ['Icon'] });
+
 stories.forEach(([title, icons]: any) =>
-	storiesOf('Icons', module).add(title, () => (
+	story.add(title, () => (
 		<Fragment>
 			<h1>{title}</h1>
 			<div className="c-styleguide-svg-icons__category">
