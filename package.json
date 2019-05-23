@@ -18,7 +18,9 @@
     "test": "react-scripts test",
     "test:output": "react-scripts test --json --outputFile=.storybook/test-results.json",
     "lint": "tslint -p .",
-    "format": "npm run lint -- --fix"
+    "format": "npm run lint -- --fix",
+    "icons": "rimraf src/components/Icons && svgr -d src/components/Icons src/icons --ext ts",
+    "posticons": "named-exports --dir=src/components/Icons && renamer --find .ts --replace .tsx 'src/components/Icons/**'"
   },
   "browserslist": {
     "production": [
@@ -42,6 +44,8 @@
     "@storybook/addon-viewport": "^5.0.11",
     "@storybook/addons": "^5.0.11",
     "@storybook/react": "^5.0.11",
+    "@svgr/cli": "^4.2.0",
+    "@tom-odb/named-exports": "^1.4.3",
     "@types/enzyme": "^3.9.2",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/storybook__addon-actions": "^3.4.2",
@@ -53,6 +57,8 @@
     "prettier": "^1.17.1",
     "react-docgen-typescript-loader": "^3.1.0",
     "react-test-renderer": "^16.8.6",
+    "renamer": "^1.1.1",
+    "rimraf": "^2.6.3",
     "storybook-addon-jsx": "^7.1.2",
     "storybook-addon-react-docgen": "^1.2.2",
     "storybook-addon-smart-knobs": "^4.1.2",
