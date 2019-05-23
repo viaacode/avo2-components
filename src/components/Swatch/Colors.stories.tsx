@@ -21,7 +21,6 @@ storiesOf('Colors', module)
 	))
 	.add('All colors', () => (
 		<Fragment>
-			<h1>All colors</h1>
 			<SwatchBlock title="Grays" colors={transformColors(COLORS.GRAYS)} />
 			<SwatchBlock title="Primary" colors={transformColors(COLORS.PRIMARY)} />
 			<SwatchBlock title="Secondary" colors={transformColors(COLORS.SECONDARY)} />
