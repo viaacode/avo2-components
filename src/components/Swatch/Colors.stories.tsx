@@ -14,15 +14,13 @@ const transformColors = (colors: ColorCategory) => {
 };
 
 storiesOf('Colors', module)
-	.add('Grays', () => <SwatchBlock title="Grays" colors={transformColors(COLORS.GRAYS)} />)
-	.add('Primary', () => <SwatchBlock title="Primary" colors={transformColors(COLORS.PRIMARY)} />)
-	.add('Secondary', () => (
-		<SwatchBlock title="Secondary" colors={transformColors(COLORS.SECONDARY)} />
-	))
+	.add('Grayscale colors', () => <SwatchBlock colors={transformColors(COLORS.GRAYSCALE)} />)
+	.add('Primary colors', () => <SwatchBlock colors={transformColors(COLORS.PRIMARY)} />)
+	.add('Secondary colors', () => <SwatchBlock colors={transformColors(COLORS.SECONDARY)} />)
 	.add('All colors', () => (
 		<Fragment>
-			<SwatchBlock title="Grays" colors={transformColors(COLORS.GRAYS)} />
-			<SwatchBlock title="Primary" colors={transformColors(COLORS.PRIMARY)} />
-			<SwatchBlock title="Secondary" colors={transformColors(COLORS.SECONDARY)} />
+			<SwatchBlock title="Grayscale colors" colors={transformColors(COLORS.GRAYSCALE)} />
+			<SwatchBlock title="Primary colors" colors={transformColors(COLORS.PRIMARY)} />
+			<SwatchBlock title="Secondary colors" colors={transformColors(COLORS.SECONDARY)} />
 		</Fragment>
 	));

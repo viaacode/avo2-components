@@ -7,7 +7,7 @@ export interface ColorCategory {
 }
 
 export const COLORS: Colors = {
-	GRAYS: {
+	GRAYSCALE: {
 		50: '#EDEFF2',
 		100: '#D6DEE3',
 		150: '#BAC7D1',
@@ -23,7 +23,7 @@ export const COLORS: Colors = {
 	PRIMARY: {
 		ORANGE: '#F96830',
 		BLUE: '#3A586F',
-		LIGHT_GREY: '#DBDBDB',
+		LIGHT_GRAY: '#DBDBDB',
 		SKY_BLUE: '#3FB1D6',
 	},
 	SECONDARY: {
