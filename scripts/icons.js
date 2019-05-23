@@ -20,7 +20,7 @@ function getCategory(path, fileName) {
 		.replace(/\//g, "");
 }
 
-glob(`${directory}/**/*.*`, function (err, res) {
+glob(`${directory}/**/*.svg`, function (err, res) {
 	if (err) {
 		console.error(err);
 	} else {
