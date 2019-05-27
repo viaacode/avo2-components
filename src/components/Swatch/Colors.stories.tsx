@@ -13,14 +13,23 @@ const transformColors = (colors: ColorCategory) => {
 	}));
 };
 
-storiesOf('Colors', module)
-	.add('Grayscale colors', () => <SwatchBlock colors={transformColors(COLORS.GRAYSCALE)} />)
-	.add('Primary colors', () => <SwatchBlock colors={transformColors(COLORS.PRIMARY)} />)
-	.add('Secondary colors', () => <SwatchBlock colors={transformColors(COLORS.SECONDARY)} />)
-	.add('All colors', () => (
-		<Fragment>
-			<SwatchBlock title="Grayscale colors" colors={transformColors(COLORS.GRAYSCALE)} />
-			<SwatchBlock title="Primary colors" colors={transformColors(COLORS.PRIMARY)} />
-			<SwatchBlock title="Secondary colors" colors={transformColors(COLORS.SECONDARY)} />
-		</Fragment>
-	));
+const stories = [
+	['Grayscale', transformColors(COLORS.GRAYSCALE)],
+	['Primary', transformColors(COLORS.PRIMARY)],
+	['Secondary', transformColors(COLORS.SECONDARY)],
+	['Tertiary', transformColors(COLORS.TERTIARY)],
+];
+
+const story = storiesOf('Colors', module);
+
+stories.forEach(([title, colors]: any) =>
+	story.add(title, () => <SwatchBlock title={title} colors={colors} />)
+);
+
+story.add('All colors', () => (
+	<Fragment>
+		{stories.map(([title, colors]: any) => (
+			<SwatchBlock title={title} colors={colors} />
+		))}
+	</Fragment>
+));

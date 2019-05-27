@@ -3,7 +3,7 @@ module.exports = {
 		const typeScriptTpl = template.smart({ plugins: ['typescript'] });
 
 		// remove "Svg" from the start of each component-name
-		const name = componentName.name.substring(3);
+		const name = componentName.name.substring('Svg'.length);
 
 		return typeScriptTpl.ast`
 			import React, { SVGProps } from 'react';
