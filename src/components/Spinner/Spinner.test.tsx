@@ -9,7 +9,7 @@ describe('<Spinner />', () => {
 	});
 
 	it('Should correctly set the className', () => {
-		const spinnerComponent = shallow(<Spinner size="large" />);
+		const spinnerComponent = shallow(<Spinner />);
 
 		expect(spinnerComponent.hasClass('c-spinner')).toEqual(true);
 	});
