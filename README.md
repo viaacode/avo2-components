@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-This repository contains the AVO React components.
+This repository contains the AVO React components to be consumed by the end user and admin applications.
 
 ## Technical
 
