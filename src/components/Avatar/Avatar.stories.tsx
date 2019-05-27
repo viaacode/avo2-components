@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { Avatar } from './Avatar';
 
 storiesOf('Avatar', module)
-	.addParameters({ jest: ['Avatar'] })
+	.addParameters({ jest: ['Avatar', 'AvatarIcon'] })
 	.add('Avatar', () => <Avatar initials="JD" />)
 	.add('Small avatar', () => <Avatar initials="JD" size="small" />)
 	.add('Avatar with image', () => (
