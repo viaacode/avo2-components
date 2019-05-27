@@ -7,7 +7,6 @@ import { withPropsTable } from 'storybook-addon-react-docgen';
 import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 
 import { withPadding } from './decorators/withPadding';
-import { withRichText } from './decorators/withRichText';
 import { withTitle } from './decorators/withTitle';
 
 import results from './test-results.json';
@@ -19,7 +18,6 @@ addDecorator(withPropsTable);
 addDecorator(jsxDecorator);
 addDecorator(withTitle);
 addDecorator(withPadding);
-addDecorator(withRichText);
 
 function loadStories() {
 	const req = require.context('../src', true, /.stories.tsx?$/);
