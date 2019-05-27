@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
-
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon';
 
 export interface AvatarProps extends AvatarIconProps {
