@@ -15,7 +15,7 @@
     "typescript": "3.4.5"
   },
   "scripts": {
-    "start": "start-storybook -p 4000",
+    "start": "start-storybook -s ./static -p 4000",
     "build": "build-storybook -o build",
     "test": "react-scripts test --verbose",
     "test:output": "CI=true react-scripts test --json --outputFile=.storybook/test-results.json",
