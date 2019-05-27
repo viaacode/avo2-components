@@ -11,7 +11,6 @@ export interface ColorCategory {
 
 export const COLORS: Colors = {
 	GRAYSCALE: {
-		0: '#FFFFFF',
 		50: '#EDEFF2',
 		100: '#D6DEE3',
 		150: '#BAC7D1',
