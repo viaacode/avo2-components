@@ -1,0 +1,63 @@
+{
+  "name": "avo2-components",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/jest": "24.0.13",
+    "@types/node": "12.0.2",
+    "@types/react": "16.8.17",
+    "@types/react-dom": "16.8.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1",
+    "typescript": "3.4.5"
+  },
+  "scripts": {
+    "start": "start-storybook -p 4000",
+    "build": "build-storybook -o build",
+    "test": "react-scripts test",
+    "test:output": "react-scripts test --json --outputFile=.storybook/test-results.json",
+    "lint": "tslint -p .",
+    "format": "npm run lint -- --fix"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.6.1",
+    "@commitlint/config-conventional": "^7.6.0",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-jest": "^5.0.11",
+    "@storybook/addon-knobs": "^5.0.11",
+    "@storybook/addon-viewport": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@storybook/react": "^5.0.11",
+    "@types/enzyme": "^3.9.2",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/storybook__addon-actions": "^3.4.2",
+    "@types/storybook__react": "^4.0.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.1",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1",
+    "react-docgen-typescript-loader": "^3.1.0",
+    "react-test-renderer": "^16.8.6",
+    "storybook-addon-jsx": "^7.1.2",
+    "storybook-addon-react-docgen": "^1.2.2",
+    "storybook-addon-smart-knobs": "^4.1.2",
+    "tslint": "^5.16.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1"
+  }
+}
