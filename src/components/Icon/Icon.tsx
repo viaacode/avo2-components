@@ -6,10 +6,11 @@ import * as Icons from '../Icons';
 
 export interface IconProps {
 	name: string;
+	size?: 'small' | 'large' | 'huge';
 	type?: 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';
 }
 
-export const Icon: FunctionComponent<IconProps> = ({ name, type }: IconProps) => {
+export const Icon: FunctionComponent<IconProps> = ({ name, size, type }: IconProps) => {
 	const IconToRender = (Icons as any)[toPascalCase(name)];
 
 	function getIconName() {
@@ -39,6 +40,7 @@ export const Icon: FunctionComponent<IconProps> = ({ name, type }: IconProps) =>
 			<div
 				className={classNames('o-svg-icon', getIconName(), {
 					'o-svg-icon-multicolor': type === 'multicolor',
+					[`o-svg-icon--${size}`]: size,
 				})}
 			>
 				<IconToRender />
