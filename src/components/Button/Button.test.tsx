@@ -79,7 +79,22 @@ describe('<Button />', () => {
 		expect(arrowComponent.props()).toMatchObject({ name: 'caret-down' });
 	});
 
-	it('Should call the `onClick`-handler when clicked', () => {});
+	it('Should call the `onClick`-handler when clicked', () => {
+		const onClickHandler = jest.fn();
+
+		const buttonComponent = shallow(<Button onClick={onClickHandler} />);
+
+		const buttonElement = buttonComponent.find('button');
+
+		buttonElement.simulate('click');
+
+		expect(onClickHandler).toHaveBeenCalled();
+		expect(onClickHandler).toHaveBeenCalledTimes(1);
+
+		buttonElement.simulate('click');
+
+		expect(onClickHandler).toHaveBeenCalledTimes(2);
+	});
 
 	it('Should pass on the `disabled`-attribute', () => {
 		const buttonComponent = shallow(<Button disabled />);
