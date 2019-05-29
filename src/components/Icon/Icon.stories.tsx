@@ -18,7 +18,7 @@ const stories = [
 	['Arrows', arrowsIcons],
 	['Custom', customIcons],
 	['Multicolor', multicolorIcons],
-	['social', socialIcons],
+	['Social', socialIcons],
 	['WYSIWYG', wysiwygIcons],
 	['All icons', iconList],
 ];
@@ -30,7 +30,6 @@ story.addParameters({ jest: ['Icon'] });
 stories.forEach(([title, icons]: any) =>
 	story.add(title, () => (
 		<Fragment>
-			<h1>{title}</h1>
 			<div className="c-styleguide-svg-icons__category">
 				<div className="c-styleguide-svg-icons__type">
 					{icons.map(({ name, type }: { name: string; type: any }, index: number) => (
