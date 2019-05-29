@@ -27,7 +27,6 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 		if (page >= 0 && page <= pageCount - 1 && page !== currentPage) {
 			setCurrentPage(page);
 			onPageChange(page);
-			console.log(page);
 		}
 	}
 
