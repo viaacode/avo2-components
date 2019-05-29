@@ -38,15 +38,20 @@ describe('<Icon />', () => {
 	});
 
 	it('Should correctly set the className with type', () => {
-		const iconComponent = shallow(<Icon name="twitter" type="social" />);
+		const socialIconComponent = shallow(<Icon name="twitter" type="social" />);
+		const multicolorIconComponent = shallow(<Icon name="circle-check" type="multicolor" />);
 
-		expect(iconComponent.hasClass('o-svg-icon')).toEqual(true);
-		expect(iconComponent.hasClass('o-svg-icon-social-twitter')).toEqual(true);
+		expect(socialIconComponent.hasClass('o-svg-icon-social-twitter')).toEqual(true);
+		expect(multicolorIconComponent.hasClass('o-svg-icon-multicolor')).toEqual(true);
 	});
 
-	it('Should correctly set the className with type', () => {
-		const iconComponent = shallow(<Icon name="circle-check" type="multicolor" />);
+	it('Should correctly set the sizing className', () => {
+		const smallIconComponent = shallow(<Icon name="circle-check" size="small" />);
+		const largeIconComponent = shallow(<Icon name="circle-check" size="large" />);
+		const hugeIconComponent = shallow(<Icon name="circle-check" size="huge" />);
 
-		expect(iconComponent.hasClass('o-svg-icon-multicolor')).toEqual(true);
+		expect(smallIconComponent.hasClass('o-svg-icon--small')).toEqual(true);
+		expect(largeIconComponent.hasClass('o-svg-icon--large')).toEqual(true);
+		expect(hugeIconComponent.hasClass('o-svg-icon--huge')).toEqual(true);
 	});
 });
