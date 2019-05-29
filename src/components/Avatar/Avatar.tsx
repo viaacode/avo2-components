@@ -1,13 +1,10 @@
 import React, { FunctionComponent } from 'react';
 
-import { AvatarIcon } from './AvatarIcon';
+import { AvatarIcon, AvatarIconProps } from './AvatarIcon';
 
-export interface AvatarProps {
+export interface AvatarProps extends AvatarIconProps {
 	name?: string;
 	title?: string;
-	initials: string;
-	image?: string;
-	size?: 'small';
 }
 
 export const Avatar: FunctionComponent<AvatarProps> = ({
