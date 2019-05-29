@@ -7,6 +7,7 @@ import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 
 import { withPadding } from './decorators/withPadding';
 import { withRichText } from './decorators/withRichText';
+import { withTitle } from './decorators/withTitle';
 
 import results from './test-results.json';
 
@@ -14,6 +15,7 @@ addDecorator(withTests({ results, filesExt: '((\\.specs?)|(\\.tests?))?(\\.tsx)?
 addDecorator(withKnobs);
 addDecorator(withSmartKnobs);
 addDecorator(jsxDecorator);
+addDecorator(withTitle);
 addDecorator(withPadding);
 addDecorator(withRichText);
 

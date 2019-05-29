@@ -14,7 +14,7 @@ const transformColors = (colors: ColorCategory) => {
 };
 
 const stories = [
-	['Grays', transformColors(COLORS.GRAYS)],
+	['Grayscale', transformColors(COLORS.GRAYSCALE)],
 	['Primary', transformColors(COLORS.PRIMARY)],
 	['Secondary', transformColors(COLORS.SECONDARY)],
 	['Tertiary', transformColors(COLORS.TERTIARY)],
