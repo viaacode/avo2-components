@@ -10,5 +10,5 @@ ENV PATH /opt/react-app/node_modules/.bin:$PATH
 # copy in our source code last, as it changes the most
 WORKDIR /opt/react-app/app
 COPY . .
-EXPOSE ['3020']
+EXPOSE 3020
 CMD npm start
