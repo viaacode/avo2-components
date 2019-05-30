@@ -82,8 +82,9 @@ pipeline {
                              echo "Start the docker build for ES"
                              sh '''#!/bin/bash
                              oc project shared-components
-
-                              oc -n shared-components start-build -w avo2-components-qas || oc -n shared-components new-build --name=vo2-components-qas  --strategy=docker  .
+                             buildnr=`oc get bc vo2-components-qas  -o yaml | grep lastVersion | awk '{print $2}'`
+                             echo build nr $buildnr
+                              oc -n shared-components start-build -w avo2-components-qas || oc -n shared-components new-build --name=avo2-components-qas  --strategy=docker  .
                              '''
                         }
                     }
@@ -100,7 +101,7 @@ pipeline {
                             echo building starts ...
                             oc -n shared-components get builds
                             oc -n shared-components logs -f bc/avo2-components-qas
-                            echo Building finished exitcode $?
+                            echo build  finished exitcode $?
 
                             '''
 
