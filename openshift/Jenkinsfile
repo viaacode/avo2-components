@@ -43,7 +43,8 @@ pipeline {
                             sh '''#!/bin/bash
 
 			     oc delete all --selector=ENV=tst || true
-			     oc delete all --selector=ENV=tst,app=avo2-components || echo "NOthing Deleted"
+            for b in $(oc get builds | grep avo2-components-qas | awk '{print $1}') ; do oc -n shared-components  delete build $b; done
+			     oc delete all --selector=ENV=qas,app=avo2-components || echo "NOthing Deleted"
 			     sleep 10
 			   #  for pod in $(oc -n shared-components get pods | grep Error | awk '{print $1}'); do oc delete pod --grace-period=1 ${pod}; done
 
