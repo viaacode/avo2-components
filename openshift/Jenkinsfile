@@ -124,7 +124,7 @@ pipeline {
                         openshift.withProject("shared-components") {
                              echo "Rolling out  build from template"
                              sh '''#/bin/bash
-                             oc process -p ENV=qas -l app=avo2-components -l component=frontend -l ENV=qas  -f .openshift/app_deployment-okd.yaml | oc apply -f -
+                             oc process -p ENV=qas -l app=avo2-components -l component=frontend -l ENV=qas  -f openshift/app_deployment-okd.yaml | oc apply -f -
                              echo Rolled out the QAS app
 
                              '''
