@@ -11,9 +11,9 @@ ENV PATH /opt/react-app/node_modules/.bin:$PATH
 WORKDIR /opt/react-app/app
 COPY . .
 EXPOSE 4000
-# set user to run the thing
-USER node
+USER root
 # chmod group writable fgroup 0 for openshift
 RUN chgrp -R 0 /opt/react-app/ && chmod -R g+rwX /opt/react-app/
-
+# set user to run the thing
+USER node
 CMD npm start
