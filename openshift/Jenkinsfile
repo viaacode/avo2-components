@@ -1,7 +1,7 @@
-def TEMPLATEPATH = 'https://raw.githubusercontent.com/viaacode/openshift_pipeline-jenkins-exmp/master/app_deployment-okd.yaml'
-def TEMPLATENAME = avo2-components'
+def TEMPLATEPATH = 'https://raw.githubusercontent.com/viaacode/openshift_pipeline-jenkins-exmp/master/openshift/app_deployment-okd.yaml'
+def TEMPLATENAME = 'avo2-components'
 def TARGET_NS = 'shared-components'
-def templatePath = 'https://raw.githubusercontent.comviaacode/avo2-components/master/app_deployment-okd.yaml'
+def templatePath = 'https://raw.githubusercontent.comviaacode/avo2-components/master/openshift/app_deployment-okd.yaml'
 // NOTE, the "pipeline" directive/closure from the declarative pipeline syntax needs to include, or be nested outside,
 // and "openshift" directive/closure from the OpenShift Client Plugin for Jenkins.  Otherwise, the declarative pipeline engine
 // will not be fully engaged.
