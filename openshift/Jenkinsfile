@@ -1,0 +1,156 @@
+def TEMPLATEPATH = 'https://raw.githubusercontent.com/viaacode/openshift_pipeline-jenkins-exmp/master/app_deployment-okd.yaml'
+def TEMPLATENAME = avo2-components'
+def TARGET_NS = 'shared-components'
+def templatePath = 'https://raw.githubusercontent.comviaacode/avo2-components/master/app_deployment-okd.yaml'
+// NOTE, the "pipeline" directive/closure from the declarative pipeline syntax needs to include, or be nested outside,
+// and "openshift" directive/closure from the OpenShift Client Plugin for Jenkins.  Otherwise, the declarative pipeline engine
+// will not be fully engaged.
+pipeline {
+    agent {
+      node {
+        // spin up a pod to run this build on
+        label 'master'
+      }
+    }
+    options {
+        // set a timeout of 20 minutes for this pipeline
+        timeout(time: 20, unit: 'MINUTES')
+    }
+    stages {
+        stage('preamble') {
+            steps {
+                script {
+                    openshift.withCluster() {
+                        openshift.withProject("shared-components") {
+                            echo "Using project: ${openshift.project()}"
+                        }
+                    }
+                }
+            }
+        }
+        stage('cleanup') {
+            steps {
+                script {
+                    openshift.withCluster() {
+                        openshift.withProject("shared-components") {
+                            // delete everything with this template label
+			    if (openshift.selector("template", "avo2-components").exists()) {
+				    echo " tmpl exists"
+				    openshift.selector("all", [ template : "avo2-components" ]).delete()
+
+			    }
+                            //openshift.selector("all", [ statefulset  : TEMPLATENAME ]).delete()
+                            sh '''#!/bin/bash
+
+			     oc delete all --selector=ENV=tst || true
+			     oc delete all --selector=ENV=tst,app=avo2-components || echo "NOthing Deleted"
+			     sleep 10
+			   #  for pod in $(oc -n shared-components get pods | grep Error | awk '{print $1}'); do oc delete pod --grace-period=1 ${pod}; done
+
+                            '''
+                        }
+                    }
+                } // script
+            } // steps
+        } // stage
+
+
+
+        stage('create templates') {
+            steps {
+                script {
+                    openshift.withCluster() {
+                        openshift.withProject("shared-components") {
+                            // create a new application from the TEMPLATEPATH
+                           // openshift.newApp(TEMPLATEPATH)
+                           sh "oc -n shared-components apply -f app_deployment-okd.yaml"
+                           echo "processing WARNING need root container for build"
+                            sh '''#!/bin/bash
+                                  oc -n shared-components  get templates
+
+                               '''
+                        }
+                    }
+                } // script
+            } // steps
+        } // stage
+        stage('build_es_images') {
+            steps {
+                script {
+                    openshift.withCluster() {
+                        openshift.withProject("shared-components") {
+                             echo "Start the docker build for ES"
+                             sh '''#!/bin/bash
+                             oc project shared-components
+
+                              oc -n shared-components start-build -w avo2-components-qas || oc -n shared-components new-build --name=vo2-components-qas  --strategy=docker  .
+                             '''
+                        }
+                    }
+                } // script
+            } // steps
+        } // stage
+        stage('Follow Build') {
+            steps {
+                script {
+                    openshift.withCluster() {
+                        openshift.withProject("shared-components") {
+                            echo "Get build and follow the output"
+                            sh '''#!/bin/bash
+                            echo building starts ...
+                            oc -n shared-components get builds
+                            oc -n shared-components logs -f bc/avo2-components-qas
+                            echo Building finished exitcode $?
+
+                            '''
+
+                        }
+                    }
+
+
+                } // script
+
+            } // steps
+        } // stage
+
+
+
+
+               stage('Roll out') {
+            steps {
+
+                script {
+                    openshift.withCluster() {
+                        openshift.withProject("shared-components") {
+                             echo "Rolling out  build from template"
+                             sh '''#/bin/bash
+                             oc process -p ENV=tst -l app=elk-pipe -l ENV=tst  -f ./app_deployment-okd.yaml | oc apply -f -
+                             echo Rolled out the TST cluster
+			     oc process -p ENV=tst -l app=elk-pipe -l ENV=tst -f es-int-tmp.yaml | oc apply -f -
+			     oc process -f filebeat-ds.yaml -l ENV=tst,app=elastic-tst | oc apply -f -
+                             '''
+                        }
+                    }
+                } // script
+            } // steps
+        } // stage
+
+               stage('Tag out') {
+            steps {
+            input message: "TAG iamges for prd ?:avo2-components. Approve?", id: "approval"
+
+                script {
+                    openshift.withCluster() {
+                        openshift.withProject("shared-components") {
+                             echo "Rolling out  build from template"
+                             sh '''#!/bin/bash
+                              oc  -n shared-components tag  avo2-components-qas:latest  avo2-components-:latest
+                              oc  -n shared-components tag avo2-components-qas:latest avo2-components-prd:latest
+                             '''
+                        }
+                    }
+                } // script
+            } // steps
+        } // stag
+    } // stages
+} // pipeline

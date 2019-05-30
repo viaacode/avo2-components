@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  labels:
+    name: avo2-components
+  name: avo2-components-jenkins
+spec:
+  source:
+    type: Git
+    git:
+      uri: https://github.com/viaacode/avo2-components.git
+  strategy:
+    type: JenkinsPipeline
+    jenkinsPipelineStrategy:
+      jenkinsfilePath: openshift/Jenkinsfile
