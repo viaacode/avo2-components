@@ -84,6 +84,7 @@ pipeline {
                              oc project shared-components
                              buildnr=`oc get bc avo2-components-qas  -o yaml | grep lastVersion | awk '{print $2}'`
                              echo build nr $buildnr
+                             oc delete  -n shared-components  bc  avo2-components-qas || exit 0
                               oc -n shared-components start-build -w avo2-components-qas || oc -n shared-components new-build --name=avo2-components-qas  --strategy=docker  .
                              '''
                         }
