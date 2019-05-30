@@ -125,4 +125,4 @@ objects:
     loadBalancer: {}
 parameters:
   - name: ENV
-    value: ${ENV}
+    value: qas
