@@ -13,7 +13,7 @@ COPY . .
 EXPOSE 4000
 USER root
 # chmod group writable fgroup 0 for openshift
-RUN chgrp -R 0 /opt/react-app/ && chmod -R g+rwX /opt/react-app/
+RUN chgrp -R 0 /opt/react-app/ && chmod -R g+rwX /opt/react-app/ && chown node:node -R /opt/react-app/
 # set user to run the thing
 USER node
 CMD npm start
