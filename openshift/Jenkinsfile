@@ -82,7 +82,7 @@ pipeline {
                              echo "Start the docker build for ES"
                              sh '''#!/bin/bash
                              oc project shared-components
-                             buildnr=`oc get bc vo2-components-qas  -o yaml | grep lastVersion | awk '{print $2}'`
+                             buildnr=`oc get bc avo2-components-qas  -o yaml | grep lastVersion | awk '{print $2}'`
                              echo build nr $buildnr
                               oc -n shared-components start-build -w avo2-components-qas || oc -n shared-components new-build --name=avo2-components-qas  --strategy=docker  .
                              '''
