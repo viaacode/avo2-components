@@ -63,7 +63,7 @@ pipeline {
                         openshift.withProject("shared-components") {
                             // create a new application from the TEMPLATEPATH
                            // openshift.newApp(TEMPLATEPATH)
-                           sh "oc -n shared-components apply -f app_deployment-okd.yaml"
+                           sh "oc -n shared-components apply -f openshift/app_deployment-okd.yaml"
                            echo "processing WARNING need root container for build"
                             sh '''#!/bin/bash
                                   oc -n shared-components  get templates
@@ -124,10 +124,9 @@ pipeline {
                         openshift.withProject("shared-components") {
                              echo "Rolling out  build from template"
                              sh '''#/bin/bash
-                             oc process -p ENV=tst -l app=elk-pipe -l ENV=tst  -f ./app_deployment-okd.yaml | oc apply -f -
-                             echo Rolled out the TST cluster
-			     oc process -p ENV=tst -l app=elk-pipe -l ENV=tst -f es-int-tmp.yaml | oc apply -f -
-			     oc process -f filebeat-ds.yaml -l ENV=tst,app=elastic-tst | oc apply -f -
+                             oc process -p ENV=qas -l app=avo2-components -l component=frontend -l ENV=qas  -f .openshift/app_deployment-okd.yaml | oc apply -f -
+                             echo Rolled out the QAS app
+
                              '''
                         }
                     }
