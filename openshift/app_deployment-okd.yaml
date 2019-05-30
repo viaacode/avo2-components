@@ -15,7 +15,7 @@ objects:
       ENV: ${ENV}
       app: avo2-components
       component: frontend
-    name: avo2-components
+    name: avo2-components-${ENV}
   spec:
     replicas: 1
     revisionHistoryLimit: 10
@@ -23,7 +23,7 @@ objects:
       ENV: ${ENV}
       app: avo2-components
       component: frontend
-      deploymentconfig: avo2-components
+      deploymentconfig: avo2-components-${ENV}
     strategy:
       activeDeadlineSeconds: 21600
       resources: {}
@@ -43,10 +43,10 @@ objects:
           ENV: ${ENV}
           app: avo2-components
           component: frontend
-          deploymentconfig: avo2-components
+          deploymentconfig: avo2-components-${ENV}
       spec:
         containers:
-        - image: docker-registry.default.svc:5000/testproject/avo2-components@sha256:de62686b7128e4982100b8bd1b383ecff7ed60617c89fffe5eb1fcaa02fb2b78
+        - image: docker-registry.default.svc:5000/shared-components/avo2-components-${ENV}:latest
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3
@@ -58,7 +58,7 @@ objects:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
-          name: avo2-components
+          name: avo2-components-${ENV}
           ports:
           - containerPort: 4000
             name: http
@@ -85,12 +85,12 @@ objects:
     - imageChangeParams:
         automatic: true
         containerNames:
-        - avo2-components
+        - avo2-components-${ENV}
         from:
           kind: ImageStreamTag
-          name: avo2-components:latest
+          name: avo2-components-${ENV}:latest
           namespace: shared-components
-        lastTriggeredImage: docker-registry.default.svc:5000/testproject/avo2-components@sha256:de62686b7128e4982100b8bd1b383ecff7ed60617c89fffe5eb1fcaa02fb2b78
+        lastTriggeredImage: docker-registry.default.svc:5000/shared-components/avo2-components:latest
       type: ImageChange
   status:
     availableReplicas: 0
@@ -99,52 +99,7 @@ objects:
     replicas: 0
     unavailableReplicas: 0
     updatedReplicas: 0
-- apiVersion: v1
-  kind: BuildConfig
-  metadata:
-    annotations:
-      openshift.io/generated-by: OpenShiftNewApp
-    creationTimestamp: null
-    labels:
-      ENV: ${ENV}
-      app: avo2-components
-      component: frontend
-    name: avo2-components
-  spec:
-    failedBuildsHistoryLimit: 5
-    nodeSelector: null
-    output:
-      to:
-        kind: ImageStreamTag
-        name: avo2-components:latest
-    postCommit: {}
-    resources: {}
-    runPolicy: Serial
-    source:
-      git:
-        ref: master
-        uri: https://github.com/viaacode/avo2-components.git
-      type: Git
-    strategy:
-      dockerStrategy:
-        from:
-          kind: ImageStreamTag
-          name: node:12-alpine
-          namespace: shared-components
-      type: Docker
-    successfulBuildsHistoryLimit: 5
-    triggers:
-    - github:
-        secret: RP04sTbEvNhTz-m4ycZH
-      type: GitHub
-    - generic:
-        secret: VWicvViWYJ-xJf3bzaK7
-      type: Generic
-    - type: ConfigChange
-    - imageChange: {}
-      type: ImageChange
-  status:
-    lastVersion: 0
+
 - apiVersion: v1
   kind: Service
   metadata:
@@ -170,4 +125,4 @@ objects:
     loadBalancer: {}
 parameters:
   - name: ENV
-    value: ${ENV}
+    value: qas
