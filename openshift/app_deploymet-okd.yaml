@@ -15,7 +15,7 @@ objects:
       ENV: ${ENV}
       app: avo2-components
       component: frontend
-    name: avo2-components
+    name: avo2-components-${ENV}
   spec:
     replicas: 1
     revisionHistoryLimit: 10
@@ -23,7 +23,7 @@ objects:
       ENV: ${ENV}
       app: avo2-components
       component: frontend
-      deploymentconfig: avo2-components
+      deploymentconfig: avo2-components-${ENV}
     strategy:
       activeDeadlineSeconds: 21600
       resources: {}
@@ -43,10 +43,10 @@ objects:
           ENV: ${ENV}
           app: avo2-components
           component: frontend
-          deploymentconfig: avo2-components
+          deploymentconfig: avo2-components-${ENV}
       spec:
         containers:
-        - image: docker-registry.default.svc:5000/shared-components/avo2-components:latest
+        - image: docker-registry.default.svc:5000/shared-components/avo2-components-${ENV}:latest
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3
@@ -58,7 +58,7 @@ objects:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
-          name: avo2-components
+          name: avo2-components-${ENV}
           ports:
           - containerPort: 4000
             name: http
@@ -85,10 +85,10 @@ objects:
     - imageChangeParams:
         automatic: true
         containerNames:
-        - avo2-components
+        - avo2-components-${ENV}
         from:
           kind: ImageStreamTag
-          name: avo2-components:latest
+          name: avo2-components-${ENV}:latest
           namespace: shared-components
         lastTriggeredImage: docker-registry.default.svc:5000/shared-components/avo2-components:latest
       type: ImageChange
