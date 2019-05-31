@@ -1,5 +1,5 @@
 export interface Colors {
-	GRAYS: ColorCategory;
+	GRAYSCALE: ColorCategory;
 	PRIMARY: ColorCategory;
 	SECONDARY: ColorCategory;
 	TERTIARY: ColorCategory;
@@ -10,8 +10,7 @@ export interface ColorCategory {
 }
 
 export const COLORS: Colors = {
-	GRAYS: {
-		G0: '#FFFFFF',
+	GRAYSCALE: {
 		G50: '#EDEFF2',
 		G100: '#D6DEE3',
 		G150: '#BAC7D1',

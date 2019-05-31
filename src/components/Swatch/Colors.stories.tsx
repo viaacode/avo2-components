@@ -14,7 +14,7 @@ const transformColors = (colors: ColorCategory) => {
 };
 
 const stories = [
-	['Grays', transformColors(COLORS.GRAYS)],
+	['Grayscale', transformColors(COLORS.GRAYSCALE)],
 	['Primary', transformColors(COLORS.PRIMARY)],
 	['Secondary', transformColors(COLORS.SECONDARY)],
 	['Tertiary', transformColors(COLORS.TERTIARY)],
@@ -22,9 +22,7 @@ const stories = [
 
 const story = storiesOf('Colors', module);
 
-stories.forEach(([title, colors]: any) =>
-	story.add(title, () => <SwatchBlock title={title} colors={colors} />)
-);
+stories.forEach(([title, colors]: any) => story.add(title, () => <SwatchBlock colors={colors} />));
 
 story.add('All colors', () => (
 	<Fragment>
