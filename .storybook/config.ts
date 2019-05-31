@@ -6,7 +6,6 @@ import { jsxDecorator } from 'storybook-addon-jsx';
 import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 
 import { withPadding } from './decorators/withPadding';
-import { withRichText } from './decorators/withRichText';
 import { withTitle } from './decorators/withTitle';
 
 import results from './test-results.json';
@@ -17,7 +16,6 @@ addDecorator(withSmartKnobs);
 addDecorator(jsxDecorator);
 addDecorator(withTitle);
 addDecorator(withPadding);
-addDecorator(withRichText);
 
 function loadStories() {
 	const req = require.context('../src', true, /.stories.tsx?$/);

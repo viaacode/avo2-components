@@ -7,12 +7,6 @@ export interface BadgeProps {
 	type?: 'default' | 'success' | 'error';
 }
 
-const Badge: FunctionComponent<BadgeProps> = ({ text, type }: BadgeProps) => (
+export const Badge: FunctionComponent<BadgeProps> = ({ text, type = 'default' }: BadgeProps) => (
 	<div className={classNames('c-badge', { [`c-badge--${type}`]: type })}>{text}</div>
 );
-
-Badge.defaultProps = {
-	type: 'default',
-};
-
-export { Badge };
