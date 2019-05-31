@@ -42,9 +42,10 @@ pipeline {
                             //openshift.selector("all", [ statefulset  : TEMPLATENAME ]).delete()
                             sh '''#!/bin/bash
 
-			     oc delete all --selector=ENV=tst || true
-            for b in $(oc get builds | grep avo2-components-tst | awk '{print $1}') ; do oc -n shared-components  delete build $b; done
-            oc delete all --selector=ENV=tst,app=avo2-components || echo "NOthing Deleted"
+			     oc -n shared-components delete all --selector=ENV=tst || true
+           oc delete bc avo2-components-tst || true 
+           for b in $(oc -n shared-components get builds | grep avo2-components-tst | awk '{print $1}') ; do oc -n shared-components  delete build $b; done
+            oc -n shared-components delete all --selector=ENV=tst,app=avo2-components || echo "NOthing Deleted"
            for rc in $(oc -n shared-components get rc | grep 'avo2-components-tst' | awk '{print $1}'); do oc delete rc --grace-period=1 ${rc}  ; done
            for pod in $(oc -n shared-components get pods | grep 'avo2-components-tst' | awk '{print $1}'); do oc delete pod --grace-period=0 ${pod} --force ; done
            sleep 10
