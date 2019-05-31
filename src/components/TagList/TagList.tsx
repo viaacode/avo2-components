@@ -18,22 +18,23 @@ export const TagList: FunctionComponent<TagListProps> = ({
 	bordered = true,
 	closable = false,
 	onTagClosed = () => {},
-}: TagListProps) => (
-	<ul className="c-tag-list">
-		{tags.map((tag, index) => (
-			<li className={classNames({ 'c-tag': bordered, 'c-label': !bordered })} key={tag}>
-				{swatches && (
-					<div
-						className={classNames('c-label-swatch', `c-label-swatch--color-${(index % 10) + 1}`)}
-					/>
-				)}
-				{swatches ? <p className="c-label-text">{tag}</p> : tag}
-				{closable && (
-					<a onClick={() => onTagClosed(tag)}>
-						<Icon name="close" />
-					</a>
-				)}
-			</li>
-		))}
-	</ul>
-);
+}: TagListProps) =>
+	tags && tags.length ? (
+		<ul className="c-tag-list">
+			{tags.map((tag, index) => (
+				<li className={classNames({ 'c-tag': bordered, 'c-label': !bordered })} key={tag}>
+					{swatches && (
+						<div
+							className={classNames('c-label-swatch', `c-label-swatch--color-${(index % 10) + 1}`)}
+						/>
+					)}
+					{swatches ? <p className="c-label-text">{tag}</p> : tag}
+					{closable && (
+						<a onClick={() => onTagClosed(tag)}>
+							<Icon name="close" />
+						</a>
+					)}
+				</li>
+			))}
+		</ul>
+	) : null;
