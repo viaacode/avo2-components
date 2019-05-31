@@ -43,12 +43,11 @@ pipeline {
                             sh '''#!/bin/bash
 
 			     oc delete all --selector=ENV=tst || true
-            for b in $(oc get builds | grep avo2-components-qas | awk '{print $1}') ; do oc -n shared-components  delete build $b; done
-			     oc delete all --selector=ENV=qas,app=avo2-components || echo "NOthing Deleted"
-			     sleep 10
-           for rc in $(oc -n shared-components get rc | grep 'avo2-components-qas' | awk '{print $1}'); do oc delete rc --grace-period=1 ${pod}  ; done
-           for pod in $(oc -n shared-components get pods | grep 'avo2-components-qas' | awk '{print $1}'); do oc delete pod --grace-period=0 ${pod} --force ; done
-
+            for b in $(oc get builds | grep avo2-components-tst | awk '{print $1}') ; do oc -n shared-components  delete build $b; done
+            oc delete all --selector=ENV=tst,app=avo2-components || echo "NOthing Deleted"
+           for rc in $(oc -n shared-components get rc | grep 'avo2-components-tst' | awk '{print $1}'); do oc delete rc --grace-period=1 ${rc}  ; done
+           for pod in $(oc -n shared-components get pods | grep 'avo2-components-tst' | awk '{print $1}'); do oc delete pod --grace-period=0 ${pod} --force ; done
+           sleep 10
 			   #  for pod in $(oc -n shared-components get pods | grep Error | awk '{print $1}'); do oc delete pod --grace-period=1 ${pod}; done
 
                             '''
@@ -68,7 +67,7 @@ pipeline {
                             // create a new application from the TEMPLATEPATH
                            // openshift.newApp(TEMPLATEPATH)
                            sh "oc -n shared-components apply -f openshift/app_deployment-okd.yaml"
-                           echo "processing WARNING need root container for build"
+                           echo "added template to namespace"
                             sh '''#!/bin/bash
                                   oc -n shared-components  get templates
 
@@ -86,10 +85,9 @@ pipeline {
                              echo "Start the docker build for ES"
                              sh '''#!/bin/bash
                              oc project shared-components
-                             buildnr=`oc get bc avo2-components-qas  -o yaml | grep lastVersion | awk '{print $2}'`
+                             buildnr=`oc get bc avo2-components-tst  -o yaml | grep lastVersion | awk '{print $2}'`
                              echo build nr $buildnr
-                             oc delete  -n shared-components  bc  avo2-components-qas || exit 0
-                            oc -n shared-components new-build --name=avo2-components-qas  --strategy=docker  .
+                            oc -n shared-components new-build --name=avo2-components-tst  --strategy=docker  .
                              '''
                         }
                     }
@@ -105,7 +103,7 @@ pipeline {
                             sh '''#!/bin/bash
                             echo building starts ...
                             oc -n shared-components get builds
-                            oc -n shared-components logs -f bc/avo2-components-qas
+                            oc -n shared-components logs -f bc/avo2-components-tst
                             echo build  finished exitcode $?
 
                             '''
@@ -130,8 +128,8 @@ pipeline {
                         openshift.withProject("shared-components") {
                              echo "Rolling out  build from template"
                              sh '''#/bin/bash
-                             oc process -p ENV=qas -l app=avo2-components -l component=frontend -l ENV=qas  -f openshift/app_deployment-okd.yaml | oc apply -f -
-                             echo Rolled out the QAS app
+                             oc process -p ENV=tst -l app=avo2-components -l component=frontend -l ENV=tst  -f openshift/app_deployment-okd.yaml | oc apply -f -
+                             echo Rolled out the tst app
 
                              '''
                         }
@@ -149,8 +147,8 @@ pipeline {
                         openshift.withProject("shared-components") {
                              echo "Rolling out  build from template"
                              sh '''#!/bin/bash
-                              oc  -n shared-components tag  avo2-components-qas:latest  avo2-components-:latest
-                              oc  -n shared-components tag avo2-components-qas:latest avo2-components-prd:latest
+                              oc  -n shared-components tag  avo2-components-tst:latest  avo2-components-qas:latest
+                              oc  -n shared-components tag avo2-components-tst:latest avo2-components-prd:latest
                              '''
                         }
                     }
