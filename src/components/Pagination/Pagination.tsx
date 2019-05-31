@@ -31,6 +31,11 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 	}
 
 	function generatePages() {
+		// generate all pages if pageCount is less than the displayCount
+		if (pageCount < displayCount) {
+			return Array.from({ length: pageCount }, (value: number, index: number) => index);
+		}
+
 		// generate first x pages if currentPage is less than the displaycount
 		if (currentPage < displayCount / 2) {
 			return Array.from({ length: displayCount }, (value: number, index: number) => index);
