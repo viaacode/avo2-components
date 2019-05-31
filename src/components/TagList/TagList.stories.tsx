@@ -25,4 +25,5 @@ storiesOf('TagList', module)
 		<TagList tags={tags} closable onTagClosed={action('Tag closed')} />
 	))
 	.add('TagList without swatches', () => <TagList tags={tags} swatches={false} />)
-	.add('TagList with borderless tags', () => <TagList tags={tags} bordered={false} />);
+	.add('TagList with borderless tags', () => <TagList tags={tags} bordered={false} />)
+	.add('Minimalist TagList', () => <TagList tags={tags} swatches={false} bordered={false} />);
