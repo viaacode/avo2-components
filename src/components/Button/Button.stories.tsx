@@ -139,12 +139,12 @@ storiesOf('Button', module)
 	.add('Inverse buttons', () => (
 		<Fragment>
 			<div className="u-spacer-bottom">
-				<span style={{ padding: '20px', background: COLORS.GRAYS.G800 }}>
+				<span style={{ padding: '20px', background: COLORS.GRAYSCALE.G800 }}>
 					<Button label="Secondary button" type="secondary-i" icon="plus" />
 				</span>
 			</div>
 			<div className="u-spacer-bottom">
-				<span style={{ padding: '20px', background: COLORS.GRAYS.G800 }}>
+				<span style={{ padding: '20px', background: COLORS.GRAYSCALE.G800 }}>
 					<Button label="Borderless button" type="borderless-i" icon="search" />
 				</span>
 			</div>
