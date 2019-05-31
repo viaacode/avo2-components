@@ -69,6 +69,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 			<div className="c-pagination__pages">
 				{pagesToDisplay.map((pageIndex: number) => (
 					<div
+						key={pageIndex}
 						className={classNames('c-pagination__btn', {
 							'c-pagination__btn--active': pageIndex === currentPage,
 						})}
