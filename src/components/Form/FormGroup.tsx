@@ -3,21 +3,21 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames';
 
 export interface FormGroupProps {
-	name: string;
 	label?: string;
+	labelFor?: string;
 	error?: string;
 	children: ReactNode;
 }
 
 export const FormGroup: FunctionComponent<FormGroupProps> = ({
-	name,
 	label,
+	labelFor,
 	error,
 	children,
 }: FormGroupProps) => (
 	<div className={classNames('o-form-group', { 'o-form-group--error': error })}>
 		{label && (
-			<label className="o-form-group__label" htmlFor={name}>
+			<label className="o-form-group__label" htmlFor={labelFor}>
 				{label}
 			</label>
 		)}

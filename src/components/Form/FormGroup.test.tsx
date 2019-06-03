@@ -6,7 +6,7 @@ import { FormGroup } from './FormGroup';
 describe('<FormGroup />', () => {
 	it('Should be able to render', () => {
 		shallow(
-			<FormGroup name="test">
+			<FormGroup>
 				<Fragment />
 			</FormGroup>
 		);
@@ -14,7 +14,7 @@ describe('<FormGroup />', () => {
 
 	it('Should correctly set the className', () => {
 		const formGroupComponent = shallow(
-			<FormGroup name="test">
+			<FormGroup>
 				<Fragment />
 			</FormGroup>
 		);
@@ -23,24 +23,24 @@ describe('<FormGroup />', () => {
 	});
 
 	it('Should render a label when it is passed', () => {
-		const name = 'test';
+		const id = 'test';
 		const label = 'test form';
 
 		const formGroupComponent = shallow(
-			<FormGroup name={name} label={label}>
+			<FormGroup labelFor={id} label={label}>
 				<Fragment />
 			</FormGroup>
 		);
 
 		const labelElement = formGroupComponent.find('label.o-form-group__label');
 
-		expect(labelElement.prop('htmlFor')).toEqual(name);
+		expect(labelElement.prop('htmlFor')).toEqual(id);
 		expect(labelElement.text()).toEqual(label);
 	});
 
 	it('Should not render a label when none is passed', () => {
 		const formGroupComponent = shallow(
-			<FormGroup name="test">
+			<FormGroup>
 				<Fragment />
 			</FormGroup>
 		);
@@ -54,7 +54,7 @@ describe('<FormGroup />', () => {
 		const error = 'Field is invalid.';
 
 		const formGroupComponent = shallow(
-			<FormGroup name="test" error={error}>
+			<FormGroup error={error}>
 				<Fragment />
 			</FormGroup>
 		);
@@ -66,7 +66,7 @@ describe('<FormGroup />', () => {
 
 	it('Should not set className and not render an error when none is passed', () => {
 		const formGroupComponent = shallow(
-			<FormGroup name="test">
+			<FormGroup>
 				<Fragment />
 			</FormGroup>
 		);
@@ -78,7 +78,7 @@ describe('<FormGroup />', () => {
 
 	it('Should correctly pass children', () => {
 		const formGroupComponent = shallow(
-			<FormGroup name="test">
+			<FormGroup>
 				<input type="text" id="test" />
 			</FormGroup>
 		);
