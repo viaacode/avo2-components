@@ -7,7 +7,7 @@ import { Icon } from '../Icon/Icon';
 export interface PaginationProps {
 	pageCount: number;
 	displayCount?: number;
-	initialPage?: number;
+	initialPageIndex?: number;
 	onPageChange?: (page: number) => void;
 }
 
@@ -18,10 +18,10 @@ export interface PaginationState {
 export const Pagination: FunctionComponent<PaginationProps> = ({
 	pageCount,
 	displayCount = 5,
-	initialPage = 0,
+	initialPageIndex = 0,
 	onPageChange = () => {},
 }: PaginationProps) => {
-	const [currentPage, setCurrentPage] = useState(initialPage);
+	const [currentPage, setCurrentPage] = useState(initialPageIndex);
 
 	function changePage(page: number) {
 		if (page >= 0 && page <= pageCount - 1 && page !== currentPage) {

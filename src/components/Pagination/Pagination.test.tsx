@@ -51,22 +51,28 @@ describe('<Pagination />', () => {
 		expect(currentPageButtonElement.hasClass('c-pagination__btn--active')).toEqual(true);
 	});
 
-	it('Should correctly set the `initialPage`', () => {
-		const initialPage = 40;
+	it('Should correctly set the `initialPageIndex`', () => {
+		const initialPageIndex = 40;
 
-		const paginationComponent = shallow(<Pagination pageCount={100} initialPage={initialPage} />);
+		const paginationComponent = shallow(
+			<Pagination pageCount={100} initialPageIndex={initialPageIndex} />
+		);
 
 		const currentPageButtonElement = paginationComponent.find('.c-pagination__btn--active');
 
-		expect(parseInt(currentPageButtonElement.text(), 10)).toEqual(initialPage + 1);
+		expect(parseInt(currentPageButtonElement.text(), 10)).toEqual(initialPageIndex + 1);
 	});
 
 	it('Should render pages padded around the current page based on the `displayCount`', () => {
-		const initialPage = 50;
+		const initialPageIndex = 50;
 		const pagesToRender = [49, 50, 51, 52, 53];
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} initialPage={initialPage} displayCount={pagesToRender.length} />
+			<Pagination
+				pageCount={100}
+				initialPageIndex={initialPageIndex}
+				displayCount={pagesToRender.length}
+			/>
 		);
 
 		const paginationPagesElement = paginationComponent.find('.c-pagination__pages');
@@ -75,11 +81,15 @@ describe('<Pagination />', () => {
 	});
 
 	it('Should render the first x pages when the current page is lower than the `displayCount`', () => {
-		const initialPage = 2;
+		const initialPageIndex = 2;
 		const pagesToRender = [1, 2, 3, 4, 5];
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} initialPage={initialPage} displayCount={pagesToRender.length} />
+			<Pagination
+				pageCount={100}
+				initialPageIndex={initialPageIndex}
+				displayCount={pagesToRender.length}
+			/>
 		);
 
 		const paginationPagesElement = paginationComponent.find('.c-pagination__pages');
@@ -88,11 +98,15 @@ describe('<Pagination />', () => {
 	});
 
 	it('Should render the last x pages when if the currentPage is equal less than the `pageCount` minus the `displayCount`', () => {
-		const initialPage = 99;
+		const initialPageIndex = 99;
 		const pagesToRender = [96, 97, 98, 99, 100];
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} initialPage={initialPage} displayCount={pagesToRender.length} />
+			<Pagination
+				pageCount={100}
+				initialPageIndex={initialPageIndex}
+				displayCount={pagesToRender.length}
+			/>
 		);
 
 		const paginationPagesElement = paginationComponent.find('.c-pagination__pages');
@@ -126,7 +140,11 @@ describe('<Pagination />', () => {
 		const activeIndex = 2;
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} onPageChange={onPageChangeHandler} initialPage={activeIndex} />
+			<Pagination
+				pageCount={100}
+				onPageChange={onPageChangeHandler}
+				initialPageIndex={activeIndex}
+			/>
 		);
 
 		const pageButtonElement = paginationComponent
@@ -144,7 +162,11 @@ describe('<Pagination />', () => {
 		const activeIndex = 2;
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} onPageChange={onPageChangeHandler} initialPage={activeIndex} />
+			<Pagination
+				pageCount={100}
+				onPageChange={onPageChangeHandler}
+				initialPageIndex={activeIndex}
+			/>
 		);
 
 		const previousButtonElement = paginationComponent.find('.c-pagination__btn').at(1);
@@ -165,7 +187,7 @@ describe('<Pagination />', () => {
 			<Pagination
 				pageCount={100}
 				onPageChange={onPageChangeHandler}
-				initialPage={activeIndex}
+				initialPageIndex={activeIndex}
 				displayCount={5}
 			/>
 		);
@@ -185,7 +207,11 @@ describe('<Pagination />', () => {
 		const activeIndex = 2;
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} onPageChange={onPageChangeHandler} initialPage={activeIndex} />
+			<Pagination
+				pageCount={100}
+				onPageChange={onPageChangeHandler}
+				initialPageIndex={activeIndex}
+			/>
 		);
 
 		const firstButtonElement = paginationComponent.find('.c-pagination__btn').first();
@@ -204,7 +230,11 @@ describe('<Pagination />', () => {
 		const activeIndex = 2;
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} onPageChange={onPageChangeHandler} initialPage={activeIndex} />
+			<Pagination
+				pageCount={100}
+				onPageChange={onPageChangeHandler}
+				initialPageIndex={activeIndex}
+			/>
 		);
 
 		const lastButtonElement = paginationComponent.find('.c-pagination__btn').last();

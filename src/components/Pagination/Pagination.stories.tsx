@@ -8,5 +8,5 @@ storiesOf('Pagination', module)
 	.addParameters({ jest: ['Pagination'] })
 	.add('Pagination', () => <Pagination pageCount={20} />)
 	.add('Pagination with options', () => (
-		<Pagination pageCount={20} displayCount={7} initialPage={9} />
+		<Pagination pageCount={20} displayCount={7} initialPageIndex={9} />
 	));
