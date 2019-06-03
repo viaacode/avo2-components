@@ -52,7 +52,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 		// generate x pages padding the current page
 		return Array.from(
 			{ length: displayCount },
-			(value: number, index: number) => index + currentPage - Math.floor(displayCount / 2) + 1
+			(value: number, index: number) => index + currentPage - Math.ceil(displayCount / 2) + 1
 		);
 	}
 
