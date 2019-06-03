@@ -42,7 +42,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 		}
 
 		// generate last x pages if currentPage is less than the pageCount - displayCount
-		if (currentPage > pageCount - displayCount / 2) {
+		if (currentPage >= Math.floor(pageCount - displayCount / 2)) {
 			return Array.from(
 				{ length: displayCount },
 				(value: number, index: number) => pageCount - (displayCount - index)
@@ -52,7 +52,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 		// generate x pages padding the current page
 		return Array.from(
 			{ length: displayCount },
-			(value: number, index: number) => index + currentPage - Math.floor(displayCount / 2)
+			(value: number, index: number) => index + currentPage - Math.floor(displayCount / 2) + 1
 		);
 	}
 
