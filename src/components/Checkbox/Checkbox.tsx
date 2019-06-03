@@ -20,7 +20,6 @@ export class Checkbox extends Component<CheckboxProps, CheckboxState> {
 	}
 
 	handleToggle = () => {
-		console.log('checked: ', this.state.checked, !this.state.checked);
 		const checked = !this.state.checked;
 		this.setState({ checked });
 		if (this.props.onChanged) {
