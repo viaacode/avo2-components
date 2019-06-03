@@ -80,7 +80,7 @@ describe('<Pagination />', () => {
 		expect(paginationPagesElement.text()).toEqual(pagesToRender.join(''));
 	});
 
-	it('Should render the first x pages when the current page is lower than the `displayCount`', () => {
+	it('Should render the first x pages when the current page is lower than the (odd) `displayCount`', () => {
 		const initialPageIndex = 2;
 		const pagesToRender = [1, 2, 3, 4, 5];
 
@@ -97,9 +97,43 @@ describe('<Pagination />', () => {
 		expect(paginationPagesElement.text()).toEqual(pagesToRender.join(''));
 	});
 
-	it('Should render the last x pages when if the currentPage is equal less than the `pageCount` minus the `displayCount`', () => {
-		const initialPageIndex = 99;
+	it('Should render the first x pages when the current page is lower than the (even) `displayCount`', () => {
+		const initialPageIndex = 1;
+		const pagesToRender = [1, 2, 3, 4];
+
+		const paginationComponent = shallow(
+			<Pagination
+				pageCount={100}
+				initialPageIndex={initialPageIndex}
+				displayCount={pagesToRender.length}
+			/>
+		);
+
+		const paginationPagesElement = paginationComponent.find('.c-pagination__pages');
+
+		expect(paginationPagesElement.text()).toEqual(pagesToRender.join(''));
+	});
+
+	it('Should render the last x pages when if the currentPage is equal less than the `pageCount` minus the (odd) `displayCount`', () => {
+		const initialPageIndex = 97;
 		const pagesToRender = [96, 97, 98, 99, 100];
+
+		const paginationComponent = shallow(
+			<Pagination
+				pageCount={100}
+				initialPageIndex={initialPageIndex}
+				displayCount={pagesToRender.length}
+			/>
+		);
+
+		const paginationPagesElement = paginationComponent.find('.c-pagination__pages');
+
+		expect(paginationPagesElement.text()).toEqual(pagesToRender.join(''));
+	});
+
+	it('Should render the last x pages when if the currentPage is equal less than the `pageCount` minus the (even) `displayCount`', () => {
+		const initialPageIndex = 97;
+		const pagesToRender = [97, 98, 99, 100];
 
 		const paginationComponent = shallow(
 			<Pagination
