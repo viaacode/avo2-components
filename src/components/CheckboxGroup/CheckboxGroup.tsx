@@ -23,8 +23,8 @@ export interface CheckboxGroupState {
 }
 
 export class CheckboxGroup extends Component<CheckboxGroupProps, CheckboxGroupState> {
-	constructor(props: CheckboxGroupProps, state: CheckboxGroupState) {
-		super(props, state);
+	constructor(props: CheckboxGroupProps) {
+		super(props);
 		this.state = {
 			checkedStates: fromPairs(
 				props.options.map((option: CheckboxOption) => [option.id, option.checked])
