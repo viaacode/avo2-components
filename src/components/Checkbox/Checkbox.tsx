@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export interface CheckboxProps {
 	label: string;
-	id: string;
+	id?: string; // defaults to label
 	defaultChecked?: boolean;
 	onChanged?: (checked: boolean, id: string) => void;
 }
@@ -23,7 +23,7 @@ export class Checkbox extends Component<CheckboxProps, CheckboxState> {
 		const checked = !this.state.checked;
 		this.setState({ checked });
 		if (this.props.onChanged) {
-			this.props.onChanged(checked, this.props.id);
+			this.props.onChanged(checked, this.props.id || this.props.label);
 		}
 	};
 
@@ -33,7 +33,7 @@ export class Checkbox extends Component<CheckboxProps, CheckboxState> {
 		return (
 			<div className="c-checkbox" onClick={this.handleToggle}>
 				<label>
-					<input type="checkbox" defaultChecked={defaultChecked} key={id} name={id} id={id} />
+					<input type="checkbox" defaultChecked={defaultChecked} id={id || label} />
 					{label}
 				</label>
 			</div>
