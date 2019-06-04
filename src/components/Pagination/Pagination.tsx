@@ -11,10 +11,6 @@ export interface PaginationProps {
 	onPageChange?: (page: number) => void;
 }
 
-export interface PaginationState {
-	currentPage: number;
-}
-
 export const Pagination: FunctionComponent<PaginationProps> = ({
 	pageCount,
 	displayCount = 5,
