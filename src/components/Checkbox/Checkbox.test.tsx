@@ -26,10 +26,10 @@ describe('<Checkbox />', () => {
 		expect(checkboxComponent.find('label').html()).toContain('One');
 	});
 
-	it('Should be able to render with correct fallback id to label', () => {
+	it('Should be able to render without an id', () => {
 		const checkboxComponent = shallow(<Checkbox label="One" />);
 
-		expect(checkboxComponent.find('[type="checkbox"]').prop('id')).toEqual('One');
+		expect(checkboxComponent.find('[type="checkbox"]').prop('id')).toEqual(undefined);
 	});
 
 	it('Should set the defaultChecked-prop as the initial state', () => {

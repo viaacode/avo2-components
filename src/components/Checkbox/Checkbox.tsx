@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export interface CheckboxProps {
 	label: string;
-	id?: string; // defaults to label
+	id?: string;
 	defaultChecked?: boolean;
 	onChanged?: (checked: boolean, id: string) => void;
 	className?: string;
@@ -37,7 +37,7 @@ export class Checkbox extends Component<CheckboxProps, CheckboxState> {
 					<input
 						type="checkbox"
 						defaultChecked={defaultChecked}
-						id={id || label}
+						id={id}
 						onClick={this.handleToggle}
 					/>
 					{label}
