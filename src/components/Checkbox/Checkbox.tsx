@@ -13,8 +13,8 @@ export interface CheckboxState {
 }
 
 export class Checkbox extends Component<CheckboxProps, CheckboxState> {
-	constructor(props: CheckboxProps, state: CheckboxState) {
-		super(props, state);
+	constructor(props: CheckboxProps) {
+		super(props);
 		this.state = {
 			checked: props.defaultChecked || false,
 		};
