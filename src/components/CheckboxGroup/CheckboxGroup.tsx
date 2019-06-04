@@ -73,6 +73,7 @@ export class CheckboxGroup extends Component<CheckboxGroupProps, CheckboxGroupSt
 									)
 							)}
 							{showExpandToggle && (
+								// eslint-disable-next-line jsx-a11y/anchor-is-valid
 								<a className="c-link-toggle" onClick={this.handleShowCollapsedClick}>
 									<div className="c-link-toggle__label u-spacer-bottom">
 										{this.state.showCollapsed ? 'Toon minder' : 'Toon meer'}
