@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { ModalBackdrop } from './ModalBackdrop';
 
