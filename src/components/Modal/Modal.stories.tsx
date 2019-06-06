@@ -7,7 +7,7 @@ import { Button } from '../Button/Button';
 import { Modal } from './Modal';
 
 storiesOf('Modal', module)
-	.addParameters({ jest: ['Modal'] })
+	.addParameters({ jest: ['Modal', 'ModalBackdrop'] })
 	.add('Modal', () => (
 		<Modal
 			isOpen={true}
