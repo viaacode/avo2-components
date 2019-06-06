@@ -21,7 +21,6 @@ export interface ModalProps {
 	isOpen?: boolean;
 	title?: string;
 	size?: 'small' | 'medium' | 'fullscreen' | 'auto';
-	backdrop?: boolean;
 	renderOptions?: () => ReactNode;
 }
 
@@ -29,7 +28,6 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	children,
 	isOpen,
 	title,
-	backdrop = true,
 	size,
 	renderOptions = () => null,
 }: ModalProps) => {
@@ -95,7 +93,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 					</div>
 				</div>
 			</div>
-			<ModalBackdrop visible={backdrop && modalOpen} />
+			<ModalBackdrop visible={modalOpen} />
 		</Fragment>,
 		document.body
 	);
