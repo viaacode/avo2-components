@@ -29,7 +29,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	children,
 	isOpen,
 	title,
-	backdrop = false,
+	backdrop = true,
 	size,
 	renderOptions = () => null,
 }: ModalProps) => {
