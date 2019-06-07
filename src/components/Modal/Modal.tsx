@@ -18,10 +18,12 @@ import { ModalBackdrop } from './ModalBackdrop';
 
 export interface ModalProps {
 	children: ReactNode;
-	isOpen?: boolean;
+	isOpen: boolean;
 	title?: string;
 	size?: 'small' | 'medium' | 'fullscreen' | 'auto';
-	renderActions?: () => ReactNode;
+	renderHeaderRight?: () => ReactNode;
+	renderFooterRight?: () => ReactNode;
+	renderFooterLeft?: () => ReactNode;
 }
 
 export const Modal: FunctionComponent<ModalProps> = ({
@@ -29,7 +31,9 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	isOpen = false,
 	title,
 	size,
-	renderActions = () => null,
+	renderHeaderRight = () => null,
+	renderFooterRight = () => null,
+	renderFooterLeft = () => null,
 }: ModalProps) => {
 	const [modalOpen, setModalOpen] = useState(isOpen);
 
@@ -75,6 +79,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 								</div>
 							)}
 							<div className="c-toolbar__right">
+								<div className="c-toolbar__item">{renderHeaderRight()}</div>
 								<div className="c-toolbar__item">
 									<Button onClick={close} icon="close" type="borderless" />
 								</div>
@@ -84,9 +89,14 @@ export const Modal: FunctionComponent<ModalProps> = ({
 					<div className="c-modal__body">{children}</div>
 					<div className="c-modal__footer c-modal__footer--bordered">
 						<div className="c-toolbar c-toolbar--spaced">
+							<div className="c-toolbar__left">
+								<div className="c-toolbar__item">
+									<div className="c-button-toolbar">{renderFooterLeft()}</div>
+								</div>
+							</div>
 							<div className="c-toolbar__right">
 								<div className="c-toolbar__item">
-									<div className="c-button-toolbar">{renderActions()}</div>
+									<div className="c-button-toolbar">{renderFooterRight()}</div>
 								</div>
 							</div>
 						</div>
