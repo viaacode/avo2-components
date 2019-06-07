@@ -12,7 +12,7 @@ storiesOf('Modal', module)
 		<Modal
 			isOpen={true}
 			title="Modal title"
-			renderOptions={() => (
+			renderActions={() => (
 				<Fragment>
 					<Button type="secondary" label="Cancel" />
 					<Button type="primary" label="Ok" />
@@ -30,7 +30,7 @@ storiesOf('Modal', module)
 			isOpen={true}
 			title="Modal title"
 			size="small"
-			renderOptions={() => <Button type="primary" label="Ok" />}
+			renderActions={() => <Button type="primary" label="Ok" />}
 		>
 			<p>
 				It doesn't matter where this modal occurs in the source code, React automatically moves it
@@ -43,7 +43,7 @@ storiesOf('Modal', module)
 			isOpen={true}
 			title="Modal title"
 			size="medium"
-			renderOptions={() => <Button type="primary" label="Ok" />}
+			renderActions={() => <Button type="primary" label="Ok" />}
 		>
 			<p>
 				It doesn't matter where this modal occurs in the source code, React automatically moves it
@@ -56,7 +56,7 @@ storiesOf('Modal', module)
 			isOpen={true}
 			title="Modal title"
 			size="fullscreen"
-			renderOptions={() => <Button type="primary" label="Ok" />}
+			renderActions={() => <Button type="primary" label="Ok" />}
 		>
 			<p>
 				It doesn't matter where this modal occurs in the source code, React automatically moves it
@@ -69,7 +69,7 @@ storiesOf('Modal', module)
 			isOpen={true}
 			title="Modal title"
 			size="auto"
-			renderOptions={() => <Button type="primary" label="Ok" />}
+			renderActions={() => <Button type="primary" label="Ok" />}
 		>
 			<p>
 				It doesn't matter where this modal occurs in the source code, React automatically moves it

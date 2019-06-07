@@ -21,7 +21,7 @@ export interface ModalProps {
 	isOpen?: boolean;
 	title?: string;
 	size?: 'small' | 'medium' | 'fullscreen' | 'auto';
-	renderOptions?: () => ReactNode;
+	renderActions?: () => ReactNode;
 }
 
 export const Modal: FunctionComponent<ModalProps> = ({
@@ -29,7 +29,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	isOpen = false,
 	title,
 	size,
-	renderOptions = () => null,
+	renderActions = () => null,
 }: ModalProps) => {
 	const [modalOpen, setModalOpen] = useState(isOpen);
 
@@ -86,7 +86,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 						<div className="c-toolbar c-toolbar--spaced">
 							<div className="c-toolbar__right">
 								<div className="c-toolbar__item">
-									<div className="c-button-toolbar">{renderOptions()}</div>
+									<div className="c-button-toolbar">{renderActions()}</div>
 								</div>
 							</div>
 						</div>
