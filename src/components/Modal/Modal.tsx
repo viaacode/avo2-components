@@ -31,9 +31,9 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	isOpen = false,
 	title,
 	size,
-	renderHeaderRight = () => null,
-	renderFooterRight = () => null,
-	renderFooterLeft = () => null,
+	renderHeaderRight,
+	renderFooterRight,
+	renderFooterLeft,
 }: ModalProps) => {
 	const [modalOpen, setModalOpen] = useState(isOpen);
 
@@ -79,7 +79,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 								</div>
 							)}
 							<div className="c-toolbar__right">
-								<div className="c-toolbar__item">{renderHeaderRight()}</div>
+								{renderHeaderRight && <div className="c-toolbar__item">{renderHeaderRight()}</div>}
 								<div className="c-toolbar__item">
 									<Button onClick={close} icon="close" type="borderless" />
 								</div>
@@ -87,20 +87,26 @@ export const Modal: FunctionComponent<ModalProps> = ({
 						</div>
 					</div>
 					<div className="c-modal__body">{children}</div>
-					<div className="c-modal__footer c-modal__footer--bordered">
-						<div className="c-toolbar c-toolbar--spaced">
-							<div className="c-toolbar__left">
-								<div className="c-toolbar__item">
-									<div className="c-button-toolbar">{renderFooterLeft()}</div>
-								</div>
-							</div>
-							<div className="c-toolbar__right">
-								<div className="c-toolbar__item">
-									<div className="c-button-toolbar">{renderFooterRight()}</div>
-								</div>
+					{(renderFooterLeft || renderFooterRight) && (
+						<div className="c-modal__footer c-modal__footer--bordered">
+							<div className="c-toolbar c-toolbar--spaced">
+								{renderFooterLeft && (
+									<div className="c-toolbar__left">
+										<div className="c-toolbar__item">
+											<div className="c-button-toolbar">{renderFooterLeft()}</div>
+										</div>
+									</div>
+								)}
+								{renderFooterRight && (
+									<div className="c-toolbar__right">
+										<div className="c-toolbar__item">
+											<div className="c-button-toolbar">{renderFooterRight()}</div>
+										</div>
+									</div>
+								)}
 							</div>
 						</div>
-					</div>
+					)}
 				</div>
 			</div>
 			<ModalBackdrop visible={modalOpen} />
