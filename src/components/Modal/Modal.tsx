@@ -28,7 +28,7 @@ export interface ModalProps {
 
 export const Modal: FunctionComponent<ModalProps> = ({
 	children,
-	isOpen = false,
+	isOpen,
 	title,
 	size,
 	renderHeaderRight,
