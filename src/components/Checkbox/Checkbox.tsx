@@ -4,7 +4,7 @@ export interface CheckboxProps {
 	label: string;
 	id?: string;
 	defaultChecked?: boolean;
-	onChanged?: (checked: boolean, id: string) => void;
+	onChange?: (checked: boolean, id: string) => void;
 }
 
 export interface CheckboxState {
@@ -22,8 +22,8 @@ export class Checkbox extends Component<CheckboxProps, CheckboxState> {
 	handleToggle = () => {
 		const checked = !this.state.checked;
 		this.setState({ checked });
-		if (this.props.onChanged) {
-			this.props.onChanged(checked, this.props.id || this.props.label);
+		if (this.props.onChange) {
+			this.props.onChange(checked, this.props.id || this.props.label);
 		}
 	};
 
