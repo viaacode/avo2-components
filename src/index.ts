@@ -10,6 +10,7 @@ import { Button } from './components/Button/Button';
 import { Container } from './components/Container/Container';
 import { Icon } from './components/Icon/Icon';
 import { Pagination } from './components/Pagination/Pagination';
+import { RadioButton } from './components/RadioButton/RadioButton';
 import { Select } from './components/Select/Select';
 import { Spinner } from './components/Spinner/Spinner';
 import { TagList } from './components/TagList/TagList';
@@ -24,6 +25,7 @@ export {
 	Container,
 	Icon,
 	Pagination,
+	RadioButton,
 	Select,
 	Spinner,
 	TagList,
