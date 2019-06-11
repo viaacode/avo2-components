@@ -1,7 +1,34 @@
 {
-  "name": "avo2-components",
+  "name": "@viaa/avo2-components",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "start-storybook -s ./static -p 4000",
+    "build": "build-storybook -o build",
+    "test": "react-scripts test --verbose",
+    "test:output": "CI=true react-scripts test --json --outputFile=.storybook/test-results.json",
+    "lint": "tslint -p .",
+    "format": "npm run lint -- --fix",
+    "preicons": "node scripts/icons.js src/icons",
+    "icons": "rimraf src/components/Icons && svgr -d src/components/Icons src/icons --ext ts",
+    "posticons": "named-exports --dir=src/components/Icons && renamer --find .ts --replace .tsx 'src/components/Icons/**'"
+  },
+  "main": "index.ts",
+  "publishConfig": {
+    "@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-viaa/"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "dependencies": {
     "@types/classnames": "^2.2.7",
     "@types/jest": "24.0.13",
@@ -15,29 +42,6 @@
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
     "typescript": "3.4.5"
-  },
-  "scripts": {
-    "start": "start-storybook -s ./static -p 4000",
-    "build": "build-storybook -o build",
-    "test": "react-scripts test --verbose",
-    "test:output": "CI=true react-scripts test --json --outputFile=.storybook/test-results.json",
-    "lint": "tslint -p .",
-    "format": "npm run lint -- --fix",
-    "preicons": "node scripts/icons.js src/icons",
-    "icons": "rimraf src/components/Icons && svgr -d src/components/Icons src/icons --ext ts",
-    "posticons": "named-exports --dir=src/components/Icons && renamer --find .ts --replace .tsx 'src/components/Icons/**'"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@commitlint/cli": "^7.6.1",
