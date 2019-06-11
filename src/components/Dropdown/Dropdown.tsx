@@ -160,21 +160,19 @@ export class Dropdown extends Component<DropdownProps, DropdownState> {
 					)}
 				</Reference>
 				<Popper placement={placement} modifiers={modifiers}>
-					{({ ref, style, placement }) =>
-						isOpen ? (
-							<div
-								className={'c-menu c-menu--visible'}
-								ref={reference => {
-									this.dropdownFlyout = reference;
-									ref(reference);
-								}}
-								data-placement={placement}
-								style={style}
-							>
-								{children}
-							</div>
-						) : null
-					}
+					{({ ref, style, placement }) => (
+						<div
+							className={`c-menu${isOpen ? ' c-menu--visible' : ''}`}
+							ref={reference => {
+								this.dropdownFlyout = reference;
+								ref(reference);
+							}}
+							data-placement={placement}
+							style={style}
+						>
+							{children}
+						</div>
+					)}
 				</Popper>
 			</Manager>
 		);
