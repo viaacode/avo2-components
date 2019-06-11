@@ -1,42 +1,42 @@
-import React, { Component } from 'react';
+import React, { ChangeEvent, FunctionComponent, useState } from 'react';
 
 export interface CheckboxProps {
 	label: string;
 	id?: string;
+	disabled?: boolean;
 	defaultChecked?: boolean;
-	onChange?: (checked: boolean, id: string) => void;
+	onChange?: (checked: boolean) => void;
 }
 
-export interface CheckboxState {
-	checked: boolean;
-}
+export const Checkbox: FunctionComponent<CheckboxProps> = ({
+	label,
+	id,
+	disabled = false,
+	defaultChecked = false,
+	onChange = () => {},
+}: CheckboxProps) => {
+	const [value, setValue] = useState(defaultChecked);
 
-export class Checkbox extends Component<CheckboxProps, CheckboxState> {
-	constructor(props: CheckboxProps) {
-		super(props);
-		this.state = {
-			checked: props.defaultChecked || false,
-		};
-	}
-
-	handleToggle = () => {
-		const checked = !this.state.checked;
-		this.setState({ checked });
-		if (this.props.onChange) {
-			this.props.onChange(checked, this.props.id || this.props.label);
+	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
+		const { checked } = event.target;
+		if (checked !== value) {
+			setValue(checked);
+			onChange(checked);
 		}
-	};
-
-	render() {
-		const { defaultChecked, id, label } = this.props;
-
-		return (
-			<div className="c-checkbox" onClick={this.handleToggle}>
-				<label>
-					<input type="checkbox" defaultChecked={defaultChecked} id={id} />
-					{label}
-				</label>
-			</div>
-		);
 	}
-}
+
+	return (
+		<div className="c-checkbox">
+			<label>
+				<input
+					type="checkbox"
+					id={id}
+					checked={value}
+					disabled={disabled}
+					onChange={onValueChange}
+				/>
+				{label}
+			</label>
+		</div>
+	);
+};
