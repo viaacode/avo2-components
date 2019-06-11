@@ -56,16 +56,16 @@ describe('<RadioButton />', () => {
 		expect(radioButtonComponent.find('[type="radio"]').prop('checked')).toEqual(false);
 	});
 
-	it('Should call `onChange` when toggling checkbox', () => {
+	it('Should call `onChange` when toggling radio button', () => {
 		const onChangeHandler = jest.fn();
 
 		const radioButtonComponent = shallow(
 			<RadioButton name="List10" label="One" id="one" onChange={onChangeHandler} />
 		);
 
-		const checkboxElement = radioButtonComponent.find('[type="radio"]');
+		const radioButtonElement = radioButtonComponent.find('[type="radio"]');
 
-		checkboxElement.simulate('change', { target: { checked: true } });
+		radioButtonElement.simulate('change', { target: { checked: true } });
 
 		expect(onChangeHandler).toHaveBeenCalled();
 		expect(onChangeHandler).toHaveBeenCalledTimes(1);
