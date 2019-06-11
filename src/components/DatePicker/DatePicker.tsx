@@ -60,19 +60,17 @@ export class DatePicker extends Component<DatePickerProps, DatePickerState> {
 		const { id, disabled, placeholder } = this.props;
 
 		return (
-			<div className="o-form-group__controls">
-				<div className="c-input-with-icon">
-					<input
-						className="c-input"
-						type="date"
-						id={id}
-						defaultValue={this.getDefaultDateAsString()}
-						disabled={disabled}
-						placeholder={placeholder}
-						onChange={this.onValueChange}
-					/>
-					<Icon name="calendar" />
-				</div>
+			<div className="c-input-with-icon">
+				<input
+					className="c-input"
+					type="date"
+					id={id}
+					defaultValue={this.getDefaultDateAsString()}
+					disabled={disabled}
+					placeholder={placeholder}
+					onChange={this.onValueChange}
+				/>
+				<Icon name="calendar" />
 			</div>
 		);
 	}
