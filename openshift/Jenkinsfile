@@ -43,7 +43,7 @@ pipeline {
                             sh '''#!/bin/bash
 
 			     oc -n shared-components delete all --selector=ENV=tst || true
-           oc delete bc avo2-components-tst || true 
+           oc delete bc avo2-components-tst || true
            for b in $(oc -n shared-components get builds | grep avo2-components-tst | awk '{print $1}') ; do oc -n shared-components  delete build $b; done
             oc -n shared-components delete all --selector=ENV=tst,app=avo2-components || echo "NOthing Deleted"
            for rc in $(oc -n shared-components get rc | grep 'avo2-components-tst' | awk '{print $1}'); do oc delete rc --grace-period=1 ${rc}  ; done
@@ -138,6 +138,24 @@ pipeline {
                 } // script
             } // steps
         } // stage
+
+		  stage('Publish') {
+            steps {
+
+                script {
+                    openshift.withCluster() {
+                        openshift.withProject("shared-components") {
+                             echo "Publishing package to registry"
+                             sh '''#/bin/bash
+                             npm publish
+
+                             '''
+                        }
+                    }
+                } // script
+            } // steps
+        } // stage
+
 
                stage('Tag out') {
             steps {
