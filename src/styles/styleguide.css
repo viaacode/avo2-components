@@ -28,6 +28,8 @@
 	 ========================================================================== */
 /* Secondary colors
 	 ========================================================================== */
+/* Tertiary colors
+	  ========================================================================== */
 /* Filter alert message colors
 	 ========================================================================== */
 /* Repeat color variables for semantic mapping
@@ -74,6 +76,10 @@
 .br-sample-show-code-btn:focus {
 	color: #3FB1D6;
 	outline: 2px solid rgba(63, 177, 214, 0.33);
+}
+
+.br-sample-show-code-btn-html {
+	margin-right: 1rem;
 }
 
 /* Styling for grid documentation
@@ -184,6 +190,13 @@
 .br-styleguide-navigation-holder {
 	background-color: white;
 	border-right: 1px solid #D6DEE3;
+}
+
+/* Improve styles for content area
+	  =====================================================================  */
+.br-styleguide-content-inner {
+	max-width: 80rem;
+	margin: 0 auto;
 }
 
 /* Floating alert - undo fixed positioning in styleguide context
