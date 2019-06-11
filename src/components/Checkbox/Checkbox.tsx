@@ -19,6 +19,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
 
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
 		const { checked } = event.target;
+
 		if (checked !== value) {
 			setValue(checked);
 			onChange(checked);
