@@ -2,7 +2,9 @@ import React, {
 	Fragment,
 	FunctionComponent,
 	MouseEvent,
+	ReactElement,
 	ReactNode,
+	ReactNodeArray,
 	useEffect,
 	useState,
 } from 'react';
@@ -14,6 +16,13 @@ import { useKeyPress } from '../../hooks/useKeyPress';
 
 import { Button } from '../Button/Button';
 
+import {
+	ModalBody,
+	ModalFooterLeft,
+	ModalFooterRight,
+	ModalHeaderRight,
+	ModalSlotProps,
+} from './Modal.slots';
 import { ModalBackdrop } from './ModalBackdrop';
 
 export interface ModalProps {
@@ -21,9 +30,6 @@ export interface ModalProps {
 	isOpen: boolean;
 	title?: string;
 	size?: 'small' | 'medium' | 'fullscreen' | 'auto';
-	renderHeaderRight?: () => ReactNode;
-	renderFooterRight?: () => ReactNode;
-	renderFooterLeft?: () => ReactNode;
 	onClose?: () => void;
 }
 
@@ -32,12 +38,13 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	isOpen,
 	title,
 	size,
-	renderHeaderRight,
-	renderFooterRight,
-	renderFooterLeft,
 	onClose = () => {},
 }: ModalProps) => {
 	const [modalOpen, setModalOpen] = useState(isOpen);
+	const body = getSlot(ModalBody);
+	const headerRight = getSlot(ModalHeaderRight);
+	const footerRight = getSlot(ModalFooterRight);
+	const footerLeft = getSlot(ModalFooterLeft);
 
 	useKeyPress('Escape', close);
 
@@ -45,6 +52,17 @@ export const Modal: FunctionComponent<ModalProps> = ({
 		// sync up `isOpen`-prop with state
 		setModalOpen(isOpen);
 	}, [isOpen]);
+
+	function getSlot(type: FunctionComponent<ModalSlotProps>) {
+		const slots: ReactNodeArray = Array.isArray(children) ? children : [children];
+		const element: ReactElement = slots.find((c: any) => c.type === type) as ReactElement;
+
+		if (element && element.props.children) {
+			return element.props.children;
+		}
+
+		return null;
+	}
 
 	function close() {
 		setModalOpen(false);
@@ -82,28 +100,28 @@ export const Modal: FunctionComponent<ModalProps> = ({
 								</div>
 							)}
 							<div className="c-toolbar__right">
-								{renderHeaderRight && <div className="c-toolbar__item">{renderHeaderRight()}</div>}
+								{headerRight && <div className="c-toolbar__item">{headerRight}</div>}
 								<div className="c-toolbar__item">
 									<Button onClick={close} icon="close" type="borderless" />
 								</div>
 							</div>
 						</div>
 					</div>
-					<div className="c-modal__body">{children}</div>
-					{(renderFooterLeft || renderFooterRight) && (
+					<div className="c-modal__body">{body}</div>
+					{(footerLeft || footerRight) && (
 						<div className="c-modal__footer c-modal__footer--bordered">
 							<div className="c-toolbar c-toolbar--spaced">
-								{renderFooterLeft && (
+								{footerLeft && (
 									<div className="c-toolbar__left">
 										<div className="c-toolbar__item">
-											<div className="c-button-toolbar">{renderFooterLeft()}</div>
+											<div className="c-button-toolbar">{footerLeft}</div>
 										</div>
 									</div>
 								)}
-								{renderFooterRight && (
+								{footerRight && (
 									<div className="c-toolbar__right">
 										<div className="c-toolbar__item">
-											<div className="c-button-toolbar">{renderFooterRight()}</div>
+											<div className="c-button-toolbar">{footerRight}</div>
 										</div>
 									</div>
 								)}

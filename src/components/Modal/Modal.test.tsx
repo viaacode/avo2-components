@@ -2,6 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
 import { Modal } from './Modal';
+import { ModalBody, ModalFooterLeft, ModalFooterRight, ModalHeaderRight } from './Modal.slots';
 import { ModalBackdrop } from './ModalBackdrop';
 
 describe('<Modal />', () => {
@@ -203,10 +204,12 @@ describe('<Modal />', () => {
 		expect(onCloseHandler).toHaveBeenCalledTimes(1);
 	});
 
-	it('Should correctly pass children', () => {
+	it('Should correctly render the body', () => {
 		const modalComponent = shallow(
 			<Modal isOpen={true}>
-				<p id="test">Hello!</p>
+				<ModalBody>
+					<p id="test">Hello!</p>
+				</ModalBody>
 			</Modal>
 		);
 
@@ -222,8 +225,10 @@ describe('<Modal />', () => {
 
 	it('Should be able to render items in the header (right)', () => {
 		const modalComponent = shallow(
-			<Modal isOpen={true} renderHeaderRight={() => <p>Test (right)</p>}>
-				<Fragment />
+			<Modal isOpen={true}>
+				<ModalHeaderRight>
+					<p>Test (right)</p>
+				</ModalHeaderRight>
 			</Modal>
 		);
 
@@ -241,8 +246,10 @@ describe('<Modal />', () => {
 
 	it('Should be able to render items in the footer (left)', () => {
 		const modalComponent = shallow(
-			<Modal isOpen={true} renderFooterLeft={() => <p>Test (left)</p>}>
-				<Fragment />
+			<Modal isOpen={true}>
+				<ModalFooterLeft>
+					<p>Test (left)</p>
+				</ModalFooterLeft>
 			</Modal>
 		);
 
@@ -256,8 +263,10 @@ describe('<Modal />', () => {
 
 	it('Should be able to render items in the footer (right)', () => {
 		const modalComponent = shallow(
-			<Modal isOpen={true} renderFooterRight={() => <p>Test (right)</p>}>
-				<Fragment />
+			<Modal isOpen={true}>
+				<ModalFooterRight>
+					<p>Test (right)</p>
+				</ModalFooterRight>
 			</Modal>
 		);
 
@@ -281,10 +290,12 @@ describe('<Modal />', () => {
 		expect(footerElement).toHaveLength(0);
 	});
 
-	it('Should not render the left side of the footer when `renderFooterLeft` is not passed', () => {
+	it('Should not render the left side of the footer when no ModalFooterLeft-slot is passed', () => {
 		const modalComponent = shallow(
-			<Modal isOpen={true} renderFooterRight={() => <div />}>
-				<Fragment />
+			<Modal isOpen={true}>
+				<ModalFooterRight>
+					<div />
+				</ModalFooterRight>
 			</Modal>
 		);
 
@@ -293,10 +304,12 @@ describe('<Modal />', () => {
 		expect(footerLeftElement).toHaveLength(0);
 	});
 
-	it('Should not render the right side of the footer when `renderFooterRight` is not passed', () => {
+	it('Should not render the right side of the footer when no ModalFooterRight-slot is passed', () => {
 		const modalComponent = shallow(
-			<Modal isOpen={true} renderFooterLeft={() => <div />}>
-				<Fragment />
+			<Modal isOpen={true}>
+				<ModalFooterLeft>
+					<div />
+				</ModalFooterLeft>
 			</Modal>
 		);
 
