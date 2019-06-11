@@ -77,7 +77,7 @@ pipeline {
 			    if (openshift.selector("buildconfig", "avo2-components-tst").exists()) {
 				    echo " buildconfig  exists"
 				    sh '''#/bin/bash
-				    oc start-build avo2-components-tst
+				    oc -n shared-components start-build avo2-components-tst
 				    '''
 				    openshift.selector("all", [ template : "avo2-components" ]).delete()
 
