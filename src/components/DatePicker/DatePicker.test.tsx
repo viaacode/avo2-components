@@ -1,21 +1,15 @@
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { shallow } from 'enzyme';
 import React from 'react';
+
 import { DatePicker } from './DatePicker';
-
-dayjs.extend(customParseFormat);
-
-const EXAMPLE_DATE = new Date(2005, 5, 23);
-const EXAMPLE_DATE_STRING = dayjs(EXAMPLE_DATE).format('DD/MM/YYYY');
 
 describe('<DatePicker />', () => {
 	it('Should be able to render', () => {
-		shallow(<DatePicker id="first" />);
+		shallow(<DatePicker />);
 	});
 
 	it('Should set the correct className', () => {
-		const datePickerComponent = shallow(<DatePicker id="second" />);
+		const datePickerComponent = shallow(<DatePicker />);
 
 		const datePickerElement = datePickerComponent.find('input');
 
@@ -33,7 +27,7 @@ describe('<DatePicker />', () => {
 	});
 
 	it('Should be able to set the disabled state', () => {
-		const datePickerComponent = shallow(<DatePicker id="fourth" disabled />);
+		const datePickerComponent = shallow(<DatePicker disabled />);
 
 		const datePickerElement = datePickerComponent.find('input');
 
@@ -41,48 +35,45 @@ describe('<DatePicker />', () => {
 	});
 
 	it('Should be able to set an initial value', () => {
-		const datePickerComponent = shallow(
-			<DatePicker id="sixth" defaultValue={EXAMPLE_DATE_STRING} />
-		);
+		const defaultDateString = '2019-06-11';
+		const defaultDateObject = new Date(defaultDateString);
 
-		expect(dayjs(datePickerComponent.state('date')).format('DD/MM/YYYY')).toEqual(
-			EXAMPLE_DATE_STRING
-		);
+		const datePickerComponent = shallow(<DatePicker defaultValue={defaultDateObject} />);
+
+		const datePickerElement = datePickerComponent.find('input');
+
+		expect(datePickerElement.prop('value')).toEqual(defaultDateString);
+	});
+
+	it('Should be able to set a placeholder value', () => {
+		const placeholder = 'dd-mm-yyyy';
+
+		const datePickerComponent = shallow(<DatePicker placeholder={placeholder} />);
+
+		const datePickerElement = datePickerComponent.find('input');
+
+		expect(datePickerElement.prop('placeholder')).toEqual(placeholder);
 	});
 
 	it('Should call the onChange handler when the input changes', () => {
 		const onChangeHandler = jest.fn();
 
-		const datePickerComponent = shallow(<DatePicker id="seventh" onChange={onChangeHandler} />);
+		const datePickerComponent = shallow(<DatePicker onChange={onChangeHandler} />);
 
 		const datePickerElement = datePickerComponent.find('input');
 
-		datePickerElement.simulate('change', { target: { value: EXAMPLE_DATE_STRING } });
+		const dateObject1 = new Date('2019-06-11');
+		const dateObject2 = new Date('2018-05-10');
+
+		datePickerElement.simulate('change', { target: { value: dateObject1 } });
 
 		expect(onChangeHandler).toHaveBeenCalled();
 		expect(onChangeHandler).toHaveBeenCalledTimes(1);
-		expect(onChangeHandler.mock.calls[0][0]).toBeDefined();
-		console.log('date: ', onChangeHandler.mock.calls[0][0]);
-		expect(dayjs(onChangeHandler.mock.calls[0][0]).format('DD/MM/YYYY')).toEqual(
-			EXAMPLE_DATE_STRING
-		);
-		expect(onChangeHandler.mock.calls[0][1]).toEqual('seventh');
+		expect(onChangeHandler).toHaveBeenCalledWith(dateObject1);
 
-		datePickerElement.simulate('change', { target: { value: EXAMPLE_DATE_STRING } });
+		datePickerElement.simulate('change', { target: { value: dateObject2 } });
 
 		expect(onChangeHandler).toHaveBeenCalledTimes(2);
-		expect(onChangeHandler.mock.calls[0][0]).toBeDefined();
-		expect(dayjs(onChangeHandler.mock.calls[0][0]).format('DD/MM/YYYY')).toEqual(
-			EXAMPLE_DATE_STRING
-		);
-		expect(onChangeHandler.mock.calls[0][1]).toEqual('seventh');
-	});
-
-	it('Should set today as default value if no default is passed', () => {
-		const datePickerComponent = shallow(<DatePicker id="eight" />);
-
-		expect(dayjs(datePickerComponent.state('date')).format('DD/MM/YYYY')).toEqual(
-			dayjs().format('DD/MM/YYYY')
-		);
+		expect(onChangeHandler).toHaveBeenCalledWith(dateObject2);
 	});
 });

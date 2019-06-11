@@ -10,8 +10,8 @@ storiesOf('DatePicker', module)
 	.addParameters({ jest: ['DatePicker'] })
 	.add('DatePicker', () => (
 		<Fragment>
-			<DatePicker id="firstDatePicker" onChange={action('onChange')} />
+			<DatePicker onChange={action('onChange')} />
 			<div className="u-spacer-bottom" />
-			<DatePicker id="secondDatePicker" disabled />
+			<DatePicker disabled />
 		</Fragment>
 	));

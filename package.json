@@ -5,8 +5,8 @@
   "scripts": {
     "start": "start-storybook -s ./static -p 4000",
     "build": "build-storybook -o build",
-    "test": "react-scripts test --verbose --transformIgnorePatterns \\\"node_modules/(?!(lodash-es))/\\\"\"",
-    "test:output": "react-scripts test --json --outputFile=.storybook/test-results.json --transformIgnorePatterns \\\"node_modules/(?!(lodash-es))/\\\"\"",
+    "test": "react-scripts test --verbose",
+    "test:output": "CI=true react-scripts test --json --outputFile=.storybook/test-results.json",
     "lint": "tslint -p .",
     "format": "npm run lint -- --fix",
     "preicons": "node scripts/icons.js src/icons",
@@ -36,7 +36,6 @@
     "@types/react": "16.8.17",
     "@types/react-dom": "16.8.4",
     "classnames": "^2.2.6",
-    "dayjs": "^1.8.14",
     "lorem-ipsum": "^2.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
