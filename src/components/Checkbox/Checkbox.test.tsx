@@ -48,24 +48,22 @@ describe('<Checkbox />', () => {
 		expect((checkboxComponent.state() as CheckboxState).checked).toEqual(false);
 	});
 
-	it('Should call `onChanged` when toggling checkbox', () => {
-		const onChangedHandler = jest.fn();
+	it('Should call `onChange` when toggling checkbox', () => {
+		const onChangeHandler = jest.fn();
 
-		const checkboxComponent = shallow(
-			<Checkbox label="One" id="one" onChanged={onChangedHandler} />
-		);
+		const checkboxComponent = shallow(<Checkbox label="One" id="one" onChange={onChangeHandler} />);
 
 		const checkboxElement = checkboxComponent.find('[type="checkbox"]');
 		checkboxElement.simulate('click');
 
-		expect(onChangedHandler).toHaveBeenCalled();
-		expect(onChangedHandler).toHaveBeenCalledTimes(1);
-		expect(onChangedHandler).toHaveBeenCalledWith(true, 'one');
+		expect(onChangeHandler).toHaveBeenCalled();
+		expect(onChangeHandler).toHaveBeenCalledTimes(1);
+		expect(onChangeHandler).toHaveBeenCalledWith(true, 'one');
 
 		checkboxElement.simulate('click');
 
-		expect(onChangedHandler).toHaveBeenCalled();
-		expect(onChangedHandler).toHaveBeenCalledTimes(2);
-		expect(onChangedHandler).toHaveBeenCalledWith(false, 'one');
+		expect(onChangeHandler).toHaveBeenCalled();
+		expect(onChangeHandler).toHaveBeenCalledTimes(2);
+		expect(onChangeHandler).toHaveBeenCalledWith(false, 'one');
 	});
 });
