@@ -14,7 +14,7 @@ export interface CheckboxGroupProps {
 	id: string;
 	options: CheckboxOption[];
 	collapsedItemCount?: number;
-	onChanged?: (checkedOptions: string[], id: string) => void;
+	onChange?: (checkedOptions: string[], id: string) => void;
 }
 
 export interface CheckboxGroupState {
@@ -35,8 +35,8 @@ export class CheckboxGroup extends Component<CheckboxGroupProps, CheckboxGroupSt
 
 	handleToggle = async (checked: boolean, id: string) => {
 		await setPartialState(this, `checkedStates.${id}`, checked);
-		if (this.props.onChanged) {
-			this.props.onChanged(
+		if (this.props.onChange) {
+			this.props.onChange(
 				compact(map(this.state.checkedStates, (value: boolean, key: string) => value && key)),
 				this.props.id
 			);
@@ -68,7 +68,7 @@ export class CheckboxGroup extends Component<CheckboxGroupProps, CheckboxGroupSt
 											id={option.id}
 											label={option.label}
 											defaultChecked={option.checked}
-											onChanged={this.handleToggle}
+											onChange={(checked: boolean) => this.handleToggle(checked, option.id)}
 										/>
 									)
 							)}

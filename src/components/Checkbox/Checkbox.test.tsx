@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Checkbox, CheckboxState } from './Checkbox';
+import { Checkbox } from './Checkbox';
 
 describe('<Checkbox />', () => {
 	it('Should be able to render', () => {
@@ -38,14 +38,14 @@ describe('<Checkbox />', () => {
 			<Checkbox label="One" id="one" defaultChecked={false} />
 		);
 
-		expect((checkboxComponentTrue.state() as CheckboxState).checked).toEqual(true);
-		expect((checkboxComponentFalse.state() as CheckboxState).checked).toEqual(false);
+		expect(checkboxComponentTrue.find('[type="checkbox"]').prop('checked')).toEqual(true);
+		expect(checkboxComponentFalse.find('[type="checkbox"]').prop('checked')).toEqual(false);
 	});
 
 	it('Should have a default value of false for the checked-state', () => {
 		const checkboxComponent = shallow(<Checkbox label="One" id="one" />);
 
-		expect((checkboxComponent.state() as CheckboxState).checked).toEqual(false);
+		expect(checkboxComponent.find('[type="checkbox"]').prop('checked')).toEqual(false);
 	});
 
 	it('Should call `onChange` when toggling checkbox', () => {
@@ -54,16 +54,11 @@ describe('<Checkbox />', () => {
 		const checkboxComponent = shallow(<Checkbox label="One" id="one" onChange={onChangeHandler} />);
 
 		const checkboxElement = checkboxComponent.find('[type="checkbox"]');
-		checkboxElement.simulate('click');
+
+		checkboxElement.simulate('change', { target: { checked: true } });
 
 		expect(onChangeHandler).toHaveBeenCalled();
 		expect(onChangeHandler).toHaveBeenCalledTimes(1);
-		expect(onChangeHandler).toHaveBeenCalledWith(true, 'one');
-
-		checkboxElement.simulate('click');
-
-		expect(onChangeHandler).toHaveBeenCalled();
-		expect(onChangeHandler).toHaveBeenCalledTimes(2);
-		expect(onChangeHandler).toHaveBeenCalledWith(false, 'one');
+		expect(onChangeHandler).toHaveBeenCalledWith(true);
 	});
 });

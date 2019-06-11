@@ -6,6 +6,7 @@
     "start": "start-storybook -s ./static -p 4000",
     "build": "build-storybook -o build",
     "test": "react-scripts test --verbose --transformIgnorePatterns \\\"node_modules/(?!(lodash-es))/\\\"\"",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache --transformIgnorePatterns \\\"node_modules/(?!(lodash-es))/\\\"\"",
     "test:output": "cross-env CI=true react-scripts test --json --outputFile=.storybook/test-results.json --transformIgnorePatterns \\\"node_modules/(?!(lodash-es))/\\\"\"",
     "lint": "tslint -p .",
     "format": "npm run lint -- --fix",

@@ -12,7 +12,7 @@ describe('<Checkbox />', () => {
 				label="Counting"
 				id="counting"
 				options={countOptions}
-				onChanged={action('CheckboxGroup changed')}
+				onChange={action('CheckboxGroup changed')}
 			/>
 		);
 	});
@@ -23,7 +23,7 @@ describe('<Checkbox />', () => {
 				label="Counting"
 				id="counting"
 				options={countOptions.slice(0, 5)}
-				onChanged={action('CheckboxGroup changed')}
+				onChange={action('CheckboxGroup changed')}
 			/>
 		);
 		expect(checkboxGroupComponent.find('Checkbox')).toHaveLength(5);
@@ -35,7 +35,7 @@ describe('<Checkbox />', () => {
 				label="Counting"
 				id="counting"
 				options={countOptions}
-				onChanged={action('CheckboxGroup changed')}
+				onChange={action('CheckboxGroup changed')}
 			/>
 		);
 		expect(checkboxGroupComponent.find('Checkbox')).toHaveLength(10);
@@ -56,7 +56,7 @@ describe('<Checkbox />', () => {
 				id="counting"
 				options={countOptions}
 				collapsedItemCount={6}
-				onChanged={action('CheckboxGroup changed')}
+				onChange={action('CheckboxGroup changed')}
 			/>
 		);
 		expect(checkboxGroupComponent.find('Checkbox')).toHaveLength(6);
@@ -70,15 +70,15 @@ describe('<Checkbox />', () => {
 		expect(checkboxGroupComponent.find('Checkbox')).toHaveLength(6);
 	});
 
-	it('Should call `onChanged` when toggling checkbox', () => {
-		const onChangedHandler = jest.fn();
+	it('Should call `onChange` when toggling checkbox', () => {
+		const onChangeHandler = jest.fn();
 
 		const checkboxGroupComponent = mount(
 			<CheckboxGroup
 				label="Counting"
 				id="counting"
 				options={countOptions}
-				onChanged={onChangedHandler}
+				onChange={onChangeHandler}
 			/>
 		);
 
@@ -97,19 +97,16 @@ describe('<Checkbox />', () => {
 			twelve: false,
 		};
 
-		expect((checkboxGroupComponent.state() as CheckboxGroupState).checkedStates).toMatchObject(
-			defaultState
-		);
-
 		const checkboxes = checkboxGroupComponent.find('[type="checkbox"]');
-		checkboxes.at(2).simulate('click');
+
+		checkboxes.at(2).simulate('change', { target: { checked: true } });
 
 		expect((checkboxGroupComponent.state() as CheckboxGroupState).checkedStates).toMatchObject({
 			...defaultState,
 			three: true,
 		});
 
-		checkboxes.at(3).simulate('click');
+		checkboxes.at(3).simulate('change', { target: { checked: true } });
 
 		expect((checkboxGroupComponent.state() as CheckboxGroupState).checkedStates).toMatchObject({
 			...defaultState,
@@ -117,7 +114,7 @@ describe('<Checkbox />', () => {
 			four: true,
 		});
 
-		checkboxes.at(2).simulate('click');
+		checkboxes.at(2).simulate('change', { target: { checked: false } });
 
 		expect((checkboxGroupComponent.state() as CheckboxGroupState).checkedStates).toMatchObject({
 			...defaultState,

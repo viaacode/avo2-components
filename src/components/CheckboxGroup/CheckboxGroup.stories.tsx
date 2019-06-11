@@ -81,7 +81,7 @@ storiesOf('CheckboxGroup', module)
 			label="Counting1"
 			id="counting1"
 			options={countOptions.slice(0, 5)}
-			onChanged={action('CheckboxGroup changed')}
+			onChange={action('CheckboxGroup changed')}
 		/>
 	))
 	.add('CheckboxGroup some checked boxes', () => (
@@ -89,7 +89,7 @@ storiesOf('CheckboxGroup', module)
 			label="Counting2"
 			id="counting2"
 			options={countOptions2.slice(0, 5)}
-			onChanged={action('CheckboxGroup2 changed')}
+			onChange={action('CheckboxGroup2 changed')}
 		/>
 	))
 	.add('CheckboxGroup with more than 10 items', () => (
@@ -97,7 +97,7 @@ storiesOf('CheckboxGroup', module)
 			label="Counting3"
 			id="counting3"
 			options={countOptions}
-			onChanged={action('CheckboxGroup3 changed')}
+			onChange={action('CheckboxGroup3 changed')}
 		/>
 	))
 	.add('CheckboxGroup with more than 6 items', () => (
@@ -106,6 +106,6 @@ storiesOf('CheckboxGroup', module)
 			id="counting4"
 			options={countOptions}
 			collapsedItemCount={6}
-			onChanged={action('CheckboxGroup4 changed')}
+			onChange={action('CheckboxGroup4 changed')}
 		/>
 	));
