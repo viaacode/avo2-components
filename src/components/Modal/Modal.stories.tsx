@@ -2,6 +2,8 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
+import { action } from '../../helpers/action';
+
 import { Button } from '../Button/Button';
 
 import { Modal } from './Modal';
@@ -14,6 +16,7 @@ storiesOf('Modal', module)
 			title="Modal title"
 			renderFooterLeft={() => <Button type="secondary" label="Cancel" />}
 			renderFooterRight={() => <Button type="primary" label="Ok" />}
+			onClose={action('closed')}
 		>
 			<p>
 				It doesn't matter where this modal occurs in the source code, React automatically moves it

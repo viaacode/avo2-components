@@ -1,8 +1,6 @@
 import { mount, shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
-import { Button } from '../Button/Button';
-
 import { Modal } from './Modal';
 import { ModalBackdrop } from './ModalBackdrop';
 
@@ -183,6 +181,26 @@ describe('<Modal />', () => {
 		modalWrapperElement = modalComponent.childAt(0);
 
 		expect(modalWrapperElement.hasClass('c-modal-context--visible')).toEqual(true);
+	});
+
+	it('Should call the onClose handler when closing the modal', () => {
+		const onCloseHandler = jest.fn();
+
+		const modalComponent = shallow(
+			<Modal isOpen={true} onClose={onCloseHandler}>
+				<Fragment />
+			</Modal>
+		);
+
+		const modalWrapperElement = modalComponent.childAt(0);
+
+		modalWrapperElement.simulate('click', {
+			target: '.c-modal-context',
+			currentTarget: '.c-modal-context',
+		});
+
+		expect(onCloseHandler).toHaveBeenCalled();
+		expect(onCloseHandler).toHaveBeenCalledTimes(1);
 	});
 
 	it('Should correctly pass children', () => {

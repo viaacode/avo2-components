@@ -24,6 +24,7 @@ export interface ModalProps {
 	renderHeaderRight?: () => ReactNode;
 	renderFooterRight?: () => ReactNode;
 	renderFooterLeft?: () => ReactNode;
+	onClose?: () => void;
 }
 
 export const Modal: FunctionComponent<ModalProps> = ({
@@ -34,6 +35,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	renderHeaderRight,
 	renderFooterRight,
 	renderFooterLeft,
+	onClose = () => {},
 }: ModalProps) => {
 	const [modalOpen, setModalOpen] = useState(isOpen);
 
@@ -46,6 +48,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 
 	function close() {
 		setModalOpen(false);
+		onClose();
 	}
 
 	function onContextClick(event: MouseEvent<HTMLElement>) {
