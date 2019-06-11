@@ -11,10 +11,10 @@ const tags = [
 	'Dubnium',
 	'Potassium',
 	'Vanadium',
-	'Paladium',
+	'Palladium',
 	'Polonium',
 	'Rhodium',
-	'Ytrium',
+	'Yttrium',
 	'Uranium',
 ];
 
