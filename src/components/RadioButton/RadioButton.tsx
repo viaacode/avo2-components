@@ -9,7 +9,7 @@ export interface RadioButtonProps {
 	onChange?: (checked: boolean) => void;
 }
 
-const RadioButton: FunctionComponent<RadioButtonProps> = ({
+export const RadioButton: FunctionComponent<RadioButtonProps> = ({
 	label,
 	name,
 	id,
@@ -44,7 +44,3 @@ const RadioButton: FunctionComponent<RadioButtonProps> = ({
 		</div>
 	);
 };
-
-RadioButton.defaultProps = {};
-
-export { RadioButton };
