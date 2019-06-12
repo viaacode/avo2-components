@@ -56,7 +56,7 @@ pipeline {
 				
                              	echo "Publishing package to registry"
 			     	sh '''#/bin/bash
-			   	  npm publish
+			   	  npm --registry http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-group/ install
 		                '''
                         }
                     }
