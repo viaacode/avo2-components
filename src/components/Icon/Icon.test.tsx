@@ -54,4 +54,12 @@ describe('<Icon />', () => {
 		expect(largeIconComponent.hasClass('o-svg-icon--large')).toEqual(true);
 		expect(hugeIconComponent.hasClass('o-svg-icon--huge')).toEqual(true);
 	});
+
+	it('Should correctly set the className when active', () => {
+		const activeIconComponent = shallow(<Icon name="circle-check" active={true} />);
+		const inactiveIconComponent = shallow(<Icon name="circle-check" active={false} />);
+
+		expect(activeIconComponent.hasClass('o-svg-icon--action-active')).toEqual(true);
+		expect(inactiveIconComponent.hasClass('o-svg-icon--action-active')).toEqual(false);
+	});
 });
