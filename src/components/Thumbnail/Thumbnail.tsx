@@ -34,24 +34,20 @@ export class Thumbnail extends React.Component<ThumbnailProps, ThumbnailState> {
 		const metaClass = loaded ? 'c-thumbnail-meta--img-is-loaded' : '';
 
 		return (
-			<div className="c-media-card c-media-card--video c-media-card--horizontal">
-				<a className="c-media-card-thumb" href="/app/single/item.html">
-					<div className={`c-thumbnail c-thumbnail-media c-thumbnail-media--${category}`}>
-						<div className="c-thumbnail-placeholder">{category && <Icon name={category} />}</div>
-						{src && (
-							<div className="c-thumbnail-image">
-								<img src={src} alt={alt} onLoad={this.handleImageLoaded.bind(this)} />
-							</div>
-						)}
-						<div className={`c-thumbnail-meta ${metaClass}`}>
-							<div className="c-thumbnail-media__category">
-								<Icon name={category} />
-								{label && <p>{label}</p>}
-							</div>
-							{meta && <div className="c-thumbnail-media__meta">{meta}</div>}
-						</div>
+			<div className={`c-thumbnail c-thumbnail-media c-thumbnail-media--${category}`}>
+				<div className="c-thumbnail-placeholder">{category && <Icon name={category} />}</div>
+				{src && (
+					<div className="c-thumbnail-image">
+						<img src={src} alt={alt} onLoad={this.handleImageLoaded.bind(this)} />
 					</div>
-				</a>
+				)}
+				<div className={`c-thumbnail-meta ${metaClass}`}>
+					<div className="c-thumbnail-media__category">
+						<Icon name={category} />
+						{label && <p>{label}</p>}
+					</div>
+					{meta && <div className="c-thumbnail-media__meta">{meta}</div>}
+				</div>
 			</div>
 		);
 	}
