@@ -1,7 +1,9 @@
 import { get, isUndefined } from 'lodash-es';
 import PopperJS, { Data, ModifierFn } from 'popper.js';
-import React, { Component, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
+import { useClickOutside } from '../../hooks/useClickOutside';
+import { useKeyPress } from '../../hooks/useKeyPress';
 
 export interface DropdownProps {
 	label: string;
@@ -25,10 +27,6 @@ export interface DropdownProps {
 	children: ReactNode;
 }
 
-export interface DropdownState {
-	isOpen: boolean;
-}
-
 /**
  * This component provides a button that can show a flyout with some children inside of it.
  * The PopperJS library is used to provide the positioning logic for the flyout element.
@@ -37,51 +35,27 @@ export interface DropdownState {
  * - The button with down arrow is called the "reference"
  * - The flyout element that contains the children is called the "popper"
  */
-export class Dropdown extends Component<DropdownProps, DropdownState> {
-	private dropdownButton: HTMLButtonElement | null = null;
-	private dropdownFlyout: HTMLDivElement | null = null;
+export const Dropdown: FunctionComponent<DropdownProps> = ({
+	label,
+	placement = 'top-start',
+	autoSize = false,
+	children,
+}: DropdownProps) => {
+	const [dropdownOpen, setOpen] = useState(false);
 
-	constructor(props: DropdownProps) {
-		super(props);
-		this.state = {
-			isOpen: false,
-		};
-	}
-
-	componentDidMount() {
-		document.addEventListener('mousedown', this.handleClickOutside);
-		document.addEventListener('keyup', this.handleKeyUp);
-	}
-
-	componentWillUnmount() {
-		document.removeEventListener('mousedown', this.handleClickOutside);
-		document.removeEventListener('keyup', this.handleKeyUp);
-	}
+	let dropdownButton: HTMLButtonElement | null = null;
+	let dropdownFlyout: HTMLDivElement | null = null;
 
 	/**
-	 * Close the flyout when we click outside of the dropdown component
-	 * @param event
+	 * Check if passed element is part of the component
+	 * @param elem
 	 */
-	handleClickOutside = (event: Event) => {
-		if (
-			event.target &&
-			(!this.dropdownButton || !this.dropdownButton.contains(event.target as Node)) &&
-			(!this.dropdownFlyout || !this.dropdownFlyout.contains(event.target as Node))
-		) {
-			this.toggleOpen(false);
-		}
-	};
-
-	/**
-	 * Close flyout when user presses the escape key
-	 * @param event
-	 */
-	handleKeyUp = (event: KeyboardEvent) => {
-		const key = event.key || event.keyCode;
-
-		if (key === 'Escape' || key === 'Esc' || key === 27) {
-			this.toggleOpen(false);
-		}
+	const isPartOfElement = (elem: Element | null): boolean => {
+		return Boolean(
+			elem &&
+				(!dropdownButton || !dropdownButton.contains(elem)) &&
+				(!dropdownFlyout || !dropdownFlyout.contains(elem))
+		);
 	};
 
 	/**
@@ -90,10 +64,8 @@ export class Dropdown extends Component<DropdownProps, DropdownState> {
 	 * If you pass "false" the flyout will be hidden, even if it was hidden before the call
 	 * @param shouldOpen
 	 */
-	toggleOpen = (shouldOpen?: boolean) => {
-		this.setState({
-			isOpen: !isUndefined(shouldOpen) ? shouldOpen : !this.state.isOpen,
-		});
+	const toggleOpen = (shouldOpen?: boolean) => {
+		setOpen(!isUndefined(shouldOpen) ? shouldOpen : !dropdownOpen);
 	};
 
 	/**
@@ -101,14 +73,14 @@ export class Dropdown extends Component<DropdownProps, DropdownState> {
 	 * @param data
 	 * @param options
 	 */
-	computeStyle = (data: Data, options: Object) => {
+	const computeStyle = (data: Data, options: Object) => {
 		const computeStylesFn: ModifierFn = get(PopperJS, 'Defaults.modifiers.computeStyle.fn');
 		if (!computeStylesFn) {
 			// TODO show error
 			return data;
 		}
 		const newData = computeStylesFn(data, options);
-		if (!this.props.autoSize) {
+		if (!autoSize) {
 			// Make the width off the popper the same size as the reference element
 			newData.styles.width = `${newData.offsets.reference.width}px`;
 		}
@@ -116,65 +88,62 @@ export class Dropdown extends Component<DropdownProps, DropdownState> {
 		return newData;
 	};
 
-	render() {
-		const { label, children } = this.props;
-		const { isOpen } = this.state;
+	const modifiers = {
+		computeStyle: {
+			fn: computeStyle,
+		},
+	};
 
-		const placement = this.props.placement || 'top-start';
-		const modifiers = {
-			computeStyle: {
-				fn: this.computeStyle,
-			},
-		};
+	useKeyPress('Escape', () => toggleOpen(false));
+	useClickOutside(isPartOfElement, () => toggleOpen(false));
 
-		return (
-			<Manager>
-				<Reference>
-					{({ ref }) => (
-						<button
-							className="c-button c-button--secondary"
-							ref={reference => {
-								this.dropdownButton = reference;
-								ref(reference);
-							}}
-							onClick={() => this.toggleOpen()}
-						>
-							<div className="c-button__content">
-								<div className="c-button__label">{label}</div>
-								<div className="o-svg-icon o-svg-icon-arrows-caret-down  ">
-									<svg
-										width="24px"
-										height="24px"
-										viewBox="0 0 24 24"
-										version="1.1"
-										xmlns="http://www.w3.org/2000/svg"
-										xmlnsXlink="http://www.w3.org/1999/xlink"
-									>
-										<g id="caret-down" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-											<polygon id="Icon" fill="#000000" points="7 10 12 15 17 10" />
-										</g>
-									</svg>
-								</div>
+	return (
+		<Manager>
+			<Reference>
+				{({ ref }) => (
+					<button
+						className="c-button c-button--secondary"
+						ref={reference => {
+							dropdownButton = reference;
+							ref(reference);
+						}}
+						onClick={() => toggleOpen()}
+					>
+						<div className="c-button__content">
+							<div className="c-button__label">{label}</div>
+							<div className="o-svg-icon o-svg-icon-arrows-caret-down  ">
+								<svg
+									width="24px"
+									height="24px"
+									viewBox="0 0 24 24"
+									version="1.1"
+									xmlns="http://www.w3.org/2000/svg"
+									xmlnsXlink="http://www.w3.org/1999/xlink"
+								>
+									<g id="caret-down" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+										<polygon id="Icon" fill="#000000" points="7 10 12 15 17 10" />
+									</g>
+								</svg>
 							</div>
-						</button>
-					)}
-				</Reference>
-				<Popper placement={placement} modifiers={modifiers}>
-					{({ ref, style, placement }) => (
-						<div
-							className={`c-menu${isOpen ? ' c-menu--visible' : ''}`}
-							ref={reference => {
-								this.dropdownFlyout = reference;
-								ref(reference);
-							}}
-							data-placement={placement}
-							style={style}
-						>
-							{children}
 						</div>
-					)}
-				</Popper>
-			</Manager>
-		);
-	}
-}
+					</button>
+				)}
+			</Reference>
+			<Popper placement={placement} modifiers={modifiers}>
+				{({ ref, style, placement }) => (
+					<div
+						className={`c-menu${dropdownOpen ? ' c-menu--visible' : ''}`}
+						ref={reference => {
+							dropdownFlyout = reference;
+							ref(reference);
+						}}
+						data-placement={placement}
+						style={style}
+					>
+						{children}
+					</div>
+				)}
+			</Popper>
+		</Manager>
+	);
+};
