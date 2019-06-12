@@ -38,7 +38,6 @@ pipeline {
                         openshift.withProject("shared-components") {
 			   sh'''#!/bin/bash
 			    npm install
-			    npm publish
 			    '''
 		                  
                         }
@@ -56,9 +55,8 @@ pipeline {
                         openshift.withProject("shared-components") {
 				
                              	echo "Publishing package to registry"
-				nexusPublisher nexusInstanceId: 'mvn-prd', nexusRepositoryId: 'npm-viaa', packages: ['@viaa/avo2-types']
 			     	sh '''#/bin/bash
-			   	  npm publish
+			   	  npm --registry http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-group/ install
 		                '''
                         }
                     }
