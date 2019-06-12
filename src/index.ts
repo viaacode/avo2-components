@@ -19,6 +19,7 @@ import { Spinner } from './components/Spinner/Spinner';
 import { Swatch } from './components/Swatch/Swatch';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
+import { Thumbnail } from './components/Thumbnail/Thumbnail';
 
 export {
 	COLORS,
@@ -39,4 +40,5 @@ export {
 	Swatch,
 	TagList,
 	TextInput,
+	Thumbnail,
 };
