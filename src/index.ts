@@ -13,6 +13,7 @@ import { Form } from './components/Form/Form';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
 import { Modal } from './components/Modal/Modal';
+import { Navbar } from './components/Navbar/Navbar';
 import { Pagination } from './components/Pagination/Pagination';
 import { Select } from './components/Select/Select';
 import { Spinner } from './components/Spinner/Spinner';
@@ -33,6 +34,7 @@ export {
 	Grid,
 	Icon,
 	Modal,
+	Navbar,
 	Pagination,
 	Select,
 	Spinner,
