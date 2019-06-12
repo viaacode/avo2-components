@@ -6,8 +6,8 @@ export interface DatePickerProps {
 	id?: string;
 	disabled?: boolean;
 	placeholder?: string;
-	defaultValue?: Date;
-	onChange?: (date: Date) => void;
+	defaultValue?: Date | null;
+	onChange?: (date: Date | null) => void;
 }
 
 export const DatePicker: FunctionComponent<DatePickerProps> = ({
@@ -22,18 +22,21 @@ export const DatePicker: FunctionComponent<DatePickerProps> = ({
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
 		const { value: val } = event.target;
 
-		const date = new Date(val);
+		if (val) {
+			const date = new Date(val);
 
-		if (!isNaN(date.valueOf()) && (!value || date.valueOf() !== value.valueOf())) {
-			setValue(date);
-			onChange(date);
+			if (!value || date.valueOf() !== value.valueOf()) {
+				setValue(date);
+				onChange(date);
+			}
+		} else {
+			setValue(null);
+			onChange(null);
 		}
 	}
 
-	function getValue(date: Date) {
-		if (date) {
-			return date.toISOString().slice(0, 'yyyy-mm-dd'.length);
-		}
+	function getValue(date?: Date) {
+		return date ? date.toISOString().slice(0, 'yyyy-mm-dd'.length) : '';
 	}
 
 	return (
