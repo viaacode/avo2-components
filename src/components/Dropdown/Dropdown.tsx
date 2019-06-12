@@ -2,6 +2,7 @@ import { get, isUndefined } from 'lodash-es';
 import PopperJS, { Data, ModifierFn } from 'popper.js';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
+import { Icon } from '../..';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 
@@ -41,7 +42,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	autoSize = false,
 	children,
 }: DropdownProps) => {
-	const [dropdownOpen, setOpen] = useState(false);
+	const [isOpen, setOpen] = useState(false);
 
 	let dropdownButton: HTMLButtonElement | null = null;
 	let dropdownFlyout: HTMLDivElement | null = null;
@@ -65,7 +66,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	 * @param shouldOpen
 	 */
 	const toggleOpen = (shouldOpen?: boolean) => {
-		setOpen(!isUndefined(shouldOpen) ? shouldOpen : !dropdownOpen);
+		setOpen(!isUndefined(shouldOpen) ? shouldOpen : !isOpen);
 	};
 
 	/**
@@ -111,20 +112,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 					>
 						<div className="c-button__content">
 							<div className="c-button__label">{label}</div>
-							<div className="o-svg-icon o-svg-icon-arrows-caret-down  ">
-								<svg
-									width="24px"
-									height="24px"
-									viewBox="0 0 24 24"
-									version="1.1"
-									xmlns="http://www.w3.org/2000/svg"
-									xmlnsXlink="http://www.w3.org/1999/xlink"
-								>
-									<g id="caret-down" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-										<polygon id="Icon" fill="#000000" points="7 10 12 15 17 10" />
-									</g>
-								</svg>
-							</div>
+							<Icon name={isOpen ? 'caret-up' : 'caret-down'} size="small" type="arrows" />
 						</div>
 					</button>
 				)}
@@ -132,7 +120,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 			<Popper placement={placement} modifiers={modifiers}>
 				{({ ref, style, placement }) => (
 					<div
-						className={`c-menu${dropdownOpen ? ' c-menu--visible' : ''}`}
+						className={`c-menu${isOpen ? ' c-menu--visible' : ''}`}
 						ref={reference => {
 							dropdownFlyout = reference;
 							ref(reference);

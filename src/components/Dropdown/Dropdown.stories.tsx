@@ -16,12 +16,7 @@ storiesOf('Dropdown', module)
 		</Dropdown>
 	))
 	.add('Dropdown up', () => (
-		<div>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
+		<div style={{ paddingTop: '100px' }}>
 			<Dropdown label="Show options" placement={'top'}>
 				<div>OneOneOneOneOneOne</div>
 				<div>Two</div>
@@ -59,12 +54,7 @@ storiesOf('Dropdown', module)
 		</Dropdown>
 	))
 	.add('Dropdown autosized top-start', () => (
-		<div>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
+		<div style={{ paddingTop: '100px' }}>
 			<Dropdown label="Show options" placement={'top-start'} autoSize={true}>
 				<div>OneOneOneOneOneOne</div>
 				<div>Two</div>
@@ -75,12 +65,7 @@ storiesOf('Dropdown', module)
 		</div>
 	))
 	.add('Dropdown autosized top-end', () => (
-		<div>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
+		<div style={{ paddingTop: '100px' }}>
 			<Dropdown label="Show options" placement={'top-end'} autoSize={true}>
 				<div>OneOneOneOneOneOne</div>
 				<div>Two</div>
