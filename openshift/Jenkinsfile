@@ -143,11 +143,12 @@ pipeline {
                 script {
                     openshift.withCluster() {
                         openshift.withProject("shared-components") {
-                             echo "Publishing package to registry"
-                             sh '''#/bin/bash
-                             npm publish
-
-                             '''
+				
+                             	echo "Publishing package to registry"
+				nexusPublisher nexusInstanceId: 'mvn-prd', nexusRepositoryId: 'npm-viaa', packages: ['@viaa/avo2-types']
+			     	sh '''#/bin/bash
+			   	 # npm publish
+		                '''
                         }
                     }
                 } // script
