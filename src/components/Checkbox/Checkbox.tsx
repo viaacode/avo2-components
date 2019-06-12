@@ -5,7 +5,6 @@ export interface CheckboxProps {
 	id?: string;
 	disabled?: boolean;
 	defaultChecked?: boolean;
-	className?: string;
 	onChange?: (checked: boolean) => void;
 }
 
@@ -14,7 +13,6 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
 	id,
 	disabled = false,
 	defaultChecked = false,
-	className = '',
 	onChange = () => {},
 }: CheckboxProps) => {
 	const [value, setValue] = useState(defaultChecked);
@@ -29,7 +27,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
 	}
 
 	return (
-		<div className={`c-checkbox ${className}`}>
+		<div className={`c-checkbox`}>
 			<label>
 				<input
 					type="checkbox"
