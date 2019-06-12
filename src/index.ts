@@ -12,6 +12,7 @@ import { Container } from './components/Container/Container';
 import { Form } from './components/Form/Form';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
+import { Modal } from './components/Modal/Modal';
 import { Pagination } from './components/Pagination/Pagination';
 import { Select } from './components/Select/Select';
 import { Spinner } from './components/Spinner/Spinner';
@@ -31,6 +32,7 @@ export {
 	Form,
 	Grid,
 	Icon,
+	Modal,
 	Pagination,
 	Select,
 	Spinner,

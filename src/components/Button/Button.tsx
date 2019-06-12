@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, MouseEvent } from 'react';
 
 import classNames from 'classnames';
 
@@ -20,7 +20,7 @@ export interface ButtonProps {
 	icon?: string;
 	arrow?: boolean;
 	disabled?: boolean;
-	onClick?(event: React.MouseEvent<HTMLElement>): void;
+	onClick?(event: MouseEvent<HTMLElement>): void;
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
