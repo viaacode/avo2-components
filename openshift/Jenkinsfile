@@ -56,6 +56,7 @@ pipeline {
 				
                              	echo "Publishing package to registry"
 			     	sh '''#/bin/bash
+			         cp /home/jenkins/.npm-global/etc/npmrc /tmp/.npmrc
 			   	  npm publish
 		                '''
                         }
