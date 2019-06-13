@@ -17,6 +17,7 @@ export interface ButtonProps {
 		| 'danger-hover'
 		| 'link';
 	size?: 'small';
+	block?: boolean;
 	icon?: string;
 	arrow?: boolean;
 	active?: boolean;
@@ -28,6 +29,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 	label,
 	type,
 	size,
+	block = false,
 	icon,
 	arrow,
 	active,
@@ -39,6 +41,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 			active,
 			'c-button-action': active,
 			'c-button--small': size === 'small',
+			'c-button--block': block,
 			'c-button--icon': icon && !label,
 			[`c-button--${type}`]: type,
 		})}

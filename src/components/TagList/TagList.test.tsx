@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { Icon } from '../Icon/Icon';
 
@@ -11,10 +11,10 @@ const tags = [
 	'Dubnium',
 	'Potassium',
 	'Vanadium',
-	'Paladium',
+	'Palladium',
 	'Polonium',
 	'Rhodium',
-	'Ytrium',
+	'Yttrium',
 	'Uranium',
 ];
 
