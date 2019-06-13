@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { Icon } from '../Icon/Icon';
 import { Blankslate } from './Blankslate';
