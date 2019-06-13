@@ -15,7 +15,7 @@
   },
   "main": "src/index.ts",
   "publishConfig": {
-    "@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-group/"
+    "@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-viaa/"
   },
   "browserslist": {
     "production": [
