@@ -16,13 +16,13 @@ export function useDeselectEvent(name: string, value: string, onDeselect: () => 
 		}
 	});
 
-	const dispatchDeselect = () => {
-		document
-			.querySelectorAll(`input[type="radio"][name=${name}]:not([value=${value}])`)
-			.forEach((element: Element) => {
-				element.dispatchEvent(new Event('deselect'));
-			});
-	};
-
-	return [dispatchDeselect];
+	return [
+		() => {
+			document
+				.querySelectorAll(`input[type="radio"][name=${name}]:not([value=${value}])`)
+				.forEach((element: Element) => {
+					element.dispatchEvent(new Event('deselect'));
+				});
+		},
+	];
 }
