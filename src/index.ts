@@ -6,6 +6,7 @@ import { Avatar } from './components/Avatar/Avatar';
 import { AvatarIcon } from './components/Avatar/AvatarIcon';
 import { Badge } from './components/Badge/Badge';
 import { Blankslate } from './components/Blankslate/Blankslate';
+import { Box } from './components/Box/Box';
 import { Button } from './components/Button/Button';
 import { Checkbox } from './components/Checkbox/Checkbox';
 import { Container } from './components/Container/Container';
@@ -30,6 +31,7 @@ export {
 	AvatarIcon,
 	Badge,
 	Blankslate,
+	Box,
 	Button,
 	Checkbox,
 	Container,
