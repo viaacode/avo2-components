@@ -22,6 +22,16 @@ describe('<Button />', () => {
 		expect(buttonComponent.hasClass('c-button--small')).toEqual(true);
 	});
 
+	it('Should set the correct width className when passing block option', () => {
+		const buttonDefaultComponent = shallow(<Button />);
+		const buttonBlockTrueComponent = shallow(<Button block={true} />);
+		const buttonBlockFalseComponent = shallow(<Button block={false} />);
+
+		expect(buttonDefaultComponent.hasClass('c-button--block')).toEqual(false);
+		expect(buttonBlockTrueComponent.hasClass('c-button--block')).toEqual(true);
+		expect(buttonBlockFalseComponent.hasClass('c-button--block')).toEqual(false);
+	});
+
 	it('Should set the correct type className', () => {
 		const secondaryButtonComponent = shallow(<Button type="secondary" />);
 		const dangerButtonComponent = shallow(<Button type="danger" />);
