@@ -9,12 +9,12 @@ pipeline {
     agent {
       node {
         // spin up a pod to run this build on
-        label 'master'
+        label 'nodejs'
       }
     }
     options {
-        // set a timeout of 20 minutes for this pipeline
-        timeout(time: 35, unit: 'MINUTES')
+        // set a timeout of 45 minutes for this pipeline builds are way to slow need to figure out why
+        timeout(time: 45, unit: 'MINUTES')
     }
     stages {
         stage('preamble') {
@@ -28,133 +28,40 @@ pipeline {
                 }
             }
         }
-        stage('cleanup') {
+
+
+
+        stage('npm install') {
             steps {
                 script {
                     openshift.withCluster() {
                         openshift.withProject("shared-components") {
-                            // delete everything with this template label
-			    if (openshift.selector("template", "avo2-components").exists()) {
-				    echo " tmpl exists"
-				    openshift.selector("all", [ template : "avo2-components" ]).delete()
-
-			    }
-                            //openshift.selector("all", [ statefulset  : TEMPLATENAME ]).delete()
-                            sh '''#!/bin/bash
-
-			     oc -n shared-components delete all --selector=ENV=tst || true
-           oc delete bc avo2-components-tst || true 
-           for b in $(oc -n shared-components get builds | grep avo2-components-tst | awk '{print $1}') ; do oc -n shared-components  delete build $b; done
-            oc -n shared-components delete all --selector=ENV=tst,app=avo2-components || echo "NOthing Deleted"
-           for rc in $(oc -n shared-components get rc | grep 'avo2-components-tst' | awk '{print $1}'); do oc delete rc --grace-period=1 ${rc}  ; done
-           for pod in $(oc -n shared-components get pods | grep 'avo2-components-tst' | awk '{print $1}'); do oc delete pod --grace-period=0 ${pod} --force ; done
-           sleep 10
-			   #  for pod in $(oc -n shared-components get pods | grep Error | awk '{print $1}'); do oc delete pod --grace-period=1 ${pod}; done
-
-                            '''
+			   sh'''#!/bin/bash
+			    npm install
+			    '''
+		                  
                         }
                     }
                 } // script
             } // steps
         } // stage
+   
 
-
-
-        stage('create templates') {
+  	stage('Publish') {
             steps {
+
                 script {
                     openshift.withCluster() {
                         openshift.withProject("shared-components") {
-                            // create a new application from the TEMPLATEPATH
-                           // openshift.newApp(TEMPLATEPATH)
-                           sh "oc -n shared-components apply -f openshift/app_deployment-okd.yaml"
-                           echo "added template to namespace"
-                            sh '''#!/bin/bash
-                                  oc -n shared-components  get templates
-
-                               '''
+				
+                             	echo "Publishing package to registry"
+			     	sh '''#/bin/bash
+			   	  npm --registry http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-group/ install
+		                '''
                         }
                     }
                 } // script
             } // steps
         } // stage
-        stage('build_es_images') {
-            steps {
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject("shared-components") {
-                             echo "Start the docker build for ES"
-                             sh '''#!/bin/bash
-                             oc project shared-components
-                             buildnr=`oc get bc avo2-components-tst  -o yaml | grep lastVersion | awk '{print $2}'`
-                             echo build nr $buildnr
-                            oc -n shared-components new-build --name=avo2-components-tst  --strategy=docker  .
-                             '''
-                        }
-                    }
-                } // script
-            } // steps
-        } // stage
-        stage('Follow Build') {
-            steps {
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject("shared-components") {
-                            echo "Get build and follow the output"
-                            sh '''#!/bin/bash
-                            echo building starts ...
-                            oc -n shared-components get builds
-                            oc -n shared-components logs -f bc/avo2-components-tst
-                            echo build  finished exitcode $?
-
-                            '''
-
-                        }
-                    }
-
-
-                } // script
-
-            } // steps
-        } // stage
-
-
-
-
-               stage('Roll out') {
-            steps {
-
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject("shared-components") {
-                             echo "Rolling out  build from template"
-                             sh '''#/bin/bash
-                             oc process -p ENV=tst -l app=avo2-components -l component=frontend -l ENV=tst  -f openshift/app_deployment-okd.yaml | oc apply -f -
-                             echo Rolled out the tst app
-
-                             '''
-                        }
-                    }
-                } // script
-            } // steps
-        } // stage
-
-               stage('Tag out') {
-            steps {
-            input message: "TAG iamges for prd ?:avo2-components. Approve?", id: "approval"
-
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject("shared-components") {
-                             echo "Rolling out  build from template"
-                             sh '''#!/bin/bash
-                              oc  -n shared-components tag  avo2-components-tst:latest  avo2-components-qas:latest
-                              oc  -n shared-components tag avo2-components-tst:latest avo2-components-prd:latest
-                             '''
-                        }
-                    }
-                } // script
-            } // steps
-        } // stag
     } // stages
 } // pipeline
