@@ -84,22 +84,43 @@ describe('<Navbar />', () => {
 		expect(navbarAutoHeightFalseComponent.hasClass('c-navbar--auto')).toEqual(false);
 	});
 
-	it('Should set the correct classNames when color is passed', () => {
+	it('Should set the correct classNames when background is passed', () => {
 		const navbarDefaultComponent = shallow(
 			<Navbar>
 				<Fragment />
 			</Navbar>
 		);
-		const navbarAutoHeightFalseComponent = shallow(
-			<Navbar color={COLORS.GRAYSCALE.G50}>
+		const navbarWhiteComponent = shallow(
+			<Navbar background="white">
+				<Fragment />
+			</Navbar>
+		);
+		const navbarAltComponent = shallow(
+			<Navbar background="alt">
+				<Fragment />
+			</Navbar>
+		);
+		const navbarInverseComponent = shallow(
+			<Navbar background="inverse">
 				<Fragment />
 			</Navbar>
 		);
 
-		expect((navbarDefaultComponent.prop('style') || {}).backgroundColor).toEqual('');
-		expect((navbarAutoHeightFalseComponent.prop('style') || {}).backgroundColor).toEqual(
-			COLORS.GRAYSCALE.G50
-		);
+		expect(navbarDefaultComponent.hasClass('.c-navbar--white')).toEqual(false);
+		expect(navbarDefaultComponent.hasClass('.c-navbar--alt')).toEqual(false);
+		expect(navbarDefaultComponent.hasClass('.c-navbar--inverse')).toEqual(false);
+
+		expect(navbarWhiteComponent.hasClass('.c-navbar--white')).toEqual(true);
+		expect(navbarWhiteComponent.hasClass('.c-navbar--alt')).toEqual(false);
+		expect(navbarWhiteComponent.hasClass('.c-navbar--inverse')).toEqual(false);
+
+		expect(navbarAltComponent.hasClass('.c-navbar--white')).toEqual(false);
+		expect(navbarAltComponent.hasClass('.c-navbar--alt')).toEqual(true);
+		expect(navbarAltComponent.hasClass('.c-navbar--inverse')).toEqual(false);
+
+		expect(navbarInverseComponent.hasClass('.c-navbar--white')).toEqual(false);
+		expect(navbarInverseComponent.hasClass('.c-navbar--alt')).toEqual(false);
+		expect(navbarInverseComponent.hasClass('.c-navbar--inverse')).toEqual(true);
 	});
 
 	it('Should correctly pass children', () => {

@@ -6,7 +6,7 @@ export interface NavbarProps {
 	position?: 'top' | 'bottom';
 	spacing?: 'regular' | 'double';
 	autoHeight?: boolean;
-	color?: string;
+	background?: 'white' | 'alt' | 'inverse';
 	children: ReactNode;
 }
 
@@ -14,7 +14,7 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
 	position = 'top',
 	spacing = 'regular',
 	autoHeight = false,
-	color = '',
+	background,
 	children,
 }: NavbarProps) => (
 	<div
@@ -24,9 +24,8 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
 			'c-navbar--bordered-top': position === 'bottom',
 			'c-navbar--double-spaced': spacing === 'double',
 			'c-navbar--auto': autoHeight,
-			// [`c-navbar--${color}`]: color, // TODO color classes do not exist => ask mono
+			[`.c-navbar--${background === 'alt' ? 'bg-alt' : background}`]: background,
 		})}
-		style={{ backgroundColor: color }}
 	>
 		{children}
 	</div>

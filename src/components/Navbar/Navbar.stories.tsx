@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { COLORS } from '../../colors';
 import { Navbar } from './Navbar';
 
 const content = 'navbar content';
@@ -36,10 +35,12 @@ storiesOf('Navbar', module)
 	))
 	.add('Navbar backgrounds', () => (
 		<Fragment>
-			<Navbar color={COLORS.GRAYSCALE.G50}>{content}</Navbar>
-			<div style={{ height: '200px' }} />
-			<Navbar position="bottom" color={COLORS.PRIMARY.ORANGE}>
-				{content}
-			</Navbar>
+			<Navbar>{`${content} on a transparent background`}</Navbar>
+			<br />
+			<Navbar background="white">{`${content} on a 'white' background`}</Navbar>
+			<br />
+			<Navbar background="alt">{`${content} on an 'alt' background`}</Navbar>
+			<br />
+			<Navbar background="inverse">{`${content} on an 'inverse' background`}</Navbar>
 		</Fragment>
 	));
