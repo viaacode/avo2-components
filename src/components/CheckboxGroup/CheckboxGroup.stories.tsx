@@ -13,4 +13,11 @@ storiesOf('CheckboxGroup', module)
 			<Checkbox label="Cadmium" />
 			<Checkbox label="Dubnium" />
 		</CheckboxGroup>
+	))
+	.add('CheckboxGroup inline', () => (
+		<CheckboxGroup inline={true}>
+			<Checkbox label="Aluminium" />
+			<Checkbox label="Cadmium" />
+			<Checkbox label="Dubnium" />
+		</CheckboxGroup>
 	));
