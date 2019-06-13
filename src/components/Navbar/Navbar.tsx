@@ -3,7 +3,8 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames';
 
 export interface NavbarProps {
-	position?: 'top' | 'bottom';
+	placement?: 'top' | 'bottom';
+	position?: 'fixed';
 	spacing?: 'regular' | 'double';
 	autoHeight?: boolean;
 	background?: 'white' | 'alt' | 'inverse';
@@ -11,20 +12,20 @@ export interface NavbarProps {
 }
 
 export const Navbar: FunctionComponent<NavbarProps> = ({
-	position = 'top',
+	placement = 'top',
+	position,
 	spacing = 'regular',
 	autoHeight = false,
 	background,
 	children,
 }: NavbarProps) => (
 	<div
-		className={classNames({
-			'c-navbar': true,
-			'c-navbar--bordered-bottom': position === 'top', // Class indicates border location
-			'c-navbar--bordered-top': position === 'bottom',
-			'c-navbar--double-spaced': spacing === 'double',
+		className={classNames('c-navbar', {
+			'c-navbar--bordered-bottom': placement === 'top', // Class indicates border location
+			'c-navbar--bordered-top': placement === 'bottom',
+			'c-navbar--fixed': position === 'fixed',
 			'c-navbar--auto': autoHeight,
-			[`c-navbar--${background === 'alt' ? 'bg-alt' : background}`]: background,
+			[`c-navbar--${background === 'alt' ? 'bg-alt' : background}`]: !!background,
 		})}
 	>
 		{children}

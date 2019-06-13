@@ -12,12 +12,56 @@ storiesOf('Navbar', module)
 		<Fragment>
 			<Navbar>{content}</Navbar>
 			<div style={{ height: '200px' }} />
-			<Navbar position="bottom">{content}</Navbar>
+			<Navbar placement="bottom">{content}</Navbar>
 		</Fragment>
 	))
-	.add('Double spacing navbar', () => (
+	.add('Fixed navbar', () => (
 		<Fragment>
-			<Navbar spacing="double">{content}</Navbar>
+			<Navbar position="fixed" background={'alt'}>
+				{content}
+			</Navbar>
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
+			lorem
+			<br />
 		</Fragment>
 	))
 	.add('Auto height navbar', () => (

@@ -13,19 +13,19 @@ describe('<Navbar />', () => {
 		);
 	});
 
-	it('Should set the correct classNames when position is passed', () => {
+	it('Should set the correct classNames when placement is passed', () => {
 		const navbarDefaultComponent = shallow(
 			<Navbar>
 				<Fragment />
 			</Navbar>
 		);
 		const navbarTopComponent = shallow(
-			<Navbar position="top">
+			<Navbar placement="top">
 				<Fragment />
 			</Navbar>
 		);
 		const navbarBottomComponent = shallow(
-			<Navbar position="bottom">
+			<Navbar placement="bottom">
 				<Fragment />
 			</Navbar>
 		);
@@ -40,26 +40,20 @@ describe('<Navbar />', () => {
 		expect(navbarBottomComponent.hasClass('c-navbar--bordered-bottom')).toEqual(false);
 	});
 
-	it('Should set the correct classNames when spacing is passed', () => {
+	it('Should set the correct classNames when position is passed', () => {
 		const navbarDefaultComponent = shallow(
 			<Navbar>
 				<Fragment />
 			</Navbar>
 		);
-		const navbarRegularComponent = shallow(
-			<Navbar spacing="regular">
-				<Fragment />
-			</Navbar>
-		);
-		const navbarDoubleComponent = shallow(
-			<Navbar spacing="double">
+		const navbarFixedComponent = shallow(
+			<Navbar position="fixed">
 				<Fragment />
 			</Navbar>
 		);
 
-		expect(navbarDefaultComponent.hasClass('c-navbar--double-spaced')).toEqual(false);
-		expect(navbarRegularComponent.hasClass('c-navbar--double-spaced')).toEqual(false);
-		expect(navbarDoubleComponent.hasClass('c-navbar--double-spaced')).toEqual(true);
+		expect(navbarDefaultComponent.hasClass('c-navbar--fixed')).toEqual(false);
+		expect(navbarFixedComponent.hasClass('c-navbar--fixed')).toEqual(true);
 	});
 
 	it('Should set the correct classNames when autoHeight is passed', () => {
@@ -106,21 +100,21 @@ describe('<Navbar />', () => {
 			</Navbar>
 		);
 
-		expect(navbarDefaultComponent.hasClass('.c-navbar--white')).toEqual(false);
-		expect(navbarDefaultComponent.hasClass('.c-navbar--alt')).toEqual(false);
-		expect(navbarDefaultComponent.hasClass('.c-navbar--inverse')).toEqual(false);
+		expect(navbarDefaultComponent.hasClass('c-navbar--white')).toEqual(false);
+		expect(navbarDefaultComponent.hasClass('c-navbar--bg-alt')).toEqual(false);
+		expect(navbarDefaultComponent.hasClass('c-navbar--inverse')).toEqual(false);
 
-		expect(navbarWhiteComponent.hasClass('.c-navbar--white')).toEqual(true);
-		expect(navbarWhiteComponent.hasClass('.c-navbar--alt')).toEqual(false);
-		expect(navbarWhiteComponent.hasClass('.c-navbar--inverse')).toEqual(false);
+		expect(navbarWhiteComponent.hasClass('c-navbar--white')).toEqual(true);
+		expect(navbarWhiteComponent.hasClass('c-navbar--bg-alt')).toEqual(false);
+		expect(navbarWhiteComponent.hasClass('c-navbar--inverse')).toEqual(false);
 
-		expect(navbarAltComponent.hasClass('.c-navbar--white')).toEqual(false);
-		expect(navbarAltComponent.hasClass('.c-navbar--alt')).toEqual(true);
-		expect(navbarAltComponent.hasClass('.c-navbar--inverse')).toEqual(false);
+		expect(navbarAltComponent.hasClass('c-navbar--white')).toEqual(false);
+		expect(navbarAltComponent.hasClass('c-navbar--bg-alt')).toEqual(true);
+		expect(navbarAltComponent.hasClass('c-navbar--inverse')).toEqual(false);
 
-		expect(navbarInverseComponent.hasClass('.c-navbar--white')).toEqual(false);
-		expect(navbarInverseComponent.hasClass('.c-navbar--alt')).toEqual(false);
-		expect(navbarInverseComponent.hasClass('.c-navbar--inverse')).toEqual(true);
+		expect(navbarInverseComponent.hasClass('c-navbar--white')).toEqual(false);
+		expect(navbarInverseComponent.hasClass('c-navbar--bg-alt')).toEqual(false);
+		expect(navbarInverseComponent.hasClass('c-navbar--inverse')).toEqual(true);
 	});
 
 	it('Should correctly pass children', () => {
