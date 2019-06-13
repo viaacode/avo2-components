@@ -1,6 +1,7 @@
 import { mount, shallow } from 'enzyme';
-import React from 'react';
+import React, { Fragment } from 'react';
 
+import { Modal } from '../..';
 import { Dropdown } from './Dropdown';
 
 describe('<Dropdown />', () => {
@@ -66,5 +67,40 @@ describe('<Dropdown />', () => {
 				.first()
 				.hasClass('c-button')
 		).toEqual(true);
+	});
+
+	it('Should call the onOpen/onClose handlers when opening/closing the flyout', () => {
+		const onOpenHandler = jest.fn();
+		const onCloseHandler = jest.fn();
+
+		const dropdownComponent = mount(
+			<Dropdown label="Show options" onOpen={onOpenHandler} onClose={onCloseHandler}>
+				<div>OneOneOneOneOneOne</div>
+				<div>Two</div>
+				<div>Three</div>
+				<div>Four</div>
+				<div>Five</div>
+			</Dropdown>
+		);
+
+		const dropdownButton = dropdownComponent.find('.c-button');
+		const dropdownMenu = dropdownComponent.find('.c-menu');
+
+		dropdownButton.simulate('click');
+
+		expect(onOpenHandler).toHaveBeenCalled();
+		expect(onOpenHandler).toHaveBeenCalledTimes(1);
+		expect(onCloseHandler).toHaveBeenCalledTimes(0);
+
+		dropdownMenu.simulate('click');
+
+		expect(onOpenHandler).toHaveBeenCalledTimes(1);
+		expect(onCloseHandler).toHaveBeenCalledTimes(0);
+
+		dropdownButton.simulate('click');
+
+		expect(onOpenHandler).toHaveBeenCalledTimes(1);
+		expect(onCloseHandler).toHaveBeenCalled();
+		expect(onCloseHandler).toHaveBeenCalledTimes(1);
 	});
 });

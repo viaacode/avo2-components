@@ -2,12 +2,13 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
+import { action } from '../../helpers/action';
 import { Dropdown } from './Dropdown';
 
 storiesOf('Dropdown', module)
 	.addParameters({ jest: ['Dropdown'] })
 	.add('Dropdown', () => (
-		<Dropdown label="Show options">
+		<Dropdown label="Show options" onOpen={action('opened')} onClose={action('closed')}>
 			<div>OneOneOneOneOneOne</div>
 			<div>Two</div>
 			<div>Three</div>

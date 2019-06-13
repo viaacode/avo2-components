@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { get, isUndefined } from 'lodash-es';
 import PopperJS, { Data, ModifierFn } from 'popper.js';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
@@ -25,6 +26,8 @@ export interface DropdownProps {
 		| 'left-start'
 		| 'left-end';
 	autoSize?: boolean; // defaults to false, meaning: the flyout with will be the same as the reference element
+	onOpen?: () => void;
+	onClose?: () => void;
 	children: ReactNode;
 }
 
@@ -38,8 +41,10 @@ export interface DropdownProps {
  */
 export const Dropdown: FunctionComponent<DropdownProps> = ({
 	label,
-	placement = 'top-start',
+	placement = 'bottom-start',
 	autoSize = false,
+	onOpen,
+	onClose,
 	children,
 }: DropdownProps) => {
 	const [isOpen, setOpen] = useState(false);
@@ -66,7 +71,19 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	 * @param shouldOpen
 	 */
 	const toggleOpen = (shouldOpen: boolean = !isOpen) => {
-		setOpen(shouldOpen);
+		if (isOpen && !shouldOpen) {
+			setOpen(shouldOpen);
+			if (onClose) {
+				onClose();
+			}
+		} else if (!isOpen && shouldOpen) {
+			setOpen(shouldOpen);
+			if (onOpen) {
+				onOpen();
+			}
+		} else {
+			setOpen(shouldOpen);
+		}
 	};
 
 	/**
@@ -120,7 +137,9 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 			<Popper placement={placement} modifiers={modifiers}>
 				{({ ref, style, placement }) => (
 					<div
-						className={`c-menu${isOpen ? ' c-menu--visible' : ''}`}
+						className={classNames('c-menu', {
+							'c-menu--visible': isOpen,
+						})}
 						ref={reference => {
 							dropdownFlyout = reference;
 							ref(reference);
