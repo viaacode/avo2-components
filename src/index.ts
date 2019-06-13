@@ -14,6 +14,7 @@ import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
 import { Modal } from './components/Modal/Modal';
 import { Pagination } from './components/Pagination/Pagination';
+import { RadioButton } from './components/RadioButton/RadioButton';
 import { Select } from './components/Select/Select';
 import { Spinner } from './components/Spinner/Spinner';
 import { Swatch } from './components/Swatch/Swatch';
@@ -34,6 +35,7 @@ export {
 	Icon,
 	Modal,
 	Pagination,
+	RadioButton,
 	Select,
 	Spinner,
 	Swatch,

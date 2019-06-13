@@ -1,7 +1,6 @@
 {
   "name": "@viaa/avo2-components",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "start": "start-storybook -s ./static -p 4000",
     "build": "build-storybook -o build",
@@ -13,7 +12,7 @@
     "icons": "rimraf src/components/Icons && svgr -d src/components/Icons src/icons --ext ts",
     "posticons": "named-exports --dir=src/components/Icons && renamer --find .ts --replace .tsx 'src/components/Icons/**'"
   },
-  "main": "index.ts",
+  "main": "src/index.ts",
   "publishConfig": {
     "@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-viaa/"
   },

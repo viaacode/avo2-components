@@ -35,7 +35,7 @@ export const DatePicker: FunctionComponent<DatePickerProps> = ({
 		}
 	}
 
-	function getValue(date?: Date) {
+	function getValue(date: Date | null | undefined) {
 		return date ? date.toISOString().slice(0, 'yyyy-mm-dd'.length) : '';
 	}
 

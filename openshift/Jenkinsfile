@@ -28,116 +28,26 @@ pipeline {
                 }
             }
         }
-        stage('cleanup') {
+
+
+
+        stage('npm install') {
             steps {
                 script {
                     openshift.withCluster() {
                         openshift.withProject("shared-components") {
-                            // delete everything with this template label
-			    if (openshift.selector("template", "avo2-components").exists()) {
-				    echo " tmpl exists"
-				    openshift.selector("all", [ template : "avo2-components" ]).delete()
-
-			    }
-                            //openshift.selector("all", [ statefulset  : TEMPLATENAME ]).delete()
-                            sh '''#!/bin/bash
-				echo no deployment for this build so nothing to clean
-                            '''
+			   sh'''#!/bin/bash
+			    npm install
+			    '''
+		                  
                         }
                     }
                 } // script
             } // steps
         } // stage
+   
 
-
-
-        stage('create templates') {
-            steps {
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject("shared-components") {
-                            // create a new application from the TEMPLATEPATH
-                           // openshift.newApp(TEMPLATEPATH)
-                           sh "oc -n shared-components apply -f openshift/app_deployment-okd.yaml"
-                           echo "added template to namespace"
-                            sh '''#!/bin/bash
-                                  oc -n shared-components  get templates
-
-                               '''
-                        }
-                    }
-                } // script
-            } // steps
-        } // stage
-        stage('build image') {
-            steps {
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject("shared-components") {
-			    if (openshift.selector("buildconfig", "avo2-components-tst").exists()) {
-				    echo " buildconfig  exists"
-				    sh '''#/bin/bash
-				    oc -n shared-components start-build avo2-components-tst
-				    '''
-				    openshift.selector("all", [ template : "avo2-components" ]).delete()
-
-			    } else {
-			     echo "create a new build"
-                             sh '''#!/bin/bash
-                             oc project shared-components
-                             oc -n shared-components new-build --name=avo2-components-tst  --strategy=docker  .
-                             '''
-			    }
-                
-                        }
-                    }
-                } // script
-            } // steps
-        } // stage
-        stage('Follow Build') {
-            steps {
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject("shared-components") {
-                            echo "Get build and follow the output"
-                            sh '''#!/bin/bash
-                            echo building starts ...
-                            oc -n shared-components get builds
-                            oc -n shared-components logs -f bc/avo2-components-tst
-                            echo build  finished exitcode $?
-
-                            '''
-
-                        }
-                    }
-
-
-                } // script
-
-            } // steps
-        } // stage
-
-
-
-
-               stage('Roll out') {
-            steps {
-
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject("shared-components") {
-                             echo "Rolling out  build from template"
-                             sh '''#/bin/bash
-			     echo "nothing to roll out"
-                             # oc process -p ENV=tst -l app=avo2-components -l component=frontend -l ENV=tst  -f openshift/app_deployment-okd.yaml | oc apply -f -
-                             '''
-                        }
-                    }
-                } // script
-            } // steps
-        } // stage
-
-		  stage('Publish') {
+  	stage('Publish') {
             steps {
 
                 script {
@@ -145,33 +55,13 @@ pipeline {
                         openshift.withProject("shared-components") {
 				
                              	echo "Publishing package to registry"
-				nexusPublisher nexusInstanceId: 'mvn-prd', nexusRepositoryId: 'npm-viaa', packages: ['@viaa/avo2-types']
 			     	sh '''#/bin/bash
-			   	 # npm publish
+			   	  npm --registry http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-group/ install
 		                '''
                         }
                     }
                 } // script
             } // steps
         } // stage
-
-
-               stage('Tag out') {
-            steps {
-            input message: "TAG images for prd ?:avo2-components. Approve?", id: "approval"
-
-                script {
-                    openshift.withCluster() {
-                        openshift.withProject("shared-components") {
-                             echo "Rolling out  build from template"
-                             sh '''#!/bin/bash
-                              oc  -n shared-components tag  avo2-components-tst:latest  avo2-components-qas:latest
-                              oc  -n shared-components tag avo2-components-tst:latest avo2-components-prd:latest
-                             '''
-                        }
-                    }
-                } // script
-            } // steps
-        } // stag
     } // stages
 } // pipeline
