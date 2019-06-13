@@ -1,8 +1,11 @@
-import React, { ChangeEvent, FunctionComponent, useState } from 'react';
+import React, { ChangeEvent, FunctionComponent, useEffect, useState } from 'react';
+
+import { useDeselectEvent } from '../../hooks/useDeselectEvent';
 
 export interface RadioButtonProps {
 	label: string;
 	name: string;
+	value: string;
 	id?: string;
 	disabled?: boolean;
 	defaultChecked?: boolean;
@@ -12,18 +15,29 @@ export interface RadioButtonProps {
 export const RadioButton: FunctionComponent<RadioButtonProps> = ({
 	label,
 	name,
+	value,
 	id,
 	disabled = false,
 	defaultChecked = false,
 	onChange = () => {},
 }: RadioButtonProps) => {
-	const [value, setValue] = useState(defaultChecked);
+	const [checked, setChecked] = useState(defaultChecked);
+	const [dispatchDeselectEvent] = useDeselectEvent(name, value, deselect);
+
+	function deselect() {
+		if (value) {
+			setChecked(false);
+			onChange(false);
+		}
+	}
 
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
-		const { checked } = event.target;
+		const { checked: checkedValue } = event.target;
 
-		if (checked !== value) {
-			setValue(checked);
+		dispatchDeselectEvent();
+
+		if (checkedValue !== checked) {
+			setChecked(checked);
 			onChange(checked);
 		}
 	}
@@ -35,7 +49,7 @@ export const RadioButton: FunctionComponent<RadioButtonProps> = ({
 					type="radio"
 					name={name}
 					id={id}
-					checked={value}
+					checked={checked}
 					disabled={disabled}
 					onChange={onValueChange}
 				/>
