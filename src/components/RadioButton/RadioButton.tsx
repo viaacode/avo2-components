@@ -22,10 +22,11 @@ export const RadioButton: FunctionComponent<RadioButtonProps> = ({
 	onChange = () => {},
 }: RadioButtonProps) => {
 	const [checked, setChecked] = useState(defaultChecked);
-	const [dispatchDeselectEvent] = useDeselectEvent(name, value, deselect);
+	const [dispatchDeselectEvent] = useDeselectEvent(name, value, onDeselect);
 
-	function deselect() {
-		if (value) {
+	function onDeselect() {
+		if (checked) {
+			console.log('ds', label);
 			setChecked(false);
 			onChange(false);
 		}
@@ -37,8 +38,8 @@ export const RadioButton: FunctionComponent<RadioButtonProps> = ({
 		dispatchDeselectEvent();
 
 		if (checkedValue !== checked) {
-			setChecked(checked);
-			onChange(checked);
+			setChecked(checkedValue);
+			onChange(checkedValue);
 		}
 	}
 
@@ -48,6 +49,7 @@ export const RadioButton: FunctionComponent<RadioButtonProps> = ({
 				<input
 					type="radio"
 					name={name}
+					value={value}
 					id={id}
 					checked={checked}
 					disabled={disabled}
