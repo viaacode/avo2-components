@@ -65,8 +65,8 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	 * If you pass "false" the flyout will be hidden, even if it was hidden before the call
 	 * @param shouldOpen
 	 */
-	const toggleOpen = (shouldOpen?: boolean) => {
-		setOpen(!isUndefined(shouldOpen) ? shouldOpen : !isOpen);
+	const toggleOpen = (shouldOpen: boolean = !isOpen) => {
+		setOpen(shouldOpen);
 	};
 
 	/**
