@@ -24,7 +24,7 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
 			'c-navbar--bordered-top': position === 'bottom',
 			'c-navbar--double-spaced': spacing === 'double',
 			'c-navbar--auto': autoHeight,
-			[`.c-navbar--${background === 'alt' ? 'bg-alt' : background}`]: background,
+			[`c-navbar--${background === 'alt' ? 'bg-alt' : background}`]: background,
 		})}
 	>
 		{children}
