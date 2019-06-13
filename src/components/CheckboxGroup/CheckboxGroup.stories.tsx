@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { Checkbox } from '../..';
+import { Checkbox } from '../Checkbox/Checkbox';
 import { CheckboxGroup } from './CheckboxGroup';
 
 storiesOf('CheckboxGroup', module)

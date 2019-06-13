@@ -4,16 +4,16 @@
   "scripts": {
     "start": "start-storybook -s ./static -p 4000",
     "build": "build-storybook -o build",
-    "test": "react-scripts test --verbose --transformIgnorePatterns \\\"node_modules/(?!(lodash-es))/\\\"\"",
-    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache --transformIgnorePatterns \\\"node_modules/(?!(lodash-es))/\\\"\"",
-    "test:output": "cross-env CI=true react-scripts test --json --outputFile=.storybook/test-results.json --transformIgnorePatterns \\\"node_modules/(?!(lodash-es))/\\\"\"",
+    "test": "react-scripts test --verbose",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "test:output": "cross-env CI=true react-scripts test --json --outputFile=.storybook/test-results.json",
     "lint": "tslint -p .",
     "format": "npm run lint -- --fix",
     "preicons": "node scripts/icons.js src/icons",
     "icons": "rimraf src/components/Icons && svgr -d src/components/Icons src/icons --ext ts",
     "posticons": "named-exports --dir=src/components/Icons && renamer --find .ts --replace .tsx 'src/components/Icons/**'"
   },
-  "main": "index.ts",
+  "main": "src/index.ts",
   "publishConfig": {
     "@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-viaa/"
   },

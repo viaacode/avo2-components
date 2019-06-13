@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Checkbox } from '../..';
+import { Checkbox } from '../Checkbox/Checkbox';
 import { CheckboxGroup } from './CheckboxGroup';
 
 describe('<CheckboxGroup />', () => {
