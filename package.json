@@ -56,7 +56,6 @@
     "@tom-odb/named-exports": "^1.4.3",
     "@types/enzyme": "^3.9.2",
     "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/lodash-es": "^4.17.3",
     "@types/storybook__addon-actions": "^3.4.2",
     "@types/storybook__react": "^4.0.1",
     "cross-env": "^5.2.0",
