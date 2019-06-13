@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { Icon } from '../Icon/Icon';
 
@@ -20,6 +20,16 @@ describe('<Button />', () => {
 		const buttonComponent = shallow(<Button size="small" />);
 
 		expect(buttonComponent.hasClass('c-button--small')).toEqual(true);
+	});
+
+	it('Should set the correct width className when passing block option', () => {
+		const buttonDefaultComponent = shallow(<Button />);
+		const buttonBlockTrueComponent = shallow(<Button block={true} />);
+		const buttonBlockFalseComponent = shallow(<Button block={false} />);
+
+		expect(buttonDefaultComponent.hasClass('c-button--block')).toEqual(false);
+		expect(buttonBlockTrueComponent.hasClass('c-button--block')).toEqual(true);
+		expect(buttonBlockFalseComponent.hasClass('c-button--block')).toEqual(false);
 	});
 
 	it('Should set the correct type className', () => {
