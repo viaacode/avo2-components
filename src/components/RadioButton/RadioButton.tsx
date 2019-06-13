@@ -26,7 +26,6 @@ export const RadioButton: FunctionComponent<RadioButtonProps> = ({
 
 	function onDeselect() {
 		if (checked) {
-			console.log('ds', label);
 			setChecked(false);
 			onChange(false);
 		}
