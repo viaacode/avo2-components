@@ -2,13 +2,13 @@ import React, { Fragment } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
-
 import { Button } from '../Button/Button';
 
 import { Icon } from '../..';
 import { Toolbar } from './Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
+import { ToolbarItem } from './ToolbarItem';
+import { ToolbarTitle } from './ToolbarTitle';
 
 storiesOf('Toolbar', module)
 	.addParameters({ jest: ['Toolbar', 'ToolbarBackdrop'] })
@@ -16,97 +16,145 @@ storiesOf('Toolbar', module)
 		<Fragment>
 			<Toolbar>
 				<ToolbarLeft>
-					<Icon name="chevron-left" />
+					<ToolbarItem>
+						<Icon name="chevron-left" />
+					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
-					<p>Regular toolbar</p>
+					<ToolbarItem>
+						<ToolbarTitle>Regular toolbar</ToolbarTitle>
+					</ToolbarItem>
 				</ToolbarCenter>
 				<ToolbarRight>
-					<Button type="primary" label="Save" />
+					<ToolbarItem>
+						<Button type="primary" label="Save" />
+					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
 			<br />
 			<Toolbar size="medium">
 				<ToolbarLeft>
-					<Icon name="chevron-left" />
+					<ToolbarItem>
+						<Icon name="chevron-left" />
+					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
-					<p>Toolbar medium</p>
+					<ToolbarItem>
+						<p>Toolbar medium</p>
+					</ToolbarItem>
 				</ToolbarCenter>
 				<ToolbarRight>
-					<Button type="primary" label="Save" />
+					<ToolbarItem>
+						<Button type="primary" label="Save" />
+					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
 			<br />
 			<Toolbar spaced={true}>
 				<ToolbarLeft>
-					<Icon name="chevron-left" />
+					<ToolbarItem>
+						<Icon name="chevron-left" />
+					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
-					<p>Toolbar spaced</p>
+					<ToolbarItem>
+						<p>Toolbar spaced</p>
+					</ToolbarItem>
 				</ToolbarCenter>
 				<ToolbarRight>
-					<Button type="primary" label="Save" />
+					<ToolbarItem>
+						<Button type="primary" label="Save" />
+					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
 			<br />
 			<Toolbar autoHeight={true}>
 				<ToolbarLeft>
-					<Icon name="chevron-left" />
+					<ToolbarItem>
+						<Icon name="chevron-left" />
+					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
-					<p>Toolbar autoheight</p>
+					<ToolbarItem>
+						<p>Toolbar autoheight</p>
+					</ToolbarItem>
 				</ToolbarCenter>
 				<ToolbarRight>
-					<Button type="primary" label="Save" />
+					<ToolbarItem>
+						<Button type="primary" label="Save" />
+					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
 			<br />
 			<Toolbar alignTop={true}>
 				<ToolbarLeft>
-					<Icon name="chevron-left" />
+					<ToolbarItem>
+						<Icon name="chevron-left" />
+					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
-					<p>Toolbar alignTop</p>
+					<ToolbarItem>
+						<p>Toolbar alignTop</p>
+					</ToolbarItem>
 				</ToolbarCenter>
 				<ToolbarRight>
-					<Button type="primary" label="Save" />
+					<ToolbarItem>
+						<Button type="primary" label="Save" />
+					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
 			<br />
 			<Toolbar interactiveCenter={true}>
 				<ToolbarLeft>
-					<Icon name="chevron-left" />
+					<ToolbarItem>
+						<Icon name="chevron-left" />
+					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
-					<p>Toolbar interactiveCenter</p>
+					<ToolbarItem>
+						<p>Toolbar interactiveCenter</p>
+					</ToolbarItem>
 				</ToolbarCenter>
 				<ToolbarRight>
-					<Button type="primary" label="Save" />
+					<ToolbarItem>
+						<Button type="primary" label="Save" />
+					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
 			<br />
 			<Toolbar altCenter={true}>
 				<ToolbarLeft>
-					<Icon name="chevron-left" />
+					<ToolbarItem>
+						<Icon name="chevron-left" />
+					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
-					<p>Toolbar altCenter</p>
+					<ToolbarItem>
+						<p>Toolbar altCenter</p>
+					</ToolbarItem>
 				</ToolbarCenter>
 				<ToolbarRight>
-					<Button type="primary" label="Save" />
+					<ToolbarItem>
+						<Button type="primary" label="Save" />
+					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
 			<br />
 			<Toolbar justified={true}>
 				<ToolbarLeft>
-					<Icon name="chevron-left" />
+					<ToolbarItem>
+						<Icon name="chevron-left" />
+					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
-					<p>Toolbar justified</p>
+					<ToolbarItem>
+						<p>Toolbar justified</p>
+					</ToolbarItem>
 				</ToolbarCenter>
 				<ToolbarRight>
-					<Button type="primary" label="Save" />
+					<ToolbarItem>
+						<Button type="primary" label="Save" />
+					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
 			<br />
@@ -115,21 +163,27 @@ storiesOf('Toolbar', module)
 	.add('Left toolbar', () => (
 		<Toolbar>
 			<ToolbarLeft>
-				<Icon name="chevron-left" />
+				<ToolbarItem>
+					<Icon name="chevron-left" />
+				</ToolbarItem>
 			</ToolbarLeft>
 		</Toolbar>
 	))
 	.add('Center toolbar', () => (
 		<Toolbar>
 			<ToolbarCenter>
-				<p>Only stuff in the center</p>
+				<ToolbarItem>
+					<p>Only stuff in the center</p>
+				</ToolbarItem>
 			</ToolbarCenter>
 		</Toolbar>
 	))
 	.add('Right toolbar', () => (
 		<Toolbar>
 			<ToolbarRight>
-				<Button type="primary" label="Only right" />
+				<ToolbarItem>
+					<Button type="primary" label="Only right" />
+				</ToolbarItem>
 			</ToolbarRight>
 		</Toolbar>
 	));
