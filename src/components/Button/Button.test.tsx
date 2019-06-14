@@ -113,4 +113,24 @@ describe('<Button />', () => {
 
 		expect(buttonElement.prop('disabled')).toEqual(true);
 	});
+
+	it('Should set the correct classNames when `active` is passed', () => {
+		const buttonComponent = shallow(<Button active={true} />);
+
+		const buttonElement = buttonComponent.find('button');
+
+		expect(buttonElement.hasClass('c-button-action')).toEqual(true);
+		expect(buttonElement.hasClass('active')).toEqual(true);
+	});
+
+	it('Should pass on the `active`-prop to the button icon', () => {
+		const activeButtonComponent = shallow(<Button active={true} icon="heart" />);
+		const inactiveButtonComponent = shallow(<Button active={false} icon="heart" />);
+
+		const activeIconComponent = activeButtonComponent.find(Icon);
+		const inactiveIconComponent = inactiveButtonComponent.find(Icon);
+
+		expect(activeIconComponent.prop('active')).toEqual(true);
+		expect(inactiveIconComponent.prop('active')).toEqual(false);
+	});
 });
