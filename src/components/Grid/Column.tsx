@@ -55,6 +55,12 @@ export interface ColumnProps {
 	children: ReactNode;
 }
 
-export const Column: FunctionComponent<ColumnProps> = ({ size, children }: ColumnProps) => (
-	<div className={`o-grid-col-${size}`}>{children}</div>
-);
+export const Column: FunctionComponent<ColumnProps> = ({ size, children }: ColumnProps) => {
+	let className = 'o-grid-col-';
+	if (className.includes('-')) {
+		className += `bp${size}`;
+	} else {
+		className += size;
+	}
+	return <div className={className}>{children}</div>;
+};
