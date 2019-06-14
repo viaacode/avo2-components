@@ -8,6 +8,7 @@ import { Badge } from './components/Badge/Badge';
 import { Blankslate } from './components/Blankslate/Blankslate';
 import { Button } from './components/Button/Button';
 import { Checkbox } from './components/Checkbox/Checkbox';
+import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 import { Container } from './components/Container/Container';
 import { DatePicker } from './components/DatePicker/DatePicker';
 import { Form } from './components/Form/Form';
@@ -16,6 +17,7 @@ import { Column } from './components/Grid/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
 import { Modal } from './components/Modal/Modal';
+import { ModalBody, ModalFooterLeft, ModalFooterRight } from './components/Modal/Modal.slots';
 import { Pagination } from './components/Pagination/Pagination';
 import { RadioButton } from './components/RadioButton/RadioButton';
 import { Select } from './components/Select/Select';
@@ -32,6 +34,7 @@ export {
 	Blankslate,
 	Button,
 	Checkbox,
+	CheckboxGroup,
 	Container,
 	DatePicker,
 	Form,
@@ -40,6 +43,9 @@ export {
 	Column,
 	Icon,
 	Modal,
+	ModalBody,
+	ModalFooterLeft,
+	ModalFooterRight,
 	Pagination,
 	RadioButton,
 	Select,
