@@ -16,6 +16,7 @@ import { Column } from './components/Grid/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
 import { Modal } from './components/Modal/Modal';
+import { ModalBody, ModalFooterLeft, ModalFooterRight } from './components/Modal/Modal.slots';
 import { Pagination } from './components/Pagination/Pagination';
 import { RadioButton } from './components/RadioButton/RadioButton';
 import { Select } from './components/Select/Select';
@@ -40,6 +41,9 @@ export {
 	Column,
 	Icon,
 	Modal,
+	ModalBody,
+	ModalFooterLeft,
+	ModalFooterRight,
 	Pagination,
 	RadioButton,
 	Select,
