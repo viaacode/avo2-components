@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
+import { Button } from '../..';
 import { action } from '../../helpers/action';
 import { Dropdown } from './Dropdown';
 
@@ -14,6 +15,7 @@ storiesOf('Dropdown', module)
 			<div>Three</div>
 			<div>Four</div>
 			<div>Five</div>
+			<Button className="c-dropdown-menu__close" label="Close" block={true} />
 		</Dropdown>
 	))
 	.add('Dropdown up', () => (

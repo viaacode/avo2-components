@@ -2,7 +2,6 @@ import { mount } from 'enzyme';
 import React, { createRef, RefObject } from 'react';
 
 import { useClickOutside } from './useClickOutside';
-import { useKeyPress } from './useKeyPress';
 
 const TestComponent = ({ onClickOutside }: { onClickOutside: () => void }) => {
 	const spanElem: RefObject<HTMLButtonElement | null> = createRef();

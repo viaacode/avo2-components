@@ -21,6 +21,7 @@ export interface ButtonProps {
 	icon?: string;
 	arrow?: boolean;
 	disabled?: boolean;
+	className?: string;
 	onClick?(event: MouseEvent<HTMLElement>): void;
 }
 
@@ -32,10 +33,11 @@ const Button: FunctionComponent<ButtonProps> = ({
 	icon,
 	arrow,
 	disabled,
+	className,
 	onClick,
 }: ButtonProps) => (
 	<button
-		className={classNames('c-button', {
+		className={classNames(`c-button ${className}`, {
 			'c-button--small': size === 'small',
 			'c-button--block': block,
 			'c-button--icon': icon && !label,

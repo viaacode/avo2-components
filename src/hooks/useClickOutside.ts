@@ -6,7 +6,7 @@ export function useClickOutside(
 ) {
 	useEffect(() => {
 		function clickOutsideHandler(event: MouseEvent) {
-			if (isPartOfElement(event.target as Element | null)) {
+			if (!isPartOfElement(event.target as Element | null)) {
 				if (onClickOutside) {
 					onClickOutside();
 				}

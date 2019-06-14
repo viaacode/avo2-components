@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
-import { Modal } from '../..';
+import { Button, Modal } from '../..';
 import { Dropdown } from './Dropdown';
 
 describe('<Dropdown />', () => {
@@ -100,6 +100,28 @@ describe('<Dropdown />', () => {
 		dropdownButton.simulate('click');
 
 		expect(onOpenHandler).toHaveBeenCalledTimes(1);
+		expect(onCloseHandler).toHaveBeenCalled();
+		expect(onCloseHandler).toHaveBeenCalledTimes(1);
+	});
+
+	it('Should close flyout when close button is clicked inside the dropdown', () => {
+		const onCloseHandler = jest.fn();
+
+		const dropdownComponent = mount(
+			<Dropdown label="Show options" onClose={onCloseHandler}>
+				<div>OneOneOneOneOneOne</div>
+				<div>Two</div>
+				<div>Three</div>
+				<div>Four</div>
+				<div>Five</div>
+				<Button className="c-dropdown-menu__close" label="Close" block={true} />
+			</Dropdown>
+		);
+
+		const closeButton = dropdownComponent.find('.c-dropdown-menu__close');
+
+		closeButton.simulate('click');
+
 		expect(onCloseHandler).toHaveBeenCalled();
 		expect(onCloseHandler).toHaveBeenCalledTimes(1);
 	});

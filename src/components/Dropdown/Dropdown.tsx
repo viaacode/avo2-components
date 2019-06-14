@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { get, isUndefined } from 'lodash-es';
+import { get } from 'lodash-es';
 import PopperJS, { Data, ModifierFn } from 'popper.js';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
@@ -47,7 +47,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	onClose,
 	children,
 }: DropdownProps) => {
-	const [isOpen, setOpen] = useState(false);
+	const [dropdownOpen, setOpen] = useState(false);
 
 	let dropdownButton: HTMLButtonElement | null = null;
 	let dropdownFlyout: HTMLDivElement | null = null;
@@ -57,10 +57,18 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	 * @param elem
 	 */
 	const isPartOfElement = (elem: Element | null): boolean => {
+		if (!dropdownButton || !dropdownFlyout) {
+			return false;
+		}
 		return Boolean(
 			elem &&
-				(!dropdownButton || !dropdownButton.contains(elem)) &&
-				(!dropdownFlyout || !dropdownFlyout.contains(elem))
+				// Close button inside the menu
+				(!elem.classList.contains('c-dropdown-menu__close') &&
+					!elem.closest('.c-dropdown-menu__close')) &&
+				// Dropdown button (this element has its own toggleOpen click handler)
+				(dropdownButton.contains(elem) ||
+					// Dropdown menu
+					dropdownFlyout.contains(elem))
 		);
 	};
 
@@ -70,13 +78,13 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	 * If you pass "false" the flyout will be hidden, even if it was hidden before the call
 	 * @param shouldOpen
 	 */
-	const toggleOpen = (shouldOpen: boolean = !isOpen) => {
-		if (isOpen && !shouldOpen) {
+	const toggleOpen = (shouldOpen: boolean = !dropdownOpen) => {
+		if (dropdownOpen && !shouldOpen) {
 			setOpen(shouldOpen);
 			if (onClose) {
 				onClose();
 			}
-		} else if (!isOpen && shouldOpen) {
+		} else if (!dropdownOpen && shouldOpen) {
 			setOpen(shouldOpen);
 			if (onOpen) {
 				onOpen();
@@ -129,7 +137,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 					>
 						<div className="c-button__content">
 							<div className="c-button__label">{label}</div>
-							<Icon name={isOpen ? 'caret-up' : 'caret-down'} size="small" type="arrows" />
+							<Icon name={dropdownOpen ? 'caret-up' : 'caret-down'} size="small" type="arrows" />
 						</div>
 					</button>
 				)}
@@ -138,7 +146,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 				{({ ref, style, placement }) => (
 					<div
 						className={classNames('c-menu', {
-							'c-menu--visible': isOpen,
+							'c-menu--visible': dropdownOpen,
 						})}
 						ref={reference => {
 							dropdownFlyout = reference;
