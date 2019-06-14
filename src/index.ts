@@ -24,6 +24,9 @@ import { Swatch } from './components/Swatch/Swatch';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
 import { Toolbar } from './components/Toolbar/Toolbar';
+import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/Toolbar.slots';
+import { ToolbarItem } from './components/Toolbar/ToolbarItem';
+import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 
 export {
 	COLORS,
@@ -49,4 +52,9 @@ export {
 	TagList,
 	TextInput,
 	Toolbar,
+	ToolbarLeft,
+	ToolbarCenter,
+	ToolbarRight,
+	ToolbarItem,
+	ToolbarTitle,
 };
