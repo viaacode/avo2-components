@@ -8,6 +8,7 @@ import { Badge } from './components/Badge/Badge';
 import { Blankslate } from './components/Blankslate/Blankslate';
 import { Button } from './components/Button/Button';
 import { Checkbox } from './components/Checkbox/Checkbox';
+import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 import { Container } from './components/Container/Container';
 import { DatePicker } from './components/DatePicker/DatePicker';
 import { Form } from './components/Form/Form';
@@ -33,6 +34,7 @@ export {
 	Blankslate,
 	Button,
 	Checkbox,
+	CheckboxGroup,
 	Container,
 	DatePicker,
 	Form,
