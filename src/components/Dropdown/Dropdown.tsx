@@ -60,15 +60,21 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 		if (!dropdownButton || !dropdownFlyout) {
 			return false;
 		}
-		return Boolean(
-			elem &&
-				// Close button inside the menu
-				(!elem.classList.contains('c-dropdown-menu__close') &&
-					!elem.closest('.c-dropdown-menu__close')) &&
-				// Dropdown button (this element has its own toggleOpen click handler)
-				(dropdownButton.contains(elem) ||
-					// Dropdown menu
-					dropdownFlyout.contains(elem))
+		if (!elem) {
+			return false;
+		}
+		if (
+			elem.classList.contains('c-dropdown-menu__close') ||
+			elem.closest('.c-dropdown-menu__close')
+		) {
+			// Close button inside the menu
+			return false;
+		}
+		// If either the dropdown or the flyout contains the element then it is part of the dropdown
+		return (
+			dropdownButton.contains(elem) ||
+			// Dropdown menu
+			dropdownFlyout.contains(elem)
 		);
 	};
 
