@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
@@ -9,7 +9,7 @@ export interface ImageProps {
 }
 
 export const Image: FunctionComponent<ImageProps> = ({ src, alt, wide }: ImageProps) => (
-	<div className={classnames({ 'c-image': !wide, 'c-image--full-width': wide })}>
+	<div className={classnames('c-image', { 'c-image--full-width': wide })}>
 		<img src={src} alt={alt} />
 	</div>
 );

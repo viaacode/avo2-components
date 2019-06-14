@@ -19,7 +19,6 @@ describe('<Image />', () => {
 		const imageComponent = shallow(<Image src="https://source.unsplash.com/random" wide />);
 
 		expect(imageComponent.hasClass('c-image--full-width')).toEqual(true);
-		expect(imageComponent.hasClass('c-image')).toEqual(false);
 	});
 
 	it('Should correctly pass on `src` and `alt` to the <img>', () => {
