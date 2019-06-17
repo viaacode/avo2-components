@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export function useCallbackRef<HTMLElement>(
 	element?: HTMLElement
