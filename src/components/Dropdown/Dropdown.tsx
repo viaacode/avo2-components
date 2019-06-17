@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 
 import classNames from 'classnames';
-import { get } from 'lodash-es';
+import { get } from 'lodash';
 import PopperJS, { Data, ModifierFn } from 'popper.js';
 import { Manager, Popper, Reference } from 'react-popper';
 
