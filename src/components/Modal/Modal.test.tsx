@@ -176,9 +176,7 @@ describe('<Modal />', () => {
 			currentTarget: '.c-modal-context',
 		});
 
-		expect(onCloseHandler).toHaveBeenCalled();
-		expect(onCloseHandler).toHaveBeenCalledTimes(1);
-		expect(modalWrapperElement.hasClass('c-modal-context--visible')).toEqual(true);
+		expect(onCloseHandler).toHaveBeenCalledTimes(0);
 	});
 
 	it('Should correctly render the body', () => {
