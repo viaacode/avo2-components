@@ -48,6 +48,7 @@ describe('<Dropdown />', () => {
 			.simulate('click');
 
 		expect(dropdownComponent.find('.c-menu')).toHaveLength(1);
+		expect(dropdownComponent.find('.c-menu--visible')).toHaveLength(1);
 	});
 
 	it('Should set the correct className for button', () => {
@@ -69,12 +70,11 @@ describe('<Dropdown />', () => {
 		).toEqual(true);
 	});
 
-	it('Should call the onOpen/onClose handlers when opening/closing the flyout', () => {
-		const onOpenHandler = jest.fn();
-		const onCloseHandler = jest.fn();
+	it('Should correctly pass `label`', () => {
+		const label = 'Test label';
 
 		const dropdownComponent = mount(
-			<Dropdown label="Show options" onOpen={onOpenHandler} onClose={onCloseHandler}>
+			<Dropdown label={label}>
 				<div>OneOneOneOneOneOne</div>
 				<div>Two</div>
 				<div>Three</div>
@@ -83,46 +83,6 @@ describe('<Dropdown />', () => {
 			</Dropdown>
 		);
 
-		const dropdownButton = dropdownComponent.find('.c-button');
-		const dropdownMenu = dropdownComponent.find('.c-menu');
-
-		dropdownButton.simulate('click');
-
-		expect(onOpenHandler).toHaveBeenCalled();
-		expect(onOpenHandler).toHaveBeenCalledTimes(1);
-		expect(onCloseHandler).toHaveBeenCalledTimes(0);
-
-		dropdownMenu.simulate('click');
-
-		expect(onOpenHandler).toHaveBeenCalledTimes(1);
-		expect(onCloseHandler).toHaveBeenCalledTimes(0);
-
-		dropdownButton.simulate('click');
-
-		expect(onOpenHandler).toHaveBeenCalledTimes(1);
-		expect(onCloseHandler).toHaveBeenCalled();
-		expect(onCloseHandler).toHaveBeenCalledTimes(1);
-	});
-
-	it('Should close flyout when close button is clicked inside the dropdown', () => {
-		const onCloseHandler = jest.fn();
-
-		const dropdownComponent = mount(
-			<Dropdown label="Show options" onClose={onCloseHandler}>
-				<div>OneOneOneOneOneOne</div>
-				<div>Two</div>
-				<div>Three</div>
-				<div>Four</div>
-				<div>Five</div>
-				<Button className="c-dropdown-menu__close" label="Close" block={true} />
-			</Dropdown>
-		);
-
-		const closeButton = dropdownComponent.find('.c-dropdown-menu__close');
-
-		closeButton.simulate('click');
-
-		expect(onCloseHandler).toHaveBeenCalled();
-		expect(onCloseHandler).toHaveBeenCalledTimes(1);
+		expect(dropdownComponent.find('.c-button__label').text()).toEqual(label);
 	});
 });
