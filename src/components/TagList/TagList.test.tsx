@@ -29,6 +29,17 @@ describe('<TagList />', () => {
 		expect(tagListComponent.hasClass('c-tag-list')).toEqual(true);
 	});
 
+	it('Should correctly render the labels', () => {
+		const tagListComponent = shallow(<TagList tags={tags} />);
+
+		expect(
+			tagListComponent
+				.find('.c-tag__label')
+				.at(0)
+				.text()
+		).toEqual(tags[0]);
+	});
+
 	it('Should be able to render with swatches', () => {
 		const tagListComponent = shallow(<TagList tags={tags} />);
 
