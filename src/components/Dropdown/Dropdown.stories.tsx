@@ -37,12 +37,6 @@ storiesOf('Dropdown', module)
 				<span className="c-menu__item">Cadmium</span>
 				<span className="c-menu__item">Dubnium</span>
 				<span className="c-menu__item">Potassium</span>
-				<span className="c-menu__item">Vanadium</span>
-				<span className="c-menu__item">Palladium</span>
-				<span className="c-menu__item">Polonium</span>
-				<span className="c-menu__item">Rhodium</span>
-				<span className="c-menu__item">Yttrium</span>
-				<span className="c-menu__item">Uranium</span>
 			</Dropdown>
 		</DropdownStoryComponent>
 	))
@@ -54,12 +48,6 @@ storiesOf('Dropdown', module)
 					<span className="c-menu__item">Cadmium</span>
 					<span className="c-menu__item">Dubnium</span>
 					<span className="c-menu__item">Potassium</span>
-					<span className="c-menu__item">Vanadium</span>
-					<span className="c-menu__item">Palladium</span>
-					<span className="c-menu__item">Polonium</span>
-					<span className="c-menu__item">Rhodium</span>
-					<span className="c-menu__item">Yttrium</span>
-					<span className="c-menu__item">Uranium</span>
 				</Dropdown>
 			</DropdownStoryComponent>
 		</div>
@@ -71,12 +59,6 @@ storiesOf('Dropdown', module)
 				<span className="c-menu__item">Cadmium</span>
 				<span className="c-menu__item">Dubnium</span>
 				<span className="c-menu__item">Potassium</span>
-				<span className="c-menu__item">Vanadium</span>
-				<span className="c-menu__item">Palladium</span>
-				<span className="c-menu__item">Polonium</span>
-				<span className="c-menu__item">Rhodium</span>
-				<span className="c-menu__item">Yttrium</span>
-				<span className="c-menu__item">Uranium</span>
 			</Dropdown>
 		</DropdownStoryComponent>
 	))
@@ -87,12 +69,6 @@ storiesOf('Dropdown', module)
 				<span className="c-menu__item">Cadmium</span>
 				<span className="c-menu__item">Dubnium</span>
 				<span className="c-menu__item">Potassium</span>
-				<span className="c-menu__item">Vanadium</span>
-				<span className="c-menu__item">Palladium</span>
-				<span className="c-menu__item">Polonium</span>
-				<span className="c-menu__item">Rhodium</span>
-				<span className="c-menu__item">Yttrium</span>
-				<span className="c-menu__item">Uranium</span>
 			</Dropdown>
 		</DropdownStoryComponent>
 	))
@@ -104,12 +80,6 @@ storiesOf('Dropdown', module)
 					<span className="c-menu__item">Cadmium</span>
 					<span className="c-menu__item">Dubnium</span>
 					<span className="c-menu__item">Potassium</span>
-					<span className="c-menu__item">Vanadium</span>
-					<span className="c-menu__item">Palladium</span>
-					<span className="c-menu__item">Polonium</span>
-					<span className="c-menu__item">Rhodium</span>
-					<span className="c-menu__item">Yttrium</span>
-					<span className="c-menu__item">Uranium</span>
 				</Dropdown>
 			</DropdownStoryComponent>
 		</div>
@@ -121,12 +91,6 @@ storiesOf('Dropdown', module)
 				<span className="c-menu__item">Cadmium</span>
 				<span className="c-menu__item">Dubnium</span>
 				<span className="c-menu__item">Potassium</span>
-				<span className="c-menu__item">Vanadium</span>
-				<span className="c-menu__item">Palladium</span>
-				<span className="c-menu__item">Polonium</span>
-				<span className="c-menu__item">Rhodium</span>
-				<span className="c-menu__item">Yttrium</span>
-				<span className="c-menu__item">Uranium</span>
 			</Dropdown>
 		</DropdownStoryComponent>
 	))
@@ -138,12 +102,6 @@ storiesOf('Dropdown', module)
 					<span className="c-menu__item">Cadmium</span>
 					<span className="c-menu__item">Dubnium</span>
 					<span className="c-menu__item">Potassium</span>
-					<span className="c-menu__item">Vanadium</span>
-					<span className="c-menu__item">Palladium</span>
-					<span className="c-menu__item">Polonium</span>
-					<span className="c-menu__item">Rhodium</span>
-					<span className="c-menu__item">Yttrium</span>
-					<span className="c-menu__item">Uranium</span>
 				</Dropdown>
 			</DropdownStoryComponent>
 		</div>
