@@ -1,7 +1,6 @@
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
-import { Form } from './Form';
 import { FormGroup } from './FormGroup';
 
 describe('<FormGroup />', () => {

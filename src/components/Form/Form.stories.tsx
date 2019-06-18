@@ -2,7 +2,10 @@ import React, { Fragment } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { Button, Select, TextInput } from '../..';
+import { Button } from '../Button/Button';
+import { Select } from '../Select/Select';
+import { TextInput } from '../TextInput/TextInput';
+
 import { Form } from './Form';
 import { FormGroup } from './FormGroup';
 
