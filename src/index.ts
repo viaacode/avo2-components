@@ -19,6 +19,7 @@ import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
 import { Modal } from './components/Modal/Modal';
 import { ModalBody, ModalFooterLeft, ModalFooterRight } from './components/Modal/Modal.slots';
+import { Navbar } from './components/Navbar/Navbar';
 import { Pagination } from './components/Pagination/Pagination';
 import { RadioButton } from './components/RadioButton/RadioButton';
 import { RadioButtonGroup } from './components/RadioButtonGroup/RadioButtonGroup';
@@ -49,6 +50,7 @@ export {
 	ModalBody,
 	ModalFooterLeft,
 	ModalFooterRight,
+	Navbar,
 	Pagination,
 	RadioButton,
 	RadioButtonGroup,
