@@ -1,8 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Icon } from '../Icon/Icon';
-
 import { Thumbnail } from './Thumbnail';
 
 describe('<Thumbnail />', () => {
@@ -12,7 +10,7 @@ describe('<Thumbnail />', () => {
 				src="images/thumbnail.jpg"
 				meta="4 items"
 				category="collection"
-				label="collectie"
+				label="collection"
 			/>
 		);
 	});
@@ -23,7 +21,7 @@ describe('<Thumbnail />', () => {
 				src="images/thumbnail.jpg"
 				meta="4 items"
 				category="collection"
-				label="collectie"
+				label="collection"
 			/>
 		);
 
@@ -36,7 +34,7 @@ describe('<Thumbnail />', () => {
 				src="images/thumbnail.jpg"
 				meta="4 items"
 				category="collection"
-				label="collectie"
+				label="collection"
 			/>
 		);
 
@@ -49,7 +47,7 @@ describe('<Thumbnail />', () => {
 
 	it('Should render placeholder if no src was given', () => {
 		const thumbnailComponent = shallow(
-			<Thumbnail meta="4 items" category="collection" label="collectie" />
+			<Thumbnail meta="4 items" category="collection" label="collection" />
 		);
 
 		const imageContainer = thumbnailComponent.find('.c-thumbnail-image');
