@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { Component } from 'react';
 
 import { Icon } from '../Icon/Icon';
 
@@ -14,7 +14,7 @@ export interface ThumbnailState {
 	loaded: boolean;
 }
 
-export class Thumbnail extends React.Component<ThumbnailProps, ThumbnailState> {
+export class Thumbnail extends Component<ThumbnailProps, ThumbnailState> {
 	constructor(props: ThumbnailProps) {
 		super(props);
 

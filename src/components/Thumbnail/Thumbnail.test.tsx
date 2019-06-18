@@ -1,8 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Icon } from '../Icon/Icon';
-
 import { Thumbnail } from './Thumbnail';
 
 describe('<Thumbnail />', () => {
