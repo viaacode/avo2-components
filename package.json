@@ -4,14 +4,15 @@
   "scripts": {
     "start": "start-storybook -s ./static -p 4000",
     "build": "build-storybook -o build",
+    "build:with-sourcemaps": "cross-env GENERATE_SOURCEMAP=true build-storybook -o build",
     "test": "jest --verbose",
-    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "test:output": "cross-env CI=true jest --json --outputFile=.storybook/test-results.json",
     "lint": "tslint -p .",
     "format": "npm run lint -- --fix",
     "preicons": "node scripts/icons.js src/icons",
     "icons": "rimraf src/components/Icons && svgr -d src/components/Icons src/icons --ext ts",
-    "posticons": "named-exports --dir=src/components/Icons && renamer --find .ts --replace .tsx 'src/components/Icons/**'"
+    "posticons": "named-exports --dir=src/components/Icons && renamer --find .ts --replace .tsx 'src/components/Icons/**'",
+    "analyze": "source-map-explorer 'build/*.js'"
   },
   "main": "src/index.ts",
   "publishConfig": {
@@ -40,6 +41,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
+    "source-map-explorer": "^2.0.0",
     "typescript": "3.4.5"
   },
   "devDependencies": {
