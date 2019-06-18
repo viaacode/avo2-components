@@ -17,9 +17,9 @@ const mockMetaData = [
 	},
 ];
 
-storiesOf('Media Card', module)
-	.addParameters({ jest: ['Media Card'] })
-	.add('Media Card (vertical)', () => (
+storiesOf('MediaCard', module)
+	.addParameters({ jest: ['MediaCard'] })
+	.add('Medias card (vertical)', () => (
 		<div className="o-grid-col-bp3-4">
 			<MediaCard
 				title="What an amazing title!"
@@ -33,7 +33,7 @@ storiesOf('Media Card', module)
 			/>
 		</div>
 	))
-	.add('Media Card (horizontal)', () => (
+	.add('Media card (horizontal)', () => (
 		<div className="o-grid-col-bp4-4">
 			<MediaCard
 				orientation="horizontal"

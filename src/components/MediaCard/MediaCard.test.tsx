@@ -16,7 +16,7 @@ const mockMetaData = [
 	},
 ];
 
-describe('<MetaDataItem />', () => {
+describe('<MediaCard />', () => {
 	it('Should be able to render', () => {
 		shallow(<MediaCard title="What an amazing title!" href="#" category="collection" />);
 	});
@@ -27,6 +27,49 @@ describe('<MetaDataItem />', () => {
 		);
 
 		expect(mediaCardComponent.hasClass('c-media-card')).toEqual(true);
+	});
+
+	it('Should set the correct className for each category', () => {
+		const mediaCardComponent = shallow(
+			<MediaCard title="What an amazing title!" href="#" category="collection" />
+		);
+
+		expect(mediaCardComponent.hasClass('c-media-card--collection')).toEqual(true);
+	});
+
+	it('Should render Thumbnail component', () => {
+		const mediaCardComponent = mount(
+			<MediaCard title="What an amazing title!" href="#" category="collection" />
+		);
+
+		const thumbnailElement = mediaCardComponent.find('.c-thumbnail');
+
+		expect(thumbnailElement).toHaveLength(1);
+	});
+
+	it('Should not render MetaData component when none is passed.', () => {
+		const mediaCardComponent = mount(
+			<MediaCard title="What an amazing title!" href="#" category="collection" />
+		);
+
+		const metaDataElement = mediaCardComponent.find('.c-meta-data');
+
+		expect(metaDataElement).toHaveLength(0);
+	});
+
+	it('Should render MetaData component when metaData is passed.', () => {
+		const mediaCardComponent = mount(
+			<MediaCard
+				title="What an amazing title!"
+				metaData={mockMetaData}
+				href="#"
+				category="collection"
+			/>
+		);
+
+		const metaDataElement = mediaCardComponent.find('.c-meta-data');
+
+		expect(metaDataElement).toHaveLength(1);
 	});
 
 	// TODO: Add tests.
