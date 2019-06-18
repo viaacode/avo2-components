@@ -17,6 +17,7 @@ import { FormGroup } from './components/Form/FormGroup';
 import { Column } from './components/Grid/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
+import { MetaData } from './components/MetaData/MetaData';
 import { Modal } from './components/Modal/Modal';
 import { ModalBody, ModalFooterLeft, ModalFooterRight } from './components/Modal/Modal.slots';
 import { Pagination } from './components/Pagination/Pagination';
@@ -45,6 +46,7 @@ export {
 	Grid,
 	Column,
 	Icon,
+	MetaData,
 	Modal,
 	ModalBody,
 	ModalFooterLeft,
