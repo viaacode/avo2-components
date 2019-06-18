@@ -136,6 +136,31 @@ storiesOf('Button', module)
 			</div>
 		</Fragment>
 	))
+	.add('Block buttons', () => (
+		<Fragment>
+			<div className="u-spacer-bottom">
+				<Button label="Primary button" type="primary" icon="plus" block={true} />
+			</div>
+			<div className="u-spacer-bottom">
+				<Button label="Secondary button" type="secondary" icon="search" block={true} />
+			</div>
+			<div className="u-spacer-bottom">
+				<Button label="Tertiary button" type="tertiary" icon="database" block={true} />
+			</div>
+			<div className="u-spacer-bottom">
+				<Button label="Link button" type="link" icon="link" block={true} />
+			</div>
+			<div className="u-spacer-bottom">
+				<Button label="Danger button" type="danger" icon="x-circle" block={true} />
+			</div>
+			<div className="u-spacer-bottom">
+				<Button label="Danger (hover) button" type="danger-hover" icon="x-square" block={true} />
+			</div>
+			<div className="u-spacer-bottom">
+				<Button label="Borderless button" type="borderless" icon="tag" block={true} />
+			</div>
+		</Fragment>
+	))
 	.add('Inverse buttons', () => (
 		<Fragment>
 			<div className="u-spacer-bottom">

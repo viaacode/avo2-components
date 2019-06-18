@@ -8,9 +8,10 @@ export interface IconProps {
 	name: string;
 	size?: 'small' | 'large' | 'huge';
 	type?: 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';
+	active?: boolean;
 }
 
-export const Icon: FunctionComponent<IconProps> = ({ name, size, type }: IconProps) => {
+export const Icon: FunctionComponent<IconProps> = ({ name, size, type, active }: IconProps) => {
 	const IconToRender = (Icons as any)[toPascalCase(name)];
 
 	function getIconName() {
@@ -39,6 +40,7 @@ export const Icon: FunctionComponent<IconProps> = ({ name, size, type }: IconPro
 		IconToRender && (
 			<div
 				className={classNames('o-svg-icon', getIconName(), {
+					'o-svg-icon--action-active': active,
 					'o-svg-icon-multicolor': type === 'multicolor',
 					[`o-svg-icon--${size}`]: size,
 				})}

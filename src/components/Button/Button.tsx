@@ -17,8 +17,10 @@ export interface ButtonProps {
 		| 'danger-hover'
 		| 'link';
 	size?: 'small';
+	block?: boolean;
 	icon?: string;
 	arrow?: boolean;
+	active?: boolean;
 	disabled?: boolean;
 	onClick?(event: MouseEvent<HTMLElement>): void;
 }
@@ -27,14 +29,19 @@ const Button: FunctionComponent<ButtonProps> = ({
 	label,
 	type,
 	size,
+	block = false,
 	icon,
 	arrow,
+	active,
 	disabled,
 	onClick,
 }: ButtonProps) => (
 	<button
 		className={classNames('c-button', {
+			active,
+			'c-button-action': active,
 			'c-button--small': size === 'small',
+			'c-button--block': block,
 			'c-button--icon': icon && !label,
 			[`c-button--${type}`]: type,
 		})}
@@ -42,7 +49,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 		disabled={disabled}
 	>
 		<div className="c-button__content">
-			{icon && <Icon name={icon} />}
+			{icon && <Icon name={icon} active={active} />}
 			{label && <div className="c-button__label">{label}</div>}
 			{arrow && <Icon name="caret-down" />}
 		</div>
