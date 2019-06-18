@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 
 import classNames from 'classnames';
-import { get } from 'lodash';
+import { get } from 'lodash-es';
 import PopperJS, { Data, ModifierFn } from 'popper.js';
 import { Manager, Popper, Reference } from 'react-popper';
 
@@ -13,6 +13,7 @@ import { Icon } from '../Icon/Icon';
 
 export interface DropdownProps {
 	label: string;
+	isOpen: boolean;
 	placement?:
 		| 'auto'
 		| 'auto-start'
@@ -31,6 +32,8 @@ export interface DropdownProps {
 		| 'left-end';
 	autoSize?: boolean;
 	children: ReactNode;
+	onOpen?: () => void;
+	onClose?: () => void;
 }
 
 /**
@@ -43,11 +46,13 @@ export interface DropdownProps {
  */
 export const Dropdown: FunctionComponent<DropdownProps> = ({
 	label,
+	isOpen,
 	placement = 'bottom-start',
 	autoSize = false,
 	children,
+	onOpen = () => {},
+	onClose = () => {},
 }: DropdownProps) => {
-	const [dropdownOpen, setOpen] = useState(false);
 	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef();
 	const [dropdownButton, dropdownButtonRef] = useCallbackRef();
 
@@ -56,8 +61,8 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	 * If you pass "true", the flyout will be set to visible, even if it was visible before the call
 	 * If you pass "false" the flyout will be hidden, even if it was hidden before the call
 	 */
-	const toggle = (openState: boolean = !dropdownOpen) => {
-		setOpen(openState);
+	const toggle = (openState: boolean = !isOpen) => {
+		openState ? onOpen() : onClose();
 	};
 
 	const toggleClosed = () => toggle(false);
@@ -94,7 +99,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 					<button className="c-button c-button--secondary" ref={ref} onClick={() => toggle()}>
 						<div className="c-button__content">
 							<div className="c-button__label">{label}</div>
-							<Icon name={dropdownOpen ? 'caret-up' : 'caret-down'} size="small" type="arrows" />
+							<Icon name={isOpen ? 'caret-up' : 'caret-down'} size="small" type="arrows" />
 						</div>
 					</button>
 				)}
@@ -103,7 +108,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 				{({ ref, style, placement }) => (
 					<div
 						className={classNames('c-menu', {
-							'c-menu--visible': dropdownOpen,
+							'c-menu--visible': isOpen,
 						})}
 						ref={ref}
 						data-placement={placement}
