@@ -22,7 +22,9 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 	const [loaded, setLoaded] = useState(false);
 
 	return (
-		<div className={`c-thumbnail c-thumbnail-media c-thumbnail-media--${category}`}>
+		<div
+			className={classNames('c-thumbnail', 'c-thumbnail-media', `c-thumbnail-media--${category}`)}
+		>
 			<div className="c-thumbnail-placeholder">{category && <Icon name={category} />}</div>
 			{src && (
 				<div className="c-thumbnail-image">
