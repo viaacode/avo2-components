@@ -72,5 +72,18 @@ describe('<MediaCard />', () => {
 		expect(metaDataElement).toHaveLength(1);
 	});
 
-	// TODO: Add tests.
+	it('Should pass href property to child element.', () => {
+		const mediaCardComponent = mount(
+			<MediaCard
+				title="What an amazing title!"
+				metaData={mockMetaData}
+				href="#"
+				category="collection"
+			/>
+		);
+
+		const metaCardThumbElement = mediaCardComponent.find('.c-media-card-thumb');
+
+		expect(metaCardThumbElement.prop('href')).toEqual('#');
+	});
 });
