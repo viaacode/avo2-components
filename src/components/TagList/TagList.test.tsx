@@ -34,14 +34,14 @@ describe('<TagList />', () => {
 
 		expect(
 			tagListComponent
-				.find('.c-tag__label')
+				.find('.c-label-text')
 				.at(0)
 				.text()
 		).toEqual(tags[0]);
 	});
 
 	it('Should be able to render with swatches', () => {
-		const tagListComponent = shallow(<TagList tags={tags} />);
+		const tagListComponent = shallow(<TagList tags={tags} swatches={true} />);
 
 		const tagElements = tagListComponent.find('.c-label-swatch');
 
@@ -54,6 +54,20 @@ describe('<TagList />', () => {
 		const tagElements = tagListComponent.find('.c-label-swatch');
 
 		expect(tagElements).toHaveLength(0);
+	});
+
+	it('Should set the correct className for labels when rendering with swatches', () => {
+		const tagListComponent = shallow(<TagList tags={tags} swatches={true} />);
+
+		expect(tagListComponent.find('.c-label-text')).toHaveLength(tags.length);
+		expect(tagListComponent.find('.c-tag__label')).toHaveLength(0);
+	});
+
+	it('Should set the correct className for labels when rendering without swatches', () => {
+		const tagListComponent = shallow(<TagList tags={tags} swatches={false} />);
+
+		expect(tagListComponent.find('.c-label-text')).toHaveLength(0);
+		expect(tagListComponent.find('.c-tag__label')).toHaveLength(tags.length);
 	});
 
 	it('Should be able to render with borders', () => {
