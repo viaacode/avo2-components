@@ -1,8 +1,8 @@
-import React, { ChangeEvent, FunctionComponent, useState } from 'react';
+import React, { ChangeEvent, FunctionComponent } from 'react';
 
 export interface CheckboxProps {
 	label: string;
-	checked: boolean;
+	checked?: boolean;
 	id?: string;
 	disabled?: boolean;
 	onChange?: (checked: boolean) => void;
@@ -16,10 +16,10 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
 	onChange = () => {},
 }: CheckboxProps) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
-		const { checked: checkedValue } = event.target;
+		const currentCheckedValue = event.target.checked;
 
-		if (checkedValue !== checked) {
-			onChange(checkedValue);
+		if (currentCheckedValue !== checked) {
+			onChange(currentCheckedValue);
 		}
 	}
 
