@@ -64,6 +64,33 @@ describe('<FormGroup />', () => {
 		expect(errorElement.text()).toEqual(error);
 	});
 
+	it('Should add correct inlineMode class', () => {
+		const formGroupDefaultComponent = shallow(
+			<FormGroup>
+				<Fragment />
+			</FormGroup>
+		);
+		const formGroupGrowComponent = shallow(
+			<FormGroup inlineMode="grow">
+				<Fragment />
+			</FormGroup>
+		);
+		const formGroupShrinkComponent = shallow(
+			<FormGroup inlineMode="shrink">
+				<Fragment />
+			</FormGroup>
+		);
+
+		expect(formGroupDefaultComponent.hasClass('o-form-group--inline-grow')).toEqual(false);
+		expect(formGroupDefaultComponent.hasClass('o-form-group--inline-shrink')).toEqual(false);
+
+		expect(formGroupGrowComponent.hasClass('o-form-group--inline-grow')).toEqual(true);
+		expect(formGroupGrowComponent.hasClass('o-form-group--inline-shrink')).toEqual(false);
+
+		expect(formGroupShrinkComponent.hasClass('o-form-group--inline-grow')).toEqual(false);
+		expect(formGroupShrinkComponent.hasClass('o-form-group--inline-shrink')).toEqual(true);
+	});
+
 	it('Should not set className and not render an error when none is passed', () => {
 		const formGroupComponent = shallow(
 			<FormGroup>

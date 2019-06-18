@@ -5,8 +5,6 @@ import React, {
 	ReactElement,
 	ReactNode,
 	ReactNodeArray,
-	useEffect,
-	useState,
 } from 'react';
 
 import classNames from 'classnames';
@@ -29,7 +27,8 @@ export interface ModalProps {
 	children: ReactNode;
 	isOpen: boolean;
 	title?: string;
-	size?: 'small' | 'medium' | 'fullscreen' | 'auto';
+	size?: 'small' | 'medium' | 'large' | 'fullscreen' | 'fullwidth' | 'auto';
+	scrollable?: boolean;
 	onClose?: () => void;
 }
 
@@ -38,20 +37,15 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	isOpen,
 	title,
 	size,
+	scrollable,
 	onClose = () => {},
 }: ModalProps) => {
-	const [modalOpen, setModalOpen] = useState(isOpen);
 	const body = getSlot(ModalBody);
 	const headerRight = getSlot(ModalHeaderRight);
 	const footerRight = getSlot(ModalFooterRight);
 	const footerLeft = getSlot(ModalFooterLeft);
 
 	useKeyPress('Escape', close);
-
-	useEffect(() => {
-		// sync up `isOpen`-prop with state
-		setModalOpen(isOpen);
-	}, [isOpen]);
 
 	function getSlot(type: FunctionComponent<ModalSlotProps>) {
 		const slots: ReactNodeArray = Array.isArray(children) ? children : [children];
@@ -65,7 +59,6 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	}
 
 	function close() {
-		setModalOpen(false);
 		onClose();
 	}
 
@@ -79,15 +72,18 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	return ReactDOM.createPortal(
 		<Fragment>
 			<div
-				className={classNames('c-modal-context', { 'c-modal-context--visible': modalOpen })}
+				className={classNames('c-modal-context', { 'c-modal-context--visible': isOpen })}
 				onClick={onContextClick}
 			>
 				<div
 					className={classNames('c-modal', {
 						'c-modal--small': size === 'small',
 						'c-modal--medium': size === 'medium',
+						'c-modal--large': size === 'large',
 						'c-modal--fullscreen': size === 'fullscreen',
+						'c-modal--fullwidth': size === 'fullwidth',
 						'c-modal--height-auto': size === 'auto',
+						'c-modal--scrollable': scrollable,
 					})}
 				>
 					<div className="c-modal__header c-modal__header--bordered">
@@ -130,7 +126,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 					)}
 				</div>
 			</div>
-			<ModalBackdrop visible={modalOpen} />
+			<ModalBackdrop visible={isOpen} />
 		</Fragment>,
 		document.body
 	);

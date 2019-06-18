@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { Icon } from '../Icon/Icon';
 
@@ -20,6 +20,16 @@ describe('<Button />', () => {
 		const buttonComponent = shallow(<Button size="small" />);
 
 		expect(buttonComponent.hasClass('c-button--small')).toEqual(true);
+	});
+
+	it('Should set the correct width className when passing block option', () => {
+		const buttonDefaultComponent = shallow(<Button />);
+		const buttonBlockTrueComponent = shallow(<Button block={true} />);
+		const buttonBlockFalseComponent = shallow(<Button block={false} />);
+
+		expect(buttonDefaultComponent.hasClass('c-button--block')).toEqual(false);
+		expect(buttonBlockTrueComponent.hasClass('c-button--block')).toEqual(true);
+		expect(buttonBlockFalseComponent.hasClass('c-button--block')).toEqual(false);
 	});
 
 	it('Should set the correct type className', () => {
@@ -102,5 +112,25 @@ describe('<Button />', () => {
 		const buttonElement = buttonComponent.find('button');
 
 		expect(buttonElement.prop('disabled')).toEqual(true);
+	});
+
+	it('Should set the correct classNames when `active` is passed', () => {
+		const buttonComponent = shallow(<Button active={true} />);
+
+		const buttonElement = buttonComponent.find('button');
+
+		expect(buttonElement.hasClass('c-button-action')).toEqual(true);
+		expect(buttonElement.hasClass('active')).toEqual(true);
+	});
+
+	it('Should pass on the `active`-prop to the button icon', () => {
+		const activeButtonComponent = shallow(<Button active={true} icon="heart" />);
+		const inactiveButtonComponent = shallow(<Button active={false} icon="heart" />);
+
+		const activeIconComponent = activeButtonComponent.find(Icon);
+		const inactiveIconComponent = inactiveButtonComponent.find(Icon);
+
+		expect(activeIconComponent.prop('active')).toEqual(true);
+		expect(inactiveIconComponent.prop('active')).toEqual(false);
 	});
 });
