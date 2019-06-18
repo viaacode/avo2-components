@@ -65,8 +65,8 @@ storiesOf('Form', module)
 						id="pref"
 						options={[
 							{ label: 'Option A', value: 'option-a' },
-							{ label: 'Option B', value: 'option-a' },
-							{ label: 'Option C', value: 'option-a' },
+							{ label: 'Option B', value: 'option-b' },
+							{ label: 'Option C', value: 'option-c' },
 						]}
 					/>
 				</FormGroup>
