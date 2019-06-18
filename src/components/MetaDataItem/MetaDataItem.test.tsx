@@ -17,6 +17,6 @@ describe('<MetaDataItem />', () => {
 	it('Should set the correct className when icon is passed', () => {
 		const metaDataItemComponent = shallow(<MetaDataItem icon="headphone" label="768" />);
 
-		expect(metaDataItemComponent.hasClass('c-meta-data__item--icon')).toEqual(true);
+		expect(metaDataItemComponent.hasClass('c-meta-data-item--icon')).toEqual(true);
 	});
 });
