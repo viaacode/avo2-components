@@ -17,6 +17,8 @@ import { FormGroup } from './components/Form/FormGroup';
 import { Column } from './components/Grid/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
+import { MetaData } from './components/MetaData/MetaData';
+import { MetaDataItem } from './components/MetaDataItem/MetaDataItem';
 import { Modal } from './components/Modal/Modal';
 import { ModalBody, ModalFooterLeft, ModalFooterRight } from './components/Modal/Modal.slots';
 import { Navbar } from './components/Navbar/Navbar';
@@ -46,6 +48,8 @@ export {
 	Grid,
 	Column,
 	Icon,
+	MetaData,
+	MetaDataItem,
 	Modal,
 	ModalBody,
 	ModalFooterLeft,
