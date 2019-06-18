@@ -5,7 +5,7 @@ import classNames from 'classnames';
 export interface ContainerProps {
 	mode?: 'horizontal' | 'vertical';
 	size?: 'small' | 'medium' | 'large';
-	background?: 'alt' | 'inverse';
+	background?: 'white' | 'alt' | 'inverse';
 	bordered?: boolean;
 	children: ReactNode;
 }
