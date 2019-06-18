@@ -73,7 +73,7 @@ storiesOf('Dropdown', module)
 		</DropdownStoryComponent>
 	))
 	.add('Dropdown autosized bottom-end', () => (
-		<div style={{ paddingTop: '200px' }}>
+		<div>
 			<DropdownStoryComponent>
 				<Dropdown label="Show options" isOpen={false} placement={'bottom-end'} autoSize={true}>
 					<span className="c-menu__item">Aluminium</span>
@@ -85,17 +85,19 @@ storiesOf('Dropdown', module)
 		</div>
 	))
 	.add('Dropdown autosized top-start', () => (
-		<DropdownStoryComponent>
-			<Dropdown label="Show options" isOpen={false} placement={'top-start'} autoSize={true}>
-				<span className="c-menu__item">Aluminium</span>
-				<span className="c-menu__item">Cadmium</span>
-				<span className="c-menu__item">Dubnium</span>
-				<span className="c-menu__item">Potassium</span>
-			</Dropdown>
-		</DropdownStoryComponent>
+		<div style={{ paddingTop: '200px' }}>
+			<DropdownStoryComponent>
+				<Dropdown label="Show options" isOpen={false} placement={'top-start'} autoSize={true}>
+					<span className="c-menu__item">Aluminium</span>
+					<span className="c-menu__item">Cadmium</span>
+					<span className="c-menu__item">Dubnium</span>
+					<span className="c-menu__item">Potassium</span>
+				</Dropdown>
+			</DropdownStoryComponent>
+		</div>
 	))
 	.add('Dropdown autosized top-end', () => (
-		<div style={{ paddingTop: '100px' }}>
+		<div style={{ paddingTop: '200px' }}>
 			<DropdownStoryComponent>
 				<Dropdown label="Show options" isOpen={false} placement={'top-end'} autoSize={true}>
 					<span className="c-menu__item">Aluminium</span>
