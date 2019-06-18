@@ -2,15 +2,27 @@ import React, { ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
+import { action } from '../../helpers/action';
+
 import { Dropdown } from './Dropdown';
 
 const DropdownStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [isOpen, setOpen] = useState(false);
 
+	const open = () => {
+		action('onOpen')();
+		setOpen(true);
+	};
+
+	const close = () => {
+		action('onClose')();
+		setOpen(false);
+	};
+
 	const childrenWithProps = React.cloneElement(children, {
 		isOpen,
-		onOpen: () => setOpen(true),
-		onClose: () => setOpen(false),
+		onOpen: open,
+		onClose: close,
 	});
 
 	return childrenWithProps;

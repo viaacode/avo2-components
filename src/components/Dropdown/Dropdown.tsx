@@ -56,13 +56,10 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef();
 	const [dropdownButton, dropdownButtonRef] = useCallbackRef();
 
-	/**
-	 * Toggles the flyout elements visibility if no boolean is passed
-	 * If you pass "true", the flyout will be set to visible, even if it was visible before the call
-	 * If you pass "false" the flyout will be hidden, even if it was hidden before the call
-	 */
 	const toggle = (openState: boolean = !isOpen) => {
-		openState ? onOpen() : onClose();
+		if (openState !== isOpen) {
+			openState ? onOpen() : onClose();
+		}
 	};
 
 	const toggleClosed = () => toggle(false);
