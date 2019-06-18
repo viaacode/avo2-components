@@ -5,8 +5,6 @@ import React, {
 	ReactElement,
 	ReactNode,
 	ReactNodeArray,
-	useEffect,
-	useState,
 } from 'react';
 
 import classNames from 'classnames';
@@ -42,18 +40,12 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	scrollable,
 	onClose = () => {},
 }: ModalProps) => {
-	const [modalOpen, setModalOpen] = useState(isOpen);
 	const body = getSlot(ModalBody);
 	const headerRight = getSlot(ModalHeaderRight);
 	const footerRight = getSlot(ModalFooterRight);
 	const footerLeft = getSlot(ModalFooterLeft);
 
 	useKeyPress('Escape', close);
-
-	useEffect(() => {
-		// sync up `isOpen`-prop with state
-		setModalOpen(isOpen);
-	}, [isOpen]);
 
 	function getSlot(type: FunctionComponent<ModalSlotProps>) {
 		const slots: ReactNodeArray = Array.isArray(children) ? children : [children];
@@ -67,7 +59,6 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	}
 
 	function close() {
-		setModalOpen(false);
 		onClose();
 	}
 
@@ -81,7 +72,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	return ReactDOM.createPortal(
 		<Fragment>
 			<div
-				className={classNames('c-modal-context', { 'c-modal-context--visible': modalOpen })}
+				className={classNames('c-modal-context', { 'c-modal-context--visible': isOpen })}
 				onClick={onContextClick}
 			>
 				<div
@@ -135,7 +126,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 					)}
 				</div>
 			</div>
-			<ModalBackdrop visible={modalOpen} />
+			<ModalBackdrop visible={isOpen} />
 		</Fragment>,
 		document.body
 	);

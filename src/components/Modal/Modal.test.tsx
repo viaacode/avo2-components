@@ -168,50 +168,6 @@ describe('<Modal />', () => {
 		expect(modalBackdropComponent.prop('visible')).toEqual(true);
 	});
 
-	it('Should close when clicking around the modal ', () => {
-		const modalComponent = shallow(
-			<Modal isOpen={true}>
-				<Fragment />
-			</Modal>
-		);
-
-		let modalWrapperElement = modalComponent.childAt(0);
-
-		expect(modalWrapperElement.hasClass('c-modal-context--visible')).toEqual(true);
-
-		modalWrapperElement.simulate('click', {
-			target: '.c-modal-context',
-			currentTarget: '.c-modal-context',
-		});
-
-		modalComponent.update();
-		modalWrapperElement = modalComponent.childAt(0);
-
-		expect(modalWrapperElement.hasClass('c-modal-context--visible')).toEqual(false);
-	});
-
-	it('Should not close when clicking inside the modal ', () => {
-		const modalComponent = shallow(
-			<Modal isOpen={true}>
-				<Fragment />
-			</Modal>
-		);
-
-		let modalWrapperElement = modalComponent.childAt(0);
-
-		expect(modalWrapperElement.hasClass('c-modal-context--visible')).toEqual(true);
-
-		modalWrapperElement.simulate('click', {
-			target: '.c-modal',
-			currentTarget: '.c-modal-context',
-		});
-
-		modalComponent.update();
-		modalWrapperElement = modalComponent.childAt(0);
-
-		expect(modalWrapperElement.hasClass('c-modal-context--visible')).toEqual(true);
-	});
-
 	it('Should call the onClose handler when closing the modal', () => {
 		const onCloseHandler = jest.fn();
 
@@ -230,6 +186,25 @@ describe('<Modal />', () => {
 
 		expect(onCloseHandler).toHaveBeenCalled();
 		expect(onCloseHandler).toHaveBeenCalledTimes(1);
+	});
+
+	it('Should not call `onClose` when clicking inside the modal ', () => {
+		const onCloseHandler = jest.fn();
+
+		const modalComponent = shallow(
+			<Modal isOpen={true} onClose={onCloseHandler}>
+				<Fragment />
+			</Modal>
+		);
+
+		const modalWrapperElement = modalComponent.childAt(0);
+
+		modalWrapperElement.simulate('click', {
+			target: '.c-modal',
+			currentTarget: '.c-modal-context',
+		});
+
+		expect(onCloseHandler).toHaveBeenCalledTimes(0);
 	});
 
 	it('Should correctly render the body', () => {
