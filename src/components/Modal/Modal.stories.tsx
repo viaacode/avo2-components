@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
+import { loremIpsum } from 'lorem-ipsum';
 
 import { action } from '../../helpers/action';
 
@@ -73,6 +74,16 @@ storiesOf('Modal', module)
 					It doesn't matter where this modal occurs in the source code, React automatically moves it
 					to the root.
 				</p>
+			</ModalBody>
+			<ModalFooterRight>
+				<Button type="primary" label="Ok" />
+			</ModalFooterRight>
+		</Modal>
+	))
+	.add('Scrollable modal', () => (
+		<Modal isOpen={true} title="Modal title" size="small" scrollable={true}>
+			<ModalBody>
+				<p>{loremIpsum({ count: 20 })}</p>
 			</ModalBody>
 			<ModalFooterRight>
 				<Button type="primary" label="Ok" />
