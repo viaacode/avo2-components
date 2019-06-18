@@ -18,6 +18,7 @@
   },
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
+  "style": "dist/styles/main.css",
   "publishConfig": {
     "@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-viaa/"
   },
@@ -73,6 +74,7 @@
     "renamer": "^1.1.1",
     "rimraf": "^2.6.3",
     "rollup": "^1.15.6",
+    "rollup-plugin-copy": "^3.0.0",
     "rollup-plugin-typescript2": "^0.21.2",
     "storybook-addon-jsx": "^7.1.2",
     "storybook-addon-smart-knobs": "^4.1.2",
