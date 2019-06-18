@@ -1,69 +1,67 @@
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 
+import { MetaDataItem } from '../MetaDataItem/MetaDataItem';
 import { MetaData } from './MetaData';
 
-describe('<MetaData />', () => {
+describe('<MetaDataItem />', () => {
 	it('Should be able to render', () => {
 		shallow(
-			<MetaData preMeta="5 items" category="collection" impressions={738} postedOn="2d geleden" />
+			<MetaData category="video">
+				<MetaDataItem label="VRT" />s
+				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem label="2d geleden" />
+			</MetaData>
 		);
 	});
 
 	it('Should set the correct className', () => {
 		const metaDataComponent = shallow(
-			<MetaData preMeta="5 items" category="collection" impressions={738} postedOn="2d geleden" />
+			<MetaData category="video">
+				<MetaDataItem label="VRT" />
+				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem label="2d geleden" />
+			</MetaData>
 		);
 
 		expect(metaDataComponent.hasClass('c-meta-data')).toEqual(true);
 	});
 
-	it('Should set the correct className for each type', () => {
+	it('Should set the correct className with each category', () => {
 		const metaDataComponent = shallow(
-			<MetaData preMeta="5 items" category="collection" impressions={738} postedOn="2d geleden" />
+			<MetaData category="video">
+				<MetaDataItem label="VRT" />
+				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem label="2d geleden" />
+			</MetaData>
 		);
 
-		expect(metaDataComponent.hasClass('c-meta-data--collection')).toEqual(true);
+		expect(metaDataComponent.hasClass('c-meta-data--video')).toEqual(true);
 	});
 
-	it('Should render 3 items if meta, impressions and postedOn is passed', () => {
+	it('Should set the correct className when spaced is passed', () => {
 		const metaDataComponent = shallow(
-			<MetaData preMeta="VRT" category="video" impressions={738} postedOn="2d geleden" />
+			<MetaData category="video" spaced>
+				<MetaDataItem label="VRT" />
+				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem label="2d geleden" />
+			</MetaData>
 		);
 
-		const metaDataItemElements = metaDataComponent.find('.c-meta-data__item');
-		expect(metaDataItemElements).toHaveLength(3);
+		expect(metaDataComponent.hasClass('c-meta-data--spaced-out')).toEqual(true);
 	});
 
-	it('Should not render preMeta when none is passed', () => {
-		const metaDataComponent = shallow(
-			<MetaData category="collection" impressions={738} postedOn="2d geleden" />
+	it('Should correctly pass children', () => {
+		const metaDataComponent = mount(
+			<MetaData category="video">
+				<MetaDataItem label="VRT" />
+				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem label="2d geleden" />
+			</MetaData>
 		);
 
-		const metaDataItemElements = metaDataComponent.find('.c-meta-data__item');
-		expect(metaDataItemElements).toHaveLength(2);
-	});
+		const metaDataItems = metaDataComponent.find('.c-meta-data__item');
 
-	it('Should not render impressions when none is passed', () => {
-		const metaDataComponent = shallow(<MetaData preMeta="VRT" postedOn="2d geleden" />);
-
-		const metaDataItemElements = metaDataComponent.find('.c-meta-data__item');
-		expect(metaDataItemElements).toHaveLength(2);
-	});
-
-	it('Should not render postedOn when none is passed', () => {
-		const metaDataComponent = shallow(
-			<MetaData preMeta="VRT" category="collection" impressions={738} />
-		);
-
-		const metaDataItemElements = metaDataComponent.find('.c-meta-data__item');
-		expect(metaDataItemElements).toHaveLength(2);
-	});
-
-	it('Should not render postMeta when none is passed', () => {
-		const metaDataComponent = shallow(<MetaData preMeta="VRT" postedOn="2d geleden" />);
-
-		const metaDataItemElements = metaDataComponent.find('.c-meta-data__item');
-		expect(metaDataItemElements).toHaveLength(2);
+		expect(metaDataItems).toHaveLength(3);
 	});
 });

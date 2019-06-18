@@ -2,19 +2,29 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
+import { MetaDataItem } from '../MetaDataItem/MetaDataItem';
 import { MetaData } from './MetaData';
 
 storiesOf('MetaData', module)
 	.addParameters({ jest: ['MetaData'] })
-	.add('Meta data (collection)', () => (
-		<MetaData preMeta="5 items" category="collection" impressions={738} postedOn="2d geleden" />
+	.add('Meta data (audio)', () => (
+		<MetaData category="audio">
+			<MetaDataItem label="VRT" />
+			<MetaDataItem icon="headphone" label="738" />
+			<MetaDataItem label="2d geleden" />
+		</MetaData>
 	))
 	.add('Meta data (video)', () => (
-		<MetaData preMeta="VRT" category="video" impressions={738} postedOn="2d geleden" />
+		<MetaData category="video">
+			<MetaDataItem label="VRT" />
+			<MetaDataItem icon="eye" label="738" />
+			<MetaDataItem label="2d geleden" />
+		</MetaData>
 	))
-	.add('Meta data (audio)', () => (
-		<MetaData preMeta="VRT" category="audio" impressions={738} postedOn="2d geleden" />
-	))
-	.add('Meta data (map)', () => (
-		<MetaData category="map" impressions={738} postedOn="2d geleden" postMeta="VAN IN" />
+	.add('Meta data (collection)', () => (
+		<MetaData category="collection">
+			<MetaDataItem label="7 items" />
+			<MetaDataItem icon="eye" label="738" />
+			<MetaDataItem label="2d geleden" />
+		</MetaData>
 	));
