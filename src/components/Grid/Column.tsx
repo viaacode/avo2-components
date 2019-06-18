@@ -56,11 +56,7 @@ export interface ColumnProps {
 }
 
 export const Column: FunctionComponent<ColumnProps> = ({ size, children }: ColumnProps) => {
-	let className = 'o-grid-col-';
-	if (size.includes('-')) {
-		className += `bp${size}`;
-	} else {
-		className += size;
-	}
-	return <div className={className}>{children}</div>;
+	const prefix = size.includes('-') ? 'bp' : '';
+
+	return <div className={`o-grid-col-${prefix}${size}`}>{children}</div>;
 };
