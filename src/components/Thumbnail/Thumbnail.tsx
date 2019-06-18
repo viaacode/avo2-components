@@ -12,10 +12,6 @@ export interface ThumbnailProps {
 	meta?: string;
 }
 
-export interface ThumbnailState {
-	loaded: boolean;
-}
-
 export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 	category,
 	src,
