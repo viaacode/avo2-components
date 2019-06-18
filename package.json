@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "scripts": {
     "start": "start-storybook -s ./static -p 4000",
-    "build": "build-storybook build",
-    "build:with-sourcemaps": "cross-env GENERATE_SOURCEMAP=true build-storybook build",
+    "build-storybook": "build-storybook build",
+    "build-storybook:with-sourcemaps": "cross-env GENERATE_SOURCEMAP=true build-storybook build",
+    "build": "rollup -c",
     "test": "react-scripts test --verbose",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "test:output": "cross-env CI=true react-scripts test --json --outputFile=.storybook/test-results.json",
@@ -15,7 +16,8 @@
     "posticons": "named-exports --dir=src/components/Icons && renamer --find .ts --replace .tsx 'src/components/Icons/**'",
     "analyze": "source-map-explorer 'build/*.js'"
   },
-  "main": "src/index.ts",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.esm.js",
   "publishConfig": {
     "@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-viaa/"
   },
@@ -42,8 +44,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
-    "source-map-explorer": "^2.0.0",
-    "typescript": "3.4.5"
+    "source-map-explorer": "^2.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.6.1",
@@ -71,11 +72,14 @@
     "react-test-renderer": "^16.8.6",
     "renamer": "^1.1.1",
     "rimraf": "^2.6.3",
+    "rollup": "^1.15.6",
+    "rollup-plugin-typescript2": "^0.21.2",
     "storybook-addon-jsx": "^7.1.2",
     "storybook-addon-smart-knobs": "^4.1.2",
     "tslint": "^5.16.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.0.1"
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.4.5"
   }
 }
