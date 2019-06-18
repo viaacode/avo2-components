@@ -2,15 +2,16 @@ import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
-import { Icon } from '../Icon/Icon';
+import { MetaData } from '../MetaData/MetaData';
+import { MetaDataItem, MetaDataItemProps } from '../MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
 
 export interface MediaCardProps {
 	orientation?: 'horizontal' | 'vertical';
 	title: string;
 	href: string;
-	meta?: string;
-	thumbnailCategory: 'collection' | 'video' | 'audio';
+	metaData?: MetaDataItemProps[];
+	category: 'collection' | 'video' | 'audio';
 	thumbnailSrc?: string;
 	thumbnailAlt?: string;
 	thumbnailLabel?: string;
@@ -21,21 +22,21 @@ export const MediaCard: FunctionComponent<MediaCardProps> = ({
 	orientation = 'vertical',
 	title,
 	href,
-	meta,
-	thumbnailCategory,
+	metaData,
+	category,
 	thumbnailSrc,
 	thumbnailAlt,
 	thumbnailLabel,
 	thumbnailMeta,
 }: MediaCardProps) => (
 	<div
-		className={classNames('c-media-card c-media-card--{category}', {
+		className={classNames('c-media-card', `c-media-card--${category}`, {
 			'c-media-card--horizontal': orientation === 'horizontal',
 		})}
 	>
 		<a className="c-media-card-thumb" href={href}>
 			<Thumbnail
-				category={thumbnailCategory}
+				category={category}
 				src={thumbnailSrc}
 				alt={thumbnailAlt}
 				meta={thumbnailMeta}
@@ -46,7 +47,13 @@ export const MediaCard: FunctionComponent<MediaCardProps> = ({
 			<h4 className="c-media-card__title">
 				<a href={href}>{title}</a>
 			</h4>
-			{meta}
+			{metaData && (
+				<MetaData category={category}>
+					{metaData.map(metaDataItem => (
+						<MetaDataItem icon={metaDataItem.icon} label={metaDataItem.label} />
+					))}
+				</MetaData>
+			)}
 		</div>
 	</div>
 );
