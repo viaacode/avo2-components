@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 export interface BoxProps {
 	condensed?: boolean;
@@ -8,5 +8,5 @@ export interface BoxProps {
 }
 
 export const Box: FunctionComponent<BoxProps> = ({ condensed, children }: BoxProps) => (
-	<div className={classnames('c-box', { 'c-box--padding-small': condensed })}>{children}</div>
+	<div className={classNames('c-box', { 'c-box--padding-small': condensed })}>{children}</div>
 );

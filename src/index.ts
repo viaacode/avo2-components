@@ -17,6 +17,9 @@ import { FormGroup } from './components/Form/FormGroup';
 import { Column } from './components/Grid/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
+import { MediaCard } from './components/MediaCard/MediaCard';
+import { MetaData } from './components/MetaData/MetaData';
+import { MetaDataItem } from './components/MetaDataItem/MetaDataItem';
 import { Modal } from './components/Modal/Modal';
 import { ModalBody, ModalFooterLeft, ModalFooterRight } from './components/Modal/Modal.slots';
 import { Navbar } from './components/Navbar/Navbar';
@@ -28,6 +31,8 @@ import { Spinner } from './components/Spinner/Spinner';
 import { Swatch } from './components/Swatch/Swatch';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
+import { Thumbnail } from './components/Thumbnail/Thumbnail';
+import { ToggleButton } from './components/ToggleButton/ToggleButton';
 
 export {
 	COLORS,
@@ -46,6 +51,9 @@ export {
 	Grid,
 	Column,
 	Icon,
+	MediaCard,
+	MetaData,
+	MetaDataItem,
 	Modal,
 	ModalBody,
 	ModalFooterLeft,
@@ -59,4 +67,6 @@ export {
 	Swatch,
 	TagList,
 	TextInput,
+	Thumbnail,
+	ToggleButton,
 };
