@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
@@ -6,14 +6,33 @@ import { action } from '../../helpers/action';
 
 import { Pagination } from './Pagination';
 
+const PaginationStoryComponent = ({
+	children,
+	initialPageIndex = 0,
+}: {
+	children: ReactElement;
+	initialPageIndex?: number;
+}) => {
+	const [currentPage, setCurrentPage] = useState(initialPageIndex);
+
+	return React.cloneElement(children, {
+		currentPage,
+		onPageChange: (index: number) => {
+			action('page changed')(index);
+			setCurrentPage(index);
+		},
+	});
+};
+
 storiesOf('Pagination', module)
 	.addParameters({ jest: ['Pagination'] })
-	.add('Pagination', () => <Pagination pageCount={20} onPageChange={action('onPageChange')} />)
+	.add('Pagination', () => (
+		<PaginationStoryComponent initialPageIndex={0}>
+			<Pagination pageCount={20} />
+		</PaginationStoryComponent>
+	))
 	.add('Pagination with options', () => (
-		<Pagination
-			pageCount={20}
-			displayCount={7}
-			initialPageIndex={9}
-			onPageChange={action('onPageChange')}
-		/>
+		<PaginationStoryComponent initialPageIndex={9}>
+			<Pagination pageCount={20} displayCount={7} />
+		</PaginationStoryComponent>
 	));
