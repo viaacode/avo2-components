@@ -30,6 +30,8 @@ import { Spinner } from './components/Spinner/Spinner';
 import { Swatch } from './components/Swatch/Swatch';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
+import { Thumbnail } from './components/Thumbnail/Thumbnail';
+import { ToggleButton } from './components/ToggleButton/ToggleButton';
 
 export {
 	COLORS,
@@ -63,4 +65,6 @@ export {
 	Swatch,
 	TagList,
 	TextInput,
+	Thumbnail,
+	ToggleButton,
 };
