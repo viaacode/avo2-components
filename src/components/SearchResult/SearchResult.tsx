@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 
 import { MetaData, MetaDataItem, TagList, Thumbnail, ToggleButton } from '../..';
-import { formatDuration } from '../../helpers/formatting';
+import { formatDate, formatDuration } from '../../helpers/formatting';
 
 export interface SearchResultProps {
 	pid: string;
@@ -40,7 +40,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 	let thumbnailMeta = '';
 	if (type === 'audio' || type === 'video') {
 		if (duration) {
-			thumbnailMeta = formatDuration(duration);
+			thumbnailMeta = formatDuration(duration || 0);
 			metaData.push({
 				label: thumbnailMeta,
 			});
@@ -91,7 +91,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 				<div className="u-spacer-bottom-s">
 					<div className="o-flex o-flex--justify-between o-flex--wrap">
 						<MetaData category={type}>
-							<MetaDataItem label={date} />
+							<MetaDataItem label={formatDate(date)} />
 							<MetaDataItem label={String(25)} icon={type === 'audio' ? 'headphone' : 'eye'} />
 							{/* TODO get number of views after bart updates the elasticsearch index */}
 							{/*<MetaDataItem label={String(25)} icon="bookmark" />*/}
