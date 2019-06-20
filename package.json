@@ -4,6 +4,7 @@
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "style": "dist/styles/main.css",
+  "types": "dist/index.d.ts",
   "scripts": {
     "analyze": "source-map-explorer 'build/*.js'",
     "build": "rollup -c",
