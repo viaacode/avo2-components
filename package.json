@@ -1,25 +1,22 @@
 {
   "name": "@viaa/avo2-components",
   "version": "1.0.0",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.esm.js",
+  "style": "dist/styles/main.css",
   "scripts": {
-    "start": "start-storybook -s ./static -p 4000",
+    "analyze": "source-map-explorer 'build/*.js'",
+    "build": "rollup -c",
     "build-storybook": "build-storybook -o build",
     "build-storybook:with-sourcemaps": "cross-env GENERATE_SOURCEMAP=true build-storybook -o build",
-    "build": "rollup -c",
-    "test": "jest --verbose",
-    "test:output": "cross-env CI=true jest --json --outputFile=.storybook/test-results.json",
-    "lint": "tslint -p .",
     "format": "npm run lint -- --fix",
     "preicons": "node scripts/icons.js src/icons",
     "icons": "rimraf src/components/Icons && svgr -d src/components/Icons src/icons --ext ts",
     "posticons": "named-exports --dir=src/components/Icons && renamer --find .ts --replace .tsx 'src/components/Icons/**'",
-    "analyze": "source-map-explorer 'build/*.js'"
-  },
-  "main": "dist/bundle.cjs.js",
-  "module": "dist/bundle.esm.js",
-  "style": "dist/styles/main.css",
-  "publishConfig": {
-    "@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-viaa/"
+    "lint": "tslint -p .",
+    "start": "start-storybook -s ./static -p 4000",
+    "test": "jest --verbose",
+    "test:output": "cross-env CI=true jest --json --outputFile=.storybook/test-results.json"
   },
   "browserslist": {
     "production": [
@@ -39,11 +36,8 @@
     "@types/react": "16.8.17",
     "@types/react-dom": "16.8.4",
     "classnames": "^2.2.6",
-    "lorem-ipsum": "^2.0.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "source-map-explorer": "^2.0.0"
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.6.1",
@@ -68,13 +62,16 @@
     "glob": "^7.1.4",
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
+    "lorem-ipsum": "^2.0.2",
     "prettier": "^1.17.1",
+    "react-scripts": "3.0.1",
     "react-test-renderer": "^16.8.6",
     "renamer": "^1.1.1",
     "rimraf": "^2.6.3",
     "rollup": "^1.15.6",
     "rollup-plugin-copy": "^3.0.0",
     "rollup-plugin-typescript2": "^0.21.2",
+    "source-map-explorer": "^2.0.0",
     "storybook-addon-jsx": "^7.1.2",
     "storybook-addon-smart-knobs": "^4.1.2",
     "ts-jest": "^24.0.2",
@@ -83,5 +80,8 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.4.5"
+  },
+  "publishConfig": {
+    "@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-viaa/"
   }
 }
