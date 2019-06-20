@@ -20,6 +20,7 @@ import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
 import { Image } from './components/Image/Image';
 import { MediaCard } from './components/MediaCard/MediaCard';
+import { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/MediaCard.slots';
 import { MetaData } from './components/MetaData/MetaData';
 import { MetaDataItem } from './components/MetaDataItem/MetaDataItem';
 import { Modal } from './components/Modal/Modal';
@@ -30,11 +31,14 @@ import { RadioButton } from './components/RadioButton/RadioButton';
 import { RadioButtonGroup } from './components/RadioButtonGroup/RadioButtonGroup';
 import { Select } from './components/Select/Select';
 import { Spinner } from './components/Spinner/Spinner';
-import { Swatch } from './components/Swatch/Swatch';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
 import { ToggleButton } from './components/ToggleButton/ToggleButton';
+import { Toolbar } from './components/Toolbar/Toolbar';
+import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/Toolbar.slots';
+import { ToolbarItem } from './components/Toolbar/ToolbarItem';
+import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 
 export {
 	COLORS,
@@ -56,6 +60,8 @@ export {
 	Icon,
 	Image,
 	MediaCard,
+	MediaCardMetaData,
+	MediaCardThumbnail,
 	MetaData,
 	MetaDataItem,
 	Modal,
@@ -68,9 +74,14 @@ export {
 	RadioButtonGroup,
 	Select,
 	Spinner,
-	Swatch,
 	TagList,
 	TextInput,
 	Thumbnail,
 	ToggleButton,
+	Toolbar,
+	ToolbarLeft,
+	ToolbarCenter,
+	ToolbarRight,
+	ToolbarItem,
+	ToolbarTitle,
 };
