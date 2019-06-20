@@ -232,6 +232,10 @@ jspm_packages
 
 # production
 /build
+/dist
+
+# rollup
+.rpt2_cache
 
 # misc
 .DS_Store
