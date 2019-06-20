@@ -42,7 +42,8 @@
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
     "source-map-explorer": "^2.0.0",
-    "typescript": "3.4.5"
+    "typescript": "3.4.5",
+    "react-router-dom": "^5.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.6.1",
@@ -60,6 +61,7 @@
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.13",
     "@types/lodash-es": "^4.17.3",
+    "@types/react-router-dom": "^4.3.4",
     "@types/storybook__addon-actions": "^3.4.2",
     "@types/storybook__react": "^4.0.1",
     "cross-env": "^5.2.0",
