@@ -16,6 +16,7 @@
 		"resolveJsonModule": true,
 		"declaration": true,
 		"jsx": "react",
+		"noEmit": true,
 		"outDir": "dist"
 	},
 	"include": ["src"]
