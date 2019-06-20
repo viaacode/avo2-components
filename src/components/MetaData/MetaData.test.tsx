@@ -28,7 +28,15 @@ describe('<MetaDataItem />', () => {
 	});
 
 	it('Should set the correct className with each category', () => {
-		const metaDataComponent = shallow(
+		const metaDataCollectionComponent = shallow(
+			<MetaData category="collection">
+				<MetaDataItem label="VRT" />
+				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem label="2d geleden" />
+			</MetaData>
+		);
+
+		const metaDataVideoComponent = shallow(
 			<MetaData category="video">
 				<MetaDataItem label="VRT" />
 				<MetaDataItem icon="headphone" label="738" />
@@ -36,7 +44,26 @@ describe('<MetaDataItem />', () => {
 			</MetaData>
 		);
 
-		expect(metaDataComponent.hasClass('c-meta-data--video')).toEqual(true);
+		const metaDataAudioComponent = shallow(
+			<MetaData category="audio">
+				<MetaDataItem label="VRT" />
+				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem label="2d geleden" />
+			</MetaData>
+		);
+
+		const metaDataMapComponent = shallow(
+			<MetaData category="map">
+				<MetaDataItem label="VRT" />
+				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem label="2d geleden" />
+			</MetaData>
+		);
+
+		expect(metaDataCollectionComponent.hasClass('c-meta-data--collection')).toEqual(true);
+		expect(metaDataVideoComponent.hasClass('c-meta-data--video')).toEqual(true);
+		expect(metaDataAudioComponent.hasClass('c-meta-data--audio')).toEqual(true);
+		expect(metaDataMapComponent.hasClass('c-meta-data--map')).toEqual(true);
 	});
 
 	it('Should set the correct className when spaced is passed', () => {
@@ -60,7 +87,7 @@ describe('<MetaDataItem />', () => {
 			</MetaData>
 		);
 
-		const metaDataItems = metaDataComponent.find('.c-meta-data__item');
+		const metaDataItems = metaDataComponent.find(MetaDataItem);
 
 		expect(metaDataItems).toHaveLength(3);
 	});

@@ -3,15 +3,15 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames';
 
 export interface MetaDataProps {
-	category?: 'collection' | 'video' | 'audio' | 'map';
-	spaced?: boolean;
 	children: ReactNode;
+	category: 'collection' | 'video' | 'audio' | 'map';
+	spaced?: boolean;
 }
 
 export const MetaData: FunctionComponent<MetaDataProps> = ({
+	children,
 	category,
 	spaced,
-	children,
 }: MetaDataProps) => (
 	<ul
 		className={classNames(`c-meta-data c-meta-data--${category}`, {
