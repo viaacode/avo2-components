@@ -29,5 +29,5 @@ export function useClickOutside(
 				document.removeEventListener('touchstart', clickOutsideHandler);
 			};
 		}
-	}, [ref, onClickOutside]);
+	}, [ref, onClickOutside, exemptions]);
 }
