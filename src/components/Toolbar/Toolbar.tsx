@@ -12,9 +12,6 @@ export interface ToolbarProps {
 	spaced?: boolean;
 	autoHeight?: boolean;
 	alignTop?: boolean;
-	interactiveCenter?: boolean;
-	altCenter?: boolean;
-	justified?: boolean;
 }
 
 export const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -23,9 +20,6 @@ export const Toolbar: FunctionComponent<ToolbarProps> = ({
 	spaced,
 	autoHeight,
 	alignTop,
-	interactiveCenter,
-	altCenter,
-	justified,
 }: ToolbarProps) => {
 	const left = useSlot(ToolbarLeft, children);
 	const center = useSlot(ToolbarCenter, children);

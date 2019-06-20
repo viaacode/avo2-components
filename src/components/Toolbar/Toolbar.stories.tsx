@@ -11,7 +11,7 @@ import { ToolbarItem } from './ToolbarItem';
 import { ToolbarTitle } from './ToolbarTitle';
 
 storiesOf('Toolbar', module)
-	.addParameters({ jest: ['Toolbar', 'ToolbarBackdrop'] })
+	.addParameters({ jest: ['Toolbar', 'ToolbarItem', 'ToolbarTitle'] })
 	.add('Toolbar', () => (
 		<Fragment>
 			<Toolbar>
@@ -103,61 +103,6 @@ storiesOf('Toolbar', module)
 					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
-			<br />
-			<Toolbar interactiveCenter={true}>
-				<ToolbarLeft>
-					<ToolbarItem>
-						<Icon name="chevron-left" />
-					</ToolbarItem>
-				</ToolbarLeft>
-				<ToolbarCenter>
-					<ToolbarItem>
-						<p>Toolbar interactiveCenter</p>
-					</ToolbarItem>
-				</ToolbarCenter>
-				<ToolbarRight>
-					<ToolbarItem>
-						<Button type="primary" label="Save" />
-					</ToolbarItem>
-				</ToolbarRight>
-			</Toolbar>
-			<br />
-			<Toolbar altCenter={true}>
-				<ToolbarLeft>
-					<ToolbarItem>
-						<Icon name="chevron-left" />
-					</ToolbarItem>
-				</ToolbarLeft>
-				<ToolbarCenter>
-					<ToolbarItem>
-						<p>Toolbar altCenter</p>
-					</ToolbarItem>
-				</ToolbarCenter>
-				<ToolbarRight>
-					<ToolbarItem>
-						<Button type="primary" label="Save" />
-					</ToolbarItem>
-				</ToolbarRight>
-			</Toolbar>
-			<br />
-			<Toolbar justified={true}>
-				<ToolbarLeft>
-					<ToolbarItem>
-						<Icon name="chevron-left" />
-					</ToolbarItem>
-				</ToolbarLeft>
-				<ToolbarCenter>
-					<ToolbarItem>
-						<p>Toolbar justified</p>
-					</ToolbarItem>
-				</ToolbarCenter>
-				<ToolbarRight>
-					<ToolbarItem>
-						<Button type="primary" label="Save" />
-					</ToolbarItem>
-				</ToolbarRight>
-			</Toolbar>
-			<br />
 		</Fragment>
 	))
 	.add('Left toolbar', () => (
