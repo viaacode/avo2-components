@@ -1,26 +1,14 @@
-import React, {
-	Fragment,
-	FunctionComponent,
-	MouseEvent,
-	ReactElement,
-	ReactNode,
-	ReactNodeArray,
-} from 'react';
+import React, { Fragment, FunctionComponent, MouseEvent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 import ReactDOM from 'react-dom';
 
 import { useKeyPress } from '../../hooks/useKeyPress';
+import { useSlot } from '../../hooks/useSlot';
 
 import { Button } from '../Button/Button';
 
-import {
-	ModalBody,
-	ModalFooterLeft,
-	ModalFooterRight,
-	ModalHeaderRight,
-	ModalSlotProps,
-} from './Modal.slots';
+import { ModalBody, ModalFooterLeft, ModalFooterRight, ModalHeaderRight } from './Modal.slots';
 import { ModalBackdrop } from './ModalBackdrop';
 
 export interface ModalProps {
@@ -40,23 +28,12 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	scrollable,
 	onClose = () => {},
 }: ModalProps) => {
-	const body = getSlot(ModalBody);
-	const headerRight = getSlot(ModalHeaderRight);
-	const footerRight = getSlot(ModalFooterRight);
-	const footerLeft = getSlot(ModalFooterLeft);
+	const body = useSlot(ModalBody, children);
+	const headerRight = useSlot(ModalHeaderRight, children);
+	const footerRight = useSlot(ModalFooterRight, children);
+	const footerLeft = useSlot(ModalFooterLeft, children);
 
 	useKeyPress('Escape', close);
-
-	function getSlot(type: FunctionComponent<ModalSlotProps>) {
-		const slots: ReactNodeArray = Array.isArray(children) ? children : [children];
-		const element: ReactElement = slots.find((c: any) => c.type === type) as ReactElement;
-
-		if (element && element.props.children) {
-			return element.props.children;
-		}
-
-		return null;
-	}
 
 	function close() {
 		onClose();
