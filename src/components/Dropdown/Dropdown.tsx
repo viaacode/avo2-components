@@ -8,7 +8,9 @@ import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 
-import { Icon } from '../..';
+import { get } from '../../utils/get';
+
+import { Icon } from '../Icon/Icon';
 
 export interface DropdownProps {
 	label: string;
@@ -65,17 +67,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 
 	// We let popper calculate all the required styles, then we modify them a little based on the `autoSize` settings
 	const computeStyle = (data: Data, options: Object) => {
-		const computeStylesFn: ModifierFn | undefined = (
-			(((PopperJS || ({} as any)).Defaults || ({} as any)).modifiers || ({} as any)).computeStyle ||
-			({} as any)
-		).fn as ModifierFn | undefined;
-
-		if (!computeStylesFn) {
-			console.error(
-				new Error('Could not find computeStylesFn in PopperJS.Defaults.modifiers.computeStyle.fn')
-			);
-			return {} as any;
-		}
+		const computeStylesFn: ModifierFn = get(PopperJS, 'Defaults.modifiers.computeStyle.fn');
 
 		const newData = computeStylesFn(data, options);
 
