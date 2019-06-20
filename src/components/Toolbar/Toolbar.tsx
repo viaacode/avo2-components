@@ -1,8 +1,10 @@
-import React, { FunctionComponent, ReactElement, ReactNode, ReactNodeArray } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
-import { ToolbarCenter, ToolbarLeft, ToolbarRight, ToolbarSlotProps } from './Toolbar.slots';
+import { useSlot } from '../../hooks/useSlot';
+
+import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
 
 export interface ToolbarProps {
 	children: ReactNode;
@@ -25,20 +27,9 @@ export const Toolbar: FunctionComponent<ToolbarProps> = ({
 	altCenter,
 	justified,
 }: ToolbarProps) => {
-	const left = getSlot(ToolbarLeft);
-	const center = getSlot(ToolbarCenter);
-	const right = getSlot(ToolbarRight);
-
-	function getSlot(type: FunctionComponent<ToolbarSlotProps>) {
-		const slots: ReactNodeArray = Array.isArray(children) ? children : [children];
-		const element: ReactElement = slots.find((c: any) => c.type === type) as ReactElement;
-
-		if (element && element.props.children) {
-			return element.props.children;
-		}
-
-		return null;
-	}
+	const left = useSlot(ToolbarLeft, children);
+	const center = useSlot(ToolbarCenter, children);
+	const right = useSlot(ToolbarRight, children);
 
 	return (
 		<div
@@ -47,9 +38,6 @@ export const Toolbar: FunctionComponent<ToolbarProps> = ({
 				'c-toolbar--spaced': spaced,
 				'c-toolbar--auto': autoHeight,
 				'c-toolbar--align-top': alignTop,
-				'c-toolbar__center--interactive': interactiveCenter,
-				'c-toolbar__center-inner--alt': altCenter,
-				'c-toolbar__justified': justified,
 			})}
 		>
 			{left && <div className="c-toolbar__left">{left}</div>}
