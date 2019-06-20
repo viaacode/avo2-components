@@ -5,12 +5,23 @@ import { Button } from '../Button/Button';
 export interface ToggleButtonProps {
 	icon: 'heart' | 'bookmark';
 	active: boolean;
+	type?:
+		| 'primary'
+		| 'secondary'
+		| 'secondary-i'
+		| 'tertiary'
+		| 'borderless'
+		| 'borderless-i'
+		| 'danger'
+		| 'danger-hover'
+		| 'link';
 	onClick?: (active: boolean) => void;
 }
 
 export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
 	icon,
 	active,
+	type = 'borderless',
 	onClick = () => {},
 }: ToggleButtonProps) => {
 	const [filled, setFilled] = useState(active);
@@ -22,7 +33,9 @@ export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
 
 	function onButtonClick() {
 		setFilled(!filled);
-		onClick(!filled);
+		if (onClick) {
+			onClick(!filled);
+		}
 	}
 
 	function getIcon() {
@@ -33,5 +46,5 @@ export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
 		return icon;
 	}
 
-	return <Button icon={getIcon()} type="borderless" active={filled} onClick={onButtonClick} />;
+	return <Button icon={getIcon()} type={type} active={filled} onClick={onButtonClick} />;
 };
