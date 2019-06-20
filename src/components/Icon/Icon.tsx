@@ -12,7 +12,7 @@ export interface IconProps {
 }
 
 export const Icon: FunctionComponent<IconProps> = ({ name, size, type, active }: IconProps) => {
-	const IconToRender = (Icons as any)[toPascalCase(name)];
+	let IconToRender = (Icons as any)[toPascalCase(name)];
 
 	function getIconName() {
 		const base = 'o-svg-icon';
@@ -36,17 +36,19 @@ export const Icon: FunctionComponent<IconProps> = ({ name, size, type, active }:
 			.toLowerCase();
 	}
 
+	if (!IconToRender) {
+		console.error(`Icon with name: ${name} was not found.`);
+		IconToRender = (Icons as any)[toPascalCase('slash')];
+	}
 	return (
-		IconToRender && (
-			<div
-				className={classNames('o-svg-icon', getIconName(), {
-					'o-svg-icon--action-active': active,
-					'o-svg-icon-multicolor': type === 'multicolor',
-					[`o-svg-icon--${size}`]: size,
-				})}
-			>
-				<IconToRender />
-			</div>
-		)
+		<div
+			className={classNames('o-svg-icon', getIconName(), {
+				'o-svg-icon--action-active': active,
+				'o-svg-icon-multicolor': type === 'multicolor',
+				[`o-svg-icon--${size}`]: size,
+			})}
+		>
+			<IconToRender />
+		</div>
 	);
 };
