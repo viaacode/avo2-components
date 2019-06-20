@@ -12,11 +12,13 @@ import { Checkbox } from './components/Checkbox/Checkbox';
 import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 import { Container } from './components/Container/Container';
 import { DatePicker } from './components/DatePicker/DatePicker';
+import { Dropdown } from './components/Dropdown/Dropdown';
 import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup';
 import { Column } from './components/Grid/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
+import { Image } from './components/Image/Image';
 import { MediaCard } from './components/MediaCard/MediaCard';
 import { MetaData } from './components/MetaData/MetaData';
 import { MetaDataItem } from './components/MetaDataItem/MetaDataItem';
@@ -46,11 +48,13 @@ export {
 	CheckboxGroup,
 	Container,
 	DatePicker,
+	Dropdown,
 	Form,
 	FormGroup,
 	Grid,
 	Column,
 	Icon,
+	Image,
 	MediaCard,
 	MetaData,
 	MetaDataItem,
