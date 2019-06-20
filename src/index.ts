@@ -12,12 +12,15 @@ import { Checkbox } from './components/Checkbox/Checkbox';
 import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 import { Container } from './components/Container/Container';
 import { DatePicker } from './components/DatePicker/DatePicker';
+import { Dropdown } from './components/Dropdown/Dropdown';
 import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup';
 import { Column } from './components/Grid/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
+import { Image } from './components/Image/Image';
 import { MediaCard } from './components/MediaCard/MediaCard';
+import { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/MediaCard.slots';
 import { MetaData } from './components/MetaData/MetaData';
 import { MetaDataItem } from './components/MetaDataItem/MetaDataItem';
 import { Modal } from './components/Modal/Modal';
@@ -28,7 +31,6 @@ import { RadioButton } from './components/RadioButton/RadioButton';
 import { RadioButtonGroup } from './components/RadioButtonGroup/RadioButtonGroup';
 import { Select } from './components/Select/Select';
 import { Spinner } from './components/Spinner/Spinner';
-import { Swatch } from './components/Swatch/Swatch';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
@@ -50,12 +52,16 @@ export {
 	CheckboxGroup,
 	Container,
 	DatePicker,
+	Dropdown,
 	Form,
 	FormGroup,
 	Grid,
 	Column,
 	Icon,
+	Image,
 	MediaCard,
+	MediaCardMetaData,
+	MediaCardThumbnail,
 	MetaData,
 	MetaDataItem,
 	Modal,
@@ -68,7 +74,6 @@ export {
 	RadioButtonGroup,
 	Select,
 	Spinner,
-	Swatch,
 	TagList,
 	TextInput,
 	Thumbnail,
