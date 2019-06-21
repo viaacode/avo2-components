@@ -10,8 +10,7 @@ const searchResult = (
 		<SearchResult
 			link={`detail/${fakeSearchResult.pid}`}
 			type={fakeSearchResult.administrative_type as 'collection' | 'video' | 'audio'}
-			creator={fakeSearchResult.original_cp}
-			creatorSearchLink={`search?filters={"provider":["${fakeSearchResult.original_cp}"]}`}
+			originalCp={fakeSearchResult.original_cp}
 			date={fakeSearchResult.dcterms_issued}
 			pid={fakeSearchResult.pid}
 			title={fakeSearchResult.dc_title}
