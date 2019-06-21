@@ -33,7 +33,7 @@ export const TagList: FunctionComponent<TagListProps> = ({
 							{tag}
 						</p>
 					)}
-					{!swatches && !closable && { tag }}
+					{!swatches && !closable && tag}
 					{closable && (
 						<a onClick={() => onTagClosed(tag)}>
 							<Icon name="close" />
