@@ -27,7 +27,7 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 		>
 			<div className="c-thumbnail-placeholder">{category && <Icon name={category} />}</div>
 			{src && (
-				<div className="c-thumbnail-image">
+				<div className="c-thumbnail-image" style={{ overflow: 'hidden' }}>
 					<img src={src} alt={alt} onLoad={() => setLoaded(true)} />
 				</div>
 			)}
