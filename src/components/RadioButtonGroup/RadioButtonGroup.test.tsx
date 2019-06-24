@@ -1,7 +1,8 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { RadioButton } from '../..';
+import { RadioButton } from '../RadioButton/RadioButton';
+
 import { RadioButtonGroup } from './RadioButtonGroup';
 
 describe('<RadioButtonGroup />', () => {

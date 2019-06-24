@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
 
-import { RadioButton } from '../..';
+import { RadioButton } from '../RadioButton/RadioButton';
 import { RadioButtonGroup } from './RadioButtonGroup';
 
 storiesOf('RadioButtonGroup', module)

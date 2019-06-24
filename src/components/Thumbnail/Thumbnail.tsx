@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from 'react';
 
 import classNames from 'classnames';
 
-import { Icon } from '../..';
+import { Icon } from '../Icon/Icon';
 
 export interface ThumbnailProps {
 	category: 'collection' | 'video' | 'audio';

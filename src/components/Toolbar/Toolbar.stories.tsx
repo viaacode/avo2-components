@@ -4,7 +4,8 @@ import { storiesOf } from '@storybook/react';
 
 import { Button } from '../Button/Button';
 
-import { Icon } from '../..';
+import { Icon } from '../Icon/Icon';
+
 import { Toolbar } from './Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
 import { ToolbarItem } from './ToolbarItem';
