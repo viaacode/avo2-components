@@ -42,10 +42,10 @@ describe('<RadioButton />', () => {
 
 	it('Should set the defaultChecked-prop as the initial state', () => {
 		const radioButtonComponentTrue = shallow(
-			<RadioButton name="List7" label="One" value="one" defaultChecked={true} />
+			<RadioButton name="List7" label="One" value="one" checked={true} />
 		);
 		const radioButtonComponentFalse = shallow(
-			<RadioButton name="List7" label="One" value="one" defaultChecked={false} />
+			<RadioButton name="List7" label="One" value="one" checked={false} />
 		);
 
 		expect(radioButtonComponentTrue.find('[type="radio"]').prop('checked')).toEqual(true);
