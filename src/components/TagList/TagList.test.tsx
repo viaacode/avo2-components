@@ -64,10 +64,18 @@ describe('<TagList />', () => {
 	});
 
 	it('Should set the correct className for labels when rendering without swatches', () => {
-		const tagListComponent = shallow(<TagList tags={tags} swatches={false} />);
+		const tagListComponent = shallow(<TagList tags={tags} swatches={false} closable={true} />);
 
 		expect(tagListComponent.find('.c-label-text')).toHaveLength(0);
 		expect(tagListComponent.find('.c-tag__label')).toHaveLength(tags.length);
+	});
+
+	it('Should not render a <p> when tag has no swatches & is not closable', () => {
+		const tagListComponent = shallow(<TagList tags={tags} swatches={false} closable={false} />);
+
+		expect(tagListComponent.find('p')).toHaveLength(0);
+		expect(tagListComponent.find('.c-label-text')).toHaveLength(0);
+		expect(tagListComponent.find('.c-tag__label')).toHaveLength(0);
 	});
 
 	it('Should be able to render with borders', () => {
