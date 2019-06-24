@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
@@ -15,7 +15,7 @@ const RadioButtonStoryComponent = ({
 }) => {
 	const [checked, setChecked] = useState(defaultChecked);
 
-	return React.cloneElement(children, {
+	return cloneElement(children, {
 		checked,
 		onChange: (checked: boolean) => {
 			action('RadioButton toggled')(checked);

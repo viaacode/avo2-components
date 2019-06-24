@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement, useState } from 'react';
+import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
@@ -15,7 +15,7 @@ const DatePickerStoryComponent = ({
 }) => {
 	const [value, setValue] = useState(defaultValue);
 
-	return React.cloneElement(children, {
+	return cloneElement(children, {
 		value,
 		onChange: (value: Date) => {
 			action('Date changed')(value);

@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
@@ -15,7 +15,7 @@ const PaginationStoryComponent = ({
 }) => {
 	const [currentPage, setCurrentPage] = useState(initialPageIndex);
 
-	return React.cloneElement(children, {
+	return cloneElement(children, {
 		currentPage,
 		onPageChange: (index: number) => {
 			action('page changed')(index);
