@@ -28,12 +28,13 @@ export const TagList: FunctionComponent<TagListProps> = ({
 							className={classNames('c-label-swatch', `c-label-swatch--color-${(index % 10) + 1}`)}
 						/>
 					)}
-					{(swatches || closable) && (
+					{swatches || closable ? (
 						<p className={classNames({ 'c-tag__label': !swatches, 'c-label-text': swatches })}>
 							{tag}
 						</p>
+					) : (
+						tag
 					)}
-					{!swatches && !closable && tag}
 					{closable && (
 						<a onClick={() => onTagClosed(tag)}>
 							<Icon name="close" />
