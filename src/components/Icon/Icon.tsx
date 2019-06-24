@@ -37,9 +37,10 @@ export const Icon: FunctionComponent<IconProps> = ({ name, size, type, active }:
 	}
 
 	if (!IconToRender) {
-		console.error(`Icon with name: ${name} was not found.`);
+		console.log(`Icon with name: ${name} was not found.`);
 		IconToRender = (Icons as any)[toPascalCase('slash')];
 	}
+
 	return (
 		<div
 			className={classNames('o-svg-icon', getIconName(), {
