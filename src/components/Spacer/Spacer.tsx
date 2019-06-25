@@ -3,21 +3,34 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames';
 
 export interface SpacerProps {
-	side?: 'left' | 'top' | 'right' | 'bottom';
-	size?: 'l' | 's';
+	margin?: (
+		| 'small'
+		| 'large'
+		| 'left-small'
+		| 'left'
+		| 'left-large'
+		| 'top-small'
+		| 'top'
+		| 'top-large'
+		| 'right-small'
+		| 'right'
+		| 'right-large'
+		| 'bottom-small'
+		| 'bottom'
+		| 'bottom-large')[];
 	children?: ReactNode;
 }
 
-export const Spacer: FunctionComponent<SpacerProps> = ({ side, size, children }: SpacerProps) => {
-	let className: string = 'u-spacer';
+const abbreviateSizes = (input: string): string => {
+	return input.replace('large', 'l').replace('small', 's');
+};
 
-	if (side) {
-		className += `-${side}`;
+export const Spacer: FunctionComponent<SpacerProps> = ({ margin, children }: SpacerProps) => {
+	let classes: string[] = ['u-spacer'];
+
+	if (margin) {
+		classes = margin.map(value => `u-spacer-${abbreviateSizes(value)}`);
 	}
 
-	if (size) {
-		className += `-${size}`;
-	}
-
-	return <div className={className}>{children}</div>;
+	return <div className={classNames(...classes)}>{children}</div>;
 };

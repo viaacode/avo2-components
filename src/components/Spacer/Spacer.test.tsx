@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Spacer } from './Spacer';
@@ -14,21 +14,28 @@ describe('<Spacer />', () => {
 		expect(thumbnailComponent.hasClass('u-spacer')).toEqual(true);
 	});
 
-	it('Should set the correct className when side is passed', () => {
-		const thumbnailComponent = shallow(<Spacer side="left" />);
-
-		expect(thumbnailComponent.hasClass('u-spacer-left')).toEqual(true);
-	});
-
-	it('Should set the correct className when size is passed', () => {
-		const thumbnailComponent = shallow(<Spacer size="s" />);
-
-		expect(thumbnailComponent.hasClass('u-spacer-s')).toEqual(true);
-	});
-
-	it('Should set the correct className when size and side are passed', () => {
-		const thumbnailComponent = shallow(<Spacer side="left" size="s" />);
+	it('Should set the correct className when margin are passed', () => {
+		const thumbnailComponent = shallow(<Spacer margin={['left-small']} />);
 
 		expect(thumbnailComponent.hasClass('u-spacer-left-s')).toEqual(true);
+	});
+
+	it('Should set the correct className when margin are passed', () => {
+		const thumbnailComponent = shallow(<Spacer margin={['left-small', 'top-large']} />);
+
+		expect(thumbnailComponent.hasClass('u-spacer-left-s')).toEqual(true);
+		expect(thumbnailComponent.hasClass('u-spacer-top-l')).toEqual(true);
+	});
+
+	it('Should correctly pass children', () => {
+		const spacerComponent = mount(
+			<Spacer margin={['left-small', 'top-large']}>
+				<p>What a nice smile you have there!</p>
+			</Spacer>
+		);
+
+		const content = spacerComponent.find('p');
+
+		expect(content).toHaveLength(1);
 	});
 });
