@@ -56,12 +56,9 @@ describe('<SearchResult />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const searchResultComponent = mount(searchResult);
+		const searchResultComponent = shallow(searchResult);
 
-		const searchResultElement = searchResultComponent.childAt(0);
-
-		// expect(searchResultElement.hasClass('c-search-result')).toBe(true); // Doesn't work
-		expect(searchResultElement.html()).toMatch(/^<div class="c-search-result">.*/);
+		expect(searchResultComponent.hasClass('c-search-result')).toEqual(true);
 	});
 
 	it('Should render Thumbnail component', () => {
@@ -96,7 +93,7 @@ describe('<SearchResult />', () => {
 		expect(slotContentElement).toHaveLength(1);
 	});
 
-	it('Should call onToggle when clicking bookmark', () => {
+	it('Should call `onToggle` when clicking bookmark', () => {
 		const onToggleBookmark = jest.fn();
 
 		const SearchResultComponent = mount(cloneElement(searchResult, { onToggleBookmark }));
@@ -115,14 +112,7 @@ describe('<SearchResult />', () => {
 		expect(onToggleBookmark).toHaveBeenCalledWith(false);
 	});
 
-	// type={fakeSearchResult.administrative_type as 'collection' | 'video' | 'audio'}
-	// date={fakeSearchResult.dcterms_issued}
-	// description={fakeSearchResult.dcterms_abstract}
-	// duration={fakeSearchResult.fragment_duration_time}
-	// numberOfItems={25}
-	// tags={['Redactiekeuze', 'Partner']}
-
-	it('Should render type param correctly', () => {
+	it('Should render `type` correctly', () => {
 		const VideoSearchResultComponent = mount(cloneElement(searchResult, { type: 'video' }));
 		const AudioSearchResultComponent = mount(cloneElement(searchResult, { type: 'audio' }));
 
@@ -133,7 +123,7 @@ describe('<SearchResult />', () => {
 		expect(audioIconElement).toHaveLength(1);
 	});
 
-	it('Should render date param correctly', () => {
+	it('Should render `date` correctly', () => {
 		const SearchResultComponent = mount(searchResult);
 
 		const dateMetaDataElement = SearchResultComponent.find('.c-meta-data__item').at(0);
@@ -141,7 +131,7 @@ describe('<SearchResult />', () => {
 		expect(dateMetaDataElement.html()).toContain(fakeSearchResult.dcterms_issued);
 	});
 
-	it('Should render viewCount param correctly', () => {
+	it('Should render `viewCount` correctly', () => {
 		const SearchResultComponent = mount(searchResult);
 
 		const viewCountElement = SearchResultComponent.find('.c-meta-data__item').at(1);
@@ -149,7 +139,7 @@ describe('<SearchResult />', () => {
 		expect(viewCountElement.html()).toContain(41);
 	});
 
-	it('Should render bookmarkCount param correctly', () => {
+	it('Should render `bookmarkCount` correctly', () => {
 		const SearchResultComponent = mount(searchResult);
 
 		const bookmarkCountElement = SearchResultComponent.find('.c-meta-data__item').at(2);
@@ -157,7 +147,7 @@ describe('<SearchResult />', () => {
 		expect(bookmarkCountElement.html()).toContain(12);
 	});
 
-	it('Should render description param correctly', () => {
+	it('Should render `description` correctly', () => {
 		const SearchResultComponent = mount(searchResult);
 
 		const descriptionElement = SearchResultComponent.find('.c-search-result__description');
@@ -165,14 +155,14 @@ describe('<SearchResult />', () => {
 		expect(descriptionElement.html()).toContain(fakeSearchResult.dcterms_abstract.substring(0, 20));
 	});
 
-	it('Should render duration param correctly', () => {
+	it('Should render `duration` correctly', () => {
 		const SearchResultComponent = mount(searchResult);
 
 		const durationElement = SearchResultComponent.find('.c-thumbnail-media__meta').first();
 		expect(durationElement.html()).toContain(fakeSearchResult.fragment_duration_time);
 	});
 
-	it('Should render numberOfItems param correctly', () => {
+	it('Should render `numberOfItems` correctly', () => {
 		const SearchResultComponent = mount(
 			<SearchResult
 				type={'collection'}
@@ -213,7 +203,7 @@ describe('<SearchResult />', () => {
 		expect(numberOfItemsElement.html()).toContain(`25 items`);
 	});
 
-	it('Should render tags param correctly', () => {
+	it('Should render `tags` correctly', () => {
 		const SearchResultComponent = mount(searchResult);
 
 		const firstTagElement = SearchResultComponent.find('.c-tag').at(0);

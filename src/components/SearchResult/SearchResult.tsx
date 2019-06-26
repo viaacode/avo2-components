@@ -54,7 +54,6 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 								icon="bookmark"
 								onClick={(active: boolean) => onToggleBookmark(active)}
 							/>
-							{/*TODO implement bookmark behavior + set initial active*/}
 						</div>
 					</div>
 				</div>
@@ -63,7 +62,6 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 					<div className="o-flex o-flex--justify-between o-flex--wrap">
 						<MetaData category={type}>
 							<MetaDataItem label={date} />
-							{/*TODO add actual view and bookmark counts from database after bart adds them into elasticsearch */}
 							<MetaDataItem
 								label={String(viewCount)}
 								icon={type === 'audio' ? 'headphone' : 'eye'}
