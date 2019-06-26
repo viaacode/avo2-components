@@ -38,7 +38,7 @@ pipeline {
                         openshift.withProject("shared-components") {
 			   sh'''#!/bin/bash
 			   rm -f /tmp/.npmrc
-			    npm --registry=https://registry.npmjs.org install && npm build
+			    npm --registry=https://registry.npmjs.org install && npm run build
 
 			    '''
 
