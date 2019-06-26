@@ -1,6 +1,9 @@
 // Colors
 import { COLORS } from './colors';
 
+// Hooks
+import { useKeyPress } from './hooks/useKeyPress';
+
 // Components
 import { Avatar } from './components/Avatar/Avatar';
 import { AvatarIcon } from './components/Avatar/AvatarIcon';
@@ -42,6 +45,7 @@ import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 
 export {
 	COLORS,
+	useKeyPress,
 	Avatar,
 	AvatarIcon,
 	Badge,
