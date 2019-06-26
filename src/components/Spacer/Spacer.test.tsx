@@ -15,7 +15,7 @@ describe('<Spacer />', () => {
 	});
 
 	it('Should set the correct className when margin is passed', () => {
-		const thumbnailComponent = shallow(<Spacer margin={['left-small']} />);
+		const thumbnailComponent = shallow(<Spacer margin="left-small" />);
 
 		expect(thumbnailComponent.hasClass('u-spacer-left-s')).toEqual(true);
 	});
@@ -29,13 +29,13 @@ describe('<Spacer />', () => {
 
 	it('Should correctly pass children', () => {
 		const spacerComponent = mount(
-			<Spacer margin={['left-small', 'top-large']}>
+			<Spacer>
 				<p>What a nice smile you have there!</p>
 			</Spacer>
 		);
 
-		const content = spacerComponent.find('p');
+		const paragraph = spacerComponent.find('p');
 
-		expect(content).toHaveLength(1);
+		expect(spacerComponent.html()).toContain(paragraph.html());
 	});
 });
