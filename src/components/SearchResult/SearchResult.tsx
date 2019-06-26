@@ -1,4 +1,3 @@
-import { noop } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
@@ -17,10 +16,10 @@ export interface SearchResultProps {
 	children: ReactNode;
 	type: 'collection' | 'video' | 'audio';
 	thumbnailPath?: string;
-	duration?: string;
-	numberOfItems?: number;
 	description?: string;
 	date: string;
+	bookmarkCount: number;
+	viewCount: number;
 	tags?: string[];
 	onToggleBookmark?: (active: boolean) => void;
 }
@@ -28,34 +27,16 @@ export interface SearchResultProps {
 export const SearchResult: FunctionComponent<SearchResultProps> = ({
 	children,
 	type,
-	thumbnailPath,
 	description,
 	date,
-	duration = '',
-	numberOfItems = 0,
+	bookmarkCount,
+	viewCount,
 	tags = [],
-	onToggleBookmark = noop,
+	onToggleBookmark = () => {},
 }: SearchResultProps) => {
 	const title = useSlot(SearchResultTitle, children);
 	const subTitle = useSlot(SearchResultSubtitle, children);
 	const thumbnail = useSlot(SearchResultThumbnail, children);
-
-	const metaData = [];
-	let thumbnailMeta = '';
-	if (type === 'audio' || type === 'video') {
-		if (duration) {
-			thumbnailMeta = duration;
-			metaData.push({
-				label: thumbnailMeta,
-			});
-		}
-	} else {
-		// TODO get number of items from result item after bart updates the elasticsearch index
-		thumbnailMeta = `${numberOfItems} items`;
-		metaData.push({
-			label: thumbnailMeta,
-		});
-	}
 
 	return (
 		<div className="c-search-result">
@@ -82,13 +63,14 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 					<div className="o-flex o-flex--justify-between o-flex--wrap">
 						<MetaData category={type}>
 							<MetaDataItem label={date} />
-							<MetaDataItem label={String(25)} icon={type === 'audio' ? 'headphone' : 'eye'} />
-							{/* TODO get number of views after bart updates the elasticsearch index */}
-							{/*<MetaDataItem label={String(25)} icon="bookmark" />*/}
-							{/* TODO get number of favorites after bart updates the elasticsearch index */}
+							{/*TODO add actual view and bookmark counts from database after bart adds them into elasticsearch */}
+							<MetaDataItem
+								label={String(viewCount)}
+								icon={type === 'audio' ? 'headphone' : 'eye'}
+							/>
+							<MetaDataItem label={String(bookmarkCount)} icon="bookmark" />
 						</MetaData>
 						<TagList tags={tags} swatches={false} />
-						{/* TODO set correct labels */}
 					</div>
 				</div>
 			</div>

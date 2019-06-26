@@ -2,8 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { BrowserRouter as Router, Link } from 'react-router-dom';
-import { Thumbnail } from '../..';
+import { Thumbnail } from '../Thumbnail/Thumbnail';
 import { SearchResult } from './SearchResult';
 import {
 	SearchResultSubtitle,
@@ -49,7 +48,7 @@ export const fakeSearchResult = {
 	lom_intended_enduser_role: ['Docent', 'Student'],
 	algemeen_briefing_id: ['9da4cc22-331c-41a6-8c42-781581148f56'],
 	fragment_duration_time: '1:34',
-	fragment_duration_seconds: 0,
+	fragment_duration_seconds: 94,
 	administrative_type: 'video',
 	administrative_external_id: 'bg2h71p77x',
 };
@@ -57,32 +56,36 @@ export const fakeSearchResult = {
 storiesOf('SearchResult', module)
 	.addParameters({ jest: ['SearchResult'] })
 	.add('SearchResult', () => (
-		<Router>
-			<SearchResult
-				type={fakeSearchResult.administrative_type as 'collection' | 'video' | 'audio'}
-				date={fakeSearchResult.dcterms_issued}
-				description={fakeSearchResult.dcterms_abstract}
-				duration={fakeSearchResult.fragment_duration_time}
-				numberOfItems={25}
-				tags={['Redactiekeuze', 'Partner']}
-			>
-				<SearchResultTitle>
-					<Link to={`detail/${fakeSearchResult.pid}`}>{fakeSearchResult.dc_title}</Link>
-				</SearchResultTitle>
-				<SearchResultSubtitle>
-					<Link to={`search?filters={'provider':['${fakeSearchResult.original_cp}']}`}>
-						{fakeSearchResult.original_cp}
-					</Link>
-				</SearchResultSubtitle>
-				<SearchResultThumbnail>
-					<Link to={`detail/${fakeSearchResult.pid}`}>
-						<Thumbnail
-							category={fakeSearchResult.administrative_type as any}
-							src={fakeSearchResult.thumbnail_path}
-							label={fakeSearchResult.administrative_type}
-						/>
-					</Link>
-				</SearchResultThumbnail>
-			</SearchResult>
-		</Router>
+		<SearchResult
+			type={fakeSearchResult.administrative_type as 'collection' | 'video' | 'audio'}
+			date={fakeSearchResult.dcterms_issued}
+			viewCount={41}
+			bookmarkCount={12}
+			description={fakeSearchResult.dcterms_abstract}
+			tags={['Redactiekeuze', 'Partner']}
+		>
+			<SearchResultTitle>
+				<a href={`detail/${fakeSearchResult.pid}`}>{fakeSearchResult.dc_title}</a>
+			</SearchResultTitle>
+			<SearchResultSubtitle>
+				<a href={`search?filters={'provider':['${fakeSearchResult.original_cp}']}`}>
+					{fakeSearchResult.original_cp}
+				</a>
+			</SearchResultSubtitle>
+			<SearchResultThumbnail>
+				<a href={`detail/${fakeSearchResult.pid}`}>
+					<Thumbnail
+						category={fakeSearchResult.administrative_type as any}
+						src={fakeSearchResult.thumbnail_path}
+						label={fakeSearchResult.administrative_type}
+						meta={
+							fakeSearchResult.administrative_type === 'video' ||
+							fakeSearchResult.administrative_type === 'audio'
+								? fakeSearchResult.fragment_duration_time
+								: '25 items'
+						}
+					/>
+				</a>
+			</SearchResultThumbnail>
+		</SearchResult>
 	));
