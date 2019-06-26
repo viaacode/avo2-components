@@ -33,6 +33,7 @@ import { Pagination } from './components/Pagination/Pagination';
 import { RadioButton } from './components/RadioButton/RadioButton';
 import { RadioButtonGroup } from './components/RadioButtonGroup/RadioButtonGroup';
 import { Select } from './components/Select/Select';
+import { Spacer } from './components/Spacer/Spacer';
 import { Spinner } from './components/Spinner/Spinner';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
@@ -77,6 +78,7 @@ export {
 	RadioButton,
 	RadioButtonGroup,
 	Select,
+	Spacer,
 	Spinner,
 	TagList,
 	TextInput,
