@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement, useState } from 'react';
+import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
@@ -11,7 +11,7 @@ import { ModalBody, ModalFooterLeft, ModalFooterRight } from './Modal.slots';
 const ModalStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [isOpen, setOpen] = useState(false);
 
-	const childrenWithProps = React.cloneElement(children, { isOpen, onClose: () => setOpen(false) });
+	const childrenWithProps = cloneElement(children, { isOpen, onClose: () => setOpen(false) });
 
 	return (
 		<Fragment>

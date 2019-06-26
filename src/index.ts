@@ -1,6 +1,9 @@
 // Colors
 import { COLORS } from './colors';
 
+// Hooks
+import { useKeyPress } from './hooks/useKeyPress';
+
 // Components
 import { Avatar } from './components/Avatar/Avatar';
 import { AvatarIcon } from './components/Avatar/AvatarIcon';
@@ -36,6 +39,7 @@ import {
 	SearchResultTitle,
 } from './components/SearchResult/SearchResult.slots';
 import { Select } from './components/Select/Select';
+import { Spacer } from './components/Spacer/Spacer';
 import { Spinner } from './components/Spinner/Spinner';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
@@ -48,6 +52,7 @@ import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 
 export {
 	COLORS,
+	useKeyPress,
 	Avatar,
 	AvatarIcon,
 	Badge,
@@ -83,6 +88,7 @@ export {
 	SearchResultTitle,
 	SearchResultSubtitle,
 	SearchResultThumbnail,
+	Spacer,
 	Spinner,
 	TagList,
 	TextInput,
