@@ -38,7 +38,7 @@ describe('<DatePicker />', () => {
 		const defaultDateString = '2019-06-11';
 		const defaultDateObject = new Date(defaultDateString);
 
-		const datePickerComponent = shallow(<DatePicker defaultValue={defaultDateObject} />);
+		const datePickerComponent = shallow(<DatePicker value={defaultDateObject} />);
 
 		const datePickerElement = datePickerComponent.find('input');
 
