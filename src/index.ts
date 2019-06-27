@@ -27,7 +27,12 @@ import { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/Me
 import { MetaData } from './components/MetaData/MetaData';
 import { MetaDataItem } from './components/MetaDataItem/MetaDataItem';
 import { Modal } from './components/Modal/Modal';
-import { ModalBody, ModalFooterLeft, ModalFooterRight } from './components/Modal/Modal.slots';
+import {
+	ModalBody,
+	ModalFooterLeft,
+	ModalFooterRight,
+	ModalHeaderRight,
+} from './components/Modal/Modal.slots';
 import { Navbar } from './components/Navbar/Navbar';
 import { Pagination } from './components/Pagination/Pagination';
 import { RadioButton } from './components/RadioButton/RadioButton';
@@ -79,6 +84,7 @@ export {
 	ModalBody,
 	ModalFooterLeft,
 	ModalFooterRight,
+	ModalHeaderRight,
 	Navbar,
 	Pagination,
 	RadioButton,
