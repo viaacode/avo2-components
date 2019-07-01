@@ -6,7 +6,7 @@ export interface FlexProps {
 	orientation?: 'horizontal' | 'vertical';
 	center?: boolean;
 	justify?: boolean;
-	spaced?: boolean | 'wide';
+	spaced?: 'regular' | 'wide';
 	children?: ReactNode;
 }
 
@@ -34,7 +34,7 @@ export const Flex: FunctionComponent<FlexProps> = ({
 	}
 
 	if (spaced) {
-		classes.push(spaced === 'wide' ? 'o-flex--spaced-wide' : 'o-flex--spaced');
+		classes.push(`o-flex--spaced-${spaced}`.replace('-regular', ''));
 	}
 
 	return (

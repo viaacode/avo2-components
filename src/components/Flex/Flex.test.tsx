@@ -39,7 +39,7 @@ describe('<Flex />', () => {
 	});
 
 	it('Should set the correct className when spaced is passed (boolean)', () => {
-		const flexComponent = shallow(<Flex spaced />);
+		const flexComponent = shallow(<Flex spaced="regular" />);
 
 		expect(flexComponent.hasClass('o-flex--spaced')).toEqual(true);
 	});
