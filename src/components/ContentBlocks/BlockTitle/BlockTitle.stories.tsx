@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
@@ -7,6 +7,4 @@ import { blockTitleExample } from './BlockTitle.test';
 
 storiesOf('BlockTitle', module)
 	.addParameters({ jest: ['BlockTitle'] })
-	.add('BlockTitle', () => (
-		blockTitleExample
-	));
+	.add('BlockTitle', () => blockTitleExample);

@@ -1,12 +1,10 @@
-import React, { ChangeEvent, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
 export interface BlockIntroProps {
-	text: string
+	text: string;
 }
 
-export const BlockIntro: FunctionComponent<BlockIntroProps> = ({
-	text,
-}: BlockIntroProps) => (
+export const BlockIntro: FunctionComponent<BlockIntroProps> = ({ text }: BlockIntroProps) => (
 	<section className="o-container-vertical o-container-vertical-intro">
 		<div className="o-container o-container--medium">
 			<p className="o-container-vertical-intro__intro">{text}</p>

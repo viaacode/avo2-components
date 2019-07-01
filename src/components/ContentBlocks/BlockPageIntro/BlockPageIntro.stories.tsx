@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
@@ -7,6 +7,4 @@ import { blockPageIntroExample } from './BlockPageIntro.test';
 
 storiesOf('BlockPageIntro', module)
 	.addParameters({ jest: ['BlockPageIntro'] })
-	.add('BlockPageIntro', () => (
-		blockPageIntroExample
-	));
+	.add('BlockPageIntro', () => blockPageIntroExample);

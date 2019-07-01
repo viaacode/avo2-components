@@ -1,5 +1,6 @@
-import { mount, shallow } from 'enzyme';
 import React from 'react';
+
+import { shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockIntro } from './BlockIntro';

@@ -1,9 +1,10 @@
-import React, { ChangeEvent, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
+
 import { Container } from '../../Container/Container';
 
 export interface BlockPageIntroProps {
-	title: string,
-	subtitle: string,
+	title: string;
+	subtitle: string;
 }
 
 export const BlockPageIntro: FunctionComponent<BlockPageIntroProps> = ({

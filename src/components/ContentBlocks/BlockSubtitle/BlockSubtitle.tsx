@@ -1,7 +1,7 @@
-import React, { ChangeEvent, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
 export interface BlockSubtitleProps {
-	title: string
+	subtitle: string;
 }
 
 export const BlockSubtitle: FunctionComponent<BlockSubtitleProps> = ({

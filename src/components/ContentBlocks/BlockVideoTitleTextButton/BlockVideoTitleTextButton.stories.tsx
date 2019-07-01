@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { BlockImageText } from './BlockImageText';
-import { blockImageTextExample } from './BlockImageText.test';
+import { BlockVideoTitleTextButton } from './BlockVideoTitleTextButton';
+import { blockVideoTitleButtonExample } from './BlockVideoTitleTextButton.test';
 
-storiesOf('BlockImageText', module)
-	.addParameters({ jest: ['BlockImageText'] })
-	.add('BlockImageText', () => (blockImageTextExample));
+storiesOf('BlockVideoTitleTextButton', module)
+	.addParameters({ jest: ['BlockVideoTitleTextButton'] })
+	.add('BlockVideoTitleTextButton', () => blockVideoTitleButtonExample);

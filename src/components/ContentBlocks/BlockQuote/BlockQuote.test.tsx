@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockQuote } from './BlockQuote';
@@ -9,11 +9,13 @@ const quoteText = loremIpsum({ count: 10 });
 const authorAvatarSource = 'https://source.unsplash.com/random/50x50';
 const authorName = loremIpsum({ count: 2 });
 
-export const quoteExample = <BlockQuote
-	quoteText={quoteText}
-	authorAvatarSource={authorAvatarSource}
-	authorName={authorName}
-></BlockQuote>;
+export const quoteExample = (
+	<BlockQuote
+		quoteText={quoteText}
+		authorAvatarSource={authorAvatarSource}
+		authorName={authorName}
+	/>
+);
 
 describe('<BlockQuote />', () => {
 	it('Should be able to render', () => {
@@ -45,7 +47,7 @@ describe('<BlockQuote />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const component = shallow(blockImageTextExample);
+		const component = shallow(quoteExample);
 
 		const quoteDivElement = component.childAt(0);
 		const blockquoteElement = quoteDivElement.find('blockquote');
@@ -60,5 +62,4 @@ describe('<BlockQuote />', () => {
 
 		expect(citeElement.hasClass('c-quote__author')).toEqual(true);
 	});
-
 });
