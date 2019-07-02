@@ -11,7 +11,7 @@ export interface BlockRichTextProps {
 export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 	content,
 }: BlockRichTextProps) => (
-	<div className="o-container-vertical o-container-vertical-page-intro">
+	<div className="o-container-vertical o-container-vertical-rich-text">
 		<Container mode="horizontal" size="small">
 			{/* TODO escape markdown in backend */}
 			<div className="c-content" dangerouslySetInnerHTML={{ __html: marked(content) }} />

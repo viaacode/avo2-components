@@ -9,7 +9,7 @@ const loremIpsumText = loremIpsum({ count: 10 });
 const videoIframeSource =
 	'https://player.vimeo.com/video/113716040?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0';
 
-export const blockVideoTitleButtonExample = (
+export const blockVideoTitleTextButtonExample = (
 	<BlockVideoTitleTextButton
 		videoIframeSource={videoIframeSource}
 		title="Title"
@@ -20,11 +20,11 @@ export const blockVideoTitleButtonExample = (
 
 describe('<BlockVideoTitleTextButton />', () => {
 	it('Should be able to render', () => {
-		shallow(blockVideoTitleButtonExample);
+		shallow(blockVideoTitleTextButtonExample);
 	});
 
 	it('Should render the iframe correctly', () => {
-		const component = mount(blockVideoTitleButtonExample);
+		const component = mount(blockVideoTitleTextButtonExample);
 
 		const iframeElement = component.find('iframe');
 
@@ -32,7 +32,7 @@ describe('<BlockVideoTitleTextButton />', () => {
 	});
 
 	it('Should render the title correctly', () => {
-		const component = mount(blockVideoTitleButtonExample);
+		const component = mount(blockVideoTitleTextButtonExample);
 
 		const h2Element = component.find('h2');
 
@@ -40,7 +40,7 @@ describe('<BlockVideoTitleTextButton />', () => {
 	});
 
 	it('Should render the text correctly', () => {
-		const component = mount(blockVideoTitleButtonExample);
+		const component = mount(blockVideoTitleTextButtonExample);
 
 		const pElement = component.find('p');
 
@@ -48,31 +48,31 @@ describe('<BlockVideoTitleTextButton />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		// const component = mount(blockVideoTitleButtonExample);
-		// console.log('component: ', component.html());
-		//
-		// const containerElement = component.childAt(0).childAt(0);
-		// console.log('containerElement: ', containerElement.html());
-		// const gridElement = containerElement.childAt(0).childAt(0);
-		// console.log('gridElement: ', gridElement.html());
-		// const leftColumnElement = gridElement.childAt(0).childAt(0);
-		// console.log('leftColumnElement: ', leftColumnElement.html());
-		// const rightColumnElement = gridElement.childAt(0).childAt(1);
-		// console.log('rightColumnElement: ', rightColumnElement.html());
-		// const contentElement = rightColumnElement.childAt(0).childAt(0);
-		//
-		// expect(component.hasClass('o-container-vertical')).toEqual(true);
-		// expect(containerElement.hasClass('o-container')).toEqual(true);
-		// expect(gridElement.hasClass('o-grid')).toEqual(true);
-		// expect(leftColumnElement.hasClass('o-grid-col-bp2-4')).toEqual(true);
-		// expect(rightColumnElement.hasClass('o-grid-col-bp2-8')).toEqual(true);
-		// expect(contentElement.hasClass('c-content')).toEqual(true);
+		const component = mount(blockVideoTitleTextButtonExample);
+
+		const divs = component.find('div');
+
+		const containerElement = divs.at(0);
+		const spacerElement = divs.at(1);
+		const gridElement = divs.at(2);
+		const leftColumnElement = divs.at(3);
+		const rightColumnElement = divs.at(5);
+		const contentElement = divs.at(6);
+
+		expect(containerElement.hasClass('o-container')).toEqual(true);
+		expect(spacerElement.hasClass('u-spacer')).toEqual(true);
+		expect(gridElement.hasClass('o-grid')).toEqual(true);
+		expect(leftColumnElement.hasClass('o-grid-col-6')).toEqual(true);
+		expect(rightColumnElement.hasClass('o-grid-col-6')).toEqual(true);
+		expect(contentElement.hasClass('c-content')).toEqual(true);
 	});
 
 	it('Should trigger handler when button is clicked', () => {
 		const onButtonClick = jest.fn();
 
-		const component = mount(cloneElement(blockVideoTitleButtonExample, { onClick: onButtonClick }));
+		const component = mount(
+			cloneElement(blockVideoTitleTextButtonExample, { onClick: onButtonClick })
+		);
 
 		const buttonElement = component.find('button');
 

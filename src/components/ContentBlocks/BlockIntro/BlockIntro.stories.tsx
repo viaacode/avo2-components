@@ -5,7 +5,7 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockIntro } from './BlockIntro';
 
-const text = loremIpsum({ count: 30 });
+const text = loremIpsum({ count: 10 });
 
 storiesOf('BlockIntro', module)
 	.addParameters({ jest: ['BlockIntro'] })

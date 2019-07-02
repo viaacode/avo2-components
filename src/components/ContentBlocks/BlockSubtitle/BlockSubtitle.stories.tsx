@@ -3,8 +3,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { BlockSubtitle } from './BlockSubtitle';
-import { blockSubtitleExample } from './BlockSubtitle.test';
+
+const subtitle = 'Subtitle';
 
 storiesOf('BlockSubtitle', module)
 	.addParameters({ jest: ['BlockSubtitle'] })
-	.add('BlockSubtitle', () => blockSubtitleExample);
+	.add('BlockSubtitle', () => <BlockSubtitle subtitle={subtitle} />);

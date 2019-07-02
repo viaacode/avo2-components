@@ -49,16 +49,18 @@ describe('<BlockRichText />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const component = shallow(BlockRichTextExample);
+		const component = mount(BlockRichTextExample);
 
-		// const container = component.find('.o-container');
-		// const contentContainer = container.find('div').last();
+		const verticalContainer = component.find('div').at(0);
+		const horizontalContainer = component.find('div').at(1);
+		const contentContainer = component.find('div').at(2);
 
-		expect(component.hasClass('o-container-vertical')).toEqual(true);
-		// expect(component.hasClass('o-container-vertical-rich-text')).toEqual(true);
+		expect(verticalContainer.hasClass('o-container-vertical')).toEqual(true);
+		expect(verticalContainer.hasClass('o-container-vertical-rich-text')).toEqual(true);
 
-		// expect(container.hasClass('o-container--small')).toEqual(true);
+		expect(horizontalContainer.hasClass('o-container')).toEqual(true);
+		expect(horizontalContainer.hasClass('o-container--small')).toEqual(true);
 
-		// expect(contentContainer.hasClass('c-content')).toEqual(true);
+		expect(contentContainer.hasClass('c-content')).toEqual(true);
 	});
 });

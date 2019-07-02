@@ -20,7 +20,7 @@ export const BlockTitleImageText: FunctionComponent<BlockQuoteProps> = ({
 		<Spacer margin="top-large">
 			<Container size="small">
 				{title && <h2 className="c-h2">{title}</h2>}
-				{imageSource && <Image src={imageSource} alt={imageDescription} />}
+				{imageSource && <Image src={imageSource} alt={imageDescription} wide={true} />}
 				{text && (
 					<Spacer margin="top">
 						<p>{text}</p>

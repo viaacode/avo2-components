@@ -1,10 +1,12 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-
+import { loremIpsum } from 'lorem-ipsum';
 import { BlockPageIntro } from './BlockPageIntro';
-import { blockPageIntroExample } from './BlockPageIntro.test';
+
+const title = 'Page title';
+const subtitle = loremIpsum({ count: 1 });
 
 storiesOf('BlockPageIntro', module)
 	.addParameters({ jest: ['BlockPageIntro'] })
-	.add('BlockPageIntro', () => blockPageIntroExample);
+	.add('BlockPageIntro', () => <BlockPageIntro title={title} subtitle={subtitle} />);

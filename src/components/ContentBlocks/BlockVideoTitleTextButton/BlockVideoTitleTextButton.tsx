@@ -26,12 +26,14 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 			<Spacer>
 				<Grid>
 					<Column size="6">
-						<div className="c-video-wrapper">
+						{/* 16 by 9 => 100% by 56% */}
+						<div className="c-video-wrapper" style={{ paddingBottom: '56%' }}>
 							{/* tslint:disable */}
 							<iframe
+								title={videoIframeSource}
 								src={videoIframeSource}
 								width="640"
-								height="360"
+								height="100%"
 								frameBorder="0"
 								allowFullScreen={true}
 							/>

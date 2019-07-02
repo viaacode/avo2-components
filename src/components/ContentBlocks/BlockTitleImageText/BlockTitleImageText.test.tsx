@@ -5,13 +5,13 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockTitleImageText } from './BlockTitleImageText';
 
-const imageSource = 'https://source.unsplash.com/random/500x200';
+const imageSource = '/images/500x200.svg';
 const loremIpsumText = loremIpsum({ count: 10 });
 
 export const blockTitleImageTextExample = (
 	<BlockTitleImageText
 		imageSource={imageSource}
-		imageDescription="random unsplash image"
+		imageDescription="image showing the default dimensions on a grey background"
 		title="Title"
 		text={loremIpsumText}
 	/>
@@ -39,11 +39,12 @@ describe('<BlockTitleImageText />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		// const component = shallow(blockTitleImageTextExample);
-		//
-		// const containerElement = component.childAt(0);
-		//
-		// expect(component.html()).toContain('"u-spacer-top-l"');
-		// expect(containerElement.hasClass('o-container--small')).toEqual(true);
+		const component = mount(blockTitleImageTextExample);
+
+		const spacerElement = component.find('div').at(0);
+		const containerElement = component.find('div').at(1);
+
+		expect(spacerElement.hasClass('u-spacer-top-l')).toEqual(true);
+		expect(containerElement.hasClass('o-container--small')).toEqual(true);
 	});
 });

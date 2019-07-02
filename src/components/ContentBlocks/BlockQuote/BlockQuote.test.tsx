@@ -6,7 +6,7 @@ import { loremIpsum } from 'lorem-ipsum';
 import { BlockQuote } from './BlockQuote';
 
 const quoteText = loremIpsum({ count: 10 });
-const authorAvatarSource = 'https://source.unsplash.com/random/50x50';
+const authorAvatarSource = '/images/50x50.svg';
 const authorName = loremIpsum({ count: 2 });
 
 export const quoteExample = (

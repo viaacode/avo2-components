@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 
 export interface BlockQuoteProps {
 	quoteText: string;
-	authorAvatarSource: string;
+	authorAvatarSource?: string;
 	authorName: string;
 }
 
@@ -17,7 +17,14 @@ export const BlockQuote: FunctionComponent<BlockQuoteProps> = ({
 				<blockquote className="c-quote__text">{quoteText}</blockquote>
 				{authorName && (
 					<cite className="c-quote__author">
-						<img className="c-quote__avatar" src={authorAvatarSource} alt="avatar of the author" />
+						{authorAvatarSource && (
+							<img
+								className="c-quote__avatar"
+								src={authorAvatarSource}
+								alt="avatar of the author"
+								style={{ marginRight: '10px' }}
+							/>
+						)}
 						<span>{authorName}</span>
 					</cite>
 				)}

@@ -1,9 +1,22 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
+import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockImageTitleTextButton } from './BlockImageTitleTextButton';
-import { blockImageTitleTextButtonExample } from './BlockImageTitleTextButton.test';
+
+const imageSource = '/images/1280x720.svg';
+const loremIpsumText = loremIpsum({ count: 10 });
+
+export const blockImageTitleTextButtonExample = (
+	<BlockImageTitleTextButton
+		imageSource={imageSource}
+		imageDescription="image showing the default dimensions on a grey background"
+		title="Title"
+		text={loremIpsumText}
+		buttonLabel="Goto video"
+	/>
+);
 
 storiesOf('BlockImageTitleTextButton', module)
 	.addParameters({ jest: ['BlockImageTitleTextButton'] })

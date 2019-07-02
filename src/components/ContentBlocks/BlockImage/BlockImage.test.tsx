@@ -4,19 +4,22 @@ import { mount, shallow } from 'enzyme';
 
 import { BlockImage } from './BlockImage';
 
-const imageSource = 'https://source.unsplash.com/random/500x200';
+const imageSource = '/images/500x200.svg';
 
-export const BlockImageExample = (
-	<BlockImage imageSource={imageSource} imageDescription="random unsplash image" />
+const blockImageExample = (
+	<BlockImage
+		imageSource={imageSource}
+		imageDescription="image showing the default dimensions on a grey background"
+	/>
 );
 
 describe('<BlockImage />', () => {
 	it('Should be able to render', () => {
-		shallow(BlockImageExample);
+		shallow(blockImageExample);
 	});
 
 	it('Should render the image correctly', () => {
-		const component = mount(BlockImageExample);
+		const component = mount(blockImageExample);
 
 		const imgElement = component.find('img');
 
@@ -24,13 +27,12 @@ describe('<BlockImage />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const component = mount(BlockImageExample);
+		const component = mount(blockImageExample);
 
-		const verticalContainerElement = component.childAt(0);
-		const imgWrapperElement = verticalContainerElement.childAt(0);
+		const verticalContainerElement = component.find('div').at(0);
+		const imgWrapperElement = component.find('div').at(1);
 
 		expect(verticalContainerElement.hasClass('c-block-vertical')).toEqual(true);
-		// hasClass doesn't work for some reason
-		expect(imgWrapperElement.html()).toContain('"c-image c-image--full-width"');
+		expect(imgWrapperElement.hasClass('c-image c-image--full-width')).toEqual(true);
 	});
 });

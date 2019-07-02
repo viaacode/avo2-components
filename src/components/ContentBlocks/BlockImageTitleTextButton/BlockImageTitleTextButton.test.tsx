@@ -5,13 +5,13 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockImageTitleTextButton } from './BlockImageTitleTextButton';
 
-const imageSource = 'https://source.unsplash.com/random/1280x720';
+const imageSource = '/images/1280x720.svg';
 const loremIpsumText = loremIpsum({ count: 10 });
 
 export const blockImageTitleTextButtonExample = (
 	<BlockImageTitleTextButton
 		imageSource={imageSource}
-		imageDescription="random unsplash image"
+		imageDescription="image showing the default dimensions on a grey background"
 		title="Title"
 		text={loremIpsumText}
 		buttonLabel="Goto video"
@@ -50,18 +50,21 @@ describe('<BlockImageTitleTextButton />', () => {
 	it('Should set the correct className', () => {
 		const component = mount(blockImageTitleTextButtonExample);
 
-		const containerElement = component.childAt(0).childAt(0);
-		const gridElement = containerElement.childAt(0).childAt(0);
-		const leftColumnElement = gridElement.childAt(0).childAt(0);
-		const rightColumnElement = gridElement.childAt(0).childAt(1);
-		const contentElement = rightColumnElement.childAt(0).childAt(0);
+		const divs = component.find('div');
 
-		expect(component.html()).toContain('"o-container-vertical"');
-		expect(containerElement.html()).toContain('"o-container"');
-		expect(gridElement.html()).toContain('"o-grid"');
-		expect(leftColumnElement.html()).toContain('"o-grid-col-bp2-4"');
-		expect(rightColumnElement.html()).toContain('"o-grid-col-bp2-8"');
-		expect(contentElement.html()).toContain('"c-content"');
+		const containerVertical = component.find('section').at(0);
+		const containerElement = divs.at(0);
+		const gridElement = divs.at(1);
+		const leftColumnElement = divs.at(2);
+		const rightColumnElement = divs.at(4);
+		const contentElement = divs.at(5);
+
+		expect(containerVertical.hasClass('o-container-vertical')).toEqual(true);
+		expect(containerElement.hasClass('o-container')).toEqual(true);
+		expect(gridElement.hasClass('o-grid')).toEqual(true);
+		expect(leftColumnElement.hasClass('o-grid-col-bp2-4')).toEqual(true);
+		expect(rightColumnElement.hasClass('o-grid-col-bp2-8')).toEqual(true);
+		expect(contentElement.hasClass('c-content')).toEqual(true);
 	});
 
 	it('Should trigger handler when button is clicked', () => {

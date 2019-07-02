@@ -7,7 +7,7 @@ describe('<Thumbnail />', () => {
 	it('Should be able to render', () => {
 		shallow(
 			<Thumbnail
-				src="images/thumbnail.jpg"
+				src="/images/thumbnail.jpg"
 				meta="4 items"
 				category="collection"
 				label="collection"
@@ -18,7 +18,7 @@ describe('<Thumbnail />', () => {
 	it('Should set the correct className', () => {
 		const thumbnailComponent = shallow(
 			<Thumbnail
-				src="images/thumbnail.jpg"
+				src="/images/thumbnail.jpg"
 				meta="4 items"
 				category="collection"
 				label="collection"
@@ -32,7 +32,7 @@ describe('<Thumbnail />', () => {
 	it('Should set the correct className for each category', () => {
 		const thumbnailComponent = shallow(
 			<Thumbnail
-				src="images/thumbnail.jpg"
+				src="/images/thumbnail.jpg"
 				meta="4 items"
 				category="collection"
 				label="collection"
@@ -45,7 +45,7 @@ describe('<Thumbnail />', () => {
 	it('Should render image if src is correctly passed', () => {
 		const thumbnailComponent = shallow(
 			<Thumbnail
-				src="images/thumbnail.jpg"
+				src="/images/thumbnail.jpg"
 				meta="4 items"
 				category="collection"
 				label="collection"
@@ -56,7 +56,7 @@ describe('<Thumbnail />', () => {
 		expect(imageContainer).toHaveLength(1);
 
 		const imageElement = imageContainer.find('img');
-		expect(imageElement.prop('src')).toEqual('images/thumbnail.jpg');
+		expect(imageElement.prop('src')).toEqual('/images/thumbnail.jpg');
 	});
 
 	it('Should render placeholder if no src is passed', () => {
@@ -74,7 +74,7 @@ describe('<Thumbnail />', () => {
 	it('Should correctly set alt if it was passed', () => {
 		const thumbnailComponent = shallow(
 			<Thumbnail
-				src="images/thumbnail.jpg"
+				src="/images/thumbnail.jpg"
 				alt="thumbnail"
 				meta="4 items"
 				category="collection"
@@ -90,7 +90,7 @@ describe('<Thumbnail />', () => {
 	it('Should render meta if it was passed', () => {
 		const thumbnailComponent = shallow(
 			<Thumbnail
-				src="images/thumbnail.jpg"
+				src="/images/thumbnail.jpg"
 				meta="4 items"
 				category="collection"
 				label="collection"
@@ -103,7 +103,7 @@ describe('<Thumbnail />', () => {
 
 	it('Should not render meta if it was not passed', () => {
 		const thumbnailComponent = shallow(
-			<Thumbnail src="images/thumbnail.jpg" category="collection" label="collection" />
+			<Thumbnail src="/images/thumbnail.jpg" category="collection" label="collection" />
 		);
 
 		const metaElement = thumbnailComponent.find('.c-thumbnail-media__meta');
