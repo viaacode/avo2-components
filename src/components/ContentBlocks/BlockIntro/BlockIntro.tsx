@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
+import marked from 'marked';
+
 import { Container } from '../../Container/Container';
 
 export interface BlockIntroProps {
@@ -18,7 +20,10 @@ export const BlockIntro: FunctionComponent<BlockIntroProps> = ({
 			<div className="c-content u-text-center">
 				{title && <h1 className="o-container-vertical-title__title">{title}</h1>}
 				{subtitle && <h3>{subtitle}</h3>}
-				<p className="o-container-vertical-intro__intro">{text}</p>
+				<p
+					className="o-container-vertical-intro__intro"
+					dangerouslySetInnerHTML={{ __html: marked(text) }}
+				/>
 			</div>
 		</Container>
 	</section>

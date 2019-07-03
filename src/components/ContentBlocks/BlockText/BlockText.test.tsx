@@ -3,10 +3,10 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
 
-import { BlockRichText } from './BlockRichText';
+import { BlockText } from './BlockText';
 
-export const BlockRichTextExample = (
-	<BlockRichText
+export const BlockTextExample = (
+	<BlockText
 		content={`
   # Title
 
@@ -28,13 +28,13 @@ export const BlockRichTextExample = (
 	/>
 );
 
-describe('<BlockRichText />', () => {
+describe('<BlockText />', () => {
 	it('Should be able to render', () => {
-		shallow(BlockRichTextExample);
+		shallow(BlockTextExample);
 	});
 
 	it('Should render the markdown correctly', () => {
-		const component = mount(BlockRichTextExample);
+		const component = mount(BlockTextExample);
 
 		const html = component.html();
 		expect(html).toContain('<h1 id="title">Title</h1>');
@@ -49,7 +49,7 @@ describe('<BlockRichText />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const component = mount(BlockRichTextExample);
+		const component = mount(BlockTextExample);
 
 		const verticalContainer = component.find('div').at(0);
 		const horizontalContainer = component.find('div').at(1);

@@ -23,13 +23,10 @@ import { BlockIntro, BlockIntroProps } from './components/ContentBlocks/BlockInt
 import { BlockLinks, BlockLinksProps } from './components/ContentBlocks/BlockLinks/BlockLinks';
 import { BlockQuote, BlockQuoteProps } from './components/ContentBlocks/BlockQuote/BlockQuote';
 import {
-	BlockRichText,
-	BlockRichTextProps,
-} from './components/ContentBlocks/BlockRichText/BlockRichText';
-import {
 	BlockSubtitle,
 	BlockSubtitleProps,
 } from './components/ContentBlocks/BlockSubtitle/BlockSubtitle';
+import { BlockText, BlockTextProps } from './components/ContentBlocks/BlockText/BlockText';
 import { BlockTitle, BlockTitleProps } from './components/ContentBlocks/BlockTitle/BlockTitle';
 import {
 	BlockTitleImageText,
@@ -93,7 +90,7 @@ export {
 	BlockIntro,
 	BlockLinks,
 	BlockQuote,
-	BlockRichText,
+	BlockText,
 	BlockSubtitle,
 	BlockTitle,
 	BlockTitleImageText,
@@ -104,7 +101,7 @@ export {
 	BlockIntroProps,
 	BlockLinksProps,
 	BlockQuoteProps,
-	BlockRichTextProps,
+	BlockTextProps,
 	BlockSubtitleProps,
 	BlockTitleProps,
 	BlockTitleImageTextProps,

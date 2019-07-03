@@ -1,4 +1,7 @@
 import React, { FunctionComponent } from 'react';
+
+import marked from 'marked';
+
 import { Container } from '../../Container/Container';
 import { Image } from '../../Image/Image';
 import { Spacer } from '../../Spacer/Spacer';
@@ -23,7 +26,7 @@ export const BlockTitleImageText: FunctionComponent<BlockTitleImageTextProps> = 
 				{imageSource && <Image src={imageSource} alt={imageDescription} wide={true} />}
 				{text && (
 					<Spacer margin="top">
-						<p>{text}</p>
+						<p dangerouslySetInnerHTML={{ __html: marked(text) }} />
 					</Spacer>
 				)}
 			</Container>

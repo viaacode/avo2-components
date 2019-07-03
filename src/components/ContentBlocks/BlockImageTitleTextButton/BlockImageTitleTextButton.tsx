@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
+import marked from 'marked';
+
 import { Button } from '../../Button/Button';
 import { Container } from '../../Container/Container';
 import { Column } from '../../Grid/Column';
@@ -34,7 +36,7 @@ export const BlockImageTitleTextButton: FunctionComponent<BlockImageTitleTextBut
 					<Column size="2-8">
 						<div className="c-content">
 							{title && <h2>{title}</h2>}
-							{text && <p>{text}</p>}
+							{text && <p dangerouslySetInnerHTML={{ __html: marked(text) }} />}
 							{buttonLabel && (
 								<Spacer margin="top">
 									<Button

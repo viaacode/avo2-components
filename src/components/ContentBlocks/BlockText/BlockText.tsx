@@ -4,13 +4,11 @@ import marked from 'marked';
 
 import { Container } from '../../Container/Container';
 
-export interface BlockRichTextProps {
+export interface BlockTextProps {
 	content: string; // Markdown or html code or combination
 }
 
-export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
-	content,
-}: BlockRichTextProps) => (
+export const BlockText: FunctionComponent<BlockTextProps> = ({ content }: BlockTextProps) => (
 	<div className="o-container-vertical o-container-vertical-rich-text">
 		<Container mode="horizontal" size="small">
 			{/* TODO escape markdown in backend */}

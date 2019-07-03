@@ -3,10 +3,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 
-import { BlockRichText } from './BlockRichText';
+import { BlockText } from './BlockText';
 
-export const BlockRichTextExample = (
-	<BlockRichText
+export const BlockTextExample = (
+	<BlockText
 		content={`
   # Title
 
@@ -28,6 +28,6 @@ export const BlockRichTextExample = (
 	/>
 );
 
-storiesOf('BlockRichText', module)
-	.addParameters({ jest: ['BlockRichText'] })
-	.add('BlockRichText', () => BlockRichTextExample);
+storiesOf('BlockText', module)
+	.addParameters({ jest: ['BlockText'] })
+	.add('BlockText', () => BlockTextExample);
