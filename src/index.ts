@@ -14,18 +14,36 @@ import { Button } from './components/Button/Button';
 import { Checkbox } from './components/Checkbox/Checkbox';
 import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 import { Container } from './components/Container/Container';
-import { BlockImage } from './components/ContentBlocks/BlockImage/BlockImage';
-import { BlockImageTitleTextButton } from './components/ContentBlocks/BlockImageTitleTextButton/BlockImageTitleTextButton';
-import { BlockIntro } from './components/ContentBlocks/BlockIntro/BlockIntro';
-import { BlockLinks } from './components/ContentBlocks/BlockLinks/BlockLinks';
-import { BlockPageIntro } from './components/ContentBlocks/BlockPageIntro/BlockPageIntro';
-import { BlockQuote } from './components/ContentBlocks/BlockQuote/BlockQuote';
-import { BlockRichText } from './components/ContentBlocks/BlockRichText/BlockRichText';
-import { BlockSubtitle } from './components/ContentBlocks/BlockSubtitle/BlockSubtitle';
-import { BlockTitle } from './components/ContentBlocks/BlockTitle/BlockTitle';
-import { BlockTitleImageText } from './components/ContentBlocks/BlockTitleImageText/BlockTitleImageText';
-import { BlockVideo } from './components/ContentBlocks/BlockVideo/BlockVideo';
-import { BlockVideoTitleTextButton } from './components/ContentBlocks/BlockVideoTitleTextButton/BlockVideoTitleTextButton';
+import { BlockImage, BlockImageProps } from './components/ContentBlocks/BlockImage/BlockImage';
+import {
+	BlockImageTitleTextButton,
+	BlockImageTitleTextButtonProps,
+} from './components/ContentBlocks/BlockImageTitleTextButton/BlockImageTitleTextButton';
+import { BlockIntro, BlockIntroProps } from './components/ContentBlocks/BlockIntro/BlockIntro';
+import { BlockLinks, BlockLinksProps } from './components/ContentBlocks/BlockLinks/BlockLinks';
+import {
+	BlockPageIntro,
+	BlockPageIntroProps,
+} from './components/ContentBlocks/BlockPageIntro/BlockPageIntro';
+import { BlockQuote, BlockQuoteProps } from './components/ContentBlocks/BlockQuote/BlockQuote';
+import {
+	BlockRichText,
+	BlockRichTextProps,
+} from './components/ContentBlocks/BlockRichText/BlockRichText';
+import {
+	BlockSubtitle,
+	BlockSubtitleProps,
+} from './components/ContentBlocks/BlockSubtitle/BlockSubtitle';
+import { BlockTitle, BlockTitleProps } from './components/ContentBlocks/BlockTitle/BlockTitle';
+import {
+	BlockTitleImageText,
+	BlockTitleImageTextProps,
+} from './components/ContentBlocks/BlockTitleImageText/BlockTitleImageText';
+import { BlockVideo, BlockVideoProps } from './components/ContentBlocks/BlockVideo/BlockVideo';
+import {
+	BlockVideoTitleTextButton,
+	BlockVideoTitleTextButtonProps,
+} from './components/ContentBlocks/BlockVideoTitleTextButton/BlockVideoTitleTextButton';
 import { DatePicker } from './components/DatePicker/DatePicker';
 import { Dropdown } from './components/Dropdown/Dropdown';
 import { Form } from './components/Form/Form';
@@ -86,6 +104,18 @@ export {
 	BlockTitleImageText,
 	BlockVideo,
 	BlockVideoTitleTextButton,
+	BlockImageProps,
+	BlockImageTitleTextButtonProps,
+	BlockIntroProps,
+	BlockLinksProps,
+	BlockPageIntroProps,
+	BlockQuoteProps,
+	BlockRichTextProps,
+	BlockSubtitleProps,
+	BlockTitleProps,
+	BlockTitleImageTextProps,
+	BlockVideoProps,
+	BlockVideoTitleTextButtonProps,
 	Box,
 	Button,
 	Checkbox,

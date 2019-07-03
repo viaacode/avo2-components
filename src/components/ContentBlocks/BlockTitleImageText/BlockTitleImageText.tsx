@@ -3,19 +3,19 @@ import { Container } from '../../Container/Container';
 import { Image } from '../../Image/Image';
 import { Spacer } from '../../Spacer/Spacer';
 
-export interface BlockQuoteProps {
+export interface BlockTitleImageTextProps {
 	title?: string;
 	imageSource?: string;
 	imageDescription?: string;
 	text?: string;
 }
 
-export const BlockTitleImageText: FunctionComponent<BlockQuoteProps> = ({
+export const BlockTitleImageText: FunctionComponent<BlockTitleImageTextProps> = ({
 	title,
 	imageSource,
 	imageDescription = '',
 	text,
-}: BlockQuoteProps) => {
+}: BlockTitleImageTextProps) => {
 	return (
 		<Spacer margin="top-large">
 			<Container size="small">
