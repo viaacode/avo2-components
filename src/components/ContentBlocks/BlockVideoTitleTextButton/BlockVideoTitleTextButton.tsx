@@ -7,7 +7,7 @@ import { Grid } from '../../Grid/Grid';
 import { Spacer } from '../../Spacer/Spacer';
 
 export interface BlockVideoTitleTextButtonProps {
-	videoIframeSource: string;
+	videoSource: string;
 	title?: string;
 	text?: string;
 	buttonLabel?: string;
@@ -15,7 +15,7 @@ export interface BlockVideoTitleTextButtonProps {
 }
 
 export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextButtonProps> = ({
-	videoIframeSource,
+	videoSource,
 	title,
 	text,
 	buttonLabel,
@@ -28,16 +28,8 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 					<Column size="6">
 						{/* 16 by 9 => 100% by 56% */}
 						<div className="c-video-wrapper" style={{ paddingBottom: '56%' }}>
-							{/* tslint:disable */}
-							<iframe
-								title={videoIframeSource}
-								src={videoIframeSource}
-								width="640"
-								height="100%"
-								frameBorder="0"
-								allowFullScreen={true}
-							/>
-							{/* tslint:enable */}
+							{/* TODO replace this with the flowplayer video component */}
+							<video src={videoSource} />
 						</div>
 					</Column>
 					<Column size="6">

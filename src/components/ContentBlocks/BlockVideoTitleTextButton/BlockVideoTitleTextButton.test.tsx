@@ -6,12 +6,12 @@ import { loremIpsum } from 'lorem-ipsum';
 import { BlockVideoTitleTextButton } from './BlockVideoTitleTextButton';
 
 const loremIpsumText = loremIpsum({ count: 10 });
-const videoIframeSource =
-	'https://player.vimeo.com/video/113716040?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0';
+const videoSource =
+	'https://archief-media.viaa.be/viaa/TESTBEELD/ad87ac36b4f640dfb0fc57c26397b7aebb4c49785d2e4a7b8c8069aa95c4db16/browse.mp4';
 
 export const blockVideoTitleTextButtonExample = (
 	<BlockVideoTitleTextButton
-		videoIframeSource={videoIframeSource}
+		videoSource={videoSource}
 		title="Title"
 		text={loremIpsumText}
 		buttonLabel="More info"
@@ -23,12 +23,12 @@ describe('<BlockVideoTitleTextButton />', () => {
 		shallow(blockVideoTitleTextButtonExample);
 	});
 
-	it('Should render the iframe correctly', () => {
+	it('Should render the video correctly', () => {
 		const component = mount(blockVideoTitleTextButtonExample);
 
-		const iframeElement = component.find('iframe');
+		const videoElement = component.find('video');
 
-		expect(iframeElement.prop('src')).toEqual(videoIframeSource);
+		expect(videoElement.prop('src')).toEqual(videoSource);
 	});
 
 	it('Should render the title correctly', () => {
