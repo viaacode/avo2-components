@@ -21,7 +21,7 @@ export const Container: FunctionComponent<ContainerProps> = ({
 		className={classNames({
 			'o-container': mode === 'horizontal',
 			'o-container-vertical': mode === 'vertical',
-			[`o-container--${size}`]: mode === 'horizontal' && size,
+			[`o-container--${size}`]: (mode === 'horizontal' || !mode) && size,
 			[`o-container-vertical--${size}`]: mode === 'vertical' && size,
 			[`o-container-vertical--padding-${size}`]: mode === 'vertical' && size,
 			[`o-container-vertical--bg-${background}`]: background,
