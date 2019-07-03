@@ -21,10 +21,6 @@ import {
 } from './components/ContentBlocks/BlockImageTitleTextButton/BlockImageTitleTextButton';
 import { BlockIntro, BlockIntroProps } from './components/ContentBlocks/BlockIntro/BlockIntro';
 import { BlockLinks, BlockLinksProps } from './components/ContentBlocks/BlockLinks/BlockLinks';
-import {
-	BlockPageIntro,
-	BlockPageIntroProps,
-} from './components/ContentBlocks/BlockPageIntro/BlockPageIntro';
 import { BlockQuote, BlockQuoteProps } from './components/ContentBlocks/BlockQuote/BlockQuote';
 import {
 	BlockRichText,
