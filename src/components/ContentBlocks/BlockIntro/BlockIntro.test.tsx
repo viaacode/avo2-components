@@ -6,8 +6,9 @@ import { loremIpsum } from 'lorem-ipsum';
 import { BlockIntro } from './BlockIntro';
 
 const title = 'Page title';
+const subtitle = 'the subtitle';
 const text = loremIpsum({ count: 3 });
-export const BlockIntroExample = <BlockIntro title={title} text={text} />;
+export const BlockIntroExample = <BlockIntro title={title} subtitle={subtitle} text={text} />;
 
 describe('<BlockIntro />', () => {
 	it('Should be able to render', () => {
@@ -22,10 +23,24 @@ describe('<BlockIntro />', () => {
 		expect(h1Element.html()).toContain(`>${title}<`);
 	});
 
+	it('Should render the subtitle correctly', () => {
+		const component = shallow(BlockIntroExample);
+
+		const h3Element = component.find('h3');
+
+		expect(h3Element.html()).toContain(`>${subtitle}<`);
+	});
+
 	it('Should not render the title if none is passed', () => {
 		const component = shallow(<BlockIntro text={text} />);
 
 		expect(component.html()).not.toContain(`</h1>`);
+	});
+
+	it('Should not render the subtitle if none is passed', () => {
+		const component = shallow(<BlockIntro text={text} />);
+
+		expect(component.html()).not.toContain(`</h3>`);
 	});
 
 	it('Should render the subtitle correctly', () => {

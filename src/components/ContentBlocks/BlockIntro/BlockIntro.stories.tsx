@@ -7,7 +7,13 @@ import { BlockIntro } from './BlockIntro';
 
 storiesOf('BlockIntro', module)
 	.addParameters({ jest: ['BlockIntro'] })
-	.add('BlockIntro with title', () => (
+	.add('BlockIntro', () => (
+		<BlockIntro title="Page title" subtitle="subtitle" text={loremIpsum({ count: 3 })} />
+	))
+	.add('BlockIntro without title', () => (
+		<BlockIntro subtitle="subtitle" text={loremIpsum({ count: 3 })} />
+	))
+	.add('BlockIntro without subtitle', () => (
 		<BlockIntro title="Page title" text={loremIpsum({ count: 3 })} />
 	))
-	.add('BlockIntro', () => <BlockIntro text={loremIpsum({ count: 6 })} />);
+	.add('BlockIntro only text', () => <BlockIntro text={loremIpsum({ count: 3 })} />);
