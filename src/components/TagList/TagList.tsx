@@ -10,6 +10,7 @@ export interface TagListProps {
 	bordered?: boolean;
 	closable?: boolean;
 	onTagClosed?: (tag: string) => void;
+	onTagClicked?: (tag: string) => void;
 }
 
 export const TagList: FunctionComponent<TagListProps> = ({
@@ -18,6 +19,7 @@ export const TagList: FunctionComponent<TagListProps> = ({
 	bordered = true,
 	closable = false,
 	onTagClosed = () => {},
+	onTagClicked = () => {},
 }: TagListProps) =>
 	tags && tags.length ? (
 		<ul className="c-tag-list">
@@ -26,10 +28,14 @@ export const TagList: FunctionComponent<TagListProps> = ({
 					{swatches && (
 						<div
 							className={classNames('c-label-swatch', `c-label-swatch--color-${(index % 10) + 1}`)}
+							onClick={() => onTagClicked(tag)}
 						/>
 					)}
 					{swatches || closable ? (
-						<p className={classNames({ 'c-tag__label': !swatches, 'c-label-text': swatches })}>
+						<p
+							className={classNames({ 'c-tag__label': !swatches, 'c-label-text': swatches })}
+							onClick={() => onTagClicked(tag)}
+						>
 							{tag}
 						</p>
 					) : (

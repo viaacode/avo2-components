@@ -119,4 +119,22 @@ describe('<TagList />', () => {
 		expect(onTagClosedHandler).toHaveBeenCalledTimes(1);
 		expect(onTagClosedHandler).toHaveBeenCalledWith(tags[indexToClose]);
 	});
+
+	it('Should call `onTagClicked` when clicking a tag', () => {
+		const onTagClickedHandler = jest.fn();
+
+		const tagListComponent = shallow(
+			<TagList tags={tags} closable onTagClicked={onTagClickedHandler} />
+		);
+
+		const tagElements = tagListComponent.find('p');
+
+		const indexToClose = 5;
+		// close the 6th element in the list
+		tagElements.at(indexToClose).simulate('click');
+
+		expect(onTagClickedHandler).toHaveBeenCalled();
+		expect(onTagClickedHandler).toHaveBeenCalledTimes(1);
+		expect(onTagClickedHandler).toHaveBeenCalledWith(tags[indexToClose]);
+	});
 });
