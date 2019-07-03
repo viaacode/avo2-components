@@ -37,7 +37,7 @@ export const Icon: FunctionComponent<IconProps> = ({ name, size, type, active }:
 	}
 
 	if (!IconToRender) {
-		console.log(`Icon with name: ${name} was not found.`);
+		console.error(`Icon with name: ${name} was not found.`);
 		IconToRender = (Icons as any)[toPascalCase('slash')];
 	}
 
