@@ -17,7 +17,7 @@ export const BlockTitleImageText: FunctionComponent<BlockTitleImageTextProps> = 
 	title,
 	imageSource,
 	imageDescription = '',
-	text,
+	text = '',
 }: BlockTitleImageTextProps) => {
 	return (
 		<Spacer margin="top-large">

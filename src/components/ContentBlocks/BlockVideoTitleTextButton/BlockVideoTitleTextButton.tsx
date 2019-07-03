@@ -19,7 +19,7 @@ export interface BlockVideoTitleTextButtonProps {
 export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextButtonProps> = ({
 	videoSource,
 	title,
-	text,
+	text = '',
 	buttonLabel,
 	onClick,
 }: BlockVideoTitleTextButtonProps) => {

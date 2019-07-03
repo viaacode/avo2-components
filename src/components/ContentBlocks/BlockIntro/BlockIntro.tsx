@@ -11,7 +11,7 @@ export interface BlockIntroProps {
 }
 
 export const BlockIntro: FunctionComponent<BlockIntroProps> = ({
-	text,
+	text = '',
 	title,
 	subtitle,
 }: BlockIntroProps) => (

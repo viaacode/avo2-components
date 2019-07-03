@@ -22,7 +22,7 @@ export const BlockImageTitleTextButton: FunctionComponent<BlockImageTitleTextBut
 	imageSource,
 	imageDescription,
 	title,
-	text,
+	text = '',
 	buttonLabel,
 	onClick,
 }: BlockImageTitleTextButtonProps) => {
