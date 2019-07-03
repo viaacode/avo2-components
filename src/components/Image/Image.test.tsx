@@ -12,13 +12,13 @@ describe('<Image />', () => {
 		const imageComponent = shallow(<Image src="/images/500x200.svg" />);
 
 		expect(imageComponent.hasClass('c-image')).toEqual(true);
-		expect(imageComponent.hasClass('c-image--full-width')).toEqual(false);
+		expect(imageComponent.hasClass('c-image--full')).toEqual(false);
 	});
 
 	it('Should set the correct className in wide mode', () => {
 		const imageComponent = shallow(<Image src="/images/500x200.svg" wide />);
 
-		expect(imageComponent.hasClass('c-image--full-width')).toEqual(true);
+		expect(imageComponent.hasClass('c-image--full')).toEqual(true);
 	});
 
 	it('Should correctly pass on `src` and `alt` to the <img>', () => {
