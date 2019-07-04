@@ -9,7 +9,7 @@ const markdownAndHtmlString = `
   # Title
 
 
-  ${loremIpsum({ count: 5 })}
+  ${loremIpsum({ count: 20 })}
 
 
   * one
@@ -23,7 +23,7 @@ const markdownAndHtmlString = `
 		<li>3</li>
   </ul>
   `;
-export const BlockTextExample = <BlockText text={markdownAndHtmlString} />;
+const BlockTextExample = <BlockText text={markdownAndHtmlString} />;
 
 storiesOf('BlockText', module)
 	.addParameters({ jest: ['BlockText'] })
