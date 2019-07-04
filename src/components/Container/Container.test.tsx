@@ -1,5 +1,6 @@
-import { shallow } from 'enzyme';
 import React, { Fragment } from 'react';
+
+import { shallow } from 'enzyme';
 
 import { Container } from './Container';
 
@@ -20,6 +21,30 @@ describe('<Container />', () => {
 		);
 
 		expect(containerComponent.hasClass('o-container')).toEqual(true);
+	});
+
+	it('Should set the correct classNames when passing `size` and no mode is passed', () => {
+		const smallContainerComponent = shallow(
+			<Container size="small">
+				<Fragment />
+			</Container>
+		);
+
+		const mediumContainerComponent = shallow(
+			<Container size="medium">
+				<Fragment />
+			</Container>
+		);
+
+		const largeContainerComponent = shallow(
+			<Container size="large">
+				<Fragment />
+			</Container>
+		);
+
+		expect(smallContainerComponent.hasClass('o-container--small')).toEqual(true);
+		expect(mediumContainerComponent.hasClass('o-container--medium')).toEqual(true);
+		expect(largeContainerComponent.hasClass('o-container--large')).toEqual(true);
 	});
 
 	it('Should set the correct classNames when passing `size` in horizontal mode', () => {
