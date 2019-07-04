@@ -5,9 +5,7 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockText } from './BlockText';
 
-export const BlockTextExample = (
-	<BlockText
-		content={`
+const markdownAndHtmlString = `
   # Title
 
 
@@ -24,9 +22,8 @@ export const BlockTextExample = (
 		<li>2</li>
 		<li>3</li>
   </ul>
-  `}
-	/>
-);
+  `;
+const BlockTextExample = <BlockText text={markdownAndHtmlString} />;
 
 describe('<BlockText />', () => {
 	it('Should be able to render', () => {
@@ -37,7 +34,7 @@ describe('<BlockText />', () => {
 		const component = mount(BlockTextExample);
 
 		const html = component.html();
-		expect(html).toContain('<h1 id="title">Title</h1>');
+		expect(html).toContain('>Title</h1>');
 		expect(html).toContain('<p>');
 		expect(html).toContain('<ul>');
 		expect(html).toContain('<li>one</li>');

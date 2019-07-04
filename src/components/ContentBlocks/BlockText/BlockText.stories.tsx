@@ -5,13 +5,11 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockText } from './BlockText';
 
-export const BlockTextExample = (
-	<BlockText
-		content={`
+const markdownAndHtmlString = `
   # Title
 
 
-  ${loremIpsum({ count: 5 })}
+  ${loremIpsum({ count: 20 })}
 
 
   * one
@@ -24,9 +22,8 @@ export const BlockTextExample = (
 		<li>2</li>
 		<li>3</li>
   </ul>
-  `}
-	/>
-);
+  `;
+const BlockTextExample = <BlockText text={markdownAndHtmlString} />;
 
 storiesOf('BlockText', module)
 	.addParameters({ jest: ['BlockText'] })
