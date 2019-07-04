@@ -31,23 +31,23 @@ pipeline {
 
 
 
-        stage('npm install') {
+        stage('Build') {
             steps {
                 script {
                     openshift.withCluster() {
                         openshift.withProject("shared-components") {
 			   sh'''#!/bin/bash
-			   rm /tmp/.npmrc
-			    npm --registry=https://registry.npmjs.org  install
+			   rm -f /tmp/.npmrc
+			    npm --registry=https://registry.npmjs.org install && npm run build
 
 			    '''
-		                  
+
                         }
                     }
                 } // script
             } // steps
         } // stage
-   
+
 
   	stage('Publish') {
             steps {
@@ -55,13 +55,13 @@ pipeline {
                 script {
                     openshift.withCluster() {
                         openshift.withProject("shared-components") {
-				
+
                              	echo "Publishing package to registry"
 			     	sh '''#/bin/bash
 			         cp /home/jenkins/.npm-global/etc/npmrc /tmp/.npmrc
 			   	 npm publish
 				 echo "removing .npmrc for install if node is the same we need to set registry for push nexus not seems to like @viaa:registry=.."
-				rm /tmp/.npmrc
+				rm -f /tmp/.npmrc
 		                '''
                         }
                     }

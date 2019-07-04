@@ -36,5 +36,5 @@ export const Spacer: FunctionComponent<SpacerProps> = ({ margin, children }: Spa
 		classes = margins.map((option: SpacerMarginOption) => `u-spacer-${abbreviateSizes(option)}`);
 	}
 
-	return <div className={classNames('u-spacer', ...classes)}>{children}</div>;
+	return <div className={classNames({ 'u-spacer': !margin }, ...classes)}>{children}</div>;
 };
