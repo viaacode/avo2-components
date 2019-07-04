@@ -7,7 +7,7 @@ export interface FlexProps {
 	center?: boolean;
 	justify?: boolean;
 	spaced?: 'regular' | 'wide';
-	children?: ReactNode;
+	children: ReactNode;
 }
 
 export const Flex: FunctionComponent<FlexProps> = ({
