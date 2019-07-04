@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { Icon } from '../Icon/Icon';
 
 export interface ButtonProps {
-	ariaLabel: string;
+	ariaLabel?: string;
 	label?: string;
 	type?:
 		| 'primary'

@@ -7,7 +7,6 @@ import {
 	SearchResultTitle,
 } from './SearchResult.slots';
 
-import { Button } from '../..';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaDataItem/MetaDataItem';
 import { TagList } from '../TagList/TagList';
