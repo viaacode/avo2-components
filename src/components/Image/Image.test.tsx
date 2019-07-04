@@ -5,25 +5,25 @@ import { Image } from './Image';
 
 describe('<Image />', () => {
 	it('Should be able to render', () => {
-		shallow(<Image src="https://source.unsplash.com/random" />);
+		shallow(<Image src="/images/500x200.svg" />);
 	});
 
 	it('Should set the correct className', () => {
-		const imageComponent = shallow(<Image src="https://source.unsplash.com/random" />);
+		const imageComponent = shallow(<Image src="/images/500x200.svg" />);
 
 		expect(imageComponent.hasClass('c-image')).toEqual(true);
-		expect(imageComponent.hasClass('c-image--full-width')).toEqual(false);
+		expect(imageComponent.hasClass('c-image--full')).toEqual(false);
 	});
 
 	it('Should set the correct className in wide mode', () => {
-		const imageComponent = shallow(<Image src="https://source.unsplash.com/random" wide />);
+		const imageComponent = shallow(<Image src="/images/500x200.svg" wide />);
 
-		expect(imageComponent.hasClass('c-image--full-width')).toEqual(true);
+		expect(imageComponent.hasClass('c-image--full')).toEqual(true);
 	});
 
 	it('Should correctly pass on `src` and `alt` to the <img>', () => {
-		const src = 'https://source.unsplash.com/random';
-		const alt = 'a random image';
+		const src = '/images/500x200.svg';
+		const alt = 'image showing the default dimensions on a grey background';
 
 		const imageComponent = shallow(<Image src={src} alt={alt} />);
 
