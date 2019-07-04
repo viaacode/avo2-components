@@ -9,28 +9,28 @@ describe('<Spacer />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const thumbnailComponent = shallow(<Spacer />);
+		const spacerComponent = shallow(<Spacer />);
 
-		expect(thumbnailComponent.hasClass('u-spacer')).toEqual(true);
+		expect(spacerComponent.hasClass('u-spacer')).toEqual(true);
 	});
 
 	it('Should set the correct className when margin is passed (string)', () => {
-		const thumbnailComponent = shallow(<Spacer margin="left-small" />);
+		const spacerComponent = shallow(<Spacer margin="left-small" />);
 
-		expect(thumbnailComponent.hasClass('u-spacer-left-s')).toEqual(true);
+		expect(spacerComponent.hasClass('u-spacer-left-s')).toEqual(true);
 	});
 
 	it('Should set the correct className when margin is passed (array)', () => {
-		const thumbnailComponent = shallow(<Spacer margin={['left-small']} />);
+		const spacerComponent = shallow(<Spacer margin={['left-small']} />);
 
-		expect(thumbnailComponent.hasClass('u-spacer-left-s')).toEqual(true);
+		expect(spacerComponent.hasClass('u-spacer-left-s')).toEqual(true);
 	});
 
 	it('Should set the correct className when multiple margins are passed', () => {
-		const thumbnailComponent = shallow(<Spacer margin={['left-small', 'top-large']} />);
+		const spacerComponent = shallow(<Spacer margin={['left-small', 'top-large']} />);
 
-		expect(thumbnailComponent.hasClass('u-spacer-left-s')).toEqual(true);
-		expect(thumbnailComponent.hasClass('u-spacer-top-l')).toEqual(true);
+		expect(spacerComponent.hasClass('u-spacer-left-s')).toEqual(true);
+		expect(spacerComponent.hasClass('u-spacer-top-l')).toEqual(true);
 	});
 
 	it('Should correctly pass children', () => {
