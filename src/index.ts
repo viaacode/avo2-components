@@ -14,6 +14,29 @@ import { Button } from './components/Button/Button';
 import { Checkbox } from './components/Checkbox/Checkbox';
 import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 import { Container } from './components/Container/Container';
+import { BlockImage, BlockImageProps } from './components/ContentBlocks/BlockImage/BlockImage';
+import {
+	BlockImageTitleTextButton,
+	BlockImageTitleTextButtonProps,
+} from './components/ContentBlocks/BlockImageTitleTextButton/BlockImageTitleTextButton';
+import { BlockIntro, BlockIntroProps } from './components/ContentBlocks/BlockIntro/BlockIntro';
+import { BlockLinks, BlockLinksProps } from './components/ContentBlocks/BlockLinks/BlockLinks';
+import { BlockQuote, BlockQuoteProps } from './components/ContentBlocks/BlockQuote/BlockQuote';
+import {
+	BlockSubtitle,
+	BlockSubtitleProps,
+} from './components/ContentBlocks/BlockSubtitle/BlockSubtitle';
+import { BlockText, BlockTextProps } from './components/ContentBlocks/BlockText/BlockText';
+import { BlockTitle, BlockTitleProps } from './components/ContentBlocks/BlockTitle/BlockTitle';
+import {
+	BlockTitleImageText,
+	BlockTitleImageTextProps,
+} from './components/ContentBlocks/BlockTitleImageText/BlockTitleImageText';
+import { BlockVideo, BlockVideoProps } from './components/ContentBlocks/BlockVideo/BlockVideo';
+import {
+	BlockVideoTitleTextButton,
+	BlockVideoTitleTextButtonProps,
+} from './components/ContentBlocks/BlockVideoTitleTextButton/BlockVideoTitleTextButton';
 import { DatePicker } from './components/DatePicker/DatePicker';
 import { Dropdown } from './components/Dropdown/Dropdown';
 import { Form } from './components/Form/Form';
@@ -62,6 +85,28 @@ export {
 	AvatarIcon,
 	Badge,
 	Blankslate,
+	BlockImage,
+	BlockImageTitleTextButton,
+	BlockIntro,
+	BlockLinks,
+	BlockQuote,
+	BlockText,
+	BlockSubtitle,
+	BlockTitle,
+	BlockTitleImageText,
+	BlockVideo,
+	BlockVideoTitleTextButton,
+	BlockImageProps,
+	BlockImageTitleTextButtonProps,
+	BlockIntroProps,
+	BlockLinksProps,
+	BlockQuoteProps,
+	BlockTextProps,
+	BlockSubtitleProps,
+	BlockTitleProps,
+	BlockTitleImageTextProps,
+	BlockVideoProps,
+	BlockVideoTitleTextButtonProps,
 	Box,
 	Button,
 	Checkbox,

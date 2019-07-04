@@ -22,7 +22,7 @@ storiesOf('MediaCard', module)
 				<MediaCardThumbnail>
 					<Thumbnail
 						category="collection"
-						src="images/thumbnail.jpg"
+						src="/images/thumbnail.jpg"
 						meta="7 items"
 						label="collection"
 						alt="What an amazing thumbnail!"
@@ -48,7 +48,7 @@ storiesOf('MediaCard', module)
 			<MediaCardThumbnail>
 				<Thumbnail
 					category="collection"
-					src="images/thumbnail.jpg"
+					src="/images/thumbnail.jpg"
 					meta="7 items"
 					label="collection"
 					alt="What an amazing thumbnail!"
