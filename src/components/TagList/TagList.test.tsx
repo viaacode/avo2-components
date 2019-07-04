@@ -6,16 +6,16 @@ import { Icon } from '../Icon/Icon';
 import { TagList } from './TagList';
 
 const tags = [
-	'Aluminium',
-	'Cadmium',
-	'Dubnium',
-	'Potassium',
-	'Vanadium',
-	'Palladium',
-	'Polonium',
-	'Rhodium',
-	'Yttrium',
-	'Uranium',
+	{ label: 'Aluminium', id: 'aluminium' },
+	{ label: 'Cadmium', id: 'cadmium' },
+	{ label: 'Dubnium', id: 'dubnium' },
+	{ label: 'Potassium', id: 'potassium' },
+	{ label: 'Vanadium', id: 'vanadium' },
+	{ label: 'Palladium', id: 'palladium' },
+	{ label: 'Polonium', id: 'polonium' },
+	{ label: 'Rhodium', id: 'rhodium' },
+	{ label: 'Yttrium', id: 'yttrium' },
+	{ label: 'Uranium', id: 'uranium' },
 ];
 
 describe('<TagList />', () => {
@@ -37,7 +37,7 @@ describe('<TagList />', () => {
 				.find('.c-label-text')
 				.at(0)
 				.text()
-		).toEqual(tags[0]);
+		).toEqual(tags[0].label);
 	});
 
 	it('Should be able to render with swatches', () => {
@@ -117,6 +117,24 @@ describe('<TagList />', () => {
 
 		expect(onTagClosedHandler).toHaveBeenCalled();
 		expect(onTagClosedHandler).toHaveBeenCalledTimes(1);
-		expect(onTagClosedHandler).toHaveBeenCalledWith(tags[indexToClose]);
+		expect(onTagClosedHandler).toHaveBeenCalledWith(tags[indexToClose].id);
+	});
+
+	it('Should call `onTagClicked` when clicking a tag', () => {
+		const onTagClickedHandler = jest.fn();
+
+		const tagListComponent = shallow(
+			<TagList tags={tags} closable onTagClicked={onTagClickedHandler} />
+		);
+
+		const tagElements = tagListComponent.find('p');
+
+		const indexToClose = 5;
+		// close the 6th element in the list
+		tagElements.at(indexToClose).simulate('click');
+
+		expect(onTagClickedHandler).toHaveBeenCalled();
+		expect(onTagClickedHandler).toHaveBeenCalledTimes(1);
+		expect(onTagClickedHandler).toHaveBeenCalledWith(tags[indexToClose].id);
 	});
 });

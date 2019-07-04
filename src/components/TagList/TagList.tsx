@@ -5,11 +5,12 @@ import classNames from 'classnames';
 import { Icon } from '../Icon/Icon';
 
 export interface TagListProps {
-	tags: string[];
+	tags: { label: string; id: string }[];
 	swatches?: boolean;
 	bordered?: boolean;
 	closable?: boolean;
 	onTagClosed?: (tag: string) => void;
+	onTagClicked?: (tag: string) => void;
 }
 
 export const TagList: FunctionComponent<TagListProps> = ({
@@ -18,25 +19,30 @@ export const TagList: FunctionComponent<TagListProps> = ({
 	bordered = true,
 	closable = false,
 	onTagClosed = () => {},
+	onTagClicked = () => {},
 }: TagListProps) =>
 	tags && tags.length ? (
 		<ul className="c-tag-list">
-			{tags.map((tag, index) => (
-				<li className={classNames({ 'c-tag': bordered, 'c-label': !bordered })} key={tag}>
+			{tags.map((tag: { label: string; id: string }, index) => (
+				<li className={classNames({ 'c-tag': bordered, 'c-label': !bordered })} key={tag.id}>
 					{swatches && (
 						<div
 							className={classNames('c-label-swatch', `c-label-swatch--color-${(index % 10) + 1}`)}
+							onClick={() => onTagClicked(tag.id)}
 						/>
 					)}
 					{swatches || closable ? (
-						<p className={classNames({ 'c-tag__label': !swatches, 'c-label-text': swatches })}>
-							{tag}
+						<p
+							className={classNames({ 'c-tag__label': !swatches, 'c-label-text': swatches })}
+							onClick={() => onTagClicked(tag.id)}
+						>
+							{tag.label}
 						</p>
 					) : (
-						tag
+						tag.label
 					)}
 					{closable && (
-						<a onClick={() => onTagClosed(tag)}>
+						<a onClick={() => onTagClosed(tag.id)}>
 							<Icon name="close" />
 						</a>
 					)}

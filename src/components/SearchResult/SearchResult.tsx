@@ -20,7 +20,7 @@ export interface SearchResultProps {
 	date: string;
 	bookmarkCount: number;
 	viewCount: number;
-	tags?: string[];
+	tags?: { label: string; id: string }[];
 	onToggleBookmark?: (active: boolean) => void;
 }
 
