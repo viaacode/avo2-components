@@ -54,6 +54,7 @@ import { Toolbar } from './components/Toolbar/Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/Toolbar.slots';
 import { ToolbarItem } from './components/Toolbar/ToolbarItem';
 import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
+import { Tooltip } from './components/Tooltip/Tooltip';
 
 export {
 	COLORS,
@@ -106,4 +107,5 @@ export {
 	ToolbarRight,
 	ToolbarItem,
 	ToolbarTitle,
+	Tooltip,
 };
