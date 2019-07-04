@@ -1,59 +1,74 @@
-import { mount, shallow } from 'enzyme';
 import React from 'react';
+
+import { mount, shallow } from 'enzyme';
+import { loremIpsum } from 'lorem-ipsum';
 
 import { Flex } from './Flex';
 
+const content = loremIpsum({ count: 1 });
+
 describe('<Flex />', () => {
 	it('Should be able to render', () => {
-		shallow(<Flex />);
+		shallow(<Flex>{content}</Flex>);
 	});
 
 	it('Should set the correct className', () => {
-		const flexComponent = shallow(<Flex />);
+		const flexComponent = shallow(<Flex>{content}</Flex>);
 
 		expect(flexComponent.hasClass('o-flex')).toEqual(true);
 	});
 
 	it('Should set the correct className when orientation is passed', () => {
-		const flexComponent = shallow(<Flex orientation="horizontal" />);
+		const flexComponent = shallow(<Flex orientation="horizontal">{content}</Flex>);
 
 		expect(flexComponent.hasClass('o-flex--horizontal')).toEqual(true);
 	});
 
 	it('Should set the correct className when center is passed', () => {
-		const flexComponent = shallow(<Flex center />);
+		const flexComponent = shallow(<Flex center>{content}</Flex>);
 
 		expect(flexComponent.hasClass('o-flex--center')).toEqual(true);
 	});
 
 	it('Should set the correct className when orientation and center are passed', () => {
-		const flexComponent = shallow(<Flex orientation="horizontal" center />);
+		const flexComponent = shallow(
+			<Flex orientation="horizontal" center>
+				{content}
+			</Flex>
+		);
 
 		expect(flexComponent.hasClass('o-flex--horizontal-center')).toEqual(true);
 	});
 
 	it('Should set the correct className when justify is passed', () => {
-		const flexComponent = shallow(<Flex justify />);
+		const flexComponent = shallow(<Flex justify>{content}</Flex>);
 
 		expect(flexComponent.hasClass('o-flex--justify-between')).toEqual(true);
 	});
 
 	it('Should set the correct className when spaced is passed (boolean)', () => {
-		const flexComponent = shallow(<Flex spaced="regular" />);
+		const flexComponent = shallow(<Flex spaced="regular">{content}</Flex>);
 
 		expect(flexComponent.hasClass('o-flex--spaced')).toEqual(true);
 	});
 
 	it('Should set the correct className when spaced is passed (wide)', () => {
-		const flexComponent = shallow(<Flex spaced="wide" />);
+		const flexComponent = shallow(<Flex spaced="wide">{content}</Flex>);
 
 		expect(flexComponent.hasClass('o-flex--spaced-wide')).toEqual(true);
+	});
+
+	it('Should set the correct className when no spaced is passed', () => {
+		const flexComponent = shallow(<Flex>{content}</Flex>);
+
+		expect(flexComponent.hasClass('o-flex--spaced')).toEqual(false);
+		expect(flexComponent.hasClass('o-flex--spaced-wide')).toEqual(false);
 	});
 
 	it('Should correctly pass children', () => {
 		const flexComponent = mount(
 			<Flex>
-				<p>What a nice smile you have there!</p>
+				<p>{content}</p>
 			</Flex>
 		);
 
