@@ -34,7 +34,7 @@ describe('<BlockText />', () => {
 		const component = mount(BlockTextExample);
 
 		const html = component.html();
-		expect(html).toContain('<h1 id="title">Title</h1>');
+		expect(html).toContain('>Title</h1>');
 		expect(html).toContain('<p>');
 		expect(html).toContain('<ul>');
 		expect(html).toContain('<li>one</li>');
