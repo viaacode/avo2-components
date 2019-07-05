@@ -27,14 +27,14 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 		<Container mode="horizontal">
 			<Spacer>
 				<Grid>
-					<Column size="6">
+					<Column size="2-6">
 						{/* 16 by 9 => 100% by 56% */}
 						<div className="c-video-wrapper" style={{ paddingBottom: '56%' }}>
 							{/* TODO replace this with the flowplayer video component */}
 							<video src={videoSource} />
 						</div>
 					</Column>
-					<Column size="6">
+					<Column size="2-6">
 						<div className="c-content">
 							{title && <h2>{title}</h2>}
 							{text && <p dangerouslySetInnerHTML={{ __html: marked(text) }} />}
