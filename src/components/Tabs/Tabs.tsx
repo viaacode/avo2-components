@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
 
 import { Icon } from '../Icon/Icon';
-import { Tab, TabsItem } from '../TabsItem/TabsItem';
+import { TabProps, TabsItem } from '../TabsItem/TabsItem';
 
 import classNames from 'classnames';
 
 export interface TabsProps {
-	tabs: Tab[];
+	tabs: TabProps[];
 	hasBorder?: boolean;
 }
 
@@ -17,7 +17,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({ tabs, hasBorder }: TabsProp
 		})}
 	>
 		{tabs.map(tab => (
-			<TabsItem tab={tab} />
+			<TabsItem {...tab} />
 		))}
 	</nav>
 );

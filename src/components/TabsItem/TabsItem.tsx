@@ -4,25 +4,21 @@ import { Icon } from '../Icon/Icon';
 
 import classNames from 'classnames';
 
-export interface Tab {
+export interface TabProps {
 	label: string;
 	href: string;
 	icon?: string;
 	active?: boolean;
 }
 
-export interface TabProps {
-	tab: Tab;
-}
-
-export const TabsItem: FunctionComponent<TabProps> = ({ tab }: TabProps) => (
+export const TabsItem: FunctionComponent<TabProps> = ({ label, href, icon, active }: TabProps) => (
 	<a
 		className={classNames('c-tabs__item', {
-			'c-tabs__item--active': tab.active,
+			'c-tabs__item--active': active,
 		})}
-		href={tab.href}
+		href={href}
 	>
-		{tab.icon && <Icon name={tab.icon} />}
-		{tab.label}
+		{icon && <Icon name={icon} />}
+		{label}
 	</a>
 );
