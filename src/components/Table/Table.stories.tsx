@@ -52,7 +52,7 @@ const TableStoryComponent = ({ children }: { children: ReactElement }) => {
 	useEffect(() => {
 		// re-sort the list if the column or order changes
 		setData(sort(data));
-	}, [sortOrder, sortColumn]);
+	}, [sortOrder, sortColumn, sort, data]);
 
 	return (
 		<Table
