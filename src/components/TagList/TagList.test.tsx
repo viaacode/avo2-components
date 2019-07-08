@@ -31,13 +31,23 @@ describe('<TagList />', () => {
 
 	it('Should correctly render the labels', () => {
 		const tagListComponent = shallow(<TagList tags={tags} />);
+		const tagListClosableComponent = shallow(<TagList tags={tags} closable={true} />);
+		const tagListSwatchesComponent = shallow(<TagList tags={tags} swatches={true} />);
+		const tagListClickableComponent = shallow(<TagList tags={tags} onTagClicked={() => {}} />);
 
-		expect(
-			tagListComponent
-				.find('.c-label-text')
-				.at(0)
-				.text()
-		).toEqual(tags[0].label);
+		[
+			tagListComponent,
+			tagListClosableComponent,
+			tagListSwatchesComponent,
+			tagListClickableComponent,
+		].forEach(component => {
+			expect(
+				component
+					.find('.c-label-text')
+					.at(0)
+					.text()
+			).toEqual(tags[0].label);
+		});
 	});
 
 	it('Should be able to render with swatches', () => {
@@ -70,7 +80,7 @@ describe('<TagList />', () => {
 		expect(tagListComponent.find('.c-tag__label')).toHaveLength(tags.length);
 	});
 
-	it('Should not render a <p> when tag has no swatches & is not closable', () => {
+	it('Should not render a <p class="c-label-text"> nor <p class="c-tag__label"> when tag has no swatches & is not closable', () => {
 		const tagListComponent = shallow(<TagList tags={tags} swatches={false} closable={false} />);
 
 		expect(tagListComponent.find('p')).toHaveLength(0);

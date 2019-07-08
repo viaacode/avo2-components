@@ -62,8 +62,8 @@ describe('<BlockVideoTitleTextButton />', () => {
 		expect(containerElement.hasClass('o-container')).toEqual(true);
 		expect(spacerElement.hasClass('u-spacer')).toEqual(true);
 		expect(gridElement.hasClass('o-grid')).toEqual(true);
-		expect(leftColumnElement.hasClass('o-grid-col-6')).toEqual(true);
-		expect(rightColumnElement.hasClass('o-grid-col-6')).toEqual(true);
+		expect(leftColumnElement.hasClass('o-grid-col-bp2-6')).toEqual(true);
+		expect(rightColumnElement.hasClass('o-grid-col-bp2-6')).toEqual(true);
 		expect(contentElement.hasClass('c-content')).toEqual(true);
 	});
 
