@@ -11,7 +11,7 @@ export interface TabProps {
 	active?: boolean;
 }
 
-export const TabsItem: FunctionComponent<TabProps> = ({ label, href, icon, active }: TabProps) => (
+export const Tab: FunctionComponent<TabProps> = ({ label, href, icon, active }: TabProps) => (
 	<a
 		className={classNames('c-tabs__item', {
 			'c-tabs__item--active': active,

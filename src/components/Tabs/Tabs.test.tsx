@@ -26,15 +26,11 @@ describe('<Tabs />', () => {
 		expect(tabsComponent.hasClass('c-tabs')).toEqual(true);
 	});
 
-	it('Should set the correct className when hasBorder is true', () => {
-		const tabsComponent = shallow(<Tabs tabs={mockTabs} hasBorder />);
+	it('Should set the correct className when border is passed', () => {
+		const tabsComponent1 = shallow(<Tabs tabs={mockTabs} border />);
+		const tabsComponent2 = shallow(<Tabs tabs={mockTabs} />);
 
-		expect(tabsComponent.hasClass('c-tabs--bottom-border')).toEqual(true);
-	});
-
-	it('Should set the correct className when hasBorder is false', () => {
-		const tabsComponent = shallow(<Tabs tabs={mockTabs} />);
-
-		expect(tabsComponent.hasClass('c-tabs--bottom-border')).toEqual(false);
+		expect(tabsComponent1.hasClass('c-tabs--bottom-border')).toEqual(true);
+		expect(tabsComponent2.hasClass('c-tabs--bottom-border')).toEqual(false);
 	});
 });

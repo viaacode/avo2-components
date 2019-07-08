@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { TabsItem } from './TabsItem';
+import { Tab } from './Tab';
 
 const mockTab = {
 	label: 'Videos',
@@ -16,19 +16,19 @@ const mockTabWithIcon = {
 	icon: 'video',
 };
 
-describe('<TabsItem />', () => {
+describe('<Tab />', () => {
 	it('Should be able to render', () => {
-		shallow(<TabsItem tab={mockTab} />);
+		shallow(<Tab {...mockTab} />);
 	});
 
 	it('Should set the correct className', () => {
-		const tabComponent = shallow(<TabsItem tab={mockTab} />);
+		const tabComponent = shallow(<Tab {...mockTab} />);
 
 		expect(tabComponent.hasClass('c-tabs__item')).toEqual(true);
 	});
 
 	it('Should set the correct className when icon is passed', () => {
-		const tabComponent = shallow(<TabsItem tab={mockTabWithIcon} />);
+		const tabComponent = shallow(<Tab {...mockTabWithIcon} />);
 
 		const iconElement = tabComponent.find('.o-svg-icon');
 
