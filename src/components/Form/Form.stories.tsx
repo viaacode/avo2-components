@@ -80,7 +80,7 @@ storiesOf('Form', module)
 					<TextInput placeholder="Enter you search term (grow)" />
 				</FormGroup>
 				<FormGroup labelFor="pass" inlineMode="shrink">
-					<Button label="Search (shrink)" />
+					<Button label="Search (shrink)" ariaLabel="Search button" />
 				</FormGroup>
 			</Form>
 		</Fragment>
