@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
 
+import { Icon } from '../Icon/Icon';
 import { Table } from './Table';
 
 const COLUMNS = [
@@ -72,6 +73,16 @@ const TableStoryComponent = ({ children }: { children: ReactElement }) => {
 	);
 };
 
+function renderCell(r: any[], c: any) {
+	switch (c) {
+		case 'dog':
+		case 'cat':
+			return r[c] ? <Icon name="check" /> : <Icon name="x" />;
+		default:
+			return r[c];
+	}
+}
+
 storiesOf('Table', module)
 	.addParameters({ jest: ['Table'] })
 	.add('Table', () => (
@@ -80,19 +91,7 @@ storiesOf('Table', module)
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
-				renderCell={(row, cell) => (
-					<Fragment>
-						{(function() {
-							switch (cell) {
-								case 'dog':
-								case 'cat':
-									return row[cell] ? 'Yes' : 'No';
-								default:
-									return row[cell];
-							}
-						})()}
-					</Fragment>
-				)}
+				renderCell={(row, cell) => renderCell(row, cell)}
 			/>
 		</TableStoryComponent>
 	))
@@ -103,19 +102,7 @@ storiesOf('Table', module)
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
-				renderCell={(row, cell, rowIndex) => (
-					<Fragment>
-						{(function() {
-							switch (cell) {
-								case 'dog':
-								case 'cat':
-									return row[cell] ? 'Yes' : 'No';
-								default:
-									return row[cell];
-							}
-						})()}
-					</Fragment>
-				)}
+				renderCell={(row, cell) => renderCell(row, cell)}
 			/>
 		</TableStoryComponent>
 	))
@@ -126,19 +113,7 @@ storiesOf('Table', module)
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
-				renderCell={(row, cell) => (
-					<Fragment>
-						{(function() {
-							switch (cell) {
-								case 'dog':
-								case 'cat':
-									return row[cell] ? 'Yes' : 'No';
-								default:
-									return row[cell];
-							}
-						})()}
-					</Fragment>
-				)}
+				renderCell={(row, cell) => renderCell(row, cell)}
 			/>
 		</TableStoryComponent>
 	));
