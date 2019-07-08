@@ -19,6 +19,6 @@ export const Tab: FunctionComponent<TabProps> = ({ label, href, icon, active }: 
 		href={href}
 	>
 		{icon && <Icon name={icon} />}
-		{label}
+		<span>{label}</span>
 	</a>
 );
