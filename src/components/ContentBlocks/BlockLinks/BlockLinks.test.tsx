@@ -10,7 +10,7 @@ export const links = [
 	{ label: 'Twitter', url: 'http://twitter.com' },
 ];
 
-export const blockLinksExampleExample = <BlockLinks key="footerlinks" links={links} />;
+export const blockLinksExampleExample = <BlockLinks uniqueKey="footerlinks" links={links} />;
 
 describe('<BlockLinks />', () => {
 	it('Should be able to render', () => {
