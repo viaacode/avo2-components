@@ -19,27 +19,34 @@ export const TagList: FunctionComponent<TagListProps> = ({
 	bordered = true,
 	closable = false,
 	onTagClosed = () => {},
-	onTagClicked = () => {},
+	onTagClicked,
 }: TagListProps) =>
-	tags && tags.length ? (
+	!!tags && !!tags.length ? (
 		<ul className="c-tag-list">
 			{tags.map((tag: { label: string; id: string }, index) => (
 				<li className={classNames({ 'c-tag': bordered, 'c-label': !bordered })} key={tag.id}>
 					{swatches && (
 						<div
 							className={classNames('c-label-swatch', `c-label-swatch--color-${(index % 10) + 1}`)}
-							onClick={() => onTagClicked(tag.id)}
+							onClick={() => (onTagClicked || (() => {}))(tag.id)}
+							style={onTagClicked ? { cursor: 'pointer' } : {}}
 						/>
 					)}
 					{swatches || closable ? (
 						<p
 							className={classNames({ 'c-tag__label': !swatches, 'c-label-text': swatches })}
-							onClick={() => onTagClicked(tag.id)}
+							onClick={() => (onTagClicked || (() => {}))(tag.id)}
+							style={onTagClicked ? { cursor: 'pointer' } : {}}
 						>
 							{tag.label}
 						</p>
 					) : (
-						tag.label
+						<span
+							onClick={() => (onTagClicked || (() => {}))(tag.id)}
+							style={onTagClicked ? { cursor: 'pointer' } : {}}
+						>
+							{tag.label}
+						</span>
 					)}
 					{closable && (
 						<a onClick={() => onTagClosed(tag.id)}>
