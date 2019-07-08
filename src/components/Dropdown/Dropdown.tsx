@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 import PopperJS, { Data, ModifierFn } from 'popper.js';
@@ -7,13 +7,14 @@ import { Manager, Popper, Reference } from 'react-popper';
 import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
-
+import { useSlot } from '../../hooks/useSlot';
 import { get } from '../../utils/get';
-
 import { Icon } from '../Icon/Icon';
+import { DropdownButton, DropdownContent } from './Dropdown.slots';
 
 export interface DropdownProps {
-	label: string;
+	label?: string;
+	icon?: string;
 	isOpen: boolean;
 	placement?:
 		| 'auto'
@@ -46,7 +47,8 @@ export interface DropdownProps {
  * - The flyout element that contains the children is called the "popper"
  */
 export const Dropdown: FunctionComponent<DropdownProps> = ({
-	label,
+	label = '',
+	icon,
 	isOpen,
 	placement = 'bottom-start',
 	autoSize = false,
@@ -56,6 +58,9 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 }: DropdownProps) => {
 	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef();
 	const [dropdownButton, dropdownButtonRef] = useCallbackRef();
+
+	const dropdownButtonSlot = useSlot(DropdownButton, children);
+	const dropdownContentSlot = useSlot(DropdownContent, children);
 
 	const toggle = (openState: boolean = !isOpen) => {
 		if (openState !== isOpen) {
@@ -94,12 +99,20 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 		<Manager>
 			<Reference innerRef={dropdownButtonRef}>
 				{({ ref }) => (
-					<button className="c-button c-button--secondary" ref={ref} onClick={() => toggle()}>
-						<div className="c-button__content">
-							<div className="c-button__label">{label}</div>
-							<Icon name={isOpen ? 'caret-up' : 'caret-down'} size="small" type="arrows" />
-						</div>
-					</button>
+					<div ref={ref} onClick={() => toggle()}>
+						{dropdownButtonSlot}
+						{!dropdownButtonSlot && (
+							<button className="c-button c-button--secondary">
+								<div className="c-button__content">
+									{icon && <Icon name={icon} />}
+									{label && <div className="c-button__label">{label}</div>}
+									{!icon && (
+										<Icon name={isOpen ? 'caret-up' : 'caret-down'} size="small" type="arrows" />
+									)}
+								</div>
+							</button>
+						)}
+					</div>
 				)}
 			</Reference>
 			<Popper placement={placement} modifiers={modifiers} innerRef={dropdownFlyoutRef}>
@@ -112,7 +125,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 						data-placement={placement}
 						style={style}
 					>
-						{children}
+						{dropdownContentSlot || children}
 					</div>
 				)}
 			</Popper>
