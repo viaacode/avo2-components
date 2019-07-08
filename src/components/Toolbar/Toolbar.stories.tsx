@@ -28,7 +28,7 @@ storiesOf('Toolbar', module)
 				</ToolbarCenter>
 				<ToolbarRight>
 					<ToolbarItem>
-						<Button type="primary" label="Save" />
+						<Button type="primary" label="Save" ariaLabel="Save" />
 					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
@@ -46,7 +46,7 @@ storiesOf('Toolbar', module)
 				</ToolbarCenter>
 				<ToolbarRight>
 					<ToolbarItem>
-						<Button type="primary" label="Save" />
+						<Button type="primary" label="Save" ariaLabel="Save" />
 					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
@@ -64,7 +64,7 @@ storiesOf('Toolbar', module)
 				</ToolbarCenter>
 				<ToolbarRight>
 					<ToolbarItem>
-						<Button type="primary" label="Save" />
+						<Button type="primary" label="Save" ariaLabel="Save" />
 					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
@@ -82,7 +82,7 @@ storiesOf('Toolbar', module)
 				</ToolbarCenter>
 				<ToolbarRight>
 					<ToolbarItem>
-						<Button type="primary" label="Save" />
+						<Button type="primary" label="Save" ariaLabel="Save" />
 					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
@@ -100,7 +100,7 @@ storiesOf('Toolbar', module)
 				</ToolbarCenter>
 				<ToolbarRight>
 					<ToolbarItem>
-						<Button type="primary" label="Save" />
+						<Button type="primary" label="Save" ariaLabel="Save" />
 					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
@@ -128,7 +128,7 @@ storiesOf('Toolbar', module)
 		<Toolbar>
 			<ToolbarRight>
 				<ToolbarItem>
-					<Button type="primary" label="Only right" />
+					<Button type="primary" label="Only right" ariaLabel="Only right" />
 				</ToolbarItem>
 			</ToolbarRight>
 		</Toolbar>

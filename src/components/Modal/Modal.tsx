@@ -75,7 +75,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 							<div className="c-toolbar__right">
 								{headerRight && <div className="c-toolbar__item">{headerRight}</div>}
 								<div className="c-toolbar__item">
-									<Button onClick={close} icon="close" type="borderless" />
+									<Button onClick={close} icon="close" type="borderless" ariaLabel="close modal" />
 								</div>
 							</div>
 						</div>
