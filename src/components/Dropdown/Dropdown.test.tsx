@@ -1,7 +1,9 @@
 import { mount, shallow } from 'enzyme';
-import React from 'react';
+import React, { Fragment } from 'react';
 
+import { Button } from '../Button/Button';
 import { Dropdown } from './Dropdown';
+import { DropdownButton, DropdownContent } from './Dropdown.slots';
 
 describe('<Dropdown />', () => {
 	it('Should be able to render', () => {
@@ -122,5 +124,29 @@ describe('<Dropdown />', () => {
 		);
 
 		expect(dropdownComponent.find('.c-button__label').text()).toEqual(label);
+	});
+
+	it('Should correctly render slots', () => {
+		const label = 'Test label';
+
+		const dropdownComponent = mount(
+			<Dropdown isOpen={false}>
+				<DropdownButton>
+					<Button label={label} />
+				</DropdownButton>
+				<DropdownContent>
+					<Fragment>
+						<div className="firstItem">OneOneOneOneOneOne</div>
+						<div>Two</div>
+						<div>Three</div>
+						<div>Four</div>
+						<div>Five</div>
+					</Fragment>
+				</DropdownContent>
+			</Dropdown>
+		);
+
+		expect(dropdownComponent.find('.c-button__label').text()).toEqual(label);
+		expect(dropdownComponent.find('.firstItem').text()).toEqual('OneOneOneOneOneOne');
 	});
 });

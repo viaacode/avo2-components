@@ -5,13 +5,30 @@ import { Button } from '../Button/Button';
 
 import { ToggleButton } from './ToggleButton';
 
-describe('<ToggleButton />', () => {
+describe('<ToggleButton ariaLabel="test button" />', () => {
 	it('Should be able to render', () => {
-		shallow(<ToggleButton icon="heart" active={false} />);
+		shallow(<ToggleButton ariaLabel="test button" icon="heart" active={false} />);
+	});
+	it('Should set aria label', () => {
+		const inactiveToggleButtonComponent = mount(
+			<ToggleButton ariaLabel="toggle favorite" icon="heart" active={false} />
+		);
+		const activeToggleButtonComponent = mount(
+			<ToggleButton ariaLabel="toggle favorite" icon="heart" active={true} />
+		);
+
+		expect(inactiveToggleButtonComponent.find('button').prop('aria-label')).toEqual(
+			'toggle favorite (currently not active)'
+		);
+		expect(activeToggleButtonComponent.find('button').prop('aria-label')).toEqual(
+			'toggle favorite (currently active)'
+		);
 	});
 
 	it('Should set the normal version of the icon when not `active`', () => {
-		const toggleButtonComponent = shallow(<ToggleButton icon="bookmark" active={false} />);
+		const toggleButtonComponent = shallow(
+			<ToggleButton ariaLabel="test button" icon="bookmark" active={false} />
+		);
 
 		const buttonComponent = toggleButtonComponent.find(Button);
 
@@ -19,7 +36,9 @@ describe('<ToggleButton />', () => {
 	});
 
 	it('Should set the filled version of the icon when `active`', () => {
-		const toggleButtonComponent = shallow(<ToggleButton icon="bookmark" active={true} />);
+		const toggleButtonComponent = shallow(
+			<ToggleButton ariaLabel="test button" icon="bookmark" active={true} />
+		);
 
 		const buttonComponent = toggleButtonComponent.find(Button);
 
@@ -32,7 +51,12 @@ describe('<ToggleButton />', () => {
 		const active = true;
 
 		const toggleButtonComponent = mount(
-			<ToggleButton icon="bookmark" active={active} onClick={onClickHandler} />
+			<ToggleButton
+				ariaLabel="test button"
+				icon="bookmark"
+				active={active}
+				onClick={onClickHandler}
+			/>
 		);
 
 		const buttonElement = toggleButtonComponent.find('button');

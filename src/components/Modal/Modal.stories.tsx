@@ -15,7 +15,7 @@ const ModalStoryComponent = ({ children }: { children: ReactElement }) => {
 
 	return (
 		<Fragment>
-			<Button onClick={() => setOpen(true)} label="Open modal" />
+			<Button onClick={() => setOpen(true)} label="Open modal" ariaLabel="Open modal" />
 			{childrenWithProps}
 		</Fragment>
 	);
@@ -33,10 +33,10 @@ storiesOf('Modal', module)
 					</p>
 				</ModalBody>
 				<ModalFooterLeft>
-					<Button type="secondary" label="Cancel" />
+					<Button type="secondary" label="Cancel" ariaLabel="Cancel" />
 				</ModalFooterLeft>
 				<ModalFooterRight>
-					<Button type="primary" label="Ok" />
+					<Button type="primary" label="Ok" ariaLabel="Ok" />
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
@@ -51,7 +51,7 @@ storiesOf('Modal', module)
 					</p>
 				</ModalBody>
 				<ModalFooterRight>
-					<Button type="primary" label="Ok" />
+					<Button type="primary" label="Ok" ariaLabel="Ok" />
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
@@ -66,7 +66,7 @@ storiesOf('Modal', module)
 					</p>
 				</ModalBody>
 				<ModalFooterRight>
-					<Button type="primary" label="Ok" />
+					<Button type="primary" label="Ok" ariaLabel="Ok" />
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
@@ -81,7 +81,7 @@ storiesOf('Modal', module)
 					</p>
 				</ModalBody>
 				<ModalFooterRight>
-					<Button type="primary" label="Ok" />
+					<Button type="primary" label="Ok" ariaLabel="Ok" />
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
@@ -96,7 +96,7 @@ storiesOf('Modal', module)
 					</p>
 				</ModalBody>
 				<ModalFooterRight>
-					<Button type="primary" label="Ok" />
+					<Button type="primary" label="Ok" ariaLabel="Ok" />
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
@@ -107,7 +107,7 @@ storiesOf('Modal', module)
 				<p>{loremIpsum({ count: 20 })}</p>
 			</ModalBody>
 			<ModalFooterRight>
-				<Button type="primary" label="Ok" />
+				<Button type="primary" label="Ok" ariaLabel="Ok" />
 			</ModalFooterRight>
 		</Modal>
 	));
