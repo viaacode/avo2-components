@@ -1,6 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
+import { Tab } from '../Tab/Tab';
 import { Tabs } from './Tabs';
 
 const mockTabs = [
@@ -32,5 +33,13 @@ describe('<Tabs />', () => {
 
 		expect(tabsComponent1.hasClass('c-tabs--bottom-border')).toEqual(true);
 		expect(tabsComponent2.hasClass('c-tabs--bottom-border')).toEqual(false);
+	});
+
+	it('Should correctly render `Tab`-components as children', () => {
+		const tabsComponent = shallow(<Tabs tabs={mockTabs} />);
+
+		const tabElement = tabsComponent.find(Tab);
+
+		expect(tabElement).toHaveLength(2);
 	});
 });

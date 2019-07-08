@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 
-import { Icon } from '../Icon/Icon';
 import { Tab, TabProps } from '../Tab/Tab';
 
 import classNames from 'classnames';
