@@ -18,14 +18,11 @@ const mockTabs = [
 
 const mockTabsWithIcons = [
 	{
-		label: 'Videos',
-		href: '#',
-		active: true,
+		...mockTabs[0],
 		icon: 'video',
 	},
 	{
-		label: 'Folder',
-		href: '#',
+		...mockTabs[1],
 		icon: 'folder',
 	},
 ];
@@ -33,5 +30,5 @@ const mockTabsWithIcons = [
 storiesOf('Tabs', module)
 	.addParameters({ jest: ['Tabs'] })
 	.add('Tabs', () => <Tabs tabs={mockTabs} />)
-	.add('Tabs (border)', () => <Tabs tabs={mockTabs} hasBorder />)
+	.add('Tabs (border)', () => <Tabs tabs={mockTabs} border />)
 	.add('Tabs with Icons', () => <Tabs tabs={mockTabsWithIcons} />);
