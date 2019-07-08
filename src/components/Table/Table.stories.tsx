@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
@@ -43,9 +43,12 @@ const TableStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [sortColumn, setSortColumn] = useState('name');
 	const [sortOrder, setSortOrder] = useState('asc');
 
-	const sort = (items: any[]) => {
-		return items.sort(comparators[sortColumn](sortOrder));
-	};
+	const sort = useCallback(
+		(items: any[]) => {
+			return items.sort(comparators[sortColumn](sortOrder));
+		},
+		[sortColumn, sortOrder]
+	);
 
 	const [data, setData] = useState(sort(children.props.data));
 
