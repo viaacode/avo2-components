@@ -63,12 +63,8 @@ export const Column: FunctionComponent<ColumnProps> = ({ size, children }: Colum
 
 		return `o-grid-col-${prefix}${size}`;
 	};
-	let sizes: GridSize[];
-	if (typeof size === 'string') {
-		sizes = [size];
-	} else {
-		sizes = size;
-	}
+
+	const sizes = typeof size === 'string' ? [size] : size;
 
 	return <div className={sizes.map(getGridSizeColumn).join(' ')}>{children}</div>;
 };
