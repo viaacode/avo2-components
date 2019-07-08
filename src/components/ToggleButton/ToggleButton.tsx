@@ -5,6 +5,7 @@ import { Button } from '../Button/Button';
 export interface ToggleButtonProps {
 	icon: 'heart' | 'bookmark';
 	active: boolean;
+	ariaLabel: string;
 	type?:
 		| 'primary'
 		| 'secondary'
@@ -21,6 +22,7 @@ export interface ToggleButtonProps {
 export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
 	icon,
 	active,
+	ariaLabel,
 	type = 'borderless',
 	onClick = () => {},
 }: ToggleButtonProps) => {
@@ -46,5 +48,13 @@ export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
 		return icon;
 	}
 
-	return <Button icon={getIcon()} type={type} active={filled} onClick={onButtonClick} />;
+	return (
+		<Button
+			icon={getIcon()}
+			type={type}
+			active={filled}
+			onClick={onButtonClick}
+			ariaLabel={`${ariaLabel} (currently ${active ? 'active' : 'not active'})`}
+		/>
+	);
 };

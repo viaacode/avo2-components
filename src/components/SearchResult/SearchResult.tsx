@@ -53,6 +53,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 								active={false}
 								icon="bookmark"
 								onClick={(active: boolean) => onToggleBookmark(active)}
+								ariaLabel="toggle bookmark"
 							/>
 						</div>
 					</div>
