@@ -173,14 +173,7 @@ describe('<Table />', () => {
 		const onColumnClickHandler = jest.fn();
 
 		const ascTableComponent = shallow(
-			<Table
-				columns={COLUMNS}
-				data={DATA}
-				rowKey="id"
-				sortOrder="asc"
-				sortColumn={COLUMNS[0].id}
-				onColumnClick={onColumnClickHandler}
-			/>
+			<Table columns={COLUMNS} data={DATA} rowKey="id" onColumnClick={onColumnClickHandler} />
 		);
 
 		const column = ascTableComponent.find('thead > tr > th').last();
@@ -188,5 +181,37 @@ describe('<Table />', () => {
 		column.simulate('click');
 
 		expect(onColumnClickHandler).toHaveBeenCalledTimes(0);
+	});
+
+	it('Should render an `emptyStateMessage` when no data is passed', () => {
+		const emptyStateMessage = 'No data test test no data...';
+
+		const tableComponent = shallow(
+			<Table columns={COLUMNS} data={[]} rowKey="id" emptyStateMessage={emptyStateMessage} />
+		);
+
+		const emptyStateParagraph = tableComponent.find('p.u-spacer-top');
+
+		expect(emptyStateParagraph.text()).toEqual(emptyStateMessage);
+	});
+
+	it('Should not render an `emptyStateMessage` when data is passed', () => {
+		const emptyStateMessage = 'No data test test no data...';
+
+		const tableComponent = shallow(
+			<Table columns={COLUMNS} data={DATA} rowKey="id" emptyStateMessage={emptyStateMessage} />
+		);
+
+		const emptyStateParagraph = tableComponent.find('p.u-spacer-top');
+
+		expect(emptyStateParagraph).toHaveLength(0);
+	});
+
+	it('Should not render an `emptyStateMessage` when it was not passed', () => {
+		const tableComponent = shallow(<Table columns={COLUMNS} data={[]} rowKey="id" />);
+
+		const emptyStateParagraph = tableComponent.find('p.u-spacer-top');
+
+		expect(emptyStateParagraph).toHaveLength(0);
 	});
 });

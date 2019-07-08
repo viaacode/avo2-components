@@ -116,4 +116,15 @@ storiesOf('Table', module)
 				renderCell={(row, cell) => renderCell(row, cell)}
 			/>
 		</TableStoryComponent>
+	))
+	.add('Table empty state', () => (
+		<TableStoryComponent>
+			<Table
+				columns={COLUMNS}
+				data={[]}
+				rowKey="id"
+				renderCell={(row, cell) => renderCell(row, cell)}
+				emptyStateMessage="No data was found. Try again later."
+			/>
+		</TableStoryComponent>
 	));

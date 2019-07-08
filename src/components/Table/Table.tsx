@@ -17,6 +17,7 @@ export interface TableProps {
 	sortOrder?: 'asc' | 'desc';
 	styled?: boolean;
 	bordered?: boolean;
+	emptyStateMessage?: string;
 	renderCell?: (row: any, cell: any, rowIndex: number, cellIndex: number) => ReactNode;
 	onColumnClick?: (id: string) => void;
 }
@@ -29,6 +30,7 @@ export const Table: FunctionComponent<TableProps> = ({
 	sortOrder = 'asc',
 	styled,
 	bordered,
+	emptyStateMessage,
 	renderCell = () => null,
 	onColumnClick = () => {},
 }: TableProps) => {
@@ -65,6 +67,9 @@ export const Table: FunctionComponent<TableProps> = ({
 						</tr>
 					))}
 				</tbody>
+			)}
+			{data.length === 0 && emptyStateMessage && (
+				<p className="u-spacer-top">{emptyStateMessage}</p>
 			)}
 		</table>
 	);
