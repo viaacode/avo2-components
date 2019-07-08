@@ -12,4 +12,4 @@ export const links = [
 
 storiesOf('BlockLinks', module)
 	.addParameters({ jest: ['BlockLinks'] })
-	.add('BlockLinks', () => <BlockLinks key="footerlinks" links={links} />);
+	.add('BlockLinks', () => <BlockLinks uniqueKey="footerlinks" links={links} />);
