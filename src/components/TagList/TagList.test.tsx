@@ -127,7 +127,7 @@ describe('<TagList />', () => {
 
 		expect(onTagClosedHandler).toHaveBeenCalled();
 		expect(onTagClosedHandler).toHaveBeenCalledTimes(1);
-		expect(onTagClosedHandler).toHaveBeenCalledWith(tags[indexToClose].id);
+		expect(onTagClosedHandler).toHaveBeenCalledWith(tags[indexToClose].id, undefined);
 	});
 
 	it('Should call `onTagClicked` when clicking a tag', () => {
@@ -145,6 +145,6 @@ describe('<TagList />', () => {
 
 		expect(onTagClickedHandler).toHaveBeenCalled();
 		expect(onTagClickedHandler).toHaveBeenCalledTimes(1);
-		expect(onTagClickedHandler).toHaveBeenCalledWith(tags[indexToClose].id);
+		expect(onTagClickedHandler).toHaveBeenCalledWith(tags[indexToClose].id, undefined);
 	});
 });

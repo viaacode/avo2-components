@@ -70,6 +70,7 @@ import {
 import { Select } from './components/Select/Select';
 import { Spacer } from './components/Spacer/Spacer';
 import { Spinner } from './components/Spinner/Spinner';
+import { Table } from './components/Table/Table';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
@@ -144,6 +145,7 @@ export {
 	SearchResultThumbnail,
 	Spacer,
 	Spinner,
+	Table,
 	TagList,
 	TextInput,
 	Thumbnail,

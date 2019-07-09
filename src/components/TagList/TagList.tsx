@@ -20,29 +20,31 @@ export const TagList: FunctionComponent<TagListProps> = ({
 	closable = false,
 	onTagClosed = () => {},
 	onTagClicked,
-}: TagListProps) =>
-	!!tags && !!tags.length ? (
+}: TagListProps) => {
+	const safeOnTagClicked = onTagClicked || (() => {});
+
+	return !!tags && !!tags.length ? (
 		<ul className="c-tag-list">
 			{tags.map((tag: { label: string; id: string | number }, index) => (
 				<li className={classNames({ 'c-tag': bordered, 'c-label': !bordered })} key={tag.id}>
 					{swatches && (
 						<div
 							className={classNames('c-label-swatch', `c-label-swatch--color-${(index % 10) + 1}`)}
-							onClick={(evt: MouseEvent) => (onTagClicked || (() => {}))(tag.id, evt)}
+							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
 							style={onTagClicked ? { cursor: 'pointer' } : {}}
 						/>
 					)}
 					{swatches || closable ? (
 						<p
 							className={classNames({ 'c-tag__label': !swatches, 'c-label-text': swatches })}
-							onClick={(evt: MouseEvent) => (onTagClicked || (() => {}))(tag.id, evt)}
+							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
 							style={onTagClicked ? { cursor: 'pointer' } : {}}
 						>
 							{tag.label}
 						</p>
 					) : (
 						<span
-							onClick={(evt: MouseEvent) => (onTagClicked || (() => {}))(tag.id, evt)}
+							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
 							style={onTagClicked ? { cursor: 'pointer' } : {}}
 						>
 							{tag.label}
@@ -57,3 +59,4 @@ export const TagList: FunctionComponent<TagListProps> = ({
 			))}
 		</ul>
 	) : null;
+};
