@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 import PopperJS, { Data, ModifierFn } from 'popper.js';
