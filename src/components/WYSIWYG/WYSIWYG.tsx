@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
 import Trumbowyg from 'react-trumbowyg';
-import 'react-trumbowyg/dist/trumbowyg.min.css';
 
 export interface WYSIWYGProps {
 	id: string;
@@ -31,7 +30,7 @@ export interface WYSIWYGProps {
 
 export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 	id,
-	data,
+	data = '',
 	lang,
 	buttons,
 	semantic,
