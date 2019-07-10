@@ -12,9 +12,7 @@ const mockTab = {
 };
 
 const mockTabWithIcon = {
-	label: 'Videos',
-	href: '#',
-	active: true,
+	...mockTab,
 	icon: 'video',
 };
 

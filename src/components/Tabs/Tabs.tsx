@@ -16,7 +16,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({ tabs, border }: TabsProps) 
 		})}
 	>
 		{tabs.map(tab => (
-			<Tab {...tab} />
+			<Tab key={tab.label} {...tab} />
 		))}
 	</nav>
 );
