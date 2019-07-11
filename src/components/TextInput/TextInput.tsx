@@ -2,17 +2,7 @@ import React, { ChangeEvent, FunctionComponent } from 'react';
 
 import { Icon } from '../Icon/Icon';
 
-type Type =
-	| 'button'
-	| 'checkbox'
-	| 'file'
-	| 'hidden'
-	| 'image'
-	| 'password'
-	| 'radio'
-	| 'reset'
-	| 'submit'
-	| 'text';
+type Type = 'password' | 'text';
 
 export interface TextInputProps {
 	id?: string;
