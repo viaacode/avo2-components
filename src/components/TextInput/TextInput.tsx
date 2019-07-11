@@ -2,12 +2,25 @@ import React, { ChangeEvent, FunctionComponent } from 'react';
 
 import { Icon } from '../Icon/Icon';
 
+type Type =
+	| 'button'
+	| 'checkbox'
+	| 'file'
+	| 'hidden'
+	| 'image'
+	| 'password'
+	| 'radio'
+	| 'reset'
+	| 'submit'
+	| 'text';
+
 export interface TextInputProps {
 	id?: string;
 	disabled?: boolean;
 	placeholder?: string;
 	value?: string;
 	icon?: string;
+	type?: Type;
 	onChange?: (value: string) => void;
 }
 
@@ -17,6 +30,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 	placeholder,
 	value = '',
 	icon,
+	type = 'text',
 	onChange = () => {},
 }: TextInputProps) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
@@ -27,7 +41,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 		<div className="c-input-with-icon">
 			<input
 				className="c-input"
-				type="text"
+				type={type}
 				id={id}
 				value={value}
 				disabled={disabled}
@@ -39,7 +53,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 	) : (
 		<input
 			className="c-input"
-			type="text"
+			type={type}
 			id={id}
 			value={value}
 			disabled={disabled}
