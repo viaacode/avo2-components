@@ -15,7 +15,7 @@ storiesOf('ExpandableContainer', module)
 	.add('ExpandableContainer options', () => (
 		<ExpandableContainer
 			collapsedHeight={200}
-			defaultExpanded={true}
+			defaultExpanded
 			expandLabel="more"
 			collapseLabel="less"
 		>

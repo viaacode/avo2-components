@@ -31,7 +31,7 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 						{/* 16 by 9 => 100% by 56% */}
 						<div className="c-video-wrapper" style={{ paddingBottom: '56%' }}>
 							{/* TODO replace this with the flowplayer video component */}
-							<video src={videoSource} controls={true} />
+							<video src={videoSource} controls />
 						</div>
 					</Column>
 					<Column size="2-6">
