@@ -71,7 +71,9 @@ import {
 import { Select } from './components/Select/Select';
 import { Spacer } from './components/Spacer/Spacer';
 import { Spinner } from './components/Spinner/Spinner';
+import { Tab } from './components/Tab/Tab';
 import { Table } from './components/Table/Table';
+import { Tabs } from './components/Tabs/Tabs';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
@@ -147,7 +149,9 @@ export {
 	SearchResultThumbnail,
 	Spacer,
 	Spinner,
+	Tab,
 	Table,
+	Tabs,
 	TagList,
 	TextInput,
 	Thumbnail,
