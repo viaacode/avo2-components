@@ -48,6 +48,10 @@ import { Icon } from './components/Icon/Icon';
 import { Image } from './components/Image/Image';
 import { MediaCard } from './components/MediaCard/MediaCard';
 import { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/MediaCard.slots';
+import { Menu } from './components/Menu/Menu';
+import { MenuContent } from './components/Menu/MenuContent';
+import { MenuSearchResult } from './components/MenuSearchResult/MenuSearchResult';
+import { MenuSearchResultContent } from './components/MenuSearchResult/MenuSearchResultContent';
 import { MetaData } from './components/MetaData/MetaData';
 import { MetaDataItem } from './components/MetaDataItem/MetaDataItem';
 import { Modal } from './components/Modal/Modal';
@@ -129,6 +133,10 @@ export {
 	MediaCard,
 	MediaCardMetaData,
 	MediaCardThumbnail,
+	Menu,
+	MenuContent,
+	MenuSearchResult,
+	MenuSearchResultContent,
 	MetaData,
 	MetaDataItem,
 	Modal,
