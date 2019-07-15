@@ -17,5 +17,12 @@ const menuItems: MenuSearchResultItemInfo[] = [
 storiesOf('MenuSearchResult', module)
 	.addParameters({ jest: ['Menu'] })
 	.add('MenuSearchResult', () => (
-		<MenuSearchResult menuItems={menuItems} onClick={action('clicked menu item')} />
+		<MenuSearchResult
+			menuItems={menuItems}
+			onClick={action('clicked menu item')}
+			noResultsLabel="No results"
+		/>
+	))
+	.add('MenuSearchResult no results', () => (
+		<MenuSearchResult menuItems={[]} noResultsLabel="No results" />
 	));

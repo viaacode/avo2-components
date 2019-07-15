@@ -48,6 +48,13 @@ describe('<MenuItem />', () => {
 		expect(menuComponent.find('.o-svg-icon').length).toEqual(menuItemsWithIcons.length);
 	});
 
+	it('Should render no results label if provided', () => {
+		const noResultsLabel = 'No results';
+		const menuComponent = mount(<Menu menuItems={[]} noResultsLabel={noResultsLabel} />);
+
+		expect(menuComponent.find('.c-menu__label').text()).toEqual(noResultsLabel);
+	});
+
 	it('Should render the correct number of dividers', () => {
 		const menuComponent = mount(<Menu menuItems={menuItemWithDivider} />);
 

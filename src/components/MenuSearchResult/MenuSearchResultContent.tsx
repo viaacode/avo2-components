@@ -14,6 +14,7 @@ export interface MenuSearchResultItemInfo {
 
 export interface MenuContentProps {
 	menuItems: MenuSearchResultItemInfo[];
+	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;
 }
 
@@ -33,14 +34,16 @@ export const CONTENT_TYPE_TO_LABEL: { [contentType in ContentType]: string } = {
 
 export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
 	menuItems,
+	noResultsLabel,
 	onClick = () => {},
 }: MenuContentProps) => {
 	const renderMenuItem = (menuItemInfo: MenuSearchResultItemInfo) => {
 		return (
 			<div
 				className="c-menu__item"
-				onClick={() => onClick(menuItemInfo.id)}
+				onClick={() => (onClick || (() => {}))(menuItemInfo.id)}
 				key={`menu-search-item-${menuItemInfo.id}`}
+				style={onClick ? { cursor: 'pointer' } : {}}
 			>
 				<div
 					className="c-menu__label"
@@ -70,5 +73,12 @@ export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
 		);
 	};
 
-	return <MenuContent menuItems={menuItems} onClick={onClick} renderItem={renderMenuItem as any} />;
+	return (
+		<MenuContent
+			menuItems={menuItems}
+			onClick={onClick}
+			renderItem={renderMenuItem as any}
+			noResultsLabel={noResultsLabel}
+		/>
+	);
 };

@@ -11,13 +11,15 @@ export interface MenuItemInfo {
 export interface MenuContentProps {
 	menuItems: MenuItemInfo[] | MenuItemInfo[][]; // Between arrays, there will be a divider
 	renderItem?: (menuItem: MenuItemInfo) => ReactNode; // If you want to render your own item
+	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;
 }
 
 export const MenuContent: FunctionComponent<MenuContentProps> = ({
 	menuItems,
 	renderItem,
-	onClick = () => {},
+	noResultsLabel,
+	onClick,
 }: MenuContentProps) => {
 	const renderMenuItem = (menuItemInfo: MenuItemInfo) => {
 		if (renderItem) {
@@ -26,8 +28,9 @@ export const MenuContent: FunctionComponent<MenuContentProps> = ({
 		return (
 			<div
 				className="c-menu__item"
-				onClick={() => onClick(menuItemInfo.id)}
+				onClick={() => (onClick || (() => {}))(menuItemInfo.id)}
 				key={`menu-item-${menuItemInfo.id}`}
+				style={onClick ? { cursor: 'pointer' } : {}}
 			>
 				<div className="c-menu__label">
 					{menuItemInfo.icon && (
@@ -74,6 +77,13 @@ export const MenuContent: FunctionComponent<MenuContentProps> = ({
 				<Fragment key={(menuItemArrays as MenuItemInfo[]).map(mi => mi.id).join('-')}>
 					{renderMenuItems(menuItems as MenuItemInfo[])}
 				</Fragment>
+			);
+		}
+		if (noResultsLabel) {
+			return (
+				<div className="c-menu__item" key={`menu-item-no-results`}>
+					<div className="c-menu__label">{noResultsLabel}</div>
+				</div>
 			);
 		}
 		return <Fragment />;

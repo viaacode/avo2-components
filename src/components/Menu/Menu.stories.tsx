@@ -29,4 +29,5 @@ storiesOf('Menu', module)
 	.addParameters({ jest: ['Menu'] })
 	.add('Menu', () => <Menu menuItems={menuItems} onClick={action('clicked menu item')} />)
 	.add('Menu with icons', () => <Menu menuItems={menuItemsWithIcons} />)
-	.add('Menu with dividers', () => <Menu menuItems={menuItemWithDivider} />);
+	.add('Menu with dividers', () => <Menu menuItems={menuItemWithDivider} />)
+	.add('Menu no results', () => <Menu menuItems={[]} noResultsLabel="No results" />);

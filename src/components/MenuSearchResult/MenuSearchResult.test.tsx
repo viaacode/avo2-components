@@ -1,6 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
+import { Menu } from '../..';
 import { MenuSearchResult } from './MenuSearchResult';
 import { MenuSearchResultItemInfo } from './MenuSearchResultContent';
 
@@ -40,6 +41,15 @@ describe('<MenuItem />', () => {
 		expect(menuComponent.find('.o-svg-icon-bundle').length).toEqual(1);
 		expect(menuComponent.find('.o-svg-icon-video').length).toEqual(1);
 		expect(menuComponent.find('.o-svg-icon-audio').length).toEqual(1);
+	});
+
+	it('Should render no results label if provided', () => {
+		const noResultsLabel = 'No results';
+		const menuComponent = mount(
+			<MenuSearchResult menuItems={[]} noResultsLabel={noResultsLabel} />
+		);
+
+		expect(menuComponent.find('.c-menu__label').text()).toEqual(noResultsLabel);
 	});
 
 	it('Should call onClick when item is clicked', () => {
