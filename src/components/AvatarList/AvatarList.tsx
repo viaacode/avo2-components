@@ -25,13 +25,13 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
 	return (
 		<div className="c-avatar--multiple">
 			{visibleAvatars.map((avatar, index) => (
-				<div className="c-avatar c-avatar--img" data-tooltip={`index-${twoDecimalize(index)}`}>
+				<Fragment>
 					<Avatar {...avatar} />
 					<Tooltip placement="bottom" index={`index-${twoDecimalize(index)}`}>
 						<h4 className="c-h4 u-m-0">{avatar.name}</h4>
 						<span className="c-tooltip__meta">{avatar.subtitle}</span>
 					</Tooltip>
-				</div>
+				</Fragment>
 			))}
 			{hasHiddenAvatars && (
 				<Dropdown autoSize label="Show options" placement="bottom-start" isOpen={isOpen}>
