@@ -7,30 +7,37 @@ import { AvatarList } from './AvatarList';
 const mockAvatars = [
 	{
 		initials: 'BN',
+		name: 'John Doe',
 		subtitle: 'Mag Bewerken',
 	},
 	{
 		initials: 'KN',
+		name: 'John Doe',
 		subtitle: 'Mag Bewerken',
 	},
 	{
 		initials: 'BC',
+		name: 'John Doe',
 		subtitle: 'Mag Bewerken',
 	},
 	{
 		initials: 'AC',
+		name: 'John Doe',
 		subtitle: 'Mag Bewerken',
 	},
 	{
 		initials: 'AC',
+		name: 'John Doe',
 		subtitle: 'Mag Bewerken',
 	},
 	{
 		initials: 'AC',
+		name: 'John Doe',
 		subtitle: 'Mag Bewerken',
 	},
 	{
 		initials: 'AC',
+		name: 'John Doe',
 		subtitle: 'Mag Bewerken',
 	},
 ];

@@ -26,7 +26,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
 		<div className="c-avatar--multiple">
 			{visibleAvatars.map((avatar, index) => (
 				<Fragment>
-					<Avatar {...avatar} />
+					<Avatar initials={avatar.initials} />
 					<Tooltip placement="bottom" index={`index-${twoDecimalize(index)}`}>
 						<h4 className="c-h4 u-m-0">{avatar.name}</h4>
 						<span className="c-tooltip__meta">{avatar.subtitle}</span>
