@@ -6,6 +6,7 @@ import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots';
 import { Flex } from '../Flex/Flex';
 import { Spacer } from '../Spacer/Spacer';
 import { Tooltip } from '../Tooltip/Tooltip';
+import './AvatarList.css';
 
 export interface AvatarListProps {
 	avatars: AvatarProps[];
@@ -23,7 +24,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
 	const hasHiddenAvatars = hiddenAvatars && !!hiddenAvatars.length;
 
 	return (
-		<div className="c-avatar--multiple">
+		<div className="c-avatar--multiple c-avatar-list-overrides">
 			{visibleAvatars.map((avatar, index) => (
 				<Fragment>
 					<Avatar initials={avatar.initials} />
