@@ -2,7 +2,7 @@ import React, { ChangeEvent, FunctionComponent } from 'react';
 
 import { Icon } from '../Icon/Icon';
 
-type Type = 'password' | 'text' | 'email' | 'search' | 'number' | 'tel' | 'url';
+type InputType = 'password' | 'text' | 'email' | 'search' | 'number' | 'tel' | 'url';
 
 export interface TextInputProps {
 	id?: string;
@@ -10,7 +10,7 @@ export interface TextInputProps {
 	placeholder?: string;
 	value?: string;
 	icon?: string;
-	type?: Type;
+	type?: InputType;
 	onChange?: (value: string) => void;
 }
 
