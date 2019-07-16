@@ -2,7 +2,7 @@ import React, { ChangeEvent, FunctionComponent } from 'react';
 
 import { Icon } from '../Icon/Icon';
 
-type Type = 'password' | 'text' | 'email';
+type Type = 'password' | 'text' | 'email' | 'search' | 'number' | 'tel';
 
 export interface TextInputProps {
 	id?: string;
