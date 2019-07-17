@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { AvatarList } from './AvatarList';
 
-const mockAvatars = [
+export const mockAvatars = [
 	{
 		initials: 'BN',
 		name: 'John Doe',
