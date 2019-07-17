@@ -8,8 +8,6 @@ describe('AvatarList', () => {
 	const avatarList = <AvatarList avatars={mockAvatars} isOpen={false} />;
 	const wrapper = mount(avatarList);
 
-	console.log(wrapper.children());
-
 	it('should render', () => {
 		shallow(avatarList);
 	});

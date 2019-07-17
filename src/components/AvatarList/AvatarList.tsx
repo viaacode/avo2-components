@@ -15,10 +15,7 @@ export interface AvatarListProps {
 
 const twoDecimalize = (input: number): string => input.toString().padStart(2, '0');
 
-export const AvatarList: FunctionComponent<AvatarListProps> = ({
-	avatars,
-	isOpen = false,
-}: AvatarListProps) => {
+export const AvatarList: FunctionComponent<AvatarListProps> = ({ avatars, isOpen = false }) => {
 	const visibleAvatars = avatars.slice(0, 3);
 	const hiddenAvatars = avatars.slice(3, avatars.length);
 	const hasHiddenAvatars = hiddenAvatars && !!hiddenAvatars.length;
