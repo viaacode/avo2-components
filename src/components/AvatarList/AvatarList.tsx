@@ -26,7 +26,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
 	return (
 		<div className="c-avatar--multiple c-avatar-list-overrides">
 			{visibleAvatars.map((avatar, index) => (
-				<Fragment>
+				<Fragment key={index}>
 					<Avatar initials={avatar.initials} />
 					<Tooltip placement="bottom" index={`index-${twoDecimalize(index)}`}>
 						<h4 className="c-h4 u-m-0">{avatar.name}</h4>
@@ -44,7 +44,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
 					<DropdownContent>
 						<Fragment>
 							{hiddenAvatars.map((avatar, index) => (
-								<a className="c-menu__item" href="#">
+								<a key={index} className="c-menu__item" href="#">
 									<div className="c-menu__label">
 										<Flex orientation="vertical" center>
 											<Avatar initials={avatar.initials} image={avatar.image} />
