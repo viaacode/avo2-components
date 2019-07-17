@@ -58,7 +58,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 						</div>
 					</div>
 				</div>
-				<p className="c-search-result__description">{description.substring(0, 240)}</p>
+				<p className="c-search-result__description">{`${description.substring(0, 240)}...`}</p>
 				<div className="u-spacer-bottom-s">
 					<div className="o-flex o-flex--justify-between o-flex--wrap">
 						<MetaData category={type}>
