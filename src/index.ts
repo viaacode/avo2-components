@@ -40,6 +40,7 @@ import {
 import { DatePicker } from './components/DatePicker/DatePicker';
 import { Dropdown } from './components/Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
+import { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
 import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup';
 import { Column } from './components/Grid/Column';
@@ -124,6 +125,7 @@ export {
 	Dropdown,
 	DropdownButton,
 	DropdownContent,
+	ExpandableContainer,
 	Form,
 	FormGroup,
 	Grid,
