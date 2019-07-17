@@ -23,6 +23,16 @@ describe('<Container />', () => {
 		expect(containerComponent.hasClass('o-container')).toEqual(true);
 	});
 
+	it('Should set the correct custom classNames', () => {
+		const containerComponent = shallow(
+			<Container className="o-container-vertical-title">
+				<Fragment />
+			</Container>
+		);
+
+		expect(containerComponent.hasClass('o-container-vertical-title')).toEqual(true);
+	});
+
 	it('Should set the correct classNames when passing `size` and no mode is passed', () => {
 		const smallContainerComponent = shallow(
 			<Container size="small">
