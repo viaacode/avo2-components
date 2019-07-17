@@ -20,7 +20,7 @@ export const MenuContent: FunctionComponent<MenuContentProps> = ({
 	renderItem,
 	noResultsLabel,
 	onClick,
-}: MenuContentProps) => {
+}) => {
 	const renderMenuItem = (menuItemInfo: MenuItemInfo) => {
 		if (renderItem) {
 			return renderItem(menuItemInfo);

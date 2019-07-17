@@ -14,7 +14,7 @@ export const Menu: FunctionComponent<MenuProps> = ({
 	renderItem,
 	noResultsLabel,
 	onClick = () => {},
-}: MenuProps) => {
+}) => {
 	return (
 		<div className="c-menu c-menu--visible">
 			<MenuContent

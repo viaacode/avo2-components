@@ -36,7 +36,7 @@ export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
 	menuItems,
 	noResultsLabel,
 	onClick = () => {},
-}: MenuContentProps) => {
+}) => {
 	const renderMenuItem = (menuItemInfo: MenuSearchResultItemInfo) => {
 		return (
 			<div

@@ -12,7 +12,7 @@ export const MenuSearchResult: FunctionComponent<MenuProps> = ({
 	menuItems,
 	noResultsLabel,
 	onClick = () => {},
-}: MenuProps) => {
+}) => {
 	return (
 		<div className="c-menu c-menu--search-result c-menu--visible">
 			<MenuSearchResultContent

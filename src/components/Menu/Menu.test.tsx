@@ -39,13 +39,13 @@ describe('<MenuItem />', () => {
 	it('Should render the correct number of menu items', () => {
 		const menuComponent = mount(<Menu menuItems={menuItems} />);
 
-		expect(menuComponent.find('.c-menu__item').length).toEqual(menuItems.length);
+		expect(menuComponent.find('.c-menu__item')).toHaveLength(menuItems.length);
 	});
 
 	it('Should render icons if provided', () => {
 		const menuComponent = mount(<Menu menuItems={menuItemsWithIcons} />);
 
-		expect(menuComponent.find('.o-svg-icon').length).toEqual(menuItemsWithIcons.length);
+		expect(menuComponent.find('.o-svg-icon')).toHaveLength(menuItemsWithIcons.length);
 	});
 
 	it('Should render no results label if provided', () => {
@@ -58,8 +58,8 @@ describe('<MenuItem />', () => {
 	it('Should render the correct number of dividers', () => {
 		const menuComponent = mount(<Menu menuItems={menuItemWithDivider} />);
 
-		expect(menuComponent.find('.c-menu__item').length).toEqual(menuItems.length);
-		expect(menuComponent.find('.c-menu__divider').length).toEqual(menuItemWithDivider.length - 1);
+		expect(menuComponent.find('.c-menu__item')).toHaveLength(menuItems.length);
+		expect(menuComponent.find('.c-menu__divider')).toHaveLength(menuItemWithDivider.length - 1);
 	});
 
 	it('Should render using custom render function', () => {
@@ -75,7 +75,7 @@ describe('<MenuItem />', () => {
 			<Menu menuItems={menuItemWithDivider} renderItem={customRenderFunction} />
 		);
 
-		expect(menuComponent.find('.custom-item').length).toEqual(menuItems.length);
+		expect(menuComponent.find('.custom-item')).toHaveLength(menuItems.length);
 		expect(
 			menuComponent
 				.find('.custom-item')
