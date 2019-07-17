@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "style": "dist/styles/main.css",
@@ -15,7 +15,7 @@
     "icons": "rimraf src/components/Icons && svgr -d src/components/Icons src/icons --ext ts",
     "posticons": "named-exports --dir=src/components/Icons && renamer --find .ts --replace .tsx 'src/components/Icons/**'",
     "lint": "tslint -p .",
-    "start": "start-storybook -s ./static -p 4000",
+    "start": "start-storybook -s ./static -p 3020 --ci",
     "test": "jest --verbose",
     "test:output": "cross-env CI=true jest --json --outputFile=.storybook/test-results.json"
   },

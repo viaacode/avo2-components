@@ -40,6 +40,7 @@ import {
 import { DatePicker } from './components/DatePicker/DatePicker';
 import { Dropdown } from './components/Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
+import { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
 import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup';
 import { Column } from './components/Grid/Column';
@@ -70,6 +71,9 @@ import {
 import { Select } from './components/Select/Select';
 import { Spacer } from './components/Spacer/Spacer';
 import { Spinner } from './components/Spinner/Spinner';
+import { Tab } from './components/Tab/Tab';
+import { Table } from './components/Table/Table';
+import { Tabs } from './components/Tabs/Tabs';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
@@ -118,6 +122,7 @@ export {
 	Dropdown,
 	DropdownButton,
 	DropdownContent,
+	ExpandableContainer,
 	Form,
 	FormGroup,
 	Grid,
@@ -145,6 +150,9 @@ export {
 	SearchResultThumbnail,
 	Spacer,
 	Spinner,
+	Tab,
+	Table,
+	Tabs,
 	TagList,
 	TextInput,
 	Thumbnail,

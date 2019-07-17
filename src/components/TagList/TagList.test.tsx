@@ -6,16 +6,16 @@ import { Icon } from '../Icon/Icon';
 import { TagList } from './TagList';
 
 const tags = [
-	'Aluminium',
-	'Cadmium',
-	'Dubnium',
-	'Potassium',
-	'Vanadium',
-	'Palladium',
-	'Polonium',
-	'Rhodium',
-	'Yttrium',
-	'Uranium',
+	{ label: 'Aluminium', id: 'aluminium' },
+	{ label: 'Cadmium', id: 'cadmium' },
+	{ label: 'Dubnium', id: 'dubnium' },
+	{ label: 'Potassium', id: 'potassium' },
+	{ label: 'Vanadium', id: 'vanadium' },
+	{ label: 'Palladium', id: 'palladium' },
+	{ label: 'Polonium', id: 'polonium' },
+	{ label: 'Rhodium', id: 'rhodium' },
+	{ label: 'Yttrium', id: 'yttrium' },
+	{ label: 'Uranium', id: 'uranium' },
 ];
 
 describe('<TagList />', () => {
@@ -31,13 +31,23 @@ describe('<TagList />', () => {
 
 	it('Should correctly render the labels', () => {
 		const tagListComponent = shallow(<TagList tags={tags} />);
+		const tagListClosableComponent = shallow(<TagList tags={tags} closable={true} />);
+		const tagListSwatchesComponent = shallow(<TagList tags={tags} swatches={true} />);
+		const tagListClickableComponent = shallow(<TagList tags={tags} onTagClicked={() => {}} />);
 
-		expect(
-			tagListComponent
-				.find('.c-label-text')
-				.at(0)
-				.text()
-		).toEqual(tags[0]);
+		[
+			tagListComponent,
+			tagListClosableComponent,
+			tagListSwatchesComponent,
+			tagListClickableComponent,
+		].forEach(component => {
+			expect(
+				component
+					.find('.c-label-text')
+					.at(0)
+					.text()
+			).toEqual(tags[0].label);
+		});
 	});
 
 	it('Should be able to render with swatches', () => {
@@ -70,7 +80,7 @@ describe('<TagList />', () => {
 		expect(tagListComponent.find('.c-tag__label')).toHaveLength(tags.length);
 	});
 
-	it('Should not render a <p> when tag has no swatches & is not closable', () => {
+	it('Should not render a <p class="c-label-text"> nor <p class="c-tag__label"> when tag has no swatches & is not closable', () => {
 		const tagListComponent = shallow(<TagList tags={tags} swatches={false} closable={false} />);
 
 		expect(tagListComponent.find('p')).toHaveLength(0);
@@ -117,6 +127,24 @@ describe('<TagList />', () => {
 
 		expect(onTagClosedHandler).toHaveBeenCalled();
 		expect(onTagClosedHandler).toHaveBeenCalledTimes(1);
-		expect(onTagClosedHandler).toHaveBeenCalledWith(tags[indexToClose]);
+		expect(onTagClosedHandler).toHaveBeenCalledWith(tags[indexToClose].id, undefined);
+	});
+
+	it('Should call `onTagClicked` when clicking a tag', () => {
+		const onTagClickedHandler = jest.fn();
+
+		const tagListComponent = shallow(
+			<TagList tags={tags} closable onTagClicked={onTagClickedHandler} />
+		);
+
+		const tagElements = tagListComponent.find('p');
+
+		const indexToClose = 5;
+		// close the 6th element in the list
+		tagElements.at(indexToClose).simulate('click');
+
+		expect(onTagClickedHandler).toHaveBeenCalled();
+		expect(onTagClickedHandler).toHaveBeenCalledTimes(1);
+		expect(onTagClickedHandler).toHaveBeenCalledWith(tags[indexToClose].id, undefined);
 	});
 });

@@ -20,7 +20,7 @@ export interface SearchResultProps {
 	date: string;
 	bookmarkCount: number;
 	viewCount: number;
-	tags?: string[];
+	tags?: { label: string; id: string }[];
 	onToggleBookmark?: (active: boolean) => void;
 }
 
@@ -53,11 +53,12 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 								active={false}
 								icon="bookmark"
 								onClick={(active: boolean) => onToggleBookmark(active)}
+								ariaLabel="toggle bookmark"
 							/>
 						</div>
 					</div>
 				</div>
-				<p className="c-search-result__description">{description.substring(0, 240)}</p>
+				<p className="c-search-result__description">{`${description.substring(0, 240)}...`}</p>
 				<div className="u-spacer-bottom-s">
 					<div className="o-flex o-flex--justify-between o-flex--wrap">
 						<MetaData category={type}>
