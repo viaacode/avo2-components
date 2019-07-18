@@ -7,6 +7,7 @@ import {
 	SearchResultTitle,
 } from './SearchResult.slots';
 
+import { ContentType } from '../../types';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaDataItem/MetaDataItem';
 import { TagList } from '../TagList/TagList';
@@ -14,7 +15,7 @@ import { ToggleButton } from '../ToggleButton/ToggleButton';
 
 export interface SearchResultProps {
 	children: ReactNode;
-	type: 'collection' | 'video' | 'audio';
+	type: ContentType;
 	thumbnailPath?: string;
 	description?: string;
 	date: string;

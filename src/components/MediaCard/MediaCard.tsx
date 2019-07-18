@@ -4,12 +4,13 @@ import classNames from 'classnames';
 
 import { useSlot } from '../../hooks/useSlot';
 
+import { ContentType } from '../../types';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 export interface MediaCardProps {
 	title: string;
 	href: string;
-	category: 'collection' | 'video' | 'audio';
+	category: ContentType;
 	children?: ReactNode;
 	orientation?: 'horizontal' | 'vertical';
 }

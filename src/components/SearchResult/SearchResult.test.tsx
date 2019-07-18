@@ -1,6 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React, { cloneElement } from 'react';
 
+import { ContentType } from '../../types';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
 import { SearchResult } from './SearchResult';
 import {
@@ -12,7 +13,7 @@ import { fakeSearchResult } from './SearchResult.stories';
 
 const searchResult = (
 	<SearchResult
-		type={fakeSearchResult.administrative_type as 'collection' | 'video' | 'audio'}
+		type={fakeSearchResult.administrative_type as ContentType}
 		date={fakeSearchResult.dcterms_issued}
 		viewCount={41}
 		bookmarkCount={12}
