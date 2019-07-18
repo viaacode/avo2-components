@@ -1,10 +1,11 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
+import { ContentType } from '../../types';
 
 export interface MetaDataProps {
 	children: ReactNode;
-	category: 'collection' | 'video' | 'audio' | 'map';
+	category: ContentType;
 	spaced?: boolean;
 }
 
