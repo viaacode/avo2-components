@@ -1,18 +1,16 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
-import PopperJS, { Data, ModifierFn } from 'popper.js';
-import { Manager, Popper, Reference } from 'react-popper';
 
 export interface TooltipProps {
 	children: ReactNode;
-	index: string;
+	id: string;
 	placement: 'bottom';
 }
 
-export const Tooltip: FunctionComponent<TooltipProps> = ({ children, index, placement }) => {
+export const Tooltip: FunctionComponent<TooltipProps> = ({ children, id, placement }) => {
 	return (
-		<div className={classNames('c-tooltip', `c-tooltip--${placement}`)} id={index}>
+		<div className={classNames('c-tooltip', `c-tooltip--${placement}`)} id={`tooltip-${id}`}>
 			{children}
 		</div>
 	);

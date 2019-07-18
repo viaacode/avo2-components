@@ -8,8 +8,12 @@ import { Spacer } from '../Spacer/Spacer';
 import { Tooltip } from '../Tooltip/Tooltip';
 import './AvatarList.css';
 
+interface AvatarWithSubtitle extends AvatarProps {
+	subtitle?: string;
+}
+
 export interface AvatarListProps {
-	avatars: AvatarProps[];
+	avatars: AvatarWithSubtitle[];
 	isOpen: boolean;
 }
 
@@ -25,7 +29,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({ avatars, isOpen
 			{visibleAvatars.map((avatar, index) => (
 				<Fragment key={index}>
 					<Avatar initials={avatar.initials} />
-					<Tooltip placement="bottom" index={`index-${twoDecimalize(index)}`}>
+					<Tooltip placement="bottom" id={`index-${twoDecimalize(index)}`}>
 						<h4 className="c-h4 u-m-0">{avatar.name}</h4>
 						<span className="c-tooltip__meta">{avatar.subtitle}</span>
 					</Tooltip>

@@ -5,7 +5,6 @@ import { AvatarIcon, AvatarIconProps } from './AvatarIcon';
 export interface AvatarProps extends AvatarIconProps {
 	name?: string;
 	title?: string;
-	subtitle?: string;
 	hideText?: boolean;
 }
 
@@ -15,10 +14,8 @@ export const Avatar: FunctionComponent<AvatarProps> = ({
 	image,
 	name,
 	title,
-	subtitle: string,
-	hideText,
 }: AvatarProps) =>
-	(name || title) && !hideText ? (
+	name || title ? (
 		<div className="c-avatar-and-text">
 			<AvatarIcon initials={initials} size={size} image={image} />
 			<div className="c-avatar-and-text__text">
