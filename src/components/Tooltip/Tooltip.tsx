@@ -5,7 +5,7 @@ import classNames from 'classnames';
 export interface TooltipProps {
 	children: ReactNode;
 	id: string;
-	placement: 'bottom';
+	placement: 'top' | 'right' | 'bottom' | 'left';
 }
 
 export const Tooltip: FunctionComponent<TooltipProps> = ({ children, id, placement }) => {

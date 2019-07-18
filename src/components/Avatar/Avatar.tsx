@@ -5,7 +5,6 @@ import { AvatarIcon, AvatarIconProps } from './AvatarIcon';
 export interface AvatarProps extends AvatarIconProps {
 	name?: string;
 	title?: string;
-	hideText?: boolean;
 }
 
 export const Avatar: FunctionComponent<AvatarProps> = ({
