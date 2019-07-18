@@ -32,6 +32,7 @@
     ]
   },
   "dependencies": {
+    "@types/autosize": "^3.0.6",
     "@types/classnames": "^2.2.7",
     "@types/marked": "^0.6.5",
     "@types/node": "12.0.2",
