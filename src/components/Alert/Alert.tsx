@@ -15,15 +15,16 @@ const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
 
 export interface AlertProps {
 	id: string;
-	style: any;
-	options: { type: 'info' | 'success' | 'danger' | 'spinner'; dark: boolean };
+	options: {
+		type: 'info' | 'success' | 'danger' | 'spinner';
+		dark: boolean;
+	};
 	message: ReactNode | string;
 	close: () => void;
 }
 
 export const Alert: FunctionComponent<AlertProps> = ({
 	id,
-	style,
 	message,
 	options,
 	close = () => {},
