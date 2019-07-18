@@ -32,7 +32,7 @@ export const TextArea: FunctionComponent<TextAreaProps> = ({
 		if (autosize) {
 			autosizer(textArea);
 		}
-	}, [textArea, textAreaRef]);
+	}, [autosize, textArea, textAreaRef]);
 
 	function onValueChange(event: ChangeEvent<HTMLTextAreaElement>) {
 		onChange(event.target.value);
