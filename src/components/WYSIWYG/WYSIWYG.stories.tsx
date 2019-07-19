@@ -27,4 +27,25 @@ storiesOf('WYSIWYG', module)
 				['link'],
 			]}
 		/>
+	))
+	.add('WYSIWYG with table button', () => (
+		<WYSIWYG
+			id="story-wysiwyg-2"
+			buttons={[
+				['strong', 'em'],
+				['undo', 'redo'],
+				['formatting'],
+				['unorderedList', 'orderedList'],
+				['removeformat'],
+				['link'],
+				['table'],
+			]}
+			plugins={{
+				table: {
+					rows: 3,
+					columns: 4,
+					styler: 'c-table--styled',
+				},
+			}}
+		/>
 	));
