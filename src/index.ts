@@ -90,6 +90,7 @@ import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/T
 import { ToolbarItem } from './components/Toolbar/ToolbarItem';
 import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 import { Tooltip } from './components/Tooltip/Tooltip';
+import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 
 export {
 	COLORS,
@@ -177,4 +178,5 @@ export {
 	ToolbarItem,
 	ToolbarTitle,
 	Tooltip,
+	WYSIWYG,
 };
