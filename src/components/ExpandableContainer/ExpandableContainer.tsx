@@ -2,7 +2,7 @@ import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 import { Button } from '../Button/Button';
 import { Spacer } from '../Spacer/Spacer';
 
-const useCollapse = require('../../hooks/react-collapsed/react-collapsed').default;
+import useCollapsed from '../../hooks/react-collapsed/react-collapsed';
 
 export interface ExpandableContainerProps {
 	expandLabel?: string;
@@ -19,7 +19,7 @@ export const ExpandableContainer: FunctionComponent<ExpandableContainerProps> = 
 	defaultExpanded = false,
 	children,
 }: ExpandableContainerProps) => {
-	const { getCollapseProps, getToggleProps, isOpen } = useCollapse({
+	const { getCollapseProps, getToggleProps, isOpen } = useCollapsed({
 		collapsedHeight,
 		defaultOpen: defaultExpanded,
 	});
@@ -30,7 +30,7 @@ export const ExpandableContainer: FunctionComponent<ExpandableContainerProps> = 
 				<div>{children}</div>
 			</div>
 			<Spacer margin="top-small">
-				<div className="u-text-center" {...getToggleProps()}>
+				<div className="u-text-center" {...getToggleProps() as any}>
 					<Button type="secondary" label={isOpen ? collapseLabel : expandLabel} />
 				</div>
 			</Spacer>
