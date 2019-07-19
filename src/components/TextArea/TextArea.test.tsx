@@ -26,6 +26,16 @@ describe('<TextArea />', () => {
 		expect(textAreaElement.prop('id')).toEqual(id);
 	});
 
+	it('Should pass on the name', () => {
+		const name = 'test';
+
+		const textAreaComponent = shallow(<TextArea name={name} />);
+
+		const textAreaElement = textAreaComponent.find('textarea');
+
+		expect(textAreaElement.prop('name')).toEqual(name);
+	});
+
 	it('Should be able to set the disabled state', () => {
 		const textAreaComponent = shallow(<TextArea disabled />);
 
@@ -64,10 +74,10 @@ describe('<TextArea />', () => {
 		expect(textAreaElement.prop('rows')).toEqual(rows);
 	});
 
-	it('Should set the correct classnames for the sizing values', () => {
-		const smallTextAreaComponent = shallow(<TextArea size="small" />);
-		const mediumTextAreaComponent = shallow(<TextArea size="medium" />);
-		const largeTextAreaComponent = shallow(<TextArea size="large" />);
+	it('Should set the correct classnames for the `height`-prop', () => {
+		const smallTextAreaComponent = shallow(<TextArea height="small" />);
+		const mediumTextAreaComponent = shallow(<TextArea height="medium" />);
+		const largeTextAreaComponent = shallow(<TextArea height="large" />);
 
 		const smallTextAreaElement = smallTextAreaComponent.find('textarea');
 		const mediumTextAreaElement = mediumTextAreaComponent.find('textarea');
@@ -76,6 +86,23 @@ describe('<TextArea />', () => {
 		expect(smallTextAreaElement.hasClass('c-input--h-small')).toEqual(true);
 		expect(mediumTextAreaElement.hasClass('c-input--h-medium')).toEqual(true);
 		expect(largeTextAreaElement.hasClass('c-input--h-large')).toEqual(true);
+	});
+
+	it('Should set the correct classnames for the `width`-prop', () => {
+		const xsmallTextAreaComponent = shallow(<TextArea width="xsmall" />);
+		const smallTextAreaComponent = shallow(<TextArea width="small" />);
+		const mediumTextAreaComponent = shallow(<TextArea width="medium" />);
+		const largeTextAreaComponent = shallow(<TextArea width="large" />);
+
+		const xsmallTextAreaElement = xsmallTextAreaComponent.find('textarea');
+		const smallTextAreaElement = smallTextAreaComponent.find('textarea');
+		const mediumTextAreaElement = mediumTextAreaComponent.find('textarea');
+		const largeTextAreaElement = largeTextAreaComponent.find('textarea');
+
+		expect(xsmallTextAreaElement.hasClass('c-input--w-xsmall')).toEqual(true);
+		expect(smallTextAreaElement.hasClass('c-input--w-small')).toEqual(true);
+		expect(mediumTextAreaElement.hasClass('c-input--w-medium')).toEqual(true);
+		expect(largeTextAreaElement.hasClass('c-input--w-large')).toEqual(true);
 	});
 
 	it('Should call the onChange handler when the textArea changes', () => {

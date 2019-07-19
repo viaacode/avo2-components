@@ -37,18 +37,22 @@ storiesOf('TextArea', module)
 			</TextAreaStoryComponent>
 		</Fragment>
 	))
-	.add('TextArea sizes', () => (
+	.add('TextArea heights', () => (
 		<Fragment>
 			<TextAreaStoryComponent>
-				<TextArea placeholder="A small TextArea" size="small" />
+				<TextArea placeholder="An autosizing TextArea" height="auto" />
 			</TextAreaStoryComponent>
 			<div className="u-spacer-bottom" />
 			<TextAreaStoryComponent>
-				<TextArea placeholder="A medium TextArea" size="medium" />
+				<TextArea placeholder="A small TextArea" height="small" />
 			</TextAreaStoryComponent>
 			<div className="u-spacer-bottom" />
 			<TextAreaStoryComponent>
-				<TextArea placeholder="A large TextArea" size="large" />
+				<TextArea placeholder="A medium TextArea" height="medium" />
+			</TextAreaStoryComponent>
+			<div className="u-spacer-bottom" />
+			<TextAreaStoryComponent>
+				<TextArea placeholder="A large TextArea" height="large" />
 			</TextAreaStoryComponent>
 			<div className="u-spacer-bottom" />
 			<TextAreaStoryComponent>
@@ -56,10 +60,22 @@ storiesOf('TextArea', module)
 			</TextAreaStoryComponent>
 		</Fragment>
 	))
-	.add('TextArea autosize', () => (
+	.add('TextArea widths', () => (
 		<Fragment>
 			<TextAreaStoryComponent>
-				<TextArea placeholder="An autosizing TextArea" autosize={true} />
+				<TextArea placeholder="An xsmall TextArea" width="xsmall" />
+			</TextAreaStoryComponent>
+			<div className="u-spacer-bottom" />
+			<TextAreaStoryComponent>
+				<TextArea placeholder="An small TextArea" width="small" />
+			</TextAreaStoryComponent>
+			<div className="u-spacer-bottom" />
+			<TextAreaStoryComponent>
+				<TextArea placeholder="An medium TextArea" width="medium" />
+			</TextAreaStoryComponent>
+			<div className="u-spacer-bottom" />
+			<TextAreaStoryComponent>
+				<TextArea placeholder="An large TextArea" width="large" />
 			</TextAreaStoryComponent>
 		</Fragment>
 	));
