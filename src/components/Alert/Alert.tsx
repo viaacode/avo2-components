@@ -32,7 +32,7 @@ export const Alert: FunctionComponent<AlertProps> = ({
 					{ALERT_TYPE_TO_ICON_MAPPING[type] ? (
 						<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type]} type="multicolor" />
 					) : (
-						<Spinner />
+						<Spinner dark={!dark} />
 					)}
 				</div>
 				{message}
