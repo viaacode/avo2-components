@@ -4,8 +4,7 @@ import postcss from 'rollup-plugin-postcss';
 
 export default {
 	input: 'src/index.ts',
-	output: [
-		{
+	output: [{
 			file: 'dist/bundle.esm.js',
 			format: 'esm'
 		},
@@ -16,13 +15,16 @@ export default {
 	],
 	plugins: [
 		postcss({
- extensions: [ '.css' ],
- }),
+			extensions: ['.css'],
+		}),
 		typescript({
 			clean: true,
 		}),
 		copy({
-			targets: [{ src: 'src/styles/main.css', dest: 'dist/styles' }],
+			targets: [{
+				src: 'src/styles/main.css',
+				dest: 'dist/styles'
+			}],
 		}),
 	],
 }
