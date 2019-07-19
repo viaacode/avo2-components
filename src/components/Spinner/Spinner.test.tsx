@@ -11,7 +11,7 @@ describe('<Spinner />', () => {
 	it('Should correctly set the className', () => {
 		const spinnerComponent = shallow(<Spinner />);
 
-		expect(spinnerComponent.hasClass('c-spinner')).toEqual(true);
+		expect(spinnerComponent.hasClass('c-spinner')).toBeTruthy();
 	});
 
 	it('Should have 12 spinner bars', () => {
@@ -23,6 +23,12 @@ describe('<Spinner />', () => {
 	it('Should be able to render as a large spinner', () => {
 		const spinnerComponent = shallow(<Spinner size="large" />);
 
-		expect(spinnerComponent.hasClass('c-spinner--large')).toEqual(true);
+		expect(spinnerComponent.hasClass('c-spinner--large')).toBeTruthy();
+	});
+
+	it('Should be able to render a light variant', () => {
+		const spinnerComponent = shallow(<Spinner light />);
+
+		expect(spinnerComponent.hasClass('c-spinner--light')).toBeTruthy();
 	});
 });
