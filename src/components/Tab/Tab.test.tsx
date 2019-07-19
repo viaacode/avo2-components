@@ -7,7 +7,7 @@ import { Tab } from './Tab';
 
 const mockTab = {
 	label: 'Videos',
-	href: '#',
+	id: 'video',
 	active: true,
 };
 
@@ -50,11 +50,5 @@ describe('<Tab />', () => {
 		expect(labelElement).toHaveLength(1);
 
 		expect(labelElement.text()).toEqual(mockTab.label);
-	});
-
-	it('Should pass on `href` correctly ', () => {
-		const tabComponent = shallow(<Tab {...mockTab} />);
-
-		expect(tabComponent.prop('href')).toEqual(mockTab.href);
 	});
 });
