@@ -1,7 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
-import { AlertComponentPropsWithStyle } from 'react-alert';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
@@ -14,29 +13,26 @@ const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
 };
 
 export interface AlertProps {
-	id: string;
-	options: {
-		type: 'info' | 'success' | 'danger' | 'spinner';
-		dark: boolean;
-	};
-	message: ReactNode | string;
 	close: () => void;
+	dark?: boolean;
+	message: ReactNode | string;
+	type?: 'info' | 'success' | 'danger' | 'spinner';
 }
 
 export const Alert: FunctionComponent<AlertProps> = ({
-	id,
-	message,
-	options,
 	close = () => {},
+	dark = false,
+	message,
+	type = 'info',
 }: AlertProps) => {
 	return (
-		<div className={classNames('c-alert', { 'c-alert--dark': options.dark })} id={id}>
+		<div className={classNames('c-alert', { 'c-alert--dark': dark })}>
 			<div className="c-alert__body">
 				<div className="u-spacer-right-s">
-					{ALERT_TYPE_TO_ICON_MAPPING[options.type] && (
-						<Icon name={ALERT_TYPE_TO_ICON_MAPPING[options.type]} />
+					{ALERT_TYPE_TO_ICON_MAPPING[type] && (
+						<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type]} type="multicolor" />
 					)}
-					{!ALERT_TYPE_TO_ICON_MAPPING[options.type] && <Spinner />}
+					{!ALERT_TYPE_TO_ICON_MAPPING[type] && <Spinner />}
 				</div>
 				{message}
 			</div>
