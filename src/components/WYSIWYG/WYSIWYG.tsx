@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 import Trumbowyg from 'react-trumbowyg';
-import '../../../node_modules/trumbowyg/dist/plugins/table/trumbowyg.table.js';
+import 'trumbowyg/dist/plugins/table/trumbowyg.table';
 
 export interface WYSIWYGProps {
 	id: string;
