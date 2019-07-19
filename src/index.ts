@@ -49,6 +49,10 @@ import { Icon } from './components/Icon/Icon';
 import { Image } from './components/Image/Image';
 import { MediaCard } from './components/MediaCard/MediaCard';
 import { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/MediaCard.slots';
+import { Menu } from './components/Menu/Menu';
+import { MenuContent } from './components/Menu/MenuContent';
+import { MenuSearchResult } from './components/MenuSearchResult/MenuSearchResult';
+import { MenuSearchResultContent } from './components/MenuSearchResult/MenuSearchResultContent';
 import { MetaData } from './components/MetaData/MetaData';
 import { MetaDataItem } from './components/MetaDataItem/MetaDataItem';
 import { Modal } from './components/Modal/Modal';
@@ -82,6 +86,7 @@ import { Toolbar } from './components/Toolbar/Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/Toolbar.slots';
 import { ToolbarItem } from './components/Toolbar/ToolbarItem';
 import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
+import { Tooltip } from './components/Tooltip/Tooltip';
 
 export {
 	COLORS,
@@ -131,6 +136,10 @@ export {
 	MediaCard,
 	MediaCardMetaData,
 	MediaCardThumbnail,
+	Menu,
+	MenuContent,
+	MenuSearchResult,
+	MenuSearchResultContent,
 	MetaData,
 	MetaDataItem,
 	Modal,
@@ -162,4 +171,5 @@ export {
 	ToolbarRight,
 	ToolbarItem,
 	ToolbarTitle,
+	Tooltip,
 };
