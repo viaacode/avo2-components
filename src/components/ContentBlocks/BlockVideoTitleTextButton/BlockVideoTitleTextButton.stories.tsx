@@ -5,9 +5,9 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockVideoTitleTextButton } from './BlockVideoTitleTextButton';
 
-const loremIpsumText = loremIpsum({ count: 10 });
+const loremIpsumText = loremIpsum({ count: 14 });
 const videoSource =
-	'https://archief-media.viaa.be/viaa/TESTBEELD/ad87ac36b4f640dfb0fc57c26397b7aebb4c49785d2e4a7b8c8069aa95c4db16/browse.mp4';
+	'https://archief-media.viaa.be/viaa/TESTBEELD/c44b877a9a7d4b1a99c5b8b676c3aef4ca370f2fe15d42d49b438e71eea6b99d/browse.mp4';
 
 storiesOf('BlockVideoTitleTextButton', module)
 	.addParameters({ jest: ['BlockVideoTitleTextButton'] })
@@ -15,7 +15,18 @@ storiesOf('BlockVideoTitleTextButton', module)
 		<BlockVideoTitleTextButton
 			videoSource={videoSource}
 			title="Title"
+			titleLink="http://google.com?q=title"
 			text={loremIpsumText}
-			buttonLabel="More info"
+		/>
+	))
+	.add('BlockVideoTitleTextButton no title', () => (
+		<BlockVideoTitleTextButton videoSource={videoSource} text={loremIpsumText} />
+	))
+	.add('BlockVideoTitleTextButton fully visible text', () => (
+		<BlockVideoTitleTextButton
+			videoSource={videoSource}
+			title="Title"
+			titleLink="http://google.com?q=title"
+			text={loremIpsum({ count: 5 })}
 		/>
 	));

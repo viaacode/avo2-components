@@ -53,7 +53,7 @@ describe('<MetaDataItem />', () => {
 		);
 
 		const metaDataMapComponent = shallow(
-			<MetaData category="map">
+			<MetaData category="bundle">
 				<MetaDataItem label="VRT" />
 				<MetaDataItem icon="headphone" label="738" />
 				<MetaDataItem label="2d geleden" />
@@ -63,7 +63,7 @@ describe('<MetaDataItem />', () => {
 		expect(metaDataCollectionComponent.hasClass('c-meta-data--collection')).toEqual(true);
 		expect(metaDataVideoComponent.hasClass('c-meta-data--video')).toEqual(true);
 		expect(metaDataAudioComponent.hasClass('c-meta-data--audio')).toEqual(true);
-		expect(metaDataMapComponent.hasClass('c-meta-data--map')).toEqual(true);
+		expect(metaDataMapComponent.hasClass('c-meta-data--bundle')).toEqual(true);
 	});
 
 	it('Should set the correct className when spaced is passed', () => {

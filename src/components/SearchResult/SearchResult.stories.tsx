@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
+import { ContentType } from '../../types';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
 import { SearchResult } from './SearchResult';
 import {
@@ -49,7 +50,7 @@ export const fakeSearchResult = {
 	algemeen_briefing_id: ['9da4cc22-331c-41a6-8c42-781581148f56'],
 	fragment_duration_time: '1:34',
 	fragment_duration_seconds: 94,
-	administrative_type: 'video',
+	administrative_type: 'video' as ContentType,
 	administrative_external_id: 'bg2h71p77x',
 };
 
@@ -57,7 +58,7 @@ storiesOf('SearchResult', module)
 	.addParameters({ jest: ['SearchResult'] })
 	.add('SearchResult', () => (
 		<SearchResult
-			type={fakeSearchResult.administrative_type as 'collection' | 'video' | 'audio'}
+			type={fakeSearchResult.administrative_type as ContentType}
 			date={fakeSearchResult.dcterms_issued}
 			viewCount={41}
 			bookmarkCount={12}

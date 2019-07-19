@@ -7,6 +7,7 @@ import {
 	SearchResultTitle,
 } from './SearchResult.slots';
 
+import { ContentType } from '../../types';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaDataItem/MetaDataItem';
 import { TagList } from '../TagList/TagList';
@@ -14,7 +15,7 @@ import { ToggleButton } from '../ToggleButton/ToggleButton';
 
 export interface SearchResultProps {
 	children: ReactNode;
-	type: 'collection' | 'video' | 'audio';
+	type: ContentType;
 	thumbnailPath?: string;
 	description?: string;
 	date: string;
@@ -58,7 +59,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 						</div>
 					</div>
 				</div>
-				<p className="c-search-result__description">{description.substring(0, 240)}</p>
+				<p className="c-search-result__description">{`${description.substring(0, 240)}...`}</p>
 				<div className="u-spacer-bottom-s">
 					<div className="o-flex o-flex--justify-between o-flex--wrap">
 						<MetaData category={type}>

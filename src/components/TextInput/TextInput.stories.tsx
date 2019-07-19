@@ -29,7 +29,15 @@ storiesOf('TextInput', module)
 	.add('TextInput', () => (
 		<Fragment>
 			<TextInputStoryComponent>
-				<TextInput placeholder="Type something here..." onChange={action('onChange')} />
+				<TextInput type="email" placeholder="Enter your email..." onChange={action('onChange')} />
+			</TextInputStoryComponent>
+			<div className="u-spacer-bottom" />
+			<TextInputStoryComponent>
+				<TextInput
+					type="password"
+					placeholder="Enter your password..."
+					onChange={action('onChange')}
+				/>
 			</TextInputStoryComponent>
 			<div className="u-spacer-bottom" />
 			<TextInputStoryComponent>
