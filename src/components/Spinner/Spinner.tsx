@@ -2,30 +2,33 @@ import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
+import './Spinner.css';
+
 export interface SpinnerProps {
 	size?: 'large';
-	dark?: boolean;
+	light?: boolean;
 }
 
-export const Spinner: FunctionComponent<SpinnerProps> = ({ size, dark = true }: SpinnerProps) => {
-	let colorStyle = {};
-	if (!dark) {
-		colorStyle = { background: 'rgba(255, 255, 255, 0.8)' };
-	}
+export const Spinner: FunctionComponent<SpinnerProps> = ({ size, light = false }) => {
 	return (
-		<div className={classNames('c-spinner', { 'c-spinner--large': size === 'large' })}>
-			<div className="c-spinner__bar" style={colorStyle} />
-			<div className="c-spinner__bar" style={colorStyle} />
-			<div className="c-spinner__bar" style={colorStyle} />
-			<div className="c-spinner__bar" style={colorStyle} />
-			<div className="c-spinner__bar" style={colorStyle} />
-			<div className="c-spinner__bar" style={colorStyle} />
-			<div className="c-spinner__bar" style={colorStyle} />
-			<div className="c-spinner__bar" style={colorStyle} />
-			<div className="c-spinner__bar" style={colorStyle} />
-			<div className="c-spinner__bar" style={colorStyle} />
-			<div className="c-spinner__bar" style={colorStyle} />
-			<div className="c-spinner__bar" style={colorStyle} />
+		<div
+			className={classNames('c-spinner', {
+				'c-spinner--large': size === 'large',
+				'c-spinner--light': light,
+			})}
+		>
+			<div className="c-spinner__bar" />
+			<div className="c-spinner__bar" />
+			<div className="c-spinner__bar" />
+			<div className="c-spinner__bar" />
+			<div className="c-spinner__bar" />
+			<div className="c-spinner__bar" />
+			<div className="c-spinner__bar" />
+			<div className="c-spinner__bar" />
+			<div className="c-spinner__bar" />
+			<div className="c-spinner__bar" />
+			<div className="c-spinner__bar" />
+			<div className="c-spinner__bar" />
 		</div>
 	);
 };
