@@ -24,15 +24,16 @@ export const Alert: FunctionComponent<AlertProps> = ({
 	dark = false,
 	message,
 	type = 'info',
-}: AlertProps) => {
+}) => {
 	return (
 		<div className={classNames('c-alert', { 'c-alert--dark': dark })}>
 			<div className="c-alert__body">
 				<div className="u-spacer-right-s">
-					{ALERT_TYPE_TO_ICON_MAPPING[type] && (
+					{ALERT_TYPE_TO_ICON_MAPPING[type] ? (
 						<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type]} type="multicolor" />
+					) : (
+						<Spinner />
 					)}
-					{!ALERT_TYPE_TO_ICON_MAPPING[type] && <Spinner />}
 				</div>
 				{message}
 			</div>

@@ -29,14 +29,16 @@ describe('<Alert />', () => {
 	});
 
 	it('should set the correct className when setting option dark = true', () => {
-		const alertComponent = mount(<Alert {...alertProps} dark />);
+		const alertComponent = shallow(<Alert {...alertProps} dark />);
 
 		expect(alertComponent.find('.c-alert').hasClass('c-alert--dark')).toBeTruthy();
 	});
 
 	it('should show a spinner when the correct type is passed', () => {
 		const alertComponent = mount(<Alert {...alertProps} type="spinner" />);
+		const svgElement = alertComponent.find('.c-alert__body .o-svg-icon');
 
 		expect(alertComponent.find('.c-spinner')).toHaveLength(1);
+		expect(svgElement).toHaveLength(0);
 	});
 });
