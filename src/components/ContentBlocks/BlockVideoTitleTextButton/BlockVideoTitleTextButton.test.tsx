@@ -9,12 +9,13 @@ const loremIpsumText = loremIpsum({ count: 10 });
 const videoSource =
 	'https://archief-media.viaa.be/viaa/TESTBEELD/ad87ac36b4f640dfb0fc57c26397b7aebb4c49785d2e4a7b8c8069aa95c4db16/browse.mp4';
 
-export const blockVideoTitleTextButtonExample = (
+const titleLink = 'http://google.com?q=title';
+const blockVideoTitleTextButtonExample = (
 	<BlockVideoTitleTextButton
 		videoSource={videoSource}
 		title="Title"
+		titleLink={titleLink}
 		text={loremIpsumText}
-		buttonLabel="More info"
 	/>
 );
 
@@ -37,6 +38,14 @@ describe('<BlockVideoTitleTextButton />', () => {
 		const h2Element = component.find('h2');
 
 		expect(h2Element.html()).toContain(`>Title<`);
+	});
+
+	it('Should render the title link correctly', () => {
+		const component = mount(blockVideoTitleTextButtonExample);
+
+		const anchorElement = component.find('a');
+
+		expect(anchorElement.prop('href')).toEqual(titleLink);
 	});
 
 	it('Should render the text correctly', () => {
@@ -65,20 +74,5 @@ describe('<BlockVideoTitleTextButton />', () => {
 		expect(leftColumnElement.hasClass('o-grid-col-bp2-6')).toEqual(true);
 		expect(rightColumnElement.hasClass('o-grid-col-bp2-6')).toEqual(true);
 		expect(contentElement.hasClass('c-content')).toEqual(true);
-	});
-
-	it('Should trigger handler when button is clicked', () => {
-		const onButtonClick = jest.fn();
-
-		const component = mount(
-			cloneElement(blockVideoTitleTextButtonExample, { onClick: onButtonClick })
-		);
-
-		const buttonElement = component.find('button');
-
-		buttonElement.simulate('click');
-
-		expect(onButtonClick).toHaveBeenCalled();
-		expect(onButtonClick).toHaveBeenCalledTimes(1);
 	});
 });

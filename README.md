@@ -7,10 +7,11 @@ This repository contains the AVO React components to be consumed by the end user
 ## Technical
 
 |Role              | Handle / username|
-| -------------    |--------------| 
-|Principal/Owner   | Bart Debunne <bart.debunne@viaa.be>  | 
+| -------------    |--------------|
+|Principal/Owner   | Bart Debunne <bart.debunne@viaa.be>  |
 |Lead Developer    | Enzo Eghermanne <enzo.eghermanne@studiohyperdrive.be> |
 |Lead Developer    | Bert Verhelst <bert.verhelst@studiohyperdrive.be> |
+|Developer         | Benjamin Naesen <benjamin.naesen@studiohyperdrive.be> |
 
 **Code Review:**
 

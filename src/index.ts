@@ -40,6 +40,7 @@ import {
 import { DatePicker } from './components/DatePicker/DatePicker';
 import { Dropdown } from './components/Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
+import { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
 import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup';
 import { Column } from './components/Grid/Column';
@@ -48,6 +49,10 @@ import { Icon } from './components/Icon/Icon';
 import { Image } from './components/Image/Image';
 import { MediaCard } from './components/MediaCard/MediaCard';
 import { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/MediaCard.slots';
+import { Menu } from './components/Menu/Menu';
+import { MenuContent } from './components/Menu/MenuContent';
+import { MenuSearchResult } from './components/MenuSearchResult/MenuSearchResult';
+import { MenuSearchResultContent } from './components/MenuSearchResult/MenuSearchResultContent';
 import { MetaData } from './components/MetaData/MetaData';
 import { MetaDataItem } from './components/MetaDataItem/MetaDataItem';
 import { Modal } from './components/Modal/Modal';
@@ -70,7 +75,9 @@ import {
 import { Select } from './components/Select/Select';
 import { Spacer } from './components/Spacer/Spacer';
 import { Spinner } from './components/Spinner/Spinner';
+import { Tab } from './components/Tab/Tab';
 import { Table } from './components/Table/Table';
+import { Tabs } from './components/Tabs/Tabs';
 import { TagList } from './components/TagList/TagList';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
@@ -79,6 +86,7 @@ import { Toolbar } from './components/Toolbar/Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/Toolbar.slots';
 import { ToolbarItem } from './components/Toolbar/ToolbarItem';
 import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
+import { Tooltip } from './components/Tooltip/Tooltip';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 
 export {
@@ -119,6 +127,7 @@ export {
 	Dropdown,
 	DropdownButton,
 	DropdownContent,
+	ExpandableContainer,
 	Form,
 	FormGroup,
 	Grid,
@@ -128,6 +137,10 @@ export {
 	MediaCard,
 	MediaCardMetaData,
 	MediaCardThumbnail,
+	Menu,
+	MenuContent,
+	MenuSearchResult,
+	MenuSearchResultContent,
 	MetaData,
 	MetaDataItem,
 	Modal,
@@ -146,7 +159,9 @@ export {
 	SearchResultThumbnail,
 	Spacer,
 	Spinner,
+	Tab,
 	Table,
+	Tabs,
 	TagList,
 	TextInput,
 	Thumbnail,
@@ -157,5 +172,6 @@ export {
 	ToolbarRight,
 	ToolbarItem,
 	ToolbarTitle,
+	Tooltip,
 	WYSIWYG,
 };

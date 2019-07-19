@@ -2,6 +2,7 @@ module.exports = {
 	preset: 'ts-jest',
 	setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
 	moduleNameMapper: {
-		'^lodash-es$': '<rootDir>/node_modules/lodash/index.js'
+		'^lodash-es$': '<rootDir>/node_modules/lodash/index.js',
+		'\\.(css|scss)$': '<rootDir>/src/__mocks__/styleMock.js'
 	},
 };
