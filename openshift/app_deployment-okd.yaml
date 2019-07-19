@@ -52,7 +52,7 @@ objects:
             failureThreshold: 3
             httpGet:
               path: /
-              port: 4000
+              port: 3020
               scheme: HTTP
             initialDelaySeconds: 120
             periodSeconds: 10
@@ -60,7 +60,7 @@ objects:
             timeoutSeconds: 1
           name: avo2-components-${ENV}
           ports:
-          - containerPort: 4000
+          - containerPort: 3020
             name: http
             protocol: TCP
           readinessProbe:
@@ -69,7 +69,7 @@ objects:
             periodSeconds: 10
             successThreshold: 1
             tcpSocket:
-              port: 4000
+              port: 3020
             timeoutSeconds: 3
           resources: {}
           terminationMessagePath: /dev/termination-log
@@ -113,7 +113,7 @@ objects:
     externalTrafficPolicy: Cluster
     ports:
     - name: "http"
-      port: 4000
+      port: 3020
       protocol: TCP
     selector:
       ENV: ${ENV}

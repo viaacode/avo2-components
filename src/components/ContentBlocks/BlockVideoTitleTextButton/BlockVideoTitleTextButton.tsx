@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react';
 
 import marked from 'marked';
 
-import { Button } from '../../Button/Button';
 import { Container } from '../../Container/Container';
+import { ExpandableContainer } from '../../ExpandableContainer/ExpandableContainer';
 import { Column } from '../../Grid/Column';
 import { Grid } from '../../Grid/Grid';
 import { Spacer } from '../../Spacer/Spacer';
@@ -11,17 +11,17 @@ import { Spacer } from '../../Spacer/Spacer';
 export interface BlockVideoTitleTextButtonProps {
 	videoSource: string;
 	title?: string;
+	titleLink?: string;
 	text?: string;
-	buttonLabel?: string;
-	onClick?: () => void;
+	collapsedHeight?: number;
 }
 
 export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextButtonProps> = ({
 	videoSource,
 	title,
+	titleLink,
 	text = '',
-	buttonLabel,
-	onClick,
+	collapsedHeight = 220,
 }: BlockVideoTitleTextButtonProps) => {
 	return (
 		<Container mode="horizontal">
@@ -31,22 +31,21 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 						{/* 16 by 9 => 100% by 56% */}
 						<div className="c-video-wrapper" style={{ paddingBottom: '56%' }}>
 							{/* TODO replace this with the flowplayer video component */}
-							<video src={videoSource} />
+							<video src={videoSource} controls />
 						</div>
 					</Column>
 					<Column size="2-6">
 						<div className="c-content">
-							{title && <h2>{title}</h2>}
-							{text && <p dangerouslySetInnerHTML={{ __html: marked(text) }} />}
-							{buttonLabel && (
-								<Spacer margin="top">
-									<Button
-										label={buttonLabel}
-										type="secondary"
-										onClick={() => onClick && onClick()}
-									/>
-								</Spacer>
-							)}
+							<ExpandableContainer collapsedHeight={collapsedHeight}>
+								{title && (
+									<h2>
+										<a href={titleLink} style={{ color: 'black', textDecoration: 'none' }}>
+											{title}
+										</a>
+									</h2>
+								)}
+								{text && <p dangerouslySetInnerHTML={{ __html: marked(text) }} />}
+							</ExpandableContainer>
 						</div>
 					</Column>
 				</Grid>

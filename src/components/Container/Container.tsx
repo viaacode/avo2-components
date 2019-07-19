@@ -7,6 +7,7 @@ export interface ContainerProps {
 	size?: 'small' | 'medium' | 'large';
 	background?: 'white' | 'alt' | 'inverse';
 	bordered?: boolean;
+	className?: string;
 	children: ReactNode;
 }
 
@@ -15,10 +16,11 @@ export const Container: FunctionComponent<ContainerProps> = ({
 	size,
 	background,
 	bordered,
+	className,
 	children,
 }: ContainerProps) => (
 	<div
-		className={classNames({
+		className={classNames(className, {
 			'o-container': mode === 'horizontal',
 			'o-container-vertical': mode === 'vertical',
 			[`o-container--${size}`]: (mode === 'horizontal' || !mode) && size,

@@ -46,6 +46,16 @@ describe('<TextInput />', () => {
 		expect(inputElement.prop('placeholder')).toEqual(placeholder);
 	});
 
+	it('Should be able to set the type value', () => {
+		const type = 'password';
+
+		const inputComponent = shallow(<TextInput type={type} />);
+
+		const inputElement = inputComponent.find('input');
+
+		expect(inputElement.prop('type')).toEqual(type);
+	});
+
 	it('Should be able to set an initial value', () => {
 		const value = 'default test value';
 
