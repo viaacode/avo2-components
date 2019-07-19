@@ -1,5 +1,5 @@
 /* tslint:disable */
-import {useState, useRef, useCallback, useMemo, useEffect} from 'react';
+import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
 import raf from 'raf';
 import {
 	callAll,
@@ -9,43 +9,51 @@ import {
 	joinTransitionProperties,
 	defaultTransitionStyles,
 } from './utils';
-import {useUniqueId, useLayoutEffectAfterMount, useStateOrProps} from './hooks';
+import { useUniqueId, useLayoutEffectAfterMount, useStateOrProps } from './hooks';
 
-export default function useCollapse(initialConfig = {}) {
+export default function useCollapse(initialConfig = {} as any) {
 	const uniqueId = useUniqueId();
 	const el = useRef(null);
-	const [isOpen, setOpen] = useStateOrProps(initialConfig);
-	const [shouldAnimateOpen, setShouldAnimateOpen] = useState(null);
+	const [isOpen, setOpen] = useStateOrProps(initialConfig as any);
+	const [shouldAnimateOpen, setShouldAnimateOpen] = useState(null as boolean | null);
 	const [heightAtTransition, setHeightAtTransition] = useState(0);
-	const {expandStyles, collapseStyles} = useMemo(
-		() => makeTransitionStyles(initialConfig),
-		[initialConfig]
-	);
+	const { expandStyles, collapseStyles } = useMemo(() => makeTransitionStyles(initialConfig), [
+		initialConfig,
+	]);
 	const getCollapsedHeightStyle = () => {
 		return initialConfig.collapsedHeight + 'px';
 	};
 	const [styles, setStyles] = useState(
-		isOpen ? null : {display: getCollapsedHeightStyle() === '0px' ? 'none' : 'block', height: getCollapsedHeightStyle(), overflow: 'hidden'}
+		isOpen
+			? null
+			: {
+					display: getCollapsedHeightStyle() === '0px' ? 'none' : 'block',
+					height: getCollapsedHeightStyle(),
+					overflow: 'hidden',
+			  }
 	);
 	const [mountChildren, setMountChildren] = useState(isOpen);
 	const [buttonVisible, setButtonVisible] = useState(true);
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const toggleOpen = useCallback(() => setOpen(oldOpen => !oldOpen), []);
+	const toggleOpen = useCallback(() => setOpen((oldOpen: boolean) => !oldOpen), []);
 
 	useLayoutEffectAfterMount(() => {
 		if (isOpen) {
 			setMountChildren(true);
-			setStyles(oldStyles => ({
-				...oldStyles,
-				...expandStyles,
-				display: 'block',
-				overflow: 'hidden',
-			}));
+			setStyles(
+				oldStyles =>
+					({
+						...oldStyles,
+						...expandStyles,
+						display: 'block',
+						overflow: 'hidden',
+					} as any)
+			);
 			setShouldAnimateOpen(true);
 		} else {
 			const height = getElementHeight(el);
-			setStyles(oldStyles => ({...oldStyles, ...collapseStyles, height}));
+			setStyles(oldStyles => ({ ...oldStyles, ...collapseStyles, height } as any));
 			setShouldAnimateOpen(false);
 		}
 	}, [isOpen, initialConfig.collapsedHeight, el]);
@@ -53,16 +61,19 @@ export default function useCollapse(initialConfig = {}) {
 	useLayoutEffectAfterMount(() => {
 		const height = getElementHeight(el);
 		if (shouldAnimateOpen) {
-			setStyles(oldStyles => ({...oldStyles, height}));
+			setStyles(oldStyles => ({ ...oldStyles, height } as any));
 			setHeightAtTransition(height);
 		} else {
 			// requestAnimationFrame required to transition, otherwise will flash closed
 			raf(() => {
-				setStyles(oldStyles => ({
-					...oldStyles,
-					height: getCollapsedHeightStyle(),
-					overflow: 'hidden',
-				}));
+				setStyles(
+					oldStyles =>
+						({
+							...oldStyles,
+							height: getCollapsedHeightStyle(),
+							overflow: 'hidden',
+						} as any)
+				);
 				setHeightAtTransition(height);
 			});
 		}
@@ -74,7 +85,9 @@ export default function useCollapse(initialConfig = {}) {
 	useEffect(() => {
 		if (el && !isOpen) {
 			// We assume the children are always wrapped in a single html element for easy height calculation
-			const contentFitsInsideContainer = el.current.children[0].getBoundingClientRect().height < initialConfig.collapsedHeight;
+			const contentFitsInsideContainer =
+				(el.current as any).children[0].getBoundingClientRect().height <
+				initialConfig.collapsedHeight;
 			if (contentFitsInsideContainer) {
 				setButtonVisible(false);
 			} else {
@@ -85,7 +98,7 @@ export default function useCollapse(initialConfig = {}) {
 		}
 	}, [el]);
 
-	const handleTransitionEnd = e => {
+	const handleTransitionEnd = (e: any) => {
 		// Sometimes onTransitionEnd is triggered by another transition,
 		// such as a nested collapse panel transitioning. But we only
 		// want to handle this if this component's element is transitioning
@@ -96,12 +109,12 @@ export default function useCollapse(initialConfig = {}) {
 		const height = getElementHeight(el);
 		if (isOpen && height !== heightAtTransition) {
 			setHeightAtTransition(height);
-			setStyles(oldStyles => ({...oldStyles, height}));
+			setStyles(oldStyles => ({ ...oldStyles, height } as any));
 			return;
 		}
 
 		if (isOpen) {
-			setStyles();
+			setStyles(null);
 		} else {
 			setMountChildren(false);
 			setStyles({
@@ -114,7 +127,7 @@ export default function useCollapse(initialConfig = {}) {
 
 	return {
 		getToggleProps(
-			{disabled, onClick, ...rest} = {
+			{ disabled, onClick, ...rest } = {
 				disabled: false,
 				onClick: noop,
 			}
@@ -126,13 +139,13 @@ export default function useCollapse(initialConfig = {}) {
 				'aria-controls': `react-collapsed-panel-${uniqueId}`,
 				'aria-expanded': isOpen ? 'true' : 'false',
 				tabIndex: 0,
-				style: buttonVisible ? {} : {display: 'none'},
+				style: buttonVisible ? {} : { display: 'none' },
 				...rest,
 				onClick: disabled ? noop : callAll(onClick, toggleOpen),
 			};
 		},
 		getCollapseProps(
-			{style, onTransitionEnd, ...rest} = {style: {}, onTransitionEnd: noop}
+			{ style, onTransitionEnd, ...rest }: any = { style: {}, onTransitionEnd: noop }
 		) {
 			return {
 				id: `react-collapsed-panel-${uniqueId}`,
@@ -147,9 +160,7 @@ export default function useCollapse(initialConfig = {}) {
 					// additional styles passed, e.g. getCollapseProps({style: {}})
 					...style,
 					// combine any additional transition properties with height
-					transitionProperty: joinTransitionProperties(
-						style.transitionProperty
-					),
+					transitionProperty: joinTransitionProperties(style.transitionProperty),
 					// style overrides from state
 					...styles,
 				},
