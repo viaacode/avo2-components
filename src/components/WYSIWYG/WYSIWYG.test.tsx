@@ -1,8 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import Trumbowyg from 'react-trumbowyg';
-
 import { WYSIWYG } from './WYSIWYG';
 
 describe('<WYSIWYG />', () => {
@@ -13,7 +11,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `id`', () => {
 		const id = 'id';
 
-		const wysiwygComponent = shallow(<WYSIWYG id={id} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id={id} />);
 
 		expect(wysiwygComponent.prop('id')).toEqual(id);
 	});
@@ -21,7 +19,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `data`', () => {
 		const data = '<h1>foo bar baz</h1>';
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" data={data} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" data={data} />);
 
 		expect(wysiwygComponent.prop('data')).toEqual(data);
 	});
@@ -29,7 +27,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `lang`', () => {
 		const lang = 'nl';
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" lang={lang} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" lang={lang} />);
 
 		expect(wysiwygComponent.prop('lang')).toEqual(lang);
 	});
@@ -37,7 +35,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `buttons`', () => {
 		const buttons = ['link', ['strong', 'em'], 'undo', 'redo'];
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" buttons={buttons} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" buttons={buttons} />);
 
 		expect(wysiwygComponent.prop('buttons')).toEqual(buttons);
 	});
@@ -45,7 +43,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `semantic`', () => {
 		const semantic = true;
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" semantic={semantic} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" semantic={semantic} />);
 
 		expect(wysiwygComponent.prop('semantic')).toEqual(semantic);
 	});
@@ -53,7 +51,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `resetCss`', () => {
 		const resetCss = true;
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" resetCss={resetCss} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" resetCss={resetCss} />);
 
 		expect(wysiwygComponent.prop('resetCss')).toEqual(resetCss);
 	});
@@ -61,7 +59,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `autogrow`', () => {
 		const autogrow = true;
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" autogrow={autogrow} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" autogrow={autogrow} />);
 
 		expect(wysiwygComponent.prop('autogrow')).toEqual(autogrow);
 	});
@@ -69,7 +67,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `disabled`', () => {
 		const disabled = true;
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" disabled={disabled} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" disabled={disabled} />);
 
 		expect(wysiwygComponent.prop('disabled')).toEqual(disabled);
 	});
@@ -77,9 +75,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `removeformatPasted`', () => {
 		const removeformatPasted = true;
 
-		const wysiwygComponent = shallow(
-			<WYSIWYG id="test" removeformatPasted={removeformatPasted} />
-		).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" removeformatPasted={removeformatPasted} />);
 
 		expect(wysiwygComponent.prop('removeformatPasted')).toEqual(removeformatPasted);
 	});
@@ -87,9 +83,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `shouldUseSvgIcons`', () => {
 		const shouldUseSvgIcons = true;
 
-		const wysiwygComponent = shallow(
-			<WYSIWYG id="test" shouldUseSvgIcons={shouldUseSvgIcons} />
-		).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" shouldUseSvgIcons={shouldUseSvgIcons} />);
 
 		expect(wysiwygComponent.prop('shouldUseSvgIcons')).toEqual(shouldUseSvgIcons);
 	});
@@ -99,7 +93,7 @@ describe('<WYSIWYG />', () => {
 
 		const wysiwygComponent = shallow(
 			<WYSIWYG id="test" shouldInjectSvgIcons={shouldInjectSvgIcons} />
-		).find(Trumbowyg);
+		);
 
 		expect(wysiwygComponent.prop('shouldInjectSvgIcons')).toEqual(shouldInjectSvgIcons);
 	});
@@ -107,9 +101,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `svgIconsPath`', () => {
 		const svgIconsPath = './fake/path/to/svg/icons';
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" svgIconsPath={svgIconsPath} />).find(
-			Trumbowyg
-		);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" svgIconsPath={svgIconsPath} />);
 
 		expect(wysiwygComponent.prop('svgIconsPath')).toEqual(svgIconsPath);
 	});
@@ -130,7 +122,7 @@ describe('<WYSIWYG />', () => {
 			},
 		};
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" btnsDef={btnsDef} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" btnsDef={btnsDef} />);
 
 		expect(wysiwygComponent.prop('btnsDef')).toEqual(btnsDef);
 	});
@@ -144,7 +136,7 @@ describe('<WYSIWYG />', () => {
 			},
 		};
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" plugins={plugins} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" plugins={plugins} />);
 
 		expect(wysiwygComponent.prop('plugins')).toEqual(plugins);
 	});
@@ -152,7 +144,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `onFocus`', () => {
 		const onFocus = () => {};
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" onFocus={onFocus} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" onFocus={onFocus} />);
 
 		expect(wysiwygComponent.prop('onFocus')).toEqual(onFocus);
 	});
@@ -160,7 +152,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `onBlur`', () => {
 		const onBlur = () => {};
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" onBlur={onBlur} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" onBlur={onBlur} />);
 
 		expect(wysiwygComponent.prop('onBlur')).toEqual(onBlur);
 	});
@@ -168,7 +160,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `onInit`', () => {
 		const onInit = () => {};
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" onInit={onInit} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" onInit={onInit} />);
 
 		expect(wysiwygComponent.prop('onInit')).toEqual(onInit);
 	});
@@ -176,7 +168,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `onChange`', () => {
 		const onChange = () => {};
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" onChange={onChange} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" onChange={onChange} />);
 
 		expect(wysiwygComponent.prop('onChange')).toEqual(onChange);
 	});
@@ -184,7 +176,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `onResize`', () => {
 		const onResize = () => {};
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" onResize={onResize} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" onResize={onResize} />);
 
 		expect(wysiwygComponent.prop('onResize')).toEqual(onResize);
 	});
@@ -192,7 +184,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `onPaste`', () => {
 		const onPaste = () => {};
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" onPaste={onPaste} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" onPaste={onPaste} />);
 
 		expect(wysiwygComponent.prop('onPaste')).toEqual(onPaste);
 	});
@@ -200,9 +192,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `onOpenFullScreen`', () => {
 		const onOpenFullScreen = () => {};
 
-		const wysiwygComponent = shallow(
-			<WYSIWYG id="test" onOpenFullScreen={onOpenFullScreen} />
-		).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" onOpenFullScreen={onOpenFullScreen} />);
 
 		expect(wysiwygComponent.prop('onOpenFullScreen')).toEqual(onOpenFullScreen);
 	});
@@ -210,9 +200,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `onCloseFullScreen`', () => {
 		const onCloseFullScreen = () => {};
 
-		const wysiwygComponent = shallow(
-			<WYSIWYG id="test" onCloseFullScreen={onCloseFullScreen} />
-		).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" onCloseFullScreen={onCloseFullScreen} />);
 
 		expect(wysiwygComponent.prop('onCloseFullScreen')).toEqual(onCloseFullScreen);
 	});
@@ -220,7 +208,7 @@ describe('<WYSIWYG />', () => {
 	it('Should correctly pass on `onClose`', () => {
 		const onClose = () => {};
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" onClose={onClose} />).find(Trumbowyg);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" onClose={onClose} />);
 
 		expect(wysiwygComponent.prop('onClose')).toEqual(onClose);
 	});
