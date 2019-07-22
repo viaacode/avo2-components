@@ -7,6 +7,7 @@ import { useKeyPress } from './hooks/useKeyPress';
 // Components
 import { Avatar } from './components/Avatar/Avatar';
 import { AvatarIcon } from './components/Avatar/AvatarIcon';
+import { AvatarList } from './components/AvatarList/AvatarList';
 import { Badge } from './components/Badge/Badge';
 import { Blankslate } from './components/Blankslate/Blankslate';
 import { Box } from './components/Box/Box';
@@ -82,6 +83,7 @@ import { Tab } from './components/Tab/Tab';
 import { Table } from './components/Table/Table';
 import { Tabs } from './components/Tabs/Tabs';
 import { TagList } from './components/TagList/TagList';
+import { TextArea } from './components/TextArea/TextArea';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
 import { ToggleButton } from './components/ToggleButton/ToggleButton';
@@ -90,40 +92,43 @@ import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/T
 import { ToolbarItem } from './components/Toolbar/ToolbarItem';
 import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 import { Tooltip } from './components/Tooltip/Tooltip';
+import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 
 export {
 	COLORS,
 	useKeyPress,
 	Avatar,
 	AvatarIcon,
+	AvatarList,
 	Badge,
 	Blankslate,
 	BlockImage,
+	BlockImageProps,
 	BlockImageTitleTextButton,
+	BlockImageTitleTextButtonProps,
 	BlockIntro,
+	BlockIntroProps,
 	BlockLinks,
+	BlockLinksProps,
 	BlockQuote,
-	BlockText,
+	BlockQuoteProps,
 	BlockSubtitle,
+	BlockSubtitleProps,
+	BlockText,
+	BlockTextProps,
 	BlockTitle,
 	BlockTitleImageText,
-	BlockVideo,
-	BlockVideoTitleTextButton,
-	BlockImageProps,
-	BlockImageTitleTextButtonProps,
-	BlockIntroProps,
-	BlockLinksProps,
-	BlockQuoteProps,
-	BlockTextProps,
-	BlockSubtitleProps,
-	BlockTitleProps,
 	BlockTitleImageTextProps,
+	BlockTitleProps,
+	BlockVideo,
 	BlockVideoProps,
+	BlockVideoTitleTextButton,
 	BlockVideoTitleTextButtonProps,
 	Box,
 	Button,
 	Checkbox,
 	CheckboxGroup,
+	Column,
 	Container,
 	DatePicker,
 	Dropdown,
@@ -133,7 +138,6 @@ export {
 	Form,
 	FormGroup,
 	Grid,
-	Column,
 	Icon,
 	Image,
 	MediaCard,
@@ -156,25 +160,27 @@ export {
 	Pagination,
 	RadioButton,
 	RadioButtonGroup,
-	Select,
 	SearchResult,
-	SearchResultTitle,
 	SearchResultSubtitle,
 	SearchResultThumbnail,
+	SearchResultTitle,
+	Select,
 	Spacer,
 	Spinner,
 	Tab,
 	Table,
 	Tabs,
 	TagList,
+	TextArea,
 	TextInput,
 	Thumbnail,
 	ToggleButton,
 	Toolbar,
-	ToolbarLeft,
 	ToolbarCenter,
-	ToolbarRight,
 	ToolbarItem,
+	ToolbarLeft,
+	ToolbarRight,
 	ToolbarTitle,
 	Tooltip,
+	WYSIWYG,
 };

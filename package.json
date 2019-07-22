@@ -32,16 +32,22 @@
     ]
   },
   "dependencies": {
+    "@types/autosize": "^3.0.6",
     "@types/classnames": "^2.2.7",
+    "@types/jquery": "^3.3.30",
     "@types/marked": "^0.6.5",
     "@types/node": "12.0.2",
     "@types/raf": "^3.4.0",
     "@types/react": "16.8.17",
     "@types/react-dom": "16.8.4",
+    "autosize": "^4.0.2",
     "classnames": "^2.2.6",
+    "jquery": "^3.4.1",
     "marked": "^0.6.3",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-trumbowyg": "^1.1.0",
+    "trumbowyg": "2.9.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
@@ -74,6 +80,7 @@
     "rimraf": "^2.6.3",
     "rollup": "^1.15.6",
     "rollup-plugin-copy": "^3.0.0",
+    "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-typescript2": "^0.21.2",
     "source-map-explorer": "^2.0.0",
     "storybook-addon-jsx": "^7.1.2",
