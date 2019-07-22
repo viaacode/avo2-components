@@ -7,6 +7,7 @@ import { useKeyPress } from './hooks/useKeyPress';
 // Components
 import { Avatar } from './components/Avatar/Avatar';
 import { AvatarIcon } from './components/Avatar/AvatarIcon';
+import { AvatarList } from './components/AvatarList/AvatarList';
 import { Badge } from './components/Badge/Badge';
 import { Blankslate } from './components/Blankslate/Blankslate';
 import { Box } from './components/Box/Box';
@@ -91,12 +92,14 @@ import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/T
 import { ToolbarItem } from './components/Toolbar/ToolbarItem';
 import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 import { Tooltip } from './components/Tooltip/Tooltip';
+import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 
 export {
 	COLORS,
 	useKeyPress,
 	Avatar,
 	AvatarIcon,
+	AvatarList,
 	Badge,
 	Blankslate,
 	BlockImage,
@@ -179,4 +182,5 @@ export {
 	ToolbarRight,
 	ToolbarTitle,
 	Tooltip,
+	WYSIWYG,
 };
