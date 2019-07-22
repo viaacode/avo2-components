@@ -7,6 +7,7 @@ import { useKeyPress } from './hooks/useKeyPress';
 // Components
 import { Avatar } from './components/Avatar/Avatar';
 import { AvatarIcon } from './components/Avatar/AvatarIcon';
+import { AvatarList } from './components/AvatarList/AvatarList';
 import { Badge } from './components/Badge/Badge';
 import { Blankslate } from './components/Blankslate/Blankslate';
 import { Box } from './components/Box/Box';
@@ -97,6 +98,7 @@ export {
 	useKeyPress,
 	Avatar,
 	AvatarIcon,
+	AvatarList,
 	Badge,
 	Blankslate,
 	BlockImage,
