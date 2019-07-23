@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = ({ config }) => {
 	config.module.rules.push({
 		test: /\.tsx?$/,
@@ -13,5 +15,14 @@ module.exports = ({ config }) => {
 
 	config.resolve.extensions.push('.ts', '.tsx');
 
+	config.plugins.push(
+		new webpack.ProvidePlugin({
+			$: "jquery",
+			jQuery: "jquery"
+		})
+	);
+
 	return config;
 };
+
+
