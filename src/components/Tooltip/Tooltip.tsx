@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { FC, ReactNode, useEffect, useState } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
 import classNames from 'classnames';
@@ -8,11 +8,11 @@ import { useSlot } from '../../hooks/useSlot';
 import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
 export interface TooltipProps {
-	children: ReactElement[];
+	children: ReactNode;
 	position: 'top' | 'right' | 'bottom' | 'left';
 }
 
-export const Tooltip: React.FC<TooltipProps> = ({ children, position = 'bottom' }) => {
+export const Tooltip: FC<TooltipProps> = ({ children, position = 'bottom' }) => {
 	const [show, setShow] = useState(false);
 
 	const [triggerNode, triggerRef] = useCallbackRef();
