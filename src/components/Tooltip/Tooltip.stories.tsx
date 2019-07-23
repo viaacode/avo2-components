@@ -4,15 +4,11 @@ import React from 'react';
 import { Tooltip } from './Tooltip';
 import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
-const TooltipStory = ({ children }: { children: React.ReactNode }) => (
-	<div className="u-text-center">{children}</div>
-);
-
 storiesOf('Tooltip', module)
 	.addParameters({ jest: ['Tooltip'] })
 	.add('Tooltip top', () => (
-		<TooltipStory>
-			<Tooltip placement="top">
+		<div className="u-text-center">
+			<Tooltip position="top">
 				<TooltipTrigger>
 					<span>Hover me!</span>
 				</TooltipTrigger>
@@ -20,11 +16,11 @@ storiesOf('Tooltip', module)
 					<span>This is a tooltip</span>
 				</TooltipContent>
 			</Tooltip>
-		</TooltipStory>
+		</div>
 	))
 	.add('Tooltip right', () => (
-		<TooltipStory>
-			<Tooltip placement="right">
+		<div className="u-text-center">
+			<Tooltip position="right">
 				<TooltipTrigger>
 					<span>Hover me!</span>
 				</TooltipTrigger>
@@ -32,11 +28,11 @@ storiesOf('Tooltip', module)
 					<span>This is a tooltip</span>
 				</TooltipContent>
 			</Tooltip>
-		</TooltipStory>
+		</div>
 	))
 	.add('Tooltip bottom', () => (
-		<TooltipStory>
-			<Tooltip placement="bottom">
+		<div className="u-text-center">
+			<Tooltip position="bottom">
 				<TooltipTrigger>
 					<span>Hover me!</span>
 				</TooltipTrigger>
@@ -44,11 +40,11 @@ storiesOf('Tooltip', module)
 					<span>This is a tooltip</span>
 				</TooltipContent>
 			</Tooltip>
-		</TooltipStory>
+		</div>
 	))
 	.add('Tooltip left', () => (
-		<TooltipStory>
-			<Tooltip placement="left">
+		<div className="u-text-center">
+			<Tooltip position="left">
 				<TooltipTrigger>
 					<span>Hover me!</span>
 				</TooltipTrigger>
@@ -56,5 +52,5 @@ storiesOf('Tooltip', module)
 					<span>This is a tooltip</span>
 				</TooltipContent>
 			</Tooltip>
-		</TooltipStory>
+		</div>
 	));

@@ -27,7 +27,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({ avatars, isOpen
 		<div className="c-avatar--multiple c-avatar-list-overrides">
 			{visibleAvatars.map((avatar, index) => (
 				<Fragment key={index}>
-					<Tooltip placement="bottom">
+					<Tooltip position="bottom">
 						<TooltipTrigger>
 							<Avatar initials={avatar.initials} />
 						</TooltipTrigger>

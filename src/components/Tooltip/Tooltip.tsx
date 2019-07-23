@@ -9,47 +9,52 @@ import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
 export interface TooltipProps {
 	children: ReactElement[];
-	placement: 'top' | 'right' | 'bottom' | 'left';
+	position: 'top' | 'right' | 'bottom' | 'left';
 }
 
-export const Tooltip: React.FC<TooltipProps> = ({ children, placement = 'bottom' }) => {
-	const [hovered, setHovered] = useState(false);
+export const Tooltip: React.FC<TooltipProps> = ({ children, position = 'bottom' }) => {
+	const [show, setShow] = useState(false);
 
 	const [triggerNode, triggerRef] = useCallbackRef();
 
-	const tooltip = useSlot(TooltipContent, children);
-	const trigger = useSlot(TooltipTrigger, children);
+	const tooltipSlot = useSlot(TooltipContent, children);
+	const triggerSlot = useSlot(TooltipTrigger, children);
+
+	const showHandler = () => setShow(true);
+	const hideHandler = () => setShow(false);
 
 	useEffect(() => {
 		if (triggerNode) {
-			triggerNode.addEventListener('mouseover', () => setHovered(true));
-			triggerNode.addEventListener('touchstart', () => setHovered(true));
-			triggerNode.addEventListener('mouseout', () => setHovered(false));
-			triggerNode.addEventListener('touchend', () => setHovered(false));
+			triggerNode.addEventListener('mouseover', showHandler);
+			triggerNode.addEventListener('touchstart', showHandler);
+			triggerNode.addEventListener('mouseout', hideHandler);
+			triggerNode.addEventListener('touchend', hideHandler);
 
 			return () => {
-				triggerNode.removeEventListener('mouseover', () => setHovered(true));
-				triggerNode.removeEventListener('touchstart', () => setHovered(true));
-				triggerNode.removeEventListener('mouseout', () => setHovered(false));
-				triggerNode.removeEventListener('touchend', () => setHovered(false));
+				triggerNode.removeEventListener('mouseover', showHandler);
+				triggerNode.removeEventListener('touchstart', showHandler);
+				triggerNode.removeEventListener('mouseout', hideHandler);
+				triggerNode.removeEventListener('touchend', hideHandler);
 			};
 		}
 	}, [triggerNode]);
 
-	return tooltip && trigger ? (
+	return tooltipSlot && triggerSlot ? (
 		<Manager>
-			<Reference innerRef={triggerRef}>{({ ref }) => <span ref={ref}>{trigger}</span>}</Reference>
-			<Popper placement={placement}>
+			<Reference innerRef={triggerRef}>
+				{({ ref }) => <span ref={ref}>{triggerSlot}</span>}
+			</Reference>
+			<Popper placement={position}>
 				{({ ref, style, placement }) => (
 					<div
-						className={classNames('c-tooltip', `c-tooltip--${placement}`, {
-							'c-tooltip--show': hovered,
+						className={classNames('c-tooltip', `c-tooltip--${position}`, {
+							'c-tooltip--show': show,
 						})}
 						data-placement={placement}
 						ref={ref}
 						style={style}
 					>
-						{tooltip}
+						{tooltipSlot}
 					</div>
 				)}
 			</Popper>
