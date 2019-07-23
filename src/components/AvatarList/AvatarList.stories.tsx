@@ -6,23 +6,13 @@ import { AvatarList } from './AvatarList';
 
 export const mockAvatars = [
 	{
-		initials: 'BN',
-		name: 'Benjamin Naesen',
+		initials: 'ES',
+		name: 'Ethan Sanders',
 		subtitle: 'Mag Bewerken',
 	},
 	{
-		initials: 'EE',
-		name: 'Enzo Eghermanne',
-		subtitle: 'Mag Bewerken',
-	},
-	{
-		initials: 'BV',
-		name: 'Bert Verhelst',
-		subtitle: 'Mag Bewerken',
-	},
-	{
-		initials: 'AC',
-		name: 'Andry Charlier',
+		initials: 'JC',
+		name: 'Jerry Cooper',
 		subtitle: 'Mag Bewerken',
 	},
 	{
@@ -31,13 +21,23 @@ export const mockAvatars = [
 		subtitle: 'Mag Bewerken',
 	},
 	{
+		initials: 'EW',
+		name: 'Edward Wilson',
+		subtitle: 'Mag Bewerken',
+	},
+	{
+		initials: 'LH',
+		name: 'Lauren Hoffman',
+		subtitle: 'Mag Bewerken',
+	},
+	{
 		initials: 'JD',
 		name: 'Jane Doe',
 		subtitle: 'Mag Bewerken',
 	},
 	{
-		initials: 'SH',
-		name: 'Sander Houttekier',
+		initials: 'PJ',
+		name: 'Phillip Johnston',
 		subtitle: 'Mag Bewerken',
 	},
 ];
