@@ -51,6 +51,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({ avatars, isOpen
 					<DropdownContent>
 						<Fragment>
 							{hiddenAvatars.map((avatar, index) => (
+								// eslint-disable-next-line jsx-a11y/anchor-is-valid
 								<a key={index} className="c-menu__item" onClick={() => avatar.onClick(avatar)}>
 									<div className="c-menu__label">
 										<Flex orientation="vertical" center>
