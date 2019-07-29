@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useEffect, useState } from 'react';
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
 import classNames from 'classnames';
@@ -7,12 +7,19 @@ import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { useSlot } from '../../hooks/useSlot';
 import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
+import './Tooltip.css';
+
 export interface TooltipProps {
 	children: ReactNode;
 	position: 'top' | 'right' | 'bottom' | 'left';
+	contentClassName?: string;
 }
 
-export const Tooltip: FC<TooltipProps> = ({ children, position = 'bottom' }) => {
+export const Tooltip: FunctionComponent<TooltipProps> = ({
+	children,
+	position = 'bottom',
+	contentClassName,
+}) => {
 	const [show, setShow] = useState(false);
 
 	const [triggerNode, triggerRef] = useCallbackRef();
@@ -42,12 +49,16 @@ export const Tooltip: FC<TooltipProps> = ({ children, position = 'bottom' }) => 
 	return tooltipSlot && triggerSlot ? (
 		<Manager>
 			<Reference innerRef={triggerRef}>
-				{({ ref }) => <span ref={ref}>{triggerSlot}</span>}
+				{({ ref }) => (
+					<span className="c-tooltip-trigger" ref={ref}>
+						{triggerSlot}
+					</span>
+				)}
 			</Reference>
 			<Popper placement={position}>
 				{({ ref, style, placement }) => (
 					<div
-						className={classNames('c-tooltip', `c-tooltip--${position}`, {
+						className={classNames(contentClassName, 'c-tooltip', `c-tooltip--${position}`, {
 							'c-tooltip--show': show,
 						})}
 						data-placement={placement}

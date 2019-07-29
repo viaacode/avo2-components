@@ -8,7 +8,7 @@ storiesOf('Tooltip', module)
 	.addParameters({ jest: ['Tooltip'] })
 	.add('Tooltip top', () => (
 		<div className="u-text-center">
-			<Tooltip position="top">
+			<Tooltip position="top" contentClassName="u-spacer-bottom-s">
 				<TooltipTrigger>
 					<span>Hover me!</span>
 				</TooltipTrigger>
@@ -20,7 +20,7 @@ storiesOf('Tooltip', module)
 	))
 	.add('Tooltip right', () => (
 		<div className="u-text-center">
-			<Tooltip position="right">
+			<Tooltip position="right" contentClassName="u-spacer-left-s">
 				<TooltipTrigger>
 					<span>Hover me!</span>
 				</TooltipTrigger>
@@ -32,7 +32,7 @@ storiesOf('Tooltip', module)
 	))
 	.add('Tooltip bottom', () => (
 		<div className="u-text-center">
-			<Tooltip position="bottom">
+			<Tooltip position="bottom" contentClassName="u-spacer-top-s">
 				<TooltipTrigger>
 					<span>Hover me!</span>
 				</TooltipTrigger>
@@ -44,7 +44,7 @@ storiesOf('Tooltip', module)
 	))
 	.add('Tooltip left', () => (
 		<div className="u-text-center">
-			<Tooltip position="left">
+			<Tooltip position="left" contentClassName="u-spacer-right-s">
 				<TooltipTrigger>
 					<span>Hover me!</span>
 				</TooltipTrigger>

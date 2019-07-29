@@ -9,12 +9,13 @@ import { Tooltip } from '../Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 import './AvatarList.css';
 
-interface AvatarWithSubtitle extends AvatarProps {
+interface ExtendedAvatarProps extends AvatarProps {
+	onClick: (avatar: ExtendedAvatarProps) => void;
 	subtitle?: string;
 }
 
 export interface AvatarListProps {
-	avatars: AvatarWithSubtitle[];
+	avatars: ExtendedAvatarProps[];
 	isOpen: boolean;
 }
 
@@ -50,7 +51,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({ avatars, isOpen
 					<DropdownContent>
 						<Fragment>
 							{hiddenAvatars.map((avatar, index) => (
-								<a key={index} className="c-menu__item" href="#anchor">
+								<a key={index} className="c-menu__item" onClick={() => avatar.onClick(avatar)}>
 									<div className="c-menu__label">
 										<Flex orientation="vertical" center>
 											<Avatar initials={avatar.initials} image={avatar.image} />
