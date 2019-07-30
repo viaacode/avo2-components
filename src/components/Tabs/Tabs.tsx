@@ -7,16 +7,17 @@ import classNames from 'classnames';
 export interface TabsProps {
 	tabs: TabProps[];
 	border?: boolean;
+	onClick?: (tabId: string | number) => void;
 }
 
-export const Tabs: FunctionComponent<TabsProps> = ({ tabs, border }: TabsProps) => (
+export const Tabs: FunctionComponent<TabsProps> = ({ tabs, border, onClick = () => {} }) => (
 	<nav
 		className={classNames('c-tabs', {
 			'c-tabs--bottom-border': border,
 		})}
 	>
 		{tabs.map(tab => (
-			<Tab key={tab.label} {...tab} />
+			<Tab key={tab.label} {...tab} onClick={() => onClick(tab.id)} />
 		))}
 	</nav>
 );

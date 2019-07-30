@@ -7,12 +7,12 @@ import { Tabs } from './Tabs';
 const mockTabs = [
 	{
 		label: 'Videos',
-		href: '#',
+		id: 'videos',
 		active: true,
 	},
 	{
 		label: 'Folder',
-		href: '#',
+		id: 'folder',
 	},
 ];
 
@@ -41,5 +41,24 @@ describe('<Tabs />', () => {
 		const tabElement = tabsComponent.find(Tab);
 
 		expect(tabElement).toHaveLength(2);
+	});
+
+	it('Should trigger onClick when clicking a tab', () => {
+		const onClickHandler = jest.fn();
+
+		const tabsComponent = shallow(<Tabs tabs={mockTabs} onClick={onClickHandler} />);
+
+		const tabElement = tabsComponent.find(Tab);
+
+		tabElement.at(0).simulate('click');
+
+		expect(onClickHandler).toBeCalled();
+		expect(onClickHandler).toBeCalledTimes(1);
+		expect(onClickHandler).toBeCalledWith(mockTabs[0].id);
+
+		tabElement.at(1).simulate('click');
+
+		expect(onClickHandler).toBeCalledTimes(2);
+		expect(onClickHandler).toBeCalledWith(mockTabs[1].id);
 	});
 });
