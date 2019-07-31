@@ -1,3 +1,7 @@
+import jquery from 'jquery';
+
+(window as any).jQuery = jquery;
+
 // Colors
 import { COLORS } from './colors';
 
