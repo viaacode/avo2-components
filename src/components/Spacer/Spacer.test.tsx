@@ -9,8 +9,11 @@ describe('<Spacer />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const spacerComponent = shallow(<Spacer />);
+		const cumstomClass = 'c-spacer-custom';
 
+		const spacerComponent = shallow(<Spacer className={cumstomClass} />);
+
+		expect(spacerComponent.hasClass(cumstomClass)).toEqual(true);
 		expect(spacerComponent.hasClass('u-spacer')).toEqual(true);
 	});
 

@@ -3,8 +3,10 @@ import React from 'react';
 
 import { BlockSubtitle } from './BlockSubtitle';
 
+const customClass = 'c-block-custom';
 const subtitle = 'Subtitle';
-export const blockSubtitleExample = <BlockSubtitle subtitle={subtitle} />;
+
+export const blockSubtitleExample = <BlockSubtitle className={customClass} subtitle={subtitle} />;
 
 describe('<BlockSubtitle />', () => {
 	it('Should be able to render', () => {
@@ -24,6 +26,7 @@ describe('<BlockSubtitle />', () => {
 
 		const h2Element = component.find('h2').at(0);
 
+		expect(component.hasClass(customClass)).toEqual(true);
 		expect(component.hasClass('o-container-vertical')).toEqual(true);
 		expect(component.hasClass('o-container-vertical-subtitle')).toEqual(true);
 

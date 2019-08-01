@@ -9,9 +9,12 @@ describe('<AvatarIcon />', () => {
 	});
 
 	it('Should correctly set the className', () => {
-		const avatarIconComponent = shallow(<AvatarIcon initials="JD" />);
+		const customClass = 'c-avatar-custom';
+
+		const avatarIconComponent = shallow(<AvatarIcon className={customClass} initials="JD" />);
 
 		expect(avatarIconComponent.hasClass('c-avatar')).toEqual(true);
+		expect(avatarIconComponent.hasClass(customClass)).toEqual(true);
 	});
 
 	it('Should correctly render the initials', () => {

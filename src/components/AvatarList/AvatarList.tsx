@@ -1,5 +1,8 @@
 import React, { Fragment, FunctionComponent } from 'react';
 
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../types';
 import { Avatar, AvatarProps } from '../Avatar/Avatar';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots';
@@ -12,20 +15,24 @@ interface AvatarWithSubtitle extends AvatarProps {
 	subtitle?: string;
 }
 
-export interface AvatarListProps {
+export interface AvatarListProps extends DefaultProps {
 	avatars: AvatarWithSubtitle[];
 	isOpen: boolean;
 }
 
 const twoDecimalize = (input: number): string => input.toString().padStart(2, '0');
 
-export const AvatarList: FunctionComponent<AvatarListProps> = ({ avatars, isOpen = false }) => {
+export const AvatarList: FunctionComponent<AvatarListProps> = ({
+	avatars,
+	className,
+	isOpen = false,
+}) => {
 	const visibleAvatars = avatars.slice(0, 3);
 	const hiddenAvatars = avatars.slice(3, avatars.length);
 	const hasHiddenAvatars = hiddenAvatars && !!hiddenAvatars.length;
 
 	return (
-		<div className="c-avatar--multiple c-avatar-list-overrides">
+		<div className={classnames(className, 'c-avatar--multiple', 'c-avatar-list-overrides')}>
 			{visibleAvatars.map((avatar, index) => (
 				<Fragment key={index}>
 					<Avatar initials={avatar.initials} />

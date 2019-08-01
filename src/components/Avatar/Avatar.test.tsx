@@ -9,6 +9,13 @@ describe('<Avatar />', () => {
 		shallow(<Avatar initials="JD" name="John Doe" />);
 	});
 
+	it('should pass a custom className', () => {
+		const customClass = 'c-avatar-custom';
+		const avatarComponent = <Avatar className={customClass} initials="JD" />;
+
+		expect(shallow(avatarComponent).hasClass(customClass)).toBeTruthy();
+	});
+
 	it('Should correctly render the name', () => {
 		const name = 'Jane Doe';
 

@@ -1,12 +1,14 @@
 import React, { FunctionComponent } from 'react';
 
+import classnames from 'classnames';
 import marked from 'marked';
 
+import { DefaultProps } from '../../../types';
 import { Container } from '../../Container/Container';
 import { Image } from '../../Image/Image';
 import { Spacer } from '../../Spacer/Spacer';
 
-export interface BlockTitleImageTextProps {
+export interface BlockTitleImageTextProps extends DefaultProps {
 	title?: string;
 	imageSource?: string;
 	imageDescription?: string;
@@ -14,13 +16,14 @@ export interface BlockTitleImageTextProps {
 }
 
 export const BlockTitleImageText: FunctionComponent<BlockTitleImageTextProps> = ({
+	className,
 	title,
 	imageSource,
 	imageDescription = '',
 	text = '',
 }: BlockTitleImageTextProps) => {
 	return (
-		<Spacer margin="top-large">
+		<Spacer className={className} margin="top-large">
 			<Container size="small">
 				{title && <h2 className="c-h2">{title}</h2>}
 				{imageSource && <Image src={imageSource} alt={imageDescription} wide={true} />}

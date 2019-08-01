@@ -9,9 +9,12 @@ describe('<Box />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const boxComponent = shallow(<Box>test</Box>);
+		const customClass = 'c-box-custom';
+
+		const boxComponent = shallow(<Box className={customClass}>test</Box>);
 
 		expect(boxComponent.hasClass('c-box')).toEqual(true);
+		expect(boxComponent.hasClass(customClass)).toEqual(true);
 	});
 
 	it('Should set the correct className when passed the `condensed`-prop', () => {

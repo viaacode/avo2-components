@@ -5,12 +5,14 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockQuote } from './BlockQuote';
 
+const customClass = 'c-block-custom';
 const quoteText = loremIpsum({ count: 10 });
 const authorAvatarSource = '/images/50x50.svg';
 const authorName = loremIpsum({ count: 2 });
 
 export const quoteExample = (
 	<BlockQuote
+		className={customClass}
 		quoteText={quoteText}
 		authorAvatarSource={authorAvatarSource}
 		authorName={authorName}
@@ -53,6 +55,7 @@ describe('<BlockQuote />', () => {
 		const blockquoteElement = quoteDivElement.find('blockquote');
 		const citeElement = quoteDivElement.find('cite');
 
+		expect(component.hasClass(customClass)).toEqual(true);
 		expect(component.hasClass('o-container-vertical')).toEqual(true);
 		expect(component.hasClass('o-container-vertical-quote')).toEqual(true);
 

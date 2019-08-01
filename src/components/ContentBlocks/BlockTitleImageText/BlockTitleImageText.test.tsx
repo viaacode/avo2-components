@@ -5,11 +5,13 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockTitleImageText } from './BlockTitleImageText';
 
+const customClass = 'c-block-custom';
 const imageSource = '/images/500x200.svg';
 const loremIpsumText = loremIpsum({ count: 10 });
 
 export const blockTitleImageTextExample = (
 	<BlockTitleImageText
+		className={customClass}
 		imageSource={imageSource}
 		imageDescription="image showing the default dimensions on a grey background"
 		title="Title"
@@ -44,6 +46,7 @@ describe('<BlockTitleImageText />', () => {
 		const spacerElement = component.find('div').at(0);
 		const containerElement = component.find('div').at(1);
 
+		expect(component.hasClass(customClass)).toEqual(true);
 		expect(spacerElement.hasClass('u-spacer-top-l')).toEqual(true);
 		expect(containerElement.hasClass('o-container--small')).toEqual(true);
 	});

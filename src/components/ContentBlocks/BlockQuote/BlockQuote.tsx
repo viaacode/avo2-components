@@ -1,18 +1,23 @@
 import React, { FunctionComponent } from 'react';
 
-export interface BlockQuoteProps {
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../../types';
+
+export interface BlockQuoteProps extends DefaultProps {
 	quoteText: string;
 	authorAvatarSource?: string;
 	authorName: string;
 }
 
 export const BlockQuote: FunctionComponent<BlockQuoteProps> = ({
+	className,
 	quoteText,
 	authorAvatarSource,
 	authorName,
 }: BlockQuoteProps) => {
 	return (
-		<div className="o-container-vertical o-container-vertical-quote">
+		<div className={classnames(className, 'o-container-vertical', 'o-container-vertical-quote')}>
 			<div className="c-quote">
 				<blockquote className="c-quote__text">{quoteText}</blockquote>
 				{authorName && (

@@ -5,6 +5,7 @@ import { Alert, AlertProps } from './Alert';
 
 describe('<Alert />', () => {
 	const alertProps: AlertProps = {
+		className: 'c-alert-custom',
 		close: () => {},
 		dark: false,
 		message: 'Alert message',
@@ -15,6 +16,10 @@ describe('<Alert />', () => {
 
 	it('should render', () => {
 		shallow(alert);
+	});
+
+	it('should pass a custom className', () => {
+		expect(shallow(alert).hasClass('c-alert-custom')).toBeTruthy();
 	});
 
 	it('should show the correct message', () => {

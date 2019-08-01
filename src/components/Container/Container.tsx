@@ -2,12 +2,13 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
-export interface ContainerProps {
+import { DefaultProps } from '../../types';
+
+export interface ContainerProps extends DefaultProps {
 	mode?: 'horizontal' | 'vertical';
 	size?: 'small' | 'medium' | 'large';
 	background?: 'white' | 'alt' | 'inverse';
 	bordered?: boolean;
-	className?: string;
 	children: ReactNode;
 }
 

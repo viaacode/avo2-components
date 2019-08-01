@@ -5,11 +5,13 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockImageTitleTextButton } from './BlockImageTitleTextButton';
 
+const customClass = 'c-block-custom';
 const imageSource = '/images/1280x720.svg';
 const loremIpsumText = loremIpsum({ count: 10 });
 
 export const blockImageTitleTextButtonExample = (
 	<BlockImageTitleTextButton
+		className={customClass}
 		imageSource={imageSource}
 		imageDescription="image showing the default dimensions on a grey background"
 		title="Title"
@@ -59,6 +61,7 @@ describe('<BlockImageTitleTextButton />', () => {
 		const rightColumnElement = divs.at(4);
 		const contentElement = divs.at(5);
 
+		expect(component.hasClass(customClass)).toEqual(true);
 		expect(containerVertical.hasClass('o-container-vertical')).toEqual(true);
 		expect(containerElement.hasClass('o-container')).toEqual(true);
 		expect(gridElement.hasClass('o-grid')).toEqual(true);
