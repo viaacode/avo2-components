@@ -13,7 +13,7 @@ import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 import './AvatarList.css';
 
 interface ExtendedAvatarProps extends AvatarProps {
-	onClick: (avatar: ExtendedAvatarProps) => void;
+	onClick?: (avatar: ExtendedAvatarProps) => void;
 	subtitle?: string;
 }
 
@@ -58,8 +58,11 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
 					<DropdownContent>
 						<Fragment>
 							{hiddenAvatars.map((avatar, index) => (
-								// eslint-disable-next-line jsx-a11y/anchor-is-valid
-								<a key={index} className="c-menu__item" onClick={() => avatar.onClick(avatar)}>
+								<a
+									key={index}
+									className="c-menu__item"
+									onClick={() => (avatar.onClick ? avatar.onClick(avatar) : undefined)} // eslint-disable-line jsx-a11y/anchor-is-valid
+								>
 									<div className="c-menu__label">
 										<Flex orientation="vertical" center>
 											<Avatar initials={avatar.initials} image={avatar.image} />

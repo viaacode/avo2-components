@@ -22,8 +22,11 @@ describe('<Tabs />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const tabsComponent = shallow(<Tabs tabs={mockTabs} />);
+		const customClass = 'c-column-custom';
 
+		const tabsComponent = shallow(<Tabs className={customClass} tabs={mockTabs} />);
+
+		expect(tabsComponent.hasClass(customClass)).toEqual(true);
 		expect(tabsComponent.hasClass('c-tabs')).toEqual(true);
 	});
 

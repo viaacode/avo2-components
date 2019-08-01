@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 
-import classnames from 'classnames';
 import marked from 'marked';
 
 import { DefaultProps } from '../../../types';

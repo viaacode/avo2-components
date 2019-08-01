@@ -16,6 +16,7 @@ describe('<Column />', () => {
 				Hello!
 			</Column>
 		);
+
 		expect(columnComponent.hasClass(customClass)).toBeTruthy();
 	});
 

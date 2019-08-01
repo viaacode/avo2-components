@@ -28,8 +28,13 @@ describe('<Table />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const tableComponent = shallow(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
+		const customClass = 'c-table-custom';
 
+		const tableComponent = shallow(
+			<Table className={customClass} columns={COLUMNS} data={DATA} rowKey="id" />
+		);
+
+		expect(tableComponent.hasClass(customClass)).toEqual(true);
 		expect(tableComponent.hasClass('c-table')).toEqual(true);
 	});
 
