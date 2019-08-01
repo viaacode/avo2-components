@@ -14,7 +14,6 @@ const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
 };
 
 export interface AlertProps extends DefaultProps {
-	className?: string;
 	close: () => void;
 	dark?: boolean;
 	message: ReactNode | string;
