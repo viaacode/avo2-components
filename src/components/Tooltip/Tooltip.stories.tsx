@@ -1,28 +1,56 @@
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-
 import { Tooltip } from './Tooltip';
+import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
 storiesOf('Tooltip', module)
 	.addParameters({ jest: ['Tooltip'] })
 	.add('Tooltip top', () => (
-		<Tooltip id="test1" placement="top">
-			Top tooltip
-		</Tooltip>
+		<div className="u-text-center">
+			<Tooltip position="top" contentClassName="u-spacer-bottom-s">
+				<TooltipTrigger>
+					<span>Hover me!</span>
+				</TooltipTrigger>
+				<TooltipContent>
+					<span>This is a tooltip</span>
+				</TooltipContent>
+			</Tooltip>
+		</div>
 	))
 	.add('Tooltip right', () => (
-		<Tooltip id="test1" placement="top">
-			Top tooltip
-		</Tooltip>
+		<div className="u-text-center">
+			<Tooltip position="right" contentClassName="u-spacer-left-s">
+				<TooltipTrigger>
+					<span>Hover me!</span>
+				</TooltipTrigger>
+				<TooltipContent>
+					<span>This is a tooltip</span>
+				</TooltipContent>
+			</Tooltip>
+		</div>
 	))
 	.add('Tooltip bottom', () => (
-		<Tooltip id="test1" placement="top">
-			Top tooltip
-		</Tooltip>
+		<div className="u-text-center">
+			<Tooltip position="bottom" contentClassName="u-spacer-top-s">
+				<TooltipTrigger>
+					<span>Hover me!</span>
+				</TooltipTrigger>
+				<TooltipContent>
+					<span>This is a tooltip</span>
+				</TooltipContent>
+			</Tooltip>
+		</div>
 	))
 	.add('Tooltip left', () => (
-		<Tooltip id="test1" placement="top">
-			Top tooltip
-		</Tooltip>
+		<div className="u-text-center">
+			<Tooltip position="left" contentClassName="u-spacer-right-s">
+				<TooltipTrigger>
+					<span>Hover me!</span>
+				</TooltipTrigger>
+				<TooltipContent>
+					<span>This is a tooltip</span>
+				</TooltipContent>
+			</Tooltip>
+		</div>
 	));

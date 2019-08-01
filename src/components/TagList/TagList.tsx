@@ -51,6 +51,7 @@ export const TagList: FunctionComponent<TagListProps> = ({
 						</span>
 					)}
 					{closable && (
+						// eslint-disable-next-line jsx-a11y/anchor-is-valid
 						<a onClick={(evt: MouseEvent) => onTagClosed(tag.id, evt)}>
 							<Icon name="close" />
 						</a>

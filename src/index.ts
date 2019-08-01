@@ -92,6 +92,7 @@ import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/T
 import { ToolbarItem } from './components/Toolbar/ToolbarItem';
 import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 import { Tooltip } from './components/Tooltip/Tooltip';
+import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 
 export {
@@ -182,5 +183,7 @@ export {
 	ToolbarRight,
 	ToolbarTitle,
 	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
 	WYSIWYG,
 };
