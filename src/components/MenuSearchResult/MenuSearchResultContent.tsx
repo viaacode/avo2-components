@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
-import { ContentType } from '../../types';
+import { ContentType, DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { MenuContent } from '../Menu/MenuContent';
 
@@ -12,7 +12,7 @@ export interface MenuSearchResultItemInfo {
 	type: ContentType;
 }
 
-export interface MenuContentProps {
+export interface MenuContentProps extends DefaultProps {
 	menuItems: MenuSearchResultItemInfo[];
 	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;
@@ -33,6 +33,7 @@ export const CONTENT_TYPE_TO_LABEL: { [contentType in ContentType]: string } = {
 };
 
 export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
+	className,
 	menuItems,
 	noResultsLabel,
 	onClick = () => {},
@@ -40,7 +41,7 @@ export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
 	const renderMenuItem = (menuItemInfo: MenuSearchResultItemInfo) => {
 		return (
 			<div
-				className="c-menu__item"
+				className={classNames(className, 'c-menu__item')}
 				onClick={() => (onClick || (() => {}))(menuItemInfo.id)}
 				key={`menu-search-item-${menuItemInfo.id}`}
 				style={onClick ? { cursor: 'pointer' } : {}}

@@ -8,6 +8,17 @@ describe('<Column />', () => {
 		shallow(<Column size="6">Hello!</Column>);
 	});
 
+	it('should correctly pass a custom className', () => {
+		const customClass = 'c-column-custom';
+
+		const columnComponent = shallow(
+			<Column className={customClass} size="12">
+				Hello!
+			</Column>
+		);
+		expect(columnComponent.hasClass(customClass)).toBeTruthy();
+	});
+
 	it('Should correctly set the sizing className', () => {
 		const size1 = '12';
 		const size2 = '1-4';

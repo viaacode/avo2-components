@@ -9,8 +9,13 @@ describe('<RadioButton />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const radioButtonComponent = shallow(<RadioButton name="List2" label="One" value="one" />);
+		const customClass = 'c-radio-custom';
 
+		const radioButtonComponent = shallow(
+			<RadioButton className={customClass} name="List2" label="One" value="one" />
+		);
+
+		expect(radioButtonComponent.hasClass(customClass)).toEqual(true);
 		expect(radioButtonComponent.hasClass('c-radio')).toEqual(true);
 	});
 

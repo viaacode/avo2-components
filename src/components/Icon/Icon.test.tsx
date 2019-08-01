@@ -30,6 +30,14 @@ describe('<Icon />', () => {
 		expect(iconComponent.find(ThumbsUp)).toHaveLength(1);
 	});
 
+	it('Should correctly pass a custom className', () => {
+		const customClass = 'c-icon-custom';
+
+		const iconComponent = shallow(<Icon className={customClass} name="download" />);
+
+		expect(iconComponent.hasClass(customClass)).toEqual(true);
+	});
+
 	it('Should correctly set the className without type', () => {
 		const iconComponent = shallow(<Icon name="download" />);
 

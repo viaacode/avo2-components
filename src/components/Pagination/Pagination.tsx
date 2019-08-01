@@ -2,9 +2,10 @@ import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
-export interface PaginationProps {
+export interface PaginationProps extends DefaultProps {
 	pageCount: number;
 	displayCount?: number;
 	currentPage?: number;
@@ -12,6 +13,7 @@ export interface PaginationProps {
 }
 
 export const Pagination: FunctionComponent<PaginationProps> = ({
+	className,
 	pageCount,
 	displayCount = 5,
 	currentPage = 0,
@@ -52,7 +54,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 	const pagesToDisplay = generatePages();
 
 	return (
-		<div className="c-pagination">
+		<div className={classNames(className, 'c-pagination')}>
 			<div className="c-pagination__btn" onClick={() => changePage(0)}>
 				<Icon name="chevrons-left" type="arrows" />
 			</div>
