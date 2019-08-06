@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 import Trumbowyg from 'react-trumbowyg';
+import 'react-trumbowyg/dist/trumbowyg.min.css';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
 
 import './WYSIWYG.css';
