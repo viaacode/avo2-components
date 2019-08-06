@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
@@ -38,42 +38,44 @@ export const Table: FunctionComponent<TableProps> = ({
 	onColumnClick = () => {},
 }: TableProps) => {
 	return (
-		<table
-			className={classNames(className, 'c-table', {
-				'c-table--styled': styled || bordered,
-				'c-table--bordered': bordered,
-			})}
-		>
-			{columns.length > 0 && (
-				<thead>
-					<tr>
-						{columns.map(heading => (
-							<th key={heading.id} onClick={() => heading.sortable && onColumnClick(heading.id)}>
-								{heading.label}
-								{heading.sortable && sortColumn === heading.id && (
-									<Icon name={sortOrder === 'asc' ? 'chevron-up' : 'chevron-down'} />
-								)}
-							</th>
-						))}
-					</tr>
-				</thead>
-			)}
-			{data.length > 0 && (
-				<tbody>
-					{data.map((row, rowIndex) => (
-						<tr key={row[rowKey]}>
-							{Object.keys(row)
-								.filter(key => columns.find(column => column.id === key) && row)
-								.map((cell, cellIndex) => (
-									<td key={cellIndex}>{renderCell(row, cell, rowIndex, cellIndex)}</td>
-								))}
+		<Fragment>
+			<table
+				className={classNames(className, 'c-table', {
+					'c-table--styled': styled || bordered,
+					'c-table--bordered': bordered,
+				})}
+			>
+				{columns.length > 0 && (
+					<thead>
+						<tr>
+							{columns.map(heading => (
+								<th key={heading.id} onClick={() => heading.sortable && onColumnClick(heading.id)}>
+									{heading.label}
+									{heading.sortable && sortColumn === heading.id && (
+										<Icon name={sortOrder === 'asc' ? 'chevron-up' : 'chevron-down'} />
+									)}
+								</th>
+							))}
 						</tr>
-					))}
-				</tbody>
-			)}
+					</thead>
+				)}
+				{data.length > 0 && (
+					<tbody>
+						{data.map((row, rowIndex) => (
+							<tr key={row[rowKey]}>
+								{Object.keys(row)
+									.filter(key => columns.find(column => column.id === key) && row)
+									.map((cell, cellIndex) => (
+										<td key={cellIndex}>{renderCell(row, cell, rowIndex, cellIndex)}</td>
+									))}
+							</tr>
+						))}
+					</tbody>
+				)}
+			</table>
 			{data.length === 0 && emptyStateMessage && (
 				<p className="u-spacer-top">{emptyStateMessage}</p>
 			)}
-		</table>
+		</Fragment>
 	);
 };
