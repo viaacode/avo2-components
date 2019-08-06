@@ -9,6 +9,7 @@ import './WYSIWYG.css';
 export interface WYSIWYGProps {
 	id: string;
 	data?: string;
+	placeholder?: string;
 	lang?: string;
 	buttons?: (string[] | string)[];
 	semantic?: boolean;
@@ -35,6 +36,7 @@ export interface WYSIWYGProps {
 export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 	id,
 	data = '',
+	placeholder,
 	lang,
 	buttons,
 	semantic,
@@ -60,6 +62,7 @@ export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 	<Trumbowyg
 		id={id}
 		data={data}
+		placeholder={placeholder}
 		lang={lang}
 		buttons={buttons}
 		semantic={semantic}
