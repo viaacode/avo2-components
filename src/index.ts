@@ -9,6 +9,7 @@ import { COLORS } from './colors';
 import { useKeyPress } from './hooks/useKeyPress';
 
 // Components
+import { Alert } from './components/Alert/Alert';
 import { Avatar } from './components/Avatar/Avatar';
 import { AvatarIcon } from './components/Avatar/AvatarIcon';
 import { AvatarList } from './components/AvatarList/AvatarList';
@@ -102,6 +103,7 @@ import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 export {
 	COLORS,
 	useKeyPress,
+	Alert,
 	Avatar,
 	AvatarIcon,
 	AvatarList,
