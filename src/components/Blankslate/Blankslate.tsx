@@ -1,10 +1,11 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import { Icon } from '../Icon/Icon';
-
 import classNames from 'classnames';
 
-export interface BlankslateProps {
+import { DefaultProps } from '../../types';
+import { Icon } from '../Icon/Icon';
+
+export interface BlankslateProps extends DefaultProps {
 	title: string;
 	body: string;
 	spacious?: boolean;
@@ -13,13 +14,14 @@ export interface BlankslateProps {
 }
 
 export const Blankslate: FunctionComponent<BlankslateProps> = ({
-	title,
 	body,
-	spacious,
-	icon,
 	children,
+	className,
+	icon,
+	spacious,
+	title,
 }: BlankslateProps) => (
-	<div className={classNames('c-blankslate', { 'c-blankslate--spacious': spacious })}>
+	<div className={classNames(className, 'c-blankslate', { 'c-blankslate--spacious': spacious })}>
 		{icon && (
 			<div className="u-spacer-bottom-l">
 				<div className="c-blankslate__icon">

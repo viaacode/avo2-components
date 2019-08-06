@@ -4,8 +4,9 @@ import autosize from 'autosize';
 import classNames from 'classnames';
 
 import { useCallbackRef } from '../../hooks/useCallbackRef';
+import { DefaultProps } from '../../types';
 
-export interface TextAreaProps {
+export interface TextAreaProps extends DefaultProps {
 	id?: string;
 	name?: string;
 	rows?: number;
@@ -18,6 +19,7 @@ export interface TextAreaProps {
 }
 
 export const TextArea: FunctionComponent<TextAreaProps> = ({
+	className,
 	id,
 	name,
 	rows,
@@ -42,7 +44,7 @@ export const TextArea: FunctionComponent<TextAreaProps> = ({
 
 	return (
 		<textarea
-			className={classNames('c-input', {
+			className={classNames(className, 'c-input', {
 				[`c-input--h-${height}`]: height && height !== 'auto',
 				[`c-input--w-${width}`]: width,
 			})}

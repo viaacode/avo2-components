@@ -2,7 +2,9 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
-export interface NavbarProps {
+import { DefaultProps } from '../../types';
+
+export interface NavbarProps extends DefaultProps {
 	placement?: 'top' | 'bottom';
 	position?: 'fixed';
 	spacing?: 'regular' | 'double';
@@ -12,6 +14,7 @@ export interface NavbarProps {
 }
 
 export const Navbar: FunctionComponent<NavbarProps> = ({
+	className,
 	placement = 'top',
 	position,
 	spacing = 'regular',
@@ -20,7 +23,7 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
 	children,
 }: NavbarProps) => (
 	<div
-		className={classNames('c-navbar', {
+		className={classNames(className, 'c-navbar', {
 			'c-navbar--bordered-bottom': placement === 'top', // Class indicates border location
 			'c-navbar--bordered-top': placement === 'bottom',
 			'c-navbar--fixed': position === 'fixed',

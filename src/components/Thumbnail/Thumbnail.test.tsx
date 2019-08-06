@@ -16,8 +16,11 @@ describe('<Thumbnail />', () => {
 	});
 
 	it('Should set the correct className', () => {
+		const customClass = 'c-thumbnail-custom';
+
 		const thumbnailComponent = shallow(
 			<Thumbnail
+				className={customClass}
 				src="/images/thumbnail.jpg"
 				meta="4 items"
 				category="collection"
@@ -25,6 +28,7 @@ describe('<Thumbnail />', () => {
 			/>
 		);
 
+		expect(thumbnailComponent.hasClass(customClass)).toEqual(true);
 		expect(thumbnailComponent.hasClass('c-thumbnail')).toEqual(true);
 		expect(thumbnailComponent.hasClass('c-thumbnail-media')).toEqual(true);
 	});

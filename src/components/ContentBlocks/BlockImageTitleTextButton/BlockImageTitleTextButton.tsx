@@ -1,7 +1,9 @@
 import React, { FunctionComponent } from 'react';
 
+import classnames from 'classnames';
 import marked from 'marked';
 
+import { DefaultProps } from '../../../types';
 import { Button } from '../../Button/Button';
 import { Container } from '../../Container/Container';
 import { Column } from '../../Grid/Column';
@@ -9,7 +11,7 @@ import { Grid } from '../../Grid/Grid';
 import { Image } from '../../Image/Image';
 import { Spacer } from '../../Spacer/Spacer';
 
-export interface BlockImageTitleTextButtonProps {
+export interface BlockImageTitleTextButtonProps extends DefaultProps {
 	imageSource: string;
 	imageDescription?: string;
 	title?: string;
@@ -19,6 +21,7 @@ export interface BlockImageTitleTextButtonProps {
 }
 
 export const BlockImageTitleTextButton: FunctionComponent<BlockImageTitleTextButtonProps> = ({
+	className,
 	imageSource,
 	imageDescription,
 	title,
@@ -27,7 +30,7 @@ export const BlockImageTitleTextButton: FunctionComponent<BlockImageTitleTextBut
 	onClick,
 }: BlockImageTitleTextButtonProps) => {
 	return (
-		<section className="o-container-vertical">
+		<section className={classnames(className, 'o-container-vertical')}>
 			<Container mode="horizontal">
 				<Grid>
 					<Column size="2-4">

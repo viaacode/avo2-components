@@ -2,16 +2,23 @@ import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
+import { DefaultProps } from '../../types';
 import * as Icons from '../Icons';
 
-export interface IconProps {
+export interface IconProps extends DefaultProps {
 	name: string;
 	size?: 'small' | 'large' | 'huge';
 	type?: 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';
 	active?: boolean;
 }
 
-export const Icon: FunctionComponent<IconProps> = ({ name, size, type, active }: IconProps) => {
+export const Icon: FunctionComponent<IconProps> = ({
+	className,
+	name,
+	size,
+	type,
+	active,
+}: IconProps) => {
 	let IconToRender = (Icons as any)[toPascalCase(name)];
 
 	function getIconName() {
@@ -43,7 +50,7 @@ export const Icon: FunctionComponent<IconProps> = ({ name, size, type, active }:
 
 	return (
 		<div
-			className={classNames('o-svg-icon', getIconName(), {
+			className={classNames(className, 'o-svg-icon', getIconName(), {
 				'o-svg-icon--action-active': active,
 				'o-svg-icon-multicolor': type === 'multicolor',
 				[`o-svg-icon--${size}`]: size,

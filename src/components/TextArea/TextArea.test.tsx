@@ -9,10 +9,13 @@ describe('<TextArea />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const textAreaComponent = shallow(<TextArea />);
+		const customClass = 'c-textarea-custom';
+
+		const textAreaComponent = shallow(<TextArea className={customClass} />);
 
 		const textAreaElement = textAreaComponent.find('textarea');
 
+		expect(textAreaElement.hasClass(customClass)).toEqual(true);
 		expect(textAreaElement.hasClass('c-input')).toEqual(true);
 	});
 

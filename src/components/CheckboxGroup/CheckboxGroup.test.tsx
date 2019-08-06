@@ -16,8 +16,10 @@ describe('<CheckboxGroup />', () => {
 	});
 
 	it('Should set the correct className', () => {
+		const customClass = 'c-checkbox-group-custom';
+
 		const checkboxGroupComponent = shallow(
-			<CheckboxGroup>
+			<CheckboxGroup className={customClass}>
 				<Checkbox label="Aluminium" />
 				<Checkbox label="Cadmium" />
 				<Checkbox label="Dubnium" />
@@ -25,6 +27,7 @@ describe('<CheckboxGroup />', () => {
 		);
 
 		expect(checkboxGroupComponent.hasClass('c-checkbox-group')).toEqual(true);
+		expect(checkboxGroupComponent.hasClass(customClass)).toEqual(true);
 	});
 
 	it('Should set the correct className when passing inline option', () => {

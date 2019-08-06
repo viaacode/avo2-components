@@ -13,12 +13,15 @@ describe('<Form />', () => {
 	});
 
 	it('Should correctly set the className', () => {
+		const customClass = 'c-form-custom';
+
 		const formComponent = shallow(
-			<Form>
+			<Form className={customClass}>
 				<Fragment />
 			</Form>
 		);
 
+		expect(formComponent.hasClass(customClass)).toEqual(true);
 		expect(formComponent.hasClass('o-form-group-layout')).toEqual(true);
 	});
 

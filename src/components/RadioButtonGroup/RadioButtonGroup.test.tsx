@@ -17,14 +17,17 @@ describe('<RadioButtonGroup />', () => {
 	});
 
 	it('Should set the correct className', () => {
+		const customClass = 'c-column-custom';
+
 		const radioButtonGroupComponent = shallow(
-			<RadioButtonGroup>
+			<RadioButtonGroup className={customClass}>
 				<RadioButton name="List2" label="Fish" value="fish" />
 				<RadioButton name="List2" label="Steak" value="steak" />
 				<RadioButton name="List2" label="Bacon" value="bacon" />
 			</RadioButtonGroup>
 		);
 
+		expect(radioButtonGroupComponent.hasClass(customClass)).toEqual(true);
 		expect(radioButtonGroupComponent.hasClass('c-radio-group')).toEqual(true);
 	});
 

@@ -4,10 +4,10 @@ import classNames from 'classnames';
 
 import { useSlot } from '../../hooks/useSlot';
 
-import { ContentType } from '../../types';
+import { ContentType, DefaultProps } from '../../types';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
-export interface MediaCardProps {
+export interface MediaCardProps extends DefaultProps {
 	title: string;
 	href: string;
 	category: ContentType;
@@ -16,6 +16,7 @@ export interface MediaCardProps {
 }
 
 export const MediaCard: FunctionComponent<MediaCardProps> = ({
+	className,
 	title,
 	href,
 	category,
@@ -27,7 +28,7 @@ export const MediaCard: FunctionComponent<MediaCardProps> = ({
 
 	return (
 		<div
-			className={classNames('c-media-card', `c-media-card--${category}`, {
+			className={classNames(className, 'c-media-card', `c-media-card--${category}`, {
 				'c-media-card--horizontal': orientation === 'horizontal',
 			})}
 		>

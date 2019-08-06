@@ -13,12 +13,15 @@ describe('<ToolbarTitle />', () => {
 	});
 
 	it('Should set the correct className(s)', () => {
+		const customClass = 'c-toolbar__title-custom';
+
 		const toolbarItemComponent = shallow(
-			<ToolbarTitle>
+			<ToolbarTitle className={customClass}>
 				<Fragment />
 			</ToolbarTitle>
 		);
 
+		expect(toolbarItemComponent.hasClass(customClass)).toEqual(true);
 		expect(toolbarItemComponent.hasClass('c-toolbar__title')).toEqual(true);
 	});
 

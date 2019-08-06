@@ -9,9 +9,14 @@ describe('<Checkbox />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const checkboxComponent = shallow(<Checkbox label="One" checked={false} />);
+		const customClass = 'c-checkbox-custom';
+
+		const checkboxComponent = shallow(
+			<Checkbox className={customClass} label="One" checked={false} />
+		);
 
 		expect(checkboxComponent.hasClass('c-checkbox')).toEqual(true);
+		expect(checkboxComponent.hasClass(customClass)).toEqual(true);
 	});
 
 	it('Should correctly render `label`', () => {

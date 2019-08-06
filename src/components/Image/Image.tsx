@@ -2,7 +2,9 @@ import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
-export interface ImageProps {
+import { DefaultProps } from '../../types';
+
+export interface ImageProps extends DefaultProps {
 	src: string;
 	alt?: string;
 	wide?: boolean;
@@ -11,13 +13,14 @@ export interface ImageProps {
 }
 
 export const Image: FunctionComponent<ImageProps> = ({
+	className,
 	src,
 	alt,
 	wide,
 	width,
 	height,
 }: ImageProps) => (
-	<div className={classNames('c-image', { 'c-image--full': wide })}>
+	<div className={classNames(className, 'c-image', { 'c-image--full': wide })}>
 		<img src={src} alt={alt} width={width} height={height} />
 	</div>
 );

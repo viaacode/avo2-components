@@ -14,10 +14,18 @@ describe('<MediaCard />', () => {
 	});
 
 	it('Should set the correct className', () => {
+		const customClass = 'c-media-card-custom';
+
 		const mediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" href="#" category="collection" />
+			<MediaCard
+				className={customClass}
+				title="What an amazing title!"
+				href="#"
+				category="collection"
+			/>
 		);
 
+		expect(mediaCardComponent.hasClass(customClass)).toEqual(true);
 		expect(mediaCardComponent.hasClass('c-media-card')).toEqual(true);
 	});
 

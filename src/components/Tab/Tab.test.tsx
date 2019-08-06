@@ -6,6 +6,7 @@ import { Icon } from '../Icon/Icon';
 import { Tab } from './Tab';
 
 const mockTab = {
+	className: 'c-tabs__item-custom',
 	label: 'Videos',
 	id: 'video',
 	active: true,
@@ -24,6 +25,7 @@ describe('<Tab />', () => {
 	it('Should set the correct className', () => {
 		const tabComponent = shallow(<Tab {...mockTab} />);
 
+		expect(tabComponent.hasClass(mockTab.className)).toEqual(true);
 		expect(tabComponent.hasClass('c-tabs__item')).toEqual(true);
 	});
 

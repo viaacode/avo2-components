@@ -1,8 +1,11 @@
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
-import { useDeselectEvent } from '../../hooks/useDeselectEvent';
+import classnames from 'classnames';
 
-export interface RadioButtonProps {
+import { useDeselectEvent } from '../../hooks/useDeselectEvent';
+import { DefaultProps } from '../../types';
+
+export interface RadioButtonProps extends DefaultProps {
 	label: string;
 	name: string;
 	value: string;
@@ -13,6 +16,7 @@ export interface RadioButtonProps {
 }
 
 export const RadioButton: FunctionComponent<RadioButtonProps> = ({
+	className,
 	label,
 	name,
 	value,
@@ -40,7 +44,7 @@ export const RadioButton: FunctionComponent<RadioButtonProps> = ({
 	}
 
 	return (
-		<div className="c-radio">
+		<div className={classnames(className, 'c-radio')}>
 			<label>
 				<input
 					type="radio"

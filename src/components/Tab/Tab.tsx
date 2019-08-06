@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from 'react';
 
-import { Icon } from '../Icon/Icon';
-
 import classNames from 'classnames';
 
-export interface TabProps {
+import { DefaultProps } from '../../types';
+import { Icon } from '../Icon/Icon';
+
+export interface TabProps extends DefaultProps {
 	label: string;
 	id: string | number;
 	icon?: string;
@@ -13,13 +14,14 @@ export interface TabProps {
 }
 
 export const Tab: FunctionComponent<TabProps> = ({
+	className,
 	label,
 	icon,
 	active,
 	onClick = () => {},
 }: TabProps) => (
 	<div
-		className={classNames('c-tabs__item', {
+		className={classNames(className, 'c-tabs__item', {
 			'c-tabs__item--active': active,
 		})}
 		style={{ cursor: 'pointer' }}
