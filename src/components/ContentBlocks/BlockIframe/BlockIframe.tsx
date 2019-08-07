@@ -3,6 +3,7 @@ import React, { FunctionComponent, IframeHTMLAttributes } from 'react';
 import classNames from 'classnames';
 
 export interface BlockIframeProps extends IframeHTMLAttributes<HTMLIFrameElement> {
+	title: string;
 	ratio?: '3:2' | '16:9';
 }
 

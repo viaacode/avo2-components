@@ -6,18 +6,18 @@ import { BlockIframe } from './BlockIframe';
 
 describe('<BlockIframe />', () => {
 	it('Should be able to render', () => {
-		shallow(<BlockIframe />);
+		shallow(<BlockIframe title="test" />);
 	});
 
 	it('Should correctly set the wrapper `className`', () => {
-		const blockIframeComponent = shallow(<BlockIframe />);
+		const blockIframeComponent = shallow(<BlockIframe title="test" />);
 
 		expect(blockIframeComponent.hasClass('c-video-wrapper')).toEqual(true);
 	});
 
 	it('Should correctly set the wrapper `className` for the aspect ratios', () => {
-		const blockIframe32Component = shallow(<BlockIframe ratio="3:2" />);
-		const blockIframe169Component = shallow(<BlockIframe ratio="16:9" />);
+		const blockIframe32Component = shallow(<BlockIframe title="test" ratio="3:2" />);
+		const blockIframe169Component = shallow(<BlockIframe title="test" ratio="16:9" />);
 
 		expect(blockIframe32Component.hasClass('c-video-wrapper--aspect-2-3')).toEqual(true);
 		expect(blockIframe169Component.hasClass('c-video-wrapper--aspect-16-9')).toEqual(true);
@@ -25,6 +25,7 @@ describe('<BlockIframe />', () => {
 
 	it('Should correctly pass on the supported iframe-props', () => {
 		const iframeProps = {
+			title: 'hello',
 			width: 800,
 			height: 450,
 			margin: 30,
