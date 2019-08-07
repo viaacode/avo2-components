@@ -10,6 +10,8 @@ export interface BlockIframeProps extends IframeHTMLAttributes<HTMLIFrameElement
 export const BlockIframe: FunctionComponent<BlockIframeProps> = ({
 	title,
 	ratio,
+	allowFullScreen = true,
+	frameBorder = 0,
 	...iframeProps
 }: BlockIframeProps) => {
 	return (
@@ -19,7 +21,12 @@ export const BlockIframe: FunctionComponent<BlockIframeProps> = ({
 				'c-video-wrapper--aspect-16-9': ratio === '16:9',
 			})}
 		>
-			<iframe title={title} {...iframeProps} />
+			<iframe
+				title={title}
+				allowFullScreen={allowFullScreen}
+				frameBorder={frameBorder}
+				{...iframeProps}
+			/>
 		</div>
 	);
 };

@@ -11,7 +11,5 @@ storiesOf('BlockIframe', module)
 			src="https://player.vimeo.com/video/152135660?color=ffffff&title=0&byline=0&portrait=0"
 			width={800}
 			height={450}
-			frameBorder="0"
-			allowFullScreen
 		/>
 	));
