@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Select } from './Select';
 
+const customClass = 'c-select-custom';
 const options = [
 	{ label: 'Aluminium', value: 'Al' },
 	{ label: 'Cadmium', value: 'Cd' },
@@ -22,11 +23,12 @@ describe('<Select />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const selectComponent = shallow(<Select options={options} />);
+		const selectComponent = shallow(<Select className={customClass} options={options} />);
 
 		const selectWrapper = selectComponent.at(0);
 		const selectElement = selectComponent.find('select');
 
+		expect(selectWrapper.hasClass(customClass)).toEqual(true);
 		expect(selectWrapper.hasClass('c-select-holder')).toEqual(true);
 		expect(selectElement.hasClass('c-select')).toEqual(true);
 	});

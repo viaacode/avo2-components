@@ -1,12 +1,16 @@
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../types';
+
 interface SelectOption {
 	value: string;
 	label: string;
 	disabled?: boolean;
 }
 
-export interface SelectProps {
+export interface SelectProps extends DefaultProps {
 	options: SelectOption[];
 	id?: string;
 	disabled?: boolean;
@@ -15,6 +19,7 @@ export interface SelectProps {
 }
 
 export const Select: FunctionComponent<SelectProps> = ({
+	className,
 	options,
 	id,
 	disabled = false,
@@ -26,7 +31,7 @@ export const Select: FunctionComponent<SelectProps> = ({
 	}
 
 	return (
-		<div className="c-select-holder">
+		<div className={classnames(className, 'c-select-holder')}>
 			<select
 				className="c-select"
 				id={id}

@@ -2,9 +2,10 @@ import React, { FunctionComponent, MouseEvent } from 'react';
 
 import classNames from 'classnames';
 
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
-export interface ButtonProps {
+export interface ButtonProps extends DefaultProps {
 	ariaLabel?: string;
 	label?: string;
 	type?:
@@ -28,6 +29,7 @@ export interface ButtonProps {
 
 const Button: FunctionComponent<ButtonProps> = ({
 	ariaLabel,
+	className,
 	label,
 	type,
 	size,
@@ -39,7 +41,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 	onClick,
 }: ButtonProps) => (
 	<button
-		className={classNames('c-button', {
+		className={classNames(className, 'c-button', {
 			active,
 			'c-button-action': active,
 			'c-button--small': size === 'small',

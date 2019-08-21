@@ -9,8 +9,11 @@ describe('<MetaDataItem />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const metaDataItemComponent = shallow(<MetaDataItem label="VRT" />);
+		const customClass = 'c-meta-data__item-custom';
 
+		const metaDataItemComponent = shallow(<MetaDataItem className={customClass} label="VRT" />);
+
+		expect(metaDataItemComponent.hasClass(customClass)).toEqual(true);
 		expect(metaDataItemComponent.hasClass('c-meta-data__item')).toEqual(true);
 	});
 

@@ -1,18 +1,24 @@
 import React, { FunctionComponent } from 'react';
 
-import { Tab, TabProps } from '../Tab/Tab';
-
 import classNames from 'classnames';
 
-export interface TabsProps {
+import { DefaultProps } from '../../types';
+import { Tab, TabProps } from '../Tab/Tab';
+
+export interface TabsProps extends DefaultProps {
 	tabs: TabProps[];
 	border?: boolean;
 	onClick?: (tabId: string | number) => void;
 }
 
-export const Tabs: FunctionComponent<TabsProps> = ({ tabs, border, onClick = () => {} }) => (
+export const Tabs: FunctionComponent<TabsProps> = ({
+	className,
+	tabs,
+	border,
+	onClick = () => {},
+}) => (
 	<nav
-		className={classNames('c-tabs', {
+		className={classNames(className, 'c-tabs', {
 			'c-tabs--bottom-border': border,
 		})}
 	>

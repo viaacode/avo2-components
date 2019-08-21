@@ -9,9 +9,11 @@ describe('<Badge />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const badgeComponent = shallow(<Badge text="this is a badge" />);
+		const customClass = 'c-badge-custom';
+		const badgeComponent = shallow(<Badge className={customClass} text="this is a badge" />);
 
 		expect(badgeComponent.hasClass('c-badge')).toEqual(true);
+		expect(badgeComponent.hasClass(customClass)).toEqual(true);
 	});
 
 	it('Should set the correct className for every type', () => {

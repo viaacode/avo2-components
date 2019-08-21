@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 
+import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
 
-export interface ToggleButtonProps {
+export interface ToggleButtonProps extends DefaultProps {
 	icon: 'heart' | 'bookmark';
 	active: boolean;
 	ariaLabel: string;
@@ -20,6 +21,7 @@ export interface ToggleButtonProps {
 }
 
 export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
+	className,
 	icon,
 	active,
 	ariaLabel,
@@ -50,6 +52,7 @@ export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
 
 	return (
 		<Button
+			className={className}
 			icon={getIcon()}
 			type={type}
 			active={filled}

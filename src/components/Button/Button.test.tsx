@@ -17,9 +17,11 @@ describe('<Button />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const buttonComponent = shallow(<Button ariaLabel="test button" />);
+		const customClass = 'c-button-custom';
+		const buttonComponent = shallow(<Button className={customClass} ariaLabel="test button" />);
 
 		expect(buttonComponent.hasClass('c-button')).toEqual(true);
+		expect(buttonComponent.hasClass(customClass)).toEqual(true);
 	});
 
 	it('Should set the correct size className', () => {

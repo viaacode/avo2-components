@@ -29,8 +29,10 @@ describe('<Toolbar />', () => {
 	});
 
 	it('Should set the correct className(s)', () => {
+		const customClass = 'c-toolbar-custom';
+
 		const toolbarComponent = shallow(
-			<Toolbar>
+			<Toolbar className={customClass}>
 				<ToolbarLeft>
 					<ToolbarItem>
 						<Fragment>Left</Fragment>
@@ -55,6 +57,7 @@ describe('<Toolbar />', () => {
 		const rightControlsDiv = toolbarComponent.find('.c-toolbar__right');
 
 		expect(mainToolbarDiv).toHaveLength(1);
+		expect(mainToolbarDiv.hasClass(customClass)).toBeTruthy();
 		expect(leftControlsDiv).toHaveLength(1);
 		expect(centerControlsDiv).toHaveLength(1);
 		expect(rightControlsDiv).toHaveLength(1);

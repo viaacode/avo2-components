@@ -9,6 +9,17 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 	it('Should be able to render', () => {
 		shallow(<ToggleButton ariaLabel="test button" icon="heart" active={false} />);
 	});
+
+	it('should correctly pass a custom className', () => {
+		const customClass = 'c-toggle-button-custom';
+
+		const toggleButtonComponent = shallow(
+			<ToggleButton ariaLabel="test button" className={customClass} icon="heart" active={false} />
+		);
+
+		expect(toggleButtonComponent.hasClass(customClass)).toBeTruthy();
+	});
+
 	it('Should set aria label', () => {
 		const inactiveToggleButtonComponent = mount(
 			<ToggleButton ariaLabel="toggle favorite" icon="heart" active={false} />

@@ -15,14 +15,18 @@ describe('<Blankslate />', () => {
 	});
 
 	it('Should set the correct className', () => {
+		const customClass = 'c-blankslate';
+
 		const blankslateComponent = shallow(
 			<Blankslate
+				className={customClass}
 				title="This is a blank slate"
 				body="Use it to provide information when no dynamic content exists."
 			/>
 		);
 
 		expect(blankslateComponent.hasClass('c-blankslate')).toEqual(true);
+		expect(blankslateComponent.hasClass(customClass)).toEqual(true);
 	});
 
 	it('Should set the correct className when in spacious mode', () => {

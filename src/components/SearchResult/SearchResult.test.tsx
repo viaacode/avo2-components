@@ -11,8 +11,11 @@ import {
 } from './SearchResult.slots';
 import { fakeSearchResult } from './SearchResult.stories';
 
+const customClass = 'c-search-result';
+
 const searchResult = (
 	<SearchResult
+		className={customClass}
 		type={fakeSearchResult.administrative_type as ContentType}
 		date={fakeSearchResult.dcterms_issued}
 		viewCount={41}
@@ -59,6 +62,7 @@ describe('<SearchResult />', () => {
 	it('Should set the correct className', () => {
 		const searchResultComponent = shallow(searchResult);
 
+		expect(searchResultComponent.hasClass(customClass)).toEqual(true);
 		expect(searchResultComponent.hasClass('c-search-result')).toEqual(true);
 	});
 

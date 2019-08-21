@@ -2,6 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
+import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Spinner } from '../Spinner/Spinner';
@@ -12,7 +13,7 @@ const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
 	danger: 'circle-warning',
 };
 
-export interface AlertProps {
+export interface AlertProps extends DefaultProps {
 	close: () => void;
 	dark?: boolean;
 	message: ReactNode | string;
@@ -20,13 +21,14 @@ export interface AlertProps {
 }
 
 export const Alert: FunctionComponent<AlertProps> = ({
+	className,
 	close = () => {},
 	dark = false,
 	message,
 	type = 'info',
 }) => {
 	return (
-		<div className={classNames('c-alert', { 'c-alert--dark': dark })}>
+		<div className={classNames(className, 'c-alert', { 'c-alert--dark': dark })}>
 			<div className="c-alert__body">
 				<div className="u-spacer-right-s">
 					{ALERT_TYPE_TO_ICON_MAPPING[type] ? (

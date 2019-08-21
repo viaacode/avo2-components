@@ -1,9 +1,13 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-export interface GridProps {
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../types';
+
+export interface GridProps extends DefaultProps {
 	children: ReactNode;
 }
 
-export const Grid: FunctionComponent<GridProps> = ({ children }: GridProps) => (
-	<div className="o-grid">{children}</div>
+export const Grid: FunctionComponent<GridProps> = ({ children, className }: GridProps) => (
+	<div className={classnames(className, 'o-grid')}>{children}</div>
 );

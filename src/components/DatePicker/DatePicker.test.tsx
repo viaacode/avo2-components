@@ -9,10 +9,13 @@ describe('<DatePicker />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const datePickerComponent = shallow(<DatePicker />);
+		const customClass = 'c-datepicker-custom';
+
+		const datePickerComponent = shallow(<DatePicker className={customClass} />);
 
 		const datePickerElement = datePickerComponent.find('input');
 
+		expect(datePickerComponent.hasClass(customClass)).toEqual(true);
 		expect(datePickerElement.hasClass('c-input')).toEqual(true);
 	});
 

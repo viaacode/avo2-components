@@ -14,12 +14,15 @@ describe('<Grid />', () => {
 	});
 
 	it('Should correctly set the className', () => {
+		const customClass = 'c-grid-custom';
+
 		const gridComponent = shallow(
-			<Grid>
+			<Grid className={customClass}>
 				<Column size="6">Hello</Column>
 			</Grid>
 		);
 
+		expect(gridComponent.hasClass(customClass)).toEqual(true);
 		expect(gridComponent.hasClass('o-grid')).toEqual(true);
 	});
 

@@ -2,10 +2,10 @@ import React, { FunctionComponent, useState } from 'react';
 
 import classNames from 'classnames';
 
-import { ContentType } from '../../types';
+import { ContentType, DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
-export interface ThumbnailProps {
+export interface ThumbnailProps extends DefaultProps {
 	category: ContentType;
 	src?: string;
 	alt?: string;
@@ -15,6 +15,7 @@ export interface ThumbnailProps {
 
 export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 	category,
+	className,
 	src,
 	alt,
 	label,
@@ -25,7 +26,12 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 
 	return (
 		<div
-			className={classNames('c-thumbnail', 'c-thumbnail-media', `c-thumbnail-media--${category}`)}
+			className={classNames(
+				className,
+				'c-thumbnail',
+				'c-thumbnail-media',
+				`c-thumbnail-media--${category}`
+			)}
 		>
 			<div className="c-thumbnail-placeholder">{category && <Icon name={iconName} />}</div>
 			{src && (

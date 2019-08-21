@@ -1,10 +1,13 @@
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
 type InputType = 'password' | 'text' | 'email' | 'search' | 'number' | 'tel' | 'url';
 
-export interface TextInputProps {
+export interface TextInputProps extends DefaultProps {
 	id?: string;
 	disabled?: boolean;
 	placeholder?: string;
@@ -15,6 +18,7 @@ export interface TextInputProps {
 }
 
 export const TextInput: FunctionComponent<TextInputProps> = ({
+	className,
 	id,
 	disabled = false,
 	placeholder,
@@ -27,8 +31,10 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 		onChange(event.target.value);
 	}
 
+	const classes = classnames(className, icon ? 'c-input-with-icon' : 'c-input');
+
 	return icon ? (
-		<div className="c-input-with-icon">
+		<div className={classes}>
 			<input
 				className="c-input"
 				type={type}
@@ -42,7 +48,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 		</div>
 	) : (
 		<input
-			className="c-input"
+			className={classes}
 			type={type}
 			id={id}
 			value={value}

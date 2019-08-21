@@ -1,6 +1,8 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
+
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
 type Column = {
@@ -9,7 +11,7 @@ type Column = {
 	sortable?: boolean;
 };
 
-export interface TableProps {
+export interface TableProps extends DefaultProps {
 	data: any[];
 	rowKey: string;
 	columns: Column[];
@@ -23,6 +25,7 @@ export interface TableProps {
 }
 
 export const Table: FunctionComponent<TableProps> = ({
+	className,
 	data = [],
 	rowKey,
 	columns = [],
@@ -36,7 +39,7 @@ export const Table: FunctionComponent<TableProps> = ({
 }: TableProps) => {
 	return (
 		<table
-			className={classNames('c-table', {
+			className={classNames(className, 'c-table', {
 				'c-table--styled': styled || bordered,
 				'c-table--bordered': bordered,
 			})}
