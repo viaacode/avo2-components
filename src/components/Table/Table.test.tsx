@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { Icon } from '../Icon/Icon';
 
@@ -34,8 +34,8 @@ describe('<Table />', () => {
 			<Table className={customClass} columns={COLUMNS} data={DATA} rowKey="id" />
 		);
 
-		expect(tableComponent.hasClass(customClass)).toEqual(true);
-		expect(tableComponent.hasClass('c-table')).toEqual(true);
+		expect(tableComponent.find('table').hasClass(customClass)).toEqual(true);
+		expect(tableComponent.find('table').hasClass('c-table')).toEqual(true);
 	});
 
 	it('Should set the correct className for the `styled`-prop', () => {
@@ -44,8 +44,8 @@ describe('<Table />', () => {
 			<Table columns={COLUMNS} data={DATA} rowKey="id" styled />
 		);
 
-		expect(tableComponent.hasClass('c-table--styled')).toEqual(false);
-		expect(styledTableComponent.hasClass('c-table--styled')).toEqual(true);
+		expect(tableComponent.find('table').hasClass('c-table--styled')).toEqual(false);
+		expect(styledTableComponent.find('table').hasClass('c-table--styled')).toEqual(true);
 	});
 
 	it('Should set the correct className for the `bordered`-prop', () => {
@@ -54,10 +54,10 @@ describe('<Table />', () => {
 			<Table columns={COLUMNS} data={DATA} rowKey="id" bordered />
 		);
 
-		expect(tableComponent.hasClass('c-table--styled')).toEqual(false);
-		expect(tableComponent.hasClass('c-table--bordered')).toEqual(false);
-		expect(styledTableComponent.hasClass('c-table--styled')).toEqual(true);
-		expect(styledTableComponent.hasClass('c-table--bordered')).toEqual(true);
+		expect(tableComponent.find('table').hasClass('c-table--styled')).toEqual(false);
+		expect(tableComponent.find('table').hasClass('c-table--bordered')).toEqual(false);
+		expect(styledTableComponent.find('table').hasClass('c-table--styled')).toEqual(true);
+		expect(styledTableComponent.find('table').hasClass('c-table--bordered')).toEqual(true);
 	});
 
 	it('Should be able to render the table head from `columns`', () => {
