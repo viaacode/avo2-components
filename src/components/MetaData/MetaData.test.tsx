@@ -16,14 +16,17 @@ describe('<MetaDataItem />', () => {
 	});
 
 	it('Should set the correct className', () => {
+		const customClass = 'c-meta-data-custom';
+
 		const metaDataComponent = shallow(
-			<MetaData category="video">
+			<MetaData category="video" className={customClass}>
 				<MetaDataItem label="VRT" />
 				<MetaDataItem icon="headphone" label="738" />
 				<MetaDataItem label="2d geleden" />
 			</MetaData>
 		);
 
+		expect(metaDataComponent.hasClass(customClass)).toEqual(true);
 		expect(metaDataComponent.hasClass('c-meta-data')).toEqual(true);
 	});
 

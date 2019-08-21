@@ -5,10 +5,14 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockIntro } from './BlockIntro';
 
+const customClass = 'c-block-custom';
 const title = 'Page title';
 const subtitle = 'the subtitle';
 const text = loremIpsum({ count: 3 });
-export const BlockIntroExample = <BlockIntro title={title} subtitle={subtitle} text={text} />;
+
+export const BlockIntroExample = (
+	<BlockIntro className={customClass} title={title} subtitle={subtitle} text={text} />
+);
 
 describe('<BlockIntro />', () => {
 	it('Should be able to render', () => {
@@ -59,6 +63,7 @@ describe('<BlockIntro />', () => {
 		const h1Element = component.find('h1');
 		const pElement = component.find('p');
 
+		expect(component.hasClass(customClass)).toEqual(true);
 		expect(verticalContainer.hasClass('o-container-vertical')).toEqual(true);
 		expect(verticalContainer.hasClass('o-container-vertical-page-intro')).toEqual(true);
 

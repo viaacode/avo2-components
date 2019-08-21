@@ -2,13 +2,14 @@ import React, { FunctionComponent } from 'react';
 
 import marked from 'marked';
 
+import { DefaultProps } from '../../../types';
 import { Container } from '../../Container/Container';
 import { ExpandableContainer } from '../../ExpandableContainer/ExpandableContainer';
 import { Column } from '../../Grid/Column';
 import { Grid } from '../../Grid/Grid';
 import { Spacer } from '../../Spacer/Spacer';
 
-export interface BlockVideoTitleTextButtonProps {
+export interface BlockVideoTitleTextButtonProps extends DefaultProps {
 	videoSource: string;
 	title?: string;
 	titleLink?: string;
@@ -17,6 +18,7 @@ export interface BlockVideoTitleTextButtonProps {
 }
 
 export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextButtonProps> = ({
+	className,
 	videoSource,
 	title,
 	titleLink,
@@ -24,7 +26,7 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 	collapsedHeight = 220,
 }: BlockVideoTitleTextButtonProps) => {
 	return (
-		<Container mode="horizontal">
+		<Container className={className} mode="horizontal">
 			<Spacer>
 				<Grid>
 					<Column size="2-6">

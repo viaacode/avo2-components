@@ -30,8 +30,11 @@ describe('<MenuItem />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const menuComponent = shallow(<Menu menuItems={menuItems} />);
+		const customClass = 'c-menu-custom';
 
+		const menuComponent = shallow(<Menu className={customClass} menuItems={menuItems} />);
+
+		expect(menuComponent.hasClass(customClass)).toEqual(true);
 		expect(menuComponent.hasClass('c-menu')).toEqual(true);
 		expect(menuComponent.hasClass('c-menu--visible')).toEqual(true);
 	});

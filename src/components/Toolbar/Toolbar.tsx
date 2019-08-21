@@ -4,9 +4,10 @@ import classNames from 'classnames';
 
 import { useSlot } from '../../hooks/useSlot';
 
+import { DefaultProps } from '../../types';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
 
-export interface ToolbarProps {
+export interface ToolbarProps extends DefaultProps {
 	children: ReactNode;
 	size?: 'medium';
 	spaced?: boolean;
@@ -16,6 +17,7 @@ export interface ToolbarProps {
 
 export const Toolbar: FunctionComponent<ToolbarProps> = ({
 	children,
+	className,
 	size,
 	spaced,
 	autoHeight,
@@ -27,7 +29,7 @@ export const Toolbar: FunctionComponent<ToolbarProps> = ({
 
 	return (
 		<div
-			className={classNames('c-toolbar', {
+			className={classNames(className, 'c-toolbar', {
 				'c-toolbar--medium': size === 'medium',
 				'c-toolbar--spaced': spaced,
 				'c-toolbar--auto': autoHeight,

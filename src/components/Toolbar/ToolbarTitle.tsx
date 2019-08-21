@@ -1,11 +1,16 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-export interface ToolbarTitleProps {
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../types';
+
+export interface ToolbarTitleProps extends DefaultProps {
 	children: ReactNode;
 }
 
 export const ToolbarTitle: FunctionComponent<ToolbarTitleProps> = ({
 	children,
+	className,
 }: ToolbarTitleProps) => {
-	return <h2 className="c-toolbar__title">{children}</h2>;
+	return <h2 className={classnames(className, 'c-toolbar__title')}>{children}</h2>;
 };

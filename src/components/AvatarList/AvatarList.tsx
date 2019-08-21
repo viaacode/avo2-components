@@ -1,5 +1,8 @@
 import React, { Fragment, FunctionComponent } from 'react';
 
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../types';
 import { Avatar, AvatarProps } from '../Avatar/Avatar';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots';
@@ -10,22 +13,26 @@ import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 import './AvatarList.css';
 
 interface ExtendedAvatarProps extends AvatarProps {
-	onClick: (avatar: ExtendedAvatarProps) => void;
+	onClick?: (avatar: ExtendedAvatarProps) => void;
 	subtitle?: string;
 }
 
-export interface AvatarListProps {
+export interface AvatarListProps extends DefaultProps {
 	avatars: ExtendedAvatarProps[];
 	isOpen: boolean;
 }
 
-export const AvatarList: FunctionComponent<AvatarListProps> = ({ avatars, isOpen = false }) => {
+export const AvatarList: FunctionComponent<AvatarListProps> = ({
+	avatars,
+	className,
+	isOpen = false,
+}) => {
 	const visibleAvatars = avatars.slice(0, 3);
 	const hiddenAvatars = avatars.slice(3, avatars.length);
 	const hasHiddenAvatars = hiddenAvatars && !!hiddenAvatars.length;
 
 	return (
-		<div className="c-avatar--multiple c-avatar-list-overrides">
+		<div className={classnames(className, 'c-avatar--multiple', 'c-avatar-list-overrides')}>
 			{visibleAvatars.map((avatar, index) => (
 				<Fragment key={index}>
 					<Tooltip position="bottom">
@@ -52,7 +59,11 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({ avatars, isOpen
 						<Fragment>
 							{hiddenAvatars.map((avatar, index) => (
 								// eslint-disable-next-line jsx-a11y/anchor-is-valid
-								<a key={index} className="c-menu__item" onClick={() => avatar.onClick(avatar)}>
+								<a
+									key={index}
+									className="c-menu__item"
+									onClick={() => (avatar.onClick ? avatar.onClick(avatar) : undefined)}
+								>
 									<div className="c-menu__label">
 										<Flex orientation="vertical" center>
 											<Avatar initials={avatar.initials} image={avatar.image} />

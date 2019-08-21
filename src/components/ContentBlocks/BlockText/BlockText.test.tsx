@@ -5,6 +5,7 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockText } from './BlockText';
 
+const customClass = 'c-block-custom';
 const markdownAndHtmlString = `
   # Title
 
@@ -23,7 +24,8 @@ const markdownAndHtmlString = `
 		<li>3</li>
   </ul>
   `;
-const BlockTextExample = <BlockText text={markdownAndHtmlString} />;
+
+const BlockTextExample = <BlockText className={customClass} text={markdownAndHtmlString} />;
 
 describe('<BlockText />', () => {
 	it('Should be able to render', () => {
@@ -51,6 +53,8 @@ describe('<BlockText />', () => {
 		const verticalContainer = component.find('div').at(0);
 		const horizontalContainer = component.find('div').at(1);
 		const contentContainer = component.find('div').at(2);
+
+		expect(component.hasClass(customClass)).toEqual(true);
 
 		expect(verticalContainer.hasClass('o-container-vertical')).toEqual(true);
 		expect(verticalContainer.hasClass('o-container-vertical-rich-text')).toEqual(true);

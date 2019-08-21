@@ -1,6 +1,10 @@
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
-export interface CheckboxProps {
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../types';
+
+export interface CheckboxProps extends DefaultProps {
 	label: string;
 	checked?: boolean;
 	id?: string;
@@ -9,6 +13,7 @@ export interface CheckboxProps {
 }
 
 export const Checkbox: FunctionComponent<CheckboxProps> = ({
+	className,
 	label,
 	id,
 	disabled = false,
@@ -24,7 +29,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
 	}
 
 	return (
-		<div className="c-checkbox">
+		<div className={classnames(className, 'c-checkbox')}>
 			<label>
 				<input
 					type="checkbox"

@@ -19,10 +19,13 @@ describe('<MenuItem />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const menuComponent = mount(<MenuSearchResult menuItems={menuItems} />);
+		const customClass = 'c-menu-search-result-custom';
+
+		const menuComponent = mount(<MenuSearchResult className={customClass} menuItems={menuItems} />);
 
 		const mainDivElement = menuComponent.find('div').at(0);
 
+		expect(mainDivElement.hasClass(customClass)).toEqual(true);
 		expect(mainDivElement.hasClass('c-menu')).toEqual(true);
 		expect(mainDivElement.hasClass('c-menu--search-result')).toEqual(true);
 		expect(mainDivElement.hasClass('c-menu--visible')).toEqual(true);

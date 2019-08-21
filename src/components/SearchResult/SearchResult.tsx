@@ -1,5 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
+import classnames from 'classnames';
+
 import { useSlot } from '../../hooks/useSlot';
 import {
 	SearchResultSubtitle,
@@ -7,13 +9,13 @@ import {
 	SearchResultTitle,
 } from './SearchResult.slots';
 
-import { ContentType } from '../../types';
+import { ContentType, DefaultProps } from '../../types';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaDataItem/MetaDataItem';
 import { TagList } from '../TagList/TagList';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
 
-export interface SearchResultProps {
+export interface SearchResultProps extends DefaultProps {
 	children: ReactNode;
 	type: ContentType;
 	thumbnailPath?: string;
@@ -27,6 +29,7 @@ export interface SearchResultProps {
 
 export const SearchResult: FunctionComponent<SearchResultProps> = ({
 	children,
+	className,
 	type,
 	description = '',
 	date,
@@ -40,7 +43,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 	const thumbnail = useSlot(SearchResultThumbnail, children);
 
 	return (
-		<div className="c-search-result">
+		<div className={classnames(className, 'c-search-result')}>
 			<div className="c-search-result__image">{thumbnail}</div>
 			<div className="c-search-result__content">
 				<div className="o-flex o-flex--justify-between o-flex--align-top">

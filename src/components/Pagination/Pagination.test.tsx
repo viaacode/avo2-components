@@ -9,8 +9,11 @@ describe('<Pagination />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const paginationComponent = shallow(<Pagination pageCount={100} />);
+		const customClass = 'c-column-custom';
 
+		const paginationComponent = shallow(<Pagination className={customClass} pageCount={100} />);
+
+		expect(paginationComponent.hasClass(customClass)).toEqual(true);
 		expect(paginationComponent.hasClass('c-pagination')).toEqual(true);
 	});
 

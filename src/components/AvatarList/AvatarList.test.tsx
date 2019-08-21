@@ -9,11 +9,17 @@ describe('AvatarList', () => {
 	const visibleAvatarsLength = mockAvatars.slice(0, 3).length;
 	const hiddenAvatarsLength = mockAvatars.slice(3, avatarsLength).length;
 
-	const avatarList = <AvatarList avatars={mockAvatars} isOpen={false} />;
+	const customClass = 'c-avatar-list-custom';
+
+	const avatarList = <AvatarList avatars={mockAvatars} className={customClass} isOpen={false} />;
 	const wrapper = mount(avatarList);
 
 	it('should render', () => {
 		shallow(avatarList);
+	});
+
+	it('should pass a custom className', () => {
+		expect(shallow(avatarList).hasClass(customClass)).toBeTruthy();
 	});
 
 	it('should only show 3 visible avatars if more are given', () => {

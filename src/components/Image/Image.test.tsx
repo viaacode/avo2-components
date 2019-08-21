@@ -9,8 +9,11 @@ describe('<Image />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const imageComponent = shallow(<Image src="/images/500x200.svg" />);
+		const customClass = 'c-image-custom';
 
+		const imageComponent = shallow(<Image className={customClass} src="/images/500x200.svg" />);
+
+		expect(imageComponent.hasClass(customClass)).toEqual(true);
 		expect(imageComponent.hasClass('c-image')).toEqual(true);
 		expect(imageComponent.hasClass('c-image--full')).toEqual(false);
 	});

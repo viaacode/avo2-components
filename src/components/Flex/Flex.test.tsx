@@ -6,6 +6,7 @@ import { loremIpsum } from 'lorem-ipsum';
 import { Flex } from './Flex';
 
 const content = loremIpsum({ count: 1 });
+const customClass = 'c-flex-custom';
 
 describe('<Flex />', () => {
 	it('Should be able to render', () => {
@@ -13,8 +14,9 @@ describe('<Flex />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const flexComponent = shallow(<Flex>{content}</Flex>);
+		const flexComponent = shallow(<Flex className={customClass}>{content}</Flex>);
 
+		expect(flexComponent.hasClass(customClass)).toEqual(true);
 		expect(flexComponent.hasClass('o-flex')).toEqual(true);
 	});
 
