@@ -5,13 +5,13 @@ import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers/action';
 
 import { Icon } from '../Icon/Icon';
-import { Table } from './Table';
+import { Column, Table } from './Table';
 
-const COLUMNS = [
+const COLUMNS: Column[] = [
 	{ id: 'name', label: 'Name', sortable: true },
 	{ id: 'age', label: 'Age (in yrs)', sortable: true },
-	{ id: 'cat', label: 'Has cat?' },
-	{ id: 'dog', label: 'Has dog?' },
+	{ id: 'cat', label: 'Has cat?', col: '2' },
+	{ id: 'dog', label: 'Has dog?', col: '2' },
 ];
 
 const DATA = [

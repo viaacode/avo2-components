@@ -5,7 +5,23 @@ import classNames from 'classnames';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
-type Column = {
+export type Column = {
+	col?:
+		| '1'
+		| '2'
+		| '3'
+		| '4'
+		| '5'
+		| '6'
+		| '7'
+		| '8'
+		| '9'
+		| '10'
+		| '11'
+		| '12'
+		| '13'
+		| '14'
+		| '15';
 	id: string;
 	label: string;
 	sortable?: boolean;
@@ -49,7 +65,11 @@ export const Table: FunctionComponent<TableProps> = ({
 					<thead>
 						<tr>
 							{columns.map(heading => (
-								<th key={heading.id} onClick={() => heading.sortable && onColumnClick(heading.id)}>
+								<th
+									key={heading.id}
+									className={classNames({ [`o-table-col-${heading.col}`]: heading.col })}
+									onClick={() => heading.sortable && onColumnClick(heading.id)}
+								>
 									{heading.label}
 									{heading.sortable && sortColumn === heading.id && (
 										<Icon name={sortOrder === 'asc' ? 'chevron-up' : 'chevron-down'} />

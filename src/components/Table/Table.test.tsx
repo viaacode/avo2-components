@@ -3,12 +3,12 @@ import React, { Fragment } from 'react';
 
 import { Icon } from '../Icon/Icon';
 
-import { Table } from './Table';
+import { Column, Table } from './Table';
 
-const COLUMNS = [
+const COLUMNS: Column[] = [
 	{ id: 'name', label: 'Name', sortable: true },
 	{ id: 'age', label: 'Age (in yrs)', sortable: true },
-	{ id: 'cat', label: 'Has cat?' },
+	{ id: 'cat', label: 'Has cat?', col: '2' },
 	{ id: 'dog', label: 'Has dog?' },
 ];
 
@@ -91,6 +91,13 @@ describe('<Table />', () => {
 
 		expect(ascHeadingIcon.prop('name')).toEqual('chevron-up');
 		expect(descHeadingIcon.prop('name')).toEqual('chevron-down');
+	});
+
+	it('Should set the correct className for a th when col is given', () => {
+		const tableComponent = shallow(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
+		const colSize = 2;
+
+		expect(tableComponent.find(`.o-table-col-${colSize}`)).toHaveLength(1);
 	});
 
 	it('Should not try to render table head when no `columns` are passed', () => {
