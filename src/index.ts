@@ -19,6 +19,7 @@ import { Button } from './components/Button/Button';
 import { Checkbox } from './components/Checkbox/Checkbox';
 import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 import { Container } from './components/Container/Container';
+import { BlockIframe, BlockIframeProps } from './components/ContentBlocks/BlockIframe/BlockIframe';
 import { BlockImage, BlockImageProps } from './components/ContentBlocks/BlockImage/BlockImage';
 import {
 	BlockImageTitleTextButton,
@@ -107,6 +108,8 @@ export {
 	AvatarList,
 	Badge,
 	Blankslate,
+	BlockIframe,
+	BlockIframeProps,
 	BlockImage,
 	BlockImageProps,
 	BlockImageTitleTextButton,
