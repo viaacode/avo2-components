@@ -6,9 +6,9 @@ import cjs from 'rollup-plugin-commonjs'
 export default {
 	input: 'src/index.ts',
 	output: [{
-			file: 'dist/bundle.esm.js',
-			format: 'esm'
-		},
+		file: 'dist/bundle.esm.js',
+		format: 'esm'
+	},
 		{
 			file: 'dist/bundle.cjs.js',
 			format: 'cjs'
@@ -29,4 +29,16 @@ export default {
 			}],
 		}),
 	],
+	external: [ // Suppresses warnings about external dependencies
+		'jquery',
+		'react',
+		'classnames',
+		'marked',
+		'popper.js',
+		'react-popper',
+		'react-dom',
+		'autosize',
+		'react-trumbowyg/dist/trumbowyg.min.css',
+		'raf',
+	]
 }
