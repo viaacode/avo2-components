@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { Tab } from './Tab';
 
 const mockTab = {
-	id: 'videoTestId',
+	id: 'videosTestId',
 	label: 'Videos',
 	href: '#',
 	active: true,
