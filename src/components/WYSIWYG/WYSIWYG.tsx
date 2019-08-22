@@ -6,6 +6,8 @@ import 'trumbowyg/dist/plugins/table/trumbowyg.table';
 
 import './WYSIWYG.css';
 
+type TrumbowygEvent = (e: JQuery.Event) => void;
+
 export interface WYSIWYGProps {
 	id: string;
 	data?: string;
@@ -22,15 +24,15 @@ export interface WYSIWYGProps {
 	svgIconsPath?: string;
 	btnsDef?: Object;
 	plugins?: Object;
-	onFocus?: (e: JQuery.Event) => void;
-	onBlur?: (e: JQuery.Event) => void;
-	onInit?: (e: JQuery.Event) => void;
-	onChange?: (e: JQuery.Event) => void;
-	onResize?: (e: JQuery.Event) => void;
-	onPaste?: (e: JQuery.Event) => void;
-	onOpenFullScreen?: (e: JQuery.Event) => void;
-	onCloseFullScreen?: (e: JQuery.Event) => void;
-	onClose?: (e: JQuery.Event) => void;
+	onFocus?: TrumbowygEvent;
+	onBlur?: TrumbowygEvent;
+	onInit?: TrumbowygEvent;
+	onChange?: TrumbowygEvent;
+	onResize?: TrumbowygEvent;
+	onPaste?: TrumbowygEvent;
+	onOpenFullScreen?: TrumbowygEvent;
+	onCloseFullScreen?: TrumbowygEvent;
+	onClose?: TrumbowygEvent;
 }
 
 export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
