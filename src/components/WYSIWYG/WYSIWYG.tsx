@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 import Trumbowyg from 'react-trumbowyg';
+import 'react-trumbowyg/dist/trumbowyg.min.css';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
 
 import './WYSIWYG.css';
@@ -8,6 +9,7 @@ import './WYSIWYG.css';
 export interface WYSIWYGProps {
 	id: string;
 	data?: string;
+	placeholder?: string;
 	lang?: string;
 	buttons?: (string[] | string)[];
 	semantic?: boolean;
@@ -34,6 +36,7 @@ export interface WYSIWYGProps {
 export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 	id,
 	data = '',
+	placeholder,
 	lang,
 	buttons,
 	semantic,
@@ -46,19 +49,20 @@ export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 	svgIconsPath,
 	btnsDef,
 	plugins,
-	onFocus,
-	onBlur,
-	onInit,
-	onChange,
-	onResize,
-	onPaste,
-	onOpenFullScreen,
-	onCloseFullScreen,
-	onClose,
+	onFocus = () => {},
+	onBlur = () => {},
+	onInit = () => {},
+	onChange = () => {},
+	onResize = () => {},
+	onPaste = () => {},
+	onOpenFullScreen = () => {},
+	onCloseFullScreen = () => {},
+	onClose = () => {},
 }: WYSIWYGProps) => (
 	<Trumbowyg
 		id={id}
 		data={data}
+		placeholder={placeholder}
 		lang={lang}
 		buttons={buttons}
 		semantic={semantic}
