@@ -22,15 +22,15 @@ export interface WYSIWYGProps {
 	svgIconsPath?: string;
 	btnsDef?: Object;
 	plugins?: Object;
-	onFocus?: () => void;
-	onBlur?: () => void;
-	onInit?: () => void;
-	onChange?: () => void;
-	onResize?: () => void;
-	onPaste?: () => void;
-	onOpenFullScreen?: () => void;
-	onCloseFullScreen?: () => void;
-	onClose?: () => void;
+	onFocus?: (e: JQuery.Event) => void;
+	onBlur?: (e: JQuery.Event) => void;
+	onInit?: (e: JQuery.Event) => void;
+	onChange?: (e: JQuery.Event) => void;
+	onResize?: (e: JQuery.Event) => void;
+	onPaste?: (e: JQuery.Event) => void;
+	onOpenFullScreen?: (e: JQuery.Event) => void;
+	onCloseFullScreen?: (e: JQuery.Event) => void;
+	onClose?: (e: JQuery.Event) => void;
 }
 
 export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
