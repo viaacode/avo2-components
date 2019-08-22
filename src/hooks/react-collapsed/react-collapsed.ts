@@ -1,4 +1,5 @@
 /* tslint:disable */
+/* eslint-disable */
 import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
 import raf from 'raf';
 import {

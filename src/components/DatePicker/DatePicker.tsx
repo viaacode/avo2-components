@@ -1,8 +1,11 @@
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
-export interface DatePickerProps {
+export interface DatePickerProps extends DefaultProps {
 	id?: string;
 	disabled?: boolean;
 	placeholder?: string;
@@ -11,6 +14,7 @@ export interface DatePickerProps {
 }
 
 export const DatePicker: FunctionComponent<DatePickerProps> = ({
+	className,
 	id,
 	disabled = false,
 	placeholder = 'dd/mm/yyyy',
@@ -32,7 +36,7 @@ export const DatePicker: FunctionComponent<DatePickerProps> = ({
 	}
 
 	return (
-		<div className="c-input-with-icon">
+		<div className={classnames(className, 'c-input-with-icon')}>
 			<input
 				className="c-input"
 				type="date"

@@ -13,6 +13,17 @@ describe('<Navbar />', () => {
 		);
 	});
 
+	it('should correctly pass a custom className', () => {
+		const customClass = 'c-navbar-custom';
+
+		const navbarComponent = shallow(
+			<Navbar className={customClass}>
+				<Fragment />
+			</Navbar>
+		);
+		expect(navbarComponent.hasClass(customClass)).toBeTruthy();
+	});
+
 	it('Should set the correct classNames when placement is passed', () => {
 		const navbarDefaultComponent = shallow(
 			<Navbar>

@@ -1,8 +1,9 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
+import { DefaultProps } from '../../types';
 
-export interface FormGroupProps {
+export interface FormGroupProps extends DefaultProps {
 	label?: string;
 	labelFor?: string;
 	error?: string;
@@ -11,6 +12,7 @@ export interface FormGroupProps {
 }
 
 export const FormGroup: FunctionComponent<FormGroupProps> = ({
+	className,
 	label,
 	labelFor,
 	error,
@@ -18,7 +20,7 @@ export const FormGroup: FunctionComponent<FormGroupProps> = ({
 	children,
 }: FormGroupProps) => (
 	<div
-		className={classNames('o-form-group', {
+		className={classNames(className, 'o-form-group', {
 			'o-form-group--error': error,
 			[`o-form-group--inline-${inlineMode}`]: inlineMode,
 		})}

@@ -3,8 +3,10 @@ import React from 'react';
 
 import { BlockTitle } from './BlockTitle';
 
+const customClass = 'c-block-custom';
 const title = 'Main title';
-export const blockTitleExample = <BlockTitle title={title} />;
+
+export const blockTitleExample = <BlockTitle className={customClass} title={title} />;
 
 describe('<BlockTitle />', () => {
 	it('Should be able to render', () => {
@@ -24,6 +26,7 @@ describe('<BlockTitle />', () => {
 
 		const h1Element = component.find('h1');
 
+		expect(component.hasClass(customClass)).toEqual(true);
 		expect(component.hasClass('o-container-vertical')).toEqual(true);
 		expect(component.hasClass('o-container-vertical-title')).toEqual(true);
 		expect(h1Element.hasClass('o-container-vertical-title__title')).toEqual(true);

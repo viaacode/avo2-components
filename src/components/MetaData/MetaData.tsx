@@ -1,9 +1,10 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
-import { ContentType } from '../../types';
 
-export interface MetaDataProps {
+import { ContentType, DefaultProps } from '../../types';
+
+export interface MetaDataProps extends DefaultProps {
 	children: ReactNode;
 	category: ContentType;
 	spaced?: boolean;
@@ -11,11 +12,12 @@ export interface MetaDataProps {
 
 export const MetaData: FunctionComponent<MetaDataProps> = ({
 	children,
+	className,
 	category,
 	spaced,
 }: MetaDataProps) => (
 	<ul
-		className={classNames(`c-meta-data c-meta-data--${category}`, {
+		className={classNames(className, `c-meta-data c-meta-data--${category}`, {
 			'c-meta-data--spaced-out': spaced,
 		})}
 	>

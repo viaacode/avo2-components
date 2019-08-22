@@ -2,9 +2,10 @@ import React, { FunctionComponent, MouseEvent } from 'react';
 
 import classNames from 'classnames';
 
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
-export interface TagListProps {
+export interface TagListProps extends DefaultProps {
 	tags: { label: string; id: string | number }[];
 	swatches?: boolean;
 	bordered?: boolean;
@@ -14,6 +15,7 @@ export interface TagListProps {
 }
 
 export const TagList: FunctionComponent<TagListProps> = ({
+	className,
 	tags,
 	swatches = true,
 	bordered = true,
@@ -24,7 +26,7 @@ export const TagList: FunctionComponent<TagListProps> = ({
 	const safeOnTagClicked = onTagClicked || (() => {});
 
 	return !!tags && !!tags.length ? (
-		<ul className="c-tag-list">
+		<ul className={classNames(className, 'c-tag-list')}>
 			{tags.map((tag: { label: string; id: string | number }, index) => (
 				<li className={classNames({ 'c-tag': bordered, 'c-label': !bordered })} key={tag.id}>
 					{swatches && (
@@ -51,6 +53,7 @@ export const TagList: FunctionComponent<TagListProps> = ({
 						</span>
 					)}
 					{closable && (
+						// eslint-disable-next-line jsx-a11y/anchor-is-valid
 						<a onClick={(evt: MouseEvent) => onTagClosed(tag.id, evt)}>
 							<Icon name="close" />
 						</a>

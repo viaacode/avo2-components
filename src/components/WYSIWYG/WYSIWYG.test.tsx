@@ -24,6 +24,14 @@ describe('<WYSIWYG />', () => {
 		expect(wysiwygComponent.prop('data')).toEqual(data);
 	});
 
+	it('Should correctly pass on `placeholder`', () => {
+		const placeholder = 'this is the empty state placeholder';
+
+		const wysiwygComponent = shallow(<WYSIWYG id="test" placeholder={placeholder} />);
+
+		expect(wysiwygComponent.prop('placeholder')).toEqual(placeholder);
+	});
+
 	it('Should correctly pass on `lang`', () => {
 		const lang = 'nl';
 

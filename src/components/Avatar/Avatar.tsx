@@ -1,13 +1,17 @@
 import React, { FunctionComponent } from 'react';
 
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../types';
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon';
 
-export interface AvatarProps extends AvatarIconProps {
+export interface AvatarProps extends DefaultProps, AvatarIconProps {
 	name?: string;
 	title?: string;
 }
 
 export const Avatar: FunctionComponent<AvatarProps> = ({
+	className,
 	initials,
 	size,
 	image,
@@ -15,7 +19,7 @@ export const Avatar: FunctionComponent<AvatarProps> = ({
 	title,
 }: AvatarProps) =>
 	name || title ? (
-		<div className="c-avatar-and-text">
+		<div className={classnames(className, 'c-avatar-and-text')}>
 			<AvatarIcon initials={initials} size={size} image={image} />
 			<div className="c-avatar-and-text__text">
 				{name && <p>{name}</p>}
@@ -23,5 +27,5 @@ export const Avatar: FunctionComponent<AvatarProps> = ({
 			</div>
 		</div>
 	) : (
-		<AvatarIcon initials={initials} size={size} image={image} />
+		<AvatarIcon className={className} initials={initials} size={size} image={image} />
 	);

@@ -2,7 +2,9 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
-export interface FlexProps {
+import { DefaultProps } from '../../types';
+
+export interface FlexProps extends DefaultProps {
 	orientation?: 'horizontal' | 'vertical';
 	center?: boolean;
 	justify?: boolean;
@@ -11,6 +13,7 @@ export interface FlexProps {
 }
 
 export const Flex: FunctionComponent<FlexProps> = ({
+	className,
 	orientation,
 	center,
 	justify,
@@ -39,7 +42,7 @@ export const Flex: FunctionComponent<FlexProps> = ({
 
 	return (
 		<div
-			className={classNames(...classes, {
+			className={classNames(className, ...classes, {
 				'o-flex--justify-between': justify,
 			})}
 		>

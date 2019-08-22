@@ -1,3 +1,7 @@
+import jquery from 'jquery';
+
+(window as any).jQuery = jquery;
+
 // Colors
 import { COLORS } from './colors';
 
@@ -5,6 +9,7 @@ import { COLORS } from './colors';
 import { useKeyPress } from './hooks/useKeyPress';
 
 // Components
+import { Alert } from './components/Alert/Alert';
 import { Avatar } from './components/Avatar/Avatar';
 import { AvatarIcon } from './components/Avatar/AvatarIcon';
 import { AvatarList } from './components/AvatarList/AvatarList';
@@ -15,6 +20,7 @@ import { Button } from './components/Button/Button';
 import { Checkbox } from './components/Checkbox/Checkbox';
 import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 import { Container } from './components/Container/Container';
+import { BlockIframe, BlockIframeProps } from './components/ContentBlocks/BlockIframe/BlockIframe';
 import { BlockImage, BlockImageProps } from './components/ContentBlocks/BlockImage/BlockImage';
 import {
 	BlockImageTitleTextButton,
@@ -92,16 +98,20 @@ import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/T
 import { ToolbarItem } from './components/Toolbar/ToolbarItem';
 import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 import { Tooltip } from './components/Tooltip/Tooltip';
+import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 
 export {
 	COLORS,
 	useKeyPress,
+	Alert,
 	Avatar,
 	AvatarIcon,
 	AvatarList,
 	Badge,
 	Blankslate,
+	BlockIframe,
+	BlockIframeProps,
 	BlockImage,
 	BlockImageProps,
 	BlockImageTitleTextButton,
@@ -182,5 +192,7 @@ export {
 	ToolbarRight,
 	ToolbarTitle,
 	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
 	WYSIWYG,
 };

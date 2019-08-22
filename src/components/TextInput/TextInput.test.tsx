@@ -5,16 +5,19 @@ import { Icon } from '../Icon/Icon';
 
 import { TextInput } from './TextInput';
 
+const customClass = 'c-input-custom';
+
 describe('<TextInput />', () => {
 	it('Should be able to render', () => {
 		shallow(<TextInput />);
 	});
 
 	it('Should set the correct className', () => {
-		const inputComponent = shallow(<TextInput />);
+		const inputComponent = shallow(<TextInput className={customClass} />);
 
 		const inputElement = inputComponent.find('input');
 
+		expect(inputComponent.hasClass(customClass)).toEqual(true);
 		expect(inputElement.hasClass('c-input')).toEqual(true);
 	});
 
@@ -69,10 +72,11 @@ describe('<TextInput />', () => {
 	it('Should be able to render with an icon', () => {
 		const icon = 'search';
 
-		const inputComponent = shallow(<TextInput icon={icon} />);
+		const inputComponent = shallow(<TextInput className={customClass} icon={icon} />);
 
 		const iconComponent = inputComponent.find(Icon);
 
+		expect(inputComponent.hasClass(customClass)).toEqual(true);
 		expect(iconComponent.prop('name')).toEqual(icon);
 	});
 

@@ -6,39 +6,46 @@ import { AvatarList } from './AvatarList';
 
 export const mockAvatars = [
 	{
-		initials: 'BN',
-		name: 'John Doe',
+		initials: 'ES',
+		name: 'Ethan Sanders',
 		subtitle: 'Mag Bewerken',
+		onClick: () => {},
 	},
 	{
-		initials: 'KN',
-		name: 'John Doe',
+		initials: 'JC',
+		name: 'Jerry Cooper',
 		subtitle: 'Mag Bewerken',
+		onClick: () => {},
 	},
 	{
-		initials: 'BC',
+		initials: 'JD',
 		name: 'John Doe',
 		subtitle: 'Mag Bewerken',
+		onClick: () => {},
 	},
 	{
-		initials: 'AC',
-		name: 'John Doe',
+		initials: 'EW',
+		name: 'Edward Wilson',
 		subtitle: 'Mag Bewerken',
+		onClick: () => {},
 	},
 	{
-		initials: 'AC',
-		name: 'John Doe',
+		initials: 'LH',
+		name: 'Lauren Hoffman',
 		subtitle: 'Mag Bewerken',
+		onClick: () => {},
 	},
 	{
-		initials: 'AC',
-		name: 'John Doe',
+		initials: 'JD',
+		name: 'Jane Doe',
 		subtitle: 'Mag Bewerken',
+		onClick: () => {},
 	},
 	{
-		initials: 'AC',
-		name: 'John Doe',
+		initials: 'PJ',
+		name: 'Phillip Johnston',
 		subtitle: 'Mag Bewerken',
+		onClick: () => {},
 	},
 ];
 

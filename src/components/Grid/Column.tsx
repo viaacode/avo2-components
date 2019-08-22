@@ -1,5 +1,9 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../types';
+
 type GridSize =
 	| '1'
 	| '2'
@@ -52,12 +56,16 @@ type GridSize =
 	| 'static'
 	| 'flex';
 
-export interface ColumnProps {
+export interface ColumnProps extends DefaultProps {
 	size: GridSize[] | GridSize;
 	children: ReactNode;
 }
 
-export const Column: FunctionComponent<ColumnProps> = ({ size, children }: ColumnProps) => {
+export const Column: FunctionComponent<ColumnProps> = ({
+	className,
+	size,
+	children,
+}: ColumnProps) => {
 	const getGridSizeColumn = (size: GridSize): string => {
 		const prefix = size.includes('-') ? 'bp' : '';
 
@@ -66,5 +74,7 @@ export const Column: FunctionComponent<ColumnProps> = ({ size, children }: Colum
 
 	const sizes = typeof size === 'string' ? [size] : size;
 
-	return <div className={sizes.map(getGridSizeColumn).join(' ')}>{children}</div>;
+	return (
+		<div className={classnames(className, sizes.map(getGridSizeColumn).join(' '))}>{children}</div>
+	);
 };

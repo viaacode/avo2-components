@@ -5,6 +5,7 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockVideoTitleTextButton } from './BlockVideoTitleTextButton';
 
+const customClass = 'c-block-custom';
 const loremIpsumText = loremIpsum({ count: 10 });
 const videoSource =
 	'https://archief-media.viaa.be/viaa/TESTBEELD/ad87ac36b4f640dfb0fc57c26397b7aebb4c49785d2e4a7b8c8069aa95c4db16/browse.mp4';
@@ -12,6 +13,7 @@ const videoSource =
 const titleLink = 'http://google.com?q=title';
 const blockVideoTitleTextButtonExample = (
 	<BlockVideoTitleTextButton
+		className={customClass}
 		videoSource={videoSource}
 		title="Title"
 		titleLink={titleLink}
@@ -68,6 +70,7 @@ describe('<BlockVideoTitleTextButton />', () => {
 		const rightColumnElement = divs.at(5);
 		const contentElement = divs.at(6);
 
+		expect(containerElement.hasClass(customClass)).toEqual(true);
 		expect(containerElement.hasClass('o-container')).toEqual(true);
 		expect(spacerElement.hasClass('u-spacer')).toEqual(true);
 		expect(gridElement.hasClass('o-grid')).toEqual(true);

@@ -1,8 +1,11 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
+import classnames from 'classnames';
+
+import { DefaultProps } from '../../types';
 import { MenuContent, MenuItemInfo } from './MenuContent';
 
-export interface MenuProps {
+export interface MenuProps extends DefaultProps {
 	menuItems: MenuItemInfo[] | MenuItemInfo[][]; // Between arrays, there will be a divider
 	renderItem?: (menuItem: MenuItemInfo) => ReactNode; // If you want to render your own item
 	noResultsLabel?: string;
@@ -10,13 +13,14 @@ export interface MenuProps {
 }
 
 export const Menu: FunctionComponent<MenuProps> = ({
+	className,
 	menuItems,
 	renderItem,
 	noResultsLabel,
 	onClick = () => {},
 }) => {
 	return (
-		<div className="c-menu c-menu--visible">
+		<div className={classnames(className, 'c-menu', 'c-menu--visible')}>
 			<MenuContent
 				menuItems={menuItems}
 				onClick={onClick}

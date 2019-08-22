@@ -9,8 +9,11 @@ describe('<Flex />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const flexComponent = shallow(<FlexItem />);
+		const customClass = 'c-flex-item-custom';
 
+		const flexComponent = shallow(<FlexItem className={customClass} />);
+
+		expect(flexComponent.hasClass(customClass)).toEqual(true);
 		expect(flexComponent.hasClass('o-flex__item')).toEqual(true);
 	});
 

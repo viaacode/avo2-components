@@ -9,8 +9,11 @@ describe('<Spinner />', () => {
 	});
 
 	it('Should correctly set the className', () => {
-		const spinnerComponent = shallow(<Spinner />);
+		const customClass = 'c-spinner-custom';
 
+		const spinnerComponent = shallow(<Spinner className={customClass} />);
+
+		expect(spinnerComponent.hasClass(customClass)).toBeTruthy();
 		expect(spinnerComponent.hasClass('c-spinner')).toBeTruthy();
 	});
 

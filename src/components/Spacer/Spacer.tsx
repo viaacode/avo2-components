@@ -2,6 +2,8 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
+import { DefaultProps } from '../../types';
+
 type SpacerMarginOption =
 	| 'small'
 	| 'large'
@@ -18,7 +20,7 @@ type SpacerMarginOption =
 	| 'bottom'
 	| 'bottom-large';
 
-export interface SpacerProps {
+export interface SpacerProps extends DefaultProps {
 	margin?: SpacerMarginOption | SpacerMarginOption[];
 	children?: ReactNode;
 }
@@ -27,7 +29,11 @@ const abbreviateSizes = (input: string): string => {
 	return input.replace('large', 'l').replace('small', 's');
 };
 
-export const Spacer: FunctionComponent<SpacerProps> = ({ margin, children }: SpacerProps) => {
+export const Spacer: FunctionComponent<SpacerProps> = ({
+	margin,
+	children,
+	className,
+}: SpacerProps) => {
 	let classes: string[] = [];
 
 	if (margin) {
@@ -36,5 +42,7 @@ export const Spacer: FunctionComponent<SpacerProps> = ({ margin, children }: Spa
 		classes = margins.map((option: SpacerMarginOption) => `u-spacer-${abbreviateSizes(option)}`);
 	}
 
-	return <div className={classNames({ 'u-spacer': !margin }, ...classes)}>{children}</div>;
+	return (
+		<div className={classNames(className, { 'u-spacer': !margin }, ...classes)}>{children}</div>
+	);
 };

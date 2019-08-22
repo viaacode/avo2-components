@@ -24,8 +24,11 @@ describe('<TagList />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const tagListComponent = shallow(<TagList tags={tags} />);
+		const customClass = 'c-tag-list-custom';
 
+		const tagListComponent = shallow(<TagList className={customClass} tags={tags} />);
+
+		expect(tagListComponent.hasClass(customClass)).toEqual(true);
 		expect(tagListComponent.hasClass('c-tag-list')).toEqual(true);
 	});
 
