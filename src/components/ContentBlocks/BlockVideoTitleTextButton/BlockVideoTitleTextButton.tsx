@@ -24,7 +24,7 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 	titleLink,
 	text = '',
 	collapsedHeight = 220,
-}: BlockVideoTitleTextButtonProps) => {
+}) => {
 	return (
 		<Container className={className} mode="horizontal">
 			<Spacer>

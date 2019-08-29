@@ -24,7 +24,7 @@ export const RadioButton: FunctionComponent<RadioButtonProps> = ({
 	disabled = false,
 	checked = false,
 	onChange = () => {},
-}: RadioButtonProps) => {
+}) => {
 	const [dispatchDeselectEvent] = useDeselectEvent(name, value, onDeselect);
 
 	function onDeselect() {

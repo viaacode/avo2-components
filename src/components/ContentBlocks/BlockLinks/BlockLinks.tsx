@@ -10,11 +10,7 @@ export interface BlockLinksProps extends DefaultProps {
 	links: { label: string; url: string }[];
 }
 
-export const BlockLinks: FunctionComponent<BlockLinksProps> = ({
-	className,
-	uniqueKey,
-	links,
-}: BlockLinksProps) => {
+export const BlockLinks: FunctionComponent<BlockLinksProps> = ({ className, uniqueKey, links }) => {
 	return (
 		<div
 			className={classnames(className, 'o-container-vertical', 'o-container-vertical-anchor-links')}

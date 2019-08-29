@@ -37,7 +37,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 	viewCount,
 	tags = [],
 	onToggleBookmark = () => {},
-}: SearchResultProps) => {
+}) => {
 	const title = useSlot(SearchResultTitle, children);
 	const subTitle = useSlot(SearchResultSubtitle, children);
 	const thumbnail = useSlot(SearchResultThumbnail, children);

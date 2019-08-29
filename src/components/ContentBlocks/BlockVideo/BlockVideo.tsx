@@ -7,10 +7,7 @@ export interface BlockVideoProps extends DefaultProps {
 	videoSource: string;
 }
 
-export const BlockVideo: FunctionComponent<BlockVideoProps> = ({
-	className,
-	videoSource,
-}: BlockVideoProps) => {
+export const BlockVideo: FunctionComponent<BlockVideoProps> = ({ className, videoSource }) => {
 	return (
 		<Container className={className} mode="vertical">
 			<div className="c-video-wrapper c-video-wrapper--aspect-16-9">

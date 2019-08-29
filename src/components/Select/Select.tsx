@@ -25,7 +25,7 @@ export const Select: FunctionComponent<SelectProps> = ({
 	disabled = false,
 	value,
 	onChange = () => {},
-}: SelectProps) => {
+}) => {
 	function onValueChange(event: ChangeEvent<HTMLSelectElement>) {
 		onChange(event.target.value);
 	}

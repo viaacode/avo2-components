@@ -28,7 +28,7 @@ export const BlockImageTitleTextButton: FunctionComponent<BlockImageTitleTextBut
 	text = '',
 	buttonLabel,
 	onClick,
-}: BlockImageTitleTextButtonProps) => {
+}) => {
 	return (
 		<section className={classnames(className, 'o-container-vertical')}>
 			<Container mode="horizontal">

@@ -19,7 +19,7 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
 	disabled = false,
 	checked = false,
 	onChange = () => {},
-}: CheckboxProps) => {
+}) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
 		const currentCheckedValue = event.target.checked;
 

@@ -61,11 +61,7 @@ export interface ColumnProps extends DefaultProps {
 	children: ReactNode;
 }
 
-export const Column: FunctionComponent<ColumnProps> = ({
-	className,
-	size,
-	children,
-}: ColumnProps) => {
+export const Column: FunctionComponent<ColumnProps> = ({ className, size, children }) => {
 	const getGridSizeColumn = (size: GridSize): string => {
 		const prefix = size.includes('-') ? 'bp' : '';
 
