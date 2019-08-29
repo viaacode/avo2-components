@@ -20,7 +20,7 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 	alt,
 	label,
 	meta,
-}: ThumbnailProps) => {
+}) => {
 	const [loaded, setLoaded] = useState(false);
 	const iconName = category === 'audio' ? 'headphone' : category;
 

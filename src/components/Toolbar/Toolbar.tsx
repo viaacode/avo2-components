@@ -22,7 +22,7 @@ export const Toolbar: FunctionComponent<ToolbarProps> = ({
 	spaced,
 	autoHeight,
 	alignTop,
-}: ToolbarProps) => {
+}) => {
 	const left = useSlot(ToolbarLeft, children);
 	const center = useSlot(ToolbarCenter, children);
 	const right = useSlot(ToolbarRight, children);

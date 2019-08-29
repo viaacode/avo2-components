@@ -27,7 +27,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	size,
 	scrollable,
 	onClose = () => {},
-}: ModalProps) => {
+}) => {
 	const body = useSlot(ModalBody, children);
 	const headerRight = useSlot(ModalHeaderRight, children);
 	const footerRight = useSlot(ModalFooterRight, children);

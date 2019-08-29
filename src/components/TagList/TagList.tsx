@@ -22,7 +22,7 @@ export const TagList: FunctionComponent<TagListProps> = ({
 	closable = false,
 	onTagClosed = () => {},
 	onTagClicked,
-}: TagListProps) => {
+}) => {
 	const safeOnTagClicked = onTagClicked || (() => {});
 
 	return !!tags && !!tags.length ? (

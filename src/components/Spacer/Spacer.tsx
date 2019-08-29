@@ -29,11 +29,7 @@ const abbreviateSizes = (input: string): string => {
 	return input.replace('large', 'l').replace('small', 's');
 };
 
-export const Spacer: FunctionComponent<SpacerProps> = ({
-	margin,
-	children,
-	className,
-}: SpacerProps) => {
+export const Spacer: FunctionComponent<SpacerProps> = ({ margin, children, className }) => {
 	let classes: string[] = [];
 
 	if (margin) {

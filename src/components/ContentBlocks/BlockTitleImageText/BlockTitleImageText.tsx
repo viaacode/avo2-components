@@ -20,7 +20,7 @@ export const BlockTitleImageText: FunctionComponent<BlockTitleImageTextProps> = 
 	imageSource,
 	imageDescription = '',
 	text = '',
-}: BlockTitleImageTextProps) => {
+}) => {
 	return (
 		<Spacer className={className} margin="top-large">
 			<Container size="small">

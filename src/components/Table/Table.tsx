@@ -52,7 +52,7 @@ export const Table: FunctionComponent<TableProps> = ({
 	emptyStateMessage,
 	renderCell = () => null,
 	onColumnClick = () => {},
-}: TableProps) => {
+}) => {
 	return (
 		<Fragment>
 			<table

@@ -20,7 +20,7 @@ export const DatePicker: FunctionComponent<DatePickerProps> = ({
 	placeholder = 'dd/mm/yyyy',
 	value,
 	onChange = () => {},
-}: DatePickerProps) => {
+}) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
 		const val = event.target.value;
 

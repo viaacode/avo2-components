@@ -15,7 +15,7 @@ export const BlockQuote: FunctionComponent<BlockQuoteProps> = ({
 	quoteText,
 	authorAvatarSource,
 	authorName,
-}: BlockQuoteProps) => {
+}) => {
 	return (
 		<div className={classnames(className, 'o-container-vertical', 'o-container-vertical-quote')}>
 			<div className="c-quote">
