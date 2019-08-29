@@ -89,6 +89,7 @@ import { Tab } from './components/Tab/Tab';
 import { Table } from './components/Table/Table';
 import { Tabs } from './components/Tabs/Tabs';
 import { TagList } from './components/TagList/TagList';
+import { TagsInput } from './components/TagsInput/TagsInput';
 import { TextArea } from './components/TextArea/TextArea';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
@@ -181,6 +182,7 @@ export {
 	Table,
 	Tabs,
 	TagList,
+	TagsInput,
 	TextArea,
 	TextInput,
 	Thumbnail,
