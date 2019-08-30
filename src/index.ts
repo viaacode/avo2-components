@@ -92,6 +92,7 @@ import { TagList } from './components/TagList/TagList';
 import { TextArea } from './components/TextArea/TextArea';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
+import { Toggle } from './components/Toggle/Toggle';
 import { ToggleButton } from './components/ToggleButton/ToggleButton';
 import { Toolbar } from './components/Toolbar/Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/Toolbar.slots';
@@ -184,6 +185,7 @@ export {
 	TextArea,
 	TextInput,
 	Thumbnail,
+	Toggle,
 	ToggleButton,
 	Toolbar,
 	ToolbarCenter,
