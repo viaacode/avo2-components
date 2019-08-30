@@ -8,9 +8,6 @@ export interface ToolbarItemProps extends DefaultProps {
 	children: ReactNode;
 }
 
-export const ToolbarItem: FunctionComponent<ToolbarItemProps> = ({
-	children,
-	className,
-}: ToolbarItemProps) => {
+export const ToolbarItem: FunctionComponent<ToolbarItemProps> = ({ children, className }) => {
 	return <div className={classnames(className, 'c-toolbar__item')}>{children}</div>;
 };

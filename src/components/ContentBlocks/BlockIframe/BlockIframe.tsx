@@ -13,7 +13,7 @@ export const BlockIframe: FunctionComponent<BlockIframeProps> = ({
 	allowFullScreen = true,
 	frameBorder = 0,
 	...iframeProps
-}: BlockIframeProps) => {
+}) => {
 	return (
 		<div
 			className={classNames('c-video-wrapper', {

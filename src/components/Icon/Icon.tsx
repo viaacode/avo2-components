@@ -12,13 +12,7 @@ export interface IconProps extends DefaultProps {
 	active?: boolean;
 }
 
-export const Icon: FunctionComponent<IconProps> = ({
-	className,
-	name,
-	size,
-	type,
-	active,
-}: IconProps) => {
+export const Icon: FunctionComponent<IconProps> = ({ className, name, size, type, active }) => {
 	let IconToRender = (Icons as any)[toPascalCase(name)];
 
 	function getIconName() {

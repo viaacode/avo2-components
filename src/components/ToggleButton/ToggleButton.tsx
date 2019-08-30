@@ -27,7 +27,7 @@ export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
 	ariaLabel,
 	type = 'borderless',
 	onClick = () => {},
-}: ToggleButtonProps) => {
+}) => {
 	const [filled, setFilled] = useState(active);
 
 	useEffect(() => {

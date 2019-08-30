@@ -22,7 +22,7 @@ export const MediaCard: FunctionComponent<MediaCardProps> = ({
 	category,
 	children = [],
 	orientation = 'vertical',
-}: MediaCardProps) => {
+}) => {
 	const thumbnail = useSlot(MediaCardThumbnail, children);
 	const metaData = useSlot(MediaCardMetaData, children);
 

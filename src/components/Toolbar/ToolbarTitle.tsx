@@ -8,9 +8,6 @@ export interface ToolbarTitleProps extends DefaultProps {
 	children: ReactNode;
 }
 
-export const ToolbarTitle: FunctionComponent<ToolbarTitleProps> = ({
-	children,
-	className,
-}: ToolbarTitleProps) => {
+export const ToolbarTitle: FunctionComponent<ToolbarTitleProps> = ({ children, className }) => {
 	return <h2 className={classnames(className, 'c-toolbar__title')}>{children}</h2>;
 };
