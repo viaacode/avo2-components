@@ -36,6 +36,19 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 		);
 	});
 
+	it('Should set title tooltip', () => {
+		const toggleButtonComponent = mount(
+			<ToggleButton
+				title="toggle favorite"
+				ariaLabel="toggle favorite"
+				icon="heart"
+				active={false}
+			/>
+		);
+
+		expect(toggleButtonComponent.find('button').prop('title')).toEqual('toggle favorite');
+	});
+
 	it('Should set the normal version of the icon when not `active`', () => {
 		const toggleButtonComponent = shallow(
 			<ToggleButton ariaLabel="test button" icon="bookmark" active={false} />

@@ -11,7 +11,7 @@ storiesOf('Button', module)
 	.add('Buttons', () => (
 		<Fragment>
 			<div className="u-spacer-bottom">
-				<Button ariaLabel="test button" label="Primary button" type="primary" />
+				<Button ariaLabel="test button" title="test button" label="Primary button" type="primary" />
 			</div>
 			<div className="u-spacer-bottom">
 				<Button ariaLabel="test button" label="Secondary button" type="secondary" />
