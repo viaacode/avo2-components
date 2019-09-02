@@ -14,6 +14,7 @@ storiesOf('ToggleButton', module)
 			active={false}
 			onClick={action('onClick')}
 			ariaLabel="toggle favorite"
+			title="toggle favorite"
 		/>
 	))
 	.add('ToggleButton active', () => (
