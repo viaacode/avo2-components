@@ -93,6 +93,7 @@ import { TagsInput } from './components/TagsInput/TagsInput';
 import { TextArea } from './components/TextArea/TextArea';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
+import { Toggle } from './components/Toggle/Toggle';
 import { ToggleButton } from './components/ToggleButton/ToggleButton';
 import { Toolbar } from './components/Toolbar/Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/Toolbar.slots';
@@ -101,10 +102,12 @@ import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 import { Tooltip } from './components/Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
+import { useSlot } from './hooks/useSlot';
 
 export {
 	COLORS,
 	useKeyPress,
+	useSlot,
 	Alert,
 	Avatar,
 	AvatarIcon,
@@ -186,6 +189,7 @@ export {
 	TextArea,
 	TextInput,
 	Thumbnail,
+	Toggle,
 	ToggleButton,
 	Toolbar,
 	ToolbarCenter,
