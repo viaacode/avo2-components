@@ -21,17 +21,6 @@ describe('<ImageGrid />', () => {
 		shallow(<ImageGrid images={images} />);
 	});
 
-	// images: string[];
-	// value?: string[];
-	// width?: number;
-	// height?: number;
-	// fill?: 'cover' | 'contain';
-	// className?: string;
-	// backgroundColor?: string;
-	// allowSelect?: boolean;
-	// allowMulti?: boolean;
-	// onChange?: (selectedImages: string[]) => void;
-
 	it('Should set the correct default className and custom className', () => {
 		const customClass = 'test-grid';
 
