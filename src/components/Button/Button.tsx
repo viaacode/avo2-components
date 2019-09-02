@@ -7,6 +7,7 @@ import { Icon } from '../Icon/Icon';
 
 export interface ButtonProps extends DefaultProps {
 	ariaLabel?: string;
+	title?: string;
 	label?: string;
 	type?:
 		| 'primary'
@@ -29,6 +30,7 @@ export interface ButtonProps extends DefaultProps {
 
 const Button: FunctionComponent<ButtonProps> = ({
 	ariaLabel,
+	title,
 	className,
 	label,
 	type,
@@ -52,6 +54,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 		onClick={onClick}
 		disabled={disabled}
 		aria-label={ariaLabel}
+		title={title}
 	>
 		<div className="c-button__content">
 			{icon && <Icon name={icon} active={active} />}

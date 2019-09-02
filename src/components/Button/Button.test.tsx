@@ -131,6 +131,15 @@ describe('<Button />', () => {
 		expect(buttonElement.hasClass('active')).toEqual(true);
 	});
 
+	it('Should pass on the title attribute', () => {
+		const testTitle = 'test title';
+		const buttonComponent = shallow(<Button title={testTitle} />);
+
+		const buttonElement = buttonComponent.find('button');
+
+		expect(buttonElement.prop('title')).toEqual(testTitle);
+	});
+
 	it('Should pass on the `active`-prop to the button icon', () => {
 		const activeButtonComponent = shallow(
 			<Button active={true} icon="heart" ariaLabel="test button" />
