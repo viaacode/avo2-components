@@ -55,7 +55,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	children,
 	onOpen = () => {},
 	onClose = () => {},
-}: DropdownProps) => {
+}) => {
 	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef();
 	const [dropdownButton, dropdownButtonRef] = useCallbackRef();
 

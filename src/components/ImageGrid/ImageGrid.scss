@@ -1,0 +1,12 @@
+.c-image-grid {
+
+	&.c-image-grid-selectable {
+		.c-image-grid__item {
+			&.c-image-grid__item-selected,
+			&:hover {
+				border: 3px solid #3FB1D6;
+			}
+		}
+	}
+
+}

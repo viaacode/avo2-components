@@ -26,7 +26,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 	icon,
 	type = 'text',
 	onChange = () => {},
-}: TextInputProps) => {
+}) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
 		onChange(event.target.value);
 	}

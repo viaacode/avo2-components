@@ -54,6 +54,7 @@ import { Column } from './components/Grid/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
 import { Image } from './components/Image/Image';
+import { ImageGrid } from './components/ImageGrid/ImageGrid';
 import { MediaCard } from './components/MediaCard/MediaCard';
 import { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/MediaCard.slots';
 import { Menu } from './components/Menu/Menu';
@@ -89,9 +90,11 @@ import { Tab } from './components/Tab/Tab';
 import { Table } from './components/Table/Table';
 import { Tabs } from './components/Tabs/Tabs';
 import { TagList } from './components/TagList/TagList';
+import { TagsInput } from './components/TagsInput/TagsInput';
 import { TextArea } from './components/TextArea/TextArea';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
+import { Toggle } from './components/Toggle/Toggle';
 import { ToggleButton } from './components/ToggleButton/ToggleButton';
 import { Toolbar } from './components/Toolbar/Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/Toolbar.slots';
@@ -100,10 +103,12 @@ import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 import { Tooltip } from './components/Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
+import { useSlot } from './hooks/useSlot';
 
 export {
 	COLORS,
 	useKeyPress,
+	useSlot,
 	Alert,
 	Avatar,
 	AvatarIcon,
@@ -150,6 +155,7 @@ export {
 	Grid,
 	Icon,
 	Image,
+	ImageGrid,
 	MediaCard,
 	MediaCardMetaData,
 	MediaCardThumbnail,
@@ -181,9 +187,11 @@ export {
 	Table,
 	Tabs,
 	TagList,
+	TagsInput,
 	TextArea,
 	TextInput,
 	Thumbnail,
+	Toggle,
 	ToggleButton,
 	Toolbar,
 	ToolbarCenter,

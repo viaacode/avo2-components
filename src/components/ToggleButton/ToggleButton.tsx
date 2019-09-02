@@ -7,6 +7,7 @@ export interface ToggleButtonProps extends DefaultProps {
 	icon: 'heart' | 'bookmark';
 	active: boolean;
 	ariaLabel: string;
+	title?: string;
 	type?:
 		| 'primary'
 		| 'secondary'
@@ -25,9 +26,10 @@ export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
 	icon,
 	active,
 	ariaLabel,
+	title,
 	type = 'borderless',
 	onClick = () => {},
-}: ToggleButtonProps) => {
+}) => {
 	const [filled, setFilled] = useState(active);
 
 	useEffect(() => {
@@ -58,6 +60,7 @@ export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
 			active={filled}
 			onClick={onButtonClick}
 			ariaLabel={`${ariaLabel} (currently ${active ? 'active' : 'not active'})`}
+			title={title}
 		/>
 	);
 };

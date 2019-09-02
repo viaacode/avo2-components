@@ -18,7 +18,7 @@ export const ExpandableContainer: FunctionComponent<ExpandableContainerProps> = 
 	collapsedHeight = 44,
 	defaultExpanded = false,
 	children,
-}: ExpandableContainerProps) => {
+}) => {
 	const { getCollapseProps, getToggleProps, isOpen } = useCollapsed({
 		collapsedHeight,
 		defaultOpen: defaultExpanded,

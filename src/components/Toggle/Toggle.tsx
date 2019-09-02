@@ -4,20 +4,20 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
-export interface CheckboxProps extends DefaultProps {
-	label: string;
-	checked?: boolean;
+import './Toggle.css';
+
+export interface ToggleProps extends DefaultProps {
 	id?: string;
+	checked?: boolean;
 	disabled?: boolean;
 	onChange?: (checked: boolean) => void;
 }
 
-export const Checkbox: FunctionComponent<CheckboxProps> = ({
+export const Toggle: FunctionComponent<ToggleProps> = ({
 	className,
-	label,
 	id,
+	checked,
 	disabled = false,
-	checked = false,
 	onChange = () => {},
 }) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
@@ -29,17 +29,16 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
 	}
 
 	return (
-		<div className={classnames(className, 'c-checkbox')}>
-			<label>
-				<input
-					type="checkbox"
-					id={id}
-					checked={checked}
-					disabled={disabled}
-					onChange={onValueChange}
-				/>
-				{label}
-			</label>
+		<div className={classnames(className, 'c-toggle')}>
+			<input
+				type="checkbox"
+				id={id}
+				checked={checked}
+				disabled={disabled}
+				onChange={onValueChange}
+			/>
+			<div className="c-toggle__back" />
+			<div className="c-toggle__knob" />
 		</div>
 	);
 };

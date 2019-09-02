@@ -18,7 +18,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 	displayCount = 5,
 	currentPage = 0,
 	onPageChange = () => {},
-}: PaginationProps) => {
+}) => {
 	function changePage(page: number) {
 		if (page >= 0 && page <= pageCount - 1) {
 			onPageChange(page);

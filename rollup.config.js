@@ -16,7 +16,7 @@ export default {
 	],
 	plugins: [
 		postcss({
-			extensions: ['.css'],
+			extensions: ['.scss', '.css'],
 		}),
 		cjs(),
 		typescript({
