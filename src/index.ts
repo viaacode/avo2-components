@@ -54,6 +54,7 @@ import { Column } from './components/Grid/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
 import { Image } from './components/Image/Image';
+import { ImageGrid } from './components/ImageGrid/ImageGrid';
 import { MediaCard } from './components/MediaCard/MediaCard';
 import { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/MediaCard.slots';
 import { Menu } from './components/Menu/Menu';
@@ -154,6 +155,7 @@ export {
 	Grid,
 	Icon,
 	Image,
+	ImageGrid,
 	MediaCard,
 	MediaCardMetaData,
 	MediaCardThumbnail,
