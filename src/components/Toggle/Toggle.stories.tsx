@@ -35,9 +35,4 @@ storiesOf('Toggle', module)
 		<ToggleStoryComponent defaultChecked={true}>
 			<Toggle />
 		</ToggleStoryComponent>
-	))
-	.add('Toggle default unchecked', () => (
-		<ToggleStoryComponent defaultChecked={false}>
-			<Toggle />
-		</ToggleStoryComponent>
 	));
