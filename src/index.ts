@@ -100,10 +100,12 @@ import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 import { Tooltip } from './components/Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
+import { useSlot } from './hooks/useSlot';
 
 export {
 	COLORS,
 	useKeyPress,
+	useSlot,
 	Alert,
 	Avatar,
 	AvatarIcon,
