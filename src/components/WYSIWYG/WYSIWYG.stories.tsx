@@ -15,6 +15,13 @@ storiesOf('WYSIWYG', module)
 			data={'<h2>Welcome!</h2><p>This prefilled content is all <strong>editable</strong>.</p>'}
 		/>
 	))
+	.add('WYSIWYG disabled', () => (
+		<WYSIWYG
+			id="story-wysiwyg-2"
+			data={'<h2>Welcome!</h2><p>This prefilled content is all <strong>editable</strong>.</p>'}
+			disabled
+		/>
+	))
 	.add('WYSIWYG with limited buttons', () => (
 		<WYSIWYG
 			id="story-wysiwyg-2"
