@@ -93,7 +93,14 @@ storiesOf('Form', module)
 			<FormGroup labelFor="email" label="Email address" error="Please enter a valid e-mail address">
 				<input type="email" id="email" />
 			</FormGroup>
-			<FormGroup labelFor="pass" label="Password" error="Please enter a valid e-mail address">
+			<FormGroup
+				labelFor="pass"
+				label="Password"
+				error={[
+					'Please enter a valid e-mail address',
+					'E-mail address is not part of the correct domain.',
+				]}
+			>
 				<input type="password" id="pass" />
 			</FormGroup>
 			<FormGroup labelFor="pref" label="Preference">
