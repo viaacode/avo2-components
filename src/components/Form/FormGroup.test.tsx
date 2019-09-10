@@ -67,6 +67,20 @@ describe('<FormGroup />', () => {
 		expect(errorElement.text()).toEqual(error);
 	});
 
+	it('Should set className and render multiple errors when they are passed', () => {
+		const error = ['Field is invalid.', 'Field is very invalid.'];
+
+		const formGroupComponent = shallow(
+			<FormGroup error={error}>
+				<Fragment />
+			</FormGroup>
+		);
+
+		const errorElements = formGroupComponent.find('.c-form-help-text--error');
+
+		expect(errorElements).toHaveLength(2);
+	});
+
 	it('Should add correct inlineMode class', () => {
 		const formGroupDefaultComponent = shallow(
 			<FormGroup>
