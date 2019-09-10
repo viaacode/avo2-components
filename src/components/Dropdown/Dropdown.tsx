@@ -101,7 +101,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 		<Manager>
 			<Reference innerRef={dropdownButtonRef}>
 				{({ ref }) => (
-					<div ref={ref} onClick={() => toggle()}>
+					<div className="c-dropdown__trigger" ref={ref} onClick={() => toggle()}>
 						{dropdownButtonSlot}
 						{!dropdownButtonSlot && (
 							<button className="c-button c-button--secondary">
