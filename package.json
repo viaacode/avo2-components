@@ -69,6 +69,7 @@
     "@types/react-select": "^3.0.4",
     "@types/storybook__addon-actions": "^3.4.2",
     "@types/storybook__react": "^4.0.1",
+    "autoprefixer": "^9.6.1",
     "cross-env": "^5.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
