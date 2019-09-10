@@ -4,7 +4,22 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
 
+import { MenuContent } from '../Menu/MenuContent';
 import { Dropdown } from './Dropdown';
+
+const menuItems = [
+	{ label: 'Aluminium', id: 'aluminium' },
+	{ label: 'Cadmium', id: 'cadmium' },
+	{ label: 'Dubnium', id: 'dubnium' },
+	{ label: 'Potassium', id: 'potassium' },
+];
+
+const menuItemsWithIcons = [
+	{ ...menuItems[0], label: 'Aluminium with an icon', icon: 'circle' },
+	{ ...menuItems[1], label: 'Cadmium with an icon', icon: 'box' },
+	{ ...menuItems[2], label: 'Dubnium with an icon', icon: 'square' },
+	{ ...menuItems[3], label: 'Potassium with an icon', icon: 'triangle' },
+];
 
 const DropdownStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [isOpen, setOpen] = useState(false);
@@ -33,10 +48,7 @@ storiesOf('Dropdown', module)
 	.add('Dropdown', () => (
 		<DropdownStoryComponent>
 			<Dropdown label="Show options" isOpen={false}>
-				<span className="c-menu__item">Aluminium</span>
-				<span className="c-menu__item">Cadmium</span>
-				<span className="c-menu__item">Dubnium</span>
-				<span className="c-menu__item">Potassium</span>
+				<MenuContent menuItems={menuItems} />
 			</Dropdown>
 		</DropdownStoryComponent>
 	))
@@ -44,10 +56,7 @@ storiesOf('Dropdown', module)
 		<div style={{ paddingTop: '200px' }}>
 			<DropdownStoryComponent>
 				<Dropdown label="Show options" isOpen={false} placement={'top'}>
-					<span className="c-menu__item">Aluminium</span>
-					<span className="c-menu__item">Cadmium</span>
-					<span className="c-menu__item">Dubnium</span>
-					<span className="c-menu__item">Potassium</span>
+					<MenuContent menuItems={menuItemsWithIcons} />
 				</Dropdown>
 			</DropdownStoryComponent>
 		</div>
@@ -55,43 +64,29 @@ storiesOf('Dropdown', module)
 	.add('Dropdown autosized', () => (
 		<DropdownStoryComponent>
 			<Dropdown label="Show options" isOpen={false} autoSize={true}>
-				<span className="c-menu__item">Aluminium</span>
-				<span className="c-menu__item">Cadmium</span>
-				<span className="c-menu__item">Dubnium</span>
-				<span className="c-menu__item">Potassium</span>
+				<MenuContent menuItems={menuItems} />
 			</Dropdown>
 		</DropdownStoryComponent>
 	))
 	.add('Dropdown autosized bottom-start', () => (
 		<DropdownStoryComponent>
 			<Dropdown label="Show options" isOpen={false} placement={'bottom-start'} autoSize={true}>
-				<span className="c-menu__item">Aluminium</span>
-				<span className="c-menu__item">Cadmium</span>
-				<span className="c-menu__item">Dubnium</span>
-				<span className="c-menu__item">Potassium</span>
+				<MenuContent menuItems={menuItemsWithIcons} />
 			</Dropdown>
 		</DropdownStoryComponent>
 	))
 	.add('Dropdown autosized bottom-end', () => (
-		<div>
-			<DropdownStoryComponent>
-				<Dropdown label="Show options" isOpen={false} placement={'bottom-end'} autoSize={true}>
-					<span className="c-menu__item">Aluminium</span>
-					<span className="c-menu__item">Cadmium</span>
-					<span className="c-menu__item">Dubnium</span>
-					<span className="c-menu__item">Potassium</span>
-				</Dropdown>
-			</DropdownStoryComponent>
-		</div>
+		<DropdownStoryComponent>
+			<Dropdown label="Show options" isOpen={false} placement={'bottom-end'} autoSize={true}>
+				<MenuContent menuItems={menuItems} />
+			</Dropdown>
+		</DropdownStoryComponent>
 	))
 	.add('Dropdown autosized top-start', () => (
 		<div style={{ paddingTop: '200px' }}>
 			<DropdownStoryComponent>
 				<Dropdown label="Show options" isOpen={false} placement={'top-start'} autoSize={true}>
-					<span className="c-menu__item">Aluminium</span>
-					<span className="c-menu__item">Cadmium</span>
-					<span className="c-menu__item">Dubnium</span>
-					<span className="c-menu__item">Potassium</span>
+					<MenuContent menuItems={menuItemsWithIcons} />
 				</Dropdown>
 			</DropdownStoryComponent>
 		</div>
@@ -100,10 +95,7 @@ storiesOf('Dropdown', module)
 		<div style={{ paddingTop: '200px' }}>
 			<DropdownStoryComponent>
 				<Dropdown label="Show options" isOpen={false} placement={'top-end'} autoSize={true}>
-					<span className="c-menu__item">Aluminium</span>
-					<span className="c-menu__item">Cadmium</span>
-					<span className="c-menu__item">Dubnium</span>
-					<span className="c-menu__item">Potassium</span>
+					<MenuContent menuItems={menuItems} />
 				</Dropdown>
 			</DropdownStoryComponent>
 		</div>
