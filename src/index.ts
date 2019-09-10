@@ -48,6 +48,8 @@ import { DatePicker } from './components/DatePicker/DatePicker';
 import { Dropdown } from './components/Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
 import { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
+import { Flex } from './components/Flex/Flex';
+import { FlexItem } from './components/FlexItem/FlexItem';
 import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup';
 import { Column } from './components/Grid/Column';
@@ -150,6 +152,8 @@ export {
 	DropdownButton,
 	DropdownContent,
 	ExpandableContainer,
+	Flex,
+	FlexItem,
 	Form,
 	FormGroup,
 	Grid,

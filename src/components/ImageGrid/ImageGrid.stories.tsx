@@ -1,9 +1,8 @@
-import React, { Children, cloneElement, Fragment, ReactElement, useState } from 'react';
+import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
-import { RadioButtonProps } from '../RadioButton/RadioButton';
 import { ImageGrid } from './ImageGrid';
 
 const images = [
