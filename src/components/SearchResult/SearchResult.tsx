@@ -64,7 +64,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 						</div>
 					</div>
 				</div>
-				<p className="c-search-result__description">{`${description.substring(
+				<p className="c-search-result__description">{`${(description || '').substring(
 					0,
 					maxDescriptionLength
 				)}...`}</p>
