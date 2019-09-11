@@ -24,9 +24,7 @@ $rangeColor: hsl(190, 80%, 40%);
 		top: 10px;
 		border-radius: 50%;
 		background: rgb(250, 250, 250); /* Old browsers */
-		background: -moz-linear-gradient(top, rgba(250, 250, 250, 1) 0%, rgba(244, 244, 244, 1) 49%, rgba(240, 240, 240, 1) 51%, rgba(254, 254, 254, 1) 100%); /* FF3.6-15 */
-		background: -webkit-linear-gradient(top, rgba(250, 250, 250, 1) 0%, rgba(244, 244, 244, 1) 49%, rgba(240, 240, 240, 1) 51%, rgba(254, 254, 254, 1) 100%); /* Chrome10-25,Safari5.1-6 */
-		background: linear-gradient(to bottom, rgba(250, 250, 250, 1) 0%, rgba(244, 244, 244, 1) 49%, rgba(240, 240, 240, 1) 51%, rgba(254, 254, 254, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		background: linear-gradient(to bottom, rgba(250, 250, 250, 1) 0%, rgba(244, 244, 244, 1) 49%, rgba(240, 240, 240, 1) 51%, rgba(254, 254, 254, 1) 100%);
 	}
 
 	&.c-input-range__disabled {
