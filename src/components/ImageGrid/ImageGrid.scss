@@ -4,7 +4,9 @@
 		.c-image-grid__item {
 			&.c-image-grid__item-selected,
 			&:hover {
-				border: 3px solid #3FB1D6;
+				border: 0.5rem solid #3FB1D6;
+				margin: 0.5rem;
+				box-sizing: content-box;
 			}
 		}
 	}
