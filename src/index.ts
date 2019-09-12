@@ -85,7 +85,7 @@ import {
 	SearchResultThumbnail,
 	SearchResultTitle,
 } from './components/SearchResult/SearchResult.slots';
-import { Select } from './components/Select/Select';
+import { Select, SelectOption } from './components/Select/Select';
 import { Spacer } from './components/Spacer/Spacer';
 import { Spinner } from './components/Spinner/Spinner';
 import { Tab } from './components/Tab/Tab';
@@ -185,6 +185,7 @@ export {
 	SearchResultThumbnail,
 	SearchResultTitle,
 	Select,
+	SelectOption,
 	Spacer,
 	Spinner,
 	Tab,
