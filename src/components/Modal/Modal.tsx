@@ -11,11 +11,13 @@ import { Button } from '../Button/Button';
 import { ModalBody, ModalFooterLeft, ModalFooterRight, ModalHeaderRight } from './Modal.slots';
 import { ModalBackdrop } from './ModalBackdrop';
 
+import './Modal.scss';
+
 export interface ModalProps {
 	children: ReactNode;
 	isOpen: boolean;
 	title?: string;
-	size?: 'small' | 'medium' | 'large' | 'fullscreen' | 'fullwidth' | 'auto';
+	size?: 'small' | 'medium' | 'large' | 'extra-large' | 'fullscreen' | 'fullwidth' | 'auto';
 	scrollable?: boolean;
 	onClose?: () => void;
 }
@@ -57,6 +59,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 						'c-modal--small': size === 'small',
 						'c-modal--medium': size === 'medium',
 						'c-modal--large': size === 'large',
+						'c-modal--extra-large': size === 'extra-large',
 						'c-modal--fullscreen': size === 'fullscreen',
 						'c-modal--fullwidth': size === 'fullwidth',
 						'c-modal--height-auto': size === 'auto',

@@ -49,6 +49,12 @@ describe('<Modal />', () => {
 			</Modal>
 		);
 
+		const extraLargeModalComponent = shallow(
+			<Modal isOpen={false} size="extra-large">
+				<Fragment />
+			</Modal>
+		);
+
 		const fullscreenModalComponent = shallow(
 			<Modal isOpen={false} size="fullscreen">
 				<Fragment />
@@ -70,6 +76,7 @@ describe('<Modal />', () => {
 		const smallModalInnerElement = smallModalComponent.find('.c-modal');
 		const mediumModalInnerElement = mediumModalComponent.find('.c-modal');
 		const largeModalInnerElement = largeModalComponent.find('.c-modal');
+		const extraLargeModalInnerElement = extraLargeModalComponent.find('.c-modal');
 		const fullscreenModalInnerElement = fullscreenModalComponent.find('.c-modal');
 		const fullwidthModalInnerElement = fullwidthModalComponent.find('.c-modal');
 		const autoSizeModalModalInnerElement = autoSizeModalComponent.find('.c-modal');
@@ -77,6 +84,7 @@ describe('<Modal />', () => {
 		expect(smallModalInnerElement.hasClass('c-modal--small')).toEqual(true);
 		expect(mediumModalInnerElement.hasClass('c-modal--medium')).toEqual(true);
 		expect(largeModalInnerElement.hasClass('c-modal--large')).toEqual(true);
+		expect(extraLargeModalInnerElement.hasClass('c-modal--extra-large')).toEqual(true);
 		expect(fullscreenModalInnerElement.hasClass('c-modal--fullscreen')).toEqual(true);
 		expect(fullwidthModalInnerElement.hasClass('c-modal--fullwidth')).toEqual(true);
 		expect(autoSizeModalModalInnerElement.hasClass('c-modal--height-auto')).toEqual(true);
