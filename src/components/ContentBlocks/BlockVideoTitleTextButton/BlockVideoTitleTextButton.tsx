@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import marked from 'marked';
-
+import { convertToHtml } from '../../../helpers/convertToHtml';
 import { DefaultProps } from '../../../types';
 import { Container } from '../../Container/Container';
 import { ExpandableContainer } from '../../ExpandableContainer/ExpandableContainer';
@@ -46,7 +45,7 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 										</a>
 									</h2>
 								)}
-								{text && <p dangerouslySetInnerHTML={{ __html: marked(text) }} />}
+								{text && <p dangerouslySetInnerHTML={{ __html: convertToHtml(text) }} />}
 							</ExpandableContainer>
 						</div>
 					</Column>

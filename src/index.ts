@@ -105,12 +105,14 @@ import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 import { Tooltip } from './components/Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
+import { convertToHtml } from './helpers/convertToHtml';
 import { useSlot } from './hooks/useSlot';
 
 export {
 	COLORS,
 	useKeyPress,
 	useSlot,
+	convertToHtml,
 	Alert,
 	Avatar,
 	AvatarIcon,
