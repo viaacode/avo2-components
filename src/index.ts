@@ -75,6 +75,7 @@ import {
 	ModalFooterRight,
 	ModalHeaderRight,
 } from './components/Modal/Modal.slots';
+import { MultiRange } from './components/MultiRange/MultiRange';
 import { Navbar } from './components/Navbar/Navbar';
 import { Pagination } from './components/Pagination/Pagination';
 import { RadioButton } from './components/RadioButton/RadioButton';
@@ -176,6 +177,7 @@ export {
 	ModalFooterLeft,
 	ModalFooterRight,
 	ModalHeaderRight,
+	MultiRange,
 	Navbar,
 	Pagination,
 	RadioButton,
