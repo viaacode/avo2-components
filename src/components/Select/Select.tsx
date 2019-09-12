@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
-interface SelectOption {
+export interface SelectOption {
 	value: string;
 	label: string;
 	disabled?: boolean;
