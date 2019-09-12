@@ -12,6 +12,8 @@ import { get } from '../../utils/get';
 import { Icon } from '../Icon/Icon';
 import { DropdownButton, DropdownContent } from './Dropdown.slots';
 
+import './Dropdown.scss';
+
 export interface DropdownProps {
 	label?: string;
 	icon?: string;
@@ -99,7 +101,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 		<Manager>
 			<Reference innerRef={dropdownButtonRef}>
 				{({ ref }) => (
-					<div ref={ref} onClick={() => toggle()}>
+					<div className="c-dropdown__trigger" ref={ref} onClick={() => toggle()}>
 						{dropdownButtonSlot}
 						{!dropdownButtonSlot && (
 							<button className="c-button c-button--secondary">
@@ -118,7 +120,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 			<Popper placement={placement} modifiers={modifiers} innerRef={dropdownFlyoutRef}>
 				{({ ref, style, placement }) => (
 					<div
-						className={classNames('c-menu', {
+						className={classNames('c-dropdown__menu c-menu', {
 							'c-menu--visible': isOpen,
 						})}
 						ref={ref}

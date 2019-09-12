@@ -3,6 +3,8 @@ import copy from 'rollup-plugin-copy'
 import postcss from 'rollup-plugin-postcss';
 import cjs from 'rollup-plugin-commonjs'
 
+import autoprefixer from 'autoprefixer';
+
 export default {
 	input: 'src/index.ts',
 	output: [{
@@ -17,6 +19,9 @@ export default {
 	plugins: [
 		postcss({
 			extensions: ['.scss', '.css'],
+			plugins: [
+				autoprefixer(),
+			],
 		}),
 		cjs(),
 		typescript({
@@ -30,15 +35,17 @@ export default {
 		}),
 	],
 	external: [ // Suppresses warnings about external dependencies
-		'jquery',
-		'react',
+		'autosize',
 		'classnames',
+		'jquery',
 		'marked',
 		'popper.js',
-		'react-popper',
-		'react-dom',
-		'autosize',
-		'react-trumbowyg/dist/trumbowyg.min.css',
 		'raf',
+		'react',
+		'react-dom',
+		'react-popper',
+		'react-select',
+		'react-select/creatable',
+		'react-trumbowyg/dist/trumbowyg.min.css',
 	]
 }

@@ -16,10 +16,8 @@
 		box-shadow: inset 0 0 0.3rem rgba(0, 0, 0, 0.1);
 		border: 1px solid #BAC7D1;
 		font-size: inherit;
-		height: 3.6rem;
+		min-height: 3.6rem;
 		width: 100%;
-		-webkit-appearance: none;
-		-moz-appearance: none;
 		appearance: none;
 		transition: all 0.15s ease-in-out;
 
@@ -38,9 +36,7 @@
 			border: 1px solid #BAC7D1;
 			border-radius: 2.4rem;
 			padding: 0.3rem 1.6rem;
-			display: -ms-flexbox;
 			display: flex;
-			-ms-flex-align: center;
 			align-items: center;
 			text-decoration: none;
 			font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -53,8 +49,6 @@
 				background: #9CAFBD;
 				color: #FFF;
 				text-align: center;
-				-ms-flex: 1 1 100%;
-				//flex: 1 1 100%;
 				border: none;
 				width: 1.8rem;
 				height: 1.8rem;
@@ -70,7 +64,6 @@
 				}
 
 				svg {
-					margin: 0 0 0 -1px;
 					display: block;
 					width: 1.8rem;
 					height: 1.8rem;

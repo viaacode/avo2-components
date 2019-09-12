@@ -48,6 +48,8 @@ import { DatePicker } from './components/DatePicker/DatePicker';
 import { Dropdown } from './components/Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
 import { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
+import { Flex } from './components/Flex/Flex';
+import { FlexItem } from './components/FlexItem/FlexItem';
 import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup';
 import { Column } from './components/Grid/Column';
@@ -83,14 +85,14 @@ import {
 	SearchResultThumbnail,
 	SearchResultTitle,
 } from './components/SearchResult/SearchResult.slots';
-import { Select } from './components/Select/Select';
+import { Select, SelectOption } from './components/Select/Select';
 import { Spacer } from './components/Spacer/Spacer';
 import { Spinner } from './components/Spinner/Spinner';
 import { Tab } from './components/Tab/Tab';
 import { Table } from './components/Table/Table';
 import { Tabs } from './components/Tabs/Tabs';
 import { TagList } from './components/TagList/TagList';
-import { TagsInput } from './components/TagsInput/TagsInput';
+import { TagInfo, TagsInput } from './components/TagsInput/TagsInput';
 import { TextArea } from './components/TextArea/TextArea';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
@@ -150,6 +152,8 @@ export {
 	DropdownButton,
 	DropdownContent,
 	ExpandableContainer,
+	Flex,
+	FlexItem,
 	Form,
 	FormGroup,
 	Grid,
@@ -181,6 +185,7 @@ export {
 	SearchResultThumbnail,
 	SearchResultTitle,
 	Select,
+	SelectOption,
 	Spacer,
 	Spinner,
 	Tab,
@@ -188,6 +193,7 @@ export {
 	Tabs,
 	TagList,
 	TagsInput,
+	TagInfo,
 	TextArea,
 	TextInput,
 	Thumbnail,
