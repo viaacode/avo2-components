@@ -71,6 +71,36 @@ storiesOf('Modal', module)
 			</Modal>
 		</ModalStoryComponent>
 	))
+	.add('Large modal', () => (
+		<ModalStoryComponent>
+			<Modal isOpen={true} title="Modal title" size="large">
+				<ModalBody>
+					<p>
+						It doesn't matter where this modal occurs in the source code, React automatically moves
+						it to the root.
+					</p>
+				</ModalBody>
+				<ModalFooterRight>
+					<Button type="primary" label="Ok" ariaLabel="Ok" />
+				</ModalFooterRight>
+			</Modal>
+		</ModalStoryComponent>
+	))
+	.add('Extra large modal', () => (
+		<ModalStoryComponent>
+			<Modal isOpen={true} title="Modal title" size="extra-large">
+				<ModalBody>
+					<p>
+						It doesn't matter where this modal occurs in the source code, React automatically moves
+						it to the root.
+					</p>
+				</ModalBody>
+				<ModalFooterRight>
+					<Button type="primary" label="Ok" ariaLabel="Ok" />
+				</ModalFooterRight>
+			</Modal>
+		</ModalStoryComponent>
+	))
 	.add('Fullscreen modal', () => (
 		<ModalStoryComponent>
 			<Modal isOpen={true} title="Modal title" size="fullscreen">
