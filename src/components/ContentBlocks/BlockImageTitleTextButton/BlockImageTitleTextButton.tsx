@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
-import marked from 'marked';
 
+import { convertToHtml } from '../../../helpers/convertToHtml';
 import { DefaultProps } from '../../../types';
 import { Button } from '../../Button/Button';
 import { Container } from '../../Container/Container';
@@ -39,7 +39,7 @@ export const BlockImageTitleTextButton: FunctionComponent<BlockImageTitleTextBut
 					<Column size="2-8">
 						<div className="c-content">
 							{title && <h2>{title}</h2>}
-							{text && <p dangerouslySetInnerHTML={{ __html: marked(text) }} />}
+							{text && <p dangerouslySetInnerHTML={{ __html: convertToHtml(text) }} />}
 							{buttonLabel && (
 								<Spacer margin="top">
 									<Button

@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import marked from 'marked';
-
+import { convertToHtml } from '../../../helpers/convertToHtml';
 import { DefaultProps } from '../../../types';
 import { Container } from '../../Container/Container';
 import { Image } from '../../Image/Image';
@@ -28,7 +27,7 @@ export const BlockTitleImageText: FunctionComponent<BlockTitleImageTextProps> = 
 				{imageSource && <Image src={imageSource} alt={imageDescription} wide={true} />}
 				{text && (
 					<Spacer margin="top">
-						<p dangerouslySetInnerHTML={{ __html: marked(text) }} />
+						<p dangerouslySetInnerHTML={{ __html: convertToHtml(text) }} />
 					</Spacer>
 				)}
 			</Container>

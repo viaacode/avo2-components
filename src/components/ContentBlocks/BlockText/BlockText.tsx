@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
-import marked from 'marked';
 
+import { convertToHtml } from '../../../helpers/convertToHtml';
 import { DefaultProps } from '../../../types';
 import { Container } from '../../Container/Container';
 
@@ -17,7 +17,7 @@ export const BlockText: FunctionComponent<BlockTextProps> = ({
 	<div className={classnames(className, 'o-container-vertical', 'o-container-vertical-rich-text')}>
 		<Container mode="horizontal" size="small">
 			{/* TODO escape markdown in backend */}
-			<div className="c-content" dangerouslySetInnerHTML={{ __html: marked(text) }} />
+			<div className="c-content" dangerouslySetInnerHTML={{ __html: convertToHtml(text) }} />
 		</Container>
 	</div>
 );
