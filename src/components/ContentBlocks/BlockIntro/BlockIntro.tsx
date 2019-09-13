@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
-import marked from 'marked';
 
+import { convertToHtml } from '../../../helpers/convertToHtml';
 import { DefaultProps } from '../../../types';
 import { Container } from '../../Container/Container';
 
@@ -27,7 +27,7 @@ export const BlockIntro: FunctionComponent<BlockIntroProps> = ({
 				{subtitle && <h3>{subtitle}</h3>}
 				<p
 					className="o-container-vertical-intro__intro"
-					dangerouslySetInnerHTML={{ __html: marked(text) }}
+					dangerouslySetInnerHTML={{ __html: convertToHtml(text) }}
 				/>
 			</div>
 		</Container>
