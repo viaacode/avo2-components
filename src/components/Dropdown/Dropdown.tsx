@@ -8,13 +8,14 @@ import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
+import { DefaultProps } from '../../types';
 import { get } from '../../utils/get';
 import { Icon } from '../Icon/Icon';
 import { DropdownButton, DropdownContent } from './Dropdown.slots';
 
 import './Dropdown.scss';
 
-export interface DropdownProps {
+export interface DropdownProps extends DefaultProps {
 	label?: string;
 	icon?: string;
 	isOpen: boolean;
@@ -49,6 +50,7 @@ export interface DropdownProps {
  * - The flyout element that contains the children is called the "popper"
  */
 export const Dropdown: FunctionComponent<DropdownProps> = ({
+	className,
 	label = '',
 	icon,
 	isOpen,
@@ -101,7 +103,13 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 		<Manager>
 			<Reference innerRef={dropdownButtonRef}>
 				{({ ref }) => (
-					<div className="c-dropdown__trigger" ref={ref} onClick={() => toggle()}>
+					<div
+						className={classNames(className, {
+							'c-dropdown__trigger': autoSize,
+						})}
+						ref={ref}
+						onClick={() => toggle()}
+					>
 						{dropdownButtonSlot}
 						{!dropdownButtonSlot && (
 							<button className="c-button c-button--secondary">
