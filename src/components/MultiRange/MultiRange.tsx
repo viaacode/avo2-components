@@ -13,6 +13,7 @@ export interface MultiRangeProps extends DefaultProps {
 	step?: number;
 	min?: number;
 	max?: number;
+	allowOverlap?: boolean;
 	onChange?: (values: number[]) => void;
 }
 
@@ -24,16 +25,20 @@ export const MultiRange: FunctionComponent<MultiRangeProps> = ({
 	step = 0.1,
 	min = 0,
 	max = 100,
+	allowOverlap = false,
 	onChange = () => {},
 }) => {
 	const classes = classnames('c-input-range', className, { 'c-input-range__disabled': disabled });
 
+	const sortedValues = [...values];
+	sortedValues.sort((a: number, b: number) => a - b);
 	return (
 		<div id={id} className={classes}>
 			<Range
 				step={step}
 				min={min}
 				max={max}
+				allowOverlap={allowOverlap}
 				values={values}
 				onChange={onChange}
 				renderTrack={({ props, children }) => (
@@ -54,9 +59,9 @@ export const MultiRange: FunctionComponent<MultiRangeProps> = ({
 								width: '100%',
 								borderRadius: '4px',
 								background: getTrackBackground({
-									values,
 									min,
 									max,
+									values: sortedValues,
 									colors:
 										values.length === 1
 											? ['hsl(190, 80%, 40%)', 'rgb(196, 196, 196)']

@@ -36,6 +36,11 @@ storiesOf('MultiRange', module)
 			<MultiRange disabled />
 		</MultiRangeStoryComponent>
 	))
+	.add('MultiRange allow overlap', () => (
+		<MultiRangeStoryComponent>
+			<MultiRange allowOverlap={true} onChange={action('Value changed')} />
+		</MultiRangeStoryComponent>
+	))
 	.add('MultiRange with default values', () => (
 		<MultiRangeStoryComponent defaultValues={[20, 60]}>
 			<MultiRange />
