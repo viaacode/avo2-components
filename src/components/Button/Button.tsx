@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+import './Button.scss';
 
 export interface ButtonProps extends DefaultProps {
 	ariaLabel?: string;
@@ -51,7 +52,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 			'c-button--icon': icon && !label,
 			[`c-button--${type}`]: type,
 		})}
-		onClick={onClick}
+		onClick={disabled ? () => {} : onClick}
 		disabled={disabled}
 		aria-label={ariaLabel}
 		title={title}

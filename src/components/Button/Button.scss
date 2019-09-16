@@ -1,0 +1,13 @@
+.c-button.c-button--primary:disabled,
+.c-button.c-button--primary.c-button--disabled,
+.c-button.c-button--secondary:disabled,
+.c-button.c-button--secondary.c-button--disabled,
+.c-button.c-button--tertiary:disabled,
+.c-button.c-button--tertiary.c-button--disabled,
+.c-button.c-button--danger:disabled,
+.c-button.c-button--danger.c-button--disabled,
+.c-button.c-button--danger-hover:disabled,
+.c-button.c-button--danger-hover.c-button--disabled {
+	pointer-events: auto;
+	cursor: default;
+}

@@ -75,6 +75,7 @@ import {
 	ModalFooterRight,
 	ModalHeaderRight,
 } from './components/Modal/Modal.slots';
+import { MultiRange } from './components/MultiRange/MultiRange';
 import { Navbar } from './components/Navbar/Navbar';
 import { Pagination } from './components/Pagination/Pagination';
 import { RadioButton } from './components/RadioButton/RadioButton';
@@ -105,12 +106,14 @@ import { ToolbarTitle } from './components/Toolbar/ToolbarTitle';
 import { Tooltip } from './components/Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
+import { convertToHtml } from './helpers/convertToHtml';
 import { useSlot } from './hooks/useSlot';
 
 export {
 	COLORS,
 	useKeyPress,
 	useSlot,
+	convertToHtml,
 	Alert,
 	Avatar,
 	AvatarIcon,
@@ -176,6 +179,7 @@ export {
 	ModalFooterLeft,
 	ModalFooterRight,
 	ModalHeaderRight,
+	MultiRange,
 	Navbar,
 	Pagination,
 	RadioButton,

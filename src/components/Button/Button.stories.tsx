@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { COLORS } from '../../colors';
-
+import { action } from '../../helpers/action';
 import { Button } from './Button';
 
 storiesOf('Button', module)
@@ -11,28 +11,70 @@ storiesOf('Button', module)
 	.add('Buttons', () => (
 		<Fragment>
 			<div className="u-spacer-bottom">
-				<Button ariaLabel="test button" title="test button" label="Primary button" type="primary" />
+				<Button
+					ariaLabel="test button"
+					title="test button"
+					label="Primary button"
+					type="primary"
+					onClick={action('Button clicked')}
+				/>
 			</div>
 			<div className="u-spacer-bottom">
-				<Button ariaLabel="test button" label="Secondary button" type="secondary" />
+				<Button
+					ariaLabel="test button"
+					label="Secondary button"
+					type="secondary"
+					onClick={action('Button clicked')}
+				/>
 			</div>
 			<div className="u-spacer-bottom">
-				<Button ariaLabel="test button" label="Tertiary button" type="tertiary" />
+				<Button
+					ariaLabel="test button"
+					label="Tertiary button"
+					type="tertiary"
+					onClick={action('Button clicked')}
+				/>
 			</div>
 			<div className="u-spacer-bottom">
-				<Button ariaLabel="test button" label="Link button" type="link" />
+				<Button
+					ariaLabel="test button"
+					label="Link button"
+					type="link"
+					onClick={action('Button clicked')}
+				/>
 			</div>
 			<div className="u-spacer-bottom">
-				<Button ariaLabel="test button" label="Danger button" type="danger" />
+				<Button
+					ariaLabel="test button"
+					label="Danger button"
+					type="danger"
+					onClick={action('Button clicked')}
+				/>
 			</div>
 			<div className="u-spacer-bottom">
-				<Button ariaLabel="test button" label="Danger (hover) button" type="danger-hover" />
+				<Button
+					ariaLabel="test button"
+					label="Danger (hover) button"
+					type="danger-hover"
+					onClick={action('Button clicked')}
+				/>
 			</div>
 			<div className="u-spacer-bottom">
-				<Button ariaLabel="test button" label="Borderless button" type="borderless" />
+				<Button
+					ariaLabel="test button"
+					label="Borderless button"
+					type="borderless"
+					onClick={action('Button clicked')}
+				/>
 			</div>
 			<div className="u-spacer-bottom">
-				<Button ariaLabel="test button" label="Disabled button" disabled />
+				<Button
+					ariaLabel="test button"
+					label="Disabled button"
+					disabled
+					title={'reason why this button is disabled'}
+					onClick={action('Button clicked')}
+				/>
 			</div>
 		</Fragment>
 	))
