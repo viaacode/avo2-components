@@ -5,15 +5,21 @@ import { Button } from '../Button/Button';
 import { Dropdown } from './Dropdown';
 import { DropdownButton, DropdownContent } from './Dropdown.slots';
 
+const renderDropdownChildren = () => (
+	<>
+		<div>OneOneOneOneOneOne</div>
+		<div>Two</div>
+		<div>Three</div>
+		<div>Four</div>
+		<div>Five</div>
+	</>
+);
+
 describe('<Dropdown />', () => {
 	it('Should be able to render', () => {
 		shallow(
 			<Dropdown label="Show options" isOpen={false}>
-				<div>OneOneOneOneOneOne</div>
-				<div>Two</div>
-				<div>Three</div>
-				<div>Four</div>
-				<div>Five</div>
+				{renderDropdownChildren()}
 			</Dropdown>
 		);
 	});
@@ -21,25 +27,17 @@ describe('<Dropdown />', () => {
 	it('Should render correctly with `isOpen = false`', () => {
 		const dropdownComponent = shallow(
 			<Dropdown label="Show options" isOpen={false}>
-				<div>OneOneOneOneOneOne</div>
-				<div>Two</div>
-				<div>Three</div>
-				<div>Four</div>
-				<div>Five</div>
+				{renderDropdownChildren()}
 			</Dropdown>
 		);
 
 		expect(dropdownComponent.find('.c-menu')).toHaveLength(0);
 	});
 
-	it('Shouldrender correctly with `isOpen = true`', () => {
+	it('Should render correctly with `isOpen = true`', () => {
 		const dropdownComponent = mount(
 			<Dropdown label="Show options" isOpen={true}>
-				<div>OneOneOneOneOneOne</div>
-				<div>Two</div>
-				<div>Three</div>
-				<div>Four</div>
-				<div>Five</div>
+				{renderDropdownChildren()}
 			</Dropdown>
 		);
 
@@ -52,11 +50,7 @@ describe('<Dropdown />', () => {
 
 		const dropdownComponent = mount(
 			<Dropdown label="Show options" isOpen={false} onOpen={onOpenHandler}>
-				<div>OneOneOneOneOneOne</div>
-				<div>Two</div>
-				<div>Three</div>
-				<div>Four</div>
-				<div>Five</div>
+				{renderDropdownChildren()}
 			</Dropdown>
 		);
 
@@ -74,11 +68,7 @@ describe('<Dropdown />', () => {
 
 		const dropdownComponent = mount(
 			<Dropdown label="Show options" isOpen={true} onClose={onCloseHandler}>
-				<div>OneOneOneOneOneOne</div>
-				<div>Two</div>
-				<div>Three</div>
-				<div>Four</div>
-				<div>Five</div>
+				{renderDropdownChildren()}
 			</Dropdown>
 		);
 
@@ -92,22 +82,18 @@ describe('<Dropdown />', () => {
 	});
 
 	it('Should set the correct className for button', () => {
+		const customClass = 'c-dropdown-custom';
+
 		const dropdownComponent = mount(
-			<Dropdown label="Show options" isOpen={false}>
-				<div>OneOneOneOneOneOne</div>
-				<div>Two</div>
-				<div>Three</div>
-				<div>Four</div>
-				<div>Five</div>
+			<Dropdown className={customClass} label="Show options" isOpen={false}>
+				{renderDropdownChildren()}
 			</Dropdown>
 		);
+		const dropdownTriggerContainer = dropdownComponent.find('div').first();
+		const dropdownTriggerButton = dropdownTriggerContainer.find('button');
 
-		expect(
-			dropdownComponent
-				.find('button')
-				.first()
-				.hasClass('c-button')
-		).toEqual(true);
+		expect(dropdownTriggerButton.hasClass('c-button')).toBeTruthy();
+		expect(dropdownTriggerContainer.hasClass(customClass)).toBeTruthy();
 	});
 
 	it('Should correctly pass `label`', () => {
@@ -115,11 +101,7 @@ describe('<Dropdown />', () => {
 
 		const dropdownComponent = mount(
 			<Dropdown label={label} isOpen={false}>
-				<div>OneOneOneOneOneOne</div>
-				<div>Two</div>
-				<div>Three</div>
-				<div>Four</div>
-				<div>Five</div>
+				{renderDropdownChildren()}
 			</Dropdown>
 		);
 
@@ -148,5 +130,18 @@ describe('<Dropdown />', () => {
 
 		expect(dropdownComponent.find('.c-button__label').text()).toEqual(label);
 		expect(dropdownComponent.find('.firstItem').text()).toEqual('OneOneOneOneOneOne');
+	});
+
+	it('Should render correctly with `autoSize = true`', () => {
+		const dropdownComponent = mount(
+			<Dropdown autoSize label="Show options" isOpen={false}>
+				{renderDropdownChildren()}
+			</Dropdown>
+		);
+		const dropdownTriggerContainer = dropdownComponent.find('div').first();
+		const dropdownContent = dropdownComponent.find('.c-dropdown__menu');
+
+		expect(dropdownTriggerContainer.hasClass('c-dropdown__trigger')).toBeTruthy();
+		expect(dropdownContent.get(0).props.style).not.toHaveProperty('width');
 	});
 });
