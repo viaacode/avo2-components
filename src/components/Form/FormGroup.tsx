@@ -38,7 +38,9 @@ export const FormGroup: FunctionComponent<FormGroupProps> = ({
 				{errorArray &&
 					errorArray.length &&
 					errorArray.map((err: string) => (
-						<div className="c-form-help-text c-form-help-text--error">{err}</div>
+						<div className="c-form-help-text c-form-help-text--error" key={err}>
+							{err}
+						</div>
 					))}
 			</div>
 		</div>
