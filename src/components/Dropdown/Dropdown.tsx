@@ -35,7 +35,7 @@ export interface DropdownProps extends DefaultProps {
 		| 'left'
 		| 'left-start'
 		| 'left-end';
-	autoSize?: boolean;
+	flyoutWidth?: 'fit-content' | 'same-as-button';
 	children: ReactNode;
 	onOpen?: () => void;
 	onClose?: () => void;
@@ -55,7 +55,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	icon,
 	isOpen,
 	placement = 'bottom-start',
-	autoSize = false,
+	flyoutWidth = 'fit-content',
 	children,
 	onOpen = () => {},
 	onClose = () => {},
@@ -80,7 +80,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 
 		const newData = computeStylesFn(data, options);
 
-		if (!autoSize) {
+		if (flyoutWidth === 'same-as-button') {
 			// Make the width of the popper the same size as the reference element
 			newData.styles.width = `${newData.offsets.reference.width}px`;
 		}
@@ -104,9 +104,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 			<Reference innerRef={dropdownButtonRef}>
 				{({ ref }) => (
 					<div
-						className={classNames(className, {
-							'c-dropdown__trigger': autoSize,
-						})}
+						className={classNames(className, 'c-dropdown__trigger')}
 						ref={ref}
 						onClick={() => toggle()}
 					>
