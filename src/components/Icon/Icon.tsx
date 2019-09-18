@@ -13,7 +13,7 @@ export interface IconProps extends DefaultProps {
 }
 
 export const Icon: FunctionComponent<IconProps> = ({ className, name, size, type, active }) => {
-	let IconToRender = (Icons as any)[toPascalCase(name)];
+	let IconToRender = (Icons as any)[toPascalCase(name || 'slash')];
 
 	function getIconName() {
 		const base = 'o-svg-icon';
