@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import Trumbowyg from 'react-trumbowyg';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
