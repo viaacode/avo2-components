@@ -3,6 +3,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
+import './Container.scss';
 
 export interface ContainerProps extends DefaultProps {
 	mode?: 'horizontal' | 'vertical';

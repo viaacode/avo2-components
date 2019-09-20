@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+import './Blankslate.scss';
 
 export interface BlankslateProps extends DefaultProps {
 	title: string;

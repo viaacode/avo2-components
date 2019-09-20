@@ -6,6 +6,7 @@ import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Spinner } from '../Spinner/Spinner';
+import './Alert.scss';
 
 const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
 	info: 'circle-info',

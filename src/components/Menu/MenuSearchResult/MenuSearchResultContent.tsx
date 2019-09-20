@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
-import { ContentType, DefaultProps } from '../../types';
-import { Icon } from '../Icon/Icon';
-import { MenuContent } from '../Menu/MenuContent';
+import { ContentType, DefaultProps } from '../../../types';
+import { Icon } from '../../Icon/Icon';
+import { MenuContent } from '../MenuContent';
 
 export interface MenuSearchResultItemInfo {
 	label: string;

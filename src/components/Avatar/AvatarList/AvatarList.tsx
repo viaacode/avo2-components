@@ -2,15 +2,15 @@ import React, { Fragment, FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../types';
-import { Avatar, AvatarProps } from '../Avatar/Avatar';
-import { Dropdown } from '../Dropdown/Dropdown';
-import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots';
-import { Flex } from '../Flex/Flex';
-import { Spacer } from '../Spacer/Spacer';
-import { Tooltip } from '../Tooltip/Tooltip';
-import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
-import './AvatarList.css';
+import { DefaultProps } from '../../../types';
+import { Dropdown } from '../../Dropdown/Dropdown';
+import { DropdownButton, DropdownContent } from '../../Dropdown/Dropdown.slots';
+import { Flex } from '../../Flex/Flex';
+import { Spacer } from '../../Spacer/Spacer';
+import { Tooltip } from '../../Tooltip/Tooltip';
+import { TooltipContent, TooltipTrigger } from '../../Tooltip/Tooltip.slots';
+import { Avatar, AvatarProps } from '../Avatar';
+import './AvatarList.scss';
 
 interface ExtendedAvatarProps extends AvatarProps {
 	onClick?: (avatar: ExtendedAvatarProps) => void;

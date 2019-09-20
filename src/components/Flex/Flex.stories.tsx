@@ -3,8 +3,8 @@ import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 
-import { FlexItem } from '../FlexItem/FlexItem';
 import { Flex } from './Flex';
+import { FlexItem } from './FlexItem/FlexItem';
 
 const content1 = loremIpsum({ count: 1 });
 const content2 = loremIpsum({ count: 4 });

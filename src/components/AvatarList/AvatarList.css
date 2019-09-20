@@ -1,8 +1,0 @@
-/* TODO: these styles should be added to the general css once they are final */
-.c-avatar-list-overrides .c-menu .c-avatar {
-	margin-left: 0;
-}
-
-.c-avatar-list-overrides .c-menu--visible {
-	margin-top: 4px;
-}

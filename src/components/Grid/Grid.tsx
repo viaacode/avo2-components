@@ -4,6 +4,8 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
+import './Grid.scss';
+
 export interface GridProps extends DefaultProps {
 	children: ReactNode;
 }

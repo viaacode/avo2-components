@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
+import './Form.scss';
+
 export interface FormGroupProps extends DefaultProps {
 	type?: 'standard' | 'horizontal' | 'inline';
 	children: ReactNode;

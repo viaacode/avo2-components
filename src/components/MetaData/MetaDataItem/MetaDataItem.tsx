@@ -2,8 +2,8 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
-import { DefaultProps } from '../../types';
-import { Icon } from '../Icon/Icon';
+import { DefaultProps } from '../../../types';
+import { Icon } from '../../Icon/Icon';
 
 export interface MetaDataItemProps extends DefaultProps {
 	icon?: string;

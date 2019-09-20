@@ -11,9 +11,11 @@ import {
 
 import { ContentType, DefaultProps } from '../../types';
 import { MetaData } from '../MetaData/MetaData';
-import { MetaDataItem } from '../MetaDataItem/MetaDataItem';
+import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { TagList } from '../TagList/TagList';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
+
+import './SearchResult.scss';
 
 export interface SearchResultProps extends DefaultProps {
 	children: ReactNode;

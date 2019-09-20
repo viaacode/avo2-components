@@ -1,4 +1,19 @@
+/* ==========================================================================
+   Component: Image grid
+   ========================================================================== */
+
 .c-image-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	img {
+		display: block;
+	}
+
+	.c-image-grid__item {
+		margin: 1rem;
+	}
 
 	&.c-image-grid-selectable {
 		.c-image-grid__item {
@@ -8,5 +23,4 @@
 			}
 		}
 	}
-
 }

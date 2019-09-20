@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 import { ContentType, DefaultProps } from '../../types';
 
+import './MetaData.scss';
+
 export interface MetaDataProps extends DefaultProps {
 	children: ReactNode;
 	category: ContentType;

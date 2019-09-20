@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps } from '../../../types';
 
 export interface AvatarIconProps extends DefaultProps {
 	initials: string;

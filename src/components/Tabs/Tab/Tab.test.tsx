@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Icon } from '../Icon/Icon';
+import { Icon } from '../../Icon/Icon';
 
 import { Tab } from './Tab';
 

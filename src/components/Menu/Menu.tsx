@@ -5,6 +5,8 @@ import classnames from 'classnames';
 import { DefaultProps } from '../../types';
 import { MenuContent, MenuItemInfo } from './MenuContent';
 
+import './Menu.scss';
+
 export interface MenuProps extends DefaultProps {
 	menuItems: MenuItemInfo[] | MenuItemInfo[][]; // Between arrays, there will be a divider
 	renderItem?: (menuItem: MenuItemInfo) => ReactNode; // If you want to render your own item

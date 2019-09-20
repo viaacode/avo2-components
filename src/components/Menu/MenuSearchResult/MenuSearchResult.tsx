@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps } from '../../../types';
 import { MenuSearchResultContent, MenuSearchResultItemInfo } from './MenuSearchResultContent';
 
 export interface MenuProps extends DefaultProps {

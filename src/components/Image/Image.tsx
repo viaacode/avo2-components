@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
+import './Image.scss';
+
 export interface ImageProps extends DefaultProps {
 	src: string;
 	alt?: string;

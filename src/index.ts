@@ -11,8 +11,8 @@ import { useKeyPress } from './hooks/useKeyPress';
 // Components
 import { Alert } from './components/Alert/Alert';
 import { Avatar } from './components/Avatar/Avatar';
-import { AvatarIcon } from './components/Avatar/AvatarIcon';
-import { AvatarList } from './components/AvatarList/AvatarList';
+import { AvatarIcon } from './components/Avatar/AvatarIcon/AvatarIcon';
+import { AvatarList } from './components/Avatar/AvatarList/AvatarList';
 import { Badge } from './components/Badge/Badge';
 import { Blankslate } from './components/Blankslate/Blankslate';
 import { Box } from './components/Box/Box';
@@ -49,7 +49,7 @@ import { Dropdown } from './components/Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
 import { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
 import { Flex } from './components/Flex/Flex';
-import { FlexItem } from './components/FlexItem/FlexItem';
+import { FlexItem } from './components/Flex/FlexItem/FlexItem';
 import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup';
 import { Column } from './components/Grid/Column';
@@ -61,13 +61,13 @@ import { MediaCard } from './components/MediaCard/MediaCard';
 import { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/MediaCard.slots';
 import { Menu } from './components/Menu/Menu';
 import { MenuContent, MenuItemInfo } from './components/Menu/MenuContent';
-import { MenuSearchResult } from './components/MenuSearchResult/MenuSearchResult';
+import { MenuSearchResult } from './components/Menu/MenuSearchResult/MenuSearchResult';
 import {
 	MenuSearchResultContent,
 	MenuSearchResultItemInfo,
-} from './components/MenuSearchResult/MenuSearchResultContent';
+} from './components/Menu/MenuSearchResult/MenuSearchResultContent';
 import { MetaData } from './components/MetaData/MetaData';
-import { MetaDataItem } from './components/MetaDataItem/MetaDataItem';
+import { MetaDataItem } from './components/MetaData/MetaDataItem/MetaDataItem';
 import { Modal } from './components/Modal/Modal';
 import {
 	ModalBody,
@@ -89,8 +89,8 @@ import {
 import { Select, SelectOption } from './components/Select/Select';
 import { Spacer } from './components/Spacer/Spacer';
 import { Spinner } from './components/Spinner/Spinner';
-import { Tab } from './components/Tab/Tab';
 import { Table } from './components/Table/Table';
+import { Tab } from './components/Tabs/Tab/Tab';
 import { Tabs } from './components/Tabs/Tabs';
 import { TagList } from './components/TagList/TagList';
 import { TagInfo, TagsInput } from './components/TagsInput/TagsInput';

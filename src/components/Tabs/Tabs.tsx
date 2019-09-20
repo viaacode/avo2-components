@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
-import { Tab, TabProps } from '../Tab/Tab';
+import { Tab, TabProps } from './Tab/Tab';
 
 export interface TabsProps extends DefaultProps {
 	tabs: TabProps[];

@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
+import './Badge.scss';
 
 export interface BadgeProps extends DefaultProps {
 	text: string;

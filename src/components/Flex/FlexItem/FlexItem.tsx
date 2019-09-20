@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps } from '../../../types';
 
 export interface FlexItemProps extends DefaultProps {
 	shrink?: boolean;

@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
+import './Navbar.scss';
+
 export interface NavbarProps extends DefaultProps {
 	placement?: 'top' | 'bottom';
 	position?: 'fixed';

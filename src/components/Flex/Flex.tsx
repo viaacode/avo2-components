@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
+import './Flex.scss';
+
 export interface FlexProps extends DefaultProps {
 	orientation?: 'horizontal' | 'vertical';
 	center?: boolean;

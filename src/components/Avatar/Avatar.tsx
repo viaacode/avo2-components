@@ -3,7 +3,8 @@ import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
-import { AvatarIcon, AvatarIconProps } from './AvatarIcon';
+import './Avatar.scss';
+import { AvatarIcon, AvatarIconProps } from './AvatarIcon/AvatarIcon';
 
 export interface AvatarProps extends DefaultProps, AvatarIconProps {
 	name?: string;

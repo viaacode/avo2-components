@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Menu } from '../..';
+import { Menu } from '../../..';
 import { MenuSearchResult } from './MenuSearchResult';
 import { MenuSearchResultItemInfo } from './MenuSearchResultContent';
 
