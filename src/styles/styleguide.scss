@@ -1,0 +1,30 @@
+/* Color swatches (for colors documentation)
+   ========================================================================== */
+
+.c-swatch-list {
+	padding: 2.4rem 0;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.c-swatch {
+	margin: 0 2.4rem 2.4rem 0;
+	text-align: center;
+	width: 12rem;
+}
+
+.c-swatch__block {
+	width: 6.4rem;
+	height: 6.4rem;
+	margin: 0 auto;
+	border-radius: 100%;
+	margin-bottom: 1rem;
+}
+
+.c-swatch__info {
+	font-size: 1.2rem;
+}
+
+.c-swatch__color-hex {
+	color: $color-gray-200;
+}
