@@ -1,14 +1,8 @@
 /* ==========================================================================
-   Component: Meta data
+   Component: Toolbar title
    ========================================================================== */
 
-.c-meta-data {
-	display: flex;
-	align-items: center;
-}
-
-.c-meta-data--spaced-out {
-	.c-meta-data__item {
-		margin-right: 1.6rem;
-	}
+.c-toolbar__title {
+	font-weight: $g-headings-font-weight;
+	font-size: 1.8rem;
 }

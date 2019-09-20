@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps } from '../../../types';
 
 export interface ToolbarItemProps extends DefaultProps {
 	children: ReactNode;

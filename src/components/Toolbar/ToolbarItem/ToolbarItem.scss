@@ -1,14 +1,15 @@
 /* ==========================================================================
-   Component: Meta data
+   Component: Toolbar item
    ========================================================================== */
 
-.c-meta-data {
-	display: flex;
-	align-items: center;
+.c-toolbar__item {
+	position: relative;
 }
 
-.c-meta-data--spaced-out {
-	.c-meta-data__item {
-		margin-right: 1.6rem;
-	}
+.c-toolbar__item--grow {
+	flex: 1;
+}
+
+.c-toolbar__item--stretch {
+	flex: 1;
 }

@@ -2,14 +2,14 @@ import React, { Fragment, FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../../types';
-import { Dropdown } from '../../Dropdown/Dropdown';
-import { DropdownButton, DropdownContent } from '../../Dropdown/Dropdown.slots';
-import { Flex } from '../../Flex/Flex';
-import { Spacer } from '../../Spacer/Spacer';
-import { Tooltip } from '../../Tooltip/Tooltip';
-import { TooltipContent, TooltipTrigger } from '../../Tooltip/Tooltip.slots';
-import { Avatar, AvatarProps } from '../Avatar';
+import { DefaultProps } from '../../types';
+import { Avatar, AvatarProps } from '../Avatar/Avatar';
+import { Dropdown } from '../Dropdown/Dropdown';
+import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots';
+import { Flex } from '../Flex/Flex';
+import { Spacer } from '../Spacer/Spacer';
+import { Tooltip } from '../Tooltip/Tooltip';
+import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 import './AvatarList.scss';
 
 interface ExtendedAvatarProps extends AvatarProps {
@@ -32,7 +32,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
 	const hasHiddenAvatars = hiddenAvatars && !!hiddenAvatars.length;
 
 	return (
-		<div className={classnames(className, 'c-avatar--multiple', 'c-avatar-list-overrides')}>
+		<div className={classnames(className, 'c-avatar--multiple')}>
 			{visibleAvatars.map((avatar, index) => (
 				<Fragment key={index}>
 					<Tooltip position="bottom">

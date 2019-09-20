@@ -82,13 +82,6 @@ $c-toolbar-main-border-color: $color-gray-200 !default;
 	align-items: center;
 }
 
-.c-toolbar__item {
-	position: relative;
-}
-
-.c-toolbar__item--grow {
-	flex: 1;
-}
 
 .c-toolbar__center {
 	position: absolute;
@@ -120,13 +113,6 @@ $c-toolbar-main-border-color: $color-gray-200 !default;
 	margin-left: -100%;
 }
 
-/* Specific children
-   ========================================================================== */
-
-.c-toolbar__title {
-	font-weight: $g-headings-font-weight;
-	font-size: 1.8rem;
-}
 
 /* Justified toolbar
    ========================================================================== */
@@ -139,10 +125,6 @@ $c-toolbar-main-border-color: $color-gray-200 !default;
 	.c-toolbar__item {
 		margin-right: $c-toolbar-item-spacing;
 	}
-}
-
-.c-toolbar__item--stretch {
-	flex: 1;
 }
 
 .c-toolbar__justified {

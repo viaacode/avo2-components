@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
 
+import './MetaDataItem.scss';
+
 export interface MetaDataItemProps extends DefaultProps {
 	icon?: string;
 	label?: string;

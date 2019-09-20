@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
 
+import './Tab.scss';
+
 export interface TabProps extends DefaultProps {
 	label: string;
 	id: string | number;

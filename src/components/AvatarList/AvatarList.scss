@@ -1,13 +1,8 @@
-@import '../../../styles/settings/colors';
+@import '../../styles/settings/colors';
 
-/* TODO: these styles should be added to the general css once they are final */
-.c-avatar-list-overrides .c-menu .c-avatar {
-	margin-left: 0;
-}
-
-.c-avatar-list-overrides .c-menu--visible {
-	margin-top: 4px;
-}
+/* ==========================================================================
+   Component: Avatar list
+   ========================================================================== */
 
 .c-avatar--multiple {
 	margin-left: 0.8rem;
@@ -36,6 +31,16 @@
 		border: none;
 		background-color: $color-gray-100;
 		color: $color-gray-700;
+	}
+
+	.c-menu {
+		.c-avatar {
+			margin-left: 0;
+		}
+
+		&.c-menu--visible {
+			margin-top: 4px;
+		}
 	}
 }
 
