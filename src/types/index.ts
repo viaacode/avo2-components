@@ -2,4 +2,4 @@ export type DefaultProps = {
 	className?: string;
 };
 
-export type ContentType = 'collection' | 'bundle' | 'video' | 'audio';
+export type ContentType = 'collection' | 'bundle' | 'video' | 'audio' | 'search';
