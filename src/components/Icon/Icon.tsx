@@ -56,7 +56,7 @@ export const Icon: FunctionComponent<IconProps> = ({
 				[`o-svg-icon--${size}`]: size,
 			})}
 		>
-			<IconToRender />
+			<IconToRender key={name} />
 		</div>
 	);
 };
