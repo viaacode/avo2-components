@@ -13,7 +13,7 @@ export const BlockVideo: FunctionComponent<BlockVideoProps> = ({ className, vide
 		<Container className={className} mode="vertical">
 			<VideoWrapper aspect="16:9">
 				{/* TODO replace this with the flowplayer video component */}
-				<video src={videoSource} />
+				<video src={videoSource} controls />
 			</VideoWrapper>
 		</Container>
 	);

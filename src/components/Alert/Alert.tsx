@@ -41,7 +41,7 @@ export const Alert: FunctionComponent<AlertProps> = ({
 				</div>
 				{message}
 			</div>
-			<Button icon="close" type="borderless" onClick={close} />
+			<Button icon="close" type={dark ? 'borderless-i' : 'borderless'} onClick={close} />
 		</div>
 	);
 };

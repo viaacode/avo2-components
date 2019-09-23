@@ -38,7 +38,7 @@ export const Flex: FunctionComponent<FlexProps> = ({
 
 	const classes = [
 		'o-flex',
-		!!orientationClass && `o-flex--${orientationClass}`,
+		!!orientationClass && `o-flex-${orientationClass}`,
 		!!align && `o-flex--align-${align}`,
 		!!spaced && `o-flex--spaced-${spaced}`.replace('-regular', ''),
 	];

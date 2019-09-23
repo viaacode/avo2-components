@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { BlockVideo } from './BlockVideo';
 
 const videoSource =
-	'https://archief-media.viaa.be/viaa/TESTBEELD/ad87ac36b4f640dfb0fc57c26397b7aebb4c49785d2e4a7b8c8069aa95c4db16/browse.mp4';
+	'https://archief-media.viaa.be/viaa/TESTBEELD/c44b877a9a7d4b1a99c5b8b676c3aef4ca370f2fe15d42d49b438e71eea6b99d/browse.mp4';
 
 storiesOf('BlockVideo', module)
 	.addParameters({ jest: ['BlockVideo'] })
