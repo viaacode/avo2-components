@@ -6,7 +6,7 @@ import { DefaultProps } from '../../types';
 
 export interface ToolbarItemProps extends DefaultProps {
 	children: ReactNode;
-	grow: boolean;
+	grow?: boolean;
 }
 
 export const ToolbarItem: FunctionComponent<ToolbarItemProps> = ({
