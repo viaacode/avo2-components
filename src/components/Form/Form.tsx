@@ -15,7 +15,7 @@ export const Form: FunctionComponent<FormGroupProps> = ({
 	className,
 	type = 'standard',
 	children,
-}: FormGroupProps) => (
+}) => (
 	<div className={classNames(className, 'o-form-group-layout', `o-form-group-layout--${type}`)}>
 		{children}
 	</div>

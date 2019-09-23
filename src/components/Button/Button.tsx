@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+
 import './Button.scss';
 
 export interface ButtonProps extends DefaultProps {
@@ -42,7 +43,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 	active,
 	disabled,
 	onClick,
-}: ButtonProps) => (
+}) => (
 	<button
 		className={classNames(className, 'c-button', {
 			active,

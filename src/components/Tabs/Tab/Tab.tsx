@@ -21,7 +21,7 @@ export const Tab: FunctionComponent<TabProps> = ({
 	icon,
 	active,
 	onClick = () => {},
-}: TabProps) => (
+}) => (
 	<div
 		className={classNames(className, 'c-tabs__item', {
 			'c-tabs__item--active': active,

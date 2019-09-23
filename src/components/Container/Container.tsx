@@ -20,7 +20,7 @@ export const Container: FunctionComponent<ContainerProps> = ({
 	bordered,
 	className,
 	children,
-}: ContainerProps) => (
+}) => (
 	<div
 		className={classNames(className, {
 			'o-container': mode === 'horizontal',

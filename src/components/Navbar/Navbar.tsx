@@ -23,7 +23,7 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
 	autoHeight = false,
 	background,
 	children,
-}: NavbarProps) => (
+}) => (
 	<div
 		className={classNames(className, 'c-navbar', {
 			'c-navbar--bordered-bottom': placement === 'top', // Class indicates border location

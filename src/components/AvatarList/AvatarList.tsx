@@ -10,6 +10,7 @@ import { Flex } from '../Flex/Flex';
 import { Spacer } from '../Spacer/Spacer';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
+
 import './AvatarList.scss';
 
 interface ExtendedAvatarProps extends AvatarProps {

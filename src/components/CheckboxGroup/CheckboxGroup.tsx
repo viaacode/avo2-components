@@ -12,7 +12,7 @@ export const CheckboxGroup: FunctionComponent<CheckboxGroupProps> = ({
 	children,
 	className,
 	inline = false,
-}: CheckboxGroupProps) => (
+}) => (
 	<div
 		className={classNames(className, 'c-checkbox-group', {
 			'c-checkbox-group--inline': inline,

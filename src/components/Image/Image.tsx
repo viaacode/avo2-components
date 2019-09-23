@@ -21,7 +21,7 @@ export const Image: FunctionComponent<ImageProps> = ({
 	wide,
 	width,
 	height,
-}: ImageProps) => (
+}) => (
 	<div className={classNames(className, 'c-image', { 'c-image--full': wide })}>
 		<img src={src} alt={alt} width={width} height={height} />
 	</div>

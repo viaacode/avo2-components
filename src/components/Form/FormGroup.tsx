@@ -18,7 +18,7 @@ export const FormGroup: FunctionComponent<FormGroupProps> = ({
 	error,
 	inlineMode,
 	children,
-}: FormGroupProps) => {
+}) => {
 	const errorArray = typeof error === 'string' ? [error] : error;
 
 	return (

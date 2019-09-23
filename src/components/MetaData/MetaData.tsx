@@ -17,7 +17,7 @@ export const MetaData: FunctionComponent<MetaDataProps> = ({
 	className,
 	category,
 	spaced,
-}: MetaDataProps) => (
+}) => (
 	<ul
 		className={classNames(className, `c-meta-data c-meta-data--${category}`, {
 			'c-meta-data--spaced-out': spaced,

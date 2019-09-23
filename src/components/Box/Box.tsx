@@ -3,6 +3,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
+
 import './Box.scss';
 
 export interface BoxProps extends DefaultProps {
@@ -10,7 +11,7 @@ export interface BoxProps extends DefaultProps {
 	children: ReactNode;
 }
 
-export const Box: FunctionComponent<BoxProps> = ({ children, className, condensed }: BoxProps) => (
+export const Box: FunctionComponent<BoxProps> = ({ children, className, condensed }) => (
 	<div className={classNames(className, 'c-box', { 'c-box--padding-small': condensed })}>
 		{children}
 	</div>

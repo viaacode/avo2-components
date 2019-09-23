@@ -59,7 +59,7 @@ export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 	onOpenFullScreen = () => {},
 	onCloseFullScreen = () => {},
 	onClose = () => {},
-}: WYSIWYGProps) => (
+}) => (
 	<Trumbowyg
 		id={id}
 		data={data}

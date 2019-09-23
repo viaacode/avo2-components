@@ -18,7 +18,7 @@ export const MetaDataItem: FunctionComponent<MetaDataItemProps> = ({
 	icon,
 	label,
 	children,
-}: MetaDataItemProps) => (
+}) => (
 	<li
 		className={classNames(className, 'c-meta-data__item', {
 			'c-meta-data-item--icon': icon,
