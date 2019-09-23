@@ -42,7 +42,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 	active,
 	disabled,
 	onClick,
-}: ButtonProps) => (
+}) => (
 	<button
 		className={classNames(className, 'c-button', {
 			active,
