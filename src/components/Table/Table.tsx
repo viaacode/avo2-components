@@ -1,7 +1,6 @@
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
-
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
@@ -81,12 +80,14 @@ export const Table: FunctionComponent<TableProps> = ({
 				)}
 				{data.length > 0 && (
 					<tbody>
-						{data.map((row, rowIndex) => (
-							<tr key={row[rowKey]}>
-								{Object.keys(row)
-									.filter(key => columns.find(column => column.id === key) && row)
-									.map((cell, cellIndex) => (
-										<td key={cellIndex}>{renderCell(row, cell, rowIndex, cellIndex)}</td>
+						{data.map((rowData, rowIndex) => (
+							<tr key={rowData[rowKey]}>
+								{columns
+									.map(col => col.id)
+									.map((columnId, columnIndex) => (
+										<td key={columnIndex}>
+											{renderCell(rowData, columnId, rowIndex, columnIndex)}
+										</td>
 									))}
 							</tr>
 						))}
