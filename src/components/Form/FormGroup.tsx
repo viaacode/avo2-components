@@ -2,6 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 import { DefaultProps } from '../../types';
+import './FormGroup.scss';
 
 export interface FormGroupProps extends DefaultProps {
 	label?: string;
@@ -32,7 +33,7 @@ export const FormGroup: FunctionComponent<FormGroupProps> = ({
 		>
 			{label && (
 				<label className="o-form-group__label" htmlFor={labelFor}>
-					{label}{' '}
+					{label}
 					{required ? (
 						<abbr className="required" title="Verplicht veld">
 							*
