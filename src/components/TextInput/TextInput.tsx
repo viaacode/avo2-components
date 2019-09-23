@@ -5,8 +5,6 @@ import classnames from 'classnames';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
-import './TextInput.scss';
-
 type InputType = 'password' | 'text' | 'email' | 'search' | 'number' | 'tel' | 'url';
 
 export interface TextInputProps extends DefaultProps {
