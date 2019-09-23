@@ -13,7 +13,7 @@ storiesOf('Form', module)
 	.addParameters({ jest: ['Form', 'FormGroup'] })
 	.add('Form', () => (
 		<Form>
-			<FormGroup labelFor="name" label="Name">
+			<FormGroup labelFor="name" label="Name" required>
 				<input type="text" id="name" />
 			</FormGroup>
 			<FormGroup labelFor="email" label="Email address">

@@ -8,6 +8,7 @@ export interface FlexProps extends DefaultProps {
 	orientation?: 'horizontal' | 'vertical';
 	center?: boolean;
 	justify?: boolean;
+	wrapped?: boolean;
 	spaced?: 'regular' | 'wide';
 	children: ReactNode;
 }
@@ -17,6 +18,7 @@ export const Flex: FunctionComponent<FlexProps> = ({
 	orientation,
 	center,
 	justify,
+	wrapped,
 	spaced,
 	children,
 }) => {
@@ -44,6 +46,7 @@ export const Flex: FunctionComponent<FlexProps> = ({
 		<div
 			className={classNames(className, ...classes, {
 				'o-flex--justify-between': justify,
+				'o-flex--wrap': wrapped,
 			})}
 		>
 			{children}
