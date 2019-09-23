@@ -9,6 +9,7 @@ export interface IconProps extends DefaultProps {
 	name?: string;
 	size?: 'small' | 'large' | 'huge';
 	type?: 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';
+	subtle?: boolean;
 	active?: boolean;
 }
 
@@ -17,6 +18,7 @@ export const Icon: FunctionComponent<IconProps> = ({
 	name = 'slash',
 	size,
 	type,
+	subtle = false,
 	active,
 }) => {
 	let IconToRender = (Icons as any)[toPascalCase(name)];
@@ -53,6 +55,7 @@ export const Icon: FunctionComponent<IconProps> = ({
 			className={classNames(className, 'o-svg-icon', getIconName(), {
 				'o-svg-icon--action-active': active,
 				'o-svg-icon-multicolor': type === 'multicolor',
+				'o-svg-icon--subtle': subtle,
 				[`o-svg-icon--${size}`]: size,
 			})}
 		>

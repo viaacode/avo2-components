@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { WYSIWYG } from './WYSIWYG';
@@ -157,12 +157,22 @@ describe('<WYSIWYG />', () => {
 		expect(wysiwygComponent.prop('onFocus')).toEqual(onFocus);
 	});
 
-	it('Should correctly pass on `onBlur`', () => {
-		const onBlur = () => {};
+	it('Should correctly trigger `onBlur`', () => {
+		const onBlur = jest.fn();
+		const onChange = jest.fn();
+		const data = '<p>test</p>';
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" onBlur={onBlur} />);
+		const wysiwygComponent = shallow(
+			<WYSIWYG id="test" data={data} onBlur={onBlur} onChange={onChange} />
+		);
 
-		expect(wysiwygComponent.prop('onBlur')).toEqual(onBlur);
+		const onBlurComponent = wysiwygComponent.prop('onBlur');
+
+		expect(onBlur).toBeCalledTimes(0);
+
+		onBlurComponent();
+
+		expect(onBlur).toBeCalledTimes(1);
 	});
 
 	it('Should correctly pass on `onInit`', () => {
@@ -171,14 +181,6 @@ describe('<WYSIWYG />', () => {
 		const wysiwygComponent = shallow(<WYSIWYG id="test" onInit={onInit} />);
 
 		expect(wysiwygComponent.prop('onInit')).toEqual(onInit);
-	});
-
-	it('Should correctly pass on `onChange`', () => {
-		const onChange = () => {};
-
-		const wysiwygComponent = shallow(<WYSIWYG id="test" onChange={onChange} />);
-
-		expect(wysiwygComponent.prop('onChange')).toEqual(onChange);
 	});
 
 	it('Should correctly pass on `onResize`', () => {
