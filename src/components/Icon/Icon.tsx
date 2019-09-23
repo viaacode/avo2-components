@@ -6,13 +6,19 @@ import { DefaultProps } from '../../types';
 import * as Icons from '../Icons';
 
 export interface IconProps extends DefaultProps {
-	name: string;
+	name?: string;
 	size?: 'small' | 'large' | 'huge';
 	type?: 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';
 	active?: boolean;
 }
 
-export const Icon: FunctionComponent<IconProps> = ({ className, name, size, type, active }) => {
+export const Icon: FunctionComponent<IconProps> = ({
+	className,
+	name = 'slash',
+	size,
+	type,
+	active,
+}) => {
 	let IconToRender = (Icons as any)[toPascalCase(name)];
 
 	function getIconName() {
