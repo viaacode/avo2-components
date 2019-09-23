@@ -6,6 +6,7 @@ import { DefaultProps } from '../../types';
 export interface FormGroupProps extends DefaultProps {
 	label?: string;
 	labelFor?: string;
+	required?: boolean;
 	error?: string | string[];
 	inlineMode?: 'grow' | 'shrink';
 	children: ReactNode;
@@ -15,6 +16,7 @@ export const FormGroup: FunctionComponent<FormGroupProps> = ({
 	className,
 	label,
 	labelFor,
+	required = false,
 	error,
 	inlineMode,
 	children,
@@ -30,7 +32,12 @@ export const FormGroup: FunctionComponent<FormGroupProps> = ({
 		>
 			{label && (
 				<label className="o-form-group__label" htmlFor={labelFor}>
-					{label}
+					{label}{' '}
+					{required ? (
+						<abbr className="required" title="Verplicht veld">
+							*
+						</abbr>
+					) : null}
 				</label>
 			)}
 			<div className="o-form-group__controls">
