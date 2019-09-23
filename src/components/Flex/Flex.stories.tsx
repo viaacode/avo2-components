@@ -35,5 +35,6 @@ storiesOf('Flex', module)
 		</Flex>
 	))
 	.add('Flex (justify)', () => <Flex justify>{dummyFlexItems}</Flex>)
+	.add('Flex (wrapped)', () => <Flex wrapped>{dummyFlexItems}</Flex>)
 	.add('Flex (spaced - regular)', () => <Flex spaced="regular">{dummyFlexItems}</Flex>)
 	.add('Flex (spaced - wide)', () => <Flex spaced="wide">{dummyFlexItems}</Flex>);

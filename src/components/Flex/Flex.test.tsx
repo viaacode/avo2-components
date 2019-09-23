@@ -48,6 +48,12 @@ describe('<Flex />', () => {
 		expect(flexComponent.hasClass('o-flex--justify-between')).toEqual(true);
 	});
 
+	it('Should set the correct className when wrapped is passed', () => {
+		const flexComponent = shallow(<Flex wrapped>{content}</Flex>);
+
+		expect(flexComponent.hasClass('o-flex--wrap')).toEqual(true);
+	});
+
 	it('Should set the correct className when spaced is passed (boolean)', () => {
 		const flexComponent = shallow(<Flex spaced="regular">{content}</Flex>);
 

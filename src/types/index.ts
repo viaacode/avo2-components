@@ -8,6 +8,6 @@ export interface SlotProps {
 	children: ReactElement;
 }
 
-export type ContentType = 'collection' | 'bundle' | 'video' | 'audio';
+export type ContentType = 'collection' | 'bundle' | 'video' | 'audio' | 'search';
 
 export type VideoAspectRatio = '3:2' | '16:9';

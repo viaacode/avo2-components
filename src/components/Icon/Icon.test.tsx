@@ -53,6 +53,12 @@ describe('<Icon />', () => {
 		expect(multicolorIconComponent.hasClass('o-svg-icon-multicolor')).toEqual(true);
 	});
 
+	it('Should correctly set the subtle class when the subtle option is true', () => {
+		const iconComponent = shallow(<Icon name="twitter" subtle />);
+
+		expect(iconComponent.hasClass('o-svg-icon--subtle')).toEqual(true);
+	});
+
 	it('Should correctly set the sizing className', () => {
 		const smallIconComponent = shallow(<Icon name="circle-check" size="small" />);
 		const largeIconComponent = shallow(<Icon name="circle-check" size="large" />);
