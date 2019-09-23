@@ -1,3 +1,27 @@
+/* ==========================================================================
+   Style guide undo styles
+
+   In the "real world" (e.g. the app itself) some HTML elements are hidden by default, or positioned in specific ways.
+   In the styleguide sometimes we want to undo some of that for demonstrational purposes.
+   ========================================================================== */
+
+/* Settings: preprocessor variables, colors, global settings
+   ========================================================================== */
+
+@import './settings/colors';
+@import './settings/variables';
+
+/* Styling for grid documentation
+   ========================================================================== */
+
+.br-styleguide #component-01-o-grid [class*=o-grid-col] {
+  color: #FFF;
+  background: $color-gray-500;
+  margin-bottom: 1.6rem;
+  padding: 1rem;
+  text-align: center;
+}
+
 /* Color swatches (for colors documentation)
    ========================================================================== */
 
@@ -27,4 +51,37 @@
 
 .c-swatch__color-hex {
 	color: $color-gray-200;
+}
+
+/* Styling for icon documentation
+   ========================================================================== */
+
+.c-styleguide-svg-icons {
+	border: 0.1rem solid #E5E5E5;
+	padding: 2.4rem;
+	margin-bottom: 4rem;
+}
+
+.c-styleguide-svg-icons__category {
+	flex-wrap: nowrap;
+	column-count: 4;
+}
+
+.c-styleguide-svg-icon {
+	break-inside: avoid;
+	display: flex;
+	align-items: center;
+	padding: 0.8rem 0;
+
+	.svg-icon, .o-svg-icon, .if {
+		flex-basis: 20%;
+	}
+}
+
+.c-styleguide-svg-icon__name {
+	font-family: $g-base-font-family;
+	flex-basis: 80%;
+	font-size: 1.2rem;
+	background: none;
+	padding: 0;
 }
