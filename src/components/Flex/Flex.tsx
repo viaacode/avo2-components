@@ -7,24 +7,26 @@ import { DefaultProps } from '../../types';
 import './Flex.scss';
 
 export interface FlexProps extends DefaultProps {
-	orientation?: 'horizontal' | 'vertical';
+	align?: 'start' | 'baseline';
 	center?: boolean;
-	justify?: boolean;
-	spaced?: 'regular' | 'wide';
 	children: ReactNode;
+	justify?: 'around' | 'between' | 'end';
+	orientation?: 'horizontal' | 'vertical';
+	spaced?: 'regular' | 'wide';
+	wrap?: boolean;
 }
 
 export const Flex: FunctionComponent<FlexProps> = ({
-	className,
-	orientation,
+	align,
 	center,
-	justify,
-	spaced,
 	children,
+	className,
+	justify,
+	orientation,
+	spaced,
+	wrap,
 }) => {
-	const classes = ['o-flex'];
-
-	let orientationClass = 'o-flex-';
+	let orientationClass = '';
 
 	if (orientation) {
 		orientationClass += `-${orientation}`;
@@ -34,18 +36,18 @@ export const Flex: FunctionComponent<FlexProps> = ({
 		orientationClass += '-center';
 	}
 
-	if (orientationClass !== 'o-flex-') {
-		classes.push(orientationClass);
-	}
-
-	if (spaced) {
-		classes.push(`o-flex--spaced-${spaced}`.replace('-regular', ''));
-	}
+	const classes = [
+		'o-flex',
+		!!orientationClass && `o-flex--${orientationClass}`,
+		!!align && `o-flex--align-${align}`,
+		!!spaced && `o-flex--spaced-${spaced}`.replace('-regular', ''),
+	];
 
 	return (
 		<div
 			className={classNames(className, ...classes, {
 				'o-flex--justify-between': justify,
+				'o-flex--wrap': wrap,
 			})}
 		>
 			{children}
