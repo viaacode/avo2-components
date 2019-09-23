@@ -44,20 +44,6 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 	min-width: 15rem;
 }
 
-.c-alert-stack {
-	position: fixed;
-	right: 1.2rem;
-	bottom: 1.2rem;
-
-	.c-alert {
-		max-width: 30rem;
-	}
-}
-
-.c-alert-stack li {
-	margin-top: 1.2rem;
-}
-
 /* Skins
    ========================================================================== */
 
