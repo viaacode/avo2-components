@@ -14,6 +14,7 @@ export interface TextInputProps extends DefaultProps {
 	value?: string;
 	icon?: string;
 	type?: InputType;
+	ariaLabel?: string;
 	onChange?: (value: string) => void;
 }
 
@@ -25,6 +26,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 	value = '',
 	icon,
 	type = 'text',
+	ariaLabel = '',
 	onChange = () => {},
 }) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
@@ -42,6 +44,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 				value={value}
 				disabled={disabled}
 				placeholder={placeholder}
+				{...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
 				onChange={onValueChange}
 			/>
 			<Icon name={icon} />
@@ -54,6 +57,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 			value={value}
 			disabled={disabled}
 			placeholder={placeholder}
+			{...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
 			onChange={onValueChange}
 		/>
 	);
