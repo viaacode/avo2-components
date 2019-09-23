@@ -71,12 +71,11 @@ $o-container-max-width: 130rem;
 
 
 /* ==========================================================================
-	Container vertical
+   Container vertical
    ========================================================================== */
 
 /* Block spacing
    ========================================================================== */
-
 
 .o-container-vertical { // Standard padding
 	padding: 3.6rem 0;
@@ -103,7 +102,7 @@ $o-container-max-width: 130rem;
 }
 
 /* Block modifiers
-	Change the look of the entire block
+   Change the look of the entire block
    ========================================================================== */
 
 .o-container-vertical--bg-alt {
@@ -120,17 +119,8 @@ $o-container-max-width: 130rem;
 }
 
 /* ==========================================================================
-	Block types (attached to vertical containers, since this is often the parent)
+  Block types (attached to vertical containers, since this is often the parent)
    ========================================================================== */
-
-/* Block type: subtitle
-   ========================================================================== */
-
-.o-container-vertical-subtitle__title {
-	font-size: 3.2rem;
-	font-weight: $g-headings-font-weight;
-	font-family: $g-headings-font-family;
-}
 
 /* Block type: anchor list
    ========================================================================== */
@@ -142,11 +132,4 @@ $o-container-max-width: 130rem;
 		display: inline-block;
 		margin: 1rem;
 	}
-}
-
-/* Block type: hero image
-   ========================================================================== */
-
-.o-container-vertical-image {
-	padding-top: 0;
 }

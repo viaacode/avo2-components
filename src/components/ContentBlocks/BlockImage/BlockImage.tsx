@@ -3,7 +3,10 @@ import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
+import { Container } from '../../Container/Container';
 import { Image } from '../../Image/Image';
+
+import './BlockImage.scss';
 
 export interface BlockImageProps extends DefaultProps {
 	imageSource: string;
@@ -18,8 +21,8 @@ export const BlockImage: FunctionComponent<BlockImageProps> = ({
 	width = 'full-width',
 }) => {
 	return (
-		<div className={classnames(className, 'c-block-vertical')}>
+		<Container className={classnames(className, 'o-container-vertical-image')} mode="vertical">
 			<Image src={imageSource} alt={imageDescription} wide={!!width} />
-		</div>
+		</Container>
 	);
 };
