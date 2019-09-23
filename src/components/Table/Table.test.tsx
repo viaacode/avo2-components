@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
+import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
-
 import { Column, Table } from './Table';
 
 const COLUMNS: Column[] = [
@@ -10,6 +10,7 @@ const COLUMNS: Column[] = [
 	{ id: 'age', label: 'Age (in yrs)', sortable: true },
 	{ id: 'cat', label: 'Has cat?', col: '2' },
 	{ id: 'dog', label: 'Has dog?' },
+	{ id: 'actions', label: 'actions' },
 ];
 
 const DATA = [
@@ -130,9 +131,12 @@ describe('<Table />', () => {
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
-				renderCell={(row, cell, rowIndex, cellIndex) => (
-					<p className={`${rowIndex}-${cellIndex}`}>{row[cell]}</p>
-				)}
+				renderCell={(row, columnId, rowIndex, columnIndex) => {
+					if (columnId === 'actions') {
+						return <Button icon="more-horizontal" />;
+					}
+					return <p className={`${rowIndex}-${columnIndex}`}>{row[columnId]}</p>;
+				}}
 			/>
 		);
 

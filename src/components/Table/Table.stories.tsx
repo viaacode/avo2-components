@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
 
+import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Column, Table } from './Table';
 
@@ -12,6 +13,7 @@ const COLUMNS: Column[] = [
 	{ id: 'age', label: 'Age (in yrs)', sortable: true },
 	{ id: 'cat', label: 'Has cat?', col: '2' },
 	{ id: 'dog', label: 'Has dog?', col: '2' },
+	{ id: 'actions', label: '' },
 ];
 
 const DATA = [
@@ -81,6 +83,8 @@ function renderCell(r: any[], c: any) {
 		case 'dog':
 		case 'cat':
 			return r[c] ? <Icon name="check" /> : <Icon name="x" />;
+		case 'actions':
+			return <Button icon="more-horizontal" type="secondary" />;
 		default:
 			return r[c];
 	}
