@@ -105,6 +105,7 @@ import { ToolbarItem } from './components/Toolbar/ToolbarItem/ToolbarItem';
 import { ToolbarTitle } from './components/Toolbar/ToolbarTitle/ToolbarTitle';
 import { Tooltip } from './components/Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
+import { VideoWrapper } from './components/VideoWrapper/VideoWrapper';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 import { convertToHtml } from './helpers/convertToHtml';
 import { useSlot } from './hooks/useSlot';
@@ -213,4 +214,5 @@ export {
 	TooltipContent,
 	TooltipTrigger,
 	WYSIWYG,
+	VideoWrapper,
 };
