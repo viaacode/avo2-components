@@ -23,13 +23,15 @@ export const CONTENT_TYPE_TO_ICON_NAME: { [contentType in ContentType]: string }
 	video: 'video',
 	audio: 'volume-1',
 	bundle: 'folder',
+	search: 'search',
 };
 
 export const CONTENT_TYPE_TO_LABEL: { [contentType in ContentType]: string } = {
 	collection: 'Collectie',
 	video: 'Video',
 	audio: 'Audio',
-	bundle: 'Bundle',
+	bundle: 'Bundel',
+	search: 'Zoekopdracht',
 };
 
 export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
