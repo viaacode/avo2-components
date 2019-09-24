@@ -3,7 +3,8 @@ import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
-import './Spinner.css';
+
+import './Spinner.scss';
 
 export interface SpinnerProps extends DefaultProps {
 	size?: 'large';

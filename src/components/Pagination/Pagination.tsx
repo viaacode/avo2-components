@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
+import './Pagination.scss';
+
 export interface PaginationProps extends DefaultProps {
 	pageCount: number;
 	displayCount?: number;

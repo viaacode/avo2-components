@@ -7,6 +7,8 @@ import { useSlot } from '../../hooks/useSlot';
 import { ContentType, DefaultProps } from '../../types';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
+import './MediaCard.scss';
+
 export interface MediaCardProps extends DefaultProps {
 	title: string;
 	href: string;

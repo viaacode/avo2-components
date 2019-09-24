@@ -1,0 +1,15 @@
+/* ==========================================================================
+   Component: Toolbar item
+   ========================================================================== */
+
+.c-toolbar__item {
+	position: relative;
+}
+
+.c-toolbar__item--grow {
+	flex: 1;
+}
+
+.c-toolbar__item--stretch {
+	flex: 1;
+}

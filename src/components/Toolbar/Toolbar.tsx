@@ -7,6 +7,8 @@ import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps } from '../../types';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
 
+import './Toolbar.scss';
+
 export interface ToolbarProps extends DefaultProps {
 	children: ReactNode;
 	size?: 'medium';

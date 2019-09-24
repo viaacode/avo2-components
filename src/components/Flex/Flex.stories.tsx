@@ -3,8 +3,8 @@ import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 
-import { FlexItem } from '../FlexItem/FlexItem';
 import { Flex } from './Flex';
+import { FlexItem } from './FlexItem/FlexItem';
 
 const content1 = loremIpsum({ count: 1 });
 const content2 = loremIpsum({ count: 4 });
@@ -34,7 +34,7 @@ storiesOf('Flex', module)
 			{dummyFlexItems}
 		</Flex>
 	))
-	.add('Flex (justify)', () => <Flex justify>{dummyFlexItems}</Flex>)
-	.add('Flex (wrapped)', () => <Flex wrapped>{dummyFlexItems}</Flex>)
+	.add('Flex (justify)', () => <Flex justify="between">{dummyFlexItems}</Flex>)
+	.add('Flex (wrapped)', () => <Flex wrap>{dummyFlexItems}</Flex>)
 	.add('Flex (spaced - regular)', () => <Flex spaced="regular">{dummyFlexItems}</Flex>)
 	.add('Flex (spaced - wide)', () => <Flex spaced="wide">{dummyFlexItems}</Flex>);

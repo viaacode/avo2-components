@@ -10,7 +10,8 @@ import { Flex } from '../Flex/Flex';
 import { Spacer } from '../Spacer/Spacer';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
-import './AvatarList.css';
+
+import './AvatarList.scss';
 
 interface ExtendedAvatarProps extends AvatarProps {
 	onClick?: (avatar: ExtendedAvatarProps) => void;
@@ -32,7 +33,7 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
 	const hasHiddenAvatars = hiddenAvatars && !!hiddenAvatars.length;
 
 	return (
-		<div className={classnames(className, 'c-avatar--multiple', 'c-avatar-list-overrides')}>
+		<div className={classnames(className, 'c-avatar--multiple')}>
 			{visibleAvatars.map((avatar, index) => (
 				<Fragment key={index}>
 					<Tooltip position="bottom">

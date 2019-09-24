@@ -1,2 +1,2 @@
-import './styles/main.css';
-import './styles/styleguide.css';
+import './styles/main.scss';
+import './styles/styleguide.scss';

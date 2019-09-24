@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
+import { Container } from '../../Container/Container';
 
 export interface BlockQuoteProps extends DefaultProps {
 	quoteText: string;
@@ -17,7 +18,7 @@ export const BlockQuote: FunctionComponent<BlockQuoteProps> = ({
 	authorName,
 }) => {
 	return (
-		<div className={classnames(className, 'o-container-vertical', 'o-container-vertical-quote')}>
+		<Container className={classnames(className, 'o-container-vertical-quote')} mode="vertical">
 			<div className="c-quote">
 				<blockquote className="c-quote__text">{quoteText}</blockquote>
 				{authorName && (
@@ -34,6 +35,6 @@ export const BlockQuote: FunctionComponent<BlockQuoteProps> = ({
 					</cite>
 				)}
 			</div>
-		</div>
+		</Container>
 	);
 };
