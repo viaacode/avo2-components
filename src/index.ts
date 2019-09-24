@@ -92,7 +92,7 @@ import { Spinner } from './components/Spinner/Spinner';
 import { Table } from './components/Table/Table';
 import { Tab } from './components/Tabs/Tab/Tab';
 import { Tabs } from './components/Tabs/Tabs';
-import { TagList } from './components/TagList/TagList';
+import { TagList, TagOption } from './components/TagList/TagList';
 import { TagInfo, TagsInput } from './components/TagsInput/TagsInput';
 import { TextArea } from './components/TextArea/TextArea';
 import { TextInput } from './components/TextInput/TextInput';
@@ -197,6 +197,7 @@ export {
 	Table,
 	Tabs,
 	TagList,
+	TagOption,
 	TagsInput,
 	TagInfo,
 	TextArea,
