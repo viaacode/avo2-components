@@ -322,4 +322,14 @@ storiesOf('Button', module)
 				</span>
 			</div>
 		</Fragment>
+	))
+	.add('Active buttons', () => (
+		<Fragment>
+			<div className="u-spacer-bottom">
+				<Button ariaLabel="test button" label="Active button" type="secondary" active />
+			</div>
+			<div className="u-spacer-bottom">
+				<Button ariaLabel="test button" label="Inactive button" type="secondary" />
+			</div>
+		</Fragment>
 	));

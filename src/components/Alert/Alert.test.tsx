@@ -6,7 +6,7 @@ import { Alert, AlertProps } from './Alert';
 describe('<Alert />', () => {
 	const alertProps: AlertProps = {
 		className: 'c-alert-custom',
-		close: () => {},
+		onClose: () => {},
 		dark: false,
 		message: 'Alert message',
 		type: 'info',

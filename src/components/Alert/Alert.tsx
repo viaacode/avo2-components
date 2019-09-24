@@ -14,18 +14,20 @@ const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
 };
 
 export interface AlertProps extends DefaultProps {
-	close: () => void;
+	onClose?: () => void;
 	dark?: boolean;
-	message: ReactNode | string;
+	message?: ReactNode | string;
 	type?: 'info' | 'success' | 'danger' | 'spinner';
+	children?: ReactNode;
 }
 
 export const Alert: FunctionComponent<AlertProps> = ({
 	className,
-	close = () => {},
+	onClose,
 	dark = false,
-	message,
+	message = '',
 	type = 'info',
+	children = null,
 }) => {
 	return (
 		<div className={classNames(className, 'c-alert', { 'c-alert--dark': dark })}>
@@ -37,9 +39,15 @@ export const Alert: FunctionComponent<AlertProps> = ({
 						<Spinner light={dark} />
 					)}
 				</div>
-				{message}
+				{message || children}
 			</div>
-			<Button icon="close" type="borderless" onClick={close} />
+			{!!onClose && (
+				<Button
+					icon="close"
+					type={dark ? 'borderless-i' : 'borderless'}
+					onClick={onClose || (() => {})}
+				/>
+			)}
 		</div>
 	);
 };

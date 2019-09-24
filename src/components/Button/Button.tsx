@@ -42,11 +42,13 @@ const Button: FunctionComponent<ButtonProps> = ({
 	active,
 	disabled,
 	onClick,
-}: ButtonProps) => (
+}) => (
 	<button
 		className={classNames(className, 'c-button', {
 			active,
+			// Not sure why there are 3 classes in mono styles: c-button-action, c-button--active, active
 			'c-button-action': active,
+			'c-button--active': active,
 			'c-button--small': size === 'small',
 			'c-button--block': block,
 			'c-button--icon': icon && !label,
