@@ -2,8 +2,8 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { MetaDataItem } from '../MetaDataItem/MetaDataItem';
 import { MetaData } from './MetaData';
+import { MetaDataItem } from './MetaDataItem/MetaDataItem';
 
 storiesOf('MetaData', module)
 	.addParameters({ jest: ['MetaData'] })

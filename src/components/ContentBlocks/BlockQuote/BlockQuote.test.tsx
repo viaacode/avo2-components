@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
 
 import { BlockQuote } from './BlockQuote';
@@ -49,20 +49,19 @@ describe('<BlockQuote />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const component = shallow(quoteExample);
+		const component = mount(quoteExample);
 
-		const quoteDivElement = component.childAt(0);
+		const verticalWrapper = component.find('.o-container-vertical');
+		const quoteDivElement = component.find('.c-quote');
 		const blockquoteElement = quoteDivElement.find('blockquote');
 		const citeElement = quoteDivElement.find('cite');
 
-		expect(component.hasClass(customClass)).toEqual(true);
-		expect(component.hasClass('o-container-vertical')).toEqual(true);
-		expect(component.hasClass('o-container-vertical-quote')).toEqual(true);
+		expect(verticalWrapper).toHaveLength(1);
+		expect(verticalWrapper.hasClass(customClass)).toBeTruthy();
+		expect(verticalWrapper.hasClass('o-container-vertical-quote')).toBeTruthy();
 
-		expect(quoteDivElement.hasClass('c-quote')).toEqual(true);
-
-		expect(blockquoteElement.hasClass('c-quote__text')).toEqual(true);
-
-		expect(citeElement.hasClass('c-quote__author')).toEqual(true);
+		expect(quoteDivElement).toHaveLength(1);
+		expect(blockquoteElement.hasClass('c-quote__text')).toBeTruthy();
+		expect(citeElement.hasClass('c-quote__author')).toBeTruthy();
 	});
 });

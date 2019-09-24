@@ -17,10 +17,8 @@ export const BlockIntro: FunctionComponent<BlockIntroProps> = ({
 	text = '',
 	title,
 	subtitle,
-}: BlockIntroProps) => (
-	<section
-		className={classnames(className, 'o-container-vertical', 'o-container-vertical-page-intro')}
-	>
+}) => (
+	<Container className={classnames(className, 'o-container-vertical-page-intro')} mode="vertical">
 		<Container mode="horizontal" size="medium">
 			<div className="c-content u-text-center">
 				{title && <h1 className="o-container-vertical-title__title">{title}</h1>}
@@ -31,5 +29,5 @@ export const BlockIntro: FunctionComponent<BlockIntroProps> = ({
 				/>
 			</div>
 		</Container>
-	</section>
+	</Container>
 );

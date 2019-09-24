@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 import { BlockIframe } from './BlockIframe';
 
@@ -10,17 +10,22 @@ describe('<BlockIframe />', () => {
 	});
 
 	it('Should correctly set the wrapper `className`', () => {
-		const blockIframeComponent = shallow(<BlockIframe title="test" />);
+		const blockIframeComponent = mount(<BlockIframe title="test" />);
 
-		expect(blockIframeComponent.hasClass('c-video-wrapper')).toEqual(true);
+		const videoWrapper = blockIframeComponent.find('div').at(0);
+
+		expect(videoWrapper.hasClass('c-video-wrapper')).toEqual(true);
 	});
 
 	it('Should correctly set the wrapper `className` for the aspect ratios', () => {
-		const blockIframe32Component = shallow(<BlockIframe title="test" ratio="3:2" />);
-		const blockIframe169Component = shallow(<BlockIframe title="test" ratio="16:9" />);
+		const blockIframe32Component = mount(<BlockIframe title="test" ratio="3:2" />);
+		const blockIframe169Component = mount(<BlockIframe title="test" ratio="16:9" />);
 
-		expect(blockIframe32Component.hasClass('c-video-wrapper--aspect-2-3')).toEqual(true);
-		expect(blockIframe169Component.hasClass('c-video-wrapper--aspect-16-9')).toEqual(true);
+		const video32Wrapper = blockIframe32Component.find('div').at(0);
+		const video169Wrapper = blockIframe169Component.find('div').at(0);
+
+		expect(video32Wrapper.hasClass('c-video-wrapper--aspect-3-2')).toEqual(true);
+		expect(video169Wrapper.hasClass('c-video-wrapper--aspect-16-9')).toEqual(true);
 	});
 
 	it('Should correctly pass on the supported iframe-props', () => {

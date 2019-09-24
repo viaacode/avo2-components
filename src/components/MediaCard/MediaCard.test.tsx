@@ -2,7 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { MetaData } from '../MetaData/MetaData';
-import { MetaDataItem } from '../MetaDataItem/MetaDataItem';
+import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
 
 import { MediaCard } from './MediaCard';

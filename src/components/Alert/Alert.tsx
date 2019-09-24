@@ -7,6 +7,8 @@ import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Spinner } from '../Spinner/Spinner';
 
+import './Alert.scss';
+
 const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
 	info: 'circle-info',
 	success: 'circle-check',
@@ -39,7 +41,7 @@ export const Alert: FunctionComponent<AlertProps> = ({
 				</div>
 				{message}
 			</div>
-			<Button icon="close" type="borderless" onClick={close} />
+			<Button icon="close" type={dark ? 'borderless-i' : 'borderless'} onClick={close} />
 		</div>
 	);
 };

@@ -58,8 +58,8 @@ describe('<BlockIntro />', () => {
 	it('Should set the correct className', () => {
 		const component = mount(BlockIntroExample);
 
-		const verticalContainer = component.find('section').at(0);
-		const horizontalContainer = component.find('div').at(0);
+		const verticalContainer = component.find('div').at(0);
+		const horizontalContainer = component.find('div').at(1);
 		const h1Element = component.find('h1');
 		const pElement = component.find('p');
 

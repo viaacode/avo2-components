@@ -6,8 +6,6 @@ export interface ModalBackdropProps {
 	visible?: boolean;
 }
 
-export const ModalBackdrop: FunctionComponent<ModalBackdropProps> = ({
-	visible = false,
-}: ModalBackdropProps) => (
+export const ModalBackdrop: FunctionComponent<ModalBackdropProps> = ({ visible = false }) => (
 	<div className={classNames('c-modal-backdrop', { 'c-modal-backdrop--visible': visible })} />
 );

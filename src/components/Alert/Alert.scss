@@ -1,0 +1,106 @@
+@import '../../styles/settings/colors';
+
+/* ==========================================================================
+   Component: Alert
+   ---
+   Use alerts for messaging across the application.
+   ---
+   Rules of this file: this file is ONLY for layout, please see alert-skins.scss for colors
+   ========================================================================== */
+
+/* Variables
+   ========================================================================== */
+
+$c-dark-alert-bg-color: $color-gray-700 !default;
+
+/* Component
+   ========================================================================== */
+
+.c-alert {
+	background: #FFF;
+	border-radius: 0.3rem;
+	border: 1px solid $color-gray-100;
+	padding: 1.2rem 1.6rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.o-svg-icon-button-actions-close {
+		cursor: pointer;
+	}
+}
+
+.c-alert__body {
+	display: flex;
+	align-items: center;
+}
+
+.c-alert--floating {
+	border-radius: 3px;
+	display: flex;
+	padding: 1.6rem;
+	transform: translateX(-50%);
+	z-index: 100;
+	min-width: 15rem;
+}
+
+/* Skins
+   ========================================================================== */
+
+.c-alert--info {
+	background: #F5FBFD;
+	border-color: rgba(#3FB1D6, 0.5);
+}
+
+.c-alert--danger {
+	background: #FCF5F2;
+	border-color: rgba(#D00636, 0.33);
+}
+
+.c-alert--success {
+	background: rgba(#57C2A0, 0.1);
+	border-color: rgba(#57C2A0, 0.33);
+}
+
+.c-alert--dark {
+	border: none;
+	background: $c-dark-alert-bg-color;
+	color: #FFF;
+
+	a {
+		color: #FFF;
+	}
+}
+
+/* Animations
+   ========================================================================== */
+
+.c-alert--floating--animate-in {
+	animation: 0.3s ease-in 0.2s both floating-alert-in;
+}
+
+.c-alert--floating--animate-out {
+	animation: 0.3s ease-out 0.2s both floating-alert-out;
+}
+
+  @keyframes floating-alert-in {
+	0% {
+		opacity: 0;
+		transform: translateX(-50%) translateY(-1rem);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0);
+	}
+}
+
+  @keyframes floating-alert-out {
+	100% {
+		opacity: 0;
+		transform: translateX(-50%) translateY(-1rem);
+	}
+	0% {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0);
+	}
+}

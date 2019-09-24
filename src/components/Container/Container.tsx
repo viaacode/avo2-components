@@ -3,6 +3,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
+import './Container.scss';
 
 export interface ContainerProps extends DefaultProps {
 	mode?: 'horizontal' | 'vertical';
@@ -19,7 +20,7 @@ export const Container: FunctionComponent<ContainerProps> = ({
 	bordered,
 	className,
 	children,
-}: ContainerProps) => (
+}) => (
 	<div
 		className={classNames(className, {
 			'o-container': mode === 'horizontal',

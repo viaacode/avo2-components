@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+
 import './Button.scss';
 
 export interface ButtonProps extends DefaultProps {

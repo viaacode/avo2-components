@@ -1,5 +1,4 @@
 import typescript from 'rollup-plugin-typescript2';
-import copy from 'rollup-plugin-copy'
 import postcss from 'rollup-plugin-postcss';
 import cjs from 'rollup-plugin-commonjs'
 
@@ -26,12 +25,6 @@ export default {
 		cjs(),
 		typescript({
 			clean: true,
-		}),
-		copy({
-			targets: [{
-				src: 'src/styles/main.css',
-				dest: 'dist/styles'
-			}],
 		}),
 	],
 	external: [ // Suppresses warnings about external dependencies
