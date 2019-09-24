@@ -30,8 +30,8 @@ export const CONTENT_TYPE_TO_LABEL: { [contentType in ContentType]: string } = {
 	collection: 'Collectie',
 	video: 'Video',
 	audio: 'Audio',
-	bundle: 'Bundle',
-	search: 'search',
+	bundle: 'Bundel',
+	search: 'Zoekopdracht',
 };
 
 export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
