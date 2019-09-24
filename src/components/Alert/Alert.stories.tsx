@@ -25,7 +25,7 @@ storiesOf('Alert', module)
 	.add('Dark alerts', () => (
 		<React.Fragment>
 			<div className="u-spacer-bottom">
-				<Alert message="Info alert message" dark={true} />
+				<Alert message="Info alert message" dark={true} onClose={action('alert closed')} />
 			</div>
 			<div className="u-spacer-bottom">
 				<Alert message="Success alert message" type="success" dark={true} />

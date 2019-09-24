@@ -23,7 +23,7 @@ export interface AlertProps extends DefaultProps {
 
 export const Alert: FunctionComponent<AlertProps> = ({
 	className,
-	onClose = () => {},
+	onClose,
 	dark = false,
 	message = '',
 	type = 'info',
@@ -41,7 +41,13 @@ export const Alert: FunctionComponent<AlertProps> = ({
 				</div>
 				{message || children}
 			</div>
-			<Button icon="close" type="borderless" onClick={onClose} />
+			{!!onClose && (
+				<Button
+					icon="close"
+					type={dark ? 'borderless-i' : 'borderless'}
+					onClick={onClose || (() => {})}
+				/>
+			)}
 		</div>
 	);
 };
