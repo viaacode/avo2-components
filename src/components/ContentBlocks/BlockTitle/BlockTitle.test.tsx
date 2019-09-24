@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { BlockTitle } from './BlockTitle';
@@ -22,13 +22,14 @@ describe('<BlockTitle />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const component = shallow(blockTitleExample);
+		const component = mount(blockTitleExample);
 
+		const verticalContainer = component.find('div').at(0);
 		const h1Element = component.find('h1');
 
-		expect(component.hasClass(customClass)).toEqual(true);
-		expect(component.hasClass('o-container-vertical')).toEqual(true);
-		expect(component.hasClass('o-container-vertical-title')).toEqual(true);
+		expect(verticalContainer.hasClass(customClass)).toEqual(true);
+		expect(verticalContainer.hasClass('o-container-vertical')).toEqual(true);
+		expect(verticalContainer.hasClass('o-container-vertical-title')).toEqual(true);
 		expect(h1Element.hasClass('o-container-vertical-title__title')).toEqual(true);
 	});
 });

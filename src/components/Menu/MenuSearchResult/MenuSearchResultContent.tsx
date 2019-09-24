@@ -23,6 +23,7 @@ export const CONTENT_TYPE_TO_ICON_NAME: { [contentType in ContentType]: string }
 	video: 'video',
 	audio: 'volume-1',
 	bundle: 'folder',
+	search: 'search',
 };
 
 export const CONTENT_TYPE_TO_LABEL: { [contentType in ContentType]: string } = {
@@ -30,6 +31,7 @@ export const CONTENT_TYPE_TO_LABEL: { [contentType in ContentType]: string } = {
 	video: 'Video',
 	audio: 'Audio',
 	bundle: 'Bundle',
+	search: 'search',
 };
 
 export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
