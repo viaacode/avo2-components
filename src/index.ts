@@ -60,7 +60,7 @@ import { ImageGrid } from './components/ImageGrid/ImageGrid';
 import { MediaCard } from './components/MediaCard/MediaCard';
 import { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/MediaCard.slots';
 import { Menu } from './components/Menu/Menu';
-import { MenuContent, MenuItemInfo } from './components/Menu/MenuContent';
+import { MenuContent, MenuItemInfo } from './components/Menu/MenuContent/MenuContent';
 import { MenuSearchResult } from './components/Menu/MenuSearchResult/MenuSearchResult';
 import {
 	MenuSearchResultContent,

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import { ContentType, DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
-import { MenuContent } from '../MenuContent';
+import { MenuContent } from '../MenuContent/MenuContent';
 
 export interface MenuSearchResultItemInfo {
 	label: string;

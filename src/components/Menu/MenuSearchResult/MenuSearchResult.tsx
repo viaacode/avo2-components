@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
+import { Menu } from '../Menu';
 import { MenuSearchResultContent, MenuSearchResultItemInfo } from './MenuSearchResultContent';
 
 export interface MenuProps extends DefaultProps {
@@ -18,12 +19,12 @@ export const MenuSearchResult: FunctionComponent<MenuProps> = ({
 	onClick = () => {},
 }) => {
 	return (
-		<div className={classnames(className, 'c-menu', 'c-menu--search-result', 'c-menu--visible')}>
+		<Menu className={classnames(className, 'c-menu--search-result', 'c-menu--visible')}>
 			<MenuSearchResultContent
 				menuItems={menuItems}
 				onClick={onClick}
 				noResultsLabel={noResultsLabel}
 			/>
-		</div>
+		</Menu>
 	);
 };

@@ -2,7 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Menu } from './Menu';
-import { MenuItemInfo } from './MenuContent';
+import { MenuItemInfo } from './MenuContent/MenuContent';
 
 const menuItems = [
 	{ label: 'Aluminium', id: 'aluminium' },

@@ -2,8 +2,10 @@ import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../types';
-import { Icon } from '../Icon/Icon';
+import { DefaultProps } from '../../../types';
+import { Icon } from '../../Icon/Icon';
+
+import './MenuContent.scss';
 
 export interface MenuItemInfo {
 	label: string;
