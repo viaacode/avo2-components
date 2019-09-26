@@ -17,6 +17,7 @@ import { Badge } from './components/Badge/Badge';
 import { Blankslate } from './components/Blankslate/Blankslate';
 import { Box } from './components/Box/Box';
 import { Button } from './components/Button/Button';
+import { ButtonGroup } from './components/ButtonGroup/ButtonGroup';
 import { Checkbox } from './components/Checkbox/Checkbox';
 import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 import { Container } from './components/Container/Container';
@@ -146,6 +147,7 @@ export {
 	BlockVideoTitleTextButtonProps,
 	Box,
 	Button,
+	ButtonGroup,
 	Checkbox,
 	CheckboxGroup,
 	Column,
