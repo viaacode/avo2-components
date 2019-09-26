@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 
@@ -26,6 +26,14 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 	const [loaded, setLoaded] = useState(false);
 	const iconName = category === 'audio' ? 'headphone' : category;
 
+	useEffect(() => {
+		if (src) {
+			const img = new Image();
+			img.onload = () => setLoaded(true);
+			img.src = src;
+		}
+	}, [src]);
+
 	return (
 		<div
 			className={classNames(
@@ -36,11 +44,7 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 			)}
 		>
 			<div className="c-thumbnail-placeholder">{category && <Icon name={iconName} />}</div>
-			{src && (
-				<div className="c-thumbnail-image">
-					<img src={src} alt={alt} onLoad={() => setLoaded(true)} />
-				</div>
-			)}
+			{src && <div className="c-thumbnail-image" style={{ backgroundImage: `url("${src}")` }} />}
 			<div
 				className={classNames('c-thumbnail-meta', {
 					'c-thumbnail-meta--img-is-loaded': loaded,
