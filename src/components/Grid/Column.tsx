@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { ElementType, FunctionComponent, ReactNode } from 'react';
 
 import classnames from 'classnames';
 
@@ -57,11 +57,17 @@ type GridSize =
 	| 'flex';
 
 export interface ColumnProps extends DefaultProps {
-	size: GridSize[] | GridSize;
 	children: ReactNode;
+	size: GridSize[] | GridSize;
+	tag?: ElementType;
 }
 
-export const Column: FunctionComponent<ColumnProps> = ({ className, size, children }) => {
+export const Column: FunctionComponent<ColumnProps> = ({
+	children,
+	className,
+	size,
+	tag: Tag = 'div',
+}) => {
 	const getGridSizeColumn = (size: GridSize): string => {
 		const prefix = size.includes('-') ? 'bp' : '';
 
@@ -71,6 +77,6 @@ export const Column: FunctionComponent<ColumnProps> = ({ className, size, childr
 	const sizes = typeof size === 'string' ? [size] : size;
 
 	return (
-		<div className={classnames(className, sizes.map(getGridSizeColumn).join(' '))}>{children}</div>
+		<Tag className={classnames(className, sizes.map(getGridSizeColumn).join(' '))}>{children}</Tag>
 	);
 };
