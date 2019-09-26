@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 import { DefaultProps } from '../../types';
@@ -28,6 +28,7 @@ export type Column = {
 
 export interface TableProps extends DefaultProps {
 	bordered?: boolean;
+	children: ReactNode;
 	columns: Column[];
 	data: any[];
 	emptyStateMessage?: string;
@@ -43,6 +44,7 @@ export interface TableProps extends DefaultProps {
 
 export const Table: FunctionComponent<TableProps> = ({
 	bordered,
+	children,
 	className,
 	columns = [],
 	data = [],
@@ -57,7 +59,7 @@ export const Table: FunctionComponent<TableProps> = ({
 	untable,
 }) => {
 	return (
-		<Fragment>
+		<>
 			<table
 				className={classNames(className, 'c-table', {
 					'c-table--bordered': bordered,
@@ -66,43 +68,49 @@ export const Table: FunctionComponent<TableProps> = ({
 					'c-table--untable': untable,
 				})}
 			>
-				{columns.length > 0 && (
-					<thead>
-						<tr>
-							{columns.map(heading => (
-								<th
-									key={heading.id}
-									className={classNames({ [`o-table-col-${heading.col}`]: heading.col })}
-									onClick={() => heading.sortable && onColumnClick(heading.id)}
-								>
-									{heading.label}
-									{heading.sortable && sortColumn === heading.id && (
-										<Icon name={sortOrder === 'asc' ? 'chevron-up' : 'chevron-down'} />
-									)}
-								</th>
-							))}
-						</tr>
-					</thead>
-				)}
-				{data.length > 0 && (
-					<tbody>
-						{data.map((rowData, rowIndex) => (
-							<tr key={rowData[rowKey]}>
-								{columns
-									.map(col => col.id)
-									.map((columnId, columnIndex) => (
-										<td key={columnIndex}>
-											{renderCell(rowData, columnId, rowIndex, columnIndex)}
-										</td>
+				{children ? (
+					children
+				) : (
+					<>
+						{columns.length > 0 && (
+							<thead>
+								<tr>
+									{columns.map(heading => (
+										<th
+											key={heading.id}
+											className={classNames({ [`o-table-col-${heading.col}`]: heading.col })}
+											onClick={() => heading.sortable && onColumnClick(heading.id)}
+										>
+											{heading.label}
+											{heading.sortable && sortColumn === heading.id && (
+												<Icon name={sortOrder === 'asc' ? 'chevron-up' : 'chevron-down'} />
+											)}
+										</th>
 									))}
-							</tr>
-						))}
-					</tbody>
+								</tr>
+							</thead>
+						)}
+						{data.length > 0 && (
+							<tbody>
+								{data.map((rowData, rowIndex) => (
+									<tr key={rowData[rowKey]}>
+										{columns
+											.map(col => col.id)
+											.map((columnId, columnIndex) => (
+												<td key={columnIndex}>
+													{renderCell(rowData, columnId, rowIndex, columnIndex)}
+												</td>
+											))}
+									</tr>
+								))}
+							</tbody>
+						)}
+					</>
 				)}
 			</table>
-			{data.length === 0 && emptyStateMessage && (
+			{!children && data.length === 0 && emptyStateMessage && (
 				<p className="u-spacer-top">{emptyStateMessage}</p>
 			)}
-		</Fragment>
+		</>
 	);
 };
