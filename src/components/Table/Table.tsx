@@ -27,37 +27,43 @@ export type Column = {
 };
 
 export interface TableProps extends DefaultProps {
-	data: any[];
-	rowKey: string;
+	bordered?: boolean;
 	columns: Column[];
+	data: any[];
+	emptyStateMessage?: string;
+	horizontal?: boolean;
+	onColumnClick?: (id: string) => void;
+	renderCell?: (row: any, cell: any, rowIndex: number, cellIndex: number) => ReactNode;
+	rowKey: string;
 	sortColumn?: string;
 	sortOrder?: 'asc' | 'desc';
 	styled?: boolean;
-	bordered?: boolean;
-	emptyStateMessage?: string;
-	renderCell?: (row: any, cell: any, rowIndex: number, cellIndex: number) => ReactNode;
-	onColumnClick?: (id: string) => void;
+	untable?: boolean;
 }
 
 export const Table: FunctionComponent<TableProps> = ({
+	bordered,
 	className,
-	data = [],
-	rowKey,
 	columns = [],
+	data = [],
+	emptyStateMessage,
+	horizontal,
+	onColumnClick = () => {},
+	renderCell = () => null,
+	rowKey,
 	sortColumn,
 	sortOrder = 'asc',
 	styled,
-	bordered,
-	emptyStateMessage,
-	renderCell = () => null,
-	onColumnClick = () => {},
+	untable,
 }) => {
 	return (
 		<Fragment>
 			<table
 				className={classNames(className, 'c-table', {
-					'c-table--styled': styled || bordered,
 					'c-table--bordered': bordered,
+					'c-table--horizontal': horizontal,
+					'c-table--styled': styled || bordered,
+					'c-table--untable': untable,
 				})}
 			>
 				{columns.length > 0 && (
