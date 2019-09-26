@@ -41,17 +41,19 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 					<img src={src} alt={alt} onLoad={() => setLoaded(true)} />
 				</div>
 			)}
-			<div
-				className={classNames('c-thumbnail-meta', {
-					'c-thumbnail-meta--img-is-loaded': loaded,
-				})}
-			>
-				<div className="c-thumbnail-media__category">
-					<Icon name={iconName} />
-					{label && <p>{label}</p>}
+			{(label || meta) && (
+				<div
+					className={classNames('c-thumbnail-meta', {
+						'c-thumbnail-meta--img-is-loaded': loaded,
+					})}
+				>
+					<div className="c-thumbnail-media__category">
+						<Icon name={iconName} />
+						{label && <p>{label}</p>}
+					</div>
+					{meta && <div className="c-thumbnail-media__meta">{meta}</div>}
 				</div>
-				{meta && <div className="c-thumbnail-media__meta">{meta}</div>}
-			</div>
+			)}
 		</div>
 	);
 };
