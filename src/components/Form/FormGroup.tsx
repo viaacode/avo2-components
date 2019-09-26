@@ -21,7 +21,7 @@ export const FormGroup: FunctionComponent<FormGroupProps> = ({
 	error,
 	inlineMode,
 	children,
-}: FormGroupProps) => {
+}) => {
 	const errorArray = typeof error === 'string' ? [error] : error;
 
 	return (
@@ -45,8 +45,10 @@ export const FormGroup: FunctionComponent<FormGroupProps> = ({
 				{children}
 				{errorArray &&
 					errorArray.length &&
-					errorArray.map((err: string) => (
-						<div className="c-form-help-text c-form-help-text--error">{err}</div>
+					errorArray.map((err: string, index: number) => (
+						<div key={`${err}-${index}`} className="c-form-help-text c-form-help-text--error">
+							{err}
+						</div>
 					))}
 			</div>
 		</div>

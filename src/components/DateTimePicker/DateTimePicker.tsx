@@ -111,12 +111,12 @@ export const DateTimePicker: FunctionComponent<DateTimePickerProps> = ({
 					value={getDatePart()}
 					onChange={(date: Date | null) => handleChange(date, null)}
 					disabled={disabled}
-					id={`${id}-date`}
+					{...(id ? { id: `${id}-date` } : {})}
 				/>
 			</Spacer>
 			<input
 				className="c-input c-input--w-small"
-				id={`${id}-time`}
+				{...(id ? { id: `${id}-time` } : {})}
 				type="text"
 				value={time || getTimePart(hours, minutes)}
 				placeholder="hh:mm"

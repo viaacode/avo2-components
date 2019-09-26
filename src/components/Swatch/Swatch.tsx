@@ -5,7 +5,7 @@ export interface SwatchProps {
 	name: string;
 }
 
-export const Swatch: FunctionComponent<SwatchProps> = ({ color, name }: SwatchProps) => (
+export const Swatch: FunctionComponent<SwatchProps> = ({ color, name }) => (
 	<div className="c-swatch">
 		<div className="c-swatch__block" style={{ background: color }} />
 		<div className="c-swatch__info">

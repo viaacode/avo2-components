@@ -1,8 +1,6 @@
-import { FunctionComponent, ReactElement } from 'react';
+import { FunctionComponent } from 'react';
 
-interface TooltipSlotProps {
-	children: ReactElement;
-}
+import { SlotProps } from '../../types';
 
-export const TooltipContent: FunctionComponent<TooltipSlotProps> = ({ children }) => children;
-export const TooltipTrigger: FunctionComponent<TooltipSlotProps> = ({ children }) => children;
+export const TooltipContent: FunctionComponent<SlotProps> = ({ children }) => children;
+export const TooltipTrigger: FunctionComponent<SlotProps> = ({ children }) => children;

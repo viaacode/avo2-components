@@ -29,7 +29,7 @@ storiesOf('DateTimePicker', module)
 	.add('DateTimePicker', () => (
 		<Fragment>
 			<DateTimePickerStoryComponent>
-				<DateTimePicker onChange={action('onChange')} />
+				<DateTimePicker id="deadline" onChange={action('onChange')} />
 			</DateTimePickerStoryComponent>
 			<div className="u-spacer-bottom" />
 			<DateTimePickerStoryComponent>

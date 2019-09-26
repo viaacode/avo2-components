@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
-import './Toggle.css';
+import './Toggle.scss';
 
 export interface ToggleProps extends DefaultProps {
 	id?: string;

@@ -1,17 +1,7 @@
-import { FunctionComponent, ReactElement } from 'react';
+import { FunctionComponent } from 'react';
 
-export interface SearchResultSlotProps {
-	children: ReactElement;
-}
+import { SlotProps } from '../../types';
 
-export const SearchResultTitle: FunctionComponent<SearchResultSlotProps> = ({
-	children,
-}: SearchResultSlotProps) => children;
-
-export const SearchResultSubtitle: FunctionComponent<SearchResultSlotProps> = ({
-	children,
-}: SearchResultSlotProps) => children;
-
-export const SearchResultThumbnail: FunctionComponent<SearchResultSlotProps> = ({
-	children,
-}: SearchResultSlotProps) => children;
+export const SearchResultTitle: FunctionComponent<SlotProps> = ({ children }) => children;
+export const SearchResultSubtitle: FunctionComponent<SlotProps> = ({ children }) => children;
+export const SearchResultThumbnail: FunctionComponent<SlotProps> = ({ children }) => children;

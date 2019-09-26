@@ -7,7 +7,7 @@ import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { useSlot } from '../../hooks/useSlot';
 import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
-import './Tooltip.css';
+import './Tooltip.scss';
 
 export interface TooltipProps {
 	children: ReactNode;

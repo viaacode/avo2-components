@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
 
-import { MenuContent } from '../Menu/MenuContent';
+import { MenuContent } from '../Menu/MenuContent/MenuContent';
 import { Dropdown } from './Dropdown';
 
 const menuItems = [

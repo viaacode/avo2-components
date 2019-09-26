@@ -1,17 +1,8 @@
-import { FunctionComponent, ReactElement } from 'react';
+import { FunctionComponent } from 'react';
 
-export interface ModalSlotProps {
-	children: ReactElement;
-}
+import { SlotProps } from '../../types';
 
-export const ModalHeaderRight: FunctionComponent<ModalSlotProps> = ({ children }: ModalSlotProps) =>
-	children;
-
-export const ModalBody: FunctionComponent<ModalSlotProps> = ({ children }: ModalSlotProps) =>
-	children;
-
-export const ModalFooterRight: FunctionComponent<ModalSlotProps> = ({ children }: ModalSlotProps) =>
-	children;
-
-export const ModalFooterLeft: FunctionComponent<ModalSlotProps> = ({ children }: ModalSlotProps) =>
-	children;
+export const ModalHeaderRight: FunctionComponent<SlotProps> = ({ children }) => children;
+export const ModalBody: FunctionComponent<SlotProps> = ({ children }) => children;
+export const ModalFooterRight: FunctionComponent<SlotProps> = ({ children }) => children;
+export const ModalFooterLeft: FunctionComponent<SlotProps> = ({ children }) => children;

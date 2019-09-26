@@ -4,6 +4,8 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
+import './Select.scss';
+
 export interface SelectOption {
 	value: string;
 	label: string;
