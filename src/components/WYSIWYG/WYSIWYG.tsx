@@ -59,7 +59,7 @@ export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 	onOpenFullScreen = () => {},
 	onCloseFullScreen = () => {},
 	onClose = () => {},
-}: WYSIWYGProps) => {
+}) => {
 	let html: string;
 
 	const handleBlur = (event: JQuery.Event) => {

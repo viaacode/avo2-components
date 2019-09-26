@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
+import './Navbar.scss';
+
 export interface NavbarProps extends DefaultProps {
 	placement?: 'top' | 'bottom';
 	position?: 'fixed';
@@ -21,7 +23,7 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
 	autoHeight = false,
 	background,
 	children,
-}: NavbarProps) => (
+}) => (
 	<div
 		className={classNames(className, 'c-navbar', {
 			'c-navbar--bordered-bottom': placement === 'top', // Class indicates border location

@@ -1,13 +1,6 @@
-import { FunctionComponent, ReactElement } from 'react';
+import { FunctionComponent } from 'react';
 
-export interface MediaCardSlotProps {
-	children: ReactElement;
-}
+import { SlotProps } from '../../types';
 
-export const MediaCardThumbnail: FunctionComponent<MediaCardSlotProps> = ({
-	children,
-}: MediaCardSlotProps) => children;
-
-export const MediaCardMetaData: FunctionComponent<MediaCardSlotProps> = ({
-	children,
-}: MediaCardSlotProps) => children;
+export const MediaCardThumbnail: FunctionComponent<SlotProps> = ({ children }) => children;
+export const MediaCardMetaData: FunctionComponent<SlotProps> = ({ children }) => children;

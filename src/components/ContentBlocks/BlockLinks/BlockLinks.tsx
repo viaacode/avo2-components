@@ -4,6 +4,7 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 import { Container } from '../../Container/Container';
+import { Flex } from '../../Flex/Flex';
 
 export interface BlockLinksProps extends DefaultProps {
 	uniqueKey: string; // Needed to ensure react can keep track of the list of rendered items
@@ -12,11 +13,12 @@ export interface BlockLinksProps extends DefaultProps {
 
 export const BlockLinks: FunctionComponent<BlockLinksProps> = ({ className, uniqueKey, links }) => {
 	return (
-		<div
-			className={classnames(className, 'o-container-vertical', 'o-container-vertical-anchor-links')}
+		<Container
+			className={classnames(className, 'o-container-vertical-anchor-links')}
+			mode="vertical"
 		>
 			<Container mode="horizontal">
-				<div className="o-flex o-flex--horizontal-center">
+				<Flex center orientation="horizontal">
 					<ul className="c-bordered-list-horizontal">
 						{links.map(linkInfo => (
 							<li key={`${uniqueKey}-${linkInfo.url}`}>
@@ -24,8 +26,8 @@ export const BlockLinks: FunctionComponent<BlockLinksProps> = ({ className, uniq
 							</li>
 						))}
 					</ul>
-				</div>
+				</Flex>
 			</Container>
-		</div>
+		</Container>
 	);
 };

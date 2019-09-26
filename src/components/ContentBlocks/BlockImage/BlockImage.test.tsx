@@ -35,7 +35,7 @@ describe('<BlockImage />', () => {
 		const imgWrapperElement = component.find('div').at(1);
 
 		expect(component.hasClass(customClass)).toEqual(true);
-		expect(verticalContainerElement.hasClass('c-block-vertical')).toEqual(true);
+		expect(verticalContainerElement.hasClass('o-container-vertical')).toEqual(true);
 		expect(imgWrapperElement.hasClass('c-image c-image--full')).toEqual(true);
 	});
 });

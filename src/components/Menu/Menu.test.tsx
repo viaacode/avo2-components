@@ -2,7 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Menu } from './Menu';
-import { MenuItemInfo } from './MenuContent';
+import { MenuItemInfo } from './MenuContent/MenuContent';
 
 const menuItems = [
 	{ label: 'Aluminium', id: 'aluminium' },
@@ -43,6 +43,16 @@ describe('<MenuItem />', () => {
 		const menuComponent = mount(<Menu menuItems={menuItems} />);
 
 		expect(menuComponent.find('.c-menu__item')).toHaveLength(menuItems.length);
+	});
+
+	it('should render children when given', () => {
+		const menuComponent = mount(
+			<Menu>
+				<div className="c-custom-content">stuff</div>
+			</Menu>
+		);
+
+		expect(menuComponent.find('.c-custom-content')).toHaveLength(1);
 	});
 
 	it('Should render icons if provided', () => {

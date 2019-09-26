@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
+import './TagList.scss';
+
 export interface TagOption {
 	label: string;
 	id: string | number;

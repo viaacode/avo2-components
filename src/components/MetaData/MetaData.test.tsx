@@ -1,8 +1,8 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { MetaDataItem } from '../MetaDataItem/MetaDataItem';
 import { MetaData } from './MetaData';
+import { MetaDataItem } from './MetaDataItem/MetaDataItem';
 
 describe('<MetaDataItem />', () => {
 	it('Should be able to render', () => {
