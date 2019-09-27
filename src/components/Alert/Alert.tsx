@@ -17,6 +17,7 @@ const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
 
 export interface AlertProps extends DefaultProps {
 	onClose?: () => void;
+	onClick?: () => void;
 	dark?: boolean;
 	message?: ReactNode | string;
 	type?: 'info' | 'success' | 'danger' | 'spinner';
@@ -26,6 +27,7 @@ export interface AlertProps extends DefaultProps {
 export const Alert: FunctionComponent<AlertProps> = ({
 	className,
 	onClose,
+	onClick = () => {},
 	dark = false,
 	message = '',
 	type = 'info',
@@ -33,7 +35,7 @@ export const Alert: FunctionComponent<AlertProps> = ({
 }) => {
 	return (
 		<div className={classNames(className, 'c-alert', { 'c-alert--dark': dark })}>
-			<div className="c-alert__body">
+			<div className="c-alert__body" onClick={onClick}>
 				<div className="u-spacer-right-s">
 					{ALERT_TYPE_TO_ICON_MAPPING[type] ? (
 						<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type]} type="multicolor" />

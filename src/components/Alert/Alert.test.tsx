@@ -46,4 +46,16 @@ describe('<Alert />', () => {
 		expect(alertComponent.find('.c-spinner')).toHaveLength(1);
 		expect(svgElement).toHaveLength(0);
 	});
+
+	it('should call onClose when onClose button is clicked', () => {
+		const onClose = jest.fn();
+
+		const alertComponent = mount(<Alert {...alertProps} type="spinner" onClose={onClose} />);
+		const buttonElement = alertComponent.find('button').at(0);
+
+		buttonElement.simulate('click');
+
+		expect(onClose).toHaveBeenCalled();
+		expect(onClose).toHaveBeenCalledTimes(1);
+	});
 });
