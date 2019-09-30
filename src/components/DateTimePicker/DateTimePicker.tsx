@@ -64,7 +64,7 @@ export const DateTimePicker: FunctionComponent<DateTimePickerProps> = ({
 				onChange(newDate);
 			}
 		}
-	}, [year, month, day, hours, minutes]);
+	}, [year, month, day, hours, minutes, onChange, time, value]);
 
 	const handleChange = (changedDate: Date | null, changedTime: string | null) => {
 		// let tempYear: number = year;
