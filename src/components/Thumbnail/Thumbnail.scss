@@ -44,12 +44,10 @@
 	color: $color-gray-300;
 }
 
-.c-thumbnail-image img {
-	width: 100%;
-	height: auto;
-	display: block;
-	border: none;
-	border-radius: 0.3rem;
+.c-thumbnail-image {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 /* Media thumbnails
