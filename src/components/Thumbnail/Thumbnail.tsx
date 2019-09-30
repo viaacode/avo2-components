@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import { ContentType, DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
+import './Thumbnail.scss';
+
 export interface ThumbnailProps extends DefaultProps {
 	category: ContentType;
 	src?: string;
