@@ -52,8 +52,8 @@ import { ExpandableContainer } from './components/ExpandableContainer/Expandable
 import { Flex } from './components/Flex/Flex';
 import { FlexItem } from './components/Flex/FlexItem/FlexItem';
 import { Form } from './components/Form/Form';
-import { FormGroup } from './components/Form/FormGroup';
-import { Column } from './components/Grid/Column';
+import { FormGroup } from './components/Form/FormGroup/FormGroup';
+import { Column } from './components/Grid/Column/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
 import { Image } from './components/Image/Image';

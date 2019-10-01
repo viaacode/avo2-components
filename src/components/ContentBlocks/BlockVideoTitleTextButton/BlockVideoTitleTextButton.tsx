@@ -4,7 +4,7 @@ import { convertToHtml } from '../../../helpers/convertToHtml';
 import { DefaultProps } from '../../../types';
 import { Container } from '../../Container/Container';
 import { ExpandableContainer } from '../../ExpandableContainer/ExpandableContainer';
-import { Column } from '../../Grid/Column';
+import { Column } from '../../Grid/Column/Column';
 import { Grid } from '../../Grid/Grid';
 import { Spacer } from '../../Spacer/Spacer';
 import { VideoWrapper } from '../../VideoWrapper/VideoWrapper';

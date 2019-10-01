@@ -1,7 +1,8 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
-import { DefaultProps } from '../../types';
+import { DefaultProps } from '../../../types';
+
 import './FormGroup.scss';
 
 export interface FormGroupProps extends DefaultProps {

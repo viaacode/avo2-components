@@ -2,7 +2,7 @@ import React, { ElementType, FunctionComponent, ReactNode } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps } from '../../../types';
 
 type GridSize =
 	| '1'
