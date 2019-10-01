@@ -161,18 +161,20 @@ button.c-button {
 /* Button action
    ========================================================================== */
 
-.o-svg-icon--action-active {
-	display: none;
-}
-
-.c-button-action.active {
+.c-button-action {
 	.o-svg-icon--action-active {
-		display: block;
-		color: $color-teal-bright;
+		display: none;
 	}
 
-	.o-svg-icon--action-inactive {
-		display: none;
+	&.c-button--active {
+		.o-svg-icon--action-active {
+			display: block;
+			color: $color-teal-bright;
+		}
+
+		.o-svg-icon--action-inactive {
+			display: none;
+		}
 	}
 }
 
