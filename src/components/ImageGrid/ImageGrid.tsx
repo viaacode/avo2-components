@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
+
 import './ImageGrid.scss';
 
 export interface ImageGridProps extends DefaultProps {

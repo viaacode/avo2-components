@@ -29,10 +29,6 @@ $g-c-menu-z: 60 !default;
 	z-index: $g-c-menu-z;
 }
 
-.c-menu.c-menu--visible.js-no-action {
-	position: static;
-}
-
 .c-menu--visible {
 	opacity: 1;
 	visibility: visible;

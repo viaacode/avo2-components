@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Column } from './Column';
+import { Column } from './Column/Column';
 import { Grid } from './Grid';
 
 describe('<Grid />', () => {

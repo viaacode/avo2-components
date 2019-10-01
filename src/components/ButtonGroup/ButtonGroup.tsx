@@ -3,6 +3,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
+
 import './ButtonGroup.scss';
 
 export interface ButtonGroupProps extends DefaultProps {
