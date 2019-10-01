@@ -37,4 +37,14 @@ describe('<Grid />', () => {
 
 		expect(gridComponent.children().html()).toEqual(columnComponent.html());
 	});
+
+	it('Should render with a custom tag', () => {
+		const gridComponent = shallow(
+			<Grid tag="p">
+				<Column size="6">Hello</Column>
+			</Grid>
+		);
+
+		expect(gridComponent.find('p')).toHaveLength(1);
+	});
 });

@@ -57,4 +57,14 @@ describe('<Column />', () => {
 
 		expect(columnComponent.children().html()).toEqual(children.html());
 	});
+
+	it('Should render with a custom tag', () => {
+		const columnComponent = shallow(
+			<Column size="6" tag="section">
+				Hello
+			</Column>
+		);
+
+		expect(columnComponent.find('section')).toHaveLength(1);
+	});
 });
