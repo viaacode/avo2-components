@@ -46,7 +46,7 @@ export const Flex: FunctionComponent<FlexProps> = ({
 	return (
 		<div
 			className={classNames(className, ...classes, {
-				'o-flex--justify-between': justify,
+				[`o-flex--justify-${justify}`]: justify,
 				'o-flex--wrap': wrap,
 			})}
 		>
