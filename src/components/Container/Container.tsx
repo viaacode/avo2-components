@@ -3,6 +3,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
+
 import './Container.scss';
 
 export interface ContainerProps extends DefaultProps {
@@ -27,7 +28,6 @@ export const Container: FunctionComponent<ContainerProps> = ({
 			'o-container-vertical': mode === 'vertical',
 			[`o-container--${size}`]: (mode === 'horizontal' || !mode) && size,
 			[`o-container-vertical--${size}`]: mode === 'vertical' && size,
-			[`o-container-vertical--padding-${size}`]: mode === 'vertical' && size,
 			[`o-container-vertical--bg-${background}`]: background,
 			'o-container-vertical--bottom-bordered': bordered,
 		})}

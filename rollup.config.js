@@ -37,6 +37,7 @@ export default {
 		'react',
 		'react-dom',
 		'react-popper',
+		'react-range',
 		'react-select',
 		'react-select/creatable',
 		'react-trumbowyg/dist/trumbowyg.min.css',

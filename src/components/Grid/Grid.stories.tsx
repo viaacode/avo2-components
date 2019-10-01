@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { Column } from './Column';
+import { Column } from './Column/Column';
 import { Grid } from './Grid';
 
 const GridDecorator = (story: Function) => (

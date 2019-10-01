@@ -2,11 +2,11 @@
 @import '../../styles/settings/variables';
 
 /* ==========================================================================
-  Grid
-  ---
-  Basic flex-based grid system
-  Based on flexbox and calc()
-  Support:
+   Grid
+   ---
+   Basic flex-based grid system
+   Based on flexbox and calc()
+   Support:
      * IE10 and up
      * Edge, Chrome, Safari, Firefox (except very old versions)
    ========================================================================== */
@@ -22,7 +22,7 @@ $o-grid-column-gap: 2.4rem !default;
 }
 
 /* Grid columns (default)
-	========================================================================== */
+   ========================================================================== */
 
 [class*='o-grid-col'] {
 	flex: 1 0 calc(100% - #{$o-grid-column-gap});
@@ -91,7 +91,7 @@ $i: 0;
 }
 
 /* Grid columns (modifiers)
-	========================================================================== */
+   ========================================================================== */
 
 .o-grid--no-wrap {
 	flex-wrap: nowrap;

@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from 'react';
-
-import classnames from 'classnames';
 import { getTrackBackground, Range } from 'react-range';
 
+import classnames from 'classnames';
+
 import { DefaultProps } from '../../types';
+
 import './MultiRange.scss';
 
 export interface MultiRangeProps extends DefaultProps {

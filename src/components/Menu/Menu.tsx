@@ -1,6 +1,8 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import { RefHandler } from 'react-popper';
 
 import classnames from 'classnames';
+import { Placement } from 'popper.js';
 
 import { DefaultProps } from '../../types';
 import { MenuContent, MenuItemInfo } from './MenuContent/MenuContent';
@@ -12,6 +14,10 @@ export interface MenuProps extends DefaultProps {
 	renderItem?: (menuItem: MenuItemInfo) => ReactNode; // If you want to render your own item
 	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;
+	innerRef?: RefHandler;
+	isOpen?: boolean;
+	placement?: Placement; // Only used in Dropdown
+	style?: CSSProperties;
 }
 
 export const Menu: FunctionComponent<MenuProps> = ({
@@ -21,9 +27,20 @@ export const Menu: FunctionComponent<MenuProps> = ({
 	renderItem,
 	noResultsLabel,
 	onClick = () => {},
+	innerRef,
+	isOpen = true,
+	placement,
+	style,
 }) => {
 	return (
-		<div className={classnames(className, 'c-menu', 'c-menu--visible')}>
+		<div
+			className={classnames(className, 'c-menu', {
+				'c-menu--visible': isOpen,
+			})}
+			data-placement={placement}
+			ref={innerRef}
+			style={style}
+		>
 			{children ? (
 				children
 			) : (

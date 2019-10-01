@@ -1,7 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
-import PopperJS, { Data, ModifierFn } from 'popper.js';
+import PopperJS, { Data, ModifierFn, Placement } from 'popper.js';
 import { Manager, Popper, Reference } from 'react-popper';
 
 import { useCallbackRef } from '../../hooks/useCallbackRef';
@@ -10,6 +9,7 @@ import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
 import { get } from '../../utils/get';
 import { Icon } from '../Icon/Icon';
+import { Menu } from '../Menu/Menu';
 import { DropdownButton, DropdownContent } from './Dropdown.slots';
 
 import './Dropdown.scss';
@@ -18,22 +18,7 @@ export interface DropdownProps {
 	label?: string;
 	icon?: string;
 	isOpen: boolean;
-	placement?:
-		| 'auto'
-		| 'auto-start'
-		| 'auto-end'
-		| 'top'
-		| 'top-start'
-		| 'top-end'
-		| 'right'
-		| 'right-start'
-		| 'right-end'
-		| 'bottom'
-		| 'bottom-start'
-		| 'bottom-end'
-		| 'left'
-		| 'left-start'
-		| 'left-end';
+	placement?: Placement;
 	autoSize?: boolean;
 	children: ReactNode;
 	onOpen?: () => void;
@@ -119,16 +104,15 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 			</Reference>
 			<Popper placement={placement} modifiers={modifiers} innerRef={dropdownFlyoutRef}>
 				{({ ref, style, placement }) => (
-					<div
-						className={classNames('c-dropdown__menu c-menu', {
-							'c-menu--visible': isOpen,
-						})}
-						ref={ref}
-						data-placement={placement}
+					<Menu
+						className="c-dropdown__menu"
+						innerRef={ref}
+						isOpen={isOpen}
+						placement={placement}
 						style={style}
 					>
 						{dropdownContentSlot || children}
-					</div>
+					</Menu>
 				)}
 			</Popper>
 		</Manager>

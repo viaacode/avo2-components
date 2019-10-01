@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Column } from './Column';
+import { Column } from './Column/Column';
 import { Grid } from './Grid';
 
 describe('<Grid />', () => {
@@ -36,5 +36,15 @@ describe('<Grid />', () => {
 		const columnComponent = gridComponent.find(Column);
 
 		expect(gridComponent.children().html()).toEqual(columnComponent.html());
+	});
+
+	it('Should render with a custom tag', () => {
+		const gridComponent = shallow(
+			<Grid tag="p">
+				<Column size="6">Hello</Column>
+			</Grid>
+		);
+
+		expect(gridComponent.find('p')).toHaveLength(1);
 	});
 });

@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
+import { Spacer } from '../Spacer/Spacer';
 import './Blankslate.scss';
 
 export interface BlankslateProps extends DefaultProps {
@@ -25,11 +26,11 @@ export const Blankslate: FunctionComponent<BlankslateProps> = ({
 }) => (
 	<div className={classNames(className, 'c-blankslate', { 'c-blankslate--spacious': spacious })}>
 		{icon && (
-			<div className="u-spacer-bottom-l">
+			<Spacer margin="bottom-large">
 				<div className="c-blankslate__icon">
 					<Icon name={icon} size="large" />
 				</div>
-			</div>
+			</Spacer>
 		)}
 		<h4 className="c-h4">{title}</h4>
 		<p className="c-body-1">{body}</p>

@@ -4,7 +4,7 @@ import { convertToHtml } from '../../../helpers/convertToHtml';
 import { DefaultProps } from '../../../types';
 import { Button } from '../../Button/Button';
 import { Container } from '../../Container/Container';
-import { Column } from '../../Grid/Column';
+import { Column } from '../../Grid/Column/Column';
 import { Grid } from '../../Grid/Grid';
 import { Image } from '../../Image/Image';
 import { Spacer } from '../../Spacer/Spacer';
