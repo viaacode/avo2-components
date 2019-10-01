@@ -127,8 +127,7 @@ describe('<Button />', () => {
 
 		const buttonElement = buttonComponent.find('button');
 
-		expect(buttonElement.hasClass('c-button-action')).toEqual(true);
-		expect(buttonElement.hasClass('active')).toEqual(true);
+		expect(buttonElement.hasClass('c-button--active')).toEqual(true);
 	});
 
 	it('Should pass on the title attribute', () => {

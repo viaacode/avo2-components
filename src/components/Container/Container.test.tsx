@@ -111,9 +111,9 @@ describe('<Container />', () => {
 			</Container>
 		);
 
-		expect(smallContainerComponent.hasClass('o-container-vertical--padding-small')).toEqual(true);
-		expect(mediumContainerComponent.hasClass('o-container-vertical--padding-medium')).toEqual(true);
-		expect(largeContainerComponent.hasClass('o-container-vertical--padding-large')).toEqual(true);
+		expect(smallContainerComponent.hasClass('o-container-vertical--small')).toEqual(true);
+		expect(mediumContainerComponent.hasClass('o-container-vertical--medium')).toEqual(true);
+		expect(largeContainerComponent.hasClass('o-container-vertical--large')).toEqual(true);
 	});
 
 	it('Should be able to have an `alt` background', () => {

@@ -44,7 +44,13 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 			)}
 		>
 			<div className="c-thumbnail-placeholder">{category && <Icon name={iconName} />}</div>
-			{src && <div className="c-thumbnail-image" style={{ backgroundImage: `url("${src}")` }} />}
+			{src && (
+				<div
+					className="c-thumbnail-image"
+					style={{ backgroundImage: `url("${src}")` }}
+					title={alt}
+				/>
+			)}
 			{(label || meta) && (
 				<div
 					className={classNames('c-thumbnail-meta', {

@@ -27,8 +27,6 @@ describe('<VideoWrapper>', () => {
 		const component32 = shallow(videoWrapper({ aspect: '3:2' }));
 		const component169 = shallow(videoWrapper({ aspect: '16:9' }));
 
-		console.log(component32.debug());
-
 		expect(component32.hasClass('c-video-wrapper--aspect-3-2')).toBeTruthy();
 		expect(component169.hasClass('c-video-wrapper--aspect-16-9')).toBeTruthy();
 	});
