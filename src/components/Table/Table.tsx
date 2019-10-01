@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
@@ -62,7 +62,7 @@ export const Table: FunctionComponent<TableProps> = ({
 	untable,
 }) => {
 	return (
-		<>
+		<Fragment>
 			<table
 				className={classNames(className, 'c-table', {
 					'c-table--bordered': bordered,
@@ -74,7 +74,7 @@ export const Table: FunctionComponent<TableProps> = ({
 				{children ? (
 					children
 				) : (
-					<>
+					<Fragment>
 						{columns.length > 0 && (
 							<thead>
 								<tr>
@@ -108,12 +108,12 @@ export const Table: FunctionComponent<TableProps> = ({
 								))}
 							</tbody>
 						)}
-					</>
+					</Fragment>
 				)}
 			</table>
 			{!children && data.length === 0 && emptyStateMessage && (
 				<p className="u-spacer-top">{emptyStateMessage}</p>
 			)}
-		</>
+		</Fragment>
 	);
 };
