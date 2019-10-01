@@ -7,7 +7,7 @@ import { Select } from '../Select/Select';
 import { TextInput } from '../TextInput/TextInput';
 
 import { Form } from './Form';
-import { FormGroup } from './FormGroup';
+import { FormGroup } from './FormGroup/FormGroup';
 
 storiesOf('Form', module)
 	.addParameters({ jest: ['Form', 'FormGroup'] })

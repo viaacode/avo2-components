@@ -4,6 +4,8 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 
+import './ToolbarItem.scss';
+
 export interface ToolbarItemProps extends DefaultProps {
 	children: ReactNode;
 	grow?: boolean;

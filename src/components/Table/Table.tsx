@@ -1,8 +1,11 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
+
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+
+import './Table.scss';
 
 export type Column = {
 	col?:
@@ -28,7 +31,7 @@ export type Column = {
 
 export interface TableProps extends DefaultProps {
 	bordered?: boolean;
-	children: ReactNode;
+	children?: ReactNode;
 	columns: Column[];
 	data: any[];
 	emptyStateMessage?: string;

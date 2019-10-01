@@ -42,7 +42,7 @@ storiesOf('Alert', module)
 		<React.Fragment>
 			<Alert>
 				<span>
-					Info alert message <a href="#">with link</a>
+					Info alert message <a href="#alert">with link</a>
 				</span>
 			</Alert>
 		</React.Fragment>
