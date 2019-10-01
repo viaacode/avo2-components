@@ -47,15 +47,14 @@ describe('<Thumbnail />', () => {
 	});
 
 	it('Should render image if src is correctly passed', () => {
-		const src = '/images/thumbnail.jpg';
-
+		const img = '/images/thumbnail.jpg';
 		const thumbnailComponent = shallow(
-			<Thumbnail src={src} meta="4 items" category="collection" label="collection" />
+			<Thumbnail src={img} meta="4 items" category="collection" label="collection" />
 		);
 
 		const imageContainer = thumbnailComponent.find('.c-thumbnail-image');
 		expect(imageContainer).toHaveLength(1);
-		expect(imageContainer.prop('style')).toHaveProperty('backgroundImage', `url("${src}")`);
+		expect(imageContainer.prop('style')).toHaveProperty('backgroundImage', `url("${img}")`);
 	});
 
 	it('Should render placeholder if no src is passed', () => {
