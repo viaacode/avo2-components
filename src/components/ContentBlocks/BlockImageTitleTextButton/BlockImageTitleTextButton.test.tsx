@@ -54,12 +54,12 @@ describe('<BlockImageTitleTextButton />', () => {
 
 		const divs = component.find('div');
 
-		const containerVertical = component.find('section').at(0);
-		const containerElement = divs.at(0);
-		const gridElement = divs.at(1);
-		const leftColumnElement = divs.at(2);
-		const rightColumnElement = divs.at(4);
-		const contentElement = divs.at(5);
+		const containerVertical = component.find('div').at(0);
+		const containerElement = divs.at(1);
+		const gridElement = divs.at(2);
+		const leftColumnElement = divs.at(3);
+		const rightColumnElement = divs.at(5);
+		const contentElement = divs.at(6);
 
 		expect(component.hasClass(customClass)).toEqual(true);
 		expect(containerVertical.hasClass('o-container-vertical')).toEqual(true);

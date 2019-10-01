@@ -1,5 +1,4 @@
 import typescript from 'rollup-plugin-typescript2';
-import copy from 'rollup-plugin-copy'
 import postcss from 'rollup-plugin-postcss';
 import cjs from 'rollup-plugin-commonjs'
 
@@ -27,12 +26,6 @@ export default {
 		typescript({
 			clean: true,
 		}),
-		copy({
-			targets: [{
-				src: 'src/styles/main.css',
-				dest: 'dist/styles'
-			}],
-		}),
 	],
 	external: [ // Suppresses warnings about external dependencies
 		'autosize',
@@ -44,6 +37,7 @@ export default {
 		'react',
 		'react-dom',
 		'react-popper',
+		'react-range',
 		'react-select',
 		'react-select/creatable',
 		'react-trumbowyg/dist/trumbowyg.min.css',

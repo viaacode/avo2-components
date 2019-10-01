@@ -11,10 +11,7 @@ export interface SwatchBlockProps {
 	}[];
 }
 
-export const SwatchBlock: FunctionComponent<SwatchBlockProps> = ({
-	title,
-	colors,
-}: SwatchBlockProps) => (
+export const SwatchBlock: FunctionComponent<SwatchBlockProps> = ({ title, colors }) => (
 	<Fragment>
 		{title && <h1 className="c-h1">{title}</h1>}
 		<SwatchList>

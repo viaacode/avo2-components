@@ -4,9 +4,10 @@ import { convertToHtml } from '../../../helpers/convertToHtml';
 import { DefaultProps } from '../../../types';
 import { Container } from '../../Container/Container';
 import { ExpandableContainer } from '../../ExpandableContainer/ExpandableContainer';
-import { Column } from '../../Grid/Column';
+import { Column } from '../../Grid/Column/Column';
 import { Grid } from '../../Grid/Grid';
 import { Spacer } from '../../Spacer/Spacer';
+import { VideoWrapper } from '../../VideoWrapper/VideoWrapper';
 
 export interface BlockVideoTitleTextButtonProps extends DefaultProps {
 	videoSource: string;
@@ -29,11 +30,10 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 			<Spacer>
 				<Grid>
 					<Column size="2-6">
-						{/* 16 by 9 => 100% by 56% */}
-						<div className="c-video-wrapper" style={{ paddingBottom: '56%' }}>
+						<VideoWrapper aspect="16:9">
 							{/* TODO replace this with the flowplayer video component */}
 							<video src={videoSource} controls />
-						</div>
+						</VideoWrapper>
 					</Column>
 					<Column size="2-6">
 						<div className="c-content">

@@ -1,12 +1,10 @@
 import React, { FunctionComponent } from 'react';
 
-import classnames from 'classnames';
-
 import { convertToHtml } from '../../../helpers/convertToHtml';
 import { DefaultProps } from '../../../types';
 import { Button } from '../../Button/Button';
 import { Container } from '../../Container/Container';
-import { Column } from '../../Grid/Column';
+import { Column } from '../../Grid/Column/Column';
 import { Grid } from '../../Grid/Grid';
 import { Image } from '../../Image/Image';
 import { Spacer } from '../../Spacer/Spacer';
@@ -30,7 +28,7 @@ export const BlockImageTitleTextButton: FunctionComponent<BlockImageTitleTextBut
 	onClick,
 }) => {
 	return (
-		<section className={classnames(className, 'o-container-vertical')}>
+		<Container className={className} mode="vertical">
 			<Container mode="horizontal">
 				<Grid>
 					<Column size="2-4">
@@ -53,6 +51,6 @@ export const BlockImageTitleTextButton: FunctionComponent<BlockImageTitleTextBut
 					</Column>
 				</Grid>
 			</Container>
-		</section>
+		</Container>
 	);
 };

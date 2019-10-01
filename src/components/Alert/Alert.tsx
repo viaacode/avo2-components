@@ -5,7 +5,10 @@ import classNames from 'classnames';
 import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
+import { Spacer } from '../Spacer/Spacer';
 import { Spinner } from '../Spinner/Spinner';
+
+import './Alert.scss';
 
 const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
 	info: 'circle-info',
@@ -32,13 +35,13 @@ export const Alert: FunctionComponent<AlertProps> = ({
 	return (
 		<div className={classNames(className, 'c-alert', { 'c-alert--dark': dark })}>
 			<div className="c-alert__body">
-				<div className="u-spacer-right-s">
+				<Spacer margin="right-small">
 					{ALERT_TYPE_TO_ICON_MAPPING[type] ? (
 						<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type]} type="multicolor" />
 					) : (
 						<Spinner light={dark} />
 					)}
-				</div>
+				</Spacer>
 				{message || children}
 			</div>
 			{!!onClose && (

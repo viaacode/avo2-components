@@ -3,9 +3,10 @@ import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
+
 import './ImageGrid.scss';
 
-export interface ImageProps extends DefaultProps {
+export interface ImageGridProps extends DefaultProps {
 	images: string[];
 	value?: string[];
 	width?: number;
@@ -18,7 +19,7 @@ export interface ImageProps extends DefaultProps {
 	onChange?: (selectedImages: string[]) => void;
 }
 
-export const ImageGrid: FunctionComponent<ImageProps> = ({
+export const ImageGrid: FunctionComponent<ImageGridProps> = ({
 	images,
 	value = [],
 	width = 200,
@@ -29,7 +30,7 @@ export const ImageGrid: FunctionComponent<ImageProps> = ({
 	allowSelect = false,
 	allowMulti = false,
 	onChange = () => {},
-}: ImageProps) => {
+}) => {
 	const handleImageClick = (imgSource: string) => {
 		if (allowMulti) {
 			if (value.includes(imgSource)) {

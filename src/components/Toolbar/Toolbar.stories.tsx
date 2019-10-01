@@ -8,8 +8,8 @@ import { Icon } from '../Icon/Icon';
 
 import { Toolbar } from './Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
-import { ToolbarItem } from './ToolbarItem';
-import { ToolbarTitle } from './ToolbarTitle';
+import { ToolbarItem } from './ToolbarItem/ToolbarItem';
+import { ToolbarTitle } from './ToolbarTitle/ToolbarTitle';
 
 storiesOf('Toolbar', module)
 	.addParameters({ jest: ['Toolbar', 'ToolbarItem', 'ToolbarTitle'] })
