@@ -115,6 +115,11 @@ export { ChevronsDown } from './arrows/ChevronsDown';
 export { ChevronsLeft } from './arrows/ChevronsLeft';
 
 /**
+ * CHEVRONSLEFTANDRIGHT
+ */
+export { ChevronsLeftAndRight } from './arrows/ChevronsLeftAndRight';
+
+/**
  * CHEVRONSRIGHT
  */
 export { ChevronsRight } from './arrows/ChevronsRight';
@@ -123,6 +128,11 @@ export { ChevronsRight } from './arrows/ChevronsRight';
  * CHEVRONSUP
  */
 export { ChevronsUp } from './arrows/ChevronsUp';
+
+/**
+ * CHEVRONSUPANDDOWN
+ */
+export { ChevronsUpAndDown } from './arrows/ChevronsUpAndDown';
 
 /**
  * CHEVRONUP

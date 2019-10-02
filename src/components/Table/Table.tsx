@@ -32,13 +32,13 @@ export type Column = {
 export interface TableProps extends DefaultProps {
 	bordered?: boolean;
 	children?: ReactNode;
-	columns: Column[];
-	data: any[];
+	columns?: Column[];
+	data?: any[];
 	emptyStateMessage?: string;
 	horizontal?: boolean;
 	onColumnClick?: (id: string) => void;
 	renderCell?: (row: any, cell: any, rowIndex: number, cellIndex: number) => ReactNode;
-	rowKey: string;
+	rowKey?: string;
 	sortColumn?: string;
 	sortOrder?: 'asc' | 'desc';
 	styled?: boolean;
@@ -81,19 +81,28 @@ export const Table: FunctionComponent<TableProps> = ({
 									{columns.map(heading => (
 										<th
 											key={heading.id}
-											className={classNames({ [`o-table-col-${heading.col}`]: heading.col })}
+											className={classNames({
+												[`o-table-col-${heading.col}`]: heading.col,
+												'c-table__header--sortable': heading.sortable,
+											})}
 											onClick={() => heading.sortable && onColumnClick(heading.id)}
 										>
 											{heading.label}
 											{heading.sortable && sortColumn === heading.id && (
 												<Icon name={sortOrder === 'asc' ? 'chevron-up' : 'chevron-down'} />
 											)}
+											{heading.sortable && sortColumn !== heading.id && (
+												<Icon
+													name={'chevrons-up-and-down'}
+													className="c-table__header--sortable-icon"
+												/>
+											)}
 										</th>
 									))}
 								</tr>
 							</thead>
 						)}
-						{data.length > 0 && (
+						{data.length > 0 && rowKey && (
 							<tbody>
 								{data.map((rowData, rowIndex) => (
 									<tr key={rowData[rowKey]}>
