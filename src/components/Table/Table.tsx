@@ -32,13 +32,13 @@ export type Column = {
 export interface TableProps extends DefaultProps {
 	bordered?: boolean;
 	children?: ReactNode;
-	columns: Column[];
-	data: any[];
+	columns?: Column[];
+	data?: any[];
 	emptyStateMessage?: string;
 	horizontal?: boolean;
 	onColumnClick?: (id: string) => void;
 	renderCell?: (row: any, cell: any, rowIndex: number, cellIndex: number) => ReactNode;
-	rowKey: string;
+	rowKey?: string;
 	sortColumn?: string;
 	sortOrder?: 'asc' | 'desc';
 	styled?: boolean;
@@ -93,7 +93,7 @@ export const Table: FunctionComponent<TableProps> = ({
 								</tr>
 							</thead>
 						)}
-						{data.length > 0 && (
+						{data.length > 0 && rowKey && (
 							<tbody>
 								{data.map((rowData, rowIndex) => (
 									<tr key={rowData[rowKey]}>
