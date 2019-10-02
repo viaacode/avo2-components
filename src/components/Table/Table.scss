@@ -99,6 +99,7 @@ $c-table-row-selected-bg: $color-primary !default;
 
 th.c-table__header--sortable {
 	padding: 0;
+	cursor: pointer;
 
 	a {
 		display: block;
@@ -107,6 +108,10 @@ th.c-table__header--sortable {
 
 	.o-svg-icon {
 		color: $color-gray-300;
+	}
+
+	.c-table__header--sortable-icon {
+		opacity: 0.5;
 	}
 }
 
