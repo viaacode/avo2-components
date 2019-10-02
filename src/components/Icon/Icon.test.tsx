@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Icon } from './Icon';
 
-import { Download, Slash, ThumbsUp } from './Icons';
+import { Download, Slash, ThumbsUp } from '../Icons';
 
 describe('<Icon />', () => {
 	it('Should render when a known icon is passed', () => {

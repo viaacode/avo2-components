@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
-import * as Icons from './Icons';
+import * as Icons from '../Icons';
 
 import './Icon.scss';
 

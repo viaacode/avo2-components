@@ -110,6 +110,11 @@
     "type": "arrows"
   },
   {
+    "fileName": "chevrons-left-and-right.svg",
+    "name": "chevrons-left-and-right",
+    "type": "arrows"
+  },
+  {
     "fileName": "chevrons-left.svg",
     "name": "chevrons-left",
     "type": "arrows"
@@ -117,6 +122,11 @@
   {
     "fileName": "chevrons-right.svg",
     "name": "chevrons-right",
+    "type": "arrows"
+  },
+  {
+    "fileName": "chevrons-up-and-down.svg",
+    "name": "chevrons-up-and-down",
     "type": "arrows"
   },
   {
