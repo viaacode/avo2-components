@@ -81,12 +81,21 @@ export const Table: FunctionComponent<TableProps> = ({
 									{columns.map(heading => (
 										<th
 											key={heading.id}
-											className={classNames({ [`o-table-col-${heading.col}`]: heading.col })}
+											className={classNames({
+												[`o-table-col-${heading.col}`]: heading.col,
+												'c-table__header--sortable': heading.sortable,
+											})}
 											onClick={() => heading.sortable && onColumnClick(heading.id)}
 										>
 											{heading.label}
 											{heading.sortable && sortColumn === heading.id && (
 												<Icon name={sortOrder === 'asc' ? 'chevron-up' : 'chevron-down'} />
+											)}
+											{heading.sortable && sortColumn !== heading.id && (
+												<Icon
+													name={'chevrons-up-and-down'}
+													className="c-table__header--sortable-icon"
+												/>
 											)}
 										</th>
 									))}

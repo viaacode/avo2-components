@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "1.12.1",
+  "version": "1.13.0",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "style": "dist/styles/main.css",
@@ -13,8 +13,8 @@
     "build-storybook:with-sourcemaps": "cross-env GENERATE_SOURCEMAP=true build-storybook -o build",
     "format": "npm run lint -- --fix",
     "preicons": "node scripts/icons.js src/icons",
-    "icons": "rimraf src/components/Icons && svgr -d src/components/Icons src/icons --ext ts",
-    "posticons": "named-exports --dir=src/components/Icons && renamer --find .ts --replace .tsx 'src/components/Icons/**'",
+    "icons": "rimraf src/components/Icon/Icons && svgr -d src/components/Icon/Icons src/icons --ext ts",
+    "posticons": "named-exports --dir=src/components/Icon/Icons && renamer --find ts --replace tsx \"./src/components/Icon/Icons/**\"",
     "lint": "tslint -p .",
     "start": "start-storybook -s ./static -p 3020 --ci",
     "test": "jest --verbose",
