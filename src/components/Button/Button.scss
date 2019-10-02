@@ -124,7 +124,7 @@ button.c-button {
 /* Icon-only Button (Square)
    ========================================================================== */
 
-.c-button--icon {
+.c-button.c-button--icon {
 	padding: ($c-button-height - $c-button-line-height)/2;
 }
 
