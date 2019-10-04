@@ -101,7 +101,7 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 		const spacedToolbarComponent = shallow(
-			<Toolbar spaced={true}>
+			<Toolbar spaced>
 				<ToolbarLeft>
 					<ToolbarItem>
 						<Fragment>Left</Fragment>
@@ -117,6 +117,33 @@ describe('<Toolbar />', () => {
 		expect(spacedToolbarInnerElement.hasClass('c-toolbar--spaced')).toEqual(true);
 	});
 
+	it('Should set the correct className for justify', () => {
+		const regularToolbarComponent = shallow(
+			<Toolbar>
+				<ToolbarLeft>
+					<ToolbarItem>
+						<Fragment>Left</Fragment>
+					</ToolbarItem>
+				</ToolbarLeft>
+			</Toolbar>
+		);
+		const justifiedToolbarComponent = shallow(
+			<Toolbar justify>
+				<ToolbarLeft>
+					<ToolbarItem>
+						<Fragment>Left</Fragment>
+					</ToolbarItem>
+				</ToolbarLeft>
+			</Toolbar>
+		);
+
+		const regularToolbarInnerElement = regularToolbarComponent.find('.c-toolbar');
+		const justifiedToolbarInnerElement = justifiedToolbarComponent.find('.c-toolbar');
+
+		expect(regularToolbarInnerElement.hasClass('c-toolbar--justified')).toEqual(false);
+		expect(justifiedToolbarInnerElement.hasClass('c-toolbar--justified')).toEqual(true);
+	});
+
 	it('Should set the correct className for autoHeight', () => {
 		const regularToolbarComponent = shallow(
 			<Toolbar>
@@ -128,7 +155,7 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 		const autoHeightToolbarComponent = shallow(
-			<Toolbar autoHeight={true}>
+			<Toolbar autoHeight>
 				<ToolbarLeft>
 					<ToolbarItem>
 						<Fragment>Left</Fragment>
@@ -155,7 +182,7 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 		const alignTopToolbarComponent = shallow(
-			<Toolbar alignTop={true}>
+			<Toolbar alignTop>
 				<ToolbarLeft>
 					<ToolbarItem>
 						<Fragment>Left</Fragment>
