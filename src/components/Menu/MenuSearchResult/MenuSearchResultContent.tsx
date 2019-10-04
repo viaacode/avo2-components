@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { ContentType, DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
+import { IconName } from '../../Icon/types';
 import { MenuContent } from '../MenuContent/MenuContent';
 
 export interface MenuSearchResultItemInfo {
@@ -18,7 +19,7 @@ export interface MenuContentProps extends DefaultProps {
 	onClick?: (menuItemId: string | number) => void;
 }
 
-export const CONTENT_TYPE_TO_ICON_NAME: { [contentType in ContentType]: string } = {
+export const CONTENT_TYPE_TO_ICON_NAME: { [contentType in ContentType]: IconName } = {
 	collection: 'collection',
 	video: 'video',
 	audio: 'volume-1',

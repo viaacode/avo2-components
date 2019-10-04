@@ -4,6 +4,7 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+import { IconName } from '../Icon/types';
 
 type InputType = 'password' | 'text' | 'email' | 'search' | 'number' | 'tel' | 'url';
 
@@ -12,7 +13,7 @@ export interface TextInputProps extends DefaultProps {
 	disabled?: boolean;
 	placeholder?: string;
 	value?: string;
-	icon?: string;
+	icon?: IconName;
 	type?: InputType;
 	ariaLabel?: string;
 	onChange?: (value: string) => void;

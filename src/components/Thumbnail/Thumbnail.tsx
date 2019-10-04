@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { ContentType, DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+import { IconName } from '../Icon/types';
 
 import './Thumbnail.scss';
 
@@ -24,7 +25,7 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 	meta,
 }) => {
 	const [loaded, setLoaded] = useState(false);
-	const iconName = category === 'audio' ? 'headphone' : category;
+	const iconName: IconName = category === 'audio' ? 'headphone' : (category as IconName);
 
 	useEffect(() => {
 		if (src) {

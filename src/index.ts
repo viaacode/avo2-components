@@ -57,6 +57,7 @@ import { FormGroup } from './components/Form/FormGroup/FormGroup';
 import { Column } from './components/Grid/Column/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
+import { IconName, IconType } from './components/Icon/types';
 import { Image } from './components/Image/Image';
 import { ImageGrid } from './components/ImageGrid/ImageGrid';
 import { MediaCard } from './components/MediaCard/MediaCard';
@@ -166,6 +167,8 @@ export {
 	FormGroup,
 	Grid,
 	Icon,
+	IconName,
+	IconType,
 	Image,
 	ImageGrid,
 	MediaCard,

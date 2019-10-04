@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
-
+import { IconName } from '../Icon/types';
 import { Spacer } from '../Spacer/Spacer';
 import './Blankslate.scss';
 
@@ -12,7 +12,7 @@ export interface BlankslateProps extends DefaultProps {
 	title: string;
 	body: string;
 	spacious?: boolean;
-	icon?: string;
+	icon?: IconName;
 	children?: ReactNode;
 }
 

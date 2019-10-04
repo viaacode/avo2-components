@@ -23,6 +23,12 @@ function getCategory(path, fileName) {
 		.replace(/\//g, '');
 }
 
+function definedAndUnique(arr) {
+	return arr.filter(function(elem, pos) {
+		return elem && arr.indexOf(elem) === pos;
+	});
+}
+
 glob(`${directory}/**/*.svg`, function(err, res) {
 	if (err) {
 		console.error(err);
@@ -38,9 +44,32 @@ glob(`${directory}/**/*.svg`, function(err, res) {
 				type,
 			};
 		});
-
 		const data = JSON.stringify(icons, null, 2);
 
+		const iconNames = res.map(path => {
+			const fileName = getFileName(path);
+			return stripExtension(fileName);
+		}).join('\'\n  | \'');
+
+		const iconTypeNames = definedAndUnique(res.map(path => {
+			const fileName = getFileName(path);
+			return getCategory(path, fileName);
+		})).join('\'\n  | \'');
+
+
+
+		let iconTypeFileContent = `export type IconName =
+  | \'${iconNames}\';
+
+export type IconType =
+  | \'${iconTypeNames}\';
+`;
+
+		console.log('iconTypeNames: ', iconTypeFileContent);
+
+
 		fs.writeFileSync(`${process.cwd()}/${directory}/icons.json`, data);
+
+		fs.writeFileSync(`${process.cwd()}/${directory}/../components/Icon/types.ts`, iconTypeFileContent);
 	}
 });

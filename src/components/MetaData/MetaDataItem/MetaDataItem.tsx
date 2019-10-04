@@ -4,11 +4,12 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
+import { IconName } from '../../Icon/types';
 
 import './MetaDataItem.scss';
 
 export interface MetaDataItemProps extends DefaultProps {
-	icon?: string;
+	icon?: IconName;
 	label?: string;
 	children?: ReactNode;
 }

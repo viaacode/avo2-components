@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
 
+import { IconName } from '../Icon/types';
 import { MenuContent } from '../Menu/MenuContent/MenuContent';
 import { Dropdown } from './Dropdown';
 
@@ -15,10 +16,10 @@ const menuItems = [
 ];
 
 const menuItemsWithIcons = [
-	{ ...menuItems[0], label: 'Aluminium with an icon', icon: 'circle' },
-	{ ...menuItems[1], label: 'Cadmium with an icon', icon: 'box' },
-	{ ...menuItems[2], label: 'Dubnium with an icon', icon: 'square' },
-	{ ...menuItems[3], label: 'Potassium with an icon', icon: 'triangle' },
+	{ ...menuItems[0], label: 'Aluminium with an icon', icon: 'circle' as IconName },
+	{ ...menuItems[1], label: 'Cadmium with an icon', icon: 'box' as IconName },
+	{ ...menuItems[2], label: 'Dubnium with an icon', icon: 'square' as IconName },
+	{ ...menuItems[3], label: 'Potassium with an icon', icon: 'triangle' as IconName },
 ];
 
 const DropdownStoryComponent = ({ children }: { children: ReactElement }) => {
@@ -34,13 +35,11 @@ const DropdownStoryComponent = ({ children }: { children: ReactElement }) => {
 		setOpen(false);
 	};
 
-	const childrenWithProps = cloneElement(children, {
+	return cloneElement(children, {
 		isOpen,
 		onOpen: open,
 		onClose: close,
 	});
-
-	return childrenWithProps;
 };
 
 storiesOf('Dropdown', module)
