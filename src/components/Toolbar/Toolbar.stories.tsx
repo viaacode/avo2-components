@@ -152,7 +152,7 @@ storiesOf('Toolbar', module)
 		</Toolbar>
 	))
 	.add('Full toolbar', () => (
-		<Toolbar justified>
+		<Toolbar justify>
 			<ToolbarItem grow>
 				<div style={{ margin: '3.2rem 0', border: 'none', borderBottom: '1px solid #D6DEE3' }} />
 			</ToolbarItem>
