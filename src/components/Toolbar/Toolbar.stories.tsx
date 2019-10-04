@@ -150,4 +150,17 @@ storiesOf('Toolbar', module)
 				</ToolbarItem>
 			</ToolbarRight>
 		</Toolbar>
+	))
+	.add('Full toolbar', () => (
+		<Toolbar justify>
+			<ToolbarItem grow>
+				<div style={{ margin: '3.2rem 0', border: 'none', borderBottom: '1px solid #D6DEE3' }} />
+			</ToolbarItem>
+			<ToolbarItem>
+				<Button type="secondary" icon="add" ariaLabel="Sectie toevoegen" />
+			</ToolbarItem>
+			<ToolbarItem grow>
+				<div style={{ margin: '3.2rem 0', border: 'none', borderBottom: '1px solid #D6DEE3' }} />
+			</ToolbarItem>
+		</Toolbar>
 	));

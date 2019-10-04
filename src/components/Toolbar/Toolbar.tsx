@@ -48,6 +48,7 @@ export const Toolbar: FunctionComponent<ToolbarProps> = ({
 				</div>
 			)}
 			{right && <div className="c-toolbar__right">{right}</div>}
+			{!left && !center && !right && !!children && children}
 		</div>
 	);
 };
