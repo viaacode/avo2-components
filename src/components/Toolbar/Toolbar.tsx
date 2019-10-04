@@ -15,7 +15,7 @@ export interface ToolbarProps extends DefaultProps {
 	spaced?: boolean;
 	autoHeight?: boolean;
 	alignTop?: boolean;
-	justified?: boolean;
+	justify?: boolean;
 }
 
 export const Toolbar: FunctionComponent<ToolbarProps> = ({
@@ -25,7 +25,7 @@ export const Toolbar: FunctionComponent<ToolbarProps> = ({
 	spaced,
 	autoHeight,
 	alignTop,
-	justified,
+	justify,
 }) => {
 	const left = useSlot(ToolbarLeft, children);
 	const center = useSlot(ToolbarCenter, children);
@@ -38,7 +38,7 @@ export const Toolbar: FunctionComponent<ToolbarProps> = ({
 				'c-toolbar--spaced': spaced,
 				'c-toolbar--auto': autoHeight,
 				'c-toolbar--align-top': alignTop,
-				'c-toolbar__justified': justified,
+				'c-toolbar--justified': justify,
 			})}
 		>
 			{left && <div className="c-toolbar__left">{left}</div>}
