@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
+import { IconName } from '../Icon/types';
 
 export interface ToggleButtonProps extends DefaultProps {
 	icon: 'heart' | 'bookmark';
@@ -44,9 +45,9 @@ export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
 		}
 	}
 
-	function getIcon() {
+	function getIcon(): IconName {
 		if (filled) {
-			return `${icon}-filled`;
+			return `${icon}-filled` as IconName;
 		}
 
 		return icon;

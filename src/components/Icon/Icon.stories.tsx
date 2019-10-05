@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react';
 import iconList from '../../icons/icons.json';
 
 import { Icon } from './Icon';
+import { IconName } from './types';
 
 const baseIcons = iconList.filter(i => i.type === '');
 const arrowsIcons = iconList.filter(i => i.type === 'arrows');
@@ -32,7 +33,7 @@ stories.forEach(([title, icons]: any) =>
 		<Fragment>
 			<div className="c-styleguide-svg-icons__category">
 				<div className="c-styleguide-svg-icons__type">
-					{icons.map(({ name, type }: { name: string; type: any }, index: number) => (
+					{icons.map(({ name, type }: { name: IconName; type: any }, index: number) => (
 						<div className="c-styleguide-svg-icon" key={index}>
 							<Fragment>
 								<Icon name={name} type={type} />

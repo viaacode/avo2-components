@@ -8,6 +8,7 @@ import { Icon } from '../Icon/Icon';
 import { Spacer } from '../Spacer/Spacer';
 import { Spinner } from '../Spinner/Spinner';
 
+import { IconName } from '../Icon/types';
 import './Alert.scss';
 
 const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
@@ -37,7 +38,7 @@ export const Alert: FunctionComponent<AlertProps> = ({
 			<div className="c-alert__body">
 				<Spacer margin="right-small">
 					{ALERT_TYPE_TO_ICON_MAPPING[type] ? (
-						<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type]} type="multicolor" />
+						<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type] as IconName} type="multicolor" />
 					) : (
 						<Spinner light={dark} />
 					)}
