@@ -23,14 +23,12 @@ describe('<Panel />', () => {
 
 		const panelComponent = shallow(
 			<Panel className={customClass}>
-				<Panel>
-					<PanelHeader>
-						<Fragment>Header</Fragment>
-					</PanelHeader>
-					<PanelBody>
-						<Fragment>Body</Fragment>
-					</PanelBody>
-				</Panel>
+				<PanelHeader>
+					<Fragment>Header</Fragment>
+				</PanelHeader>
+				<PanelBody>
+					<Fragment>Body</Fragment>
+				</PanelBody>
 			</Panel>
 		);
 
