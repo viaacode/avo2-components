@@ -4,13 +4,14 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
+import { IconName } from '../../Icon/types';
 
 import './Tab.scss';
 
 export interface TabProps extends DefaultProps {
 	label: string;
 	id: string | number;
-	icon?: string;
+	icon?: IconName;
 	active?: boolean;
 	onClick?: () => void;
 }

@@ -51,7 +51,7 @@ storiesOf('Toolbar', module)
 				</ToolbarRight>
 			</Toolbar>
 			<br />
-			<Toolbar spaced={true}>
+			<Toolbar spaced>
 				<ToolbarLeft>
 					<ToolbarItem>
 						<Icon name="chevron-left" />
@@ -69,7 +69,25 @@ storiesOf('Toolbar', module)
 				</ToolbarRight>
 			</Toolbar>
 			<br />
-			<Toolbar autoHeight={true}>
+			<Toolbar justify>
+				<ToolbarLeft>
+					<ToolbarItem>
+						<Icon name="chevron-left" />
+					</ToolbarItem>
+				</ToolbarLeft>
+				<ToolbarCenter>
+					<ToolbarItem>
+						<p>Toolbar justified</p>
+					</ToolbarItem>
+				</ToolbarCenter>
+				<ToolbarRight>
+					<ToolbarItem>
+						<Button type="primary" label="Save" ariaLabel="Save" />
+					</ToolbarItem>
+				</ToolbarRight>
+			</Toolbar>
+			<br />
+			<Toolbar autoHeight>
 				<ToolbarLeft>
 					<ToolbarItem>
 						<Icon name="chevron-left" />
@@ -87,7 +105,7 @@ storiesOf('Toolbar', module)
 				</ToolbarRight>
 			</Toolbar>
 			<br />
-			<Toolbar alignTop={true}>
+			<Toolbar alignTop>
 				<ToolbarLeft>
 					<ToolbarItem>
 						<Icon name="chevron-left" />
@@ -131,5 +149,18 @@ storiesOf('Toolbar', module)
 					<Button type="primary" label="Only right" ariaLabel="Only right" />
 				</ToolbarItem>
 			</ToolbarRight>
+		</Toolbar>
+	))
+	.add('Full toolbar', () => (
+		<Toolbar justify>
+			<ToolbarItem grow>
+				<div style={{ margin: '3.2rem 0', border: 'none', borderBottom: '1px solid #D6DEE3' }} />
+			</ToolbarItem>
+			<ToolbarItem>
+				<Button type="secondary" icon="add" ariaLabel="Sectie toevoegen" />
+			</ToolbarItem>
+			<ToolbarItem grow>
+				<div style={{ margin: '3.2rem 0', border: 'none', borderBottom: '1px solid #D6DEE3' }} />
+			</ToolbarItem>
 		</Toolbar>
 	));

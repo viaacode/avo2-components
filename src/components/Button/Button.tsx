@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+import { IconName } from '../Icon/types';
 
 import './Button.scss';
 
@@ -14,7 +15,7 @@ export interface ButtonProps extends DefaultProps {
 	block?: boolean;
 	children?: ReactNode;
 	disabled?: boolean;
-	icon?: string;
+	icon?: IconName;
 	label?: string;
 	onClick?(event: MouseEvent<HTMLElement>): void;
 	size?: 'small';

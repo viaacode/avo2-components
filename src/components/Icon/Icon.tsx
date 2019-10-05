@@ -4,13 +4,14 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import * as Icons from './Icons';
+import { IconName, IconType } from './types';
 
 import './Icon.scss';
 
 export interface IconProps extends DefaultProps {
-	name?: string;
+	name?: IconName;
 	size?: 'small' | 'large' | 'huge';
-	type?: 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';
+	type?: IconType;
 	subtle?: boolean;
 	active?: boolean;
 }
