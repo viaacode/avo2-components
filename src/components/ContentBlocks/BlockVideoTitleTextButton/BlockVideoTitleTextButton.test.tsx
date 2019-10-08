@@ -3,6 +3,8 @@ import React, { cloneElement } from 'react';
 import { mount, shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
 
+import { MOCK_FLOW_PLAYER_PROPS } from '../../FlowPlayer/FlowPlayer.mock';
+
 import { BlockVideoTitleTextButton } from './BlockVideoTitleTextButton';
 
 const customClass = 'c-block-custom';
@@ -14,7 +16,7 @@ const titleLink = 'http://google.com?q=title';
 const blockVideoTitleTextButtonExample = (
 	<BlockVideoTitleTextButton
 		className={customClass}
-		videoSource={videoSource}
+		flowPlayerProps={MOCK_FLOW_PLAYER_PROPS}
 		title="Title"
 		titleLink={titleLink}
 		text={loremIpsumText}

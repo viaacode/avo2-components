@@ -4,13 +4,14 @@ import { convertToHtml } from '../../../helpers/convertToHtml';
 import { DefaultProps } from '../../../types';
 import { Container } from '../../Container/Container';
 import { ExpandableContainer } from '../../ExpandableContainer/ExpandableContainer';
+import { FlowPlayer, FlowPlayerProps } from '../../FlowPlayer/FlowPlayer';
 import { Column } from '../../Grid/Column/Column';
 import { Grid } from '../../Grid/Grid';
 import { Spacer } from '../../Spacer/Spacer';
 import { VideoWrapper } from '../../VideoWrapper/VideoWrapper';
 
 export interface BlockVideoTitleTextButtonProps extends DefaultProps {
-	videoSource: string;
+	flowPlayerProps: FlowPlayerProps;
 	title?: string;
 	titleLink?: string;
 	text?: string;
@@ -19,7 +20,7 @@ export interface BlockVideoTitleTextButtonProps extends DefaultProps {
 
 export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextButtonProps> = ({
 	className,
-	videoSource,
+	flowPlayerProps,
 	title,
 	titleLink,
 	text = '',
@@ -31,8 +32,7 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 				<Grid>
 					<Column size="2-6">
 						<VideoWrapper aspect="16:9">
-							{/* TODO replace this with the flowplayer video component */}
-							<video src={videoSource} controls />
+							<FlowPlayer {...flowPlayerProps} />
 						</VideoWrapper>
 					</Column>
 					<Column size="2-6">
