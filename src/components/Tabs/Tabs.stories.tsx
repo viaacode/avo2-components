@@ -3,6 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers/action';
 
+import { IconName } from '../Icon/types';
 import { Tabs } from '../Tabs/Tabs';
 
 const mockTabs = [
@@ -20,11 +21,11 @@ const mockTabs = [
 const mockTabsWithIcons = [
 	{
 		...mockTabs[0],
-		icon: 'video',
+		icon: 'video' as IconName,
 	},
 	{
 		...mockTabs[1],
-		icon: 'folder',
+		icon: 'folder' as IconName,
 	},
 ];
 

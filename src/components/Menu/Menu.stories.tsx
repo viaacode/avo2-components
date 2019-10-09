@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers/action';
+import { IconName } from '../Icon/types';
 
 import { Menu } from './Menu';
 
@@ -13,10 +14,10 @@ const menuItems = [
 ];
 
 const menuItemsWithIcons = [
-	{ ...menuItems[0], icon: 'circle' },
-	{ ...menuItems[1], icon: 'box' },
-	{ ...menuItems[2], icon: 'square' },
-	{ ...menuItems[3], icon: 'triangle' },
+	{ ...menuItems[0], icon: 'circle' as IconName },
+	{ ...menuItems[1], icon: 'box' as IconName },
+	{ ...menuItems[2], icon: 'square' as IconName },
+	{ ...menuItems[3], icon: 'triangle' as IconName },
 ];
 
 const menuItemWithDivider = [

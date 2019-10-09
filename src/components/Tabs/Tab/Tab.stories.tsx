@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
+import { IconName } from '../../Icon/types';
 import { Tab } from './Tab';
 
 const mockTab = {
@@ -13,7 +14,7 @@ const mockTab = {
 
 const mockTabWithIcon = {
 	...mockTab,
-	icon: 'video',
+	icon: 'video' as IconName,
 };
 
 storiesOf('Tab', module)

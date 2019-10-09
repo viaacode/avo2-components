@@ -4,13 +4,14 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
+import { IconName } from '../../Icon/types';
 
 import './MenuContent.scss';
 
 export interface MenuItemInfo {
 	label: string;
 	id: string | number;
-	icon?: string;
+	icon?: IconName;
 }
 
 export interface MenuContentProps extends DefaultProps {

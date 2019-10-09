@@ -9,6 +9,7 @@ import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
 import { get } from '../../utils/get';
 import { Icon } from '../Icon/Icon';
+import { IconName } from '../Icon/types';
 import { Menu } from '../Menu/Menu';
 import { DropdownButton, DropdownContent } from './Dropdown.slots';
 
@@ -16,7 +17,7 @@ import './Dropdown.scss';
 
 export interface DropdownProps {
 	label?: string;
-	icon?: string;
+	icon?: IconName;
 	isOpen: boolean;
 	placement?: Placement;
 	autoSize?: boolean;

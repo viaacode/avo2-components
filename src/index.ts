@@ -18,6 +18,7 @@ import { Blankslate } from './components/Blankslate/Blankslate';
 import { Box } from './components/Box/Box';
 import { Button } from './components/Button/Button';
 import { ButtonGroup } from './components/ButtonGroup/ButtonGroup';
+import { ButtonToolbar } from './components/ButtonToolbar/ButtonToolbar';
 import { Checkbox } from './components/Checkbox/Checkbox';
 import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 import { Container } from './components/Container/Container';
@@ -57,6 +58,7 @@ import { FormGroup } from './components/Form/FormGroup/FormGroup';
 import { Column } from './components/Grid/Column/Column';
 import { Grid } from './components/Grid/Grid';
 import { Icon } from './components/Icon/Icon';
+import { IconName, IconType } from './components/Icon/types';
 import { Image } from './components/Image/Image';
 import { ImageGrid } from './components/ImageGrid/ImageGrid';
 import { MediaCard } from './components/MediaCard/MediaCard';
@@ -150,6 +152,7 @@ export {
 	Box,
 	Button,
 	ButtonGroup,
+	ButtonToolbar,
 	Checkbox,
 	CheckboxGroup,
 	Column,
@@ -166,6 +169,8 @@ export {
 	FormGroup,
 	Grid,
 	Icon,
+	IconName,
+	IconType,
 	Image,
 	ImageGrid,
 	MediaCard,
