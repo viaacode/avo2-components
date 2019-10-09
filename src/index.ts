@@ -53,6 +53,7 @@ import { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.
 import { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
 import { Flex } from './components/Flex/Flex';
 import { FlexItem } from './components/Flex/FlexItem/FlexItem';
+import { FlowPlayer } from './components/FlowPlayer/FlowPlayer';
 import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup/FormGroup';
 import { Column } from './components/Grid/Column/Column';
@@ -82,6 +83,8 @@ import {
 import { MultiRange } from './components/MultiRange/MultiRange';
 import { Navbar } from './components/Navbar/Navbar';
 import { Pagination } from './components/Pagination/Pagination';
+import { Panel } from './components/Panel/Panel';
+import { PanelBody, PanelHeader } from './components/Panel/Panel.slots';
 import { RadioButton } from './components/RadioButton/RadioButton';
 import { RadioButtonGroup } from './components/RadioButtonGroup/RadioButtonGroup';
 import { SearchResult } from './components/SearchResult/SearchResult';
@@ -165,6 +168,7 @@ export {
 	ExpandableContainer,
 	Flex,
 	FlexItem,
+	FlowPlayer,
 	Form,
 	FormGroup,
 	Grid,
@@ -192,6 +196,9 @@ export {
 	MultiRange,
 	Navbar,
 	Pagination,
+	Panel,
+	PanelBody,
+	PanelHeader,
 	RadioButton,
 	RadioButtonGroup,
 	SearchResult,
