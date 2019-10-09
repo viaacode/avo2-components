@@ -26,6 +26,7 @@ export interface ButtonProps extends DefaultProps {
 		| 'danger-hover'
 		| 'danger'
 		| 'link'
+		| 'inline-link'
 		| 'primary'
 		| 'secondary-i'
 		| 'secondary'

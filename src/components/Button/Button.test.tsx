@@ -44,10 +44,14 @@ describe('<Button />', () => {
 		const secondaryButtonComponent = shallow(<Button type="secondary" ariaLabel="test button" />);
 		const dangerButtonComponent = shallow(<Button type="danger" ariaLabel="test button" />);
 		const linkButtonComponent = shallow(<Button type="link" ariaLabel="test button" />);
+		const inlineLinkButtonComponent = shallow(
+			<Button type="inline-link" ariaLabel="test button" />
+		);
 
 		expect(secondaryButtonComponent.hasClass('c-button--secondary')).toEqual(true);
 		expect(dangerButtonComponent.hasClass('c-button--danger')).toEqual(true);
 		expect(linkButtonComponent.hasClass('c-button--link')).toEqual(true);
+		expect(inlineLinkButtonComponent.hasClass('c-button--inline-link')).toEqual(true);
 	});
 
 	it('Should be able to render a label', () => {
