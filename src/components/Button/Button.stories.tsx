@@ -46,6 +46,14 @@ storiesOf('Button', module)
 			<div className="u-spacer-bottom">
 				<Button
 					ariaLabel="test button"
+					label="Inline-link button"
+					type="inline-link"
+					onClick={action('Button clicked')}
+				/>
+			</div>
+			<div className="u-spacer-bottom">
+				<Button
+					ariaLabel="test button"
 					label="Danger button"
 					type="danger"
 					onClick={action('Button clicked')}
@@ -93,6 +101,9 @@ storiesOf('Button', module)
 				<Button ariaLabel="test button" label="Link button" type="link" icon="link" />
 			</div>
 			<div className="u-spacer-bottom">
+				<Button ariaLabel="test button" label="Inline-link button" type="inline-link" icon="link" />
+			</div>
+			<div className="u-spacer-bottom">
 				<Button ariaLabel="test button" label="Danger button" type="danger" icon="x-circle" />
 			</div>
 			<div className="u-spacer-bottom">
@@ -121,6 +132,9 @@ storiesOf('Button', module)
 			</div>
 			<div className="u-spacer-bottom">
 				<Button ariaLabel="test button" type="link" icon="link" />
+			</div>
+			<div className="u-spacer-bottom">
+				<Button ariaLabel="test button" type="inline-link" icon="link" />
 			</div>
 			<div className="u-spacer-bottom">
 				<Button ariaLabel="test button" type="danger" icon="x-circle" />
@@ -158,6 +172,15 @@ storiesOf('Button', module)
 			</div>
 			<div className="u-spacer-bottom">
 				<Button ariaLabel="test button" label="Link button" type="link" icon="link" arrow />
+			</div>
+			<div className="u-spacer-bottom">
+				<Button
+					ariaLabel="test button"
+					label="Inline-link button"
+					type="inline-link"
+					icon="link"
+					arrow
+				/>
 			</div>
 			<div className="u-spacer-bottom">
 				<Button ariaLabel="test button" label="Danger button" type="danger" icon="x-circle" arrow />
