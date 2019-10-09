@@ -208,6 +208,25 @@ $c-button-link-color: $color-primary !default;
 	}
 }
 
+/* Button inline-link
+   ========================================================================== */
+
+.c-button.c-button--inline-link {
+	background: none;
+	border: none;
+	color: $color-teal-bright;
+	padding: 0;
+	margin-top: -2px;
+
+	&:hover,
+	&:active,
+	&:focus,
+	&.c-button--active,
+	&.c-button--active:focus {
+		background: $color-gray-50;
+	}
+}
+
 /* Shared disabled state for all buttons
    ========================================================================== */
 
