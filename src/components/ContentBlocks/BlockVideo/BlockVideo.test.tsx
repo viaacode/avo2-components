@@ -19,14 +19,6 @@ describe('<BlockVideo />', () => {
 		shallow(blockVideoExampleExample);
 	});
 
-	it('Should render the video correctly', () => {
-		const component = mount(blockVideoExampleExample);
-
-		const videoElement = component.find('video');
-
-		expect(videoElement.prop('src')).toEqual(videoSource);
-	});
-
 	it('Should set the correct className', () => {
 		const component = mount(blockVideoExampleExample);
 

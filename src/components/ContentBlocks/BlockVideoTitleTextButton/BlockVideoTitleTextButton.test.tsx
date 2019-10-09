@@ -28,14 +28,6 @@ describe('<BlockVideoTitleTextButton />', () => {
 		shallow(blockVideoTitleTextButtonExample);
 	});
 
-	it('Should render the video correctly', () => {
-		const component = mount(blockVideoTitleTextButtonExample);
-
-		const videoElement = component.find('video');
-
-		expect(videoElement.prop('src')).toEqual(videoSource);
-	});
-
 	it('Should render the title correctly', () => {
 		const component = mount(blockVideoTitleTextButtonExample);
 
@@ -58,26 +50,5 @@ describe('<BlockVideoTitleTextButton />', () => {
 		const pElement = component.find('p');
 
 		expect(pElement.html()).toContain(`>${loremIpsumText}<`);
-	});
-
-	it('Should set the correct className', () => {
-		const component = mount(blockVideoTitleTextButtonExample);
-
-		const divs = component.find('div');
-
-		const containerElement = divs.at(0);
-		const spacerElement = divs.at(1);
-		const gridElement = divs.at(2);
-		const leftColumnElement = divs.at(3);
-		const rightColumnElement = divs.at(5);
-		const contentElement = divs.at(6);
-
-		expect(containerElement.hasClass(customClass)).toEqual(true);
-		expect(containerElement.hasClass('o-container')).toEqual(true);
-		expect(spacerElement.hasClass('u-spacer')).toEqual(true);
-		expect(gridElement.hasClass('o-grid')).toEqual(true);
-		expect(leftColumnElement.hasClass('o-grid-col-bp2-6')).toEqual(true);
-		expect(rightColumnElement.hasClass('o-grid-col-bp2-6')).toEqual(true);
-		expect(contentElement.hasClass('c-content')).toEqual(true);
 	});
 });
