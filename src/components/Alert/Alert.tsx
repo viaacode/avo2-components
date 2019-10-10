@@ -43,7 +43,8 @@ export const Alert: FunctionComponent<AlertProps> = ({
 						<Spinner light={dark} />
 					)}
 				</Spacer>
-				{message || children}
+				{!!message && <span dangerouslySetInnerHTML={{ __html: message.toString() }} />}
+				{!!children && children}
 			</div>
 			{!!onClose && (
 				<Button

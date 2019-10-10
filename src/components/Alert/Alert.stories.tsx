@@ -38,6 +38,13 @@ storiesOf('Alert', module)
 			</div>
 		</React.Fragment>
 	))
+	.add('Alerts html multi line', () => (
+		<Alert
+			message={'Info alert message<br/>Info alert message<br/>Info alert message'}
+			dark={true}
+			onClose={action('alert closed')}
+		/>
+	))
 	.add('Alerts custom content', () => (
 		<React.Fragment>
 			<Alert>
