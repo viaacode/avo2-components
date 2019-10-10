@@ -41,7 +41,6 @@ storiesOf('Alert', module)
 	.add('Alerts html multi line', () => (
 		<Alert
 			message={'Info alert message<br/>Info alert message<br/>Info alert message'}
-			dark={true}
 			onClose={action('alert closed')}
 		/>
 	))
