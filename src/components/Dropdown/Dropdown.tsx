@@ -16,14 +16,15 @@ import { DropdownButton, DropdownContent } from './Dropdown.slots';
 import './Dropdown.scss';
 
 export interface DropdownProps {
-	label?: string;
-	icon?: IconName;
-	isOpen: boolean;
-	placement?: Placement;
 	autoSize?: boolean;
 	children: ReactNode;
-	onOpen?: () => void;
+	icon?: IconName;
+	isOpen: boolean;
+	label?: string;
 	onClose?: () => void;
+	onOpen?: () => void;
+	placement?: Placement;
+	searchMenu?: boolean;
 }
 
 /**
@@ -35,14 +36,15 @@ export interface DropdownProps {
  * - The flyout element that contains the children is called the "popper"
  */
 export const Dropdown: FunctionComponent<DropdownProps> = ({
-	label = '',
-	icon,
-	isOpen,
-	placement = 'bottom-start',
 	autoSize = false,
 	children,
-	onOpen = () => {},
+	icon,
+	isOpen,
+	label = '',
 	onClose = () => {},
+	onOpen = () => {},
+	placement = 'bottom-start',
+	searchMenu = false,
 }) => {
 	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef();
 	const [dropdownButton, dropdownButtonRef] = useCallbackRef();
@@ -110,6 +112,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 						innerRef={ref}
 						isOpen={isOpen}
 						placement={placement}
+						search={searchMenu}
 						style={style}
 					>
 						{dropdownContentSlot || children}

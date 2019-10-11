@@ -1,29 +1,16 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { IconName } from '../Icon/types';
 import { Menu } from './Menu';
 import { MenuItemInfo } from './MenuContent/MenuContent';
+import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent';
 
-const menuItems = [
-	{ label: 'Aluminium', id: 'aluminium' },
-	{ label: 'Cadmium', id: 'cadmium' },
-	{ label: 'Dubnium', id: 'dubnium' },
-	{ label: 'Potassium', id: 'potassium' },
-];
-
-const menuItemsWithIcons = [
-	{ ...menuItems[0], icon: 'circle' as IconName },
-	{ ...menuItems[1], icon: 'box' as IconName },
-	{ ...menuItems[2], icon: 'square' as IconName },
-	{ ...menuItems[3], icon: 'triangle' as IconName },
-];
-
-const menuItemWithDivider = [
-	[{ ...menuItems[0] }, { ...menuItems[1] }],
-	[{ ...menuItems[2] }],
-	[{ ...menuItems[3] }],
-];
+import {
+	menuItems,
+	menuItemsWithDivider,
+	menuItemsWithIcons,
+	menuItemsWithSearch,
+} from './Menu.mocks';
 
 describe('<MenuItem />', () => {
 	it('Should be able to render', () => {
@@ -62,6 +49,17 @@ describe('<MenuItem />', () => {
 		expect(menuComponent.find('.o-svg-icon')).toHaveLength(menuItemsWithIcons.length);
 	});
 
+	it('Should render with search results', () => {
+		const menuSearchComponent = mount(
+			<Menu search>
+				<MenuSearchResultContent menuItems={menuItemsWithSearch} />
+			</Menu>
+		);
+
+		expect(menuSearchComponent.find('.c-menu').hasClass('c-menu--search-result')).toBeTruthy();
+		expect(menuSearchComponent.find('.c-menu__item')).toHaveLength(menuItemsWithSearch.length);
+	});
+
 	it('Should render no results label if provided', () => {
 		const noResultsLabel = 'No results';
 		const menuComponent = mount(<Menu menuItems={[]} noResultsLabel={noResultsLabel} />);
@@ -70,10 +68,10 @@ describe('<MenuItem />', () => {
 	});
 
 	it('Should render the correct number of dividers', () => {
-		const menuComponent = mount(<Menu menuItems={menuItemWithDivider} />);
+		const menuComponent = mount(<Menu menuItems={menuItemsWithDivider} />);
 
 		expect(menuComponent.find('.c-menu__item')).toHaveLength(menuItems.length);
-		expect(menuComponent.find('.c-menu__divider')).toHaveLength(menuItemWithDivider.length - 1);
+		expect(menuComponent.find('.c-menu__divider')).toHaveLength(menuItemsWithDivider.length - 1);
 	});
 
 	it('Should render using custom render function', () => {
@@ -86,7 +84,7 @@ describe('<MenuItem />', () => {
 		};
 
 		const menuComponent = mount(
-			<Menu menuItems={menuItemWithDivider} renderItem={customRenderFunction} />
+			<Menu menuItems={menuItemsWithDivider} renderItem={customRenderFunction} />
 		);
 
 		expect(menuComponent.find('.custom-item')).toHaveLength(menuItems.length);

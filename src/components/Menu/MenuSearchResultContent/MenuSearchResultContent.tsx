@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
@@ -45,28 +45,12 @@ export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
 		return (
 			<div
 				className={classNames(className, 'c-menu__item')}
-				onClick={() => (onClick || (() => {}))(menuItemInfo.id)}
+				onClick={() => onClick(menuItemInfo.id)}
 				key={`menu-search-item-${menuItemInfo.id}`}
-				style={onClick ? { cursor: 'pointer' } : {}}
 			>
-				<div
-					className="c-menu__label"
-					style={{
-						maxWidth: 'calc(100% - 80px)',
-					}}
-				>
-					<div
-						className={classNames('c-content-type', `c-content-type--${menuItemInfo.type}`)}
-						style={{
-							whiteSpace: 'nowrap',
-							textOverflow: 'ellipsis',
-							display: 'block',
-							overflow: 'hidden',
-						}}
-					>
-						<div className={`o-svg-icon-${menuItemInfo.type}`} style={{ display: 'inline-block' }}>
-							<Icon name={CONTENT_TYPE_TO_ICON_NAME[menuItemInfo.type]} />
-						</div>
+				<div className="c-menu__label">
+					<div className={`c-content-type c-content-type--${menuItemInfo.type}`}>
+						<Icon name={CONTENT_TYPE_TO_ICON_NAME[menuItemInfo.type]} />
 						{menuItemInfo.label}
 					</div>
 				</div>
