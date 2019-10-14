@@ -64,7 +64,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 
 	const toggleClosed = () => toggle(false);
 
-	// We let popper calculate all the required styles, then we modify them a little based on the `autoSize` settings
+	// We let popper calculate all the required styles, then we modify them a little based on the `menuWidth` prop
 	const computeStyle = (data: Data, options: Object) => {
 		const computeStylesFn: ModifierFn = get(PopperJS, 'Defaults.modifiers.computeStyle.fn');
 
