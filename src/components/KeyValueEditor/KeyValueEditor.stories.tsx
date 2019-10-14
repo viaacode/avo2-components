@@ -3,32 +3,8 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
-
 import { KeyValueEditor } from './KeyValueEditor';
-
-const dataArray = [
-	{
-		myKey: 'setting1',
-		myValue: 'value1',
-		extraValue: 'test',
-	},
-	{
-		myKey: 'setting2',
-		myValue: 'value2',
-		extraValue: 'test',
-	},
-	{
-		myKey: 'setting3',
-		myValue: 'value3',
-		extraValue: 'test',
-	},
-];
-
-const dataObj = {
-	setting1: 'value1',
-	setting2: 'value2',
-	setting3: 'value3',
-};
+import { DATA_ARRAY_MOCK, DATA_OBJ_MOCK } from './KeyValueEditor.mock';
 
 const KeyValueEditorStoryComponent = ({
 	children,
@@ -51,7 +27,7 @@ const KeyValueEditorStoryComponent = ({
 storiesOf('KeyValueEditor', module)
 	.addParameters({ jest: ['KeyValueEditor'] })
 	.add('KeyValueEditor dataArray', () => (
-		<KeyValueEditorStoryComponent initialData={dataArray}>
+		<KeyValueEditorStoryComponent initialData={DATA_ARRAY_MOCK}>
 			<KeyValueEditor
 				data={[]}
 				onChange={action('dataChanged')}
@@ -61,12 +37,12 @@ storiesOf('KeyValueEditor', module)
 		</KeyValueEditorStoryComponent>
 	))
 	.add('KeyValueEditor dataObject', () => (
-		<KeyValueEditorStoryComponent initialData={dataObj}>
+		<KeyValueEditorStoryComponent initialData={DATA_OBJ_MOCK}>
 			<KeyValueEditor data={{}} onChange={action('dataChanged')} />
 		</KeyValueEditorStoryComponent>
 	))
 	.add('KeyValueEditor readonly', () => (
-		<KeyValueEditorStoryComponent initialData={dataObj}>
+		<KeyValueEditorStoryComponent initialData={DATA_OBJ_MOCK}>
 			<KeyValueEditor data={{}} readonly />
 		</KeyValueEditorStoryComponent>
 	))

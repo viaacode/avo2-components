@@ -74,7 +74,6 @@ export const KeyValueEditor: FunctionComponent<TextInputProps> = ({
 		}
 	};
 
-	console.log('rerender');
 	let dataArray: any[];
 	if (Array.isArray(dataLocal)) {
 		// data array
