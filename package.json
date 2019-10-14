@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "1.13.3",
+  "version": "1.14.0",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "style": "dist/styles/main.css",
@@ -43,6 +43,7 @@
     "@types/react-dom": "16.8.4",
     "autosize": "^4.0.2",
     "classnames": "^2.2.6",
+    "flowplayer-files": "^2.1.8",
     "jquery": "^3.4.1",
     "marked": "^0.7.0",
     "react": "^16.8.6",
