@@ -50,7 +50,12 @@ export const AvatarList: FunctionComponent<AvatarListProps> = ({
 				</Fragment>
 			))}
 			{hasHiddenAvatars && (
-				<Dropdown autoSize label="Show options" placement="bottom-start" isOpen={isOpen}>
+				<Dropdown
+					isOpen={isOpen}
+					label="Show options"
+					menuWidth="fit-content"
+					placement="bottom-start"
+				>
 					<DropdownButton>
 						<button className="c-avatar c-avatar-dropdown" data-dropdown="multipleAvatarsDropdown">
 							+{hiddenAvatars.length}
