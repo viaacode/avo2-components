@@ -65,9 +65,6 @@ export type IconType =
   | \'${iconTypeNames}\';
 `;
 
-		console.log('iconTypeNames: ', iconTypeFileContent);
-
-
 		fs.writeFileSync(`${process.cwd()}/${directory}/icons.json`, data);
 
 		fs.writeFileSync(`${process.cwd()}/${directory}/../components/Icon/types.ts`, iconTypeFileContent);

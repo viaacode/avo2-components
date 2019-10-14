@@ -22,10 +22,10 @@ export default {
 				autoprefixer(),
 			],
 		}),
-		cjs(),
 		typescript({
 			clean: true,
 		}),
+		cjs(),
 	],
 	external: [ // Suppresses warnings about external dependencies
 		'autosize',

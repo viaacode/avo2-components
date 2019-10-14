@@ -6,10 +6,10 @@ import './lib/flowplayer.css';
 
 import './FlowPlayer.scss';
 
-const flowplayer = require('./lib/flowplayer.min.js');
-require('./lib/subtitles.min.js');
-require('./lib/chromecast.min.js');
-require('./lib/cuepoints.min.js');
+import flowplayer from 'flowplayer-files';
+import 'flowplayer-files/chromecast.min';
+import 'flowplayer-files/cuepoints.min';
+import 'flowplayer-files/subtitles.min';
 
 export interface FlowPlayerProps {
 	src: string | null;

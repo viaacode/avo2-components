@@ -62,6 +62,14 @@ export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 }) => {
 	let html: string;
 
+	/**
+	 * Only trigger onChange events when the component loses focus
+	 * Otherwise we get a bug where the caret jumpt to the front of the editor on every keystroke
+	 * https://github.com/RD17/react-trumbowyg/issues/1
+	 * We need to cache the current editor value onChange en onPaste
+	 * and then emit the value onBlur as if it was an onChange event
+	 * @param event
+	 */
 	const handleBlur = (event: JQuery.Event) => {
 		if (html) {
 			onChange(html);
@@ -71,6 +79,11 @@ export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 
 	const handleChange = (event: any) => {
 		html = event.target.innerHTML;
+	};
+
+	const handlePaste = (event: any) => {
+		html = event.target.innerHTML;
+		onPaste(event);
 	};
 
 	return (
@@ -95,7 +108,7 @@ export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 			onInit={onInit}
 			onChange={handleChange}
 			onResize={onResize}
-			onPaste={onPaste}
+			onPaste={handlePaste}
 			onOpenFullScreen={onOpenFullScreen}
 			onCloseFullScreen={onCloseFullScreen}
 			onClose={onClose}
