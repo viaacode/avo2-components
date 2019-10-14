@@ -82,7 +82,6 @@ export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 	};
 
 	const handlePaste = (event: any) => {
-		console.log('on change: ', event.target.innerHTML);
 		html = event.target.innerHTML;
 		onPaste(event);
 	};
