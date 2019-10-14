@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
+import classnames from 'classnames';
 import PopperJS, { Data, ModifierFn, Placement } from 'popper.js';
 import { Manager, Popper, Reference } from 'react-popper';
 
@@ -8,6 +9,7 @@ import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
 import { get } from '../../utils/get';
+import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/types';
 import { Menu } from '../Menu/Menu';
@@ -16,15 +18,16 @@ import { DropdownButton, DropdownContent } from './Dropdown.slots';
 import './Dropdown.scss';
 
 export interface DropdownProps {
-	autoSize?: boolean;
 	children: ReactNode;
 	icon?: IconName;
 	isOpen: boolean;
 	label?: string;
+	menuWidth?: 'fit-content' | 'fit-trigger';
 	onClose?: () => void;
 	onOpen?: () => void;
 	placement?: Placement;
 	searchMenu?: boolean;
+	triggerWidth?: 'fit-content' | 'full-width';
 }
 
 /**
@@ -36,15 +39,16 @@ export interface DropdownProps {
  * - The flyout element that contains the children is called the "popper"
  */
 export const Dropdown: FunctionComponent<DropdownProps> = ({
-	autoSize = false,
 	children,
 	icon,
 	isOpen,
 	label = '',
+	menuWidth = 'fit-trigger',
 	onClose = () => {},
 	onOpen = () => {},
 	placement = 'bottom-start',
 	searchMenu = false,
+	triggerWidth = 'fit-content',
 }) => {
 	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef();
 	const [dropdownButton, dropdownButtonRef] = useCallbackRef();
@@ -66,7 +70,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 
 		const newData = computeStylesFn(data, options);
 
-		if (!autoSize) {
+		if (menuWidth === 'fit-trigger') {
 			// Make the width of the popper the same size as the reference element
 			newData.styles.width = `${newData.offsets.reference.width}px`;
 		}
@@ -89,10 +93,17 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 		<Manager>
 			<Reference innerRef={dropdownButtonRef}>
 				{({ ref }) => (
-					<div className="c-dropdown__trigger" ref={ref} onClick={() => toggle()}>
-						{dropdownButtonSlot}
-						{!dropdownButtonSlot && (
-							<button className="c-button c-button--secondary">
+					<div
+						className={classnames({
+							'c-dropdown__trigger': triggerWidth === 'fit-content',
+						})}
+						ref={ref}
+						onClick={() => toggle()}
+					>
+						{!!dropdownButtonSlot ? (
+							dropdownButtonSlot
+						) : (
+							<Button type="secondary" block={triggerWidth === 'full-width'}>
 								<div className="c-button__content">
 									{icon && <Icon name={icon} />}
 									{label && <div className="c-button__label">{label}</div>}
@@ -100,7 +111,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 										<Icon name={isOpen ? 'caret-up' : 'caret-down'} size="small" type="arrows" />
 									)}
 								</div>
-							</button>
+							</Button>
 						)}
 					</div>
 				)}
