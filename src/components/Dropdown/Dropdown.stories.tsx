@@ -76,14 +76,24 @@ storiesOf('Dropdown', module)
 	))
 	.add('Dropdown bottom-start', () => (
 		<DropdownStoryComponent>
-			<Dropdown label="Show options" isOpen={false} placement={'bottom-start'}>
+			<Dropdown
+				label="Show options"
+				menuWidth="fit-content"
+				isOpen={false}
+				placement={'bottom-start'}
+			>
 				<MenuContent menuItems={menuItemsWithIcons} />
 			</Dropdown>
 		</DropdownStoryComponent>
 	))
 	.add('Dropdown bottom-end', () => (
 		<DropdownStoryComponent>
-			<Dropdown label="Show options" isOpen={false} placement={'bottom-end'}>
+			<Dropdown
+				label="Show options"
+				menuWidth="fit-content"
+				isOpen={false}
+				placement={'bottom-end'}
+			>
 				<MenuContent menuItems={menuItems} />
 			</Dropdown>
 		</DropdownStoryComponent>
@@ -91,7 +101,12 @@ storiesOf('Dropdown', module)
 	.add('Dropdown top-start', () => (
 		<div style={{ paddingTop: '200px' }}>
 			<DropdownStoryComponent>
-				<Dropdown label="Show options" isOpen={false} placement={'top-start'}>
+				<Dropdown
+					label="Show options"
+					menuWidth="fit-content"
+					isOpen={false}
+					placement={'top-start'}
+				>
 					<MenuContent menuItems={menuItemsWithIcons} />
 				</Dropdown>
 			</DropdownStoryComponent>
@@ -100,7 +115,7 @@ storiesOf('Dropdown', module)
 	.add('Dropdown top-end', () => (
 		<div style={{ paddingTop: '200px' }}>
 			<DropdownStoryComponent>
-				<Dropdown label="Show options" isOpen={false} placement={'top-end'}>
+				<Dropdown label="Show options" menuWidth="fit-content" isOpen={false} placement={'top-end'}>
 					<MenuContent menuItems={menuItems} />
 				</Dropdown>
 			</DropdownStoryComponent>
