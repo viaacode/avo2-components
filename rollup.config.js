@@ -1,6 +1,7 @@
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 import cjs from 'rollup-plugin-commonjs'
+import cleanup from 'rollup-plugin-cleanup';
 
 import autoprefixer from 'autoprefixer';
 
@@ -21,11 +22,16 @@ export default {
 			plugins: [
 				autoprefixer(),
 			],
+			minimize: true,
 		}),
 		typescript({
 			clean: true,
 		}),
 		cjs(),
+		cleanup({
+			comments: 'none',
+			extensions: ['ts', 'tsx', 'js']
+		}),
 	],
 	external: [ // Suppresses warnings about external dependencies
 		'autosize',

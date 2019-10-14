@@ -86,6 +86,7 @@
     "renamer": "^1.1.1",
     "rimraf": "^2.6.3",
     "rollup": "^1.15.6",
+    "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-typescript2": "^0.21.2",
