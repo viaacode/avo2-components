@@ -2,14 +2,12 @@ import React, { FunctionComponent, MutableRefObject, useEffect, useRef, useState
 
 import { Icon } from '../Icon/Icon';
 
-import './lib/flowplayer.css';
-
 import './FlowPlayer.scss';
 
 import flowplayer from 'flowplayer-files';
-import 'flowplayer-files/chromecast.min';
-import 'flowplayer-files/cuepoints.min';
-import 'flowplayer-files/subtitles.min';
+import 'flowplayer-files/lib/plugins/chromecast.min';
+import 'flowplayer-files/lib/plugins/cuepoints.min';
+import 'flowplayer-files/lib/plugins/subtitles.min';
 
 export interface FlowPlayerProps {
 	src: string | null;
