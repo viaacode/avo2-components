@@ -37,8 +37,8 @@ export interface TableProps extends DefaultProps {
 	emptyStateMessage?: string;
 	horizontal?: boolean;
 	onColumnClick?: (id: string) => void;
-	renderCell?: (row: any, cell: any, rowIndex: number, cellIndex: number) => ReactNode;
-	rowKey?: string;
+	renderCell?: (rowData: any, columnId: string, rowIndex: number, columnIndex: number) => ReactNode;
+	rowKey: string;
 	sortColumn?: string;
 	sortOrder?: 'asc' | 'desc';
 	styled?: boolean;
