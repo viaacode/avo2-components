@@ -51,6 +51,20 @@ storiesOf('Dropdown', module)
 			</Dropdown>
 		</DropdownStoryComponent>
 	))
+	.add('Dropdown fit menu content', () => (
+		<DropdownStoryComponent>
+			<Dropdown label="Show options" isOpen={false} menuWidth="fit-content">
+				<MenuContent menuItems={menuItemsWithIcons} />
+			</Dropdown>
+		</DropdownStoryComponent>
+	))
+	.add('Dropdown full width', () => (
+		<DropdownStoryComponent>
+			<Dropdown label="Show options" isOpen={false} triggerWidth="full-width">
+				<MenuContent menuItems={menuItems} />
+			</Dropdown>
+		</DropdownStoryComponent>
+	))
 	.add('Dropdown up', () => (
 		<div style={{ paddingTop: '200px' }}>
 			<DropdownStoryComponent>
@@ -60,40 +74,48 @@ storiesOf('Dropdown', module)
 			</DropdownStoryComponent>
 		</div>
 	))
-	.add('Dropdown autosized', () => (
+	.add('Dropdown bottom-start', () => (
 		<DropdownStoryComponent>
-			<Dropdown label="Show options" isOpen={false} autoSize={true}>
-				<MenuContent menuItems={menuItems} />
-			</Dropdown>
-		</DropdownStoryComponent>
-	))
-	.add('Dropdown autosized bottom-start', () => (
-		<DropdownStoryComponent>
-			<Dropdown label="Show options" isOpen={false} placement={'bottom-start'} autoSize={true}>
+			<Dropdown
+				label="Show options"
+				menuWidth="fit-content"
+				isOpen={false}
+				placement={'bottom-start'}
+			>
 				<MenuContent menuItems={menuItemsWithIcons} />
 			</Dropdown>
 		</DropdownStoryComponent>
 	))
-	.add('Dropdown autosized bottom-end', () => (
+	.add('Dropdown bottom-end', () => (
 		<DropdownStoryComponent>
-			<Dropdown label="Show options" isOpen={false} placement={'bottom-end'} autoSize={true}>
+			<Dropdown
+				label="Show options"
+				menuWidth="fit-content"
+				isOpen={false}
+				placement={'bottom-end'}
+			>
 				<MenuContent menuItems={menuItems} />
 			</Dropdown>
 		</DropdownStoryComponent>
 	))
-	.add('Dropdown autosized top-start', () => (
+	.add('Dropdown top-start', () => (
 		<div style={{ paddingTop: '200px' }}>
 			<DropdownStoryComponent>
-				<Dropdown label="Show options" isOpen={false} placement={'top-start'} autoSize={true}>
+				<Dropdown
+					label="Show options"
+					menuWidth="fit-content"
+					isOpen={false}
+					placement={'top-start'}
+				>
 					<MenuContent menuItems={menuItemsWithIcons} />
 				</Dropdown>
 			</DropdownStoryComponent>
 		</div>
 	))
-	.add('Dropdown autosized top-end', () => (
+	.add('Dropdown top-end', () => (
 		<div style={{ paddingTop: '200px' }}>
 			<DropdownStoryComponent>
-				<Dropdown label="Show options" isOpen={false} placement={'top-end'} autoSize={true}>
+				<Dropdown label="Show options" menuWidth="fit-content" isOpen={false} placement={'top-end'}>
 					<MenuContent menuItems={menuItems} />
 				</Dropdown>
 			</DropdownStoryComponent>

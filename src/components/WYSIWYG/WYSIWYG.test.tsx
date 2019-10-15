@@ -192,11 +192,18 @@ describe('<WYSIWYG />', () => {
 	});
 
 	it('Should correctly pass on `onPaste`', () => {
-		const onPaste = () => {};
+		const onPaste = jest.fn();
+		const event = { target: { innerHtml: '<p>test</p>' } };
 
 		const wysiwygComponent = shallow(<WYSIWYG id="test" onPaste={onPaste} />);
 
-		expect(wysiwygComponent.prop('onPaste')).toEqual(onPaste);
+		const onPasteComponent = wysiwygComponent.prop('onPaste');
+
+		expect(onPaste).toBeCalledTimes(0);
+
+		onPasteComponent(event);
+
+		expect(onPaste).toBeCalledTimes(1);
 	});
 
 	it('Should correctly pass on `onOpenFullScreen`', () => {

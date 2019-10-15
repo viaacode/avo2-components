@@ -265,18 +265,6 @@ $c-video-player-progress-inner-bg : $color-teal-bright;
 	}
 }
 
-.c-spinner {
-	&-fullscreen {
-		&__holder {
-			background: $c-spinner-fullscreen-holder-bg;
-		}
-	}
-
-	&__bar {
-		background: #FFF;
-	}
-}
-
 .c-button--borderless {
 	background-color: none;
 	color: #FFF;

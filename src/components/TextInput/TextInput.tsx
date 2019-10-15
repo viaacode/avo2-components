@@ -17,6 +17,7 @@ export interface TextInputProps extends DefaultProps {
 	type?: InputType;
 	ariaLabel?: string;
 	onChange?: (value: string) => void;
+	onBlur?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const TextInput: FunctionComponent<TextInputProps> = ({
@@ -29,6 +30,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 	type = 'text',
 	ariaLabel = '',
 	onChange = () => {},
+	onBlur = () => {},
 }) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
 		onChange(event.target.value);
@@ -47,6 +49,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 				placeholder={placeholder}
 				{...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
 				onChange={onValueChange}
+				onBlur={onBlur}
 			/>
 			<Icon name={icon} />
 		</div>
@@ -60,6 +63,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 			placeholder={placeholder}
 			{...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
 			onChange={onValueChange}
+			onBlur={onBlur}
 		/>
 	);
 };

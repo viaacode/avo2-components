@@ -2,33 +2,25 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers/action';
-import { IconName } from '../Icon/types';
 
 import { Menu } from './Menu';
+import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent';
 
-const menuItems = [
-	{ label: 'Aluminium', id: 'aluminium' },
-	{ label: 'Cadmium', id: 'cadmium' },
-	{ label: 'Dubnium', id: 'dubnium' },
-	{ label: 'Potassium', id: 'potassium' },
-];
-
-const menuItemsWithIcons = [
-	{ ...menuItems[0], icon: 'circle' as IconName },
-	{ ...menuItems[1], icon: 'box' as IconName },
-	{ ...menuItems[2], icon: 'square' as IconName },
-	{ ...menuItems[3], icon: 'triangle' as IconName },
-];
-
-const menuItemWithDivider = [
-	[{ ...menuItems[0] }, { ...menuItems[1] }],
-	[{ ...menuItems[2] }],
-	[{ ...menuItems[3] }],
-];
+import {
+	menuItems,
+	menuItemsWithDivider,
+	menuItemsWithIcons,
+	menuItemsWithSearch,
+} from './Menu.mocks';
 
 storiesOf('Menu', module)
 	.addParameters({ jest: ['Menu'] })
 	.add('Menu', () => <Menu menuItems={menuItems} onClick={action('clicked menu item')} />)
 	.add('Menu with icons', () => <Menu menuItems={menuItemsWithIcons} />)
-	.add('Menu with dividers', () => <Menu menuItems={menuItemWithDivider} />)
+	.add('Menu with dividers', () => <Menu menuItems={menuItemsWithDivider} />)
+	.add('Menu with search results', () => (
+		<Menu search>
+			<MenuSearchResultContent menuItems={menuItemsWithSearch} />
+		</Menu>
+	))
 	.add('Menu no results', () => <Menu menuItems={[]} noResultsLabel="No results" />);

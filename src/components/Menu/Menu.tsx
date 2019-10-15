@@ -17,6 +17,7 @@ export interface MenuProps extends DefaultProps {
 	innerRef?: RefHandler;
 	isOpen?: boolean;
 	placement?: Placement; // Only used in Dropdown
+	search?: boolean;
 	style?: CSSProperties;
 }
 
@@ -30,11 +31,13 @@ export const Menu: FunctionComponent<MenuProps> = ({
 	innerRef,
 	isOpen = true,
 	placement,
+	search,
 	style,
 }) => {
 	return (
 		<div
 			className={classnames(className, 'c-menu', {
+				'c-menu--search-result': search,
 				'c-menu--visible': isOpen,
 			})}
 			data-placement={placement}
