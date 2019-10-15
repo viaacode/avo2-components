@@ -100,9 +100,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 						ref={ref}
 						onClick={() => toggle()}
 					>
-						{!!dropdownButtonSlot ? (
-							dropdownButtonSlot
-						) : (
+						{dropdownButtonSlot || (
 							<Button type="secondary" block={triggerWidth === 'full-width'}>
 								<div className="c-button__content">
 									{icon && <Icon name={icon} />}
