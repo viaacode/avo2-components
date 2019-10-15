@@ -149,4 +149,35 @@ describe('<Dropdown />', () => {
 		expect(dropdownComponent.find('.c-button__label').text()).toEqual(label);
 		expect(dropdownComponent.find('.firstItem').text()).toEqual('OneOneOneOneOneOne');
 	});
+
+	it('Should correctly pass triggerWidth', () => {
+		const dropdownFullWidthComponent = mount(
+			<Dropdown label="Show options" isOpen={false} triggerWidth="full-width">
+				<div>One</div>
+				<div>Two</div>
+			</Dropdown>
+		);
+
+		const dropdownFitContentComponent = mount(
+			<Dropdown label="Show options" isOpen={false} triggerWidth="fit-content">
+				<div>One</div>
+				<div>Two</div>
+			</Dropdown>
+		);
+
+		expect(dropdownFullWidthComponent.find('.c-button').hasClass('c-button--block')).toBeTruthy();
+		expect(dropdownFitContentComponent.find('.c-dropdown__trigger')).toHaveLength(1);
+	});
+
+	it('Should correctly pass menuWidth', () => {
+		const dropdownFitContentComponent = mount(
+			<Dropdown label="Show options" isOpen={true} menuWidth="fit-content">
+				<div>One</div>
+				<div>Two</div>
+			</Dropdown>
+		);
+		const fitContentMenu = dropdownFitContentComponent.find('.c-dropdown__menu').at(0);
+
+		expect(fitContentMenu.prop('style')).not.toHaveProperty('width');
+	});
 });

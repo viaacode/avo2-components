@@ -26,7 +26,7 @@ export const MenuContent: FunctionComponent<MenuContentProps> = ({
 	menuItems,
 	renderItem,
 	noResultsLabel,
-	onClick,
+	onClick = () => {},
 }) => {
 	const renderMenuItem = (menuItemInfo: MenuItemInfo) => {
 		if (renderItem) {
@@ -35,16 +35,11 @@ export const MenuContent: FunctionComponent<MenuContentProps> = ({
 		return (
 			<div
 				className={classnames(className, 'c-menu__item')}
-				onClick={() => (onClick || (() => {}))(menuItemInfo.id)}
+				onClick={() => onClick(menuItemInfo.id)}
 				key={`menu-item-${menuItemInfo.id}`}
-				style={onClick ? { cursor: 'pointer' } : {}}
 			>
 				<div className="c-menu__label">
-					{menuItemInfo.icon && (
-						<div className="o-svg-icon-more-horizontal" style={{ display: 'inline-block' }}>
-							{menuItemInfo.icon && <Icon name={menuItemInfo.icon} />}
-						</div>
-					)}
+					{menuItemInfo.icon && <Icon name={menuItemInfo.icon} />}
 					{menuItemInfo.label}
 				</div>
 			</div>
