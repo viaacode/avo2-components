@@ -31,34 +31,40 @@ export type Column = {
 
 export interface TableProps extends DefaultProps {
 	bordered?: boolean;
+	align?: boolean;
 	children?: ReactNode;
 	columns?: Column[];
 	data?: any[];
 	emptyStateMessage?: string;
 	horizontal?: boolean;
+	nowrap?: boolean;
 	onColumnClick?: (id: string) => void;
 	renderCell?: (rowData: any, columnId: string, rowIndex: number, columnIndex: number) => ReactNode;
 	rowKey: string;
 	sortColumn?: string;
 	sortOrder?: 'asc' | 'desc';
 	styled?: boolean;
+	striped?: boolean;
 	untable?: boolean;
 }
 
 export const Table: FunctionComponent<TableProps> = ({
 	bordered,
+	align,
 	children,
 	className,
 	columns = [],
 	data = [],
 	emptyStateMessage,
 	horizontal,
+	nowrap,
 	onColumnClick = () => {},
 	renderCell = () => null,
 	rowKey,
 	sortColumn,
 	sortOrder = 'asc',
 	styled,
+	striped,
 	untable,
 }) => {
 	return (
@@ -66,8 +72,11 @@ export const Table: FunctionComponent<TableProps> = ({
 			<table
 				className={classNames(className, 'c-table', {
 					'c-table--bordered': bordered,
+					'c-table--align-middle': align,
 					'c-table--horizontal': horizontal,
 					'c-table--styled': styled || bordered,
+					'c-table--nowrap': nowrap,
+					'c-table--striped': striped,
 					'c-table--untable': untable,
 				})}
 			>
