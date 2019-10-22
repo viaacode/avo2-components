@@ -36,7 +36,6 @@ $c-table-row-selected-bg: $color-primary !default;
 }
 
 .c-table--styled {
-
 	th {
 		border-bottom: 0.2rem solid $c-table-border-color;
 		vertical-align: top;
@@ -89,7 +88,6 @@ $c-table-row-selected-bg: $color-primary !default;
 }
 
 th.c-table__header--sortable {
-	padding: 0;
 	cursor: pointer;
 
 	a {
