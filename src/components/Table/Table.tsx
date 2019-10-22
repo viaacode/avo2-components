@@ -30,7 +30,6 @@ export type Column = {
 };
 
 export interface TableProps extends DefaultProps {
-	bordered?: boolean;
 	align?: boolean;
 	children?: ReactNode;
 	columns?: Column[];
@@ -40,16 +39,15 @@ export interface TableProps extends DefaultProps {
 	nowrap?: boolean;
 	onColumnClick?: (id: string) => void;
 	renderCell?: (rowData: any, columnId: string, rowIndex: number, columnIndex: number) => ReactNode;
-	rowKey: string;
+	rowKey?: string;
 	sortColumn?: string;
 	sortOrder?: 'asc' | 'desc';
-	styled?: boolean;
 	striped?: boolean;
 	untable?: boolean;
+	variant?: 'bordered' | 'invisible' | 'styled';
 }
 
 export const Table: FunctionComponent<TableProps> = ({
-	bordered,
 	align,
 	children,
 	className,
@@ -63,20 +61,21 @@ export const Table: FunctionComponent<TableProps> = ({
 	rowKey,
 	sortColumn,
 	sortOrder = 'asc',
-	styled,
 	striped,
 	untable,
+	variant,
 }) => {
 	return (
 		<Fragment>
 			<table
 				className={classNames(className, 'c-table', {
-					'c-table--bordered': bordered,
 					'c-table--align-middle': align,
+					'c-table--bordered': variant === 'bordered',
+					'c-table--invisible': variant === 'invisible',
 					'c-table--horizontal': horizontal,
-					'c-table--styled': styled || bordered,
 					'c-table--nowrap': nowrap,
 					'c-table--striped': striped,
+					'c-table--styled': variant === 'styled' || variant === 'bordered',
 					'c-table--untable': untable,
 				})}
 			>
