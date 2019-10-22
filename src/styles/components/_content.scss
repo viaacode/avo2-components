@@ -17,42 +17,6 @@
 	font-weight: $g-headings-font-weight;
 }
 
-.c-h1,
-.c-content h1 {
-	font-family: $g-headings-font-family;
-	font-weight: $g-headings-font-weight;
-	font-size: 3.2rem;
-	margin: 3.2rem 0;
-	line-height: 1.25;
-}
-
-.c-h2,
-.c-content h2 {
-	font-family: $g-headings-font-family;
-	font-weight: $g-headings-font-weight;
-	font-size: 2.4rem;
-	margin: 2.4rem 0;
-	line-height: 1.25;
-}
-
-.c-h3,
-.c-content h3 {
-	font-family: $g-headings-font-family;
-	font-weight: $g-headings-font-weight;
-	font-size: 2.1rem;
-	margin: 2.1rem 0 1.2rem;
-	line-height: 1.25;
-}
-
-.c-h4,
-.c-content h4 {
-	font-family: $g-base-font-family;
-	font-size: $g-base-font-size;
-	font-weight: $g-headings-font-weight;
-	margin: 1.5rem 0;
-	font-weight: 500;
-}
-
 .c-body-1 {
 	font-size: $g-base-font-size;
 	margin: 1.5rem 0;
@@ -96,7 +60,7 @@
 // Provide a generic method to remove the margin top on the first item in .c-content
 .c-content--no-mt {
 	> *:first-child {
-	margin-top: 0;
+		margin-top: 0;
 	}
 }
 
@@ -109,7 +73,6 @@
 }
 
 .c-content {
-
 	p {
 		margin: 1.5rem 0;
 	}
@@ -120,7 +83,7 @@
 
 	dl {
 		border: 1px solid $color-gray-100;
-		border-radius: .3rem;
+		border-radius: 0.3rem;
 		overflow: hidden;
 		padding: 1.2rem;
 		margin: 1.5rem 0;
@@ -138,11 +101,13 @@
 		}
 	}
 
-	ul, ol {
+	ul,
+	ol {
 		padding-left: 3rem;
 		margin: 1.5rem 0;
 
-		ul, ol {
+		ul,
+		ol {
 			margin: 0;
 		}
 	}
@@ -163,7 +128,7 @@
 		font-style: italic;
 		padding-left: 1.5rem;
 		margin-left: 0.2rem;
-		border-left: .4rem solid $color-night-blue;
+		border-left: 0.4rem solid $color-night-blue;
 	}
 
 	table {
@@ -206,7 +171,8 @@
 		white-space: pre-wrap;
 	}
 
-	pre, code {
+	pre,
+	code {
 		font-family: $g-code-font-family;
 	}
 
