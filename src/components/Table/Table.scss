@@ -22,12 +22,8 @@ $c-table-row-selected-bg: $color-primary !default;
 .c-table {
 	width: 100%;
 
-	th, td {
-		text-align: left;
-	}
-
-	td,
-	th {
+	th,
+	td {
 		text-align: left;
 		padding: 0.8rem 0;
 		vertical-align: top;
@@ -37,13 +33,9 @@ $c-table-row-selected-bg: $color-primary !default;
 	th {
 		font-weight: 500;
 	}
-
 }
 
 .c-table--styled {
-	th {
-		font-weight: 500;
-	}
 
 	th {
 		border-bottom: 0.2rem solid $c-table-border-color;
@@ -52,6 +44,10 @@ $c-table-row-selected-bg: $color-primary !default;
 
 	td {
 		border-bottom: 0.1rem solid $c-table-border-color;
+
+		input[type=checkbox] {
+			margin: 0 auto;
+		}
 	}
 
 	tr:last-child {
@@ -65,16 +61,11 @@ $c-table-row-selected-bg: $color-primary !default;
 		text-align: left;
 		padding: 1.6rem;
 		position: relative;
-	}
 
-	td .c-button,
-	th .c-button {
-		margin-bottom: -0.8rem;
-		margin-top: -0.8rem;
-	}
-
-	td input[type=checkbox]{
-		margin: 0 auto;
+		.c-button {
+			margin-bottom: -0.8rem;
+			margin-top: -0.8rem;
+		}
 	}
 }
 
@@ -116,12 +107,10 @@ th.c-table__header--sortable {
 }
 
 .c-table__row--selected {
-
 	td {
 		background-color: $color-gray-100;
 		border-color: $color-gray-300;
 	}
-
 }
 
 .c-table--striped {
@@ -132,12 +121,6 @@ th.c-table__header--sortable {
 
 .c-table--no-margin {
 	margin: 0;
-}
-
-.c-table--align-middle {
-	td {
-		vertical-align: middle;
-	}
 }
 
 .c-table--horizontal {
@@ -153,12 +136,14 @@ th.c-table__header--sortable {
 	border: 0;
 	width: 100%;
 
-	tr th,
-	tr td {
-		border: 0;
-		padding-left: 0;
-		padding-top: 0.4rem;
-		padding-bottom: 0.4rem;
+	tr {
+		th,
+		td {
+			border: 0;
+			padding-left: 0;
+			padding-top: 0.4rem;
+			padding-bottom: 0.4rem;
+		}
 	}
 }
 
@@ -232,13 +217,13 @@ $i: 1;
 
 	tr td {
 		padding: 1.6rem;
-	}
 
-	tr td:first-child {
-		padding-left: 2.4rem;
-	}
+		&:first-child {
+			padding-left: 2.4rem;
+		}
 
-	tr td:last-child {
-		padding-right: 2.4rem;
+		&:last-child {
+			padding-right: 2.4rem;
+		}
 	}
 }
