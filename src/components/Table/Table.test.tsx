@@ -32,33 +32,31 @@ describe('<Table />', () => {
 		const customClass = 'c-table-custom';
 
 		const tableComponent = shallow(
-			<Table className={customClass} columns={COLUMNS} data={DATA} rowKey="id" />
+			<Table align className={customClass} horizontal nowrap striped />
 		);
 
-		expect(tableComponent.find('table').hasClass(customClass)).toEqual(true);
-		expect(tableComponent.find('table').hasClass('c-table')).toEqual(true);
+		expect(tableComponent.find('table').hasClass(customClass)).toBeTruthy();
+		expect(tableComponent.find('table').hasClass('c-table')).toBeTruthy();
+		expect(tableComponent.find('table').hasClass('c-table--align-middle')).toBeTruthy();
+		expect(tableComponent.find('table').hasClass('c-table--horizontal')).toBeTruthy();
+		expect(tableComponent.find('table').hasClass('c-table--nowrap')).toBeTruthy();
+		expect(tableComponent.find('table').hasClass('c-table--striped')).toBeTruthy();
 	});
 
-	it('Should set the correct className for the `styled`-prop', () => {
+	it('Should set the correct className for `variant`-prop', () => {
 		const tableComponent = shallow(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
-		const styledTableComponent = shallow(
-			<Table columns={COLUMNS} data={DATA} rowKey="id" styled />
-		);
 
-		expect(tableComponent.find('table').hasClass('c-table--styled')).toEqual(false);
-		expect(styledTableComponent.find('table').hasClass('c-table--styled')).toEqual(true);
-	});
+		expect(tableComponent.find('table').hasClass('c-table--styled')).toBeFalsy();
 
-	it('Should set the correct className for the `bordered`-prop', () => {
-		const tableComponent = shallow(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
-		const styledTableComponent = shallow(
-			<Table columns={COLUMNS} data={DATA} rowKey="id" bordered />
-		);
+		tableComponent.setProps({ variant: 'styled' });
+		expect(tableComponent.find('table').hasClass('c-table--styled')).toBeTruthy();
 
-		expect(tableComponent.find('table').hasClass('c-table--styled')).toEqual(false);
-		expect(tableComponent.find('table').hasClass('c-table--bordered')).toEqual(false);
-		expect(styledTableComponent.find('table').hasClass('c-table--styled')).toEqual(true);
-		expect(styledTableComponent.find('table').hasClass('c-table--bordered')).toEqual(true);
+		tableComponent.setProps({ variant: 'bordered' });
+		expect(tableComponent.find('table').hasClass('c-table--bordered')).toBeTruthy();
+		expect(tableComponent.find('table').hasClass('c-table--styled')).toBeTruthy();
+
+		tableComponent.setProps({ variant: 'invisible' });
+		expect(tableComponent.find('table').hasClass('c-table--invisible')).toBeTruthy();
 	});
 
 	it('Should be able to render the table head from `columns`', () => {
@@ -66,7 +64,7 @@ describe('<Table />', () => {
 
 		const headings = tableComponent.find('thead > tr > th');
 
-		expect(headings.length).toEqual(headings.length);
+		expect(headings).toHaveLength(headings.length);
 	});
 
 	it('Should render a chevron based on `sortColumn` & `sortOrder` when a column is sortable', () => {
@@ -106,7 +104,7 @@ describe('<Table />', () => {
 
 		const tableHead = tableComponent.find('thead');
 
-		expect(tableHead.length).toEqual(0);
+		expect(tableHead).toHaveLength(0);
 	});
 
 	it('Should be able to render the table body from `data`', () => {
@@ -114,7 +112,7 @@ describe('<Table />', () => {
 
 		const rows = tableComponent.find('tbody > tr');
 
-		expect(rows.length).toEqual(DATA.length);
+		expect(rows).toHaveLength(DATA.length);
 	});
 
 	it('Should not try to render table body when no `data` is passed', () => {
@@ -122,7 +120,7 @@ describe('<Table />', () => {
 
 		const tableHead = tableComponent.find('tbody');
 
-		expect(tableHead.length).toEqual(0);
+		expect(tableHead).toHaveLength(0);
 	});
 
 	it('Should accept a custom `renderCell`-prop for cell-rendering', () => {
@@ -142,11 +140,11 @@ describe('<Table />', () => {
 
 		const cells = tableComponent.find('tbody > tr > td > p');
 
-		expect(cells.at(0).hasClass('0-0')).toEqual(true);
+		expect(cells.at(0).hasClass('0-0')).toBeTruthy();
 		expect(cells.at(0).text()).toEqual(DATA[0].name);
-		expect(cells.at(4).hasClass('1-0')).toEqual(true);
+		expect(cells.at(4).hasClass('1-0')).toBeTruthy();
 		expect(cells.at(4).text()).toEqual(DATA[1].name);
-		expect(cells.at(5).hasClass('1-1')).toEqual(true);
+		expect(cells.at(5).hasClass('1-1')).toBeTruthy();
 		expect(cells.at(5).text()).toEqual(DATA[1].age);
 	});
 
