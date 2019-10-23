@@ -128,8 +128,8 @@ export const Table: FunctionComponent<TableProps> = ({
 					</Fragment>
 				)}
 			</table>
-			{!children && data.length === 0 && emptyStateMessage && (
-				<Spacer margin="top">{emptyStateMessage}</Spacer>
+			{!children && !data.length && emptyStateMessage && (
+				<p className="u-spacer-top">{emptyStateMessage}</p>
 			)}
 		</Fragment>
 	);
