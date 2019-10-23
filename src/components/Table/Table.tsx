@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+import { IconName } from '../Icon/types';
+import { Spacer } from '../Spacer/Spacer';
 
 import './Table.scss';
 
@@ -38,7 +40,7 @@ export interface TableProps extends DefaultProps {
 	horizontal?: boolean;
 	onColumnClick?: (id: string) => void;
 	renderCell?: (rowData: any, columnId: string, rowIndex: number, columnIndex: number) => ReactNode;
-	rowKey: string;
+	rowKey?: string;
 	sortColumn?: string;
 	sortOrder?: 'asc' | 'desc';
 	styled?: boolean;
@@ -61,6 +63,34 @@ export const Table: FunctionComponent<TableProps> = ({
 	styled,
 	untable,
 }) => {
+	const renderHeading = (heading: Column) => {
+		const { id, col, sortable, label } = heading;
+
+		const isColumnSorted = sortColumn === id;
+		const sortIconProps = {
+			name: (isColumnSorted
+				? sortOrder === 'asc'
+					? 'chevron-up'
+					: 'chevron-down'
+				: 'chevrons-up-and-down') as IconName,
+			className: isColumnSorted ? undefined : 'c-table__header--sortable-icon',
+		};
+
+		return (
+			<th
+				key={id}
+				className={classNames({
+					[`o-table-col-${col}`]: col,
+					'c-table__header--sortable': sortable,
+				})}
+				onClick={() => sortable && onColumnClick(id)}
+			>
+				{label}
+				{sortable && <Icon {...sortIconProps} />}
+			</th>
+		);
+	};
+
 	return (
 		<Fragment>
 			<table
@@ -77,29 +107,7 @@ export const Table: FunctionComponent<TableProps> = ({
 					<Fragment>
 						{columns.length > 0 && (
 							<thead>
-								<tr>
-									{columns.map(heading => (
-										<th
-											key={heading.id}
-											className={classNames({
-												[`o-table-col-${heading.col}`]: heading.col,
-												'c-table__header--sortable': heading.sortable,
-											})}
-											onClick={() => heading.sortable && onColumnClick(heading.id)}
-										>
-											{heading.label}
-											{heading.sortable && sortColumn === heading.id && (
-												<Icon name={sortOrder === 'asc' ? 'chevron-up' : 'chevron-down'} />
-											)}
-											{heading.sortable && sortColumn !== heading.id && (
-												<Icon
-													name={'chevrons-up-and-down'}
-													className="c-table__header--sortable-icon"
-												/>
-											)}
-										</th>
-									))}
-								</tr>
+								<tr>{columns.map(renderHeading)}</tr>
 							</thead>
 						)}
 						{data.length > 0 && rowKey && (
@@ -121,7 +129,7 @@ export const Table: FunctionComponent<TableProps> = ({
 				)}
 			</table>
 			{!children && data.length === 0 && emptyStateMessage && (
-				<p className="u-spacer-top">{emptyStateMessage}</p>
+				<Spacer margin="top">{emptyStateMessage}</Spacer>
 			)}
 		</Fragment>
 	);
