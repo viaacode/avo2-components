@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import iconList from '../../icons/icons.json';
 
+import { Spacer } from '../Spacer/Spacer';
 import { Icon } from './Icon';
 import { IconName } from './types';
 
@@ -49,40 +50,37 @@ stories.forEach(([title, icons]: any) =>
 
 story.add('Icon sizes', () => (
 	<Fragment>
-		<div className="u-spacer-bottom-l">
+		<Spacer margin="bottom-large">
 			<h2>Huge</h2>
 			<Icon name="thumbs-up" size="huge" />
 			<Icon name="flag" size="huge" />
 			<Icon name="printer" size="huge" />
 			<Icon name="message-circle" size="huge" />
 			<Icon name="clipboard" size="huge" />
-		</div>
-
-		<div className="u-spacer-bottom-l">
+		</Spacer>
+		<Spacer margin="bottom-large">
 			<h2>Large</h2>
 			<Icon name="thumbs-up" size="large" />
 			<Icon name="flag" size="large" />
 			<Icon name="printer" size="large" />
 			<Icon name="message-circle" size="large" />
 			<Icon name="clipboard" size="large" />
-		</div>
-
-		<div className="u-spacer-bottom-l">
+		</Spacer>
+		<Spacer margin="bottom-large">
 			<h2>Default</h2>
 			<Icon name="thumbs-up" />
 			<Icon name="flag" />
 			<Icon name="printer" />
 			<Icon name="message-circle" />
 			<Icon name="clipboard" />
-		</div>
-
-		<div className="u-spacer-bottom-l">
+		</Spacer>
+		<Spacer margin="bottom-large">
 			<h2>Small</h2>
 			<Icon name="thumbs-up" size="small" />
 			<Icon name="flag" size="small" />
 			<Icon name="printer" size="small" />
 			<Icon name="message-circle" size="small" />
 			<Icon name="clipboard" size="small" />
-		</div>
+		</Spacer>
 	</Fragment>
 ));
