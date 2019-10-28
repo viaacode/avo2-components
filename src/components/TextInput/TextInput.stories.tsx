@@ -31,7 +31,13 @@ storiesOf('TextInput', module)
 		<Fragment>
 			<Spacer margin="bottom">
 				<TextInputStoryComponent>
-					<TextInput type="email" placeholder="Enter your email..." onChange={action('onChange')} />
+					<TextInput
+						type="email"
+						placeholder="Enter your email..."
+						onChange={action('onChange')}
+						onBlur={action('onBlur')}
+						onKeyUp={action('onkeyup')}
+					/>
 				</TextInputStoryComponent>
 			</Spacer>
 			<Spacer margin="bottom">
