@@ -101,6 +101,7 @@ import { Tab } from './components/Tabs/Tab/Tab';
 import { Tabs } from './components/Tabs/Tabs';
 import { TagList, TagOption } from './components/TagList/TagList';
 import { TagInfo, TagsInput } from './components/TagsInput/TagsInput';
+import { Text } from './components/Text/Text';
 import { TextArea } from './components/TextArea/TextArea';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
@@ -216,6 +217,7 @@ export {
 	TagOption,
 	TagsInput,
 	TagInfo,
+	Text,
 	TextArea,
 	TextInput,
 	Thumbnail,
