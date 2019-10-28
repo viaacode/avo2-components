@@ -58,6 +58,7 @@ import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup/FormGroup';
 import { Column } from './components/Grid/Column/Column';
 import { Grid } from './components/Grid/Grid';
+import { Heading } from './components/Heading/Heading';
 import { Icon } from './components/Icon/Icon';
 import { IconName, IconType } from './components/Icon/types';
 import { Image } from './components/Image/Image';
@@ -171,6 +172,7 @@ export {
 	Form,
 	FormGroup,
 	Grid,
+	Heading,
 	Icon,
 	IconName,
 	IconType,
