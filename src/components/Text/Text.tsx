@@ -1,9 +1,9 @@
-import React, { FunctionComponent, ReactNode, ReactNodeArray } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 
 export interface TextProps extends DefaultProps {
-	children: ReactNode | ReactNodeArray;
+	children: ReactNode;
 }
 
 export const Text: FunctionComponent<TextProps> = ({ className, children }) => (

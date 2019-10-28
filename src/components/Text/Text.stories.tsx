@@ -13,6 +13,6 @@ storiesOf('Text', module)
 	.add('Text', () => <Text>{content}</Text>)
 	.add('Text with element as child', () => (
 		<Text>
-			<a href="http//www.studiohyperdrive.com">{content}</a>
+			<a href="http//www.viaa.be">{content}</a>
 		</Text>
 	));
