@@ -105,22 +105,22 @@ storiesOf('Table', module)
 	.add('Styled Table', () => (
 		<TableStoryComponent>
 			<Table
-				styled
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
 				renderCell={(row, cell) => renderCell(row, cell)}
+				variant="styled"
 			/>
 		</TableStoryComponent>
 	))
 	.add('Bordered Table', () => (
 		<TableStoryComponent>
 			<Table
-				bordered
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
 				renderCell={(row, cell) => renderCell(row, cell)}
+				variant="bordered"
 			/>
 		</TableStoryComponent>
 	))

@@ -47,7 +47,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 				videoPlayerRef.current.currentTime = seekTime;
 			}
 		}
-	}, [seekTime]);
+	}, [seekTime, lastSeekTime]);
 
 	const createTitleOverlay = () => {
 		const titleOverlay = document.createElement('div');
