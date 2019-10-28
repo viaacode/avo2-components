@@ -76,6 +76,12 @@ export const Table: FunctionComponent<TableProps> = ({
 			className: isColumnSorted ? undefined : 'c-table__header--sortable-icon',
 		};
 
+		if (!children && !rowKey) {
+			console.error(
+				'A rowKey param is required when not passing any children to the table component'
+			);
+		}
+
 		return (
 			<th
 				key={id}
