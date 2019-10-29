@@ -32,7 +32,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 	title,
 	onInit,
 	start = 0,
-	end = 200,
+	end,
 	subtitles,
 	token,
 	dataPlayerId,
