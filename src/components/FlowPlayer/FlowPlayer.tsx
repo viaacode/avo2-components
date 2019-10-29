@@ -1,5 +1,8 @@
 import React, { FunctionComponent, MutableRefObject, useEffect, useRef, useState } from 'react';
 
+import classNames from 'classnames';
+import { formatDuration } from '../../helpers/parse-time';
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
 import './FlowPlayer.scss';
@@ -9,7 +12,7 @@ import 'flowplayer-files/lib/plugins/chromecast.min';
 import 'flowplayer-files/lib/plugins/cuepoints.min';
 import 'flowplayer-files/lib/plugins/subtitles.min';
 
-export interface FlowPlayerProps {
+export interface FlowPlayerProps extends DefaultProps {
 	src: string | null;
 	poster: string;
 	logo?: string;
@@ -29,11 +32,12 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 	title,
 	onInit,
 	start = 0,
-	end = undefined,
+	end = 200,
 	subtitles,
 	token,
 	dataPlayerId,
 	seekTime,
+	className,
 }) => {
 	const videoContainerRef = useRef(null);
 	const videoPlayerRef: MutableRefObject<any | undefined> = useRef<any>();
@@ -135,12 +139,12 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 
 	return src && poster ? (
 		<div
-			className="c-video-player t-player-skin--dark"
+			className={classNames(className, 'c-video-player')}
 			data-player-id={dataPlayerId}
 			ref={videoContainerRef}
 		/>
 	) : (
-		<div className="c-video-player t-player-skin--dark" onClick={onInit}>
+		<div className={classNames(className, 'c-video-player')} onClick={onInit}>
 			<div className="c-video-player__item c-video-player__thumbnail">
 				<img src={poster} alt={`Thumbnail voor video over ${title}.`} />
 			</div>
@@ -149,6 +153,12 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 					<Icon name="play" className="c-play-overlay__button" />
 				</div>
 			</div>
+			{(start || start === 0) && end && (
+				<div className="c-cut-overlay">
+					<Icon name="scissors" />
+					{`${formatDuration(start)} - ${formatDuration(end)}`}
+				</div>
+			)}
 		</div>
 	);
 };

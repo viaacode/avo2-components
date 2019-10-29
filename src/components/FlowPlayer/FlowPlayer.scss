@@ -5,12 +5,12 @@
 
 $player-play-button-dimensions: 7rem;
 $player-play-button-icon-dimensions: 3rem;
-$player-easing-soft: cubic-bezier(.62,.28,.23,.99);
+$player-easing-soft: cubic-bezier(0.62, 0.28, 0.23, 0.99);
 $c-video-player-progress-height: 6px !default;
 $c-video-player-progress-handle-size: $c-video-player-progress-height * 2.5 !default;
 $c-play-overlay-inner-bg: $color-gray-900;
 $c-spinner-fullscreen-holder-bg: rgba(#000, 0.5);
-$c-video-player-progress-inner-bg : $color-teal-bright;
+$c-video-player-progress-inner-bg: $color-teal-bright;
 
 .c-video-player {
 	overflow: hidden;
@@ -19,8 +19,31 @@ $c-video-player-progress-inner-bg : $color-teal-bright;
 
 	width: 100%;
 
-	color: rgba(#FFF, 0.67);
+	color: rgba(#fff, 0.67);
 	background-color: none;
+
+	.c-cut-overlay {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		bottom: 7.5%;
+		left: 0;
+
+		padding: 0.5rem 1rem;
+
+		background-color: $color-teal-bright;
+		box-shadow: 0 0 5px 0px rgba(#222, 0.5);
+
+		font-size: 1.2rem;
+		font-weight: 500;
+
+		.o-svg-icon {
+			width: 1.5rem;
+			height: 1.5rem;
+
+			margin-right: 0.5rem;
+		}
+	}
 
 	.c-play-overlay {
 		position: absolute;
@@ -42,13 +65,13 @@ $c-video-player-progress-inner-bg : $color-teal-bright;
 
 			background-color: rgba($c-play-overlay-inner-bg, 0.5);
 			border-radius: 50%;
-			box-shadow: 0 0 5px 0px rgba(#222,0.5);
+			box-shadow: 0 0 5px 0px rgba(#222, 0.5);
 
 			&:hover {
 				background-color: rgba($c-play-overlay-inner-bg, 0.7);
-				box-shadow: 0 0 10px 0px rgba(#222,0.7);
+				box-shadow: 0 0 10px 0px rgba(#222, 0.7);
 
-				transition: .14s background $player-easing-soft;
+				transition: 0.14s background $player-easing-soft;
 			}
 
 			.o-svg-icon {
@@ -95,15 +118,15 @@ $c-video-player-progress-inner-bg : $color-teal-bright;
 			background-color: rgba(15, 23, 29, 0.5);
 
 			&:not(:first-child) {
-				margin-left: 1.2rem
+				margin-left: 1.2rem;
 			}
 		}
 	}
 
-	.fp-secondary .fp-togglable  {
+	.fp-secondary .fp-togglable {
 		display: flex;
 		flex-direction: row;
-		position:relative;
+		position: relative;
 		right: 0.7em;
 
 		width: 100%;
@@ -153,13 +176,16 @@ $c-video-player-progress-inner-bg : $color-teal-bright;
 		height: 6px;
 	}
 
-	.fp-progress, .fp-bar, .fp-buffer, fp-hover {
+	.fp-progress,
+	.fp-bar,
+	.fp-buffer,
+	fp-hover {
 		width: 40%;
 		height: 6px;
 	}
 
 	.fp-color {
-		background-color: #25A4CF;
+		background-color: #25a4cf;
 	}
 
 	.fp-secondary {
@@ -175,7 +201,9 @@ $c-video-player-progress-inner-bg : $color-teal-bright;
 		height: 100%;
 		width: 100%;
 
-		.fp-cast-button, .fp-fullscreen, .fp-fullscreen-exit {
+		.fp-cast-button,
+		.fp-fullscreen,
+		.fp-fullscreen-exit {
 			width: 50px;
 			height: 60%;
 
@@ -184,14 +212,16 @@ $c-video-player-progress-inner-bg : $color-teal-bright;
 		}
 	}
 
-	&.is-hovered, &.is-paused {
+	&.is-hovered,
+	&.is-paused {
 		.fp-header {
 			display: block;
 		}
 	}
 
 	&.is-fullscreen {
-		&.is-hovered, &.is-paused {
+		&.is-hovered,
+		&.is-paused {
 			.c-title-overlay {
 				display: block;
 			}
@@ -208,7 +238,8 @@ $c-video-player-progress-inner-bg : $color-teal-bright;
 
 		line-height: 0;
 
-		img, video {
+		img,
+		video {
 			width: 100%;
 			height: 100%;
 		}
@@ -255,7 +286,7 @@ $c-video-player-progress-inner-bg : $color-teal-bright;
 		&__handle {
 			position: absolute;
 			top: $c-video-player-progress-height / 2 - $c-video-player-progress-handle-size / 2;
-			right: - $c-video-player-progress-handle-size / 2;
+			right: -$c-video-player-progress-handle-size / 2;
 
 			width: $c-video-player-progress-handle-size;
 			height: $c-video-player-progress-handle-size;
@@ -269,15 +300,15 @@ $c-video-player-progress-inner-bg : $color-teal-bright;
 
 .c-button--borderless {
 	background-color: none;
-	color: #FFF;
+	color: #fff;
 	border-color: transparent;
 
 	svg * {
-		fill: #FFF;
+		fill: #fff;
 	}
 
 	&:hover {
-		background: rgba(#FFF, 0.1);
+		background: rgba(#fff, 0.1);
 	}
 
 	&:focus {
@@ -285,7 +316,7 @@ $c-video-player-progress-inner-bg : $color-teal-bright;
 
 		outline: 0;
 
-		transition: .14s box-shadow $player-easing-soft;
+		transition: 0.14s box-shadow $player-easing-soft;
 	}
 
 	&:active,

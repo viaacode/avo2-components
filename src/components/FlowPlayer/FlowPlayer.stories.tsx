@@ -2,9 +2,8 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { MOCK_FLOW_PLAYER_PROPS } from './FlowPlayer.mock';
-
 import { FlowPlayer } from './FlowPlayer';
+import { MOCK_FLOW_PLAYER_PROPS } from './FlowPlayer.mock';
 
 storiesOf('FlowPlayer', module)
 	.addParameters({ jest: ['FlowPlayer'] })

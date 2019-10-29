@@ -9,7 +9,7 @@ describe('<Heading />', () => {
 	});
 
 	it('should pass a custom className', () => {
-		const customClass = 'c-avatar-custom';
+		const customClass = 'c-heading-custom';
 		const headingComponent = (
 			<Heading className={customClass} type="h1">
 				Lorem ipsum
