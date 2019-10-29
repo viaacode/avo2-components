@@ -58,6 +58,7 @@ import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup/FormGroup';
 import { Column } from './components/Grid/Column/Column';
 import { Grid } from './components/Grid/Grid';
+import { Heading } from './components/Heading/Heading';
 import { Icon } from './components/Icon/Icon';
 import { IconName, IconType } from './components/Icon/types';
 import { Image } from './components/Image/Image';
@@ -100,6 +101,7 @@ import { Tab } from './components/Tabs/Tab/Tab';
 import { Tabs } from './components/Tabs/Tabs';
 import { TagList, TagOption } from './components/TagList/TagList';
 import { TagInfo, TagsInput } from './components/TagsInput/TagsInput';
+import { Text } from './components/Text/Text';
 import { TextArea } from './components/TextArea/TextArea';
 import { TextInput } from './components/TextInput/TextInput';
 import { Thumbnail } from './components/Thumbnail/Thumbnail';
@@ -171,6 +173,7 @@ export {
 	Form,
 	FormGroup,
 	Grid,
+	Heading,
 	Icon,
 	IconName,
 	IconType,
@@ -214,6 +217,7 @@ export {
 	TagOption,
 	TagsInput,
 	TagInfo,
+	Text,
 	TextArea,
 	TextInput,
 	Thumbnail,

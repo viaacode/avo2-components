@@ -2,9 +2,8 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { MOCK_FLOW_PLAYER_PROPS } from './FlowPlayer.mock';
-
 import { FlowPlayer } from './FlowPlayer';
+import { MOCK_FLOW_PLAYER_PROPS } from './FlowPlayer.mock';
 
 storiesOf('FlowPlayer', module)
 	.addParameters({ jest: ['FlowPlayer'] })
@@ -16,5 +15,10 @@ storiesOf('FlowPlayer', module)
 	.add('FlowPlayer Thumbnail', () => (
 		<div className="o-grid-col-bp3-4">
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS} src={null} />
+		</div>
+	))
+	.add('FlowPlayer Thumbnail met Geknipt', () => (
+		<div className="o-grid-col-bp3-4">
+			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS} src={null} start={10} end={100} />
 		</div>
 	));

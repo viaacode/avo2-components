@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FunctionComponent } from 'react';
+import React, { ChangeEvent, FunctionComponent, KeyboardEvent } from 'react';
 
 import classnames from 'classnames';
 
@@ -18,6 +18,7 @@ export interface TextInputProps extends DefaultProps {
 	ariaLabel?: string;
 	onChange?: (value: string) => void;
 	onBlur?: (event: ChangeEvent<HTMLInputElement>) => void;
+	onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const TextInput: FunctionComponent<TextInputProps> = ({
@@ -31,6 +32,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 	ariaLabel = '',
 	onChange = () => {},
 	onBlur = () => {},
+	onKeyUp = () => {},
 }) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
 		onChange(event.target.value);
@@ -50,6 +52,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 				{...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
 				onChange={onValueChange}
 				onBlur={onBlur}
+				onKeyUp={onKeyUp}
 			/>
 			<Icon name={icon} />
 		</div>
@@ -64,6 +67,7 @@ export const TextInput: FunctionComponent<TextInputProps> = ({
 			{...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
 			onChange={onValueChange}
 			onBlur={onBlur}
+			onKeyUp={onKeyUp}
 		/>
 	);
 };

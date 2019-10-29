@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
+import { Spacer } from '../Spacer/Spacer';
 import { Blankslate } from './Blankslate';
 
 storiesOf('Blankslate', module)
@@ -32,8 +33,8 @@ storiesOf('Blankslate', module)
 			body="Use it to provide information when no dynamic content exists."
 			icon="search"
 		>
-			<div className="u-spacer-top-l">
+			<Spacer margin="top-large">
 				Extra content for the blankslate can be passed via <code>children</code>.
-			</div>
+			</Spacer>
 		</Blankslate>
 	));

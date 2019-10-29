@@ -2,40 +2,41 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import { action } from '../../helpers/action';
+import { Spacer } from '../Spacer/Spacer';
 import { Alert } from './Alert';
 
 storiesOf('Alert', module)
 	.addParameters({ jest: ['Alert'] })
 	.add('Alerts', () => (
 		<React.Fragment>
-			<div className="u-spacer-bottom">
+			<Spacer margin="bottom">
 				<Alert message="Info alert message" onClose={action('alert closed')} />
-			</div>
-			<div className="u-spacer-bottom">
+			</Spacer>
+			<Spacer margin="bottom">
 				<Alert message="Success alert message" type="success" />
-			</div>
-			<div className="u-spacer-bottom">
+			</Spacer>
+			<Spacer margin="bottom">
 				<Alert message="Danger alert message" type="danger" />
-			</div>
-			<div className="u-spacer-bottom">
+			</Spacer>
+			<Spacer margin="bottom">
 				<Alert message="Loading alert message" type="spinner" />
-			</div>
+			</Spacer>
 		</React.Fragment>
 	))
 	.add('Dark alerts', () => (
 		<React.Fragment>
-			<div className="u-spacer-bottom">
+			<Spacer margin="bottom">
 				<Alert message="Info alert message" dark={true} onClose={action('alert closed')} />
-			</div>
-			<div className="u-spacer-bottom">
+			</Spacer>
+			<Spacer margin="bottom">
 				<Alert message="Success alert message" type="success" dark={true} />
-			</div>
-			<div className="u-spacer-bottom">
+			</Spacer>
+			<Spacer margin="bottom">
 				<Alert message="Danger alert message" type="danger" dark={true} />
-			</div>
-			<div className="u-spacer-bottom">
+			</Spacer>
+			<Spacer margin="bottom">
 				<Alert message="Loading alert message" type="spinner" dark={true} />
-			</div>
+			</Spacer>
 		</React.Fragment>
 	))
 	.add('Alerts custom content', () => (

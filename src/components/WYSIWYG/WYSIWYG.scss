@@ -4,9 +4,23 @@
 	background: #D6DEE3;
 }
 
-.trumbowyg-editor strong {
-	// Fixes strange bug in Chrome where the wysiwyg wouldn't clear bold styling
-	font-weight: 600;
+.trumbowyg-editor {
+	strong {
+		// Fixes strange bug in Chrome where the wysiwyg wouldn't clear bold styling
+		font-weight: 600;
+	}
+
+	ol, ul {
+		padding-left: 20px;
+	}
+
+	ul {
+		list-style: disc;
+	}
+
+	ol {
+		list-style: decimal;
+	}
 }
 
 .c-content table td {

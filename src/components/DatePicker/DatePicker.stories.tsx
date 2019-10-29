@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
 
+import { Spacer } from '../Spacer/Spacer';
 import { DatePicker } from './DatePicker';
 
 const DatePickerStoryComponent = ({
@@ -28,10 +29,11 @@ storiesOf('DatePicker', module)
 	.addParameters({ jest: ['DatePicker'] })
 	.add('DatePicker', () => (
 		<Fragment>
-			<DatePickerStoryComponent>
-				<DatePicker onChange={action('onChange')} />
-			</DatePickerStoryComponent>
-			<div className="u-spacer-bottom" />
+			<Spacer margin="bottom">
+				<DatePickerStoryComponent>
+					<DatePicker onChange={action('onChange')} />
+				</DatePickerStoryComponent>
+			</Spacer>
 			<DatePickerStoryComponent>
 				<DatePicker disabled />
 			</DatePickerStoryComponent>
