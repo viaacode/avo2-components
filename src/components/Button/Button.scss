@@ -75,6 +75,15 @@ button.c-button {
 	align-items: center;
 	display: flex;
 	justify-content: center;
+
+	.c-tag-list {
+		.o-svg-icon {
+			&:first-child,
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
 }
 
 .c-button__label {
@@ -156,6 +165,14 @@ button.c-button {
 		left: 0;
 		opacity: 0.0001;
 	}
+}
+
+/* Auto height button
+   ========================================================================== */
+
+.c-button--auto {
+	max-height: none;
+	min-height:$c-button-height;
 }
 
 /* Button action

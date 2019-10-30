@@ -54,6 +54,12 @@ describe('<Button />', () => {
 		expect(inlineLinkButtonComponent.hasClass('c-button--inline-link')).toEqual(true);
 	});
 
+	it('Should set the correct className when passing autoHeight option', () => {
+		const autoHeightButtonComponent = shallow(<Button autoHeight />);
+
+		expect(autoHeightButtonComponent.hasClass('c-button--auto')).toEqual(true);
+	});
+
 	it('Should be able to render a label', () => {
 		const label = 'Click me!';
 		const buttonComponent = shallow(<Button label={label} ariaLabel="test button" />);

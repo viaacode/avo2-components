@@ -12,6 +12,7 @@ export interface ButtonProps extends DefaultProps {
 	active?: boolean;
 	ariaLabel?: string;
 	arrow?: boolean;
+	autoHeight?: boolean;
 	block?: boolean;
 	children?: ReactNode;
 	disabled?: boolean;
@@ -37,6 +38,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 	active,
 	ariaLabel,
 	arrow,
+	autoHeight = false,
 	block = false,
 	children,
 	className,
@@ -51,6 +53,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 	<button
 		className={classNames(className, 'c-button', {
 			'c-button--active': active,
+			'c-button--auto': autoHeight,
 			'c-button--small': size === 'small',
 			'c-button--block': block,
 			'c-button--icon': icon && !label,
