@@ -68,9 +68,9 @@ const Button: FunctionComponent<ButtonProps> = ({
 			children
 		) : (
 			<div className="c-button__content">
-				{icon && <Icon name={icon} active={active} />}
+				{icon && <Icon className="c-button__icon" name={icon} active={active} />}
 				{label && <div className="c-button__label">{label}</div>}
-				{arrow && <Icon name="caret-down" />}
+				{arrow && <Icon className="c-button__icon" name="caret-down" />}
 			</div>
 		)}
 	</button>

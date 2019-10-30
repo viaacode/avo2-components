@@ -75,15 +75,6 @@ button.c-button {
 	align-items: center;
 	display: flex;
 	justify-content: center;
-
-	.c-tag-list {
-		.o-svg-icon {
-			&:first-child,
-			&:last-child {
-				margin: 0;
-			}
-		}
-	}
 }
 
 .c-button__label {
@@ -91,17 +82,21 @@ button.c-button {
 	white-space: nowrap;
 }
 
-.o-svg-icon + .c-button__label,
-.c-button__label + .o-svg-icon {
+.c-button__icon + .c-button__label,
+.c-button__label + .c-button__icon {
 	margin-left: $c-button-icon-spacing;
 }
 
-.c-button:not(.c-button--icon) .o-svg-icon:first-child {
-	margin-left: -0.4rem;
-}
+.c-button:not(.c-button--icon) {
+	.c-button__icon {
+		&:first-child {
+			margin-left: -0.4rem;
+		}
 
-.c-button:not(.c-button--icon) .o-svg-icon:last-child {
-	margin-right: -0.4rem;
+		&:last-child {
+			margin-right: -0.4rem;
+		}
+	}
 }
 
 /* Small size
@@ -115,13 +110,13 @@ button.c-button {
 		line-height: $c-button-line-height-small;
 	}
 
-	.o-svg-icon {
+	.c-button__icon {
 		height: $c-button-line-height-small;
 		width: $c-button-line-height-small;
 	}
 
-	.o-svg-icon + .c-button__label,
-	.c-button__label + .o-svg-icon {
+	.c-button__icon + .c-button__label,
+	.c-button__label + .c-button__icon {
 		margin-left: $c-button-icon-spacing-small;
 	}
 
