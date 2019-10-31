@@ -1,8 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Icon } from '../Icon/Icon';
-
 import { Button } from './Button';
 
 describe('<Button />', () => {
@@ -54,6 +52,12 @@ describe('<Button />', () => {
 		expect(inlineLinkButtonComponent.hasClass('c-button--inline-link')).toEqual(true);
 	});
 
+	it('Should set the correct className when passing autoHeight option', () => {
+		const autoHeightButtonComponent = shallow(<Button autoHeight />);
+
+		expect(autoHeightButtonComponent.hasClass('c-button--auto')).toEqual(true);
+	});
+
 	it('Should be able to render a label', () => {
 		const label = 'Click me!';
 		const buttonComponent = shallow(<Button label={label} ariaLabel="test button" />);
@@ -78,7 +82,7 @@ describe('<Button />', () => {
 		const buttonComponent = shallow(<Button label={label} icon={icon} ariaLabel="test button" />);
 
 		const labelElement = buttonComponent.find('.c-button__label');
-		const iconComponent = buttonComponent.find(Icon);
+		const iconComponent = buttonComponent.find('.c-button__icon');
 
 		expect(labelElement).toHaveLength(1);
 		expect(labelElement.text()).toEqual(label);
@@ -95,7 +99,7 @@ describe('<Button />', () => {
 	it('Should be able to render an arrow at the end of the button', () => {
 		const buttonComponent = shallow(<Button arrow ariaLabel="test button" />);
 
-		const arrowComponent = buttonComponent.find(Icon);
+		const arrowComponent = buttonComponent.find('.c-button__icon');
 
 		expect(arrowComponent).toHaveLength(1);
 		expect(arrowComponent.props()).toMatchObject({ name: 'caret-down' });
@@ -151,8 +155,8 @@ describe('<Button />', () => {
 			<Button active={false} icon="heart" ariaLabel="test button" />
 		);
 
-		const activeIconComponent = activeButtonComponent.find(Icon);
-		const inactiveIconComponent = inactiveButtonComponent.find(Icon);
+		const activeIconComponent = activeButtonComponent.find('.c-button__icon');
+		const inactiveIconComponent = inactiveButtonComponent.find('.c-button__icon');
 
 		expect(activeIconComponent.prop('active')).toEqual(true);
 		expect(inactiveIconComponent.prop('active')).toEqual(false);

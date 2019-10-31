@@ -16,6 +16,6 @@ storiesOf('Heading', module)
 	))
 	.add('Heading with element as child', () => (
 		<Heading type="h1">
-			<a href="#">Heading with anchor element</a>
+			<a href="https://viaa.be/">Heading with anchor element</a>
 		</Heading>
 	));
