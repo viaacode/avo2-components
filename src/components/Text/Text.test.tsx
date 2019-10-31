@@ -21,7 +21,7 @@ describe('<Text />', () => {
 	it('Should correctly pass children', () => {
 		const TextComponent = shallow(
 			<Text>
-				<a href="#">{content}</a>
+				<a href="https://viaa.be/">{content}</a>
 			</Text>
 		);
 

@@ -22,7 +22,7 @@ describe('<Heading />', () => {
 	it('Should correctly pass children', () => {
 		const headingComponent = shallow(
 			<Heading type="h1">
-				<a href="#">Lorem ipsum</a>
+				<a href="https://viaa.be/">Lorem ipsum</a>
 			</Heading>
 		);
 

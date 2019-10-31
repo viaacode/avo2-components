@@ -15,7 +15,7 @@ storiesOf('MediaCard', module)
 		<div className="o-grid-col-bp3-4">
 			<MediaCard
 				title="What an amazing title!"
-				href="#"
+				href="https://viaa.be/"
 				category="collection"
 				orientation="vertical"
 			>
@@ -41,7 +41,7 @@ storiesOf('MediaCard', module)
 	.add('Media card (horizontal)', () => (
 		<MediaCard
 			title="What an amazing title!"
-			href="#"
+			href="https://viaa.be/"
 			category="collection"
 			orientation="horizontal"
 		>
