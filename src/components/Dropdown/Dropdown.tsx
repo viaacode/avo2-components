@@ -22,11 +22,13 @@ export interface DropdownProps {
 	icon?: IconName;
 	isOpen: boolean;
 	label?: string;
+	menuClassName?: string;
 	menuWidth?: 'fit-content' | 'fit-trigger';
 	onClose?: () => void;
 	onOpen?: () => void;
 	placement?: Placement;
 	searchMenu?: boolean;
+	triggerClassName?: string;
 	triggerWidth?: 'fit-content' | 'full-width';
 }
 
@@ -43,11 +45,13 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 	icon,
 	isOpen,
 	label = '',
+	menuClassName,
 	menuWidth = 'fit-trigger',
 	onClose = () => {},
 	onOpen = () => {},
 	placement = 'bottom-start',
 	searchMenu = false,
+	triggerClassName,
 	triggerWidth = 'fit-content',
 }) => {
 	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef();
@@ -94,7 +98,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 			<Reference innerRef={dropdownButtonRef}>
 				{({ ref }) => (
 					<div
-						className={classnames({
+						className={classnames(triggerClassName, {
 							'c-dropdown__trigger': triggerWidth === 'fit-content',
 						})}
 						ref={ref}
@@ -117,7 +121,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 			<Popper placement={placement} modifiers={modifiers} innerRef={dropdownFlyoutRef}>
 				{({ ref, style, placement }) => (
 					<Menu
-						className="c-dropdown__menu"
+						className={classnames(menuClassName, 'c-dropdown__menu')}
 						innerRef={ref}
 						isOpen={isOpen}
 						placement={placement}

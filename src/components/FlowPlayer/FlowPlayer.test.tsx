@@ -26,7 +26,7 @@ describe('<FlowPlayer />', () => {
 			<FlowPlayer className={customClass} {...MOCK_FLOW_PLAYER_PROPS} src={null} />
 		);
 
-		expect(FlowPlayerComponent.find('.c-cut-overlay')).toHaveLength(1);
+		expect(FlowPlayerComponent.find('.c-cut-overlay')).toHaveLength(0);
 	});
 
 	it('Should render cut-overlay when start and end are passed', () => {

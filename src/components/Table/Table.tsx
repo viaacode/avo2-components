@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/types';
-import { Spacer } from '../Spacer/Spacer';
 
 import './Table.scss';
 

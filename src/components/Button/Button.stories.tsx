@@ -5,355 +5,92 @@ import { storiesOf } from '@storybook/react';
 import { COLORS } from '../../colors';
 import { action } from '../../helpers/action';
 import { Spacer } from '../Spacer/Spacer';
-import { Button } from './Button';
+import { Button, ButtonProps } from './Button';
+
+const buttonProps: Partial<ButtonProps>[] = [
+	{ label: 'Primary', type: 'primary' },
+	{ label: 'Secondary', type: 'secondary' },
+	{ label: 'Tertiary', type: 'tertiary' },
+	{ label: 'Link', type: 'link' },
+	{ label: 'Inline link', type: 'inline-link' },
+	{ label: 'Danger', type: 'danger' },
+	{ label: 'Danger hover', type: 'danger-hover' },
+	{ label: 'Borderless', type: 'borderless' },
+	{ label: 'Disabled', disabled: true, title: 'reason why this button is disabled' },
+];
+
+const buttonIconProps: Partial<ButtonProps>[] = [
+	{ ...buttonProps[0], icon: 'plus' },
+	{ ...buttonProps[1], icon: 'search' },
+	{ ...buttonProps[2], icon: 'database' },
+	{ ...buttonProps[3], icon: 'link' },
+	{ ...buttonProps[4], icon: 'link' },
+	{ ...buttonProps[5], icon: 'x-circle' },
+	{ ...buttonProps[6], icon: 'x-square' },
+	{ ...buttonProps[7], icon: 'tag' },
+];
+
+const buttonInverseProps: Partial<ButtonProps>[] = [
+	{ ...buttonIconProps[1], type: 'secondary-i' },
+	{ ...buttonIconProps[7], type: 'borderless-i' },
+];
+
+const buttonActiveProps: Partial<ButtonProps>[] = [
+	{ ...buttonIconProps[1], label: 'Active', active: true },
+	{ ...buttonIconProps[1], label: 'Inctive' },
+];
+
+const autoHeightChildren = (
+	<div>
+		Content exceeding <br />
+		Button <br />
+		Height
+	</div>
+);
+const buttonAutoHeightProps: Partial<ButtonProps>[] = [
+	{ ...buttonIconProps[1], children: autoHeightChildren, autoHeight: true },
+	{ ...buttonIconProps[1], children: autoHeightChildren },
+];
+
+const renderButtonStories = (
+	propsArray: Partial<ButtonProps>[],
+	hasLabel = true,
+	extraProps = {}
+) => (
+	<Fragment>
+		{propsArray.map(({ label, children = null, ...rest }, i) => {
+			const labelProp = `${label} button`;
+
+			return (
+				<Spacer key={`button-${i}`} margin="bottom">
+					<Button
+						ariaLabel={labelProp}
+						onClick={action('Button clicked')}
+						title={labelProp}
+						{...hasLabel && { label: labelProp }}
+						{...rest}
+						{...extraProps}
+					>
+						{children}
+					</Button>
+				</Spacer>
+			);
+		})}
+	</Fragment>
+);
 
 storiesOf('Button', module)
 	.addParameters({ jest: ['Button'] })
-	.add('Buttons', () => (
-		<Fragment>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					title="test button"
-					label="Primary button"
-					type="primary"
-					onClick={action('Button clicked')}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Secondary button"
-					type="secondary"
-					onClick={action('Button clicked')}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Tertiary button"
-					type="tertiary"
-					onClick={action('Button clicked')}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Link button"
-					type="link"
-					onClick={action('Button clicked')}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Inline-link button"
-					type="inline-link"
-					onClick={action('Button clicked')}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Danger button"
-					type="danger"
-					onClick={action('Button clicked')}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Danger (hover) button"
-					type="danger-hover"
-					onClick={action('Button clicked')}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Borderless button"
-					type="borderless"
-					onClick={action('Button clicked')}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Disabled button"
-					disabled
-					title={'reason why this button is disabled'}
-					onClick={action('Button clicked')}
-				/>
-			</Spacer>
-		</Fragment>
-	))
-	.add('Button with icon', () => (
-		<Fragment>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Primary button" type="primary" icon="plus" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Secondary button" type="secondary" icon="search" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Tertiary button" type="tertiary" icon="database" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Link button" type="link" icon="link" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Inline-link button" type="inline-link" icon="link" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Danger button" type="danger" icon="x-circle" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Danger (hover) button"
-					type="danger-hover"
-					icon="x-square"
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Borderless button" type="borderless" icon="tag" />
-			</Spacer>
-		</Fragment>
-	))
-	.add('Icon only button', () => (
-		<Fragment>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" type="primary" icon="plus" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" type="secondary" icon="search" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" type="tertiary" icon="database" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" type="link" icon="link" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" type="inline-link" icon="link" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" type="danger" icon="x-circle" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" type="danger-hover" icon="x-square" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" type="borderless" icon="tag" />
-			</Spacer>
-		</Fragment>
-	))
-	.add('Button with arrow', () => (
-		<Fragment>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Primary button" type="primary" icon="plus" arrow />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Secondary button"
-					type="secondary"
-					icon="search"
-					arrow
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Tertiary button"
-					type="tertiary"
-					icon="database"
-					arrow
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Link button" type="link" icon="link" arrow />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Inline-link button"
-					type="inline-link"
-					icon="link"
-					arrow
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Danger button" type="danger" icon="x-circle" arrow />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Danger (hover) button"
-					type="danger-hover"
-					icon="x-square"
-					arrow
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Borderless button"
-					type="borderless"
-					icon="tag"
-					arrow
-				/>
-			</Spacer>
-		</Fragment>
-	))
-	.add('Small buttons', () => (
-		<Fragment>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Primary button"
-					type="primary"
-					icon="plus"
-					size="small"
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Secondary button"
-					type="secondary"
-					icon="search"
-					size="small"
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Tertiary button"
-					type="tertiary"
-					icon="database"
-					size="small"
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Link button" type="link" icon="link" size="small" />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Danger button"
-					type="danger"
-					icon="x-circle"
-					size="small"
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Danger (hover) button"
-					type="danger-hover"
-					icon="x-square"
-					size="small"
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Borderless button"
-					type="borderless"
-					icon="tag"
-					size="small"
-				/>
-			</Spacer>
-		</Fragment>
-	))
-	.add('Block buttons', () => (
-		<Fragment>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Primary button"
-					type="primary"
-					icon="plus"
-					block={true}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Secondary button"
-					type="secondary"
-					icon="search"
-					block={true}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Tertiary button"
-					type="tertiary"
-					icon="database"
-					block={true}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Link button" type="link" icon="link" block={true} />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Danger button"
-					type="danger"
-					icon="x-circle"
-					block={true}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Danger (hover) button"
-					type="danger-hover"
-					icon="x-square"
-					block={true}
-				/>
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button
-					ariaLabel="test button"
-					label="Borderless button"
-					type="borderless"
-					icon="tag"
-					block={true}
-				/>
-			</Spacer>
-		</Fragment>
-	))
+	.add('Buttons', () => renderButtonStories(buttonProps))
+	.add('Button with icon', () => renderButtonStories(buttonIconProps))
+	.add('Icon only button', () => renderButtonStories(buttonIconProps, false))
+	.add('Button with arrow', () => renderButtonStories(buttonIconProps, true, { arrow: true }))
+	.add('Small buttons', () => renderButtonStories(buttonIconProps, true, { size: 'small' }))
+	.add('Block buttons', () => renderButtonStories(buttonIconProps, true, { block: true }))
 	.add('Inverse buttons', () => (
-		<Fragment>
-			<Spacer margin="bottom">
-				<span style={{ padding: '20px', background: COLORS.GRAYSCALE.G800 }}>
-					<Button ariaLabel="test button" label="Secondary button" type="secondary-i" icon="plus" />
-				</span>
-			</Spacer>
-			<Spacer margin="bottom">
-				<span style={{ padding: '20px', background: COLORS.GRAYSCALE.G800 }}>
-					<Button
-						ariaLabel="test button"
-						label="Borderless button"
-						type="borderless-i"
-						icon="search"
-					/>
-				</span>
-			</Spacer>
-		</Fragment>
+		<div style={{ display: 'inline-block', padding: '20px', background: COLORS.GRAYSCALE.G800 }}>
+			{renderButtonStories(buttonInverseProps)}
+		</div>
 	))
-	.add('Active buttons', () => (
-		<Fragment>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Active button" type="secondary" active />
-			</Spacer>
-			<Spacer margin="bottom">
-				<Button ariaLabel="test button" label="Inactive button" type="secondary" />
-			</Spacer>
-		</Fragment>
-	));
+	.add('Active buttons', () => renderButtonStories(buttonActiveProps))
+	.add('Auto height buttons', () => renderButtonStories(buttonAutoHeightProps, false));

@@ -10,7 +10,9 @@ import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 describe('<MediaCard />', () => {
 	it('Should be able to render', () => {
-		shallow(<MediaCard title="What an amazing title!" href="#" category="collection" />);
+		shallow(
+			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="collection" />
+		);
 	});
 
 	it('Should set the correct className', () => {
@@ -20,7 +22,7 @@ describe('<MediaCard />', () => {
 			<MediaCard
 				className={customClass}
 				title="What an amazing title!"
-				href="#"
+				href="https://viaa.be/"
 				category="collection"
 			/>
 		);
@@ -31,15 +33,15 @@ describe('<MediaCard />', () => {
 
 	it('Should set the correct className for each category', () => {
 		const collectionMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" href="#" category="collection" />
+			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="collection" />
 		);
 
 		const videoMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" href="#" category="video" />
+			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="video" />
 		);
 
 		const audioMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" href="#" category="audio" />
+			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="audio" />
 		);
 
 		expect(collectionMediaCardComponent.hasClass('c-media-card--collection')).toEqual(true);
@@ -51,7 +53,7 @@ describe('<MediaCard />', () => {
 		const horizontalMediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				href="#"
+				href="https://viaa.be/"
 				category="collection"
 				orientation="horizontal"
 			/>
@@ -60,7 +62,7 @@ describe('<MediaCard />', () => {
 		const verticalMediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				href="#"
+				href="https://viaa.be/"
 				category="collection"
 				orientation="vertical"
 			/>
@@ -74,7 +76,7 @@ describe('<MediaCard />', () => {
 		const mediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				href="#"
+				href="https://viaa.be/"
 				category="collection"
 				orientation="horizontal"
 			>
@@ -91,7 +93,7 @@ describe('<MediaCard />', () => {
 		const mediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				href="#"
+				href="https://viaa.be/"
 				category="collection"
 				orientation="horizontal"
 			>
