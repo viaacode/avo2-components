@@ -58,6 +58,9 @@ import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup/FormGroup';
 import { Column } from './components/Grid/Column/Column';
 import { Grid } from './components/Grid/Grid';
+import { Header } from './components/Header/Header';
+import { HeaderAvatar, HeaderButtons, HeaderTags } from './components/Header/Header.slots';
+import { HeaderContentType } from './components/HeaderContentType/HeaderContentType';
 import { Heading } from './components/Heading/Heading';
 import { Icon } from './components/Icon/Icon';
 import { IconName, IconType } from './components/Icon/types';
@@ -173,6 +176,11 @@ export {
 	Form,
 	FormGroup,
 	Grid,
+	Header,
+	HeaderAvatar,
+	HeaderButtons,
+	HeaderContentType,
+	HeaderTags,
 	Heading,
 	Icon,
 	IconName,
