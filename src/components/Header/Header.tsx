@@ -4,9 +4,8 @@ import { useSlot } from '../../hooks/useSlot';
 import { ContentType, DefaultProps } from '../../types';
 import { Container } from '../Container/Container';
 import { Flex } from '../Flex/Flex';
+import { HeaderContentType } from '../HeaderContentType/HeaderContentType';
 import { Heading } from '../Heading/Heading';
-import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/types';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Spacer } from '../Spacer/Spacer';
@@ -20,10 +19,8 @@ interface HeaderProps extends DefaultProps {
 	children?: ReactNode;
 	category: ContentType;
 	categoryLabel: string;
-
 	title: string;
 	onClickTitle?: () => void;
-
 	showMetaData: boolean;
 	views?: string;
 	bookmarks?: string;
@@ -54,10 +51,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
 								<Spacer margin="bottom-small">
 									<MetaData spaced={true} category={category}>
 										<MetaDataItem>
-											<div className={`c-content-type c-content-type--${category}`}>
-												<Icon name={category as IconName} />
-												<p>{categoryLabel.toUpperCase()}</p>
-											</div>
+											<HeaderContentType category={category} label={categoryLabel} />
 										</MetaDataItem>
 										{views && <MetaDataItem icon="eye" label={views} />}
 										{bookmarks && <MetaDataItem icon="bookmark" label={bookmarks} />}
