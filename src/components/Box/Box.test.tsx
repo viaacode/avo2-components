@@ -23,6 +23,12 @@ describe('<Box />', () => {
 		expect(boxComponent.hasClass('c-box--padding-small')).toEqual(true);
 	});
 
+	it('Should set the correct className when passed the `backgroundColor`-prop', () => {
+		const boxComponent = shallow(<Box backgroundColor="soft-white">test</Box>);
+
+		expect(boxComponent.hasClass('c-box--soft-white')).toEqual(true);
+	});
+
 	it('Should correctly pass children', () => {
 		const containerComponent = shallow(
 			<Box>
