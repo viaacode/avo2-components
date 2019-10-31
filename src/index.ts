@@ -53,6 +53,7 @@ import {
 import { DatePicker } from './components/DatePicker/DatePicker';
 import { DateTimePicker } from './components/DateTimePicker/DateTimePicker';
 import { Dropdown } from './components/Dropdown/Dropdown';
+import { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
 import { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
 import { Flex } from './components/Flex/Flex';
 import { FlexItem } from './components/Flex/FlexItem/FlexItem';
