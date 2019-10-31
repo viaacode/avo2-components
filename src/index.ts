@@ -7,6 +7,10 @@ import { COLORS } from './colors';
 
 // Hooks
 import { useKeyPress } from './hooks/useKeyPress';
+import { useSlot } from './hooks/useSlot';
+
+// Helpers
+import { convertToHtml } from './helpers/convertToHtml';
 
 // Components
 import { Alert } from './components/Alert/Alert';
@@ -49,7 +53,6 @@ import {
 import { DatePicker } from './components/DatePicker/DatePicker';
 import { DateTimePicker } from './components/DateTimePicker/DateTimePicker';
 import { Dropdown } from './components/Dropdown/Dropdown';
-import { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
 import { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
 import { Flex } from './components/Flex/Flex';
 import { FlexItem } from './components/Flex/FlexItem/FlexItem';
@@ -118,8 +121,6 @@ import { Tooltip } from './components/Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
 import { VideoWrapper } from './components/VideoWrapper/VideoWrapper';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
-import { convertToHtml } from './helpers/convertToHtml';
-import { useSlot } from './hooks/useSlot';
 
 export {
 	COLORS,
