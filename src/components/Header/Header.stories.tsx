@@ -12,6 +12,7 @@ import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 
 storiesOf('Header', module)
 	.addParameters({ jest: ['Header'] })
+	.add('Header', () => <Header {...MOCK_HEADER_PROPS} />)
 	.add('Header with slots', () => (
 		<Header {...MOCK_HEADER_PROPS}>
 			<HeaderButtons>
