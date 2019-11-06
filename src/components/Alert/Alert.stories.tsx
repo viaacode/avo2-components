@@ -8,7 +8,7 @@ import { Alert } from './Alert';
 storiesOf('Alert', module)
 	.addParameters({ jest: ['Alert'] })
 	.add('Alerts', () => (
-		<React.Fragment>
+		<>
 			<Spacer margin="bottom">
 				<Alert message="Info alert message" onClose={action('alert closed')} />
 			</Spacer>
@@ -21,10 +21,10 @@ storiesOf('Alert', module)
 			<Spacer margin="bottom">
 				<Alert message="Loading alert message" type="spinner" />
 			</Spacer>
-		</React.Fragment>
+		</>
 	))
 	.add('Dark alerts', () => (
-		<React.Fragment>
+		<>
 			<Spacer margin="bottom">
 				<Alert message="Info alert message" dark={true} onClose={action('alert closed')} />
 			</Spacer>
@@ -37,14 +37,15 @@ storiesOf('Alert', module)
 			<Spacer margin="bottom">
 				<Alert message="Loading alert message" type="spinner" dark={true} />
 			</Spacer>
-		</React.Fragment>
+		</>
 	))
 	.add('Alerts custom content', () => (
-		<React.Fragment>
-			<Alert>
-				<span>
-					Info alert message <a href="#alert">with link</a>
-				</span>
-			</Alert>
-		</React.Fragment>
+		<Alert>
+			<span>
+				Info alert message <a href="#alert">with link</a>
+			</span>
+		</Alert>
+	))
+	.add('Alerts with html', () => (
+		<Alert message="Dit is een lange zin en nu volgt er een br-tag.<br />Wat een tag." />
 	));

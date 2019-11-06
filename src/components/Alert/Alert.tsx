@@ -2,13 +2,14 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
+import { convertToHtml } from '../../helpers/convertToHtml';
 import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
+import { IconName } from '../Icon/types';
 import { Spacer } from '../Spacer/Spacer';
 import { Spinner } from '../Spinner/Spinner';
 
-import { IconName } from '../Icon/types';
 import './Alert.scss';
 
 const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
@@ -25,13 +26,14 @@ export interface AlertProps extends DefaultProps {
 	children?: ReactNode;
 }
 
+// TODO: Check if component can be written without message, only children.
 export const Alert: FunctionComponent<AlertProps> = ({
 	className,
 	onClose,
-	dark = false,
-	message = '',
+	dark,
+	message,
+	children,
 	type = 'info',
-	children = null,
 }) => {
 	return (
 		<div className={classNames(className, 'c-alert', { 'c-alert--dark': dark })}>
@@ -43,7 +45,13 @@ export const Alert: FunctionComponent<AlertProps> = ({
 						<Spinner light={dark} />
 					)}
 				</Spacer>
-				{message || children}
+
+				{typeof message === 'string' ? (
+					// TODO: Dit lijkt me wel niet safe, advies op hoe ik het anders oplos?
+					<div dangerouslySetInnerHTML={{ __html: message }} />
+				) : (
+					message || children
+				)}
 			</div>
 			{!!onClose && (
 				<Button
