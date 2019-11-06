@@ -47,8 +47,7 @@ export const Alert: FunctionComponent<AlertProps> = ({
 				</Spacer>
 
 				{typeof message === 'string' ? (
-					// TODO: Dit lijkt me wel niet safe, advies op hoe ik het anders oplos?
-					<div dangerouslySetInnerHTML={{ __html: message }} />
+					<div dangerouslySetInnerHTML={{ __html: convertToHtml(message) }} />
 				) : (
 					message || children
 				)}
