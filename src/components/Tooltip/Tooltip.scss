@@ -24,6 +24,8 @@
 	transition: opacity 0.2s ease-in-out, visibility 0.2s linear 0.2s;
 	user-select: none;
 	visibility: hidden;
+
+	z-index: 75;
 }
 
 .c-tooltip--show {
@@ -32,9 +34,8 @@
 	visibility: visible;
 }
 
-
 .c-tooltip__meta {
 	font-size: 1.3rem;
 	text-transform: uppercase;
-	color: rgba(255,255,255,0.6)
+	color: rgba(255, 255, 255, 0.6);
 }

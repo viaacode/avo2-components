@@ -2,6 +2,8 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
+import { Spacer } from '../Spacer/Spacer';
+
 import { AvatarList } from './AvatarList';
 
 export const mockAvatars = [
@@ -52,4 +54,12 @@ export const mockAvatars = [
 storiesOf('AvatarList', module)
 	.addParameters({ jest: ['AvatarList', 'AvatarIcon'] })
 	.add('AvatarList (closed dropdown)', () => <AvatarList avatars={mockAvatars} isOpen={false} />)
-	.add('AvatarList (open dropdown)', () => <AvatarList avatars={mockAvatars} isOpen />);
+	.add('AvatarList (open dropdown)', () => <AvatarList avatars={mockAvatars} isOpen />)
+	.add('AvatarLists', () => (
+		<>
+			<Spacer margin="bottom">
+				<AvatarList avatars={mockAvatars} isOpen={false} />
+			</Spacer>
+			<AvatarList avatars={mockAvatars} isOpen />
+		</>
+	));
