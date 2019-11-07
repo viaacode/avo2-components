@@ -8,6 +8,7 @@ import { Icon } from '../Icon/Icon';
 export interface DatePickerProps extends DefaultProps {
 	id?: string;
 	disabled?: boolean;
+	required?: boolean;
 	placeholder?: string;
 	value?: Date | null;
 	onChange?: (date: Date | null) => void;
@@ -17,6 +18,7 @@ export const DatePicker: FunctionComponent<DatePickerProps> = ({
 	className,
 	id,
 	disabled = false,
+	required = false,
 	placeholder = 'dd/mm/yyyy',
 	value,
 	onChange = () => {},
@@ -43,6 +45,7 @@ export const DatePicker: FunctionComponent<DatePickerProps> = ({
 				id={id}
 				value={getValue(value)}
 				disabled={disabled}
+				required={required}
 				placeholder={placeholder}
 				onChange={onValueChange}
 			/>

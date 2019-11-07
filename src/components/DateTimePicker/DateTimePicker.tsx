@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React, { FormEvent, FunctionComponent, useEffect, useState } from 'react';
+
 import { pad } from '../../helpers/pad';
 import { DefaultProps } from '../../types';
 import { DatePicker } from '../DatePicker/DatePicker';
@@ -10,6 +11,7 @@ export interface DateTimePickerProps extends DefaultProps {
 	value?: Date | null;
 	onChange: (value: Date | null) => void;
 	disabled?: boolean;
+	required?: boolean;
 	defaultHours?: number;
 	defaultMinutes?: number;
 	id?: string;
@@ -23,6 +25,7 @@ export const DateTimePicker: FunctionComponent<DateTimePickerProps> = ({
 	defaultMinutes,
 	className,
 	disabled = false,
+	required = false,
 }) => {
 	const getDatePart = (): Date | null => {
 		if (typeof year !== 'undefined' && typeof month !== 'undefined' && typeof day !== 'undefined') {
@@ -111,6 +114,7 @@ export const DateTimePicker: FunctionComponent<DateTimePickerProps> = ({
 					value={getDatePart()}
 					onChange={(date: Date | null) => handleChange(date, null)}
 					disabled={disabled}
+					required={required}
 					{...(id ? { id: `${id}-date` } : {})}
 				/>
 			</Spacer>
@@ -121,6 +125,7 @@ export const DateTimePicker: FunctionComponent<DateTimePickerProps> = ({
 				value={time || getTimePart(hours, minutes)}
 				placeholder="hh:mm"
 				disabled={disabled}
+				required={required}
 				onChange={(evt: FormEvent<HTMLInputElement>) => setTime(evt.currentTarget.value)}
 				onBlur={() => setTimeout(() => handleChange(null, time), 0)}
 			/>
