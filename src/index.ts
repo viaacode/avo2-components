@@ -7,6 +7,10 @@ import { COLORS } from './colors';
 
 // Hooks
 import { useKeyPress } from './hooks/useKeyPress';
+import { useSlot } from './hooks/useSlot';
+
+// Helpers
+import { convertToHtml } from './helpers/convertToHtml';
 
 // Components
 import { Alert } from './components/Alert/Alert';
@@ -58,6 +62,9 @@ import { Form } from './components/Form/Form';
 import { FormGroup } from './components/Form/FormGroup/FormGroup';
 import { Column } from './components/Grid/Column/Column';
 import { Grid } from './components/Grid/Grid';
+import { Header } from './components/Header/Header';
+import { HeaderAvatar, HeaderButtons, HeaderTags } from './components/Header/Header.slots';
+import { HeaderContentType } from './components/HeaderContentType/HeaderContentType';
 import { Heading } from './components/Heading/Heading';
 import { Icon } from './components/Icon/Icon';
 import { IconName, IconType } from './components/Icon/types';
@@ -115,8 +122,6 @@ import { Tooltip } from './components/Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
 import { VideoWrapper } from './components/VideoWrapper/VideoWrapper';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
-import { convertToHtml } from './helpers/convertToHtml';
-import { useSlot } from './hooks/useSlot';
 
 export {
 	COLORS,
@@ -173,6 +178,11 @@ export {
 	Form,
 	FormGroup,
 	Grid,
+	Header,
+	HeaderAvatar,
+	HeaderButtons,
+	HeaderContentType,
+	HeaderTags,
 	Heading,
 	Icon,
 	IconName,

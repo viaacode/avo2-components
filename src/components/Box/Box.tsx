@@ -8,11 +8,22 @@ import './Box.scss';
 
 export interface BoxProps extends DefaultProps {
 	condensed?: boolean;
+	backgroundColor?: 'gray' | 'soft-white' | 'white';
 	children: ReactNode;
 }
 
-export const Box: FunctionComponent<BoxProps> = ({ children, className, condensed }) => (
-	<div className={classNames(className, 'c-box', { 'c-box--padding-small': condensed })}>
+export const Box: FunctionComponent<BoxProps> = ({
+	children,
+	className,
+	condensed,
+	backgroundColor = 'gray',
+}) => (
+	<div
+		className={classNames(className, 'c-box', {
+			'c-box--padding-small': condensed,
+			[`c-box--${backgroundColor}`]: backgroundColor !== 'gray',
+		})}
+	>
 		{children}
 	</div>
 );
