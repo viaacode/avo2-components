@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+import { IconName } from '../Icon/types';
 
 import './Table.scss';
 
@@ -30,44 +31,86 @@ export type Column = {
 };
 
 export interface TableProps extends DefaultProps {
-	bordered?: boolean;
+	align?: boolean;
 	children?: ReactNode;
 	columns?: Column[];
 	data?: any[];
 	emptyStateMessage?: string;
 	horizontal?: boolean;
+	nowrap?: boolean;
 	onColumnClick?: (id: string) => void;
 	renderCell?: (rowData: any, columnId: string, rowIndex: number, columnIndex: number) => ReactNode;
-	rowKey: string;
+	rowKey?: string;
 	sortColumn?: string;
 	sortOrder?: 'asc' | 'desc';
-	styled?: boolean;
+	striped?: boolean;
 	untable?: boolean;
+	variant?: 'bordered' | 'invisible' | 'styled';
 }
 
 export const Table: FunctionComponent<TableProps> = ({
-	bordered,
+	align,
 	children,
 	className,
 	columns = [],
 	data = [],
 	emptyStateMessage,
 	horizontal,
+	nowrap,
 	onColumnClick = () => {},
 	renderCell = () => null,
 	rowKey,
 	sortColumn,
 	sortOrder = 'asc',
-	styled,
+	striped,
 	untable,
+	variant,
 }) => {
+	const renderHeading = (heading: Column) => {
+		const { id, col, sortable, label } = heading;
+
+		const isColumnSorted = sortColumn === id;
+		const sortIconProps = {
+			name: (isColumnSorted
+				? sortOrder === 'asc'
+					? 'chevron-up'
+					: 'chevron-down'
+				: 'chevrons-up-and-down') as IconName,
+			className: isColumnSorted ? undefined : 'c-table__header--sortable-icon',
+		};
+
+		if (!children && !rowKey) {
+			console.error(
+				'A rowKey param is required when not passing any children to the table component'
+			);
+		}
+
+		return (
+			<th
+				key={id}
+				className={classNames({
+					[`o-table-col-${col}`]: col,
+					'c-table__header--sortable': sortable,
+				})}
+				onClick={() => sortable && onColumnClick(id)}
+			>
+				{label}
+				{sortable && <Icon {...sortIconProps} />}
+			</th>
+		);
+	};
+
 	return (
 		<Fragment>
 			<table
 				className={classNames(className, 'c-table', {
-					'c-table--bordered': bordered,
+					'c-table--align-middle': align,
+					'c-table--bordered': variant === 'bordered',
+					'c-table--invisible': variant === 'invisible',
 					'c-table--horizontal': horizontal,
-					'c-table--styled': styled || bordered,
+					'c-table--nowrap': nowrap,
+					'c-table--striped': striped,
+					'c-table--styled': variant === 'styled' || variant === 'bordered',
 					'c-table--untable': untable,
 				})}
 			>
@@ -77,29 +120,7 @@ export const Table: FunctionComponent<TableProps> = ({
 					<Fragment>
 						{columns.length > 0 && (
 							<thead>
-								<tr>
-									{columns.map(heading => (
-										<th
-											key={heading.id}
-											className={classNames({
-												[`o-table-col-${heading.col}`]: heading.col,
-												'c-table__header--sortable': heading.sortable,
-											})}
-											onClick={() => heading.sortable && onColumnClick(heading.id)}
-										>
-											{heading.label}
-											{heading.sortable && sortColumn === heading.id && (
-												<Icon name={sortOrder === 'asc' ? 'chevron-up' : 'chevron-down'} />
-											)}
-											{heading.sortable && sortColumn !== heading.id && (
-												<Icon
-													name={'chevrons-up-and-down'}
-													className="c-table__header--sortable-icon"
-												/>
-											)}
-										</th>
-									))}
-								</tr>
+								<tr>{columns.map(renderHeading)}</tr>
 							</thead>
 						)}
 						{data.length > 0 && rowKey && (
@@ -120,7 +141,7 @@ export const Table: FunctionComponent<TableProps> = ({
 					</Fragment>
 				)}
 			</table>
-			{!children && data.length === 0 && emptyStateMessage && (
+			{!children && !data.length && emptyStateMessage && (
 				<p className="u-spacer-top">{emptyStateMessage}</p>
 			)}
 		</Fragment>

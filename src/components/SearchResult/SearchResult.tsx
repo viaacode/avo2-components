@@ -14,6 +14,7 @@ import { Flex } from '../Flex/Flex';
 import { FlexItem } from '../Flex/FlexItem/FlexItem';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
+import { Spacer } from '../Spacer/Spacer';
 import { TagList } from '../TagList/TagList';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
 
@@ -71,7 +72,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 				<p className="c-search-result__description">
 					{`${(description || '').substring(0, maxDescriptionLength)}...`}
 				</p>
-				<div className="u-spacer-bottom-s">
+				<Spacer margin="bottom-small">
 					<Flex justify="between" wrap>
 						<MetaData category={type}>
 							<MetaDataItem label={date} />
@@ -83,7 +84,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 						</MetaData>
 						<TagList tags={tags} swatches={false} />
 					</Flex>
-				</div>
+				</Spacer>
 			</div>
 		</div>
 	);

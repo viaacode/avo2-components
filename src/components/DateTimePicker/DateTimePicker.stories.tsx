@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
 
+import { Spacer } from '../Spacer/Spacer';
 import { DateTimePicker } from './DateTimePicker';
 
 const DateTimePickerStoryComponent = ({
@@ -28,10 +29,11 @@ storiesOf('DateTimePicker', module)
 	.addParameters({ jest: ['DateTimePicker'] })
 	.add('DateTimePicker', () => (
 		<Fragment>
-			<DateTimePickerStoryComponent>
-				<DateTimePicker id="deadline" onChange={action('onChange')} />
-			</DateTimePickerStoryComponent>
-			<div className="u-spacer-bottom" />
+			<Spacer margin="bottom">
+				<DateTimePickerStoryComponent>
+					<DateTimePicker id="deadline" onChange={action('onChange')} />
+				</DateTimePickerStoryComponent>
+			</Spacer>
 			<DateTimePickerStoryComponent>
 				<DateTimePicker disabled onChange={action('onChange')} />
 			</DateTimePickerStoryComponent>
@@ -39,10 +41,11 @@ storiesOf('DateTimePicker', module)
 	))
 	.add('DateTimePicker default time', () => (
 		<Fragment>
-			<label>Deadline:</label>
-			<DateTimePickerStoryComponent>
-				<DateTimePicker onChange={action('onChange')} defaultHours={23} defaultMinutes={59} />
-			</DateTimePickerStoryComponent>
-			<div className="u-spacer-bottom" />
+			<Spacer margin="bottom">
+				<label>Deadline:</label>
+				<DateTimePickerStoryComponent>
+					<DateTimePicker onChange={action('onChange')} defaultHours={23} defaultMinutes={59} />
+				</DateTimePickerStoryComponent>
+			</Spacer>
 		</Fragment>
 	));

@@ -5,7 +5,7 @@ export function useSlot<T>(
 	children: ReactNode | ReactNodeArray
 ): ReactNode | ReactNodeArray | null {
 	const slots: ReactNodeArray = Array.isArray(children) ? children : [children];
-	const element: ReactElement = slots.find((c: any) => c.type === type) as ReactElement;
+	const element: ReactElement = slots.find((c: any) => c && c.type === type) as ReactElement;
 
 	if (element && element.props.children) {
 		return element.props.children;

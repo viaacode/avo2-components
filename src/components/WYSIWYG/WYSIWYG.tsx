@@ -17,7 +17,7 @@ export interface WYSIWYGProps {
 	resetCss?: boolean;
 	autogrow?: boolean;
 	disabled?: boolean;
-	removeformatPasted?: boolean;
+	removeFormatPasted?: boolean;
 	shouldUseSvgIcons?: boolean;
 	shouldInjectSvgIcons?: boolean;
 	svgIconsPath?: string;
@@ -44,7 +44,7 @@ export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 	resetCss,
 	autogrow,
 	disabled,
-	removeformatPasted,
+	removeFormatPasted = true,
 	shouldUseSvgIcons,
 	shouldInjectSvgIcons,
 	svgIconsPath,
@@ -97,7 +97,7 @@ export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 			resetCss={resetCss}
 			autogrow={autogrow}
 			disabled={disabled}
-			removeformatPasted={removeformatPasted}
+			removeformatPasted={removeFormatPasted}
 			shouldUseSvgIcons={shouldUseSvgIcons}
 			shouldInjectSvgIcons={shouldInjectSvgIcons}
 			svgIconsPath={svgIconsPath}

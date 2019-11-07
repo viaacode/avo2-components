@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
 
+import { Spacer } from '../Spacer/Spacer';
 import { TextInput } from './TextInput';
 
 const TextInputStoryComponent = ({
@@ -28,18 +29,26 @@ storiesOf('TextInput', module)
 	.addParameters({ jest: ['TextInput'] })
 	.add('TextInput', () => (
 		<Fragment>
-			<TextInputStoryComponent>
-				<TextInput type="email" placeholder="Enter your email..." onChange={action('onChange')} />
-			</TextInputStoryComponent>
-			<div className="u-spacer-bottom" />
-			<TextInputStoryComponent>
-				<TextInput
-					type="password"
-					placeholder="Enter your password..."
-					onChange={action('onChange')}
-				/>
-			</TextInputStoryComponent>
-			<div className="u-spacer-bottom" />
+			<Spacer margin="bottom">
+				<TextInputStoryComponent>
+					<TextInput
+						type="email"
+						placeholder="Enter your email..."
+						onChange={action('onChange')}
+						onBlur={action('onBlur')}
+						onKeyUp={action('onkeyup')}
+					/>
+				</TextInputStoryComponent>
+			</Spacer>
+			<Spacer margin="bottom">
+				<TextInputStoryComponent>
+					<TextInput
+						type="password"
+						placeholder="Enter your password..."
+						onChange={action('onChange')}
+					/>
+				</TextInputStoryComponent>
+			</Spacer>
 			<TextInputStoryComponent>
 				<TextInput disabled placeholder="No typing here..." />
 			</TextInputStoryComponent>
@@ -47,10 +56,11 @@ storiesOf('TextInput', module)
 	))
 	.add('TextInput without placeholder', () => (
 		<Fragment>
-			<TextInputStoryComponent>
-				<TextInput onChange={action('onChange')} />
-			</TextInputStoryComponent>
-			<div className="u-spacer-bottom" />
+			<Spacer margin="bottom">
+				<TextInputStoryComponent>
+					<TextInput onChange={action('onChange')} />
+				</TextInputStoryComponent>
+			</Spacer>
 			<TextInputStoryComponent>
 				<TextInput disabled />
 			</TextInputStoryComponent>
@@ -58,14 +68,15 @@ storiesOf('TextInput', module)
 	))
 	.add('TextInput with default value', () => (
 		<Fragment>
-			<TextInputStoryComponent>
-				<TextInput
-					placeholder="And this is the placeholder"
-					value="This is the default value"
-					onChange={action('onChange')}
-				/>
-			</TextInputStoryComponent>
-			<div className="u-spacer-bottom" />
+			<Spacer margin="bottom">
+				<TextInputStoryComponent>
+					<TextInput
+						placeholder="And this is the placeholder"
+						value="This is the default value"
+						onChange={action('onChange')}
+					/>
+				</TextInputStoryComponent>
+			</Spacer>
 			<TextInputStoryComponent defaultValue="This is the default value">
 				<TextInput disabled />
 			</TextInputStoryComponent>
@@ -73,14 +84,15 @@ storiesOf('TextInput', module)
 	))
 	.add('TextInput with icon', () => (
 		<Fragment>
-			<TextInputStoryComponent>
-				<TextInput
-					icon="search"
-					placeholder="Type something here..."
-					onChange={action('onChange')}
-				/>
-			</TextInputStoryComponent>
-			<div className="u-spacer-bottom" />
+			<Spacer margin="bottom">
+				<TextInputStoryComponent>
+					<TextInput
+						icon="search"
+						placeholder="Type something here..."
+						onChange={action('onChange')}
+					/>
+				</TextInputStoryComponent>
+			</Spacer>
 			<TextInputStoryComponent>
 				<TextInput icon="x" disabled placeholder="No typing here..." />
 			</TextInputStoryComponent>
