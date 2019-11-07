@@ -51,7 +51,6 @@ import {
 	BlockVideoTitleTextButtonProps,
 } from './components/ContentBlocks/BlockVideoTitleTextButton/BlockVideoTitleTextButton';
 import { DatePicker } from './components/DatePicker/DatePicker';
-import { DateTimePicker } from './components/DateTimePicker/DateTimePicker';
 import { Dropdown } from './components/Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
 import { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
@@ -167,7 +166,6 @@ export {
 	Column,
 	Container,
 	DatePicker,
-	DateTimePicker,
 	Dropdown,
 	DropdownButton,
 	DropdownContent,
