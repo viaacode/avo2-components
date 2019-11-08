@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { setHours, setMinutes } from 'date-fns';
 // https://github.com/Hacker0x01/react-datepicker/issues/1815#issuecomment-513215416
 import nl from 'date-fns/locale/nl';
 import React, { FunctionComponent } from 'react';
@@ -7,7 +8,6 @@ import ReactDatePicker, { registerLocale, setDefaultLocale } from 'react-datepic
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
-import { setHours, setMinutes } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DatePicker.scss';
 
