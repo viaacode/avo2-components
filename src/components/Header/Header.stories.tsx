@@ -7,12 +7,13 @@ import { Button } from '../Button/Button';
 import { TagList } from '../TagList/TagList';
 
 import { Header } from './Header';
-import { MOCK_HEADER_PROPS } from './Header.mock';
+import { MOCK_HEADER_PROPS, MOCK_HEADER_PROPS_FULL } from './Header.mock';
 import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 
 storiesOf('Header', module)
 	.addParameters({ jest: ['Header'] })
 	.add('Header', () => <Header {...MOCK_HEADER_PROPS} />)
+	.add('Header with meta data', () => <Header {...MOCK_HEADER_PROPS_FULL} />)
 	.add('Header with slots', () => (
 		<Header {...MOCK_HEADER_PROPS}>
 			<HeaderButtons>

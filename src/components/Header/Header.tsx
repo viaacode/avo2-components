@@ -17,8 +17,8 @@ import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 
 interface HeaderProps extends DefaultProps {
 	children?: ReactNode;
-	category: ContentType;
-	categoryLabel: string;
+	category?: ContentType;
+	categoryLabel?: string;
 	title: string;
 	onClickTitle?: () => void;
 	showMetaData: boolean;
@@ -47,7 +47,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
 				<Toolbar autoHeight>
 					<ToolbarLeft>
 						<ToolbarItem>
-							{showMetaData && (
+							{showMetaData && !!category && !!categoryLabel && (
 								<Spacer margin="bottom-small">
 									<MetaData spaced={true} category={category}>
 										<MetaDataItem>
