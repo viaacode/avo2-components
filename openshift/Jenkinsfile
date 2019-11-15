@@ -99,4 +99,19 @@ pipeline {
             } // steps
         } // stage	    
     } // stages
+	post {
+        always {
+            // following disabled , we dont record test data for now
+            //junit 'ci-results/*.xml'
+            
+            //archiveArtifacts artifacts: 'cypress/videos/**/*.mp4', fingerprint: true
+            //archiveArtifacts artifacts: 'cypress/screenshots/**/*.png', fingerprint: true
+            //archiveArtifacts artifacts: 'ci-results/*.xml', fingerprint: true
+
+            script {
+               slackNotifier(currentBuild.currentResult)
+            }
+            cleanWs()
+        }
+    }
 } // pipeline
