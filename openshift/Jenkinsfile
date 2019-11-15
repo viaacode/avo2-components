@@ -43,7 +43,7 @@ pipeline {
 			    npm --registry=https://registry.npmjs.org install && npm run build || exit 1'''
 			   sh'''#!/bin/bash
 			   echo "##### BUILDING DOCKER IMAGE #####"
-			      docker build -t docker-registry-default.apps.do-prd-okp-m0.do.viaa.be/shared-components/avo2-components:latestst .
+			      docker build -t docker-registry-default.apps.do-prd-okp-m0.do.viaa.be/shared-components/avo2-components:latest .
 			    '''
                         }
                     }
