@@ -9,7 +9,7 @@ pipeline {
     agent {
       node {
         // spin up a pod to run this build on
-        label 'nodejs'
+        label 'docker'
       }
     }
     options {
@@ -23,6 +23,8 @@ pipeline {
                     openshift.withCluster() {
                         openshift.withProject("shared-components") {
                             echo "Using project: ${openshift.project()}"
+				sh'''#!/bin/bash
+				oc project shared-components || exit 1'''
                         }
                     }
                 }
@@ -37,11 +39,12 @@ pipeline {
                     openshift.withCluster() {
                         openshift.withProject("shared-components") {
 			   sh'''#!/bin/bash
-			   rm -f /tmp/.npmrc
-			    npm --registry=https://registry.npmjs.org install && npm run build
-
+			   rm -f /.npmrc
+			    npm --registry=https://registry.npmjs.org install && npm run build || exit 1'''
+			   sh'''#!/bin/bash
+			   echo "##### BUILDING DOCKER IMAGE #####"
+			      docker build -t docker-registry-default.apps.do-prd-okp-m0.do.viaa.be/shared-components/avo2-components:latest .
 			    '''
-
                         }
                     }
                 } // script
@@ -58,15 +61,42 @@ pipeline {
 
                              	echo "Publishing package to registry"
 			     	sh '''#/bin/bash
-			         cp /home/jenkins/.npm-global/etc/npmrc /tmp/.npmrc
+			         cp /root/npm-config .npmrc
 			   	 npm publish
 				 echo "removing .npmrc for install if node is the same we need to set registry for push nexus not seems to like @viaa:registry=.."
-				rm -f /tmp/.npmrc
+				rm -f .npmrc
 		                '''
+			     	sh '''#/bin/bash
+				echo "######PUSHING IMAGE######"
+				docker push docker-registry-default.apps.do-prd-okp-m0.do.viaa.be/shared-components/avo2-components:latest 
+				'''
                         }
                     }
                 } // script
             } // steps
         } // stage
+  	stage('Deploy') {
+            steps {
+
+                script {
+                    openshift.withCluster() {
+                        openshift.withProject("shared-components") {
+
+                             	echo "Apply template changes"
+				sh '''#!/bin/bash
+				oc project shared-components
+				oc apply -f openshift/app_deployment-okd.yaml 
+				echo "rolling out app"
+				oc process -l app=avo2-components -p ENV=dev -f openshift/app_deployment-okd.yaml | oc apply -f - 
+				'''
+
+
+				
+
+                        }
+                    }
+                } // script
+            } // steps
+        } // stage	    
     } // stages
 } // pipeline
