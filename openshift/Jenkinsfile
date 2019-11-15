@@ -39,7 +39,7 @@ pipeline {
                     openshift.withCluster() {
                         openshift.withProject("shared-components") {
 			   sh'''#!/bin/bash
-			   rm -f /tmp/.npmrc
+			   rm -f /.npmrc
 			    npm --registry=https://registry.npmjs.org install && npm run build || exit 1'''
 			   sh'''#!/bin/bash
 			   echo "##### BUILDING DOCKER IMAGE #####"
@@ -61,10 +61,10 @@ pipeline {
 
                              	echo "Publishing package to registry"
 			     	sh '''#/bin/bash
-			         cp /root/npm-config /tmp/.npmrc
+			         cp /root/npm-config .npmrc
 			   	 npm publish
 				 echo "removing .npmrc for install if node is the same we need to set registry for push nexus not seems to like @viaa:registry=.."
-				rm -f /tmp/.npmrc
+				rm -f .npmrc
 		                '''
 			     	sh '''#/bin/bash
 				echo "######PUSHING IMAGE######"
