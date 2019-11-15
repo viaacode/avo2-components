@@ -27,9 +27,9 @@ describe('<Modal />', () => {
 
 		expect(modalWrapperElement).toHaveLength(1);
 		expect(modalWrapperElement.hasClass('c-modal-context')).toEqual(true);
+		expect(modalWrapperElement.hasClass(customClassName)).toEqual(true);
 		expect(modalInnerElement).toHaveLength(1);
 		expect(modalInnerElement.hasClass('c-modal')).toEqual(true);
-		expect(modalInnerElement.hasClass(customClassName)).toEqual(true);
 	});
 
 	it('Should set the correct className for every size', () => {
