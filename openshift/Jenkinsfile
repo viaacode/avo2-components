@@ -9,7 +9,7 @@ pipeline {
     agent {
       node {
         // spin up a pod to run this build on
-        label 'nodejs'
+        label 'docker'
       }
     }
     options {
@@ -61,7 +61,7 @@ pipeline {
 
                              	echo "Publishing package to registry"
 			     	sh '''#/bin/bash
-			         cp /home/jenkins/.npm-global/etc/npmrc /tmp/.npmrc
+			         cp /root/npm-config /tmp/.npmrc
 			   	 npm publish
 				 echo "removing .npmrc for install if node is the same we need to set registry for push nexus not seems to like @viaa:registry=.."
 				rm -f /tmp/.npmrc
