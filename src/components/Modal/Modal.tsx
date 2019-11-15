@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
+import { DefaultProps } from '../../types';
 
 import { Button } from '../Button/Button';
 
@@ -13,8 +14,9 @@ import { ModalBackdrop } from './ModalBackdrop';
 
 import './Modal.scss';
 
-export interface ModalProps {
+export interface ModalProps extends DefaultProps {
 	children: ReactNode;
+	disableContextClick?: boolean;
 	isOpen: boolean;
 	title?: string;
 	size?: 'small' | 'medium' | 'large' | 'extra-large' | 'fullscreen' | 'fullwidth' | 'auto';
@@ -24,6 +26,8 @@ export interface ModalProps {
 
 export const Modal: FunctionComponent<ModalProps> = ({
 	children,
+	className,
+	disableContextClick = false,
 	isOpen,
 	title,
 	size,
@@ -43,7 +47,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 
 	function onContextClick(event: MouseEvent<HTMLElement>) {
 		// close the modal when clicking outside the modal
-		if (event.target === event.currentTarget) {
+		if (!disableContextClick && event.target === event.currentTarget) {
 			close();
 		}
 	}
@@ -51,7 +55,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	return ReactDOM.createPortal(
 		<Fragment>
 			<div
-				className={classNames('c-modal-context', { 'c-modal-context--visible': isOpen })}
+				className={classNames(className, 'c-modal-context', { 'c-modal-context--visible': isOpen })}
 				onClick={onContextClick}
 			>
 				<div
