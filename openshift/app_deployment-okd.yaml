@@ -46,7 +46,7 @@ objects:
           deploymentconfig: avo2-components-${ENV}
       spec:
         containers:
-        - image: docker-registry.default.svc:5000/shared-components/avo2-components-${ENV}:latest
+        - image: docker-registry.default.svc:5000/shared-components/avo2-components:latest
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3
