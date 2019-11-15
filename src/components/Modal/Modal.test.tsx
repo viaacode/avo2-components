@@ -15,8 +15,9 @@ describe('<Modal />', () => {
 	});
 
 	it('Should set the correct className(s)', () => {
+		const customClassName = 'c-modal-custom';
 		const modalComponent = shallow(
-			<Modal isOpen={false}>
+			<Modal className={customClassName} isOpen={false}>
 				<Fragment />
 			</Modal>
 		);
@@ -26,6 +27,7 @@ describe('<Modal />', () => {
 
 		expect(modalWrapperElement).toHaveLength(1);
 		expect(modalWrapperElement.hasClass('c-modal-context')).toEqual(true);
+		expect(modalWrapperElement.hasClass(customClassName)).toEqual(true);
 		expect(modalInnerElement).toHaveLength(1);
 		expect(modalInnerElement.hasClass('c-modal')).toEqual(true);
 	});
