@@ -84,6 +84,7 @@ pipeline {
 
                              	echo "Apply template changes"
 				sh '''#!/bin/bash
+				oc project shared-components
 				oc apply -f openshift/app_deployment-okd.yaml 
 				echo "rolling out app"
 				oc process -l app=avo2-components -p ENV=dev -f openshift/app_deployment-okd.yaml | oc apply -f - 
