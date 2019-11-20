@@ -1,13 +1,24 @@
-import React, { ChangeEvent, FunctionComponent } from 'react';
-
 import classnames from 'classnames';
+import { setHours, setMinutes } from 'date-fns';
+// https://github.com/Hacker0x01/react-datepicker/issues/1815#issuecomment-513215416
+import nl from 'date-fns/locale/nl';
+import React, { FunctionComponent } from 'react';
+import ReactDatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
+import 'react-datepicker/dist/react-datepicker.css';
+import './DatePicker.scss';
+
+registerLocale('nl', nl);
+setDefaultLocale('nl');
+
 export interface DatePickerProps extends DefaultProps {
 	id?: string;
 	disabled?: boolean;
+	required?: boolean;
+	showTimeInput?: boolean;
 	placeholder?: string;
 	value?: Date | null;
 	onChange?: (date: Date | null) => void;
@@ -17,34 +28,28 @@ export const DatePicker: FunctionComponent<DatePickerProps> = ({
 	className,
 	id,
 	disabled = false,
+	required = false,
+	showTimeInput = false,
 	placeholder = 'dd/mm/yyyy',
 	value,
 	onChange = () => {},
 }) => {
-	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
-		const val = event.target.value;
-
-		if (val) {
-			onChange(new Date(val));
-		} else {
-			onChange(null);
-		}
-	}
-
-	function getValue(date: Date | null | undefined) {
-		return date ? date.toISOString().slice(0, 'yyyy-mm-dd'.length) : '';
-	}
-
 	return (
 		<div className={classnames(className, 'c-input-with-icon')}>
-			<input
+			<ReactDatePicker
 				className="c-input"
-				type="date"
 				id={id}
-				value={getValue(value)}
+				selected={value}
 				disabled={disabled}
-				placeholder={placeholder}
-				onChange={onValueChange}
+				required={required}
+				placeholderText={placeholder || showTimeInput ? 'dd/mm/yyyy uu:mm' : 'dd/mm/yyyy'}
+				onChange={onChange}
+				dateFormat={showTimeInput ? 'dd/MM/yyyy HH:mm' : 'dd/MM/yyyy'}
+				timeFormat="HH:mm"
+				timeIntervals={60}
+				timeCaption="tijd"
+				showTimeSelect={showTimeInput}
+				injectTimes={[setHours(setMinutes(new Date(), 59), 59)]}
 			/>
 			<Icon name="calendar" />
 		</div>

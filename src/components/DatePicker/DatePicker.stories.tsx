@@ -38,4 +38,13 @@ storiesOf('DatePicker', module)
 				<DatePicker disabled />
 			</DatePickerStoryComponent>
 		</Fragment>
+	))
+	.add('DateTimePicker', () => (
+		<Fragment>
+			<Spacer margin="bottom">
+				<DatePickerStoryComponent>
+					<DatePicker showTimeInput onChange={action('onChange')} />
+				</DatePickerStoryComponent>
+			</Spacer>
+		</Fragment>
 	));
