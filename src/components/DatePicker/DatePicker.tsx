@@ -15,7 +15,6 @@ registerLocale('nl', nl);
 setDefaultLocale('nl');
 
 export interface DatePickerProps extends DefaultProps {
-	id?: string;
 	disabled?: boolean;
 	required?: boolean;
 	showTimeInput?: boolean;
@@ -26,11 +25,10 @@ export interface DatePickerProps extends DefaultProps {
 
 export const DatePicker: FunctionComponent<DatePickerProps> = ({
 	className,
-	id,
 	disabled = false,
 	required = false,
 	showTimeInput = false,
-	placeholder = 'dd/mm/yyyy',
+	placeholder,
 	value,
 	onChange = () => {},
 }) => {
@@ -38,11 +36,10 @@ export const DatePicker: FunctionComponent<DatePickerProps> = ({
 		<div className={classnames(className, 'c-input-with-icon')}>
 			<ReactDatePicker
 				className="c-input"
-				id={id}
 				selected={value}
 				disabled={disabled}
 				required={required}
-				placeholderText={placeholder || showTimeInput ? 'dd/mm/yyyy uu:mm' : 'dd/mm/yyyy'}
+				placeholderText={placeholder || (showTimeInput ? 'dd/mm/yyyy uu:mm' : 'dd/mm/yyyy')}
 				onChange={onChange}
 				dateFormat={showTimeInput ? 'dd/MM/yyyy HH:mm' : 'dd/MM/yyyy'}
 				timeFormat="HH:mm"

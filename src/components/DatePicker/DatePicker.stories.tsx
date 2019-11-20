@@ -39,6 +39,13 @@ storiesOf('DatePicker', module)
 			</DatePickerStoryComponent>
 		</Fragment>
 	))
+	.add('DatePicker placeholder', () => (
+		<Fragment>
+			<DatePickerStoryComponent>
+				<DatePicker placeholder="dd mm yy" onChange={action('onChange')} />
+			</DatePickerStoryComponent>
+		</Fragment>
+	))
 	.add('DateTimePicker', () => (
 		<Fragment>
 			<Spacer margin="bottom">
