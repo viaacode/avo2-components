@@ -33,6 +33,10 @@ export default {
 	external: [ // Suppresses warnings about external dependencies
 		'autosize',
 		'classnames',
+		'date-fns',
+		'date-fns/locale/nl',
+		'react-datepicker',
+		'react-datepicker/dist/react-datepicker.css',
 		'jquery',
 		'marked',
 		'popper.js',

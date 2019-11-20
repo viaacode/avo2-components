@@ -140,4 +140,14 @@ storiesOf('Modal', module)
 				<Button type="primary" label="Ok" ariaLabel="Ok" />
 			</ModalFooterRight>
 		</Modal>
+	))
+	.add('Headless modal', () => (
+		<Modal isOpen={true} size="small" scrollable={true}>
+			<ModalBody>
+				<p>{loremIpsum({ count: 20 })}</p>
+			</ModalBody>
+			<ModalFooterRight>
+				<Button type="primary" label="Ok" ariaLabel="Ok" />
+			</ModalFooterRight>
+		</Modal>
 	));

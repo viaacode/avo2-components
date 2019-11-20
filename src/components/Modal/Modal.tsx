@@ -32,7 +32,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	title,
 	size,
 	scrollable,
-	onClose = () => {},
+	onClose,
 }) => {
 	const body = useSlot(ModalBody, children);
 	const headerRight = useSlot(ModalHeaderRight, children);
@@ -42,7 +42,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	useKeyPress('Escape', close);
 
 	function close() {
-		onClose();
+		onClose && onClose();
 	}
 
 	function onContextClick(event: MouseEvent<HTMLElement>) {
@@ -70,23 +70,32 @@ export const Modal: FunctionComponent<ModalProps> = ({
 						'c-modal--scrollable': scrollable,
 					})}
 				>
-					<div className="c-modal__header c-modal__header--bordered">
-						<div className="c-toolbar c-toolbar--spaced">
-							{title && (
-								<div className="c-toolbar__left">
-									<div className="c-toolbar__item">
-										<h2 className="c-modal__title">{title}</h2>
+					{(!!title || !!headerRight || !!onClose) && (
+						<div className="c-modal__header c-modal__header--bordered">
+							<div className="c-toolbar c-toolbar--spaced">
+								{title && (
+									<div className="c-toolbar__left">
+										<div className="c-toolbar__item">
+											<h2 className="c-modal__title">{title}</h2>
+										</div>
 									</div>
-								</div>
-							)}
-							<div className="c-toolbar__right">
-								{headerRight && <div className="c-toolbar__item">{headerRight}</div>}
-								<div className="c-toolbar__item">
-									<Button onClick={close} icon="close" type="borderless" ariaLabel="close modal" />
+								)}
+								<div className="c-toolbar__right">
+									{headerRight && <div className="c-toolbar__item">{headerRight}</div>}
+									{!!onClose && (
+										<div className="c-toolbar__item">
+											<Button
+												onClick={close}
+												icon="close"
+												type="borderless"
+												ariaLabel="close modal"
+											/>
+										</div>
+									)}
 								</div>
 							</div>
 						</div>
-					</div>
+					)}
 					<div className="c-modal__body">{body}</div>
 					{(footerLeft || footerRight) && (
 						<div className="c-modal__footer c-modal__footer--bordered">
