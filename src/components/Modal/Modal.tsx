@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
+import { DefaultProps } from '../../types';
 
 import { Button } from '../Button/Button';
 
@@ -13,8 +14,9 @@ import { ModalBackdrop } from './ModalBackdrop';
 
 import './Modal.scss';
 
-export interface ModalProps {
+export interface ModalProps extends DefaultProps {
 	children: ReactNode;
+	disableContextClick?: boolean;
 	isOpen: boolean;
 	title?: string;
 	size?: 'small' | 'medium' | 'large' | 'extra-large' | 'fullscreen' | 'fullwidth' | 'auto';
@@ -24,11 +26,13 @@ export interface ModalProps {
 
 export const Modal: FunctionComponent<ModalProps> = ({
 	children,
+	className,
+	disableContextClick = false,
 	isOpen,
 	title,
 	size,
 	scrollable,
-	onClose = () => {},
+	onClose,
 }) => {
 	const body = useSlot(ModalBody, children);
 	const headerRight = useSlot(ModalHeaderRight, children);
@@ -38,12 +42,12 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	useKeyPress('Escape', close);
 
 	function close() {
-		onClose();
+		onClose && onClose();
 	}
 
 	function onContextClick(event: MouseEvent<HTMLElement>) {
 		// close the modal when clicking outside the modal
-		if (event.target === event.currentTarget) {
+		if (!disableContextClick && event.target === event.currentTarget) {
 			close();
 		}
 	}
@@ -51,7 +55,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	return ReactDOM.createPortal(
 		<Fragment>
 			<div
-				className={classNames('c-modal-context', { 'c-modal-context--visible': isOpen })}
+				className={classNames(className, 'c-modal-context', { 'c-modal-context--visible': isOpen })}
 				onClick={onContextClick}
 			>
 				<div
@@ -66,23 +70,32 @@ export const Modal: FunctionComponent<ModalProps> = ({
 						'c-modal--scrollable': scrollable,
 					})}
 				>
-					<div className="c-modal__header c-modal__header--bordered">
-						<div className="c-toolbar c-toolbar--spaced">
-							{title && (
-								<div className="c-toolbar__left">
-									<div className="c-toolbar__item">
-										<h2 className="c-modal__title">{title}</h2>
+					{(!!title || !!headerRight || !!onClose) && (
+						<div className="c-modal__header c-modal__header--bordered">
+							<div className="c-toolbar c-toolbar--spaced">
+								{title && (
+									<div className="c-toolbar__left">
+										<div className="c-toolbar__item">
+											<h2 className="c-modal__title">{title}</h2>
+										</div>
 									</div>
-								</div>
-							)}
-							<div className="c-toolbar__right">
-								{headerRight && <div className="c-toolbar__item">{headerRight}</div>}
-								<div className="c-toolbar__item">
-									<Button onClick={close} icon="close" type="borderless" ariaLabel="close modal" />
+								)}
+								<div className="c-toolbar__right">
+									{headerRight && <div className="c-toolbar__item">{headerRight}</div>}
+									{!!onClose && (
+										<div className="c-toolbar__item">
+											<Button
+												onClick={close}
+												icon="close"
+												type="borderless"
+												ariaLabel="close modal"
+											/>
+										</div>
+									)}
 								</div>
 							</div>
 						</div>
-					</div>
+					)}
 					<div className="c-modal__body">{body}</div>
 					{(footerLeft || footerRight) && (
 						<div className="c-modal__footer c-modal__footer--bordered">

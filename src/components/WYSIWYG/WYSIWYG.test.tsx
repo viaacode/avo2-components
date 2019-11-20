@@ -81,11 +81,11 @@ describe('<WYSIWYG />', () => {
 	});
 
 	it('Should correctly pass on `removeformatPasted`', () => {
-		const removeformatPasted = true;
+		const removeFormatPasted = true;
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" removeformatPasted={removeformatPasted} />);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" removeFormatPasted={removeFormatPasted} />);
 
-		expect(wysiwygComponent.prop('removeformatPasted')).toEqual(removeformatPasted);
+		expect(wysiwygComponent.prop('removeformatPasted')).toEqual(removeFormatPasted);
 	});
 
 	it('Should correctly pass on `shouldUseSvgIcons`', () => {
