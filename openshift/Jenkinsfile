@@ -42,8 +42,8 @@ pipeline {
 			   rm -f /.npmrc
 			    npm --registry=https://registry.npmjs.org install && npm run build || exit 1'''
 			   sh'''#!/bin/bash
-			   echo "##### BUILDING DOCKER IMAGE #####"
-			      docker build -t docker-registry-default.apps.do-prd-okp-m0.do.viaa.be/shared-components/avo2-components:latest .
+			   echo "##### BUILDING DOCKER IMAGE DISABLED#####"
+			    #  docker build -t docker-registry-default.apps.do-prd-okp-m0.do.viaa.be/shared-components/avo2-components:latest .
 			    '''
                         }
                     }
@@ -68,7 +68,7 @@ pipeline {
 		                '''
 			     	sh '''#/bin/bash
 				echo "######PUSHING IMAGE######"
-				docker push docker-registry-default.apps.do-prd-okp-m0.do.viaa.be/shared-components/avo2-components:latest 
+				#docker push docker-registry-default.apps.do-prd-okp-m0.do.viaa.be/shared-components/avo2-components:latest 
 				'''
                         }
                     }
