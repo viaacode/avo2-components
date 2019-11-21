@@ -1,5 +1,4 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
-import { RefHandler } from 'react-popper';
 
 import classnames from 'classnames';
 import { Placement } from 'popper.js';
@@ -14,7 +13,7 @@ export interface MenuProps extends DefaultProps {
 	renderItem?: (menuItem: MenuItemInfo) => ReactNode; // If you want to render your own item
 	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;
-	innerRef?: RefHandler;
+	innerRef?: (ref: HTMLElement | null) => void;
 	isOpen?: boolean;
 	placement?: Placement; // Only used in Dropdown
 	search?: boolean;
