@@ -46,7 +46,7 @@ export const DatePicker: FunctionComponent<DatePickerProps> = ({
 				timeIntervals={60}
 				timeCaption="tijd"
 				showTimeSelect={showTimeInput}
-				injectTimes={[setHours(setMinutes(new Date(), 59), 59)]}
+				injectTimes={[setHours(setMinutes(new Date(), 59), 23)]}
 			/>
 			<Icon name="calendar" />
 		</div>
