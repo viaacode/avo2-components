@@ -102,7 +102,7 @@ import {
 import { Select, SelectOption } from './components/Select/Select';
 import { Spacer } from './components/Spacer/Spacer';
 import { Spinner } from './components/Spinner/Spinner';
-import { Table } from './components/Table/Table';
+import { Table, TableColumn } from './components/Table/Table';
 import { Tab } from './components/Tabs/Tab/Tab';
 import { Tabs } from './components/Tabs/Tabs';
 import { TagList, TagOption } from './components/TagList/TagList';
@@ -220,6 +220,7 @@ export {
 	Spinner,
 	Tab,
 	Table,
+	TableColumn,
 	Tabs,
 	TagList,
 	TagOption,
