@@ -28,11 +28,19 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 	const iconName: IconName = category === 'audio' ? 'headphone' : (category as IconName);
 
 	useEffect(() => {
+		let img: HTMLImageElement | null = null;
+
 		if (src) {
-			const img = new Image();
+			img = new Image();
 			img.onload = () => setLoaded(true);
 			img.src = src;
 		}
+
+		return () => {
+			if (img) {
+				img.onload = () => {};
+			}
+		};
 	}, [src]);
 
 	return (

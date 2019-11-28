@@ -8,7 +8,7 @@ import { IconName } from '../Icon/types';
 
 import './Table.scss';
 
-export type Column = {
+export type TableColumn = {
 	col?:
 		| '1'
 		| '2'
@@ -33,7 +33,7 @@ export type Column = {
 export interface TableProps extends DefaultProps {
 	align?: boolean;
 	children?: ReactNode;
-	columns?: Column[];
+	columns?: TableColumn[];
 	data?: any[];
 	emptyStateMessage?: string;
 	horizontal?: boolean;
@@ -66,7 +66,7 @@ export const Table: FunctionComponent<TableProps> = ({
 	untable,
 	variant,
 }) => {
-	const renderHeading = (heading: Column) => {
+	const renderHeading = (heading: TableColumn) => {
 		const { id, col, sortable, label } = heading;
 
 		const isColumnSorted = sortColumn === id;
