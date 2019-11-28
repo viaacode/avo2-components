@@ -17,11 +17,18 @@ export const Avatar: FunctionComponent<AvatarProps> = ({
 	initials,
 	size,
 	image,
+	icon,
 	name,
 	title,
 }) =>
 	name || title ? (
-		<div className={classnames(className, 'c-avatar-and-text')}>
+		<div
+			className={classnames(className, {
+				'c-avatar': true,
+				'c-avatar-and-text': true,
+				'c-avatar--large': size === 'large',
+			})}
+		>
 			<AvatarIcon initials={initials} size={size} image={image} />
 			<div className="c-avatar-and-text__text">
 				{name && <p>{name}</p>}
@@ -29,5 +36,13 @@ export const Avatar: FunctionComponent<AvatarProps> = ({
 			</div>
 		</div>
 	) : (
-		<AvatarIcon className={className} initials={initials} size={size} image={image} />
+		<AvatarIcon
+			className={classnames(className, {
+				'c-avatar--large': size === 'large',
+			})}
+			initials={initials}
+			size={size}
+			image={image}
+			icon={icon}
+		/>
 	);
