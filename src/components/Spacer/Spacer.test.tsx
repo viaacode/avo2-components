@@ -30,10 +30,13 @@ describe('<Spacer />', () => {
 	});
 
 	it('Should set the correct className when multiple margins are passed', () => {
-		const spacerComponent = shallow(<Spacer margin={['left-small', 'top-large']} />);
+		const spacerComponent = shallow(
+			<Spacer margin={['left-small', 'top-large', 'right-extra-large']} />
+		);
 
 		expect(spacerComponent.hasClass('u-spacer-left-s')).toEqual(true);
 		expect(spacerComponent.hasClass('u-spacer-top-l')).toEqual(true);
+		expect(spacerComponent.hasClass('u-spacer-right-el')).toEqual(true);
 	});
 
 	it('Should correctly pass children', () => {
