@@ -35,7 +35,7 @@ export interface SpacerProps extends DefaultProps {
 const abbreviateSizes = (input: string): string => {
 	return input
 		.replace('large', 'l')
-		.replace('extra-', 'e')
+		.replace('extra-', 'x')
 		.replace('small', 's');
 };
 

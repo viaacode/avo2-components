@@ -36,7 +36,7 @@ describe('<Spacer />', () => {
 
 		expect(spacerComponent.hasClass('u-spacer-left-s')).toEqual(true);
 		expect(spacerComponent.hasClass('u-spacer-top-l')).toEqual(true);
-		expect(spacerComponent.hasClass('u-spacer-right-el')).toEqual(true);
+		expect(spacerComponent.hasClass('u-spacer-right-xl')).toEqual(true);
 	});
 
 	it('Should correctly pass children', () => {
