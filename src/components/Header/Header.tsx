@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
-import { ContentType, DefaultProps } from '../../types';
+import { DefaultProps, EnglishContentType, translateContentType } from '../../types';
 import { Container } from '../Container/Container';
 import { Flex } from '../Flex/Flex';
 import { HeaderContentType } from '../HeaderContentType/HeaderContentType';
@@ -17,7 +17,7 @@ import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 
 interface HeaderProps extends DefaultProps {
 	children?: ReactNode;
-	category?: ContentType;
+	category?: EnglishContentType;
 	categoryLabel?: string;
 	title: string;
 	onClickTitle?: () => void;
@@ -29,7 +29,6 @@ interface HeaderProps extends DefaultProps {
 export const Header: FunctionComponent<HeaderProps> = ({
 	children,
 	category,
-	categoryLabel,
 	title,
 	onClickTitle,
 	views,
@@ -47,11 +46,14 @@ export const Header: FunctionComponent<HeaderProps> = ({
 				<Toolbar autoHeight>
 					<ToolbarLeft>
 						<ToolbarItem>
-							{showMetaData && !!category && !!categoryLabel && (
+							{showMetaData && !!category && (
 								<Spacer margin="bottom-small">
 									<MetaData spaced={true} category={category}>
 										<MetaDataItem>
-											<HeaderContentType category={category} label={categoryLabel} />
+											<HeaderContentType
+												category={category}
+												label={translateContentType(category, 'en', false)}
+											/>
 										</MetaDataItem>
 										{views && <MetaDataItem icon="eye" label={views} />}
 										{bookmarks && <MetaDataItem icon="bookmark" label={bookmarks} />}
