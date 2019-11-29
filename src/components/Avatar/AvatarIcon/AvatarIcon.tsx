@@ -3,17 +3,21 @@ import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
 import { DefaultProps } from '../../../types';
+import { Icon } from '../../Icon/Icon';
+import { IconName } from '../../Icon/types';
 
 export interface AvatarIconProps extends DefaultProps {
-	initials: string;
+	initials?: string;
 	image?: string;
-	size?: 'small';
+	icon?: IconName;
+	size?: 'small' | 'large';
 }
 
 export const AvatarIcon: FunctionComponent<AvatarIconProps> = ({
 	className,
 	initials,
 	image,
+	icon = 'user',
 	size,
 }) => (
 	<div
@@ -22,6 +26,12 @@ export const AvatarIcon: FunctionComponent<AvatarIconProps> = ({
 			'c-avatar--small': size === 'small',
 		})}
 	>
-		{image ? <img src={image} alt="avatar" /> : initials}
+		{image ? (
+			<img src={image} alt="avatar" />
+		) : initials ? (
+			initials
+		) : (
+			<Icon name={icon} size={size} />
+		)}
 	</div>
 );

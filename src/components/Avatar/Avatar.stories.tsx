@@ -14,4 +14,5 @@ storiesOf('Avatar', module)
 	.add('Avatar with name', () => <Avatar initials="JD" name="John Doe" />)
 	.add('Avatar with name and title', () => (
 		<Avatar initials="JD" name="John Doe" title="Quality Assurance Tester" />
-	));
+	))
+	.add('Large avatar', () => <Avatar icon="user" size="large" />);

@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Avatar } from './Avatar';
@@ -11,9 +11,21 @@ describe('<Avatar />', () => {
 
 	it('should pass a custom className', () => {
 		const customClass = 'c-avatar-custom';
-		const avatarComponent = <Avatar className={customClass} initials="JD" />;
+		const avatarComponent = shallow(<Avatar className={customClass} initials="JD" />);
 
-		expect(shallow(avatarComponent).hasClass(customClass)).toBeTruthy();
+		expect(avatarComponent.hasClass(customClass)).toBeTruthy();
+	});
+
+	it('should set the large class when setting size to large', () => {
+		const avatarComponent = shallow(<Avatar size="large" initials="JD" />);
+
+		expect(avatarComponent.hasClass('c-avatar--large')).toBeTruthy();
+	});
+
+	it('should use an icon when no initials or name are passed', () => {
+		const avatarComponent = mount(<Avatar />);
+
+		expect(avatarComponent.find('.o-svg-icon--user')).toHaveLength(1);
 	});
 
 	it('Should correctly render the name', () => {
