@@ -27,6 +27,31 @@ storiesOf('Spacer', module)
 			<p>{content}</p>
 		</Fragment>
 	))
+	.add('Spacer sizes', () => (
+		<Fragment>
+			<p>
+				<b>none </b>
+				{content}
+			</p>
+			<Spacer margin="small">
+				<b>small </b>
+				{content}
+			</Spacer>
+			<Spacer>
+				<b>medium </b>
+				{content}
+			</Spacer>
+			<Spacer margin="large">
+				<b>large </b>
+				{content}
+			</Spacer>
+			<Spacer margin="extra-large">
+				<b>extra-large </b>
+				{content}
+			</Spacer>
+			<p>{content}</p>
+		</Fragment>
+	))
 	.add('Spacer with multiple margins', () => (
 		<Fragment>
 			<p>{content}</p>
