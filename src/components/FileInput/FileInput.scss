@@ -1,12 +1,12 @@
-.c-file-upload-button {
+.c-button--file {
 	position: relative;
-}
 
-.a-file-upload-input-field {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	opacity: 0;
+	input[type="file"] {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: 0.0001;
+	}
 }

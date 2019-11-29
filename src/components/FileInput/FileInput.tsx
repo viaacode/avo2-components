@@ -25,7 +25,7 @@ export const FileInput: FunctionComponent<FileInputProps> = ({
 }) => {
 	return (
 		<Button
-			className={classnames('c-file-upload-button', className)}
+			className={classnames('c-button--file', className)}
 			type="secondary"
 			disabled={disabled}
 			ariaLabel={ariaLabel || placeholder}
@@ -33,7 +33,6 @@ export const FileInput: FunctionComponent<FileInputProps> = ({
 			<div className="c-button__label">{placeholder}</div>
 			<input
 				type="file"
-				className="a-file-upload-input-field"
 				id={id}
 				disabled={disabled}
 				{...(ariaLabel ? { 'aria-label': ariaLabel } : {})}

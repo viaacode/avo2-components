@@ -13,10 +13,7 @@ describe('<TextInput />', () => {
 	it('Should set the correct className', () => {
 		const inputComponent = shallow(<FileInput className={customClass} />);
 
-		const inputElement = inputComponent.find('input');
-
 		expect(inputComponent.hasClass(customClass)).toEqual(true);
-		expect(inputElement.hasClass('a-file-upload-input-field')).toEqual(true);
 	});
 
 	it('Should pass on the id', () => {
