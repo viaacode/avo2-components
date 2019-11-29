@@ -121,6 +121,13 @@ import { Tooltip } from './components/Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
 import { VideoWrapper } from './components/VideoWrapper/VideoWrapper';
 import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
+export {
+	Language,
+	EnglishContentType,
+	DutchContentType,
+	ContentType,
+	translateContentType,
+} from './types';
 
 export {
 	COLORS,
