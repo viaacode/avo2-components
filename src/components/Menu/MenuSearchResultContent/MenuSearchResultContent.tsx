@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
-import { ContentType, DefaultProps } from '../../../types';
+import { DefaultProps, EnglishContentType } from '../../../types';
 import { Icon } from '../../Icon/Icon';
 import { IconName } from '../../Icon/types';
 import { MenuContent } from '../MenuContent/MenuContent';
@@ -10,7 +10,7 @@ import { MenuContent } from '../MenuContent/MenuContent';
 export interface MenuSearchResultItemInfo {
 	label: string;
 	id: string | number;
-	type: ContentType;
+	type: EnglishContentType;
 }
 
 export interface MenuContentProps extends DefaultProps {
@@ -19,7 +19,7 @@ export interface MenuContentProps extends DefaultProps {
 	onClick?: (menuItemId: string | number) => void;
 }
 
-export const CONTENT_TYPE_TO_ICON_NAME: { [contentType in ContentType]: IconName } = {
+export const CONTENT_TYPE_TO_ICON_NAME: { [contentType in EnglishContentType]?: IconName } = {
 	collection: 'collection',
 	video: 'video',
 	audio: 'volume-1',
@@ -27,7 +27,7 @@ export const CONTENT_TYPE_TO_ICON_NAME: { [contentType in ContentType]: IconName
 	search: 'search',
 };
 
-export const CONTENT_TYPE_TO_LABEL: { [contentType in ContentType]: string } = {
+export const CONTENT_TYPE_TO_LABEL: { [contentType in EnglishContentType]?: string } = {
 	collection: 'Collectie',
 	video: 'Video',
 	audio: 'Audio',

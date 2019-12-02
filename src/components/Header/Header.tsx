@@ -18,7 +18,6 @@ import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 interface HeaderProps extends DefaultProps {
 	children?: ReactNode;
 	category?: EnglishContentType;
-	categoryLabel?: string;
 	title: string;
 	onClickTitle?: () => void;
 	showMetaData: boolean;
