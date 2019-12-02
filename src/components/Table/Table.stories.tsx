@@ -6,9 +6,9 @@ import { action } from '../../helpers/action';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
-import { Column, Table } from './Table';
+import { Table, TableColumn } from './Table';
 
-const COLUMNS: Column[] = [
+const COLUMNS: TableColumn[] = [
 	{ id: 'name', label: 'Name', sortable: true },
 	{ id: 'age', label: 'Age (in yrs)', sortable: true },
 	{ id: 'cat', label: 'Has cat?', col: '2' },

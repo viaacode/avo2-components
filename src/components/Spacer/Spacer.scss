@@ -25,7 +25,7 @@
 /* Variables
    ========================================================================== */
 
-  $g-spacer-unit: 0.8rem !default;
+$g-spacer-unit: 0.8rem !default;
 
 /* All
    ========================================================================== */
@@ -40,6 +40,10 @@
 
 .u-spacer-l {
 	margin: $g-spacer-unit * 3 !important;
+}
+
+.u-spacer-xl {
+	margin: $g-spacer-unit * 6 !important;
 }
 
 /* Left
@@ -57,6 +61,10 @@
 	margin-left: $g-spacer-unit * 3 !important;
 }
 
+.u-spacer-top-xl {
+	margin-left: $g-spacer-unit * 6 !important;
+}
+
 /* Right
    ========================================================================== */
 
@@ -70,6 +78,10 @@
 
 .u-spacer-right-l {
 	margin-right: $g-spacer-unit * 3 !important;
+}
+
+.u-spacer-top-xl {
+	margin-right: $g-spacer-unit * 6 !important;
 }
 
 /* Top
@@ -87,6 +99,10 @@
 	margin-top: $g-spacer-unit * 3 !important;
 }
 
+.u-spacer-top-xl {
+	margin-top: $g-spacer-unit * 6 !important;
+}
+
 /* Bottom
    ========================================================================== */
 
@@ -100,4 +116,8 @@
 
 .u-spacer-bottom-l {
 	margin-bottom: $g-spacer-unit * 3 !important;
+}
+
+.u-spacer-bottom-xl {
+	margin-bottom: $g-spacer-unit * 6 !important;
 }

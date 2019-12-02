@@ -4,21 +4,28 @@ import classNames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
+import './Spacer.scss';
+
 type SpacerMarginOption =
 	| 'small'
 	| 'large'
+	| 'extra-large'
 	| 'left-small'
 	| 'left'
 	| 'left-large'
+	| 'left-extra-large'
 	| 'top-small'
 	| 'top'
 	| 'top-large'
+	| 'top-extra-large'
 	| 'right-small'
 	| 'right'
 	| 'right-large'
+	| 'right-extra-large'
 	| 'bottom-small'
 	| 'bottom'
-	| 'bottom-large';
+	| 'bottom-large'
+	| 'bottom-extra-large';
 
 export interface SpacerProps extends DefaultProps {
 	margin?: SpacerMarginOption | SpacerMarginOption[];
@@ -26,7 +33,10 @@ export interface SpacerProps extends DefaultProps {
 }
 
 const abbreviateSizes = (input: string): string => {
-	return input.replace('large', 'l').replace('small', 's');
+	return input
+		.replace('large', 'l')
+		.replace('extra-', 'x')
+		.replace('small', 's');
 };
 
 export const Spacer: FunctionComponent<SpacerProps> = ({ margin, children, className }) => {

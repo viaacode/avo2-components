@@ -102,7 +102,7 @@ export {
 export { Select, SelectOption } from './components/Select/Select';
 export { Spacer } from './components/Spacer/Spacer';
 export { Spinner } from './components/Spinner/Spinner';
-export { Table } from './components/Table/Table';
+export { Table, TableColumn } from './components/Table/Table';
 export { Tab } from './components/Tabs/Tab/Tab';
 export { Tabs } from './components/Tabs/Tabs';
 export { TagList, TagOption } from './components/TagList/TagList';
