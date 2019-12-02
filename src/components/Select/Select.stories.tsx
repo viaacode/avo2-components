@@ -25,4 +25,19 @@ storiesOf('Select', module)
 		<Fragment>
 			<Select options={options} value="Db" onChange={action('onChange')} />
 		</Fragment>
+	))
+	.add('Select disabled', () => (
+		<Fragment>
+			<Select options={options} value="Db" onChange={action('onChange')} disabled />
+		</Fragment>
+	))
+	.add('Select clearable', () => (
+		<Fragment>
+			<Select options={options} value="Db" onChange={action('onChange')} clearable />
+		</Fragment>
+	))
+	.add('Select loading', () => (
+		<Fragment>
+			<Select options={options} value="Db" onChange={action('onChange')} loading />
+		</Fragment>
 	));
