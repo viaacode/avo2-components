@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps, EnglishContentType, translateContentType } from '../../types';
-import { Container } from '../Container/Container';
+import { Container, ContainerProps } from '../Container/Container';
 import { Flex } from '../Flex/Flex';
 import { HeaderContentType } from '../HeaderContentType/HeaderContentType';
 import { Heading } from '../Heading/Heading';
@@ -16,31 +16,33 @@ import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 
 interface HeaderProps extends DefaultProps {
-	children?: ReactNode;
+	bookmarks?: string;
 	category?: EnglishContentType;
-	title: string;
+	children?: ReactNode;
+	containerSize?: ContainerProps['size'];
 	onClickTitle?: () => void;
 	showMetaData: boolean;
+	title: string;
 	views?: string;
-	bookmarks?: string;
 }
 
 export const Header: FunctionComponent<HeaderProps> = ({
-	children,
-	category,
-	title,
-	onClickTitle,
-	views,
 	bookmarks,
-	showMetaData,
+	category,
+	children,
 	className,
+	containerSize,
+	onClickTitle,
+	showMetaData,
+	title,
+	views,
 }) => {
 	const buttonSlot = useSlot(HeaderButtons, children);
 	const avatarSlot = useSlot(HeaderAvatar, children);
 	const tagSlot = useSlot(HeaderTags, children);
 
 	return (
-		<Container className={className} background="alt" mode="vertical">
+		<Container className={className} background="alt" mode="vertical" size={containerSize}>
 			<Container mode="horizontal">
 				<Toolbar autoHeight>
 					<ToolbarLeft>
@@ -59,16 +61,16 @@ export const Header: FunctionComponent<HeaderProps> = ({
 									</MetaData>
 								</Spacer>
 							)}
-							<Spacer margin="bottom-small">
-								<Heading className="u-clickable u-m-0" type="h2" onClick={onClickTitle}>
-									{title}
-								</Heading>
-							</Spacer>
+							<Heading className="u-clickable u-m-0" type="h2" onClick={onClickTitle}>
+								{title}
+							</Heading>
 							{(avatarSlot || tagSlot) && (
-								<Flex spaced="regular">
-									{avatarSlot}
-									{tagSlot}
-								</Flex>
+								<Spacer margin="top-small">
+									<Flex spaced="regular">
+										{avatarSlot}
+										{tagSlot}
+									</Flex>
+								</Spacer>
 							)}
 						</ToolbarItem>
 					</ToolbarLeft>
