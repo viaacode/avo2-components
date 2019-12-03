@@ -1,7 +1,9 @@
+@import '../../styles/settings/colors';
+
 .c-select {
 	&.c-select--is-disabled {
 		.c-select__control {
-			background: #D6DEE3;
+			background: $color-gray-100;
 		}
 	}
 
@@ -13,7 +15,7 @@
 		border-radius: 0.3rem;
 		background: #fff;
 		box-shadow: inset 0 0 0.3rem rgba(0, 0, 0, 0.1);
-		border: 1px solid #BAC7D1;
+		border: 1px solid $color-gray-150;
 		font-size: inherit;
 		min-height: 3.6rem;
 		width: 100%;
@@ -21,13 +23,13 @@
 		transition: all 0.15s ease-in-out;
 
 		&:hover {
-			border: 1px solid #BAC7D1;
+			border: 1px solid $color-gray-150;
 		}
 
 		&.c-select__control--is-focused {
 			outline: 0;
-			border-color: #3FB1D6;
-			box-shadow: inset 0 0 0 0.1rem #3FB1D6, 0 0 0.5rem #69c2df;
+			border-color: $color-border-color;
+			box-shadow: inset 0 0 0 0.1rem $color-border-color, 0 0 0.5rem $color-input-box-shadow;
 		}
 	}
 }

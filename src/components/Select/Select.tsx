@@ -6,7 +6,7 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
-import CreatableSelect from 'react-select/src/Creatable';
+import { COLORS } from '../../colors';
 import './Select.scss';
 
 export interface SelectOption {
@@ -46,6 +46,15 @@ export const Select: FunctionComponent<SelectProps> = ({
 		}
 	}
 
+	const styleFunctions = {
+		option: (styles: any, options: { isSelected: boolean }) => {
+			return {
+				...styles,
+				backgroundColor: options.isSelected ? COLORS.GRAYSCALE.G200 : styles.backgroundColor,
+			};
+		},
+	};
+
 	return (
 		<ReactSelect
 			className={classnames('c-select', className)}
@@ -58,6 +67,7 @@ export const Select: FunctionComponent<SelectProps> = ({
 			isLoading={loading}
 			isClearable={clearable}
 			placeholder={placeholder}
+			styles={styleFunctions}
 			onChange={onValueChange}
 		/>
 	);

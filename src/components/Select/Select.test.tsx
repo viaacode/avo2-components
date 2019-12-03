@@ -27,7 +27,6 @@ describe('<Select />', () => {
 
 		const selectElement = selectComponent.find('div').at(0);
 
-		console.log('select element: ', selectElement.html());
 		expect(selectElement.hasClass(customClass)).toEqual(true);
 		expect(selectElement.hasClass('c-select')).toEqual(true);
 	});
@@ -51,35 +50,4 @@ describe('<Select />', () => {
 
 		expect(selectElement.hasClass('c-select--is-disabled')).toEqual(true);
 	});
-
-	// it('Should be able to set an initial value', () => {
-	// 	const defaultValue = options[5].value;
-	//
-	// 	const selectComponent = mount(<Select options={options} value={defaultValue} />);
-	//
-	// 	const selectElement = selectComponent.find('input');
-	//
-	// 	expect(selectElement.prop('value')).toEqual(defaultValue);
-	// });
-	//
-	// it('Should call the onChange handler when the select option changes', () => {
-	// 	const onChangeHandler = jest.fn();
-	//
-	// 	const selectComponent = mount(<Select options={options} onChange={onChangeHandler} />);
-	//
-	// 	const selectElement = selectComponent.find('select');
-	//
-	// 	// selectElement.simulate('change', { target: { value: options[3] } });
-	// 	(selectComponent.find('Select').instance() as any).selectOption(options[3]);
-	//
-	// 	expect(onChangeHandler).toHaveBeenCalled();
-	// 	expect(onChangeHandler).toHaveBeenCalledTimes(1);
-	// 	expect(onChangeHandler).toHaveBeenCalledWith(options[3]);
-	//
-	// 	// selectElement.simulate('change', { target: { value: options[6] } });
-	// 	(selectComponent.find('Select').instance() as any).selectOption(options[6]);
-	//
-	// 	expect(onChangeHandler).toHaveBeenCalledTimes(2);
-	// 	expect(onChangeHandler).toHaveBeenCalledWith(options[6]);
-	// });
 });

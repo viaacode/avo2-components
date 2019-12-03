@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Component: Image grid
-   ========================================================================== */
+@import '../../styles/settings/colors';
 
 .c-image-grid {
 	display: flex;
@@ -19,7 +17,7 @@
 		.c-image-grid__item {
 			&.c-image-grid__item-selected,
 			&:hover {
-				outline: 0.5rem solid #3FB1D6;
+				outline: 0.5rem solid $color-border-color;
 			}
 		}
 	}
