@@ -16,7 +16,7 @@ const customClass = 'c-search-result';
 const searchResult = (
 	<SearchResult
 		className={customClass}
-		type={fakeSearchResult.administrative_type as ContentType}
+		type={fakeSearchResult.administrative_type}
 		date={fakeSearchResult.dcterms_issued}
 		viewCount={41}
 		bookmarkCount={12}

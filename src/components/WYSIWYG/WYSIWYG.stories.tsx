@@ -6,6 +6,15 @@ import { WYSIWYG } from './WYSIWYG';
 
 const withContent = (story: Function) => <div className="c-content">{story()}</div>;
 
+const WYSIWYG_OPTIONS = [
+	['strong', 'em'],
+	['undo', 'redo'],
+	['formatting'],
+	['unorderedList', 'orderedList'],
+	['removeformat'],
+	['link'],
+];
+
 storiesOf('WYSIWYG', module)
 	.addParameters({ jest: ['WYSIWYG'] })
 	.addDecorator(withContent)
@@ -23,30 +32,12 @@ storiesOf('WYSIWYG', module)
 		/>
 	))
 	.add('WYSIWYG with limited buttons', () => (
-		<WYSIWYG
-			id="story-wysiwyg-2"
-			buttons={[
-				['strong', 'em'],
-				['undo', 'redo'],
-				['formatting'],
-				['unorderedList', 'orderedList'],
-				['removeformat'],
-				['link'],
-			]}
-		/>
+		<WYSIWYG id="story-wysiwyg-3" buttons={WYSIWYG_OPTIONS} />
 	))
 	.add('WYSIWYG with table button', () => (
 		<WYSIWYG
-			id="story-wysiwyg-2"
-			buttons={[
-				['strong', 'em'],
-				['undo', 'redo'],
-				['formatting'],
-				['unorderedList', 'orderedList'],
-				['removeformat'],
-				['link'],
-				['table'],
-			]}
+			id="story-wysiwyg-4"
+			buttons={[...WYSIWYG_OPTIONS, ['table']]}
 			plugins={{
 				table: {
 					rows: 3,

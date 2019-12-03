@@ -2,12 +2,12 @@ import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
-import { ContentType, DefaultProps } from '../../types';
+import { DefaultProps, EnglishContentType } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/types';
 
 interface ContentTypeProps extends DefaultProps {
-	category: ContentType;
+	category: EnglishContentType;
 	label: string;
 }
 

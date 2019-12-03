@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers/action';
 
-import { Spacer } from '../Spacer/Spacer';
 import { FileInput } from './FileInput';
 
 const FileInputStoryComponent = ({

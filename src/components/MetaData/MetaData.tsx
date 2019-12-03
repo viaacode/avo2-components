@@ -2,13 +2,13 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classNames from 'classnames';
 
-import { ContentType, DefaultProps } from '../../types';
+import { DefaultProps, EnglishContentType } from '../../types';
 
 import './MetaData.scss';
 
 export interface MetaDataProps extends DefaultProps {
 	children: ReactNode;
-	category: ContentType;
+	category: EnglishContentType;
 	spaced?: boolean;
 }
 
