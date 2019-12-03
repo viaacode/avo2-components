@@ -13,8 +13,8 @@ export { useSlot } from './hooks/useSlot';
 export { convertToHtml } from './helpers/convertToHtml';
 
 // Components
-export { Alert } from './components/Alert/Alert';
-export { Avatar } from './components/Avatar/Avatar';
+export { Alert, AlertProps } from './components/Alert/Alert';
+export { Avatar, AvatarProps } from './components/Avatar/Avatar';
 export { AvatarIcon } from './components/Avatar/AvatarIcon/AvatarIcon';
 export { AvatarList } from './components/AvatarList/AvatarList';
 export { Badge } from './components/Badge/Badge';
@@ -51,7 +51,7 @@ export {
 	BlockVideoTitleTextButtonProps,
 } from './components/ContentBlocks/BlockVideoTitleTextButton/BlockVideoTitleTextButton';
 export { DatePicker } from './components/DatePicker/DatePicker';
-export { Dropdown } from './components/Dropdown/Dropdown';
+export { Dropdown, DropdownProps } from './components/Dropdown/Dropdown';
 export { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
 export { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
 export { Flex } from './components/Flex/Flex';
