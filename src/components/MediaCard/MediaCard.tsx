@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import { useSlot } from '../../hooks/useSlot';
 
-import { ContentType, DefaultProps } from '../../types';
+import { DefaultProps, EnglishContentType } from '../../types';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 import './MediaCard.scss';
@@ -12,7 +12,7 @@ import './MediaCard.scss';
 export interface MediaCardProps extends DefaultProps {
 	title: string;
 	href: string;
-	category: ContentType;
+	category: EnglishContentType;
 	children?: ReactNode;
 	orientation?: 'horizontal' | 'vertical';
 }

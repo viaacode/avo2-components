@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+export * from './content-type';
 
 export type DefaultProps = {
 	className?: string;
@@ -7,7 +8,5 @@ export type DefaultProps = {
 export interface SlotProps {
 	children: ReactElement;
 }
-
-export type ContentType = 'collection' | 'bundle' | 'video' | 'audio' | 'search';
 
 export type VideoAspectRatio = '3:2' | '16:9';

@@ -9,7 +9,7 @@ import {
 	SearchResultTitle,
 } from './SearchResult.slots';
 
-import { ContentType, DefaultProps } from '../../types';
+import { DefaultProps, EnglishContentType } from '../../types';
 import { Flex } from '../Flex/Flex';
 import { FlexItem } from '../Flex/FlexItem/FlexItem';
 import { MetaData } from '../MetaData/MetaData';
@@ -22,7 +22,7 @@ import './SearchResult.scss';
 
 export interface SearchResultProps extends DefaultProps {
 	children: ReactNode;
-	type: ContentType;
+	type: EnglishContentType;
 	thumbnailPath?: string;
 	description?: string;
 	maxDescriptionLength?: number;

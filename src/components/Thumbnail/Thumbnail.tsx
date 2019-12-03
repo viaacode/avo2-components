@@ -2,14 +2,14 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 
-import { ContentType, DefaultProps } from '../../types';
+import { DefaultProps, EnglishContentType } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/types';
 
 import './Thumbnail.scss';
 
 export interface ThumbnailProps extends DefaultProps {
-	category: ContentType;
+	category: EnglishContentType;
 	src?: string;
 	alt?: string;
 	label?: string;

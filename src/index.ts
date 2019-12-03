@@ -3,244 +3,130 @@ import jquery from 'jquery';
 (window as any).jQuery = jquery;
 
 // Colors
-import { COLORS } from './colors';
+export { COLORS } from './colors';
 
 // Hooks
-import { useKeyPress } from './hooks/useKeyPress';
-import { useSlot } from './hooks/useSlot';
+export { useKeyPress } from './hooks/useKeyPress';
+export { useSlot } from './hooks/useSlot';
 
 // Helpers
-import { convertToHtml } from './helpers/convertToHtml';
+export { convertToHtml } from './helpers/convertToHtml';
 
 // Components
-import { Alert } from './components/Alert/Alert';
-import { Avatar } from './components/Avatar/Avatar';
-import { AvatarIcon } from './components/Avatar/AvatarIcon/AvatarIcon';
-import { AvatarList } from './components/AvatarList/AvatarList';
-import { Badge } from './components/Badge/Badge';
-import { Blankslate } from './components/Blankslate/Blankslate';
-import { Box } from './components/Box/Box';
-import { Button } from './components/Button/Button';
-import { ButtonGroup } from './components/ButtonGroup/ButtonGroup';
-import { ButtonToolbar } from './components/ButtonToolbar/ButtonToolbar';
-import { Checkbox } from './components/Checkbox/Checkbox';
-import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
-import { Container } from './components/Container/Container';
-import { BlockIframe, BlockIframeProps } from './components/ContentBlocks/BlockIframe/BlockIframe';
-import { BlockImage, BlockImageProps } from './components/ContentBlocks/BlockImage/BlockImage';
-import {
+export { Alert } from './components/Alert/Alert';
+export { Avatar } from './components/Avatar/Avatar';
+export { AvatarIcon } from './components/Avatar/AvatarIcon/AvatarIcon';
+export { AvatarList } from './components/AvatarList/AvatarList';
+export { Badge } from './components/Badge/Badge';
+export { Blankslate } from './components/Blankslate/Blankslate';
+export { Box } from './components/Box/Box';
+export { Button } from './components/Button/Button';
+export { ButtonGroup } from './components/ButtonGroup/ButtonGroup';
+export { ButtonToolbar } from './components/ButtonToolbar/ButtonToolbar';
+export { Checkbox } from './components/Checkbox/Checkbox';
+export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
+export { Container } from './components/Container/Container';
+export { BlockIframe, BlockIframeProps } from './components/ContentBlocks/BlockIframe/BlockIframe';
+export { BlockImage, BlockImageProps } from './components/ContentBlocks/BlockImage/BlockImage';
+export {
 	BlockImageTitleTextButton,
 	BlockImageTitleTextButtonProps,
 } from './components/ContentBlocks/BlockImageTitleTextButton/BlockImageTitleTextButton';
-import { BlockIntro, BlockIntroProps } from './components/ContentBlocks/BlockIntro/BlockIntro';
-import { BlockLinks, BlockLinksProps } from './components/ContentBlocks/BlockLinks/BlockLinks';
-import { BlockQuote, BlockQuoteProps } from './components/ContentBlocks/BlockQuote/BlockQuote';
-import {
+export { BlockIntro, BlockIntroProps } from './components/ContentBlocks/BlockIntro/BlockIntro';
+export { BlockLinks, BlockLinksProps } from './components/ContentBlocks/BlockLinks/BlockLinks';
+export { BlockQuote, BlockQuoteProps } from './components/ContentBlocks/BlockQuote/BlockQuote';
+export {
 	BlockSubtitle,
 	BlockSubtitleProps,
 } from './components/ContentBlocks/BlockSubtitle/BlockSubtitle';
-import { BlockText, BlockTextProps } from './components/ContentBlocks/BlockText/BlockText';
-import { BlockTitle, BlockTitleProps } from './components/ContentBlocks/BlockTitle/BlockTitle';
-import {
+export { BlockText, BlockTextProps } from './components/ContentBlocks/BlockText/BlockText';
+export { BlockTitle, BlockTitleProps } from './components/ContentBlocks/BlockTitle/BlockTitle';
+export {
 	BlockTitleImageText,
 	BlockTitleImageTextProps,
 } from './components/ContentBlocks/BlockTitleImageText/BlockTitleImageText';
-import { BlockVideo, BlockVideoProps } from './components/ContentBlocks/BlockVideo/BlockVideo';
-import {
+export { BlockVideo, BlockVideoProps } from './components/ContentBlocks/BlockVideo/BlockVideo';
+export {
 	BlockVideoTitleTextButton,
 	BlockVideoTitleTextButtonProps,
 } from './components/ContentBlocks/BlockVideoTitleTextButton/BlockVideoTitleTextButton';
-import { DatePicker } from './components/DatePicker/DatePicker';
-import { Dropdown } from './components/Dropdown/Dropdown';
-import { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
-import { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
-import { Flex } from './components/Flex/Flex';
-import { FlexItem } from './components/Flex/FlexItem/FlexItem';
-import { FlowPlayer } from './components/FlowPlayer/FlowPlayer';
-import { Form } from './components/Form/Form';
-import { FormGroup } from './components/Form/FormGroup/FormGroup';
-import { Column } from './components/Grid/Column/Column';
-import { Grid } from './components/Grid/Grid';
-import { Header } from './components/Header/Header';
-import { HeaderAvatar, HeaderButtons, HeaderTags } from './components/Header/Header.slots';
-import { HeaderContentType } from './components/HeaderContentType/HeaderContentType';
-import { Heading } from './components/Heading/Heading';
-import { Icon } from './components/Icon/Icon';
-import { IconName, IconType } from './components/Icon/types';
-import { Image } from './components/Image/Image';
-import { ImageGrid } from './components/ImageGrid/ImageGrid';
-import { MediaCard } from './components/MediaCard/MediaCard';
-import { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/MediaCard.slots';
-import { Menu } from './components/Menu/Menu';
-import { MenuContent, MenuItemInfo } from './components/Menu/MenuContent/MenuContent';
-import {
+export { DatePicker } from './components/DatePicker/DatePicker';
+export { Dropdown } from './components/Dropdown/Dropdown';
+export { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
+export { ExpandableContainer } from './components/ExpandableContainer/ExpandableContainer';
+export { Flex } from './components/Flex/Flex';
+export { FlexItem } from './components/Flex/FlexItem/FlexItem';
+export { FlowPlayer } from './components/FlowPlayer/FlowPlayer';
+export { Form } from './components/Form/Form';
+export { FormGroup } from './components/Form/FormGroup/FormGroup';
+export { Column } from './components/Grid/Column/Column';
+export { Grid } from './components/Grid/Grid';
+export { Header } from './components/Header/Header';
+export { HeaderAvatar, HeaderButtons, HeaderTags } from './components/Header/Header.slots';
+export { HeaderContentType } from './components/HeaderContentType/HeaderContentType';
+export { Heading } from './components/Heading/Heading';
+export { Icon } from './components/Icon/Icon';
+export { IconName, IconType } from './components/Icon/types';
+export { Image } from './components/Image/Image';
+export { ImageGrid } from './components/ImageGrid/ImageGrid';
+export { MediaCard } from './components/MediaCard/MediaCard';
+export { MediaCardMetaData, MediaCardThumbnail } from './components/MediaCard/MediaCard.slots';
+export { Menu } from './components/Menu/Menu';
+export { MenuContent, MenuItemInfo } from './components/Menu/MenuContent/MenuContent';
+export {
 	MenuSearchResultContent,
 	MenuSearchResultItemInfo,
 } from './components/Menu/MenuSearchResultContent/MenuSearchResultContent';
-import { MetaData } from './components/MetaData/MetaData';
-import { MetaDataItem } from './components/MetaData/MetaDataItem/MetaDataItem';
-import { Modal } from './components/Modal/Modal';
-import {
+export { MetaData } from './components/MetaData/MetaData';
+export { MetaDataItem } from './components/MetaData/MetaDataItem/MetaDataItem';
+export { Modal } from './components/Modal/Modal';
+export {
 	ModalBody,
 	ModalFooterLeft,
 	ModalFooterRight,
 	ModalHeaderRight,
 } from './components/Modal/Modal.slots';
-import { MultiRange } from './components/MultiRange/MultiRange';
-import { Navbar } from './components/Navbar/Navbar';
-import { Pagination } from './components/Pagination/Pagination';
-import { Panel } from './components/Panel/Panel';
-import { PanelBody, PanelHeader } from './components/Panel/Panel.slots';
-import { RadioButton } from './components/RadioButton/RadioButton';
-import { RadioButtonGroup } from './components/RadioButtonGroup/RadioButtonGroup';
-import { SearchResult } from './components/SearchResult/SearchResult';
-import {
+export { MultiRange } from './components/MultiRange/MultiRange';
+export { Navbar } from './components/Navbar/Navbar';
+export { Pagination } from './components/Pagination/Pagination';
+export { Panel } from './components/Panel/Panel';
+export { PanelBody, PanelHeader } from './components/Panel/Panel.slots';
+export { RadioButton } from './components/RadioButton/RadioButton';
+export { RadioButtonGroup } from './components/RadioButtonGroup/RadioButtonGroup';
+export { SearchResult } from './components/SearchResult/SearchResult';
+export {
 	SearchResultSubtitle,
 	SearchResultThumbnail,
 	SearchResultTitle,
 } from './components/SearchResult/SearchResult.slots';
-import { Select, SelectOption } from './components/Select/Select';
-import { Spacer } from './components/Spacer/Spacer';
-import { Spinner } from './components/Spinner/Spinner';
-import { Table, TableColumn } from './components/Table/Table';
-import { Tab } from './components/Tabs/Tab/Tab';
-import { Tabs } from './components/Tabs/Tabs';
-import { TagList, TagOption } from './components/TagList/TagList';
-import { TagInfo, TagsInput } from './components/TagsInput/TagsInput';
-import { Text } from './components/Text/Text';
-import { TextArea } from './components/TextArea/TextArea';
-import { TextInput } from './components/TextInput/TextInput';
-import { Thumbnail } from './components/Thumbnail/Thumbnail';
-import { Toggle } from './components/Toggle/Toggle';
-import { ToggleButton } from './components/ToggleButton/ToggleButton';
-import { Toolbar } from './components/Toolbar/Toolbar';
-import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/Toolbar.slots';
-import { ToolbarItem } from './components/Toolbar/ToolbarItem/ToolbarItem';
-import { ToolbarTitle } from './components/Toolbar/ToolbarTitle/ToolbarTitle';
-import { Tooltip } from './components/Tooltip/Tooltip';
-import { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
-import { VideoWrapper } from './components/VideoWrapper/VideoWrapper';
-import { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
+export { Select, SelectOption } from './components/Select/Select';
+export { Spacer } from './components/Spacer/Spacer';
+export { Spinner } from './components/Spinner/Spinner';
+export { Table, TableColumn } from './components/Table/Table';
+export { Tab } from './components/Tabs/Tab/Tab';
+export { Tabs } from './components/Tabs/Tabs';
+export { TagList, TagOption } from './components/TagList/TagList';
+export { TagInfo, TagsInput } from './components/TagsInput/TagsInput';
+export { Text } from './components/Text/Text';
+export { TextArea } from './components/TextArea/TextArea';
+export { TextInput } from './components/TextInput/TextInput';
+export { Thumbnail } from './components/Thumbnail/Thumbnail';
+export { Toggle } from './components/Toggle/Toggle';
+export { ToggleButton } from './components/ToggleButton/ToggleButton';
+export { Toolbar } from './components/Toolbar/Toolbar';
+export { ToolbarCenter, ToolbarLeft, ToolbarRight } from './components/Toolbar/Toolbar.slots';
+export { ToolbarItem } from './components/Toolbar/ToolbarItem/ToolbarItem';
+export { ToolbarTitle } from './components/Toolbar/ToolbarTitle/ToolbarTitle';
+export { Tooltip } from './components/Tooltip/Tooltip';
+export { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
+export { VideoWrapper } from './components/VideoWrapper/VideoWrapper';
+export { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 
+// Types
 export {
-	COLORS,
-	useKeyPress,
-	useSlot,
-	convertToHtml,
-	Alert,
-	Avatar,
-	AvatarIcon,
-	AvatarList,
-	Badge,
-	Blankslate,
-	BlockIframe,
-	BlockIframeProps,
-	BlockImage,
-	BlockImageProps,
-	BlockImageTitleTextButton,
-	BlockImageTitleTextButtonProps,
-	BlockIntro,
-	BlockIntroProps,
-	BlockLinks,
-	BlockLinksProps,
-	BlockQuote,
-	BlockQuoteProps,
-	BlockSubtitle,
-	BlockSubtitleProps,
-	BlockText,
-	BlockTextProps,
-	BlockTitle,
-	BlockTitleImageText,
-	BlockTitleImageTextProps,
-	BlockTitleProps,
-	BlockVideo,
-	BlockVideoProps,
-	BlockVideoTitleTextButton,
-	BlockVideoTitleTextButtonProps,
-	Box,
-	Button,
-	ButtonGroup,
-	ButtonToolbar,
-	Checkbox,
-	CheckboxGroup,
-	Column,
-	Container,
-	DatePicker,
-	Dropdown,
-	DropdownButton,
-	DropdownContent,
-	ExpandableContainer,
-	Flex,
-	FlexItem,
-	FlowPlayer,
-	Form,
-	FormGroup,
-	Grid,
-	Header,
-	HeaderAvatar,
-	HeaderButtons,
-	HeaderContentType,
-	HeaderTags,
-	Heading,
-	Icon,
-	IconName,
-	IconType,
-	Image,
-	ImageGrid,
-	MediaCard,
-	MediaCardMetaData,
-	MediaCardThumbnail,
-	Menu,
-	MenuContent,
-	MenuItemInfo,
-	MenuSearchResultContent,
-	MenuSearchResultItemInfo,
-	MetaData,
-	MetaDataItem,
-	Modal,
-	ModalBody,
-	ModalFooterLeft,
-	ModalFooterRight,
-	ModalHeaderRight,
-	MultiRange,
-	Navbar,
-	Pagination,
-	Panel,
-	PanelBody,
-	PanelHeader,
-	RadioButton,
-	RadioButtonGroup,
-	SearchResult,
-	SearchResultSubtitle,
-	SearchResultThumbnail,
-	SearchResultTitle,
-	Select,
-	SelectOption,
-	Spacer,
-	Spinner,
-	Tab,
-	Table,
-	TableColumn,
-	Tabs,
-	TagList,
-	TagOption,
-	TagsInput,
-	TagInfo,
-	Text,
-	TextArea,
-	TextInput,
-	Thumbnail,
-	Toggle,
-	ToggleButton,
-	Toolbar,
-	ToolbarCenter,
-	ToolbarItem,
-	ToolbarLeft,
-	ToolbarRight,
-	ToolbarTitle,
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger,
-	WYSIWYG,
-	VideoWrapper,
-};
+	Language,
+	EnglishContentType,
+	DutchContentType,
+	ContentType,
+	translateContentType,
+} from './types';
