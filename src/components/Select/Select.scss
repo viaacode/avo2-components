@@ -33,5 +33,9 @@
 			box-shadow: inset 0 0 0 0.1rem $color-border-color, 0 0 0.5rem $color-input-box-shadow;
 		}
 	}
+
+	.c-select__option--is-selected {
+		background-color: $color-gray-200;
+	}
 }
 
