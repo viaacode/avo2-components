@@ -36,13 +36,5 @@ export const Avatar: FunctionComponent<AvatarProps> = ({
 			</div>
 		</div>
 	) : (
-		<AvatarIcon
-			className={classnames(className, {
-				'c-avatar--large': size === 'large',
-			})}
-			initials={initials}
-			size={size}
-			image={image}
-			icon={icon}
-		/>
+		<AvatarIcon className={className} initials={initials} size={size} image={image} icon={icon} />
 	);
