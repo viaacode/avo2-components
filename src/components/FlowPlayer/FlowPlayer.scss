@@ -85,6 +85,23 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		}
 	}
 
+	.c-logo-overlay {
+		display: block;
+		position: relative;
+
+		width: 100%;
+
+		&__img {
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			width: 5%;
+
+			margin: 1.2rem;
+		}
+	}
+
 	.c-title-overlay {
 		display: none;
 

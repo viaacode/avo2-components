@@ -30,6 +30,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 	src,
 	poster,
 	title,
+	logo,
 	onInit,
 	start = 0,
 	end,
@@ -77,6 +78,22 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 		return titleOverlay;
 	};
 
+	const createLogoOverlay = () => {
+		if (logo) {
+			const logoOverlay = document.createElement('div');
+			const logoImg = document.createElement('img');
+
+			logoOverlay.classList.add('c-logo-overlay');
+			logoImg.classList.add('c-logo-overlay__img');
+
+			logoImg.src = logo;
+
+			logoOverlay.appendChild(logoImg);
+
+			return logoOverlay;
+		}
+	};
+
 	const cuePointEndListener = () => {
 		if (videoContainerRef.current) {
 			videoPlayerRef.current.pause();
@@ -119,7 +136,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 				videoPlayerRef.current = null;
 			}
 		};
-	}, [videoContainerRef, src, poster, title, start, end, token]);
+	}, [videoContainerRef, src, poster, title, start, end, token, logo]);
 
 	// Re-render start/end cuepoints when cropping video
 	useEffect(() => {
@@ -134,6 +151,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 
 		api.on('mount', () => {
 			mq('.fp-ui', root).prepend(createTitleOverlay());
+			mq('.fp-ui', root).prepend(createLogoOverlay());
 		});
 	});
 
