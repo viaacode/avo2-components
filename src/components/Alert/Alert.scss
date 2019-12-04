@@ -23,7 +23,7 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 	padding: 1.2rem 1.6rem;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: start;
 
 	.o-svg-icon-button-actions-close {
 		cursor: pointer;
@@ -32,7 +32,16 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 
 .c-alert__body {
 	display: flex;
-	align-items: center;
+	align-items: start;
+
+	> .o-svg-icon,
+	> .c-spinner {
+		margin: 5px 12px 4px 0;
+	}
+}
+
+.c-alert__message {
+	margin: 4px 0;
 }
 
 .c-alert--floating {
@@ -48,18 +57,22 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
    ========================================================================== */
 
 .c-alert--info {
-	background: #F5FBFD;
-	border-color: rgba($color-border-color, 0.5);
+	background: rgba($color-soft-blue, 0.1);;
+	border-color: rgba($color-soft-blue, 0.5);
 }
 
 .c-alert--danger {
-	background: #FCF5F2;
-	border-color: rgba(#D00636, 0.33);
+	background: rgba($color-error-200, 0.1);
+	border-color: rgba($color-error-200, 0.33);
 }
 
 .c-alert--success {
-	background: rgba(#57C2A0, 0.1);
-	border-color: rgba(#57C2A0, 0.33);
+	background: rgba($color-ocean-green, 0.1);
+	border-color: rgba($color-ocean-green, 0.33);
+}
+
+.c-alert--spinner {
+	background: rgba($color-gray-100, 0.1);
 }
 
 .c-alert--dark {
