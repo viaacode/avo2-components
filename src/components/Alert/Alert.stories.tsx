@@ -5,6 +5,19 @@ import { action } from '../../helpers/action';
 import { Spacer } from '../Spacer/Spacer';
 import { Alert } from './Alert';
 
+function getMultiLineAlertMessage(type: string) {
+	return (
+		<>
+			{type} alert message
+			<br />
+			{type} alert message
+			<br />
+			{type} alert message
+			<br />
+		</>
+	);
+}
+
 storiesOf('Alert', module)
 	.addParameters({ jest: ['Alert'] })
 	.add('Alerts', () => (
@@ -20,6 +33,22 @@ storiesOf('Alert', module)
 			</Spacer>
 			<Spacer margin="bottom">
 				<Alert message="Loading alert message" type="spinner" />
+			</Spacer>
+		</React.Fragment>
+	))
+	.add('Alerts multiline', () => (
+		<React.Fragment>
+			<Spacer margin="bottom">
+				<Alert message={getMultiLineAlertMessage('Info')} onClose={action('alert closed')} />
+			</Spacer>
+			<Spacer margin="bottom">
+				<Alert message={getMultiLineAlertMessage('Success')} type="success" />
+			</Spacer>
+			<Spacer margin="bottom">
+				<Alert message={getMultiLineAlertMessage('Danger')} type="danger" />
+			</Spacer>
+			<Spacer margin="bottom">
+				<Alert message={getMultiLineAlertMessage('Spinner')} type="spinner" />
 			</Spacer>
 		</React.Fragment>
 	))
