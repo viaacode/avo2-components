@@ -34,16 +34,16 @@ export const Alert: FunctionComponent<AlertProps> = ({
 	children = null,
 }) => {
 	return (
-		<div className={classNames(className, 'c-alert', { 'c-alert--dark': dark })}>
+		<div
+			className={classNames(className, 'c-alert', `c-alert--${type}`, { 'c-alert--dark': dark })}
+		>
 			<div className="c-alert__body">
-				<Spacer margin="right-small">
-					{ALERT_TYPE_TO_ICON_MAPPING[type] ? (
-						<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type] as IconName} type="multicolor" />
-					) : (
-						<Spinner light={dark} />
-					)}
-				</Spacer>
-				{message || children}
+				{ALERT_TYPE_TO_ICON_MAPPING[type] ? (
+					<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type] as IconName} type="multicolor" />
+				) : (
+					<Spinner light={dark} />
+				)}
+				<div className="c-alert__message">{message || children}</div>
 			</div>
 			{!!onClose && (
 				<Button
