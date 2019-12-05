@@ -15,6 +15,7 @@ export { convertToHtml } from './helpers/convertToHtml';
 // Components
 export { Alert, AlertProps } from './components/Alert/Alert';
 export { Avatar, AvatarProps } from './components/Avatar/Avatar';
+export { Accordion } from './components/Accordion/Accordion';
 export { AvatarIcon } from './components/Avatar/AvatarIcon/AvatarIcon';
 export { AvatarList } from './components/AvatarList/AvatarList';
 export { Badge } from './components/Badge/Badge';
