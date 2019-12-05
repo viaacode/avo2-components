@@ -17,9 +17,9 @@ describe('<Avatar />', () => {
 	});
 
 	it('should set the large class when setting size to large', () => {
-		const avatarComponent = shallow(<Avatar size="large" initials="JD" />);
+		const avatarComponent = mount(<Avatar size="large" initials="JD" />);
 
-		expect(avatarComponent.hasClass('c-avatar--large')).toBeTruthy();
+		expect(avatarComponent.find('.c-avatar').hasClass('c-avatar--large')).toBeTruthy();
 	});
 
 	it('should use an icon when no initials or name are passed', () => {
