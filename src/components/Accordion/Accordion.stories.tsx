@@ -5,7 +5,7 @@ import { Button } from '../Button/Button';
 import { Accordion, AccordionProps } from './Accordion';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
 
-const ControlledAccordion: FunctionComponent<AccordionProps> = ({ isOpen, ...rest }) => {
+const ControlledAccordion: FunctionComponent<AccordionProps> = ({ isOpen = true, ...rest }) => {
 	const [open, setOpen] = useState<boolean>(isOpen);
 
 	return <Accordion {...rest} isOpen={open} onToggle={() => setOpen(!open)} />;
