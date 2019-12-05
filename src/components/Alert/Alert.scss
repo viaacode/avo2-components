@@ -23,7 +23,7 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 	padding: 1.2rem 1.6rem;
 	display: flex;
 	justify-content: space-between;
-	align-items: start;
+	align-items: flex-start;
 
 	.o-svg-icon-button-actions-close {
 		cursor: pointer;
@@ -32,7 +32,7 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 
 .c-alert__body {
 	display: flex;
-	align-items: start;
+	align-items: flex-start;
 
 	> .o-svg-icon,
 	> .c-spinner {
@@ -96,7 +96,7 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 	animation: 0.3s ease-out 0.2s both floating-alert-out;
 }
 
-  @keyframes floating-alert-in {
+@keyframes floating-alert-in {
 	0% {
 		opacity: 0;
 		transform: translateX(-50%) translateY(-1rem);
@@ -107,7 +107,7 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 	}
 }
 
-  @keyframes floating-alert-out {
+@keyframes floating-alert-out {
 	100% {
 		opacity: 0;
 		transform: translateX(-50%) translateY(-1rem);

@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
-import { Spacer } from '../Spacer/Spacer';
 import { Spinner } from '../Spinner/Spinner';
 
 import { IconName } from '../Icon/types';
