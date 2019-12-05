@@ -87,7 +87,7 @@ export const Table: FunctionComponent<TableProps> = ({
 
 		return (
 			<th
-				key={id}
+				key={`table-head-${id}`}
 				className={classNames({
 					[`o-table-col-${col}`]: col,
 					'c-table__header--sortable': sortable,
@@ -126,7 +126,7 @@ export const Table: FunctionComponent<TableProps> = ({
 						{data.length > 0 && rowKey && (
 							<tbody>
 								{data.map((rowData, rowIndex) => (
-									<tr key={rowData[rowKey]}>
+									<tr key={`table-row-${rowData[rowKey]}`}>
 										{columns
 											.map(col => col.id)
 											.map((columnId, columnIndex) => (
