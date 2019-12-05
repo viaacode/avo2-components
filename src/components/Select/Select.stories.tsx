@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
@@ -21,8 +21,13 @@ const options = [
 
 storiesOf('Select', module)
 	.addParameters({ jest: ['Select'] })
-	.add('Select', () => (
-		<Fragment>
-			<Select options={options} value="Db" onChange={action('onChange')} />
-		</Fragment>
+	.add('Select', () => <Select options={options} value="Db" onChange={action('onChange')} />)
+	.add('Select disabled', () => (
+		<Select options={options} value="Db" onChange={action('onChange')} disabled />
+	))
+	.add('Select clearable', () => (
+		<Select options={options} value="Db" onChange={action('onChange')} clearable />
+	))
+	.add('Select loading', () => (
+		<Select options={options} value="Db" onChange={action('onChange')} loading />
 	));
