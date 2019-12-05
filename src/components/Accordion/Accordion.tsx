@@ -45,9 +45,7 @@ export const Accordion: FunctionComponent<AccordionProps> = ({
 					</ToolbarLeft>
 					<ToolbarRight>
 						<ToolbarItem>
-							{actionsSlot ? (
-								actionsSlot
-							) : (
+							{actionsSlot || (
 								<div className="c-accordion__icon">
 									<Icon name={accordionIcon} type="arrows" />
 								</div>

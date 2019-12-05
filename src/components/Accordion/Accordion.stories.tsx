@@ -1,54 +1,65 @@
 import { storiesOf } from '@storybook/react';
-import React, { FunctionComponent, useState } from 'react';
+import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { Button } from '../Button/Button';
-import { Accordion, AccordionProps } from './Accordion';
+import { Form } from '../Form/Form';
+import { FormGroup } from '../Form/FormGroup/FormGroup';
+import { TextArea } from '../TextArea/TextArea';
+import { TextInput } from '../TextInput/TextInput';
+import { Accordion } from './Accordion';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
 
-const ControlledAccordion: FunctionComponent<AccordionProps> = ({ isOpen = true, ...rest }) => {
-	const [open, setOpen] = useState<boolean>(isOpen);
+const AccordionStoryComponent = ({ children }: { children: ReactElement }) => {
+	const [isOpen, setIsOpen] = useState(false);
 
-	return <Accordion {...rest} isOpen={open} onToggle={() => setOpen(!open)} />;
+	return cloneElement(children, {
+		isOpen,
+		onToggle: () => setIsOpen(!isOpen),
+	});
+};
+
+const AccordionWithSlots = () => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	return (
+		<Accordion isOpen={isOpen} title="Acordion title">
+			<AccordionTitle>Accordion title slot</AccordionTitle>
+			<AccordionActions>
+				<Button
+					className="u-spacer-right-s"
+					icon="edit"
+					onClick={() => setIsOpen(!isOpen)}
+					type="tertiary"
+				/>
+				<Button icon="delete" type="tertiary" />
+			</AccordionActions>
+			<AccordionBody>
+				<Form>
+					<FormGroup label="Titel">
+						<TextInput />
+					</FormGroup>
+					<FormGroup label="Body">
+						<TextArea />
+					</FormGroup>
+				</Form>
+			</AccordionBody>
+		</Accordion>
+	);
 };
 
 storiesOf('Accordion', module)
 	.addParameters({ jest: ['Accordion'] })
 	.add('Accordion', () => (
-		<ControlledAccordion isOpen title="Acordion title">
-			<div className="c-content">
-				<p>
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi ipsa laborum nihil
-					voluptate consequuntur cumque id illo, numquam sint, aperiam tempore. Unde illo sunt earum
-					fugit sit error quasi porro.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi ipsa laborum nihil
-					voluptate consequuntur cumque id illo, numquam sint, aperiam tempore. Unde illo sunt earum
-					fugit sit error quasi porro.
-				</p>
-			</div>
-		</ControlledAccordion>
-	))
-	.add('Accordion with slots', () => (
-		<ControlledAccordion isOpen title="Acordion title">
-			<AccordionTitle>Accordion title slot</AccordionTitle>
-			<AccordionActions>
-				<Button className="u-spacer-right-s" icon="edit" type="tertiary" />
-				<Button icon="delete" type="tertiary" />
-			</AccordionActions>
-			<AccordionBody>
+		<AccordionStoryComponent>
+			<Accordion title="Acordion title">
 				<div className="c-content">
 					<p>
 						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi ipsa laborum nihil
 						voluptate consequuntur cumque id illo, numquam sint, aperiam tempore. Unde illo sunt
 						earum fugit sit error quasi porro.
 					</p>
-					<p>
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi ipsa laborum nihil
-						voluptate consequuntur cumque id illo, numquam sint, aperiam tempore. Unde illo sunt
-						earum fugit sit error quasi porro.
-					</p>
 				</div>
-			</AccordionBody>
-		</ControlledAccordion>
-	));
+			</Accordion>
+		</AccordionStoryComponent>
+	))
+	.add('Accordion with slots', () => <AccordionWithSlots />);
