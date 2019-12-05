@@ -10,19 +10,13 @@ describe('<Toolbar />', () => {
 		shallow(
 			<Toolbar>
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
-					<ToolbarItem>
-						<Fragment>Center</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Center</ToolbarItem>
 				</ToolbarCenter>
 				<ToolbarRight>
-					<ToolbarItem>
-						<Fragment>Right</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Right</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
 		);
@@ -34,19 +28,13 @@ describe('<Toolbar />', () => {
 		const toolbarComponent = shallow(
 			<Toolbar className={customClass}>
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
-					<ToolbarItem>
-						<Fragment>Center</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Center</ToolbarItem>
 				</ToolbarCenter>
 				<ToolbarRight>
-					<ToolbarItem>
-						<Fragment>Right</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Right</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
 		);
@@ -67,18 +55,14 @@ describe('<Toolbar />', () => {
 		const regularToolbarComponent = shallow(
 			<Toolbar>
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
 		const mediumToolbarComponent = shallow(
 			<Toolbar size="medium">
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
@@ -94,18 +78,14 @@ describe('<Toolbar />', () => {
 		const regularToolbarComponent = shallow(
 			<Toolbar>
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
 		const spacedToolbarComponent = shallow(
 			<Toolbar spaced>
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
@@ -121,18 +101,14 @@ describe('<Toolbar />', () => {
 		const regularToolbarComponent = shallow(
 			<Toolbar>
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
 		const justifiedToolbarComponent = shallow(
 			<Toolbar justify>
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
@@ -148,18 +124,14 @@ describe('<Toolbar />', () => {
 		const regularToolbarComponent = shallow(
 			<Toolbar>
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
 		const autoHeightToolbarComponent = shallow(
 			<Toolbar autoHeight>
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
@@ -175,18 +147,14 @@ describe('<Toolbar />', () => {
 		const regularToolbarComponent = shallow(
 			<Toolbar>
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
 		const alignTopToolbarComponent = shallow(
 			<Toolbar alignTop>
 				<ToolbarLeft>
-					<ToolbarItem>
-						<Fragment>Left</Fragment>
-					</ToolbarItem>
+					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);

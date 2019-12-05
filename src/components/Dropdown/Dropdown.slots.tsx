@@ -1,6 +1,4 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
-import { SlotProps } from '../../types';
-
-export const DropdownButton: FunctionComponent<SlotProps> = ({ children }) => children;
-export const DropdownContent: FunctionComponent<SlotProps> = ({ children }) => children;
+export const DropdownButton: FunctionComponent = ({ children }) => <>{children}</>;
+export const DropdownContent: FunctionComponent = ({ children }) => <>{children}</>;
