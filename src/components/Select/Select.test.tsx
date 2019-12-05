@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Select } from './Select';
@@ -23,13 +23,11 @@ describe('<Select />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const selectComponent = shallow(<Select className={customClass} options={options} />);
+		const selectComponent = mount(<Select className={customClass} options={options} />);
 
-		const selectWrapper = selectComponent.at(0);
-		const selectElement = selectComponent.find('select');
+		const selectElement = selectComponent.find('div').at(0);
 
-		expect(selectWrapper.hasClass(customClass)).toEqual(true);
-		expect(selectWrapper.hasClass('c-select-holder')).toEqual(true);
+		expect(selectElement.hasClass(customClass)).toEqual(true);
 		expect(selectElement.hasClass('c-select')).toEqual(true);
 	});
 
@@ -45,50 +43,11 @@ describe('<Select />', () => {
 		});
 	});
 
-	it('Should pass on the id', () => {
-		const id = 'test';
-
-		const selectComponent = shallow(<Select options={options} id={id} />);
-
-		const selectElement = selectComponent.find('select');
-
-		expect(selectElement.prop('id')).toEqual(id);
-	});
-
 	it('Should be able to set the disabled state', () => {
-		const selectComponent = shallow(<Select options={options} disabled />);
+		const selectComponent = mount(<Select options={options} disabled />);
 
-		const selectElement = selectComponent.find('select');
+		const selectElement = selectComponent.find('div').at(0);
 
-		expect(selectElement.prop('disabled')).toEqual(true);
-	});
-
-	it('Should be able to set an initial value', () => {
-		const defaultValue = options[5].value;
-
-		const selectComponent = shallow(<Select options={options} value={defaultValue} />);
-
-		const selectElement = selectComponent.find('select');
-
-		expect(selectElement.prop('value')).toEqual(defaultValue);
-	});
-
-	it('Should call the onChange handler when the select option changes', () => {
-		const onChangeHandler = jest.fn();
-
-		const selectComponent = shallow(<Select options={options} onChange={onChangeHandler} />);
-
-		const selectElement = selectComponent.find('select');
-
-		selectElement.simulate('change', { target: { value: options[3] } });
-
-		expect(onChangeHandler).toHaveBeenCalled();
-		expect(onChangeHandler).toHaveBeenCalledTimes(1);
-		expect(onChangeHandler).toHaveBeenCalledWith(options[3]);
-
-		selectElement.simulate('change', { target: { value: options[6] } });
-
-		expect(onChangeHandler).toHaveBeenCalledTimes(2);
-		expect(onChangeHandler).toHaveBeenCalledWith(options[6]);
+		expect(selectElement.hasClass('c-select--is-disabled')).toEqual(true);
 	});
 });

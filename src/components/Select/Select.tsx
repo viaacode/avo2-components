@@ -1,4 +1,6 @@
-import React, { ChangeEvent, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
+import ReactSelect from 'react-select';
+import { ActionMeta, ValueType } from 'react-select/src/types';
 
 import classnames from 'classnames';
 
@@ -16,7 +18,10 @@ export interface SelectProps extends DefaultProps {
 	options: SelectOption[];
 	id?: string;
 	disabled?: boolean;
+	loading?: boolean;
+	clearable?: boolean;
 	value?: string;
+	placeholder?: string;
 	onChange?: (value: string) => void;
 }
 
@@ -25,28 +30,34 @@ export const Select: FunctionComponent<SelectProps> = ({
 	options,
 	id,
 	disabled = false,
+	loading = false,
+	clearable = false,
+	placeholder,
 	value,
 	onChange = () => {},
 }) => {
-	function onValueChange(event: ChangeEvent<HTMLSelectElement>) {
-		onChange(event.target.value);
+	function onValueChange(changedValue: ValueType<SelectOption>, actionMeta: ActionMeta) {
+		if (!value) {
+			return;
+		}
+		if (actionMeta.action !== 'create-option') {
+			onChange((changedValue as SelectOption).value);
+		}
 	}
 
 	return (
-		<div className={classnames(className, 'c-select-holder')}>
-			<select
-				className="c-select"
-				id={id}
-				value={value}
-				disabled={disabled}
-				onChange={onValueChange}
-			>
-				{options.map(({ value, label, disabled }, index) => (
-					<option key={index} value={value} disabled={disabled}>
-						{label}
-					</option>
-				))}
-			</select>
-		</div>
+		<ReactSelect
+			className={classnames('c-select', className)}
+			classNamePrefix="c-select"
+			id={id}
+			options={options}
+			defaultValue={options.find(option => option.value === value)}
+			isMulti={false}
+			isDisabled={disabled}
+			isLoading={loading}
+			isClearable={clearable}
+			placeholder={placeholder}
+			onChange={onValueChange}
+		/>
 	);
 };

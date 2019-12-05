@@ -1,3 +1,5 @@
+@import '../../styles/settings/colors';
+
 $rangeColor: hsl(190, 80%, 40%);
 
 .c-input-range {
@@ -6,8 +8,8 @@ $rangeColor: hsl(190, 80%, 40%);
 		outline: 0;
 
 		&::before {
-			border-color: #3FB1D6;
-			box-shadow: inset 0 0 0 0.1rem #3FB1D6, 0 0 0.5rem #69c2df;
+			border-color: $color-border-color;
+			box-shadow: inset 0 0 0 0.1rem $color-border-color, 0 0 0.5rem #69c2df;
 			border-radius: 50%;
 		}
 	}
