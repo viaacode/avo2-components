@@ -8,8 +8,8 @@ import { DefaultProps } from '../../types';
 
 import './Select.scss';
 
-export interface SelectOption {
-	value: string;
+export interface SelectOption<T = string> {
+	value: T;
 	label: string;
 	disabled?: boolean;
 }
@@ -56,6 +56,7 @@ export const Select: FunctionComponent<SelectProps> = ({
 			isDisabled={disabled}
 			isLoading={loading}
 			isClearable={clearable}
+			isOptionDisabled={option => !!option.disabled}
 			placeholder={placeholder}
 			onChange={onValueChange}
 		/>
