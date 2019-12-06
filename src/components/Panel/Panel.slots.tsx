@@ -1,6 +1,4 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
-import { SlotProps } from '../../types';
-
-export const PanelHeader: FunctionComponent<SlotProps> = ({ children }) => children;
-export const PanelBody: FunctionComponent<SlotProps> = ({ children }) => children;
+export const PanelHeader: FunctionComponent = ({ children }) => <>{children}</>;
+export const PanelBody: FunctionComponent = ({ children }) => <>{children}</>;

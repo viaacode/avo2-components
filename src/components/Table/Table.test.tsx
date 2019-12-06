@@ -154,10 +154,10 @@ describe('<Table />', () => {
 
 		const rows = tableComponent.find('tbody > tr');
 
-		expect(rows.at(0).key()).toEqual(DATA[0][key].toString());
-		expect(rows.at(2).key()).toEqual(DATA[2][key].toString());
-		expect(rows.at(3).key()).toEqual(DATA[3][key].toString());
-		expect(rows.at(5).key()).toEqual(DATA[5][key].toString());
+		expect(rows.at(0).key()).toEqual(`table-row-${DATA[0][key].toString()}`);
+		expect(rows.at(2).key()).toEqual(`table-row-${DATA[2][key].toString()}`);
+		expect(rows.at(3).key()).toEqual(`table-row-${DATA[3][key].toString()}`);
+		expect(rows.at(5).key()).toEqual(`table-row-${DATA[5][key].toString()}`);
 	});
 
 	it('Should call `onColumnClick` when a sortable column is clicked', () => {

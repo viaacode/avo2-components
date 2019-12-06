@@ -1,6 +1,4 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
-import { SlotProps } from '../../types';
-
-export const MediaCardThumbnail: FunctionComponent<SlotProps> = ({ children }) => children;
-export const MediaCardMetaData: FunctionComponent<SlotProps> = ({ children }) => children;
+export const MediaCardThumbnail: FunctionComponent = ({ children }) => <>{children}</>;
+export const MediaCardMetaData: FunctionComponent = ({ children }) => <>{children}</>;
