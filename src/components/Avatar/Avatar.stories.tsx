@@ -2,6 +2,8 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
+import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
 import { Avatar } from './Avatar';
 
 storiesOf('Avatar', module)
@@ -11,8 +13,39 @@ storiesOf('Avatar', module)
 	.add('Avatar with image', () => (
 		<Avatar initials="JD" image="https://api.adorable.io/avatars/128/john" />
 	))
-	.add('Avatar with name', () => <Avatar initials="JD" name="John Doe" />)
-	.add('Avatar with name and title', () => (
-		<Avatar initials="JD" name="John Doe" title="Quality Assurance Tester" />
+	.add('Avatar with name', () => (
+		<>
+			<Box backgroundColor="gray">
+				<Avatar initials="JD" name="John Doe" dark />
+			</Box>
+			<Box backgroundColor="gray">
+				<Avatar initials="JD" name="John Doe" />
+			</Box>
+		</>
 	))
-	.add('Large avatar', () => <Avatar icon="user" size="large" />);
+	.add('Avatar with name and title', () => (
+		<>
+			<Box backgroundColor="gray">
+				<Avatar initials="JD" name="John Doe" title="Quality Assurance Tester" dark />
+			</Box>
+			<Box backgroundColor="gray">
+				<Avatar initials="JD" name="John Doe" title="Quality Assurance Tester" />
+			</Box>
+		</>
+	))
+	.add('Large avatar', () => <Avatar icon="user" size="large" />)
+	.add('Aavatar dropdown', () => (
+		<div
+			className="c-navbar-profile-dropdown-button"
+			style={{
+				backgroundColor: '#283d4e',
+				width: 'auto',
+				display: 'flex',
+				padding: '5px',
+				alignItems: 'center',
+			}}
+		>
+			<Avatar initials={'TT'} name={'Test'} />
+			<Icon name="caret-down" size="small" subtle />
+		</div>
+	));
