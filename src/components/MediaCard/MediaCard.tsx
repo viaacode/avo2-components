@@ -33,16 +33,11 @@ export const MediaCard: FunctionComponent<MediaCardProps> = ({
 			className={classNames(className, 'c-media-card', `c-media-card--${category}`, {
 				'c-media-card--horizontal': orientation === 'horizontal',
 			})}
+			onClick={onClick}
 		>
-			{thumbnail && (
-				<div className="c-media-card-thumb" onClick={onClick}>
-					{thumbnail}
-				</div>
-			)}
+			{thumbnail && <div className="c-media-card-thumb">{thumbnail}</div>}
 			<div className="c-media-card-content">
-				<h4 className="c-media-card__title" onClick={onClick}>
-					{title}
-				</h4>
+				<h4 className="c-media-card__title">{title}</h4>
 				{metaData && metaData}
 			</div>
 		</div>
