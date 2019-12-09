@@ -15,21 +15,21 @@ storiesOf('Avatar', module)
 	))
 	.add('Avatar with name', () => (
 		<>
-			<Box backgroundColor="gray">
-				<Avatar initials="JD" name="John Doe" dark />
+			<Box backgroundColor="dark">
+				<Avatar initials="JD" name="John Doe" />
 			</Box>
 			<Box backgroundColor="gray">
-				<Avatar initials="JD" name="John Doe" />
+				<Avatar initials="JD" name="John Doe" dark />
 			</Box>
 		</>
 	))
 	.add('Avatar with name and title', () => (
 		<>
-			<Box backgroundColor="gray">
-				<Avatar initials="JD" name="John Doe" title="Quality Assurance Tester" dark />
+			<Box backgroundColor="dark">
+				<Avatar initials="JD" name="John Doe" title="Quality Assurance Tester" />
 			</Box>
 			<Box backgroundColor="gray">
-				<Avatar initials="JD" name="John Doe" title="Quality Assurance Tester" />
+				<Avatar initials="JD" name="John Doe" title="Quality Assurance Tester" dark />
 			</Box>
 		</>
 	))

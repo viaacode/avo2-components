@@ -8,7 +8,7 @@ import './Box.scss';
 
 export interface BoxProps extends DefaultProps {
 	condensed?: boolean;
-	backgroundColor?: 'gray' | 'soft-white' | 'white';
+	backgroundColor?: 'gray' | 'soft-white' | 'white' | 'dark';
 	children: ReactNode;
 }
 
