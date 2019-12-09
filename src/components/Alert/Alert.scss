@@ -38,6 +38,10 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 	> .c-spinner {
 		margin: 5px 12px 4px 0;
 	}
+
+	> .o-svg-icon {
+		flex-shrink: 0;
+	}
 }
 
 .c-alert__message {
