@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
@@ -10,9 +11,7 @@ import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 describe('<MediaCard />', () => {
 	it('Should be able to render', () => {
-		shallow(
-			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="collection" />
-		);
+		shallow(<MediaCard title="What an amazing title!" category="collection" />);
 	});
 
 	it('Should set the correct className', () => {
@@ -22,7 +21,7 @@ describe('<MediaCard />', () => {
 			<MediaCard
 				className={customClass}
 				title="What an amazing title!"
-				href="https://viaa.be/"
+				onClick={action('clicked media card')}
 				category="collection"
 			/>
 		);
@@ -33,15 +32,27 @@ describe('<MediaCard />', () => {
 
 	it('Should set the correct className for each category', () => {
 		const collectionMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="collection" />
+			<MediaCard
+				title="What an amazing title!"
+				onClick={action('clicked media card')}
+				category="collection"
+			/>
 		);
 
 		const videoMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="video" />
+			<MediaCard
+				title="What an amazing title!"
+				onClick={action('clicked media card')}
+				category="video"
+			/>
 		);
 
 		const audioMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="audio" />
+			<MediaCard
+				title="What an amazing title!"
+				onClick={action('clicked media card')}
+				category="audio"
+			/>
 		);
 
 		expect(collectionMediaCardComponent.hasClass('c-media-card--collection')).toEqual(true);
@@ -53,7 +64,7 @@ describe('<MediaCard />', () => {
 		const horizontalMediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				href="https://viaa.be/"
+				onClick={action('clicked media card')}
 				category="collection"
 				orientation="horizontal"
 			/>
@@ -62,7 +73,7 @@ describe('<MediaCard />', () => {
 		const verticalMediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				href="https://viaa.be/"
+				onClick={action('clicked media card')}
 				category="collection"
 				orientation="vertical"
 			/>
@@ -76,7 +87,7 @@ describe('<MediaCard />', () => {
 		const mediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				href="https://viaa.be/"
+				onClick={action('clicked media card')}
 				category="collection"
 				orientation="horizontal"
 			>
@@ -93,7 +104,7 @@ describe('<MediaCard />', () => {
 		const mediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				href="https://viaa.be/"
+				onClick={action('clicked media card')}
 				category="collection"
 				orientation="horizontal"
 			>
@@ -111,20 +122,25 @@ describe('<MediaCard />', () => {
 	});
 
 	it('Should pass `href` property to title & thumbnail', () => {
-		const href = '/test';
+		const clickHandler = jest.fn();
 
 		const mediaCardComponent = mount(
-			<MediaCard title="What an amazing title!" href={href} category="collection">
+			<MediaCard title="What an amazing title!" onClick={clickHandler} category="collection">
 				<MediaCardThumbnail>
 					<Thumbnail category="collection" />
 				</MediaCardThumbnail>
 			</MediaCard>
 		);
 
-		const metaCardTitleElement = mediaCardComponent.find('.c-media-card__title a');
+		const metaCardTitleElement = mediaCardComponent.find('.c-media-card__title');
 		const metaCardThumbElement = mediaCardComponent.find('.c-media-card-thumb');
 
-		expect(metaCardTitleElement.prop('href')).toEqual(href);
-		expect(metaCardThumbElement.prop('href')).toEqual(href);
+		metaCardTitleElement.at(0).simulate('click');
+
+		expect(clickHandler).toHaveBeenCalledTimes(1);
+
+		metaCardThumbElement.at(0).simulate('click');
+
+		expect(clickHandler).toHaveBeenCalledTimes(2);
 	});
 });

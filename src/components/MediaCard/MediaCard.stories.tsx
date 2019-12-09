@@ -6,6 +6,7 @@ import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
 
+import { action } from '@storybook/addon-actions';
 import { MediaCard } from './MediaCard';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
@@ -15,7 +16,7 @@ storiesOf('MediaCard', module)
 		<div className="o-grid-col-bp3-4">
 			<MediaCard
 				title="What an amazing title!"
-				href="https://viaa.be/"
+				onClick={action('clicked media card')}
 				category="collection"
 				orientation="vertical"
 			>
@@ -41,7 +42,7 @@ storiesOf('MediaCard', module)
 	.add('Media card (horizontal)', () => (
 		<MediaCard
 			title="What an amazing title!"
-			href="https://viaa.be/"
+			onClick={action('clicked media card')}
 			category="collection"
 			orientation="horizontal"
 		>
