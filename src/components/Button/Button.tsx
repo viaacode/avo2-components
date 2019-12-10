@@ -1,6 +1,6 @@
 import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
@@ -51,7 +51,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 	type = 'primary',
 }) => (
 	<button
-		className={classNames(className, 'c-button', {
+		className={classnames(className, 'c-button', {
 			'c-button--active': active,
 			'c-button--auto': autoHeight,
 			'c-button--small': size === 'small',

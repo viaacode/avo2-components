@@ -1,6 +1,6 @@
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
@@ -88,7 +88,7 @@ export const Table: FunctionComponent<TableProps> = ({
 		return (
 			<th
 				key={`table-head-${id}`}
-				className={classNames({
+				className={classnames({
 					[`o-table-col-${col}`]: col,
 					'c-table__header--sortable': sortable,
 				})}
@@ -103,7 +103,7 @@ export const Table: FunctionComponent<TableProps> = ({
 	return (
 		<Fragment>
 			<table
-				className={classNames(className, 'c-table', {
+				className={classnames(className, 'c-table', {
 					'c-table--align-middle': align,
 					'c-table--bordered': variant === 'bordered',
 					'c-table--invisible': variant === 'invisible',

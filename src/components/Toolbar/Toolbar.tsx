@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { useSlot } from '../../hooks/useSlot';
 
@@ -33,7 +33,7 @@ export const Toolbar: FunctionComponent<ToolbarProps> = ({
 
 	return (
 		<div
-			className={classNames(className, 'c-toolbar', {
+			className={classnames(className, 'c-toolbar', {
 				[`c-toolbar--${size}`]: size,
 				'c-toolbar--spaced': spaced,
 				'c-toolbar--auto': autoHeight,

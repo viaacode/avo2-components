@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -25,7 +25,7 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
 	children,
 }) => (
 	<div
-		className={classNames(className, 'c-navbar', {
+		className={classnames(className, 'c-navbar', {
 			'c-navbar--bordered-bottom': placement === 'top', // Class indicates border location
 			'c-navbar--bordered-top': placement === 'bottom',
 			'c-navbar--fixed': position === 'fixed',

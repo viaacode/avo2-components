@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { useSlot } from '../../hooks/useSlot';
 
@@ -30,7 +30,7 @@ export const MediaCard: FunctionComponent<MediaCardProps> = ({
 
 	return (
 		<div
-			className={classNames(className, 'c-media-card', `c-media-card--${category}`, {
+			className={classnames(className, 'c-media-card', `c-media-card--${category}`, {
 				'c-media-card--horizontal': orientation === 'horizontal',
 			})}
 		>

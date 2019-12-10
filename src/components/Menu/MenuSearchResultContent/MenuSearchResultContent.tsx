@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps, EnglishContentType } from '../../../types';
 import { Icon } from '../../Icon/Icon';
@@ -44,7 +44,7 @@ export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
 	const renderMenuItem = (menuItemInfo: MenuSearchResultItemInfo) => {
 		return (
 			<div
-				className={classNames(className, 'c-menu__item')}
+				className={classnames(className, 'c-menu__item')}
 				onClick={() => onClick(menuItemInfo.id)}
 				key={`menu-search-item-${menuItemInfo.id}`}
 			>
