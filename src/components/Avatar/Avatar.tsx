@@ -22,13 +22,7 @@ export const Avatar: FunctionComponent<AvatarProps> = ({
 	title,
 }) =>
 	name || title ? (
-		<div
-			className={classnames(className, {
-				'c-avatar': true,
-				'c-avatar-and-text': true,
-				'c-avatar--large': size === 'large',
-			})}
-		>
+		<div className={classnames(className, 'c-avatar-and-text')}>
 			<AvatarIcon initials={initials} size={size} image={image} />
 			<div className="c-avatar-and-text__text">
 				{name && <p>{name}</p>}
