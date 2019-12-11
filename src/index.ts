@@ -16,6 +16,11 @@ export { convertToHtml } from './helpers/convertToHtml';
 export { Alert, AlertProps } from './components/Alert/Alert';
 export { Avatar, AvatarProps } from './components/Avatar/Avatar';
 export { Accordion } from './components/Accordion/Accordion';
+export {
+	AccordionActions,
+	AccordionBody,
+	AccordionTitle,
+} from './components/Accordion/Accordion.slots';
 export { AvatarIcon } from './components/Avatar/AvatarIcon/AvatarIcon';
 export { AvatarList } from './components/AvatarList/AvatarList';
 export { Badge } from './components/Badge/Badge';

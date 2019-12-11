@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
@@ -10,21 +11,14 @@ import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 describe('<MediaCard />', () => {
 	it('Should be able to render', () => {
-		shallow(
-			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="collection" />
-		);
+		shallow(<MediaCard title="What an amazing title!" category="collection" />);
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-media-card-custom';
 
 		const mediaCardComponent = shallow(
-			<MediaCard
-				className={customClass}
-				title="What an amazing title!"
-				href="https://viaa.be/"
-				category="collection"
-			/>
+			<MediaCard className={customClass} title="What an amazing title!" category="collection" />
 		);
 
 		expect(mediaCardComponent.hasClass(customClass)).toEqual(true);
@@ -33,15 +27,15 @@ describe('<MediaCard />', () => {
 
 	it('Should set the correct className for each category', () => {
 		const collectionMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="collection" />
+			<MediaCard title="What an amazing title!" category="collection" />
 		);
 
 		const videoMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="video" />
+			<MediaCard title="What an amazing title!" category="video" />
 		);
 
 		const audioMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" href="https://viaa.be/" category="audio" />
+			<MediaCard title="What an amazing title!" category="audio" />
 		);
 
 		expect(collectionMediaCardComponent.hasClass('c-media-card--collection')).toEqual(true);
@@ -51,21 +45,11 @@ describe('<MediaCard />', () => {
 
 	it('Should set the correct className for each orientation', () => {
 		const horizontalMediaCardComponent = shallow(
-			<MediaCard
-				title="What an amazing title!"
-				href="https://viaa.be/"
-				category="collection"
-				orientation="horizontal"
-			/>
+			<MediaCard title="What an amazing title!" category="collection" orientation="horizontal" />
 		);
 
 		const verticalMediaCardComponent = shallow(
-			<MediaCard
-				title="What an amazing title!"
-				href="https://viaa.be/"
-				category="collection"
-				orientation="vertical"
-			/>
+			<MediaCard title="What an amazing title!" category="collection" orientation="vertical" />
 		);
 
 		expect(horizontalMediaCardComponent.hasClass('c-media-card--horizontal')).toEqual(true);
@@ -74,12 +58,7 @@ describe('<MediaCard />', () => {
 
 	it('Should render thumbnail when slot is passed', () => {
 		const mediaCardComponent = shallow(
-			<MediaCard
-				title="What an amazing title!"
-				href="https://viaa.be/"
-				category="collection"
-				orientation="horizontal"
-			>
+			<MediaCard title="What an amazing title!" category="collection" orientation="horizontal">
 				<MediaCardThumbnail>
 					<Thumbnail category="collection" />
 				</MediaCardThumbnail>
@@ -91,12 +70,7 @@ describe('<MediaCard />', () => {
 
 	it('Should render metaData when slot is passed', () => {
 		const mediaCardComponent = shallow(
-			<MediaCard
-				title="What an amazing title!"
-				href="https://viaa.be/"
-				category="collection"
-				orientation="horizontal"
-			>
+			<MediaCard title="What an amazing title!" category="collection" orientation="horizontal">
 				<MediaCardMetaData>
 					<MetaData category="collection">
 						<MetaDataItem label="vrt" />
@@ -111,20 +85,30 @@ describe('<MediaCard />', () => {
 	});
 
 	it('Should pass `href` property to title & thumbnail', () => {
-		const href = '/test';
+		const clickHandler = jest.fn();
 
 		const mediaCardComponent = mount(
-			<MediaCard title="What an amazing title!" href={href} category="collection">
+			<MediaCard title="What an amazing title!" onClick={clickHandler} category="collection">
 				<MediaCardThumbnail>
 					<Thumbnail category="collection" />
 				</MediaCardThumbnail>
 			</MediaCard>
 		);
 
-		const metaCardTitleElement = mediaCardComponent.find('.c-media-card__title a');
+		const metaCardElement = mediaCardComponent.find('.c-media-card');
+		const metaCardTitleElement = mediaCardComponent.find('.c-media-card__title');
 		const metaCardThumbElement = mediaCardComponent.find('.c-media-card-thumb');
 
-		expect(metaCardTitleElement.prop('href')).toEqual(href);
-		expect(metaCardThumbElement.prop('href')).toEqual(href);
+		metaCardElement.at(0).simulate('click');
+
+		expect(clickHandler).toHaveBeenCalledTimes(1);
+
+		metaCardTitleElement.at(0).simulate('click');
+
+		expect(clickHandler).toHaveBeenCalledTimes(2);
+
+		metaCardThumbElement.at(0).simulate('click');
+
+		expect(clickHandler).toHaveBeenCalledTimes(3);
 	});
 });
