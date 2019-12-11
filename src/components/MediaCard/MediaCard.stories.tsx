@@ -2,6 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
+import { action } from '../../helpers/action';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
@@ -15,7 +16,7 @@ storiesOf('MediaCard', module)
 		<div className="o-grid-col-bp3-4">
 			<MediaCard
 				title="What an amazing title!"
-				href="https://viaa.be/"
+				onClick={action('clicked on media card')}
 				category="collection"
 				orientation="vertical"
 			>
@@ -41,7 +42,7 @@ storiesOf('MediaCard', module)
 	.add('Media card (horizontal)', () => (
 		<MediaCard
 			title="What an amazing title!"
-			href="https://viaa.be/"
+			onClick={action('clicked on media card')}
 			category="collection"
 			orientation="horizontal"
 		>
