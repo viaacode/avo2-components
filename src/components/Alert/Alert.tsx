@@ -1,46 +1,43 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import classNames from 'classnames';
 
-import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
+import { IconName } from '../Icon/types';
 import { Spinner } from '../Spinner/Spinner';
 
-import { IconName } from '../Icon/types';
+import { AlertProps, AlertType, AlertTypeWithIcon } from './Alert.types';
+
 import './Alert.scss';
 
-const ALERT_TYPE_TO_ICON_MAPPING: { [type: string]: string } = {
+const ALERT_TYPE_TO_ICON_MAPPING: { [type in AlertTypeWithIcon]: IconName } = {
 	info: 'circle-info',
 	success: 'circle-check',
 	danger: 'circle-warning',
 };
 
-export interface AlertProps extends DefaultProps {
-	onClose?: () => void;
-	dark?: boolean;
-	message?: ReactNode | string;
-	type?: 'info' | 'success' | 'danger' | 'spinner';
-	children?: ReactNode;
-}
-
 export const Alert: FunctionComponent<AlertProps> = ({
+	children,
 	className,
-	onClose,
 	dark = false,
+	light = false,
 	message = '',
-	type = 'info',
-	children = null,
+	onClose,
+	type = AlertType.Info,
 }) => {
 	return (
 		<div
-			className={classNames(className, 'c-alert', `c-alert--${type}`, { 'c-alert--dark': dark })}
+			className={classNames(className, 'c-alert', {
+				'c-alert--dark': dark,
+				[`c-alert--${type}`]: !light,
+			})}
 		>
 			<div className="c-alert__body">
-				{ALERT_TYPE_TO_ICON_MAPPING[type] ? (
-					<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type] as IconName} type="multicolor" />
-				) : (
+				{type === AlertType.Spinner ? (
 					<Spinner light={dark} />
+				) : (
+					<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type]} type="multicolor" />
 				)}
 				<div className="c-alert__message">{message || children}</div>
 			</div>
