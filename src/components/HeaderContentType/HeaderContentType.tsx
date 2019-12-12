@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps, EnglishContentType } from '../../types';
 import { Icon } from '../Icon/Icon';
@@ -16,7 +16,7 @@ export const HeaderContentType: FunctionComponent<ContentTypeProps> = ({
 	label,
 	className,
 }) => (
-	<div className={classNames(className, 'c-content-type', `c-content-type--${category}`)}>
+	<div className={classnames(className, 'c-content-type', `c-content-type--${category}`)}>
 		<Icon name={category as IconName} />
 		<p>{label.toUpperCase()}</p>
 	</div>

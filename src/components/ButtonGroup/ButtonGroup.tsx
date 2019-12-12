@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -11,7 +11,7 @@ export interface ButtonGroupProps extends DefaultProps {
 }
 
 const ButtonGroup: FunctionComponent<ButtonGroupProps> = ({ className = '', children }) => (
-	<div className={classNames(className, 'c-button-group')}>{children}</div>
+	<div className={classnames(className, 'c-button-group')}>{children}</div>
 );
 
 export { ButtonGroup };

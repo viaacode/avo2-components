@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { useSlot } from '../../hooks/useSlot';
@@ -58,7 +58,7 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
 			<Popper placement={position}>
 				{({ ref, style, placement }) => (
 					<div
-						className={classNames(contentClassName, 'c-tooltip', `c-tooltip--${position}`, {
+						className={classnames(contentClassName, 'c-tooltip', `c-tooltip--${position}`, {
 							'c-tooltip--show': show,
 						})}
 						data-placement={placement}

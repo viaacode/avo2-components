@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -23,7 +23,7 @@ export const Container: FunctionComponent<ContainerProps> = ({
 	children,
 }) => (
 	<div
-		className={classNames(className, {
+		className={classnames(className, {
 			'o-container': mode === 'horizontal',
 			'o-container-vertical': mode === 'vertical',
 			[`o-container--${size}`]: (mode === 'horizontal' || !mode) && size,

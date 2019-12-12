@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -12,5 +12,5 @@ export interface BadgeProps extends DefaultProps {
 }
 
 export const Badge: FunctionComponent<BadgeProps> = ({ className, text, type = 'default' }) => (
-	<div className={classNames(className, 'c-badge', { [`c-badge--${type}`]: type })}>{text}</div>
+	<div className={classnames(className, 'c-badge', { [`c-badge--${type}`]: type })}>{text}</div>
 );

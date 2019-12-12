@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import * as Icons from './Icons';
@@ -55,7 +55,7 @@ export const Icon: FunctionComponent<IconProps> = ({
 
 	return (
 		<div
-			className={classNames(className, 'o-svg-icon', getIconName(), {
+			className={classnames(className, 'o-svg-icon', getIconName(), {
 				'o-svg-icon--action-active': active,
 				'o-svg-icon-multicolor': type === 'multicolor',
 				'o-svg-icon--subtle': subtle,

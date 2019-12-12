@@ -10,6 +10,7 @@ import './Avatar.scss';
 export interface AvatarProps extends DefaultProps, AvatarIconProps {
 	name?: string;
 	title?: string;
+	dark?: boolean;
 }
 
 export const Avatar: FunctionComponent<AvatarProps> = ({
@@ -20,13 +21,14 @@ export const Avatar: FunctionComponent<AvatarProps> = ({
 	icon,
 	name,
 	title,
+	dark = false,
 }) =>
 	name || title ? (
 		<div className={classnames(className, 'c-avatar-and-text')}>
 			<AvatarIcon initials={initials} size={size} image={image} />
-			<div className="c-avatar-and-text__text">
-				{name && <p>{name}</p>}
-				{title && <p className="u-text-muted">{title}</p>}
+			<div>
+				{name && <p className={classnames({ dark })}>{name}</p>}
+				{title && <p className={classnames('u-text-muted', { dark })}>{title}</p>}
 			</div>
 		</div>
 	) : (
