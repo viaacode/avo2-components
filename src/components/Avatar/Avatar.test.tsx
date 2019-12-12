@@ -17,9 +17,10 @@ describe('<Avatar />', () => {
 	});
 
 	it('should set the large class when setting size to large', () => {
-		const avatarComponent = mount(<Avatar size="large" initials="JD" />);
+		const avatarComponent = shallow(<Avatar size="large" initials="JD" />);
 
-		expect(avatarComponent.find('.c-avatar').hasClass('c-avatar--large')).toBeTruthy();
+		// Checking full html because of enzyme not cooperating
+		expect(avatarComponent.html()).toEqual('<div class="c-avatar-icon c-avatar--large">JD</div>');
 	});
 
 	it('should use an icon when no initials or name are passed', () => {
