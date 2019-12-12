@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -16,7 +16,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
 	type: Type,
 	onClick,
 }) => (
-	<Type className={classNames(className, `c-${Type}`)} onClick={onClick}>
+	<Type className={classnames(className, `c-${Type}`)} onClick={onClick}>
 		{children}
 	</Type>
 );

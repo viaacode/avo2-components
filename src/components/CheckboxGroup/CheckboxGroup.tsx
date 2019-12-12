@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -14,7 +14,7 @@ export const CheckboxGroup: FunctionComponent<CheckboxGroupProps> = ({
 	inline = false,
 }) => (
 	<div
-		className={classNames(className, 'c-checkbox-group', {
+		className={classnames(className, 'c-checkbox-group', {
 			'c-checkbox-group--inline': inline,
 		})}
 	>

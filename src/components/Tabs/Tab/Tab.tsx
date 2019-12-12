@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
@@ -24,7 +24,7 @@ export const Tab: FunctionComponent<TabProps> = ({
 	onClick = () => {},
 }) => (
 	<div
-		className={classNames(className, 'c-tabs__item', {
+		className={classnames(className, 'c-tabs__item', {
 			'c-tabs__item--active': active,
 		})}
 		style={{ cursor: 'pointer' }}

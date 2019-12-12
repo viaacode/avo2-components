@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
@@ -56,7 +56,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 	const pagesToDisplay = generatePages();
 
 	return (
-		<div className={classNames(className, 'c-pagination')}>
+		<div className={classnames(className, 'c-pagination')}>
 			<div className="c-pagination__btn" onClick={() => changePage(0)}>
 				<Icon name="chevrons-left" type="arrows" />
 			</div>
@@ -67,7 +67,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 				{pagesToDisplay.map((pageIndex: number) => (
 					<div
 						key={pageIndex}
-						className={classNames('c-pagination__btn', {
+						className={classnames('c-pagination__btn', {
 							'c-pagination__btn--active': pageIndex === currentPage,
 						})}
 						onClick={pageIndex !== currentPage ? () => changePage(pageIndex) : () => {}}

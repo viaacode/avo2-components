@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -22,7 +22,7 @@ export const Image: FunctionComponent<ImageProps> = ({
 	width,
 	height,
 }) => (
-	<div className={classNames(className, 'c-image', { 'c-image--full': wide })}>
+	<div className={classnames(className, 'c-image', { 'c-image--full': wide })}>
 		<img src={src} alt={alt} width={width} height={height} />
 	</div>
 );
