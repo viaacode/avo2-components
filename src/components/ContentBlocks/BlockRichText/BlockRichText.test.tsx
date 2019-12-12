@@ -1,39 +1,24 @@
 import React from 'react';
 
 import { mount, shallow } from 'enzyme';
-import { loremIpsum } from 'lorem-ipsum';
 
-import { BlockText } from './BlockText';
+import { BlockRichText } from './BlockRichText';
+import { RICH_TEXT_MOCK } from './BlockRichText.mock';
 
 const customClass = 'c-block-custom';
-const markdownAndHtmlString = `
-  # Title
 
+const SingleColumnExample = <BlockRichText className={customClass} content={RICH_TEXT_MOCK} />;
+const TwoColumnExample = (
+	<BlockRichText className={customClass} content={[RICH_TEXT_MOCK, RICH_TEXT_MOCK]} />
+);
 
-  ${loremIpsum({ count: 20 })}
-
-
-  * one
-  * two
-  * three
-
-
-  <ul>
-		<li>1</li>
-		<li>2</li>
-		<li>3</li>
-  </ul>
-  `;
-
-const BlockTextExample = <BlockText className={customClass} text={markdownAndHtmlString} />;
-
-describe('<BlockText />', () => {
+describe('<BlockRichText />', () => {
 	it('Should be able to render', () => {
-		shallow(BlockTextExample);
+		shallow(SingleColumnExample);
 	});
 
 	it('Should render the markdown correctly', () => {
-		const component = mount(BlockTextExample);
+		const component = mount(SingleColumnExample);
 
 		const html = component.html();
 		expect(html).toContain('>Title</h1>');
@@ -48,7 +33,7 @@ describe('<BlockText />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const component = mount(BlockTextExample);
+		const component = mount(SingleColumnExample);
 
 		const verticalContainer = component.find('div').at(0);
 		const horizontalContainer = component.find('div').at(1);
@@ -63,5 +48,13 @@ describe('<BlockText />', () => {
 		expect(horizontalContainer.hasClass('o-container--small')).toEqual(true);
 
 		expect(contentContainer.hasClass('c-content')).toEqual(true);
+	});
+
+	it('Should create multiple columns', () => {
+		const component = mount(TwoColumnExample);
+
+		const horizontalContainer = component.find('div').at(1);
+
+		expect(horizontalContainer.find('.c-content')).toHaveLength(2);
 	});
 });
