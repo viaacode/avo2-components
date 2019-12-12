@@ -13,7 +13,7 @@ describe('<Container />', () => {
 		);
 	});
 
-	it('Should set the correct classNames when in horizontal mode', () => {
+	it('Should set the correct classnames when in horizontal mode', () => {
 		const containerComponent = shallow(
 			<Container mode="horizontal">
 				<Fragment />
@@ -23,7 +23,7 @@ describe('<Container />', () => {
 		expect(containerComponent.hasClass('o-container')).toEqual(true);
 	});
 
-	it('Should set the correct custom classNames', () => {
+	it('Should set the correct custom classnames', () => {
 		const customClass = 'o-container-vertical-title';
 		const containerComponent = shallow(
 			<Container className={customClass}>
@@ -34,7 +34,7 @@ describe('<Container />', () => {
 		expect(containerComponent.hasClass(customClass)).toEqual(true);
 	});
 
-	it('Should set the correct classNames when passing `size` and no mode is passed', () => {
+	it('Should set the correct classnames when passing `size` and no mode is passed', () => {
 		const smallContainerComponent = shallow(
 			<Container size="small">
 				<Fragment />
@@ -58,7 +58,7 @@ describe('<Container />', () => {
 		expect(largeContainerComponent.hasClass('o-container--large')).toEqual(true);
 	});
 
-	it('Should set the correct classNames when passing `size` in horizontal mode', () => {
+	it('Should set the correct classnames when passing `size` in horizontal mode', () => {
 		const smallContainerComponent = shallow(
 			<Container mode="horizontal" size="small">
 				<Fragment />
@@ -82,7 +82,7 @@ describe('<Container />', () => {
 		expect(largeContainerComponent.hasClass('o-container--large')).toEqual(true);
 	});
 
-	it('Should set the correct classNames when in vertical mode', () => {
+	it('Should set the correct classnames when in vertical mode', () => {
 		const containerComponent = shallow(
 			<Container mode="vertical">
 				<Fragment />
@@ -92,7 +92,7 @@ describe('<Container />', () => {
 		expect(containerComponent.hasClass('o-container-vertical')).toEqual(true);
 	});
 
-	it('Should set the correct classNames when passing `size` in vertical mode', () => {
+	it('Should set the correct classnames when passing `size` in vertical mode', () => {
 		const smallContainerComponent = shallow(
 			<Container mode="vertical" size="small">
 				<Fragment />

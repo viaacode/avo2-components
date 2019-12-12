@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -47,12 +47,12 @@ export const ImageGrid: FunctionComponent<ImageGridProps> = ({
 
 	return (
 		<div
-			className={classNames('c-image-grid', className, { 'c-image-grid-selectable': allowSelect })}
+			className={classnames('c-image-grid', className, { 'c-image-grid-selectable': allowSelect })}
 		>
 			{images.map(imgSource => (
 				<div
 					key={imgSource}
-					className={classNames('c-image-grid__item', {
+					className={classnames('c-image-grid__item', {
 						'c-image-grid__item-selected': value.includes(imgSource),
 					})}
 					style={{

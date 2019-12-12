@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
@@ -28,7 +28,7 @@ export const Alert: FunctionComponent<AlertProps> = ({
 }) => {
 	return (
 		<div
-			className={classNames(className, 'c-alert', {
+			className={classnames(className, 'c-alert', {
 				'c-alert--dark': dark,
 				[`c-alert--${type}`]: !light,
 			})}

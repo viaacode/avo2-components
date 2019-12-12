@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Tab, TabProps } from './Tab/Tab';
@@ -20,7 +20,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
 	onClick = () => {},
 }) => (
 	<nav
-		className={classNames(className, 'c-tabs', {
+		className={classnames(className, 'c-tabs', {
 			'c-tabs--bottom-border': border,
 		})}
 	>

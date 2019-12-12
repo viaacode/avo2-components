@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -16,7 +16,7 @@ export const Form: FunctionComponent<FormGroupProps> = ({
 	type = 'standard',
 	children,
 }) => (
-	<div className={classNames(className, 'o-form-group-layout', `o-form-group-layout--${type}`)}>
+	<div className={classnames(className, 'o-form-group-layout', `o-form-group-layout--${type}`)}>
 		{children}
 	</div>
 );

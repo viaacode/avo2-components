@@ -19,6 +19,34 @@ $c-avatar-dimensions-l: 9.6rem !default;
    ========================================================================== */
 
 .c-avatar {
+	width: auto;
+	height: $c-avatar-dimensions;
+	min-height: $c-avatar-dimensions;
+	font-weight: $g-headings-font-weight;
+	font-size: 1.2rem;
+	color: #FFF;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+
+	p {
+		margin: 0 2px 0 8px;
+
+		&.u-text-muted {
+			color: $color-gray-150;
+		}
+
+		&.dark {
+			color: $color-night-blue;
+
+			&.u-text-muted {
+				color: $color-gray-300;
+			}
+		}
+	}
+}
+
+.c-avatar-icon {
 	width: $c-avatar-dimensions;
 	height: $c-avatar-dimensions;
 	min-width: $c-avatar-dimensions;
@@ -27,10 +55,8 @@ $c-avatar-dimensions-l: 9.6rem !default;
 	border-radius: 50%;
 	text-align: center;
 	background-color: $c-avatar-default-bg;
-	font-weight: $g-headings-font-weight;
-	font-size: 1.2rem;
-	color: #FFF;
 	display: inline-block;
+	color: #FFF;
 }
 
 .c-avatar--small {

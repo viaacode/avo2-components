@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -45,7 +45,7 @@ export const Flex: FunctionComponent<FlexProps> = ({
 
 	return (
 		<div
-			className={classNames(className, ...classes, {
+			className={classnames(className, ...classes, {
 				[`o-flex--justify-${justify}`]: justify,
 				'o-flex--wrap': wrap,
 			})}

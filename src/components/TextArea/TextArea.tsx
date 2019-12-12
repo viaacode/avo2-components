@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FunctionComponent, useEffect } from 'react';
 
 import autosize from 'autosize';
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { DefaultProps } from '../../types';
@@ -44,7 +44,7 @@ export const TextArea: FunctionComponent<TextAreaProps> = ({
 
 	return (
 		<textarea
-			className={classNames(className, 'c-input', {
+			className={classnames(className, 'c-input', {
 				[`c-input--h-${height}`]: height && height !== 'auto',
 				[`c-input--w-${width}`]: width,
 			})}

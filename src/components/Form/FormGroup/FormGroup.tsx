@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 import { DefaultProps } from '../../../types';
 
 import './FormGroup.scss';
@@ -27,7 +27,7 @@ export const FormGroup: FunctionComponent<FormGroupProps> = ({
 
 	return (
 		<div
-			className={classNames(className, 'o-form-group', {
+			className={classnames(className, 'o-form-group', {
 				'o-form-group--error': error,
 				[`o-form-group--inline-${inlineMode}`]: inlineMode,
 			})}
