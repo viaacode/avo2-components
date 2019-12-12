@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -11,7 +11,7 @@ export interface ButtonToolbarProps extends DefaultProps {
 }
 
 const ButtonToolbar: FunctionComponent<ButtonToolbarProps> = ({ className = '', children }) => (
-	<div className={classNames(className, 'c-button-toolbar')}>{children}</div>
+	<div className={classnames(className, 'c-button-toolbar')}>{children}</div>
 );
 
 export { ButtonToolbar };

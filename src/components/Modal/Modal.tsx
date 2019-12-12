@@ -1,6 +1,6 @@
 import React, { Fragment, FunctionComponent, MouseEvent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 import ReactDOM from 'react-dom';
 
 import { useKeyPress } from '../../hooks/useKeyPress';
@@ -55,11 +55,11 @@ export const Modal: FunctionComponent<ModalProps> = ({
 	return ReactDOM.createPortal(
 		<Fragment>
 			<div
-				className={classNames(className, 'c-modal-context', { 'c-modal-context--visible': isOpen })}
+				className={classnames(className, 'c-modal-context', { 'c-modal-context--visible': isOpen })}
 				onClick={onContextClick}
 			>
 				<div
-					className={classNames('c-modal', {
+					className={classnames('c-modal', {
 						'c-modal--small': size === 'small',
 						'c-modal--medium': size === 'medium',
 						'c-modal--large': size === 'large',
