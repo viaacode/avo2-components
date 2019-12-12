@@ -1,7 +1,8 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Alert, AlertProps } from './Alert';
+import { Alert } from './Alert';
+import { AlertProps, AlertType } from './Alert.types';
 
 describe('<Alert />', () => {
 	const alertProps: AlertProps = {
@@ -9,7 +10,7 @@ describe('<Alert />', () => {
 		onClose: () => {},
 		dark: false,
 		message: 'Alert message',
-		type: 'info',
+		type: AlertType.Info,
 	};
 	const alert = <Alert {...alertProps} />;
 	const wrapper = mount(alert);
@@ -39,8 +40,14 @@ describe('<Alert />', () => {
 		expect(alertComponent.find('.c-alert').hasClass('c-alert--dark')).toBeTruthy();
 	});
 
+	it('should set the correct className when setting option light = true', () => {
+		const alertComponent = shallow(<Alert {...alertProps} light />);
+
+		expect(alertComponent.find('.c-alert').hasClass(`c-alert--${alertProps.type}`)).toBeFalsy();
+	});
+
 	it('should show a spinner when the correct type is passed', () => {
-		const alertComponent = mount(<Alert {...alertProps} type="spinner" />);
+		const alertComponent = mount(<Alert {...alertProps} type={AlertType.Spinner} />);
 		const svgElement = alertComponent.find('.c-alert__body .o-svg-icon');
 
 		expect(alertComponent.find('.c-spinner')).toHaveLength(1);
