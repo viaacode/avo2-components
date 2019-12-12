@@ -13,7 +13,6 @@ describe('<Avatar />', () => {
 		const customClass = 'c-avatar-custom';
 		const avatarComponent = shallow(<Avatar className={customClass} initials="JD" />);
 
-		console.log(`avatar html: ${avatarComponent.html()}`);
 		expect(avatarComponent.hasClass(customClass)).toBeTruthy();
 	});
 
