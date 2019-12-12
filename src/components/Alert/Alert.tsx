@@ -7,7 +7,7 @@ import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/types';
 import { Spinner } from '../Spinner/Spinner';
 
-import { AlertProps, AlertType, AlertTypeWithIcon } from './Alert.types';
+import { AlertProps, AlertTypeWithIcon } from './Alert.types';
 
 import './Alert.scss';
 
@@ -24,7 +24,7 @@ export const Alert: FunctionComponent<AlertProps> = ({
 	light = false,
 	message = '',
 	onClose,
-	type = AlertType.Info,
+	type = 'info',
 }) => {
 	return (
 		<div
@@ -34,7 +34,7 @@ export const Alert: FunctionComponent<AlertProps> = ({
 			})}
 		>
 			<div className="c-alert__body">
-				{type === AlertType.Spinner ? (
+				{type === 'spinner' ? (
 					<Spinner light={dark} />
 				) : (
 					<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type]} type="multicolor" />

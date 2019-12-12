@@ -2,14 +2,9 @@ import { ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 
-export enum AlertType {
-	Info = 'info',
-	Success = 'success',
-	Danger = 'danger',
-	Spinner = 'spinner',
-}
+export type AlertType = 'info' | 'success' | 'danger' | 'spinner';
 
-export type AlertTypeWithIcon = Exclude<AlertType, AlertType.Spinner>;
+export type AlertTypeWithIcon = Exclude<AlertType, 'spinner'>;
 
 export interface AlertProps extends DefaultProps {
 	dark?: boolean;

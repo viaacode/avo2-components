@@ -20,7 +20,7 @@ function getMultiLineAlertMessage(type: string) {
 }
 
 function renderAlertStories(props?: AlertProps, message?: (type: string) => JSX.Element) {
-	const types: (keyof typeof AlertType)[] = ['Info', 'Success', 'Danger', 'Spinner'];
+	const types: AlertType[] = ['info', 'success', 'danger', 'spinner'];
 
 	return (
 		<>
@@ -30,8 +30,8 @@ function renderAlertStories(props?: AlertProps, message?: (type: string) => JSX.
 						key={`${type}-${i}`}
 						{...props}
 						message={message ? message(type) : `${type} alert message`}
-						type={AlertType[type]}
-						onClose={type === 'Info' ? action('alert closed') : () => {}}
+						type={type}
+						onClose={type === 'info' ? action('alert closed') : () => {}}
 					/>
 				</Spacer>
 			))}
