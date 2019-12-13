@@ -1,6 +1,6 @@
 import React, { FunctionComponent, MutableRefObject, useEffect, useRef, useState } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 import { formatDuration } from '../../helpers/parse-time';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
@@ -157,12 +157,12 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 
 	return src && poster ? (
 		<div
-			className={classNames(className, 'c-video-player')}
+			className={classnames(className, 'c-video-player')}
 			data-player-id={dataPlayerId}
 			ref={videoContainerRef}
 		/>
 	) : (
-		<div className={classNames(className, 'c-video-player')} onClick={onInit}>
+		<div className={classnames(className, 'c-video-player')} onClick={onInit}>
 			<div className="c-video-player__item c-video-player__thumbnail">
 				<img src={poster} alt={`Thumbnail voor video over ${title}.`} />
 			</div>

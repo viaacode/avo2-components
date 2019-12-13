@@ -130,7 +130,7 @@ describe('<Button />', () => {
 		expect(buttonElement.prop('disabled')).toEqual(true);
 	});
 
-	it('Should set the correct classNames when `active` is passed', () => {
+	it('Should set the correct classnames when `active` is passed', () => {
 		const buttonComponent = shallow(<Button active={true} ariaLabel="test button" />);
 
 		const buttonElement = buttonComponent.find('button');

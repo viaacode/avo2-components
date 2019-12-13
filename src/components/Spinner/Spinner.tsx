@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -14,7 +14,7 @@ export interface SpinnerProps extends DefaultProps {
 export const Spinner: FunctionComponent<SpinnerProps> = ({ className, size, light = false }) => {
 	return (
 		<div
-			className={classNames(className, 'c-spinner', {
+			className={classnames(className, 'c-spinner', {
 				'c-spinner--large': size === 'large',
 				'c-spinner--light': light,
 			})}

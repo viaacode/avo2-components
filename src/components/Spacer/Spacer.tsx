@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -49,6 +49,6 @@ export const Spacer: FunctionComponent<SpacerProps> = ({ margin, children, class
 	}
 
 	return (
-		<div className={classNames(className, { 'u-spacer': !margin }, ...classes)}>{children}</div>
+		<div className={classnames(className, { 'u-spacer': !margin }, ...classes)}>{children}</div>
 	);
 };

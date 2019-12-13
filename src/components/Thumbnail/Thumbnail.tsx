@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps, EnglishContentType } from '../../types';
 import { Icon } from '../Icon/Icon';
@@ -45,7 +45,7 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 
 	return (
 		<div
-			className={classNames(
+			className={classnames(
 				className,
 				'c-thumbnail',
 				'c-thumbnail-media',
@@ -62,7 +62,7 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 			)}
 			{(label || meta) && (
 				<div
-					className={classNames('c-thumbnail-meta', {
+					className={classnames('c-thumbnail-meta', {
 						'c-thumbnail-meta--img-is-loaded': loaded,
 					})}
 				>

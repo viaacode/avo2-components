@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
@@ -34,7 +34,7 @@ export const Alert: FunctionComponent<AlertProps> = ({
 }) => {
 	return (
 		<div
-			className={classNames(className, 'c-alert', `c-alert--${type}`, { 'c-alert--dark': dark })}
+			className={classnames(className, 'c-alert', `c-alert--${type}`, { 'c-alert--dark': dark })}
 		>
 			<div className="c-alert__body">
 				{ALERT_TYPE_TO_ICON_MAPPING[type] ? (

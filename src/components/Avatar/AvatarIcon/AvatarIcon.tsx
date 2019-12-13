@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
@@ -21,7 +21,7 @@ export const AvatarIcon: FunctionComponent<AvatarIconProps> = ({
 	size,
 }) => (
 	<div
-		className={classNames(className, 'c-avatar', {
+		className={classnames(className, 'c-avatar-icon', {
 			'c-avatar--img': image,
 			'c-avatar--small': size === 'small',
 			'c-avatar--large': size === 'large',

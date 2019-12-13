@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
@@ -21,7 +21,7 @@ export const MetaDataItem: FunctionComponent<MetaDataItemProps> = ({
 	children,
 }) => (
 	<li
-		className={classNames(className, 'c-meta-data__item', {
+		className={classnames(className, 'c-meta-data__item', {
 			'c-meta-data-item--icon': icon,
 		})}
 	>

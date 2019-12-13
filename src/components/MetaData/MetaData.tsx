@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps, EnglishContentType } from '../../types';
 
@@ -19,7 +19,7 @@ export const MetaData: FunctionComponent<MetaDataProps> = ({
 	spaced,
 }) => (
 	<ul
-		className={classNames(className, `c-meta-data c-meta-data--${category}`, {
+		className={classnames(className, `c-meta-data c-meta-data--${category}`, {
 			'c-meta-data--spaced-out': spaced,
 		})}
 	>

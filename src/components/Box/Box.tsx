@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
@@ -8,7 +8,7 @@ import './Box.scss';
 
 export interface BoxProps extends DefaultProps {
 	condensed?: boolean;
-	backgroundColor?: 'gray' | 'soft-white' | 'white';
+	backgroundColor?: 'gray' | 'soft-white' | 'white' | 'dark';
 	children: ReactNode;
 }
 
@@ -19,7 +19,7 @@ export const Box: FunctionComponent<BoxProps> = ({
 	backgroundColor = 'gray',
 }) => (
 	<div
-		className={classNames(className, 'c-box', {
+		className={classnames(className, 'c-box', {
 			'c-box--padding-small': condensed,
 			[`c-box--${backgroundColor}`]: backgroundColor !== 'gray',
 		})}

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, MouseEvent } from 'react';
 
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
@@ -34,13 +34,13 @@ export const TagList: FunctionComponent<TagListProps> = ({
 	const safeOnTagClicked = onTagClicked || (() => {});
 
 	return !!tags && !!tags.length ? (
-		<ul className={classNames(className, 'c-tag-list')}>
+		<ul className={classnames(className, 'c-tag-list')}>
 			{tags.map((tag: TagOption, index) => (
-				<li className={classNames({ 'c-tag': bordered, 'c-label': !bordered })} key={tag.id}>
+				<li className={classnames({ 'c-tag': bordered, 'c-label': !bordered })} key={tag.id}>
 					{/* output swatch element */}
 					{swatches && (
 						<div
-							className={classNames('c-label-swatch', {
+							className={classnames('c-label-swatch', {
 								[`c-label-swatch--color-${(index % 10) + 1}`]: !tag.color,
 							})}
 							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
@@ -53,7 +53,7 @@ export const TagList: FunctionComponent<TagListProps> = ({
 					{/* output label text element */}
 					{swatches || closable ? (
 						<p
-							className={classNames({ 'c-tag__label': !swatches, 'c-label-text': swatches })}
+							className={classnames({ 'c-tag__label': !swatches, 'c-label-text': swatches })}
 							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
 							style={onTagClicked ? { cursor: 'pointer' } : {}}
 						>

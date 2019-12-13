@@ -24,7 +24,7 @@ describe('<Navbar />', () => {
 		expect(navbarComponent.hasClass(customClass)).toBeTruthy();
 	});
 
-	it('Should set the correct classNames when placement is passed', () => {
+	it('Should set the correct classnames when placement is passed', () => {
 		const navbarDefaultComponent = shallow(
 			<Navbar>
 				<Fragment />
@@ -51,7 +51,7 @@ describe('<Navbar />', () => {
 		expect(navbarBottomComponent.hasClass('c-navbar--bordered-bottom')).toEqual(false);
 	});
 
-	it('Should set the correct classNames when position is passed', () => {
+	it('Should set the correct classnames when position is passed', () => {
 		const navbarDefaultComponent = shallow(
 			<Navbar>
 				<Fragment />
@@ -67,7 +67,7 @@ describe('<Navbar />', () => {
 		expect(navbarFixedComponent.hasClass('c-navbar--fixed')).toEqual(true);
 	});
 
-	it('Should set the correct classNames when autoHeight is passed', () => {
+	it('Should set the correct classnames when autoHeight is passed', () => {
 		const navbarDefaultComponent = shallow(
 			<Navbar>
 				<Fragment />
@@ -89,7 +89,7 @@ describe('<Navbar />', () => {
 		expect(navbarAutoHeightFalseComponent.hasClass('c-navbar--auto')).toEqual(false);
 	});
 
-	it('Should set the correct classNames when background is passed', () => {
+	it('Should set the correct classnames when background is passed', () => {
 		const navbarDefaultComponent = shallow(
 			<Navbar>
 				<Fragment />
