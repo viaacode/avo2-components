@@ -15,26 +15,24 @@ export interface BlockRichTextProps extends DefaultProps {
 export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 	className,
 	content = [''],
-}) => (
-	<Container className={classnames(className, 'o-container-vertical-rich-text')} mode="vertical">
-		<Container mode="horizontal" size="small">
-			{typeof content === 'string' ? (
-				<div className="c-content" dangerouslySetInnerHTML={{ __html: convertToHtml(content) }} />
-			) : (
-				<Grid>
-					{content.map((contentColumn, index) => (
-						<Column
-							size={(12 / content.length).toString() as GridSize}
-							key={`rich-text-column-${index}`}
-						>
-							<div
-								className="c-content"
-								dangerouslySetInnerHTML={{ __html: convertToHtml(contentColumn) }}
-							/>
-						</Column>
-					))}
-				</Grid>
-			)}
-		</Container>
-	</Container>
-);
+}) =>
+	typeof content === 'string' ? (
+		<div
+			className={classnames(className, 'c-content')}
+			dangerouslySetInnerHTML={{ __html: convertToHtml(content) }}
+		/>
+	) : (
+		<Grid>
+			{content.map((contentColumn, index) => (
+				<Column
+					size={(12 / content.length).toString() as GridSize}
+					key={`rich-text-column-${index}`}
+				>
+					<div
+						className="c-content"
+						dangerouslySetInnerHTML={{ __html: convertToHtml(contentColumn) }}
+					/>
+				</Column>
+			))}
+		</Grid>
+	);
