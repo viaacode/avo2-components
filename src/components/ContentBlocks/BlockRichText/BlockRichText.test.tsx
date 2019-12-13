@@ -35,26 +35,16 @@ describe('<BlockRichText />', () => {
 	it('Should set the correct className', () => {
 		const component = mount(SingleColumnExample);
 
-		const verticalContainer = component.find('div').at(0);
-		const horizontalContainer = component.find('div').at(1);
-		const contentContainer = component.find('div').at(2);
+		const contentContainer = component.find('.c-content');
 
 		expect(component.hasClass(customClass)).toEqual(true);
 
-		expect(verticalContainer.hasClass('o-container-vertical')).toEqual(true);
-		expect(verticalContainer.hasClass('o-container-vertical-rich-text')).toEqual(true);
-
-		expect(horizontalContainer.hasClass('o-container')).toEqual(true);
-		expect(horizontalContainer.hasClass('o-container--small')).toEqual(true);
-
-		expect(contentContainer.hasClass('c-content')).toEqual(true);
+		expect(contentContainer).toHaveLength(1);
 	});
 
 	it('Should create multiple columns', () => {
 		const component = mount(TwoColumnExample);
 
-		const horizontalContainer = component.find('div').at(1);
-
-		expect(horizontalContainer.find('.c-content')).toHaveLength(2);
+		expect(component.find('.c-content')).toHaveLength(2);
 	});
 });
