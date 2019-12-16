@@ -46,7 +46,10 @@ export {
 	BlockSubtitle,
 	BlockSubtitleProps,
 } from './components/ContentBlocks/BlockSubtitle/BlockSubtitle';
-export { BlockText, BlockTextProps } from './components/ContentBlocks/BlockText/BlockText';
+export {
+	BlockRichText,
+	BlockRichTextProps,
+} from './components/ContentBlocks/BlockRichText/BlockRichText';
 export { BlockTitle, BlockTitleProps } from './components/ContentBlocks/BlockTitle/BlockTitle';
 export {
 	BlockTitleImageText,
@@ -114,7 +117,6 @@ export { Tab, TabProps } from './components/Tabs/Tab/Tab';
 export { Tabs } from './components/Tabs/Tabs';
 export { TagList, TagOption } from './components/TagList/TagList';
 export { TagInfo, TagsInput } from './components/TagsInput/TagsInput';
-export { Text } from './components/Text/Text';
 export { TextArea } from './components/TextArea/TextArea';
 export { TextInput } from './components/TextInput/TextInput';
 export { Thumbnail } from './components/Thumbnail/Thumbnail';

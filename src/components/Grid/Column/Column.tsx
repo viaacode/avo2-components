@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 
-type GridSize =
+export type GridSize =
 	| '1'
 	| '2'
 	| '3'
