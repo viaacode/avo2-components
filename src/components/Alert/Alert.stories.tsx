@@ -44,7 +44,6 @@ storiesOf('Alert', module)
 	.add('Alerts', () => renderAlertStories())
 	.add('Alerts multiline', () => renderAlertStories({}, getMultiLineAlertMessage))
 	.add('Dark alerts', () => renderAlertStories({ dark: true }))
-	.add('Light alerts', () => renderAlertStories({ light: true }))
 	.add('Alerts custom content', () => (
 		<Alert>
 			<span>

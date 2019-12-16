@@ -40,12 +40,6 @@ describe('<Alert />', () => {
 		expect(alertComponent.find('.c-alert').hasClass('c-alert--dark')).toBeTruthy();
 	});
 
-	it('should set the correct className when setting option light = true', () => {
-		const alertComponent = shallow(<Alert {...alertProps} light />);
-
-		expect(alertComponent.find('.c-alert').hasClass(`c-alert--${alertProps.type}`)).toBeFalsy();
-	});
-
 	it('should show a spinner when the correct type is passed', () => {
 		const alertComponent = mount(<Alert {...alertProps} type="spinner" />);
 		const svgElement = alertComponent.find('.c-alert__body .o-svg-icon');

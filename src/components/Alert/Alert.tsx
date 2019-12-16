@@ -21,7 +21,6 @@ export const Alert: FunctionComponent<AlertProps> = ({
 	children,
 	className,
 	dark = false,
-	light = false,
 	message = '',
 	onClose,
 	type = 'info',
@@ -30,7 +29,7 @@ export const Alert: FunctionComponent<AlertProps> = ({
 		<div
 			className={classnames(className, 'c-alert', {
 				'c-alert--dark': dark,
-				[`c-alert--${type}`]: !light,
+				[`c-alert--${type}`]: type,
 			})}
 		>
 			<div className="c-alert__body">

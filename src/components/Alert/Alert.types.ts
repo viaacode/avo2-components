@@ -8,7 +8,6 @@ export type AlertTypeWithIcon = Exclude<AlertType, 'spinner'>;
 
 export interface AlertProps extends DefaultProps {
 	dark?: boolean;
-	light?: boolean;
 	message?: ReactNode | string;
 	onClose?: () => void;
 	type?: AlertType;
