@@ -2,10 +2,10 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps, HeadingType } from '../../types';
 
 export interface HeadingProps extends DefaultProps {
-	type: 'h1' | 'h2' | 'h3' | 'h4';
+	type: HeadingType;
 	onClick?: (() => void) | undefined;
 	children: ReactNode;
 }
