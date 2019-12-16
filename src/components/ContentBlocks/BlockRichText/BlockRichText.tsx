@@ -4,7 +4,6 @@ import classnames from 'classnames';
 
 import { convertToHtml } from '../../../helpers/convertToHtml';
 import { DefaultProps } from '../../../types';
-import { Container } from '../../Container/Container';
 import { Column, GridSize } from '../../Grid/Column/Column';
 import { Grid } from '../../Grid/Grid';
 
