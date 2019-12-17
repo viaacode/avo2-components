@@ -13,7 +13,8 @@ export { useSlot } from './hooks/useSlot';
 export { convertToHtml } from './helpers/convertToHtml';
 
 // Components
-export { Alert, AlertProps } from './components/Alert/Alert';
+export { Alert } from './components/Alert/Alert';
+export { AlertProps, AlertType } from './components/Alert/Alert.types';
 export { Avatar, AvatarProps } from './components/Avatar/Avatar';
 export { Accordion } from './components/Accordion/Accordion';
 export {

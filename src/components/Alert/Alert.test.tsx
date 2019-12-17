@@ -1,7 +1,8 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Alert, AlertProps } from './Alert';
+import { Alert } from './Alert';
+import { AlertProps } from './Alert.types';
 
 describe('<Alert />', () => {
 	const alertProps: AlertProps = {

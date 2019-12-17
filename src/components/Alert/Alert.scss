@@ -11,6 +11,10 @@
 /* Variables
    ========================================================================== */
 
+$c-alert-danger-bg-color: #FEF2F0 !default;
+$c-alert-info-bg-color: #F2F9FA !default;
+$c-alert-spinner-bg-color: #FAFCFC !default;
+$c-alert-success-bg-color: #EFF9F6 !default;
 $c-dark-alert-bg-color: $color-gray-700 !default;
 
 /* Component
@@ -61,22 +65,23 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
    ========================================================================== */
 
 .c-alert--info {
-	background: rgba($color-soft-blue, 0.1);;
-	border-color: rgba($color-soft-blue, 0.5);
+	background: $c-alert-info-bg-color;
+	border-color: darken($c-alert-info-bg-color, 10%);
 }
 
 .c-alert--danger {
-	background: rgba($color-error-200, 0.1);
+	background: $c-alert-danger-bg-color;
+	border-color: darken($c-alert-danger-bg-color, 10%);
 	border-color: rgba($color-error-200, 0.33);
 }
 
 .c-alert--success {
-	background: rgba($color-ocean-green, 0.1);
-	border-color: rgba($color-ocean-green, 0.33);
+	background: $c-alert-success-bg-color;
+	border-color: darken($c-alert-success-bg-color, 10%);
 }
 
 .c-alert--spinner {
-	background: rgba($color-gray-100, 0.1);
+	background: $c-alert-spinner-bg-color;
 }
 
 .c-alert--dark {
