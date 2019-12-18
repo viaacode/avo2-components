@@ -1,18 +1,17 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { mount, shallow } from 'enzyme';
-
-import { BlockRichText } from './BlockRichText';
-import { RICH_TEXT_MOCK } from './BlockRichText.mock';
+import { RichText } from './RichText';
+import { RICH_TEXT_MOCK } from './RichText.mock';
 
 const customClass = 'c-block-custom';
 
-const SingleColumnExample = <BlockRichText className={customClass} content={RICH_TEXT_MOCK} />;
+const SingleColumnExample = <RichText className={customClass} content={RICH_TEXT_MOCK} />;
 const TwoColumnExample = (
-	<BlockRichText className={customClass} content={[RICH_TEXT_MOCK, RICH_TEXT_MOCK]} />
+	<RichText className={customClass} content={[RICH_TEXT_MOCK, RICH_TEXT_MOCK]} />
 );
 
-describe('<BlockRichText />', () => {
+describe('<RichText />', () => {
 	it('Should be able to render', () => {
 		shallow(SingleColumnExample);
 	});

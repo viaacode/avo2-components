@@ -33,6 +33,7 @@ export { ButtonToolbar } from './components/ButtonToolbar/ButtonToolbar';
 export { Checkbox } from './components/Checkbox/Checkbox';
 export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 export { Container } from './components/Container/Container';
+export { CTA } from './components/CTA/CTA';
 export { BlockIframe, BlockIframeProps } from './components/ContentBlocks/BlockIframe/BlockIframe';
 export { BlockImage, BlockImageProps } from './components/ContentBlocks/BlockImage/BlockImage';
 export {
@@ -46,10 +47,7 @@ export {
 	BlockSubtitle,
 	BlockSubtitleProps,
 } from './components/ContentBlocks/BlockSubtitle/BlockSubtitle';
-export {
-	BlockRichText,
-	BlockRichTextProps,
-} from './components/ContentBlocks/BlockRichText/BlockRichText';
+export { RichText, RichTextProps } from './components/RichText/RichText';
 export { BlockTitle, BlockTitleProps } from './components/ContentBlocks/BlockTitle/BlockTitle';
 export {
 	BlockTitleImageText,
