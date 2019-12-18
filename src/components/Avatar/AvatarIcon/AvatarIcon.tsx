@@ -21,7 +21,7 @@ export const AvatarIcon: FunctionComponent<AvatarIconProps> = ({
 	size,
 }) => (
 	<div
-		className={classnames(className, 'c-avatar-icon', {
+		className={classnames(className, 'c-avatar', {
 			'c-avatar--img': image,
 			'c-avatar--small': size === 'small',
 			'c-avatar--large': size === 'large',
