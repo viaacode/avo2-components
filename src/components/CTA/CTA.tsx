@@ -1,10 +1,12 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, MouseEvent } from 'react';
 
 import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { HeadingType } from '../../types/index';
+import { Button } from '../Button/Button';
 import { Heading } from '../Heading/Heading';
+import { IconName } from '../Icon/types';
 import { RichText } from '../RichText/RichText';
 
 import './CTA.scss';
@@ -13,6 +15,9 @@ export interface CTAProps extends DefaultProps {
 	heading: string;
 	headingType: HeadingType;
 	content: string | string[];
+	buttonLabel: string;
+	buttonIcon?: IconName;
+	onClick?(event: MouseEvent<HTMLElement>): void;
 }
 
 export const CTA: FunctionComponent<CTAProps> = ({
@@ -20,13 +25,16 @@ export const CTA: FunctionComponent<CTAProps> = ({
 	headingType = 'h3',
 	heading,
 	content,
+	buttonLabel,
+	buttonIcon,
+	onClick,
 }) => (
 	<div className={classnames(className, 'c-cta-item')}>
 		<div className="c-cta__content">
 			<div className="c-content">
 				<Heading type={headingType}>{heading}</Heading>
 				<RichText content={content} />
-				{/* TODO: Add buttons content block */}
+				<Button type="secondary" icon={buttonIcon} label={buttonLabel} />
 			</div>
 		</div>
 	</div>

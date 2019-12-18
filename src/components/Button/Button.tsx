@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/types';
+import { ButtonType } from './Button.types';
 
 import './Button.scss';
 
@@ -21,17 +22,7 @@ export interface ButtonProps extends DefaultProps {
 	onClick?(event: MouseEvent<HTMLElement>): void;
 	size?: 'small';
 	title?: string;
-	type?:
-		| 'borderless-i'
-		| 'borderless'
-		| 'danger-hover'
-		| 'danger'
-		| 'link'
-		| 'inline-link'
-		| 'primary'
-		| 'secondary-i'
-		| 'secondary'
-		| 'tertiary';
+	type?: ButtonType;
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
