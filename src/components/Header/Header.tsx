@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
@@ -61,7 +62,11 @@ export const Header: FunctionComponent<HeaderProps> = ({
 									</MetaData>
 								</Spacer>
 							)}
-							<Heading className="u-clickable u-m-0" type="h2" onClick={onClickTitle}>
+							<Heading
+								className={classnames('u-m-0', { 'u-clickable': onClickTitle })}
+								type="h2"
+								onClick={onClickTitle}
+							>
 								{title}
 							</Heading>
 							{(avatarSlot || tagSlot) && (
