@@ -17,24 +17,22 @@ export interface CTAProps extends DefaultProps {
 	content: string | string[];
 	buttonLabel: string;
 	buttonIcon?: IconName;
-	onClick?(event: MouseEvent<HTMLElement>): void;
 }
 
+// TODO: Add button action
 export const CTA: FunctionComponent<CTAProps> = ({
 	className,
 	headingType = 'h3',
 	heading,
 	content,
 	buttonLabel,
-	buttonIcon,
-	onClick,
 }) => (
 	<div className={classnames(className, 'c-cta-item')}>
 		<div className="c-cta__content">
 			<div className="c-content">
 				<Heading type={headingType}>{heading}</Heading>
 				<RichText content={content} />
-				<Button type="secondary" icon={buttonIcon} label={buttonLabel} />
+				<Button type="secondary" label={buttonLabel} />
 			</div>
 		</div>
 	</div>
