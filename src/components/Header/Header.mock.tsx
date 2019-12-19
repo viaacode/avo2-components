@@ -1,3 +1,4 @@
+import { action } from '../../helpers/action';
 import { EnglishContentType } from '../../types';
 
 export const MOCK_HEADER_PROPS = {
@@ -7,7 +8,7 @@ export const MOCK_HEADER_PROPS = {
 export const MOCK_HEADER_PROPS_FULL = {
 	...MOCK_HEADER_PROPS,
 	category: 'collection' as EnglishContentType,
-	onClickTitle: () => null,
+	onClickTitle: action('Title clicked'),
 	showMetaData: true,
 	bookmarks: '12',
 	views: '23',
