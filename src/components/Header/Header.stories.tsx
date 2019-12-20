@@ -20,7 +20,7 @@ storiesOf('Header', module)
 				<Button type="secondary" label="Bekijk" onClick={() => null} />
 			</HeaderButtons>
 			<HeaderAvatar>
-				<Avatar initials="BN" name="Benjamin Naesen" />
+				<Avatar initials="BN" name="Benjamin Naesen" dark />
 			</HeaderAvatar>
 			<HeaderTags>
 				<TagList

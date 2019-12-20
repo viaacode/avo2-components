@@ -26,9 +26,9 @@ export const Avatar: FunctionComponent<AvatarProps> = ({
 	name || title ? (
 		<div className={classnames(className, 'c-avatar-and-text')}>
 			<AvatarIcon initials={initials} size={size} image={image} />
-			<div>
-				{name && <p className={classnames({ dark })}>{name}</p>}
-				{title && <p className={classnames('u-text-muted', { dark })}>{title}</p>}
+			<div className="c-avatar-and-text__text">
+				{name && <p className={classnames({ 'u-color-white': !dark })}>{name}</p>}
+				{title && <p className={dark ? 'u-text-muted' : 'u-color-gray-150'}>{title}</p>}
 			</div>
 		</div>
 	) : (
