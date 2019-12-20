@@ -40,15 +40,8 @@ export {
 	BlockImageTitleTextButton,
 	BlockImageTitleTextButtonProps,
 } from './components/ContentBlocks/BlockImageTitleTextButton/BlockImageTitleTextButton';
-export { BlockIntro, BlockIntroProps } from './components/ContentBlocks/BlockIntro/BlockIntro';
 export { BlockLinks, BlockLinksProps } from './components/ContentBlocks/BlockLinks/BlockLinks';
 export { BlockQuote, BlockQuoteProps } from './components/ContentBlocks/BlockQuote/BlockQuote';
-export {
-	BlockSubtitle,
-	BlockSubtitleProps,
-} from './components/ContentBlocks/BlockSubtitle/BlockSubtitle';
-export { RichText, RichTextProps } from './components/RichText/RichText';
-export { BlockTitle, BlockTitleProps } from './components/ContentBlocks/BlockTitle/BlockTitle';
 export {
 	BlockTitleImageText,
 	BlockTitleImageTextProps,
@@ -72,7 +65,6 @@ export { Grid } from './components/Grid/Grid';
 export { Header } from './components/Header/Header';
 export { HeaderAvatar, HeaderButtons, HeaderTags } from './components/Header/Header.slots';
 export { HeaderContentType } from './components/HeaderContentType/HeaderContentType';
-export { Heading } from './components/Heading/Heading';
 export { Icon } from './components/Icon/Icon';
 export { IconName, IconType } from './components/Icon/types';
 export { Image } from './components/Image/Image';
@@ -128,6 +120,11 @@ export { Tooltip } from './components/Tooltip/Tooltip';
 export { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
 export { VideoWrapper } from './components/VideoWrapper/VideoWrapper';
 export { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
+
+// Content Blocks
+export { BlockHeading, BlockHeadingProps } from './content-blocks/BlockHeading/BlockHeading';
+export { BlockIntro, BlockIntroProps } from './content-blocks/BlockIntro/BlockIntro';
+export { BlockRichText, BlockRichTextProps } from './content-blocks/BlockRichText/BlockRichText';
 
 // Types
 export {

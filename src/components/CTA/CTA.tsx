@@ -1,38 +1,40 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, MouseEvent } from 'react';
 
 import classnames from 'classnames';
 
+import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
+import { BlockRichText } from '../../content-blocks/BlockRichText/BlockRichText';
 import { DefaultProps } from '../../types';
-import { HeadingType } from '../../types/index';
+import { BlockHeadingType } from '../../types/index';
 import { Button } from '../Button/Button';
-import { Heading } from '../Heading/Heading';
 import { IconName } from '../Icon/types';
-import { RichText } from '../RichText/RichText';
 
 import './CTA.scss';
 
 export interface CTAProps extends DefaultProps {
 	heading: string;
-	headingType: HeadingType;
+	headingType: BlockHeadingType;
 	content: string | string[];
 	buttonLabel: string;
 	buttonIcon?: IconName;
+	buttonOnClick(event: MouseEvent<HTMLElement>): void;
 }
 
-// TODO: Add button action
+// TODO: Replace Button by BlockButtons
 export const CTA: FunctionComponent<CTAProps> = ({
 	className,
 	headingType = 'h3',
 	heading,
 	content,
 	buttonLabel,
+	buttonOnClick,
 }) => (
 	<div className={classnames(className, 'c-cta-item')}>
 		<div className="c-cta__content">
 			<div className="c-content">
-				<Heading type={headingType}>{heading}</Heading>
-				<RichText content={content} />
-				<Button type="secondary" label={buttonLabel} />
+				<BlockHeading type={headingType}>{heading}</BlockHeading>
+				<BlockRichText content={content} />
+				<Button onClick={buttonOnClick} type="secondary" label={buttonLabel} />
 			</div>
 		</div>
 	</div>

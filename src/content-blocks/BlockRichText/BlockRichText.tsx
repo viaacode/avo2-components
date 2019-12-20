@@ -2,16 +2,19 @@ import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
+import { Column, GridSize } from '../../components/Grid/Column/Column';
+import { Grid } from '../../components/Grid/Grid';
 import { convertToHtml } from '../../helpers/convertToHtml';
 import { DefaultProps } from '../../types';
-import { Column, GridSize } from '../Grid/Column/Column';
-import { Grid } from '../Grid/Grid';
 
-export interface RichTextProps extends DefaultProps {
+export interface BlockRichTextProps extends DefaultProps {
 	content: string | string[];
 }
 
-export const RichText: FunctionComponent<RichTextProps> = ({ className, content = [''] }) =>
+export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
+	className,
+	content = [''],
+}) =>
 	typeof content === 'string' ? (
 		<div
 			className={classnames(className, 'c-content')}

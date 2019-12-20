@@ -2,15 +2,15 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps, HeadingType } from '../../types';
+import { BlockHeadingType, DefaultProps } from '../../types';
 
-export interface HeadingProps extends DefaultProps {
-	type: HeadingType;
+export interface BlockHeadingProps extends DefaultProps {
+	type: BlockHeadingType;
 	onClick?: (() => void) | undefined;
 	children: ReactNode;
 }
 
-export const Heading: FunctionComponent<HeadingProps> = ({
+export const BlockHeading: FunctionComponent<BlockHeadingProps> = ({
 	className,
 	children,
 	type: Type,
