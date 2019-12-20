@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
 import { BlockRichText } from '../../content-blocks/BlockRichText/BlockRichText';
 import { DefaultProps } from '../../types';
-import { BlockHeadingType } from '../../types/index';
+import { HeadingType } from '../../types/index';
 import { Button } from '../Button/Button';
 import { IconName } from '../Icon/types';
 
@@ -13,7 +13,7 @@ import './CTA.scss';
 
 export interface CTAProps extends DefaultProps {
 	heading: string;
-	headingType: BlockHeadingType;
+	headingType: HeadingType;
 	content: string | string[];
 	buttonLabel: string;
 	buttonIcon?: IconName;
