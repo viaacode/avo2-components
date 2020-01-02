@@ -71,9 +71,7 @@ export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
 	 * @param event
 	 */
 	const handleBlur = (event: JQuery.Event) => {
-		if (html) {
-			onChange(html);
-		}
+		onChange(html);
 		onBlur(event);
 	};
 
