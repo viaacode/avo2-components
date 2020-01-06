@@ -7,26 +7,26 @@ import { Icon } from '../Icon/Icon';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
-import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
+import { AccordeonActions, AccordeonBody, AccordeonTitle } from './Accordeon.slots';
 
-import './Accordion.scss';
+import './Accordeon.scss';
 
-export interface AccordionProps extends DefaultProps {
+export interface AccordeonProps extends DefaultProps {
 	isOpen?: boolean;
 	onToggle?: () => void;
 	title?: string;
 }
 
-export const Accordion: FunctionComponent<AccordionProps> = ({
+export const Accordeon: FunctionComponent<AccordeonProps> = ({
 	children,
 	className,
 	isOpen = true,
 	onToggle,
 	title,
 }) => {
-	const titleSlot = useSlot(AccordionTitle, children);
-	const actionsSlot = useSlot(AccordionActions, children);
-	const bodySlot = useSlot(AccordionBody, children);
+	const titleSlot = useSlot(AccordeonTitle, children);
+	const actionsSlot = useSlot(AccordeonActions, children);
+	const bodySlot = useSlot(AccordeonBody, children);
 
 	const accordionIcon = isOpen ? 'chevron-up' : 'chevron-down';
 	const hasSlots = !!titleSlot || !!actionsSlot || !!bodySlot;

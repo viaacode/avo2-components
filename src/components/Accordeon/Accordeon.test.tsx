@@ -1,13 +1,13 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Accordion } from './Accordion';
-import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
+import { Accordeon } from './Accordeon';
+import { AccordeonActions, AccordeonBody, AccordeonTitle } from './Accordeon.slots';
 
 const customClassName = 'c-custom-accordion';
 
-describe('<Accordion />', () => {
-	const accordion = <Accordion className={customClassName} isOpen />;
+describe('<Accordeon />', () => {
+	const accordion = <Accordeon className={customClassName} isOpen />;
 	const wrapper = shallow(accordion);
 
 	it('should render', () => {
@@ -44,13 +44,13 @@ describe('<Accordion />', () => {
 		const bodySlot = 'Body slot';
 
 		const accordionWithSlots = shallow(
-			<Accordion>
-				<AccordionTitle>{titleSlot}</AccordionTitle>
-				<AccordionActions>
+			<Accordeon>
+				<AccordeonTitle>{titleSlot}</AccordeonTitle>
+				<AccordeonActions>
 					<button>{actionsSlot}</button>
-				</AccordionActions>
-				<AccordionBody>{bodySlot}</AccordionBody>
-			</Accordion>
+				</AccordeonActions>
+				<AccordeonBody>{bodySlot}</AccordeonBody>
+			</Accordeon>
 		);
 
 		const titleElement = accordionWithSlots.find('.c-accordion__header-title');

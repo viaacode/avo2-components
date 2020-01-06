@@ -6,10 +6,10 @@ import { Form } from '../Form/Form';
 import { FormGroup } from '../Form/FormGroup/FormGroup';
 import { TextArea } from '../TextArea/TextArea';
 import { TextInput } from '../TextInput/TextInput';
-import { Accordion } from './Accordion';
-import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
+import { Accordeon } from './Accordeon';
+import { AccordeonActions, AccordeonBody, AccordeonTitle } from './Accordeon.slots';
 
-const AccordionStoryComponent = ({ children }: { children: ReactElement }) => {
+const AccordeonStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return cloneElement(children, {
@@ -18,13 +18,13 @@ const AccordionStoryComponent = ({ children }: { children: ReactElement }) => {
 	});
 };
 
-const AccordionWithSlots = () => {
+const AccordeonWithSlots = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<Accordion isOpen={isOpen} title="Acordion title">
-			<AccordionTitle>Accordion title slot</AccordionTitle>
-			<AccordionActions>
+		<Accordeon isOpen={isOpen} title="Acordion title">
+			<AccordeonTitle>Accordeon title slot</AccordeonTitle>
+			<AccordeonActions>
 				<Button
 					className="u-spacer-right-s"
 					icon="edit"
@@ -32,8 +32,8 @@ const AccordionWithSlots = () => {
 					type="tertiary"
 				/>
 				<Button icon="delete" type="tertiary" />
-			</AccordionActions>
-			<AccordionBody>
+			</AccordeonActions>
+			<AccordeonBody>
 				<Form>
 					<FormGroup label="Titel">
 						<TextInput />
@@ -42,16 +42,16 @@ const AccordionWithSlots = () => {
 						<TextArea />
 					</FormGroup>
 				</Form>
-			</AccordionBody>
-		</Accordion>
+			</AccordeonBody>
+		</Accordeon>
 	);
 };
 
-storiesOf('Accordion', module)
-	.addParameters({ jest: ['Accordion'] })
-	.add('Accordion', () => (
-		<AccordionStoryComponent>
-			<Accordion title="Acordion title">
+storiesOf('Accordeon', module)
+	.addParameters({ jest: ['Accordeon'] })
+	.add('Accordeon', () => (
+		<AccordeonStoryComponent>
+			<Accordeon title="Acordion title">
 				<div className="c-content">
 					<p>
 						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi ipsa laborum nihil
@@ -59,7 +59,7 @@ storiesOf('Accordion', module)
 						earum fugit sit error quasi porro.
 					</p>
 				</div>
-			</Accordion>
-		</AccordionStoryComponent>
+			</Accordeon>
+		</AccordeonStoryComponent>
 	))
-	.add('Accordion with slots', () => <AccordionWithSlots />);
+	.add('Accordeon with slots', () => <AccordeonWithSlots />);

@@ -16,12 +16,12 @@ export { convertToHtml } from './helpers/convertToHtml';
 export { Alert } from './components/Alert/Alert';
 export { AlertProps, AlertType } from './components/Alert/Alert.types';
 export { Avatar, AvatarProps } from './components/Avatar/Avatar';
-export { Accordion } from './components/Accordion/Accordion';
+export { Accordeon } from './components/Accordeon/Accordeon';
 export {
-	AccordionActions,
-	AccordionBody,
-	AccordionTitle,
-} from './components/Accordion/Accordion.slots';
+	AccordeonActions,
+	AccordeonBody,
+	AccordeonTitle,
+} from './components/Accordeon/Accordeon.slots';
 export { AvatarIcon } from './components/Avatar/AvatarIcon/AvatarIcon';
 export { AvatarList } from './components/AvatarList/AvatarList';
 export { Badge } from './components/Badge/Badge';
