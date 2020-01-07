@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
-import { convertToHtml } from '../../../helpers/convertToHtml';
-import { DefaultProps } from '../../../types';
-import { Column, GridSize } from '../../Grid/Column/Column';
-import { Grid } from '../../Grid/Grid';
+import { Column, GridSize } from '../../components/Grid/Column/Column';
+import { Grid } from '../../components/Grid/Grid';
+import { convertToHtml } from '../../helpers/convertToHtml';
+import { DefaultProps } from '../../types';
 
 export interface BlockRichTextProps extends DefaultProps {
 	content: string | string[];

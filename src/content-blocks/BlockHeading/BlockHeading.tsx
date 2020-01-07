@@ -4,13 +4,13 @@ import classnames from 'classnames';
 
 import { DefaultProps, HeadingType } from '../../types';
 
-export interface HeadingProps extends DefaultProps {
+export interface BlockHeadingProps extends DefaultProps {
 	type: HeadingType;
 	onClick?: (() => void) | undefined;
 	children: ReactNode;
 }
 
-export const Heading: FunctionComponent<HeadingProps> = ({
+export const BlockHeading: FunctionComponent<BlockHeadingProps> = ({
 	className,
 	children,
 	type: Type,

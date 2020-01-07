@@ -1,19 +1,19 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Heading } from './Heading';
+import { BlockHeading } from './BlockHeading';
 
-describe('<Heading />', () => {
+describe('<BlockHeading />', () => {
 	it('Should be able to render', () => {
-		shallow(<Heading type="h1">Heading</Heading>);
+		shallow(<BlockHeading type="h1">BlockHeading</BlockHeading>);
 	});
 
 	it('should pass a custom className', () => {
 		const customClass = 'c-heading-custom';
 		const headingComponent = (
-			<Heading className={customClass} type="h1">
+			<BlockHeading className={customClass} type="h1">
 				Lorem ipsum
-			</Heading>
+			</BlockHeading>
 		);
 
 		expect(shallow(headingComponent).hasClass(customClass)).toBeTruthy();
@@ -21,9 +21,9 @@ describe('<Heading />', () => {
 
 	it('Should correctly pass children', () => {
 		const headingComponent = shallow(
-			<Heading type="h1">
+			<BlockHeading type="h1">
 				<a href="https://viaa.be/">Lorem ipsum</a>
-			</Heading>
+			</BlockHeading>
 		);
 
 		const child = headingComponent.find('a');

@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { mount, shallow } from 'enzyme';
+import React from 'react';
 
 import { BlockRichText } from './BlockRichText';
 import { RICH_TEXT_MOCK } from './BlockRichText.mock';

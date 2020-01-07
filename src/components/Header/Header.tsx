@@ -1,12 +1,12 @@
 import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode } from 'react';
 
+import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
 import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps, EnglishContentType, translateContentType } from '../../types';
 import { Container, ContainerProps } from '../Container/Container';
 import { Flex } from '../Flex/Flex';
 import { HeaderContentType } from '../HeaderContentType/HeaderContentType';
-import { Heading } from '../Heading/Heading';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Spacer } from '../Spacer/Spacer';
@@ -62,13 +62,13 @@ export const Header: FunctionComponent<HeaderProps> = ({
 									</MetaData>
 								</Spacer>
 							)}
-							<Heading
+							<BlockHeading
 								className={classnames('u-m-0', { 'u-clickable': onClickTitle })}
 								type="h2"
 								onClick={onClickTitle}
 							>
 								{title}
-							</Heading>
+							</BlockHeading>
 							{(avatarSlot || tagSlot) && (
 								<Spacer margin="top-small">
 									<Flex spaced="regular">

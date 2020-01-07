@@ -1,0 +1,25 @@
+@import '../../styles/settings/colors';
+@import '../../styles/settings/variables';
+
+.c-cta-item {
+	margin-bottom: 3.2rem;
+	background-color: $color-gray-50;
+}
+
+.c-cta__content {
+	padding: 3.2rem;
+}
+
+@media (min-width: $g-bp2) {
+	.c-cta {
+		display: flex;
+	}
+
+	.c-cta-item {
+		width: 50%;
+	}
+
+	.c-cta-item + .c-cta-item {
+		margin-left: 3.2rem;
+	}
+}
