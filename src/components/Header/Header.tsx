@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
@@ -61,7 +62,11 @@ export const Header: FunctionComponent<HeaderProps> = ({
 									</MetaData>
 								</Spacer>
 							)}
-							<BlockHeading className="u-clickable u-m-0" type="h2" onClick={onClickTitle}>
+							<BlockHeading
+								className={classnames('u-m-0', { 'u-clickable': onClickTitle })}
+								type="h2"
+								onClick={onClickTitle}
+							>
 								{title}
 							</BlockHeading>
 							{(avatarSlot || tagSlot) && (

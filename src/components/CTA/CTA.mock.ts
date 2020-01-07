@@ -1,10 +1,12 @@
-import { HeadingType } from '../../types/index';
-import { IconName } from '../Icon/types';
+import { CTAProps } from './CTA';
 
-export const CTA_MOCK = {
+export const CTA_MOCK: CTAProps = {
 	heading: 'Titel',
-	headingType: 'h3' as HeadingType,
+	headingType: 'h3',
 	content: 'Text',
-	buttonLabel: 'Read more',
-	buttonIcon: 'chevron-down' as IconName,
+	button: {
+		label: 'Read more',
+		icon: 'chevron-down',
+		onClick: () => {},
+	},
 };
