@@ -125,6 +125,7 @@ export { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 export { BlockHeading, BlockHeadingProps } from './content-blocks/BlockHeading/BlockHeading';
 export { BlockIntro, BlockIntroProps } from './content-blocks/BlockIntro/BlockIntro';
 export { BlockRichText, BlockRichTextProps } from './content-blocks/BlockRichText/BlockRichText';
+export { BlockButtons, BlockButtonsProps } from './content-blocks/BlockButtons/BlockButtons';
 
 // Types
 export {
