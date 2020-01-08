@@ -13,7 +13,7 @@ describe('<AvatarIcon />', () => {
 
 		const avatarIconComponent = shallow(<AvatarIcon className={customClass} initials="JD" />);
 
-		expect(avatarIconComponent.hasClass('c-avatar-icon')).toEqual(true);
+		expect(avatarIconComponent.hasClass('c-avatar')).toEqual(true);
 		expect(avatarIconComponent.hasClass(customClass)).toEqual(true);
 	});
 

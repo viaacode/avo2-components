@@ -20,7 +20,7 @@ describe('<Avatar />', () => {
 		const avatarComponent = shallow(<Avatar size="large" initials="JD" />);
 
 		// Checking full html because of enzyme not cooperating
-		expect(avatarComponent.html()).toEqual('<div class="c-avatar-icon c-avatar--large">JD</div>');
+		expect(avatarComponent.html()).toEqual('<div class="c-avatar c-avatar--large">JD</div>');
 	});
 
 	it('should use an icon when no initials or name are passed', () => {
@@ -45,7 +45,7 @@ describe('<Avatar />', () => {
 
 		const avatarComponent = shallow(<Avatar initials="JD" title={title} />);
 
-		const titleElement = avatarComponent.find('.u-text-muted');
+		const titleElement = avatarComponent.find('.u-color-gray-150');
 
 		expect(titleElement.text()).toEqual(title);
 	});
@@ -57,7 +57,7 @@ describe('<Avatar />', () => {
 		const avatarComponent = shallow(<Avatar initials="JD" name={name} title={title} />);
 
 		const nameElement = avatarComponent.find('p').first();
-		const titleElement = avatarComponent.find('.u-text-muted');
+		const titleElement = avatarComponent.find('.u-color-gray-150');
 
 		expect(avatarComponent.hasClass('c-avatar-and-text')).toEqual(true);
 		expect(nameElement.text()).toEqual(name);

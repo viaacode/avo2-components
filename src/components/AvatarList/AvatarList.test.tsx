@@ -39,6 +39,6 @@ describe('AvatarList', () => {
 
 		wrapper.setProps({ isOpen: true });
 		expect(menuElement.hasClass('c-menu--visible'));
-		expect(menuElement.find('.c-avatar-icon')).toHaveLength(hiddenAvatarsLength);
+		expect(menuElement.find('.c-avatar')).toHaveLength(hiddenAvatarsLength);
 	});
 });
