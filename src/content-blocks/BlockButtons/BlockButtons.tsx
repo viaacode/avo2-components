@@ -6,12 +6,12 @@ import { ButtonToolbar } from '../../components/ButtonToolbar/ButtonToolbar';
 import { DefaultProps } from '../../types';
 
 export interface BlockButtonsProps extends DefaultProps {
-	buttons: ButtonProps[];
+	elements: ButtonProps[];
 }
 
-export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({ className, buttons }) => (
+export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({ className, elements }) => (
 	<ButtonToolbar className={className}>
-		{buttons.map((button, index) => (
+		{elements.map((button, index) => (
 			<Button key={`button-${index}`} type="secondary" {...button} />
 		))}
 	</ButtonToolbar>

@@ -7,4 +7,4 @@ import { BUTTONS_MOCK } from './BlockButtons.mock';
 
 storiesOf('BlockButtons', module)
 	.addParameters({ jest: ['BlockButtons'] })
-	.add('BlockButtons', () => <BlockButtons buttons={BUTTONS_MOCK} />);
+	.add('BlockButtons', () => <BlockButtons elements={BUTTONS_MOCK} />);
