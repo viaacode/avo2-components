@@ -8,7 +8,7 @@ export interface BlockHeadingProps extends DefaultProps {
 	type: HeadingType;
 	onClick?: (() => void) | undefined;
 	children: ReactNode;
-	align: AlignOptions;
+	align?: AlignOptions;
 }
 
 export const BlockHeading: FunctionComponent<BlockHeadingProps> = ({
