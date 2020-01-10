@@ -2,12 +2,13 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps, HeadingType } from '../../types';
+import { AlignOptions, DefaultProps, HeadingType } from '../../types';
 
 export interface BlockHeadingProps extends DefaultProps {
 	type: HeadingType;
 	onClick?: (() => void) | undefined;
 	children: ReactNode;
+	align: AlignOptions;
 }
 
 export const BlockHeading: FunctionComponent<BlockHeadingProps> = ({
@@ -15,8 +16,9 @@ export const BlockHeading: FunctionComponent<BlockHeadingProps> = ({
 	children,
 	type: Type,
 	onClick,
+	align = 'left',
 }) => (
-	<Type className={classnames(className, `c-${Type}`)} onClick={onClick}>
+	<Type className={classnames(className, `c-${Type}`, `u-text-${align}`)} onClick={onClick}>
 		{children}
 	</Type>
 );
