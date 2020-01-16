@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
+import { action } from '../../helpers/action';
 
 import { WYSIWYG } from './WYSIWYG';
 
@@ -22,6 +23,7 @@ storiesOf('WYSIWYG', module)
 		<WYSIWYG
 			id="story-wysiwyg-1"
 			data={'<h2>Welcome!</h2><p>This prefilled content is all <strong>editable</strong>.</p>'}
+			onChange={action(`editor changed value`)}
 		/>
 	))
 	.add('WYSIWYG disabled', () => (
