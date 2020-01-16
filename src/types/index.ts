@@ -7,3 +7,5 @@ export type DefaultProps = {
 export type VideoAspectRatio = '3:2' | '16:9';
 
 export type HeadingType = 'h1' | 'h2' | 'h3' | 'h4';
+
+export type AlignOptions = 'left' | 'center' | 'right';
