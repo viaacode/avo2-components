@@ -29,7 +29,7 @@ export const CTA: FunctionComponent<CTAProps> = ({
 			<div className="c-content">
 				<BlockHeading type={headingType}>{heading}</BlockHeading>
 				<BlockRichText content={content} />
-				<Button {...button} />
+				<Button type="secondary" {...button} />
 			</div>
 		</div>
 	</div>
