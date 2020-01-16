@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MutableRefObject, useEffect, useRef, useState } from 'react';
+import React, { FunctionComponent, MutableRefObject, useRef } from 'react';
 
 import Trumbowyg from 'react-trumbowyg';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
@@ -60,17 +60,7 @@ const WYSIWYGInternal: FunctionComponent<WYSIWYGProps> = ({
 	onCloseFullScreen = () => {},
 	onClose = () => {},
 }) => {
-	const [currentData, setCurrentData] = useState<string>(data);
 	const ref: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null);
-
-	// https://github.com/RD17/react-trumbowyg/issues/1#issuecomment-489191413
-	useEffect(() => {
-		// We only want to update state if the external props are different from what we have in the editor.
-		// Calling the onchange method inside the editor component causes the cursor to be reset
-		if (currentData !== data && (!ref.current || data !== ref.current.innerHTML)) {
-			setCurrentData(data);
-		}
-	}, [data, setCurrentData]); // tslint:disable-line
 
 	const handleChange = () => {
 		if (ref.current) {
