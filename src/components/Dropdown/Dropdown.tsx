@@ -122,7 +122,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 				{({ ref, style, placement }) => (
 					<Menu
 						className={classnames(menuClassName, 'c-dropdown__menu')}
-						innerRef={ref}
+						innerRef={ref as any}
 						isOpen={isOpen}
 						placement={placement}
 						search={searchMenu}

@@ -66,7 +66,7 @@
     "@storybook/addons": "^5.1.10",
     "@storybook/react": "^5.1.10",
     "@svgr/cli": "^4.2.0",
-    "@tom-odb/named-exports": "^1.4.3",
+    "@tom-odb/named-exports": "^1.4.6",
     "@types/enzyme": "^3.9.2",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.13",
