@@ -1,8 +1,9 @@
 import { throttle } from 'lodash-es';
 import React from 'react';
+import 'trumbowyg/dist/trumbowyg.min';
+
 import 'trumbowyg/dist/langs/nl.min.js';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
-import 'trumbowyg/dist/trumbowyg.min';
 import iconsPath from 'trumbowyg/dist/ui/icons.svg';
 
 import './WYSIWYG.scss';
@@ -16,7 +17,7 @@ export interface WYSIWYGProps {
 	data?: string;
 	placeholder?: string;
 	lang?: string;
-	buttons?: (string[] | string)[];
+	btns?: (string[] | string)[];
 	semantic?: boolean;
 	resetCss?: boolean;
 	autogrow?: boolean;
@@ -44,7 +45,7 @@ const COMPARE_PROPS: (keyof WYSIWYGProps)[] = [
 	'id',
 	'placeholder',
 	'lang',
-	'buttons',
+	'btns',
 	'semantic',
 	'resetCss',
 	'disabled',

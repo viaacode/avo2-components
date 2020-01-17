@@ -41,7 +41,7 @@ describe('<WYSIWYG />', () => {
 	});
 
 	it('Should correctly pass on `buttons`', () => {
-		const buttons = ['link', ['strong', 'em'], 'undo', 'redo'];
+		const buttons = ['link', ['bold', 'italic'], 'undo', 'redo'];
 
 		const wysiwygComponent = shallow(<WYSIWYG id="test" buttons={buttons} />);
 
