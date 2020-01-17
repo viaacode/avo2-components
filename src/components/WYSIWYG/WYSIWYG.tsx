@@ -1,5 +1,6 @@
 import { throttle } from 'lodash-es';
 import React from 'react';
+import 'trumbowyg/dist/langs/nl.min.js';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
 import 'trumbowyg/dist/trumbowyg.min';
 import iconsPath from 'trumbowyg/dist/ui/icons.svg';
