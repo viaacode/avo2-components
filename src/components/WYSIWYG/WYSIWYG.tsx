@@ -1,9 +1,12 @@
-import React, { FunctionComponent, MutableRefObject, useRef } from 'react';
-
-import Trumbowyg from 'react-trumbowyg';
+import { throttle } from 'lodash-es';
+import React from 'react';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
+import 'trumbowyg/dist/trumbowyg.min';
+import iconsPath from 'trumbowyg/dist/ui/icons.svg';
 
 import './WYSIWYG.scss';
+
+($ as any).trumbowyg.svgPath = iconsPath;
 
 type TrumbowygEvent = (e: JQuery.Event) => void;
 
@@ -32,83 +35,129 @@ export interface WYSIWYGProps {
 	onOpenFullScreen?: TrumbowygEvent;
 	onCloseFullScreen?: TrumbowygEvent;
 	onClose?: TrumbowygEvent;
+	onModalOpen?: TrumbowygEvent;
+	onModalClose?: TrumbowygEvent;
 }
 
-const WYSIWYGInternal: FunctionComponent<WYSIWYGProps> = ({
-	id,
-	data = '',
-	placeholder,
-	lang,
-	buttons,
-	semantic,
-	resetCss,
-	autogrow,
-	disabled,
-	removeFormatPasted = true,
-	shouldUseSvgIcons,
-	shouldInjectSvgIcons,
-	svgIconsPath,
-	btnsDef,
-	plugins,
-	onFocus = () => {},
-	onBlur = () => {},
-	onInit = () => {},
-	onChange = () => {},
-	onResize = () => {},
-	onPaste = () => {},
-	onOpenFullScreen = () => {},
-	onCloseFullScreen = () => {},
-	onClose = () => {},
-}) => {
-	const ref: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null);
+const COMPARE_PROPS: (keyof WYSIWYGProps)[] = [
+	'id',
+	'placeholder',
+	'lang',
+	'buttons',
+	'semantic',
+	'resetCss',
+	'disabled',
+	'autogrow',
+	'removeFormatPasted',
+	'shouldUseSvgIcons',
+	'shouldInjectSvgIcons',
+	'svgIconsPath',
+	'btnsDef',
+	'plugins',
+	'onFocus',
+	'onBlur',
+	'onInit',
+	'onChange',
+	'onResize',
+	'onPaste',
+	'onOpenFullScreen',
+	'onCloseFullScreen',
+	'onClose',
+	'onModalOpen',
+	'onModalClose',
+];
 
-	const handleChange = () => {
-		if (ref.current) {
-			const textArea: HTMLTextAreaElement | null = ref.current.querySelector('.trumbowyg-textarea');
-			if (textArea) {
-				onChange(textArea.value);
-			}
+export class WYSIWYG extends React.Component<WYSIWYGProps> {
+	private editor: (JQuery<HTMLDivElement> & { trumbowyg: Function }) | null = null;
+
+	constructor(public props: WYSIWYGProps) {
+		super(props);
+	}
+
+	componentDidMount() {
+		this.reInitEditor(this.props);
+	}
+
+	// Switched to class based component so we can use this lifecycle hook inside the component
+	// so we can check the value of the Trumbowyg editor
+	// to see if the sate is equal to the externally received props.data value
+	shouldComponentUpdate(nextProps: WYSIWYGProps) {
+		if (!this.editor) {
+			return true;
 		}
-	};
 
-	console.log('rerender');
-	return (
-		<div ref={ref}>
-			<Trumbowyg
-				id={id}
-				data={data}
-				placeholder={placeholder}
-				lang={lang}
-				buttons={buttons}
-				semantic={semantic}
-				resetCss={resetCss}
-				autogrow={autogrow}
-				disabled={disabled}
-				removeformatPasted={removeFormatPasted}
-				shouldUseSvgIcons={shouldUseSvgIcons}
-				shouldInjectSvgIcons={shouldInjectSvgIcons}
-				svgIconsPath={svgIconsPath}
-				btnsDef={btnsDef}
-				plugins={plugins}
-				onFocus={onFocus}
-				onBlur={onBlur}
-				onInit={onInit}
-				onChange={handleChange}
-				onResize={onResize}
-				onPaste={onPaste}
-				onOpenFullScreen={onOpenFullScreen}
-				onCloseFullScreen={onCloseFullScreen}
-				onClose={onClose}
-			/>
-		</div>
+		const { data: prevData, ...prevRestProps } = this.props;
+		const { data: nextData, ...nextNextProps } = nextProps;
+
+		let arePropsEqual = true;
+		COMPARE_PROPS.forEach(propName => {
+			const prevProp = (prevRestProps as any)[propName];
+			const nextProp = (nextNextProps as any)[propName];
+			if (typeof prevProp === 'function' || typeof nextProp === 'function') {
+				if (prevProp.toString() !== nextProp.toString()) {
+					arePropsEqual = false;
+				}
+			} else if (prevProp !== nextProp) {
+				arePropsEqual = false;
+			}
+		});
+		if (!arePropsEqual) {
+			this.reInitEditor(nextProps);
+		}
+
+		return false;
+	}
+
+	private reInitEditor(props: WYSIWYGProps) {
+		if (this.editor) {
+			this.editor.trumbowyg('destroy');
+			this.editor.trumbowyg({
+				lang: 'nl',
+				defaultLinkTarget: '_self',
+				...props,
+				onChange: this.handleChange,
+			});
+			this.setEditorData(props.data || '');
+			this.editor
+				.trumbowyg()
+				.on('tbwfocus', props.onFocus)
+				.on('tbwblur', props.onBlur)
+				.on('tbwinit ', props.onInit)
+				.on('tbwchange ', this.handleChange)
+				.on('tbwresize ', props.onResize)
+				.on('tbwpaste ', props.onPaste)
+				.on('tbwopenfullscreen ', props.onOpenFullScreen)
+				.on('tbwclosefullscreen ', props.onCloseFullScreen)
+				.on('tbwclose ', props.onClose)
+				.on('tbwmodalopen ', props.onModalOpen)
+				.on('tbwmodalclose ', props.onModalClose);
+		}
+	}
+
+	private handleChange = throttle(
+		() => {
+			if (this.editor) {
+				(this.props.onChange || (() => {}))(this.getEditorData());
+			}
+		},
+		100,
+		{ leading: true, trailing: true }
 	);
-};
 
-function propsAreEqual(prevProps: WYSIWYGProps, nextProps: WYSIWYGProps) {
-	const { data: prevData, ...prevPropsWithoutData } = prevProps;
-	const { data: nextData, ...nextPropsWithoutData } = nextProps;
-	return JSON.stringify(prevPropsWithoutData) === JSON.stringify(nextPropsWithoutData);
+	private getEditorData(): string {
+		if (this.editor) {
+			return this.editor.trumbowyg('html');
+		}
+		return '';
+	}
+
+	private setEditorData(data: string = '') {
+		if (this.editor) {
+			($(this.editor) as any).trumbowyg('html', data);
+		}
+	}
+
+	render() {
+		return <div ref={ref => (this.editor = $(ref as HTMLDivElement) as any)} />;
+	}
 }
-
-// Do not rerender the component if the only thing that changed is the data value (html string)
-export const WYSIWYG = React.memo(WYSIWYGInternal, propsAreEqual);

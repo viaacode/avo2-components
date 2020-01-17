@@ -48,5 +48,6 @@ export default {
 		'react-select',
 		'react-select/creatable',
 		'react-trumbowyg/dist/trumbowyg.min.css',
+		'lodash-es',
 	]
 }
