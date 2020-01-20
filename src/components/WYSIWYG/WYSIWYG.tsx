@@ -3,7 +3,7 @@ import React from 'react';
 import 'trumbowyg/dist/trumbowyg.min';
 import 'trumbowyg/dist/ui/sass/trumbowyg.scss';
 
-import 'trumbowyg/dist/langs/nl.min.js';
+import 'trumbowyg/dist/langs/nl.min';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
 import iconsPath from 'trumbowyg/dist/ui/icons.svg';
 
