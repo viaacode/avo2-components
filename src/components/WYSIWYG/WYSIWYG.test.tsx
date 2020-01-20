@@ -41,11 +41,11 @@ describe('<WYSIWYG />', () => {
 	});
 
 	it('Should correctly pass on `buttons`', () => {
-		const buttons = ['link', ['bold', 'italic'], 'undo', 'redo'];
+		const btns = ['link', ['bold', 'italic'], 'undo', 'redo'];
 
-		const wysiwygComponent = shallow(<WYSIWYG id="test" buttons={buttons} />);
+		const wysiwygComponent = shallow(<WYSIWYG id="test" btns={btns} />);
 
-		expect(wysiwygComponent.prop('buttons')).toEqual(buttons);
+		expect(wysiwygComponent.prop('btns')).toEqual(btns);
 	});
 
 	it('Should correctly pass on `semantic`', () => {

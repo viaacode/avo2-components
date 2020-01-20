@@ -1,6 +1,7 @@
 import { throttle } from 'lodash-es';
 import React from 'react';
 import 'trumbowyg/dist/trumbowyg.min';
+import 'trumbowyg/dist/ui/sass/trumbowyg.scss';
 
 import 'trumbowyg/dist/langs/nl.min.js';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
@@ -71,10 +72,6 @@ const COMPARE_PROPS: (keyof WYSIWYGProps)[] = [
 
 export class WYSIWYG extends React.Component<WYSIWYGProps> {
 	private editor: (JQuery<HTMLDivElement> & { trumbowyg: Function }) | null = null;
-
-	constructor(public props: WYSIWYGProps) {
-		super(props);
-	}
 
 	componentDidMount() {
 		this.reInitEditor(this.props);
