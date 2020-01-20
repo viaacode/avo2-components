@@ -1,7 +1,6 @@
 import { mount, shallow } from 'enzyme';
 import React, { cloneElement } from 'react';
 
-import { ContentType } from '../../types';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
 import { SearchResult } from './SearchResult';
 import {
