@@ -48,5 +48,7 @@ export default {
 		'react-select',
 		'react-select/creatable',
 		'lodash-es',
+		'trumbowyg/dist/ui/sass/trumbowyg.scss',
+		'trumbowyg/dist/ui/icons.svg'
 	]
 }
