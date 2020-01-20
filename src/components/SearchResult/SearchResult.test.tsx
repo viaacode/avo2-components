@@ -21,7 +21,10 @@ const searchResult = (
 		viewCount={41}
 		bookmarkCount={12}
 		description={fakeSearchResult.dcterms_abstract}
-		tags={[{ label: 'Redactiekeuze', id: 'redactiekeuze' }, { label: 'Partner', id: 'partner' }]}
+		tags={[
+			{ label: 'Redactiekeuze', id: 'redactiekeuze' },
+			{ label: 'Partner', id: 'partner' },
+		]}
 	>
 		<SearchResultTitle>
 			<a className="title-link" href={`detail/${fakeSearchResult.pid}`}>

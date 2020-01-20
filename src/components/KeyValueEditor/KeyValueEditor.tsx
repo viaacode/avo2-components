@@ -93,7 +93,10 @@ export const KeyValueEditor: FunctionComponent<TextInputProps> = ({
 	return (
 		<Table
 			data={dataArray}
-			columns={[{ id: 'id', label: 'Id' }, { id: 'value', label: 'Waarde' }]}
+			columns={[
+				{ id: 'id', label: 'Id' },
+				{ id: 'value', label: 'Waarde' },
+			]}
 			renderCell={renderCell}
 			className={`c-key-value-editor ${className}`}
 			rowKey={keyProp || 'key'}

@@ -67,7 +67,7 @@ const renderButtonStories = (
 						ariaLabel={labelProp}
 						onClick={action('Button clicked')}
 						title={labelProp}
-						{...hasLabel && { label: labelProp }}
+						{...(hasLabel && { label: labelProp })}
 						{...rest}
 						{...extraProps}
 					>
