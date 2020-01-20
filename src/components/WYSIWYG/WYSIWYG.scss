@@ -3,6 +3,8 @@
 }
 
 .trumbowyg-editor {
+	max-height: 350px;
+
 	strong {
 		// Fixes strange bug in Chrome where the wysiwyg wouldn't clear bold styling
 		font-weight: 600;
