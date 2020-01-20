@@ -157,6 +157,6 @@ export class WYSIWYG extends React.Component<WYSIWYGProps> {
 	}
 
 	render() {
-		return <div ref={ref => (this.editor = $(ref as HTMLDivElement) as any)} />;
+		return <div ref={ref => (this.editor = $(ref as HTMLDivElement) as any)} id={this.props.id} />;
 	}
 }
