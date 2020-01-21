@@ -126,6 +126,7 @@ export { BlockHeading, BlockHeadingProps } from './content-blocks/BlockHeading/B
 export { BlockIntro, BlockIntroProps } from './content-blocks/BlockIntro/BlockIntro';
 export { BlockRichText, BlockRichTextProps } from './content-blocks/BlockRichText/BlockRichText';
 export { BlockButtons, BlockButtonsProps } from './content-blocks/BlockButtons/BlockButtons';
+export { BlockCTAs, BlockCTAsProps } from './content-blocks/BlockCTAs/BlockCTAs';
 
 // Types
 export {
