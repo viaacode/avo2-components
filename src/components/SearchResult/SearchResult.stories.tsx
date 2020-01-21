@@ -63,7 +63,10 @@ storiesOf('SearchResult', module)
 			viewCount={41}
 			bookmarkCount={12}
 			description={fakeSearchResult.dcterms_abstract}
-			tags={[{ label: 'Redactiekeuze', id: 'redactiekeuze' }, { label: 'Partner', id: 'partner' }]}
+			tags={[
+				{ label: 'Redactiekeuze', id: 'redactiekeuze' },
+				{ label: 'Partner', id: 'partner' },
+			]}
 		>
 			<SearchResultTitle>
 				<a href={`detail/${fakeSearchResult.pid}`}>{fakeSearchResult.dc_title}</a>

@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
+import { action } from '../../helpers/action';
 
 import { WYSIWYG } from './WYSIWYG';
 
 const withContent = (story: Function) => <div className="c-content">{story()}</div>;
 
 const WYSIWYG_OPTIONS = [
-	['strong', 'em'],
+	['bold', 'italic'],
 	['undo', 'redo'],
 	['formatting'],
 	['unorderedList', 'orderedList'],
@@ -22,6 +23,7 @@ storiesOf('WYSIWYG', module)
 		<WYSIWYG
 			id="story-wysiwyg-1"
 			data={'<h2>Welcome!</h2><p>This prefilled content is all <strong>editable</strong>.</p>'}
+			onChange={action(`editor changed value`)}
 		/>
 	))
 	.add('WYSIWYG disabled', () => (
@@ -32,12 +34,12 @@ storiesOf('WYSIWYG', module)
 		/>
 	))
 	.add('WYSIWYG with limited buttons', () => (
-		<WYSIWYG id="story-wysiwyg-3" buttons={WYSIWYG_OPTIONS} />
+		<WYSIWYG id="story-wysiwyg-3" btns={WYSIWYG_OPTIONS} />
 	))
 	.add('WYSIWYG with table button', () => (
 		<WYSIWYG
 			id="story-wysiwyg-4"
-			buttons={[...WYSIWYG_OPTIONS, ['table']]}
+			btns={[...WYSIWYG_OPTIONS, ['table']]}
 			plugins={{
 				table: {
 					rows: 3,

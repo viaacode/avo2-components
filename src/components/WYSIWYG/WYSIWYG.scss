@@ -1,10 +1,10 @@
-@import '~react-trumbowyg/dist/trumbowyg.min.css';
-
 .trumbowyg-disabled .trumbowyg-editor {
 	background: #D6DEE3;
 }
 
 .trumbowyg-editor {
+	max-height: 350px;
+
 	strong {
 		// Fixes strange bug in Chrome where the wysiwyg wouldn't clear bold styling
 		font-weight: 600;

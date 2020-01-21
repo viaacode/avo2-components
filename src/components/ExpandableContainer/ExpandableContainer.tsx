@@ -30,7 +30,7 @@ export const ExpandableContainer: FunctionComponent<ExpandableContainerProps> = 
 				<div>{children}</div>
 			</div>
 			<Spacer margin="top-small">
-				<div className="u-text-center" {...getToggleProps() as any}>
+				<div className="u-text-center" {...(getToggleProps() as any)}>
 					<Button type="secondary" label={isOpen ? collapseLabel : expandLabel} />
 				</div>
 			</Spacer>

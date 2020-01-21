@@ -1,7 +1,6 @@
 import { mount, shallow } from 'enzyme';
 import React, { cloneElement } from 'react';
 
-import { ContentType } from '../../types';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
 import { SearchResult } from './SearchResult';
 import {
@@ -21,7 +20,10 @@ const searchResult = (
 		viewCount={41}
 		bookmarkCount={12}
 		description={fakeSearchResult.dcterms_abstract}
-		tags={[{ label: 'Redactiekeuze', id: 'redactiekeuze' }, { label: 'Partner', id: 'partner' }]}
+		tags={[
+			{ label: 'Redactiekeuze', id: 'redactiekeuze' },
+			{ label: 'Partner', id: 'partner' },
+		]}
 	>
 		<SearchResultTitle>
 			<a className="title-link" href={`detail/${fakeSearchResult.pid}`}>

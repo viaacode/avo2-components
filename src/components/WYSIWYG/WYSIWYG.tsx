@@ -1,9 +1,15 @@
-import React, { FunctionComponent } from 'react';
+import { throttle } from 'lodash-es';
+import React from 'react';
+import 'trumbowyg/dist/trumbowyg.min';
+import 'trumbowyg/dist/ui/sass/trumbowyg.scss';
 
-import Trumbowyg from 'react-trumbowyg';
+import 'trumbowyg/dist/langs/nl.min';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
+import iconsPath from 'trumbowyg/dist/ui/icons.svg';
 
 import './WYSIWYG.scss';
+
+($ as any).trumbowyg.svgPath = iconsPath;
 
 type TrumbowygEvent = (e: JQuery.Event) => void;
 
@@ -12,7 +18,7 @@ export interface WYSIWYGProps {
 	data?: string;
 	placeholder?: string;
 	lang?: string;
-	buttons?: (string[] | string)[];
+	btns?: (string[] | string)[];
 	semantic?: boolean;
 	resetCss?: boolean;
 	autogrow?: boolean;
@@ -32,84 +38,125 @@ export interface WYSIWYGProps {
 	onOpenFullScreen?: TrumbowygEvent;
 	onCloseFullScreen?: TrumbowygEvent;
 	onClose?: TrumbowygEvent;
+	onModalOpen?: TrumbowygEvent;
+	onModalClose?: TrumbowygEvent;
 }
 
-export const WYSIWYG: FunctionComponent<WYSIWYGProps> = ({
-	id,
-	data = '',
-	placeholder,
-	lang,
-	buttons,
-	semantic,
-	resetCss,
-	autogrow,
-	disabled,
-	removeFormatPasted = true,
-	shouldUseSvgIcons,
-	shouldInjectSvgIcons,
-	svgIconsPath,
-	btnsDef,
-	plugins,
-	onFocus = () => {},
-	onBlur = () => {},
-	onInit = () => {},
-	onChange = () => {},
-	onResize = () => {},
-	onPaste = () => {},
-	onOpenFullScreen = () => {},
-	onCloseFullScreen = () => {},
-	onClose = () => {},
-}) => {
-	let html: string;
+const COMPARE_PROPS: (keyof WYSIWYGProps)[] = [
+	'id',
+	'placeholder',
+	'lang',
+	'btns',
+	'semantic',
+	'resetCss',
+	'disabled',
+	'autogrow',
+	'removeFormatPasted',
+	'shouldUseSvgIcons',
+	'shouldInjectSvgIcons',
+	'svgIconsPath',
+	'btnsDef',
+	'plugins',
+	'onFocus',
+	'onBlur',
+	'onInit',
+	'onChange',
+	'onResize',
+	'onPaste',
+	'onOpenFullScreen',
+	'onCloseFullScreen',
+	'onClose',
+	'onModalOpen',
+	'onModalClose',
+];
 
-	/**
-	 * Only trigger onChange events when the component loses focus
-	 * Otherwise we get a bug where the caret jumpt to the front of the editor on every keystroke
-	 * https://github.com/RD17/react-trumbowyg/issues/1
-	 * We need to cache the current editor value onChange en onPaste
-	 * and then emit the value onBlur as if it was an onChange event
-	 * @param event
-	 */
-	const handleBlur = (event: JQuery.Event) => {
-		onChange(html);
-		onBlur(event);
-	};
+export class WYSIWYG extends React.Component<WYSIWYGProps> {
+	private editor: (JQuery<HTMLDivElement> & { trumbowyg: Function }) | null = null;
 
-	const handleChange = (event: any) => {
-		html = event.target.innerHTML;
-	};
+	componentDidMount() {
+		this.reInitEditor(this.props);
+	}
 
-	const handlePaste = (event: any) => {
-		html = event.target.innerHTML;
-		onPaste(event);
-	};
+	// Switched to class based component so we can use this lifecycle hook inside the component
+	// so we can check the value of the Trumbowyg editor
+	// to see if the sate is equal to the externally received props.data value
+	shouldComponentUpdate(nextProps: WYSIWYGProps) {
+		if (!this.editor) {
+			return true;
+		}
 
-	return (
-		<Trumbowyg
-			id={id}
-			data={data}
-			placeholder={placeholder}
-			lang={lang}
-			buttons={buttons}
-			semantic={semantic}
-			resetCss={resetCss}
-			autogrow={autogrow}
-			disabled={disabled}
-			removeformatPasted={removeFormatPasted}
-			shouldUseSvgIcons={shouldUseSvgIcons}
-			shouldInjectSvgIcons={shouldInjectSvgIcons}
-			svgIconsPath={svgIconsPath}
-			btnsDef={btnsDef}
-			plugins={plugins}
-			onFocus={onFocus}
-			onBlur={handleBlur}
-			onInit={onInit}
-			onChange={handleChange}
-			onResize={onResize}
-			onPaste={handlePaste}
-			onOpenFullScreen={onOpenFullScreen}
-			onCloseFullScreen={onCloseFullScreen}
-			onClose={onClose}
-		/>
+		const { data: prevData, ...prevRestProps } = this.props;
+		const { data: nextData, ...nextNextProps } = nextProps;
+
+		let arePropsEqual = true;
+		COMPARE_PROPS.forEach(propName => {
+			const prevProp = (prevRestProps as any)[propName];
+			const nextProp = (nextNextProps as any)[propName];
+			if (typeof prevProp === 'function' || typeof nextProp === 'function') {
+				if (prevProp.toString() !== nextProp.toString()) {
+					arePropsEqual = false;
+				}
+			} else if (prevProp !== nextProp) {
+				arePropsEqual = false;
+			}
+		});
+		if (!arePropsEqual) {
+			this.reInitEditor(nextProps);
+		}
+
+		return false;
+	}
+
+	private reInitEditor(props: WYSIWYGProps) {
+		if (this.editor) {
+			this.editor.trumbowyg('destroy');
+			this.editor.trumbowyg({
+				lang: 'nl',
+				defaultLinkTarget: '_self',
+				...props,
+				onChange: this.handleChange,
+			});
+			this.setEditorData(props.data || '');
+			this.editor
+				.trumbowyg()
+				.on('tbwfocus', props.onFocus)
+				.on('tbwblur', props.onBlur)
+				.on('tbwinit ', props.onInit)
+				.on('tbwchange ', this.handleChange)
+				.on('tbwresize ', props.onResize)
+				.on('tbwpaste ', props.onPaste)
+				.on('tbwopenfullscreen ', props.onOpenFullScreen)
+				.on('tbwclosefullscreen ', props.onCloseFullScreen)
+				.on('tbwclose ', props.onClose)
+				.on('tbwmodalopen ', props.onModalOpen)
+				.on('tbwmodalclose ', props.onModalClose);
+		}
+	}
+
+	private handleChange = throttle(
+		() => {
+			if (this.editor) {
+				(this.props.onChange || (() => {}))(this.getEditorData());
+			}
+		},
+		100,
+		{ leading: true, trailing: true }
 	);
-};
+
+	private getEditorData(): string {
+		if (this.editor) {
+			return this.editor.trumbowyg('html');
+		}
+		return '';
+	}
+
+	private setEditorData(data: string = '') {
+		if (this.editor) {
+			($(this.editor) as any).trumbowyg('html', data);
+		}
+	}
+
+	render() {
+		return <div ref={ref => (this.editor = $(ref as HTMLDivElement) as any)} id={this.props.id} />;
+	}
+}

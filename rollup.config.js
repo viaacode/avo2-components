@@ -47,6 +47,8 @@ export default {
 		'react-range',
 		'react-select',
 		'react-select/creatable',
-		'react-trumbowyg/dist/trumbowyg.min.css',
+		'lodash-es',
+		'trumbowyg/dist/ui/sass/trumbowyg.scss',
+		'trumbowyg/dist/ui/icons.svg'
 	]
 }
