@@ -49,6 +49,13 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 	const subTitle = useSlot(SearchResultSubtitle, children);
 	const thumbnail = useSlot(SearchResultThumbnail, children);
 
+	const getTruncatedDescription = () => {
+		if (description.length > maxDescriptionLength - 3) {
+			return `${description.substring(0, maxDescriptionLength)}...`;
+		}
+		return description;
+	};
+
 	return (
 		<div className={classnames(className, 'c-search-result')}>
 			<div className="c-search-result__image">{thumbnail}</div>
@@ -69,9 +76,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 						</div>
 					</FlexItem>
 				</Flex>
-				<p className="c-search-result__description">
-					{`${(description || '').substring(0, maxDescriptionLength)}...`}
-				</p>
+				<p className="c-search-result__description">{getTruncatedDescription()}</p>
 				<Spacer margin="bottom-small">
 					<Flex justify="between" wrap>
 						<MetaData category={type}>
