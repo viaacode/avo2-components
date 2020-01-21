@@ -54,42 +54,49 @@ export const fakeSearchResult = {
 	administrative_external_id: 'bg2h71p77x',
 };
 
-storiesOf('SearchResult', module)
-	.addParameters({ jest: ['SearchResult'] })
-	.add('SearchResult', () => (
+const renderSearchResult = (result: any) => {
+	return (
 		<SearchResult
-			type={fakeSearchResult.administrative_type}
-			date={fakeSearchResult.dcterms_issued}
+			type={result.administrative_type}
+			date={result.dcterms_issued}
 			viewCount={41}
 			bookmarkCount={12}
-			description={fakeSearchResult.dcterms_abstract}
+			description={result.dcterms_abstract}
 			tags={[
 				{ label: 'Redactiekeuze', id: 'redactiekeuze' },
 				{ label: 'Partner', id: 'partner' },
 			]}
 		>
 			<SearchResultTitle>
-				<a href={`detail/${fakeSearchResult.pid}`}>{fakeSearchResult.dc_title}</a>
+				<a href={`detail/${result.pid}`}>{result.dc_title}</a>
 			</SearchResultTitle>
 			<SearchResultSubtitle>
-				<a href={`search?filters={'provider':['${fakeSearchResult.original_cp}']}`}>
-					{fakeSearchResult.original_cp}
-				</a>
+				<a href={`search?filters={'provider':['${result.original_cp}']}`}>{result.original_cp}</a>
 			</SearchResultSubtitle>
 			<SearchResultThumbnail>
-				<a href={`detail/${fakeSearchResult.pid}`}>
+				<a href={`detail/${result.pid}`}>
 					<Thumbnail
-						category={fakeSearchResult.administrative_type as any}
-						src={fakeSearchResult.thumbnail_path}
-						label={fakeSearchResult.administrative_type}
+						category={result.administrative_type as any}
+						src={result.thumbnail_path}
+						label={result.administrative_type}
 						meta={
-							fakeSearchResult.administrative_type === 'video' ||
-							fakeSearchResult.administrative_type === 'audio'
-								? fakeSearchResult.fragment_duration_time
+							result.administrative_type === 'video' || result.administrative_type === 'audio'
+								? result.fragment_duration_time
 								: '25 items'
 						}
 					/>
 				</a>
 			</SearchResultThumbnail>
 		</SearchResult>
-	));
+	);
+};
+
+storiesOf('SearchResult', module)
+	.addParameters({ jest: ['SearchResult'] })
+	.add('SearchResult', () => renderSearchResult(fakeSearchResult))
+	.add('SearchResult short', () =>
+		renderSearchResult({
+			...fakeSearchResult,
+			dcterms_abstract: 'korte beschrijving zonder elipsis',
+		})
+	);
