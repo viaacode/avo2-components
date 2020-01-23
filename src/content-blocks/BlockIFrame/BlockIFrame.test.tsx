@@ -1,16 +1,15 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { mount, shallow } from 'enzyme';
+import { BlockIFrame } from './BlockIFrame';
 
-import { BlockIframe } from './BlockIframe';
-
-describe('<BlockIframe />', () => {
+describe('<BlockIFrame />', () => {
 	it('Should be able to render', () => {
-		shallow(<BlockIframe title="test" />);
+		shallow(<BlockIFrame title="test" />);
 	});
 
 	it('Should correctly set the wrapper `className`', () => {
-		const blockIframeComponent = mount(<BlockIframe title="test" />);
+		const blockIframeComponent = mount(<BlockIFrame title="test" />);
 
 		const videoWrapper = blockIframeComponent.find('div').at(0);
 
@@ -18,8 +17,8 @@ describe('<BlockIframe />', () => {
 	});
 
 	it('Should correctly set the wrapper `className` for the aspect ratios', () => {
-		const blockIframe32Component = mount(<BlockIframe title="test" ratio="3:2" />);
-		const blockIframe169Component = mount(<BlockIframe title="test" ratio="16:9" />);
+		const blockIframe32Component = mount(<BlockIFrame title="test" ratio="3:2" />);
+		const blockIframe169Component = mount(<BlockIFrame title="test" ratio="16:9" />);
 
 		const video32Wrapper = blockIframe32Component.find('div').at(0);
 		const video169Wrapper = blockIframe169Component.find('div').at(0);
@@ -40,7 +39,7 @@ describe('<BlockIframe />', () => {
 			seamless: true,
 		};
 
-		const blockIframeComponent = shallow(<BlockIframe {...iframeProps} />);
+		const blockIframeComponent = shallow(<BlockIFrame {...iframeProps} />);
 
 		const iframeElement = blockIframeComponent.find('iframe');
 		expect(iframeElement.props()).toMatchObject(iframeProps);
