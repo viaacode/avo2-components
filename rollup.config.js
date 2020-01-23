@@ -50,6 +50,5 @@ export default {
 		'lodash-es',
 		'trumbowyg/dist/ui/sass/trumbowyg.scss',
 		'trumbowyg/dist/ui/icons.svg',
-		'react-html-parser'
 	]
 }
