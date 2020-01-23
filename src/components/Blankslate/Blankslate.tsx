@@ -1,4 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react';
+import ReactHtmlParser from 'react-html-parser';
 
 import classnames from 'classnames';
 
@@ -32,8 +33,8 @@ export const Blankslate: FunctionComponent<BlankslateProps> = ({
 				</div>
 			</Spacer>
 		)}
-		<h4 className="c-h4">{title}</h4>
-		<p className="c-body-1">{body}</p>
+		<h4 className="c-h4">{ReactHtmlParser(title)}</h4>
+		<p className="c-body-1">{ReactHtmlParser(body)}</p>
 		{children}
 	</div>
 );
