@@ -1,16 +1,16 @@
 import React, { FunctionComponent, IframeHTMLAttributes } from 'react';
 
-import { VideoAspectRatio } from '../../../types';
-import { VideoWrapper } from '../../VideoWrapper/VideoWrapper';
+import { VideoWrapper } from '../../components/VideoWrapper/VideoWrapper';
+import { VideoAspectRatio } from '../../types';
 
-import './BlockIframe.scss';
+import './BlockIFrame.scss';
 
-export interface BlockIframeProps extends IframeHTMLAttributes<HTMLIFrameElement> {
+export interface BlockIFrameProps extends IframeHTMLAttributes<HTMLIFrameElement> {
 	title: string;
 	ratio?: VideoAspectRatio;
 }
 
-export const BlockIframe: FunctionComponent<BlockIframeProps> = ({
+export const BlockIFrame: FunctionComponent<BlockIFrameProps> = ({
 	title,
 	ratio,
 	allowFullScreen = true,

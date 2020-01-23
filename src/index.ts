@@ -34,7 +34,6 @@ export { Checkbox } from './components/Checkbox/Checkbox';
 export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 export { Container } from './components/Container/Container';
 export { CTA } from './components/CTA/CTA';
-export { BlockIframe, BlockIframeProps } from './components/ContentBlocks/BlockIframe/BlockIframe';
 export { BlockImage, BlockImageProps } from './components/ContentBlocks/BlockImage/BlockImage';
 export {
 	BlockImageTitleTextButton,
@@ -124,6 +123,7 @@ export { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 // Content Blocks
 export { BlockHeading, BlockHeadingProps } from './content-blocks/BlockHeading/BlockHeading';
 export { BlockIntro, BlockIntroProps } from './content-blocks/BlockIntro/BlockIntro';
+export { BlockIFrame, BlockIFrameProps } from './content-blocks/BlockIFrame/BlockIFrame';
 export { BlockRichText, BlockRichTextProps } from './content-blocks/BlockRichText/BlockRichText';
 export { BlockButtons, BlockButtonsProps } from './content-blocks/BlockButtons/BlockButtons';
 export { BlockCTAs, BlockCTAsProps } from './content-blocks/BlockCTAs/BlockCTAs';
