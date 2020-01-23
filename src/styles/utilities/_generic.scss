@@ -4,7 +4,7 @@
    Set of generic helping classes
    ========================================================================== */
 
-   .u-maximize-height {
+.u-maximize-height {
 	height: 100% !important;
 }
 
@@ -68,7 +68,7 @@
 	height: 1px;
 	overflow: hidden;
 	padding: 0 !important;
-	background: #FFF;
+	background: #fff;
 	margin: 0 !important;
 }
 
@@ -120,6 +120,22 @@
 
 .u-content-flex {
 	flex: 1 0 auto;
+}
+
+.u-content-flex {
+	display: flex;
+
+	&--left {
+		justify-content: flex-start;
+	}
+
+	&--center {
+		justify-content: center;
+	}
+
+	&--right {
+		justify-content: flex-end;
+	}
 }
 
 .u-footer-flex {
