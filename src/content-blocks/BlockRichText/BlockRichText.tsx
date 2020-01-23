@@ -1,4 +1,3 @@
-import { get } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { Column, GridSize } from '../../components/Grid/Column/Column';
