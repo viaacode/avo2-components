@@ -4,9 +4,7 @@ export const CTA_MOCK: CTAProps = {
 	heading: 'Titel',
 	headingType: 'h3',
 	content: 'Text',
-	button: {
-		label: 'Read more',
-		icon: 'chevron-down',
-		onClick: () => {},
-	},
+	buttonLabel: 'Read more',
+	buttonIcon: 'chevron-down',
+	buttonOnClick: () => {},
 };
