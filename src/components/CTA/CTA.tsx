@@ -17,8 +17,8 @@ export interface CTAProps extends DefaultProps {
 	content: string;
 	buttonLabel: string;
 	buttonOnClick: (event: MouseEvent<HTMLElement>) => void;
-	buttonIcon?: string;
-	buttonType?: string;
+	buttonIcon?: IconName;
+	buttonType?: ButtonType;
 }
 
 export const CTA: FunctionComponent<CTAProps> = ({
@@ -36,8 +36,8 @@ export const CTA: FunctionComponent<CTAProps> = ({
 		title: buttonLabel,
 		ariaLabel: buttonLabel,
 		onClick: buttonOnClick,
-		icon: buttonIcon as IconName,
-		type: buttonType as ButtonType,
+		icon: buttonIcon,
+		type: buttonType,
 	};
 
 	return (
