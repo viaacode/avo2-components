@@ -50,7 +50,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 	const thumbnail = useSlot(SearchResultThumbnail, children);
 
 	const getTruncatedDescription = () => {
-		if (description.length > maxDescriptionLength - 3) {
+		if (description && description.length > maxDescriptionLength - 3) {
 			return `${description.substring(0, maxDescriptionLength)}...`;
 		}
 		return description;

@@ -249,3 +249,5 @@ yarn-debug.log*
 yarn-error.log*
 
 storybook-static
+
+licenses.csv
