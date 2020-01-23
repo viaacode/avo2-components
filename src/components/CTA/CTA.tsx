@@ -29,7 +29,7 @@ export const CTA: FunctionComponent<CTAProps> = ({
 	buttonLabel,
 	buttonIcon,
 	buttonOnClick,
-	buttonType,
+	buttonType = 'secondary',
 }) => {
 	const buttonProps: ButtonProps = {
 		label: buttonLabel,
@@ -46,7 +46,7 @@ export const CTA: FunctionComponent<CTAProps> = ({
 				<div className="c-content">
 					<BlockHeading type={headingType}>{heading}</BlockHeading>
 					<BlockRichText elements={{ content }} />
-					<Button type="secondary" {...buttonProps} />
+					<Button {...buttonProps} />
 				</div>
 			</div>
 		</div>
