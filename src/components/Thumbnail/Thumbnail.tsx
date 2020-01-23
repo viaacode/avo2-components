@@ -8,6 +8,13 @@ import { IconName } from '../Icon/types';
 
 import './Thumbnail.scss';
 
+const CATEGORY_TO_ICON: { [category: string]: IconName } = {
+	audio: 'headphone',
+	video: 'video',
+	collection: 'collection',
+	bundle: 'folder',
+};
+
 export interface ThumbnailProps extends DefaultProps {
 	category: EnglishContentType;
 	src?: string;
@@ -25,7 +32,7 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 	meta,
 }) => {
 	const [loaded, setLoaded] = useState(false);
-	const iconName: IconName = category === 'audio' ? 'headphone' : (category as IconName);
+	const iconName: IconName = CATEGORY_TO_ICON[category];
 
 	useEffect(() => {
 		let img: HTMLImageElement | null = null;
