@@ -37,4 +37,11 @@ storiesOf('Blankslate', module)
 				Extra content for the blankslate can be passed via <code>children</code>.
 			</Spacer>
 		</Blankslate>
+	))
+	.add('Blankslate html content', () => (
+		<Blankslate
+			title="Oeps. Pagina niet gevonden"
+			body="Sorry, we hebben overal gekeken, maar de pagina die je zoekt bestaat niet (meer) of je hebt geen rechten om deze te bekijken.<br /> Vermoed je een fout? Neem dan contact met ons op via de Feedback-knop."
+			icon="search"
+		></Blankslate>
 	));

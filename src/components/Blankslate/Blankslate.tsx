@@ -32,8 +32,8 @@ export const Blankslate: FunctionComponent<BlankslateProps> = ({
 				</div>
 			</Spacer>
 		)}
-		<h4 className="c-h4">{title}</h4>
-		<p className="c-body-1">{body}</p>
+		<h4 className="c-h4" dangerouslySetInnerHTML={{ __html: title }} />
+		<p className="c-body-1" dangerouslySetInnerHTML={{ __html: body }} />
 		{children}
 	</div>
 );
