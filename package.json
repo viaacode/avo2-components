@@ -18,7 +18,8 @@
     "lint": "tslint -p .",
     "start": "start-storybook -s ./static -p 3020 --ci",
     "test": "jest --verbose",
-    "test:output": "cross-env CI=true jest --json --outputFile=.storybook/test-results.json"
+    "test:output": "cross-env CI=true jest --json --outputFile=.storybook/test-results.json",
+    "licenses": "license-checker --csv --out licenses.csv"
   },
   "browserslist": {
     "production": [
@@ -71,18 +72,19 @@
     "@types/enzyme": "^3.9.2",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.13",
+    "@types/lodash-es": "^4.17.3",
     "@types/react-datepicker": "^2.9.3",
     "@types/react-html-parser": "^2.0.1",
     "@types/react-select": "^3.0.4",
     "@types/storybook__addon-actions": "^3.4.2",
     "@types/storybook__react": "^4.0.1",
-    "@types/lodash-es": "^4.17.3",
     "autoprefixer": "^9.6.1",
     "cross-env": "^5.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
     "glob": "^7.1.4",
     "husky": "^2.3.0",
+    "license-checker": "^25.0.1",
     "lint-staged": "^8.1.7",
     "lorem-ipsum": "^2.0.2",
     "node-sass": "^4.12.0",
