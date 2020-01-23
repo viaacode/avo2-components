@@ -1,37 +1,43 @@
+import { get } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
-
-import classnames from 'classnames';
 
 import { Column, GridSize } from '../../components/Grid/Column/Column';
 import { Grid } from '../../components/Grid/Grid';
 import { convertToHtml } from '../../helpers/convertToHtml';
 import { DefaultProps } from '../../types';
 
+interface BlockRichTextElements {
+	content: string;
+}
+
 export interface BlockRichTextProps extends DefaultProps {
-	content: string | string[];
+	elements: BlockRichTextElements | BlockRichTextElements[];
 }
 
 export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 	className,
-	content = [''],
-}) =>
-	typeof content === 'string' ? (
-		<div
-			className={classnames(className, 'c-content')}
-			dangerouslySetInnerHTML={{ __html: convertToHtml(content) }}
-		/>
-	) : (
-		<Grid>
-			{content.map((contentColumn, index) => (
+	elements = [
+		{
+			content: '',
+		},
+	],
+}) => {
+	const renderContent = (content: string) => (
+		<div className="c-content" dangerouslySetInnerHTML={{ __html: convertToHtml(content) }} />
+	);
+
+	return Array.isArray(elements) ? (
+		<Grid className={className}>
+			{elements.map((column, index) => (
 				<Column
-					size={(12 / content.length).toString() as GridSize}
+					size={(12 / elements.length).toString() as GridSize}
 					key={`rich-text-column-${index}`}
 				>
-					<div
-						className="c-content"
-						dangerouslySetInnerHTML={{ __html: convertToHtml(contentColumn) }}
-					/>
+					{renderContent(column.content)}
 				</Column>
 			))}
 		</Grid>
+	) : (
+		renderContent(elements.content)
 	);
+};

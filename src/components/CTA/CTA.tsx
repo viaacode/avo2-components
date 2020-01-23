@@ -12,7 +12,7 @@ import './CTA.scss';
 export interface CTAProps extends DefaultProps {
 	heading: string;
 	headingType: HeadingType;
-	content: string | string[];
+	content: string;
 	button: Partial<ButtonProps>;
 }
 
@@ -28,7 +28,7 @@ export const CTA: FunctionComponent<CTAProps> = ({
 		<div className="c-cta__content">
 			<div className="c-content">
 				<BlockHeading type={headingType}>{heading}</BlockHeading>
-				<BlockRichText content={content} />
+				<BlockRichText elements={{ content }} />
 				<Button type="secondary" {...button} />
 			</div>
 		</div>

@@ -7,7 +7,7 @@ import { RICH_TEXT_MOCK } from './BlockRichText.mock';
 
 storiesOf('BlockRichText', module)
 	.addParameters({ jest: ['BlockRichText'] })
-	.add('BlockRichText', () => <BlockRichText content={RICH_TEXT_MOCK} />)
+	.add('BlockRichText', () => <BlockRichText elements={RICH_TEXT_MOCK} />)
 	.add('BlockRichText Two Columns', () => (
-		<BlockRichText content={[RICH_TEXT_MOCK, RICH_TEXT_MOCK]} />
+		<BlockRichText elements={[RICH_TEXT_MOCK, RICH_TEXT_MOCK]} />
 	));

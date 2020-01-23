@@ -7,4 +7,4 @@ import { BlockIntro } from './BlockIntro';
 
 storiesOf('BlockIntro', module)
 	.addParameters({ jest: ['BlockIntro'] })
-	.add('BlockIntro', () => <BlockIntro title="Page title" text={loremIpsum({ count: 3 })} />);
+	.add('BlockIntro', () => <BlockIntro title="Page title" content={loremIpsum({ count: 3 })} />);
