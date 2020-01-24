@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Icon } from '../Icon/Icon';
@@ -44,7 +44,7 @@ describe('<Blankslate />', () => {
 	it('Should render the title correctly', () => {
 		const title = 'This is a test';
 
-		const blankslateComponent = shallow(
+		const blankslateComponent = mount(
 			<Blankslate
 				title={title}
 				body="Use it to provide information when no dynamic content exists."
@@ -59,7 +59,7 @@ describe('<Blankslate />', () => {
 	it('Should render the body correctly', () => {
 		const body = 'Lorem ipsum test';
 
-		const blankslateComponent = shallow(<Blankslate title="This is a blank slate" body={body} />);
+		const blankslateComponent = mount(<Blankslate title="This is a blank slate" body={body} />);
 
 		const bodyElement = blankslateComponent.find('p.c-body-1');
 
