@@ -32,7 +32,7 @@ export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
 	meta,
 }) => {
 	const [loaded, setLoaded] = useState(false);
-	const iconName: IconName = CATEGORY_TO_ICON[category];
+	const iconName = CATEGORY_TO_ICON[category];
 
 	useEffect(() => {
 		let img: HTMLImageElement | null = null;
