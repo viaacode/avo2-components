@@ -2,7 +2,6 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { CTAProps } from '../../components/CTA/CTA';
 import { action } from '../../helpers/action';
-import { BUTTONS_MOCK } from '../BlockButtons/BlockButtons.mock';
 
 const content = loremIpsum({ count: 10 });
 
