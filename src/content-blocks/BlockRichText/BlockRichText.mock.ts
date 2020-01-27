@@ -1,6 +1,7 @@
 import { loremIpsum } from 'lorem-ipsum';
 
-export const RICH_TEXT_MOCK = `
+export const RICH_TEXT_MOCK = {
+	content: `
 # Title
 
 ${loremIpsum({ count: 20 })}
@@ -14,4 +15,5 @@ ${loremIpsum({ count: 20 })}
 	<li>2</li>
 	<li>3</li>
 </ul>
-`;
+`,
+};

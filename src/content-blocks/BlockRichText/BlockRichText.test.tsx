@@ -6,9 +6,9 @@ import { RICH_TEXT_MOCK } from './BlockRichText.mock';
 
 const customClass = 'c-block-custom';
 
-const SingleColumnExample = <BlockRichText className={customClass} content={RICH_TEXT_MOCK} />;
+const SingleColumnExample = <BlockRichText className={customClass} elements={RICH_TEXT_MOCK} />;
 const TwoColumnExample = (
-	<BlockRichText className={customClass} content={[RICH_TEXT_MOCK, RICH_TEXT_MOCK]} />
+	<BlockRichText className={customClass} elements={[RICH_TEXT_MOCK, RICH_TEXT_MOCK]} />
 );
 
 describe('<BlockRichText />', () => {
