@@ -121,6 +121,10 @@ export { VideoWrapper } from './components/VideoWrapper/VideoWrapper';
 export { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 
 // Content Blocks
+export {
+	BlockAccordions,
+	BlockAccordionsProps,
+} from './content-blocks/BlockAccordions/BlockAccordions';
 export { BlockHeading, BlockHeadingProps } from './content-blocks/BlockHeading/BlockHeading';
 export { BlockIntro, BlockIntroProps } from './content-blocks/BlockIntro/BlockIntro';
 export { BlockIFrame, BlockIFrameProps } from './content-blocks/BlockIFrame/BlockIFrame';
