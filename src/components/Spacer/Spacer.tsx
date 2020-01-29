@@ -4,8 +4,6 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
-import './Spacer.scss';
-
 type SpacerOption =
 	| 'small'
 	| 'large'
