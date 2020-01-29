@@ -27,4 +27,11 @@ storiesOf('MetaData', module)
 			<MetaDataItem icon="eye" label="738" />
 			<MetaDataItem label="2d geleden" />
 		</MetaData>
+	))
+	.add('Meta data (bundle)', () => (
+		<MetaData category="bundle">
+			<MetaDataItem label="7 items" />
+			<MetaDataItem icon="eye" label="738" />
+			<MetaDataItem label="2d geleden" />
+		</MetaData>
 	));

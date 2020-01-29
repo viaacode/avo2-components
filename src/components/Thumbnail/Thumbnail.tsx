@@ -8,11 +8,12 @@ import { IconName } from '../Icon/types';
 
 import './Thumbnail.scss';
 
-const CATEGORY_TO_ICON: { [category: string]: IconName } = {
+export const CATEGORY_TO_ICON: { [category: string]: IconName } = {
 	audio: 'headphone',
 	video: 'video',
 	collection: 'collection',
 	bundle: 'folder',
+	search: 'search',
 };
 
 export interface ThumbnailProps extends DefaultProps {

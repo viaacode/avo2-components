@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { DefaultProps, EnglishContentType } from '../../../types';
 import { Icon } from '../../Icon/Icon';
-import { IconName } from '../../Icon/types';
+import { CATEGORY_TO_ICON } from '../../Thumbnail/Thumbnail';
 import { MenuContent } from '../MenuContent/MenuContent';
 
 export interface MenuSearchResultItemInfo {
@@ -18,14 +18,6 @@ export interface MenuContentProps extends DefaultProps {
 	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;
 }
-
-export const CONTENT_TYPE_TO_ICON_NAME: { [contentType in EnglishContentType]?: IconName } = {
-	collection: 'collection',
-	video: 'video',
-	audio: 'volume-1',
-	bundle: 'folder',
-	search: 'search',
-};
 
 export const CONTENT_TYPE_TO_LABEL: { [contentType in EnglishContentType]?: string } = {
 	collection: 'Collectie',
@@ -50,7 +42,7 @@ export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
 			>
 				<div className="c-menu__label">
 					<div className={`c-content-type c-content-type--${menuItemInfo.type}`}>
-						<Icon name={CONTENT_TYPE_TO_ICON_NAME[menuItemInfo.type]} />
+						<Icon name={CATEGORY_TO_ICON[menuItemInfo.type]} />
 						{menuItemInfo.label}
 					</div>
 				</div>
