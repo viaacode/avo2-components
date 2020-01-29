@@ -4,8 +4,9 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
-type SpacerOption =
+export type SpacerOption =
 	| 'small'
+	| 'medium'
 	| 'large'
 	| 'extra-large'
 	| 'left-small'
@@ -44,7 +45,9 @@ const spacersToClasses = (
 ): string[] => {
 	const spacerArray = Array.isArray(spacer) ? spacer : [spacer];
 
-	return spacerArray.map(option => `${classPrefix}-${abbreviateSizes(option)}`);
+	return spacerArray.map(option =>
+		option !== 'medium' ? `${classPrefix}-${abbreviateSizes(option)}` : classPrefix
+	);
 };
 
 export const Spacer: FunctionComponent<SpacerProps> = ({
@@ -56,16 +59,5 @@ export const Spacer: FunctionComponent<SpacerProps> = ({
 	const marginClasses = spacersToClasses(margin, 'u-spacer');
 	const paddingClasses = spacersToClasses(padding, 'u-padding');
 
-	return (
-		<div
-			className={classnames(
-				className,
-				{ 'u-spacer': !margin && !padding },
-				marginClasses,
-				paddingClasses
-			)}
-		>
-			{children}
-		</div>
-	);
+	return <div className={classnames(className, marginClasses, paddingClasses)}>{children}</div>;
 };
