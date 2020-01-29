@@ -103,7 +103,7 @@ storiesOf('Form', module)
 			>
 				<input type="password" id="pass" />
 			</FormGroup>
-			<FormGroup labelFor="pref" label="Preference">
+			<FormGroup labelFor="pref" label="Preference" error={[]}>
 				<select id="pref">
 					<option>Option A</option>
 					<option>Option B</option>
