@@ -1,7 +1,14 @@
-import React, { FunctionComponent, MutableRefObject, useEffect, useRef, useState } from 'react';
+import React, {
+	FunctionComponent,
+	MutableRefObject,
+	useEffect,
+	useLayoutEffect,
+	useRef,
+	useState,
+} from 'react';
 
 import classnames from 'classnames';
-import { formatDuration } from '../../helpers/parse-time';
+import { createElement, formatDuration } from '../../helpers';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
@@ -56,48 +63,6 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 		}
 	}, [seekTime, lastSeekTime]);
 
-	const createTitleOverlay = () => {
-		const titleOverlay = document.createElement('div');
-		const titleHeader = document.createElement('h5');
-		const publishDiv = document.createElement('div');
-
-		titleOverlay.classList.add('c-title-overlay');
-		titleHeader.classList.add('c-title-overlay__title');
-		publishDiv.classList.add('u-d-flex');
-
-		titleHeader.innerText = title;
-
-		titleOverlay.appendChild(titleHeader);
-		titleOverlay.appendChild(publishDiv);
-
-		if (subtitles && subtitles.length) {
-			subtitles.forEach((subtitle: string) => {
-				const substitleDiv = document.createElement('div');
-				substitleDiv.innerText = subtitle;
-				substitleDiv.classList.add('c-title-overlay__meta');
-				publishDiv.appendChild(substitleDiv);
-			});
-		}
-
-		return titleOverlay;
-	};
-
-	const createLogoOverlay = () => {
-		if (logo) {
-			const logoOverlay = document.createElement('div');
-			const logoImg = document.createElement('img');
-
-			logoOverlay.classList.add('c-logo-overlay');
-			logoImg.classList.add('c-logo-overlay__img');
-
-			logoImg.src = logo;
-
-			logoOverlay.appendChild(logoImg);
-
-			return logoOverlay;
-		}
-	};
-
 	const cuePointEndListener = () => {
 		if (videoContainerRef.current) {
 			videoPlayerRef.current.pause();
@@ -150,14 +115,54 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 	}, [start, end]);
 
 	// Draw custom elements
-	flowplayer((opts: any, root: any, api: any) => {
-		const mq = flowplayer.mq;
+	useLayoutEffect(() => {
+		const createTitleOverlay = () => {
+			const titleOverlay = createElement('div', 'c-title-overlay');
+			const titleHeader = createElement('h5', 'c-title-overlay__title');
+			const publishDiv = createElement('div', 'u-d-flex');
 
-		api.on('mount', () => {
-			mq('.fp-ui', root).prepend(createTitleOverlay());
-			mq('.fp-ui', root).prepend(createLogoOverlay());
+			titleHeader.innerText = title;
+
+			titleOverlay.appendChild(titleHeader);
+			titleOverlay.appendChild(publishDiv);
+
+			if (subtitles && subtitles.length) {
+				subtitles.forEach((subtitle: string) => {
+					const substitleDiv = createElement('div', 'c-title-overlay__meta');
+
+					substitleDiv.innerText = subtitle;
+					publishDiv.appendChild(substitleDiv);
+				});
+			}
+
+			return titleOverlay;
+		};
+
+		const createLogoOverlay = () => {
+			if (logo) {
+				const logoOverlay = createElement('div', 'c-logo-overlay');
+				const logoImg = createElement('img', 'c-logo-overlay__img');
+
+				logoImg.src = logo;
+				logoOverlay.appendChild(logoImg);
+
+				return logoOverlay;
+			}
+		};
+
+		flowplayer((opts: any, root: any, api: any) => {
+			const mq = flowplayer.mq;
+
+			// Check if root equals current components container ref
+			// to avoid creating multiple titles and logos
+			if (root === videoContainerRef.current) {
+				api.on('mount', () => {
+					mq('.fp-ui', root).prepend(createTitleOverlay());
+					mq('.fp-ui', root).prepend(createLogoOverlay());
+				});
+			}
 		});
-	});
+	}, [logo, subtitles, title]);
 
 	return src ? (
 		<div
