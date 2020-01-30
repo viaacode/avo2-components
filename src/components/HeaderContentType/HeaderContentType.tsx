@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { DefaultProps, EnglishContentType } from '../../types';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/types';
+import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail';
 
 interface ContentTypeProps extends DefaultProps {
 	category: EnglishContentType;
@@ -17,7 +17,7 @@ export const HeaderContentType: FunctionComponent<ContentTypeProps> = ({
 	className,
 }) => (
 	<div className={classnames(className, 'c-content-type', `c-content-type--${category}`)}>
-		<Icon name={category as IconName} />
+		<Icon name={CATEGORY_TO_ICON[category]} />
 		<p>{label.toUpperCase()}</p>
 	</div>
 );
