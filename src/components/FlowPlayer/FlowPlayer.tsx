@@ -14,15 +14,16 @@ import 'flowplayer-files/lib/plugins/subtitles.min';
 
 export interface FlowPlayerProps extends DefaultProps {
 	src: string | null;
-	poster: string;
+	poster?: string;
 	logo?: string;
 	title: string;
-	subtitles: string[];
+	subtitles?: string[];
 	start?: number | null;
 	end?: number | null;
 	onInit?: () => void;
 	token?: string;
 	dataPlayerId?: string;
+	autoplay?: booolean;
 	seekTime?: number;
 }
 
@@ -38,6 +39,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 	token,
 	dataPlayerId,
 	seekTime,
+	autoplay = true,
 	className,
 }) => {
 	const videoContainerRef = useRef(null);
@@ -68,12 +70,14 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 		titleOverlay.appendChild(titleHeader);
 		titleOverlay.appendChild(publishDiv);
 
-		subtitles.forEach((subtitle: string) => {
-			const substitleDiv = document.createElement('div');
-			substitleDiv.innerText = subtitle;
-			substitleDiv.classList.add('c-title-overlay__meta');
-			publishDiv.appendChild(substitleDiv);
-		});
+		if (subtitles && subtitles.length) {
+			subtitles.forEach((subtitle: string) => {
+				const substitleDiv = document.createElement('div');
+				substitleDiv.innerText = subtitle;
+				substitleDiv.classList.add('c-title-overlay__meta');
+				publishDiv.appendChild(substitleDiv);
+			});
+		}
 
 		return titleOverlay;
 	};
@@ -110,7 +114,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 				token,
 
 				// CONFIGURATION
-				autoplay: true,
+				autoplay,
 				ui: flowplayer.ui.LOGO_ON_RIGHT | flowplayer.ui.USE_DRAG_HANDLE,
 				plugins: ['subtitles', 'chromecast', 'cuepoints'],
 
@@ -155,7 +159,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 		});
 	});
 
-	return src && poster ? (
+	return src ? (
 		<div
 			className={classnames(className, 'c-video-player')}
 			data-player-id={dataPlayerId}
