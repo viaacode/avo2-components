@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { convertToHtml } from '../../../helpers/convertToHtml';
+import { convertToHtml } from '../../../helpers';
 import { DefaultProps } from '../../../types';
 import { Button } from '../../Button/Button';
 import { Container } from '../../Container/Container';

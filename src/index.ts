@@ -10,7 +10,7 @@ export { useKeyPress } from './hooks/useKeyPress';
 export { useSlot } from './hooks/useSlot';
 
 // Helpers
-export { convertToHtml } from './helpers/convertToHtml';
+export { convertToHtml } from './helpers';
 
 // Components
 export { Alert } from './components/Alert/Alert';
