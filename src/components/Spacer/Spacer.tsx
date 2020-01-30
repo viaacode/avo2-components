@@ -4,10 +4,9 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
-import './Spacer.scss';
-
-type SpacerMarginOption =
+export type SpacerOption =
 	| 'small'
+	| 'medium'
 	| 'large'
 	| 'extra-large'
 	| 'left-small'
@@ -28,8 +27,9 @@ type SpacerMarginOption =
 	| 'bottom-extra-large';
 
 export interface SpacerProps extends DefaultProps {
-	margin?: SpacerMarginOption | SpacerMarginOption[];
 	children?: ReactNode;
+	margin?: SpacerOption | SpacerOption[];
+	padding?: SpacerOption | SpacerOption[];
 }
 
 const abbreviateSizes = (input: string): string => {
@@ -39,16 +39,25 @@ const abbreviateSizes = (input: string): string => {
 		.replace('small', 's');
 };
 
-export const Spacer: FunctionComponent<SpacerProps> = ({ margin, children, className }) => {
-	let classes: string[] = [];
+const spacersToClasses = (
+	spacer: SpacerOption | SpacerOption[] = [],
+	classPrefix: string
+): string[] => {
+	const spacerArray = Array.isArray(spacer) ? spacer : [spacer];
 
-	if (margin) {
-		const margins = typeof margin === 'string' ? [margin] : margin;
-
-		classes = margins.map((option: SpacerMarginOption) => `u-spacer-${abbreviateSizes(option)}`);
-	}
-
-	return (
-		<div className={classnames(className, { 'u-spacer': !margin }, ...classes)}>{children}</div>
+	return spacerArray.map(option =>
+		option !== 'medium' ? `${classPrefix}-${abbreviateSizes(option)}` : classPrefix
 	);
+};
+
+export const Spacer: FunctionComponent<SpacerProps> = ({
+	children,
+	className,
+	margin,
+	padding,
+}) => {
+	const marginClasses = spacersToClasses(margin, 'u-spacer');
+	const paddingClasses = spacersToClasses(padding, 'u-padding');
+
+	return <div className={classnames(className, marginClasses, paddingClasses)}>{children}</div>;
 };

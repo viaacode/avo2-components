@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Spacer } from './Spacer';
+import { Spacer, SpacerOption } from './Spacer';
 
 describe('<Spacer />', () => {
 	it('Should be able to render', () => {
@@ -11,37 +11,42 @@ describe('<Spacer />', () => {
 	it('Should set the correct className', () => {
 		const cumstomClass = 'c-spacer-custom';
 
-		const spacerComponent = shallow(<Spacer className={cumstomClass} />);
+		const spacerComponent = shallow(<Spacer className={cumstomClass} margin="medium" />);
 
-		expect(spacerComponent.hasClass(cumstomClass)).toEqual(true);
-		expect(spacerComponent.hasClass('u-spacer')).toEqual(true);
+		expect(spacerComponent.hasClass(cumstomClass)).toBeTruthy();
+		expect(spacerComponent.hasClass('u-spacer')).toBeTruthy();
 	});
 
-	it('Should set the correct className when margin is passed (string)', () => {
-		const spacerComponent = shallow(<Spacer margin="left-small" />);
+	it('Should set the correct className when margin/padding is passed (string)', () => {
+		const spacerComponent = shallow(<Spacer margin="left-small" padding="left-small" />);
 
-		expect(spacerComponent.hasClass('u-spacer-left-s')).toEqual(true);
+		expect(spacerComponent.hasClass('u-spacer-left-s')).toBeTruthy();
+		expect(spacerComponent.hasClass('u-padding-left-s')).toBeTruthy();
 	});
 
-	it('Should set the correct className when margin is passed (array)', () => {
-		const spacerComponent = shallow(<Spacer margin={['left-small']} />);
+	it('Should set the correct className when margin/padding is passed (array)', () => {
+		const spacerComponent = shallow(<Spacer margin={['left-small']} padding={['left-small']} />);
 
-		expect(spacerComponent.hasClass('u-spacer-left-s')).toEqual(true);
+		expect(spacerComponent.hasClass('u-spacer-left-s')).toBeTruthy();
+		expect(spacerComponent.hasClass('u-padding-left-s')).toBeTruthy();
 	});
 
-	it('Should set the correct className when multiple margins are passed', () => {
-		const spacerComponent = shallow(
-			<Spacer margin={['left-small', 'top-large', 'right-extra-large']} />
-		);
+	it('Should set the correct className when multiple margins/paddings are passed', () => {
+		const spacers: SpacerOption[] = ['left-small', 'top-large', 'right-extra-large'];
+		const spacerComponent = shallow(<Spacer margin={spacers} padding={spacers} />);
 
-		expect(spacerComponent.hasClass('u-spacer-left-s')).toEqual(true);
-		expect(spacerComponent.hasClass('u-spacer-top-l')).toEqual(true);
-		expect(spacerComponent.hasClass('u-spacer-right-xl')).toEqual(true);
+		expect(spacerComponent.hasClass('u-spacer-left-s')).toBeTruthy();
+		expect(spacerComponent.hasClass('u-spacer-top-l')).toBeTruthy();
+		expect(spacerComponent.hasClass('u-spacer-right-xl')).toBeTruthy();
+
+		expect(spacerComponent.hasClass('u-padding-left-s')).toBeTruthy();
+		expect(spacerComponent.hasClass('u-padding-top-l')).toBeTruthy();
+		expect(spacerComponent.hasClass('u-padding-right-xl')).toBeTruthy();
 	});
 
 	it('Should correctly pass children', () => {
 		const spacerComponent = mount(
-			<Spacer>
+			<Spacer margin="large">
 				<p>What a nice smile you have there!</p>
 			</Spacer>
 		);
