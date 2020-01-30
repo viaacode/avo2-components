@@ -23,7 +23,7 @@ export interface FlowPlayerProps extends DefaultProps {
 	onInit?: () => void;
 	token?: string;
 	dataPlayerId?: string;
-	autoplay?: booolean;
+	autoplay?: boolean;
 	seekTime?: number;
 }
 
