@@ -1,14 +1,24 @@
 import { action } from '../../helpers';
+import { ButtonAction } from '../../types';
 
-import { ButtonProps } from '../../components/Button/Button';
+import { ButtonProps } from './BlockButtons';
 
 export const BUTTONS_MOCK: ButtonProps[] = [
 	{
 		label: 'Knop 1',
-		onClick: action('Button 1 clicked'),
+		action: {
+			type: 'INTERNAL_LINK',
+			value: '/hulp',
+		},
 	},
 	{
 		label: 'Knop 2',
-		onClick: action('Button 2 clicked'),
+		action: {
+			type: 'INTERNAL_LINK',
+			value: '/hulp',
+		},
 	},
 ];
+
+export const BUTTONS_BUILD_NAVIGATE = (buttonAction: ButtonAction) =>
+	action(buttonAction.value.toString());
