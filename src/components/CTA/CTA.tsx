@@ -1,13 +1,12 @@
-import React, { FunctionComponent, MouseEvent } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
 import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
 import { BlockRichText } from '../../content-blocks/BlockRichText/BlockRichText';
-import { DefaultProps, HeadingType } from '../../types';
+import { ButtonAction, DefaultProps, HeadingType, IconName } from '../../types';
 import { Button, ButtonProps } from '../Button/Button';
 import { ButtonType } from '../Button/Button.types';
-import { IconName } from '../Icon/types';
 
 import './CTA.scss';
 
@@ -16,9 +15,10 @@ export interface CTAProps extends DefaultProps {
 	headingType: HeadingType;
 	content: string;
 	buttonLabel: string;
-	buttonOnClick: (event: MouseEvent<HTMLElement>) => void;
 	buttonIcon?: IconName;
 	buttonType?: ButtonType;
+	buttonAction: ButtonAction;
+	buildAndNavigate: (buttonAction: ButtonAction) => void;
 }
 
 export const CTA: FunctionComponent<CTAProps> = ({
@@ -28,14 +28,15 @@ export const CTA: FunctionComponent<CTAProps> = ({
 	content,
 	buttonLabel,
 	buttonIcon,
-	buttonOnClick,
 	buttonType = 'secondary',
+	buttonAction,
+	buildAndNavigate,
 }) => {
 	const buttonProps: ButtonProps = {
 		label: buttonLabel,
 		title: buttonLabel,
 		ariaLabel: buttonLabel,
-		onClick: buttonOnClick,
+		onClick: () => buildAndNavigate(buttonAction),
 		icon: buttonIcon,
 		type: buttonType,
 	};

@@ -1,11 +1,10 @@
+import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classnames from 'classnames';
-
-import { DefaultProps } from '../../types';
+import { DefaultProps, IconName } from '../../types';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/types';
 import { Spacer } from '../Spacer/Spacer';
+
 import './Blankslate.scss';
 
 export interface BlankslateProps extends DefaultProps {

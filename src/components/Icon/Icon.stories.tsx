@@ -1,12 +1,11 @@
+import { storiesOf } from '@storybook/react';
 import React, { Fragment } from 'react';
 
-import { storiesOf } from '@storybook/react';
-
 import iconList from '../../icons/icons.json';
-
+import { IconName } from '../../types';
 import { Spacer } from '../Spacer/Spacer';
+
 import { Icon } from './Icon';
-import { IconName } from './types';
 
 const baseIcons = iconList.filter(i => i.type === '');
 const arrowsIcons = iconList.filter(i => i.type === 'arrows');

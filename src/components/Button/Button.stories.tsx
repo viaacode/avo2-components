@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { COLORS } from '../../colors';
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 import { Spacer } from '../Spacer/Spacer';
 import { Button, ButtonProps } from './Button';
 

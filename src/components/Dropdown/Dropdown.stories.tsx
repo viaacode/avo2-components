@@ -2,10 +2,10 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
-
-import { IconName } from '../Icon/types';
+import { action } from '../../helpers';
+import { IconName } from '../../types';
 import { MenuContent } from '../Menu/MenuContent/MenuContent';
+
 import { Dropdown } from './Dropdown';
 
 const menuItems = [

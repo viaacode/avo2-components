@@ -1,9 +1,8 @@
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-import { action } from '../../helpers/action';
-
-import { IconName } from '../Icon/types';
+import { action } from '../../helpers';
+import { IconName } from '../../types';
 import { Tabs } from '../Tabs/Tabs';
 
 const mockTabs = [

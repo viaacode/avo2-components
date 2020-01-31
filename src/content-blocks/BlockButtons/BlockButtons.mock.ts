@@ -1,4 +1,4 @@
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { ButtonProps } from '../../components/Button/Button';
 

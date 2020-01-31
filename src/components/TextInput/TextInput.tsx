@@ -2,9 +2,8 @@ import React, { ChangeEvent, FunctionComponent, KeyboardEvent } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps, IconName } from '../../types';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/types';
 
 type InputType = 'password' | 'text' | 'email' | 'search' | 'number' | 'tel' | 'url';
 

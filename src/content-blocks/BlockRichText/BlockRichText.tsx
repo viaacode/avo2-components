@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 
 import { Column, GridSize } from '../../components/Grid/Column/Column';
 import { Grid } from '../../components/Grid/Grid';
-import { convertToHtml } from '../../helpers/convertToHtml';
+import { convertToHtml } from '../../helpers';
 import { DefaultProps } from '../../types';
 
 interface BlockRichTextElements {
