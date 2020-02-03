@@ -1,11 +1,12 @@
 import classnames from 'classnames';
-import React, { FunctionComponent, ReactNode, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 
 import { Accordion } from '../../components/Accordion/Accordion';
 import { DefaultProps } from '../../types';
+import { BlockRichText } from '../BlockRichText/BlockRichText';
 
 export interface BlockAccordionsProps extends DefaultProps {
-	elements: { title: string; content: ReactNode }[];
+	elements: { title: string; content: string }[];
 }
 
 export const BlockAccordions: FunctionComponent<BlockAccordionsProps> = ({
@@ -33,7 +34,7 @@ export const BlockAccordions: FunctionComponent<BlockAccordionsProps> = ({
 						title={title}
 						onToggle={() => setAccordionsOpen({ ...accordionsOpen, [key]: !accordionsOpen[key] })}
 					>
-						{content}
+						<BlockRichText elements={{ content }} />
 					</Accordion>
 				);
 			})}
