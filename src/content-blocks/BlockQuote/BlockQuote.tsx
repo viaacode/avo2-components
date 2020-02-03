@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../../types';
-import { Container } from '../../Container/Container';
+import { Container } from '../../components/Container/Container';
+import { DefaultProps } from '../../types';
 
 export interface BlockQuoteProps extends DefaultProps {
 	quoteText: string;

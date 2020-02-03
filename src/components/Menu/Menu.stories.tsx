@@ -13,7 +13,7 @@ import {
 	menuItemsWithSearch,
 } from './Menu.mocks';
 
-storiesOf('Menu', module)
+storiesOf('components/Menu', module)
 	.addParameters({ jest: ['Menu'] })
 	.add('Menu', () => <Menu menuItems={menuItems} onClick={action('clicked menu item')} />)
 	.add('Menu with icons', () => <Menu menuItems={menuItemsWithIcons} />)

@@ -6,7 +6,7 @@ import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 import { Avatar } from './Avatar';
 
-storiesOf('Avatar', module)
+storiesOf('components/Avatar', module)
 	.addParameters({ jest: ['Avatar', 'AvatarIcon'] })
 	.add('Avatar', () => <Avatar initials="JD" />)
 	.add('Small avatar', () => <Avatar initials="JD" size="small" />)

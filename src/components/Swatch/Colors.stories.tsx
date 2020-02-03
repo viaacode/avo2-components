@@ -20,7 +20,7 @@ const stories = [
 	['Tertiary', transformColors(COLORS.TERTIARY)],
 ];
 
-const story = storiesOf('Colors', module);
+const story = storiesOf('components/Colors', module);
 
 stories.forEach(([title, colors]: any) => story.add(title, () => <SwatchBlock colors={colors} />));
 

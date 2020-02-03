@@ -90,7 +90,7 @@ function renderCell(r: any[], c: any) {
 	}
 }
 
-storiesOf('Table', module)
+storiesOf('components/Table', module)
 	.addParameters({ jest: ['Table'] })
 	.add('Table', () => (
 		<TableStoryComponent>

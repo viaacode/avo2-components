@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { CheckboxGroup } from './CheckboxGroup';
 
-storiesOf('CheckboxGroup', module)
+storiesOf('components/CheckboxGroup', module)
 	.addParameters({ jest: ['CheckboxGroup'] })
 	.add('CheckboxGroup', () => (
 		<CheckboxGroup>

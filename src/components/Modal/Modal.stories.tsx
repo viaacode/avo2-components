@@ -21,7 +21,7 @@ const ModalStoryComponent = ({ children }: { children: ReactElement }) => {
 	);
 };
 
-storiesOf('Modal', module)
+storiesOf('components/Modal', module)
 	.addParameters({ jest: ['Modal', 'ModalBackdrop'] })
 	.add('Modal', () => (
 		<ModalStoryComponent>

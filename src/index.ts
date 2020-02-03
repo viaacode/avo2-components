@@ -34,22 +34,22 @@ export { Checkbox } from './components/Checkbox/Checkbox';
 export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 export { Container } from './components/Container/Container';
 export { CTA } from './components/CTA/CTA';
-export { BlockImage, BlockImageProps } from './components/ContentBlocks/BlockImage/BlockImage';
+export { BlockImage, BlockImageProps } from './content-blocks/BlockImage/BlockImage';
 export {
 	BlockImageTitleTextButton,
 	BlockImageTitleTextButtonProps,
-} from './components/ContentBlocks/BlockImageTitleTextButton/BlockImageTitleTextButton';
-export { BlockLinks, BlockLinksProps } from './components/ContentBlocks/BlockLinks/BlockLinks';
-export { BlockQuote, BlockQuoteProps } from './components/ContentBlocks/BlockQuote/BlockQuote';
+} from './content-blocks/BlockImageTitleTextButton/BlockImageTitleTextButton';
+export { BlockLinks, BlockLinksProps } from './content-blocks/BlockLinks/BlockLinks';
+export { BlockQuote, BlockQuoteProps } from './content-blocks/BlockQuote/BlockQuote';
 export {
 	BlockTitleImageText,
 	BlockTitleImageTextProps,
-} from './components/ContentBlocks/BlockTitleImageText/BlockTitleImageText';
-export { BlockVideo, BlockVideoProps } from './components/ContentBlocks/BlockVideo/BlockVideo';
+} from './content-blocks/BlockTitleImageText/BlockTitleImageText';
+export { BlockVideo, BlockVideoProps } from './content-blocks/BlockVideo/BlockVideo';
 export {
 	BlockVideoTitleTextButton,
 	BlockVideoTitleTextButtonProps,
-} from './components/ContentBlocks/BlockVideoTitleTextButton/BlockVideoTitleTextButton';
+} from './content-blocks/BlockVideoTitleTextButton/BlockVideoTitleTextButton';
 export { DatePicker } from './components/DatePicker/DatePicker';
 export { Dropdown, DropdownProps } from './components/Dropdown/Dropdown';
 export { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';

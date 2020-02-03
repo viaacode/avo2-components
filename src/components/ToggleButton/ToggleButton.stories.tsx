@@ -6,7 +6,7 @@ import { action } from '../../helpers/action';
 
 import { ToggleButton } from './ToggleButton';
 
-storiesOf('ToggleButton', module)
+storiesOf('components/ToggleButton', module)
 	.addParameters({ jest: ['ToggleButton'] })
 	.add('ToggleButton', () => (
 		<ToggleButton

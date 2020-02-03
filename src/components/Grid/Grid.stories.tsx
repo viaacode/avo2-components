@@ -11,7 +11,7 @@ const GridDecorator = (story: Function) => (
 	</div>
 );
 
-storiesOf('Grid', module)
+storiesOf('components/Grid', module)
 	.addParameters({ jest: ['Grid', 'Column'] })
 	.addDecorator(GridDecorator)
 	.add('Grid', () => (

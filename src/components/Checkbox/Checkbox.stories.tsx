@@ -24,7 +24,7 @@ const CheckboxStoryComponent = ({
 	});
 };
 
-storiesOf('Checkbox', module)
+storiesOf('components/Checkbox', module)
 	.addParameters({ jest: ['Checkbox'] })
 	.add('Checkbox', () => (
 		<CheckboxStoryComponent>

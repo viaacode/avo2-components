@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { Badge } from './Badge';
 
-storiesOf('Badge', module)
+storiesOf('components/Badge', module)
 	.addParameters({ jest: ['Badge'] })
 	.add('Badge', () => <Badge text="Pending approval" />)
 	.add('Success badge', () => <Badge text="Approval granted" type="success" />)

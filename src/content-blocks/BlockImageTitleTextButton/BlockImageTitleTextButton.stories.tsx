@@ -18,6 +18,6 @@ export const blockImageTitleTextButtonExample = (
 	/>
 );
 
-storiesOf('BlockImageTitleTextButton', module)
+storiesOf('blocks/BlockImageTitleTextButton', module)
 	.addParameters({ jest: ['BlockImageTitleTextButton'] })
 	.add('BlockImageTitleTextButton', () => blockImageTitleTextButtonExample);

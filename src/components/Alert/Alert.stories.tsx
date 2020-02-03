@@ -40,7 +40,7 @@ function renderAlertStories(props?: AlertProps, message?: (type: string) => JSX.
 	);
 }
 
-storiesOf('Alert', module)
+storiesOf('components/Alert', module)
 	.addParameters({ jest: ['Alert'] })
 	.add('Alerts', () => <Box backgroundColor="dark">{renderAlertStories()}</Box>)
 	.add('Alerts multiline', () => renderAlertStories({}, getMultiLineAlertMessage))

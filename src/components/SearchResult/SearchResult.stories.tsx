@@ -91,7 +91,7 @@ const renderSearchResult = (result: any) => {
 	);
 };
 
-storiesOf('SearchResult', module)
+storiesOf('components/SearchResult', module)
 	.addParameters({ jest: ['SearchResult'] })
 	.add('SearchResult', () => renderSearchResult(fakeSearchResult))
 	.add('SearchResult short', () =>

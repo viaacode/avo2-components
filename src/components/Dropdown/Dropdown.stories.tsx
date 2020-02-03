@@ -42,7 +42,7 @@ const DropdownStoryComponent = ({ children }: { children: ReactElement }) => {
 	});
 };
 
-storiesOf('Dropdown', module)
+storiesOf('components/Dropdown', module)
 	.addParameters({ jest: ['Dropdown'] })
 	.add('Dropdown', () => (
 		<DropdownStoryComponent>

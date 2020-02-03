@@ -10,7 +10,7 @@ const renderBlockButtons = (align?: AlignOptions) => () => (
 	<BlockButtons elements={BUTTONS_MOCK} align={align} />
 );
 
-storiesOf('BlockButtons', module)
+storiesOf('blocks/BlockButtons', module)
 	.addParameters({ jest: ['BlockButtons'] })
 	.add('BlockButtons', renderBlockButtons())
 	.add('BlockButtons (left)', renderBlockButtons('left'))

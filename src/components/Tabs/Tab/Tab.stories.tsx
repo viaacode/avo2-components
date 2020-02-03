@@ -17,7 +17,7 @@ const mockTabWithIcon = {
 	icon: 'video' as IconName,
 };
 
-storiesOf('Tab', module)
+storiesOf('components/Tab', module)
 	.addParameters({ jest: ['Tab'] })
 	.add('Tab', () => <Tab {...mockTab} />)
 	.add('Tab with Icon', () => <Tab {...mockTabWithIcon} />);

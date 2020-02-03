@@ -9,7 +9,7 @@ import { TextInput } from '../TextInput/TextInput';
 import { Form } from './Form';
 import { FormGroup } from './FormGroup/FormGroup';
 
-storiesOf('Form', module)
+storiesOf('components/Form', module)
 	.addParameters({ jest: ['Form', 'FormGroup'] })
 	.add('Form', () => (
 		<Form>

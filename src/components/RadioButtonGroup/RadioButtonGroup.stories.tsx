@@ -31,7 +31,7 @@ const RadioButtonGroupStoryComponent = ({
 	);
 };
 
-storiesOf('RadioButtonGroup', module)
+storiesOf('components/RadioButtonGroup', module)
 	.addParameters({ jest: ['RadioButtonGroup'] })
 	.add('RadioButtonGroup', () => (
 		<RadioButtonGroup>

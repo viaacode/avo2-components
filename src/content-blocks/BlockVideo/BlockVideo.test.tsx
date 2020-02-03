@@ -2,7 +2,7 @@ import React from 'react';
 
 import { mount, shallow } from 'enzyme';
 
-import { MOCK_FLOW_PLAYER_PROPS } from '../../FlowPlayer/FlowPlayer.mock';
+import { MOCK_FLOW_PLAYER_PROPS } from '../../components/FlowPlayer/FlowPlayer.mock';
 
 import { BlockVideo } from './BlockVideo';
 

@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../../types';
-import { Container } from '../../Container/Container';
-import { Image } from '../../Image/Image';
+import { Container } from '../../components/Container/Container';
+import { Image } from '../../components/Image/Image';
+import { DefaultProps } from '../../types';
 
 import './BlockImage.scss';
 

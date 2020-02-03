@@ -3,7 +3,7 @@ import React from 'react';
 
 import { BlockIFrame } from './BlockIFrame';
 
-storiesOf('BlockIFrame', module)
+storiesOf('blocks/BlockIFrame', module)
 	.addParameters({ jest: ['BlockIFrame'] })
 	.add('BlockIFrame', () => (
 		<BlockIFrame

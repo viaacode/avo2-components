@@ -47,7 +47,7 @@ const AccordionWithSlots = () => {
 	);
 };
 
-storiesOf('Accordion', module)
+storiesOf('components/Accordion', module)
 	.addParameters({ jest: ['Accordion'] })
 	.add('Accordion', () => (
 		<AccordionStoryComponent>

@@ -79,7 +79,7 @@ const renderButtonStories = (
 	</Fragment>
 );
 
-storiesOf('Button', module)
+storiesOf('components/Button', module)
 	.addParameters({ jest: ['Button'] })
 	.add('Buttons', () => renderButtonStories(buttonProps))
 	.add('Button with icon', () => renderButtonStories(buttonIconProps))

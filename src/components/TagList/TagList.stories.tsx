@@ -32,7 +32,7 @@ const colorTags = [
 	{ label: 'Uranium', id: 'uranium' },
 ];
 
-storiesOf('TagList', module)
+storiesOf('components/TagList', module)
 	.addParameters({ jest: ['TagList'] })
 	.add('TagList', () => <TagList tags={tags} />)
 	.add('TagList with closable tags', () => (

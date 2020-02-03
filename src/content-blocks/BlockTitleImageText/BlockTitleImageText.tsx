@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 
-import { convertToHtml } from '../../../helpers/convertToHtml';
-import { DefaultProps } from '../../../types';
-import { Container } from '../../Container/Container';
-import { Image } from '../../Image/Image';
-import { Spacer } from '../../Spacer/Spacer';
+import { Container } from '../../components/Container/Container';
+import { Image } from '../../components/Image/Image';
+import { Spacer } from '../../components/Spacer/Spacer';
+import { convertToHtml } from '../../helpers/convertToHtml';
+import { DefaultProps } from '../../types';
 
 export interface BlockTitleImageTextProps extends DefaultProps {
 	title?: string;
