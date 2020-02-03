@@ -16,6 +16,7 @@ export interface TextAreaProps extends DefaultProps {
 	height?: 'auto' | 'small' | 'medium' | 'large';
 	width?: 'xsmall' | 'small' | 'medium' | 'large';
 	onChange?: (value: string) => void;
+	onBlur?: () => void;
 }
 
 export const TextArea: FunctionComponent<TextAreaProps> = ({
@@ -29,6 +30,7 @@ export const TextArea: FunctionComponent<TextAreaProps> = ({
 	height,
 	width,
 	onChange = () => {},
+	onBlur = () => {},
 }) => {
 	const [textArea, textAreaRef] = useCallbackRef();
 
@@ -55,6 +57,7 @@ export const TextArea: FunctionComponent<TextAreaProps> = ({
 			placeholder={placeholder}
 			value={value}
 			onChange={onValueChange}
+			onBlur={onBlur}
 			ref={textAreaRef}
 		/>
 	);
