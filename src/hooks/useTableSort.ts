@@ -3,7 +3,7 @@ import { useState } from 'react';
 type SortOrder = 'asc' | 'desc';
 type UseTableSortTuple<T> = [T, SortOrder, (columnId: T) => void];
 
-export const useTableSort = <T>( // TDO switch to useTableSort hook in components lib
+export const useTableSort = <T>( // TODO switch to useTableSort hook in components lib
 	initialSortColumn: T,
 	initialSortOrder: SortOrder = 'desc'
 ): UseTableSortTuple<T> => {

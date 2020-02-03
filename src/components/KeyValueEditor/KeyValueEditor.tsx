@@ -2,11 +2,17 @@ import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
 
 import { useTableSort } from '../../hooks/useTableSort';
 import { DefaultProps } from '../../types';
+import { Form } from '../Form/Form';
+import { FormGroup } from '../Form/FormGroup/FormGroup';
 import { Pagination } from '../Pagination/Pagination';
+import { Spacer } from '../Spacer/Spacer';
 import { Table } from '../Table/Table';
 import { TextArea } from '../TextArea/TextArea';
+import { TextInput } from '../TextInput/TextInput';
+import { Toolbar } from '../Toolbar/Toolbar';
+import { ToolbarRight } from '../Toolbar/Toolbar.slots';
+import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
-import { Form, FormGroup, Spacer, TextInput, Toolbar, ToolbarItem, ToolbarRight } from '../..';
 import './KeyValueEditor.scss';
 
 export type KeyValuePair = [string, string];
