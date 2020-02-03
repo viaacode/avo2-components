@@ -3,13 +3,13 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 
-import { MOCK_FLOW_PLAYER_PROPS_FULL } from '../../FlowPlayer/FlowPlayer.mock';
+import { MOCK_FLOW_PLAYER_PROPS_FULL } from '../../components/FlowPlayer/FlowPlayer.mock';
 
 import { BlockVideoTitleTextButton } from './BlockVideoTitleTextButton';
 
 const loremIpsumText = loremIpsum({ count: 14 });
 
-storiesOf('BlockVideoTitleTextButton', module)
+storiesOf('blocks/BlockVideoTitleTextButton', module)
 	.addParameters({ jest: ['BlockVideoTitleTextButton'] })
 	.add('BlockVideoTitleTextButton', () => (
 		<BlockVideoTitleTextButton

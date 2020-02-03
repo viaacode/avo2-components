@@ -7,7 +7,7 @@ import { Spacer } from './Spacer';
 
 const content = loremIpsum({ count: 3 });
 
-storiesOf('Spacer', module)
+storiesOf('components/Spacer', module)
 	.addParameters({ jest: ['Spacer'] })
 	.add('Spacer margins', () => (
 		<Fragment>

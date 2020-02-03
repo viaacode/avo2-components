@@ -5,7 +5,7 @@ import { Spacer } from '../Spacer/Spacer';
 
 import { Blankslate } from './Blankslate';
 
-storiesOf('Blankslate', module)
+storiesOf('components/Blankslate', module)
 	.addParameters({ jest: ['Blankslate'] })
 	.add('Blankslate', () => (
 		<Blankslate

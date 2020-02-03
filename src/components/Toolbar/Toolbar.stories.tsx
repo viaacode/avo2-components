@@ -11,7 +11,7 @@ import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
 import { ToolbarItem } from './ToolbarItem/ToolbarItem';
 import { ToolbarTitle } from './ToolbarTitle/ToolbarTitle';
 
-storiesOf('Toolbar', module)
+storiesOf('components/Toolbar', module)
 	.addParameters({ jest: ['Toolbar', 'ToolbarItem', 'ToolbarTitle'] })
 	.add('Toolbar', () => (
 		<Fragment>

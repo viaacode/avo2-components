@@ -24,7 +24,7 @@ const KeyValueEditorStoryComponent = ({
 	});
 };
 
-storiesOf('KeyValueEditor', module)
+storiesOf('components/KeyValueEditor', module)
 	.addParameters({ jest: ['KeyValueEditor'] })
 	.add('KeyValueEditor dataArray', () => (
 		<KeyValueEditorStoryComponent initialData={DATA_ARRAY_MOCK}>

@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { FlowPlayer } from './FlowPlayer';
 import { MOCK_FLOW_PLAYER_PROPS_FULL } from './FlowPlayer.mock';
 
-storiesOf('FlowPlayer', module)
+storiesOf('components/FlowPlayer', module)
 	.addParameters({ jest: ['FlowPlayer'] })
 	.add('FlowPlayer Video', () => (
 		<div className="o-grid-col-bp3-4">

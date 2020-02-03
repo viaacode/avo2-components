@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { Thumbnail } from './Thumbnail';
 
-storiesOf('Thumbnail', module)
+storiesOf('components/Thumbnail', module)
 	.addParameters({ jest: ['Thumbnail'] })
 	.add('Thumbnail (image)', () => (
 		<div className="o-grid-col-bp3-4">

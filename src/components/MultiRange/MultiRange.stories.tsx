@@ -24,7 +24,7 @@ const MultiRangeStoryComponent = ({
 	});
 };
 
-storiesOf('MultiRange', module)
+storiesOf('components/MultiRange', module)
 	.addParameters({ jest: ['MultiRange'] })
 	.add('MultiRange', () => (
 		<MultiRangeStoryComponent>

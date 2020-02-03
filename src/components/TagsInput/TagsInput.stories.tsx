@@ -38,7 +38,7 @@ const tags = [
 	{ label: 'Uranium', value: 'uranium' },
 ];
 
-storiesOf('TagsInput', module)
+storiesOf('components/TagsInput', module)
 	.addParameters({ jest: ['TagsInput'] })
 	.add('TagsInput', () => (
 		<Fragment>

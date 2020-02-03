@@ -25,7 +25,7 @@ const TextAreaStoryComponent = ({
 	});
 };
 
-storiesOf('TextArea', module)
+storiesOf('components/TextArea', module)
 	.addParameters({ jest: ['TextArea'] })
 	.add('TextArea', () => (
 		<Fragment>

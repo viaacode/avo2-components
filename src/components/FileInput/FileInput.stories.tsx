@@ -24,7 +24,7 @@ const FileInputStoryComponent = ({
 	});
 };
 
-storiesOf('FileInput', module)
+storiesOf('components/FileInput', module)
 	.addParameters({ jest: ['FileInput'] })
 	.add('FileInput', () => (
 		<FileInputStoryComponent>

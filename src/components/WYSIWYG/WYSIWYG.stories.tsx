@@ -16,7 +16,7 @@ const WYSIWYG_OPTIONS = [
 	['link'],
 ];
 
-storiesOf('WYSIWYG', module)
+storiesOf('components/WYSIWYG', module)
 	.addParameters({ jest: ['WYSIWYG'] })
 	.addDecorator(withContent)
 	.add('WYSIWYG', () => (

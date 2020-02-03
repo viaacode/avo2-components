@@ -8,7 +8,7 @@ import { BlockTitleImageText } from './BlockTitleImageText';
 const imageSource = '/images/500x200.svg';
 const loremIpsumText = loremIpsum({ count: 10 });
 
-storiesOf('BlockTitleImageText', module)
+storiesOf('blocks/BlockTitleImageText', module)
 	.addParameters({ jest: ['BlockTitleImageText'] })
 	.add('BlockTitleImageText', () => (
 		<BlockTitleImageText

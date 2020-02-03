@@ -25,7 +25,7 @@ const TextInputStoryComponent = ({
 	});
 };
 
-storiesOf('TextInput', module)
+storiesOf('components/TextInput', module)
 	.addParameters({ jest: ['TextInput'] })
 	.add('TextInput', () => (
 		<Fragment>

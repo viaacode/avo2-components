@@ -25,7 +25,7 @@ const DatePickerStoryComponent = ({
 	});
 };
 
-storiesOf('DatePicker', module)
+storiesOf('components/DatePicker', module)
 	.addParameters({ jest: ['DatePicker'] })
 	.add('DatePicker', () => (
 		<Fragment>

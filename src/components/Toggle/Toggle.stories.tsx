@@ -24,7 +24,7 @@ const ToggleStoryComponent = ({
 	});
 };
 
-storiesOf('Toggle', module)
+storiesOf('components/Toggle', module)
 	.addParameters({ jest: ['Toggle'] })
 	.add('Toggle', () => (
 		<ToggleStoryComponent>

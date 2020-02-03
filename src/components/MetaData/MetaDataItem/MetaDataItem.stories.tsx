@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { MetaData } from '../MetaData';
 import { MetaDataItem } from './MetaDataItem';
 
-storiesOf('MetaDataItem', module)
+storiesOf('components/MetaDataItem', module)
 	.addParameters({ jest: ['MetaDataItem'] })
 	.add('Meta data item', () => (
 		<MetaData category="video">

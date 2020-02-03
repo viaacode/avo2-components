@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react';
 
-import { convertToHtml } from '../../../helpers';
-import { DefaultProps } from '../../../types';
-import { Button } from '../../Button/Button';
-import { Container } from '../../Container/Container';
-import { Column } from '../../Grid/Column/Column';
-import { Grid } from '../../Grid/Grid';
-import { Image } from '../../Image/Image';
-import { Spacer } from '../../Spacer/Spacer';
+import { Button } from '../../components/Button/Button';
+import { Container } from '../../components/Container/Container';
+import { Column } from '../../components/Grid/Column/Column';
+import { Grid } from '../../components/Grid/Grid';
+import { Image } from '../../components/Image/Image';
+import { Spacer } from '../../components/Spacer/Spacer';
+import { convertToHtml } from '../../helpers';
+import { DefaultProps } from '../../types';
 
 export interface BlockImageTitleTextButtonProps extends DefaultProps {
 	imageSource: string;

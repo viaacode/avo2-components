@@ -4,6 +4,6 @@ import { storiesOf } from '@storybook/react';
 
 import { HeaderContentType } from './HeaderContentType';
 
-storiesOf('HeaderContentType', module)
+storiesOf('components/HeaderContentType', module)
 	.addParameters({ jest: ['HeaderContentType'] })
 	.add('HeaderContentTypes', () => <HeaderContentType category="collection" label="collectie" />);

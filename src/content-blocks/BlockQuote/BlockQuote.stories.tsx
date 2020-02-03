@@ -11,7 +11,7 @@ const quoteText =
 const authorAvatarSource = '/images/50x50.svg';
 const authorName = 'Albert Einstein';
 
-storiesOf('BlockQuote', module)
+storiesOf('blocks/BlockQuote', module)
 	.addParameters({ jest: ['BlockTitleImageText'] })
 	.add('BlockQuote', () => (
 		<BlockQuote

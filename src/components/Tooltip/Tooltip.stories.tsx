@@ -4,7 +4,7 @@ import React from 'react';
 import { Tooltip } from './Tooltip';
 import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
-storiesOf('Tooltip', module)
+storiesOf('components/Tooltip', module)
 	.addParameters({ jest: ['Tooltip'] })
 	.add('Tooltip top', () => (
 		<div className="u-text-center">

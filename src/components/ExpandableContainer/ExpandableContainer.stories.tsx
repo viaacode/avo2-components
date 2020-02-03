@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import { ExpandableContainer } from './ExpandableContainer';
 
-storiesOf('ExpandableContainer', module)
+storiesOf('components/ExpandableContainer', module)
 	.addParameters({ jest: ['ExpandableContainer'] })
 	.add('ExpandableContainer', () => (
 		<ExpandableContainer>

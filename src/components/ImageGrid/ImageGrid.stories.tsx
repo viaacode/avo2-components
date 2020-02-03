@@ -49,7 +49,7 @@ const ImageGroupStoryComponent = ({
 	});
 };
 
-storiesOf('ImageGrid', module)
+storiesOf('components/ImageGrid', module)
 	.addParameters({ jest: ['Image'] })
 	.add('ImageGrid 200x200', () => <ImageGrid images={images} />)
 	.add('ImageGrid 500x200', () => <ImageGrid images={images2} width={500} height={200} />)

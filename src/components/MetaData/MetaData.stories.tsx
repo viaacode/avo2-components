@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { MetaData } from './MetaData';
 import { MetaDataItem } from './MetaDataItem/MetaDataItem';
 
-storiesOf('MetaData', module)
+storiesOf('components/MetaData', module)
 	.addParameters({ jest: ['MetaData'] })
 	.add('Meta data (audio)', () => (
 		<MetaData category="audio">

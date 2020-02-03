@@ -28,7 +28,7 @@ const mockTabsWithIcons = [
 	},
 ];
 
-storiesOf('Tabs', module)
+storiesOf('components/Tabs', module)
 	.addParameters({ jest: ['Tabs'] })
 	.add('Tabs', () => <Tabs tabs={mockTabs} onClick={action('tab clicked')} />)
 	.add('Tabs (border)', () => <Tabs tabs={mockTabs} border onClick={action('tab clicked')} />)

@@ -24,7 +24,7 @@ const PaginationStoryComponent = ({
 	});
 };
 
-storiesOf('Pagination', module)
+storiesOf('components/Pagination', module)
 	.addParameters({ jest: ['Pagination'] })
 	.add('Pagination', () => (
 		<PaginationStoryComponent initialPageIndex={0}>

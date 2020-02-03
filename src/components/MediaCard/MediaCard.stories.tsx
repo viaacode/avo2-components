@@ -10,7 +10,7 @@ import { Thumbnail } from '../Thumbnail/Thumbnail';
 import { MediaCard } from './MediaCard';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
-storiesOf('MediaCard', module)
+storiesOf('components/MediaCard', module)
 	.addParameters({ jest: ['MediaCard'] })
 	.add('Media card (vertical)', () => (
 		<div className="o-grid-col-bp3-4">

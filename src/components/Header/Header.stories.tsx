@@ -10,7 +10,7 @@ import { Header } from './Header';
 import { MOCK_HEADER_PROPS, MOCK_HEADER_PROPS_FULL } from './Header.mock';
 import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 
-storiesOf('Header', module)
+storiesOf('components/Header', module)
 	.addParameters({ jest: ['Header'] })
 	.add('Header', () => <Header {...MOCK_HEADER_PROPS} />)
 	.add('Header with meta data', () => <Header {...MOCK_HEADER_PROPS_FULL} />)

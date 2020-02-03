@@ -24,7 +24,7 @@ const stories = [
 	['All icons', iconList],
 ];
 
-const story = storiesOf('Icons', module);
+const story = storiesOf('components/Icons', module);
 
 story.addParameters({ jest: ['Icon'] });
 
