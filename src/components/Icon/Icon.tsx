@@ -1,10 +1,11 @@
+import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
-import classnames from 'classnames';
-
+import { toKebabCase, toPascalCase } from '../../helpers';
 import { DefaultProps } from '../../types';
+import { IconName, IconType } from './Icon.types';
+
 import * as Icons from './Icons';
-import { IconName, IconType } from './types';
 
 import './Icon.scss';
 
@@ -31,21 +32,6 @@ export const Icon: FunctionComponent<IconProps> = ({
 		const iconName = toKebabCase(name);
 
 		return `${base}-${type || ''}-${iconName}`;
-	}
-
-	// converts kebab-case to PascalCase
-	function toPascalCase(string: string) {
-		return string
-			.replace(/(^\w)/, first => first.toUpperCase())
-			.replace(/(-\w)/g, match => match[1].toUpperCase());
-	}
-
-	// converts PascalCase to kebab-case
-	function toKebabCase(string: string) {
-		return string
-			.replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-			.replace(/([A-Z])([A-Z])(?=[a-z])/g, '$1-$2')
-			.toLowerCase();
 	}
 
 	if (!IconToRender) {

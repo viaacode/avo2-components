@@ -1,7 +1,7 @@
 import React, { FunctionComponent, MutableRefObject, useEffect, useRef, useState } from 'react';
 
 import classnames from 'classnames';
-import { formatDuration } from '../../helpers/parse-time';
+import { formatDuration } from '../../helpers';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 

@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
-import { IconName } from '../../Icon/types';
+import { IconName } from '../../Icon/Icon.types';
 
 import './MenuContent.scss';
 

@@ -1,4 +1,4 @@
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 import { EnglishContentType } from '../../types';
 
 export const MOCK_HEADER_PROPS = {

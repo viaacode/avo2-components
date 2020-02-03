@@ -1,10 +1,9 @@
-import React, { Fragment, FunctionComponent, ReactNode } from 'react';
-
 import classnames from 'classnames';
+import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/types';
+import { IconName } from '../Icon/Icon.types';
 
 import './Table.scss';
 

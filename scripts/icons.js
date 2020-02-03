@@ -46,17 +46,19 @@ glob(`${directory}/**/*.svg`, function(err, res) {
 		});
 		const data = JSON.stringify(icons, null, 2);
 
-		const iconNames = res.map(path => {
-			const fileName = getFileName(path);
-			return stripExtension(fileName);
-		}).join('\'\n  | \'');
+		const iconNames = res
+			.map(path => {
+				const fileName = getFileName(path);
+				return stripExtension(fileName);
+			})
+			.join("'\n  | '");
 
-		const iconTypeNames = definedAndUnique(res.map(path => {
-			const fileName = getFileName(path);
-			return getCategory(path, fileName);
-		})).join('\'\n  | \'');
-
-
+		const iconTypeNames = definedAndUnique(
+			res.map(path => {
+				const fileName = getFileName(path);
+				return getCategory(path, fileName);
+			})
+		).join("'\n  | '");
 
 		let iconTypeFileContent = `export type IconName =
   | \'${iconNames}\';
@@ -67,6 +69,9 @@ export type IconType =
 
 		fs.writeFileSync(`${process.cwd()}/${directory}/icons.json`, data);
 
-		fs.writeFileSync(`${process.cwd()}/${directory}/../components/Icon/types.ts`, iconTypeFileContent);
+		fs.writeFileSync(
+			`${process.cwd()}/${directory}/../components/Icon/Icon.types.ts`,
+			iconTypeFileContent
+		);
 	}
 });

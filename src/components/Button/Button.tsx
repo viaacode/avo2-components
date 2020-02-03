@@ -1,10 +1,10 @@
-import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
-
 import classnames from 'classnames';
+import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/types';
+import { IconName } from '../Icon/Icon.types';
+
 import { ButtonType } from './Button.types';
 
 import './Button.scss';
