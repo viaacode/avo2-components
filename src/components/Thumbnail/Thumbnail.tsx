@@ -2,8 +2,9 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps, EnglishContentType, IconName } from '../../types';
+import { DefaultProps, EnglishContentType } from '../../types';
 import { Icon } from '../Icon/Icon';
+import { IconName } from '../Icon/Icon.types';
 
 import './Thumbnail.scss';
 
