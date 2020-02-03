@@ -140,7 +140,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 				videoPlayerRef.current = null;
 			}
 		};
-	}, [videoContainerRef, src, poster, title, start, end, token]);
+	}, [videoContainerRef, src, poster, title, start, end, token, autoplay]);
 
 	// Re-render start/end cuepoints when cropping video
 	useEffect(() => {
@@ -150,14 +150,16 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 	}, [start, end]);
 
 	// Draw custom elements
-	flowplayer((opts: any, root: any, api: any) => {
-		const mq = flowplayer.mq;
+	useEffect(() => {
+		flowplayer((opts: any, root: any, api: any) => {
+			const mq = flowplayer.mq;
 
-		api.on('mount', () => {
-			mq('.fp-ui', root).prepend(createTitleOverlay());
-			mq('.fp-ui', root).prepend(createLogoOverlay());
+			api.on('mount', () => {
+				mq('.fp-ui', root).prepend(createTitleOverlay());
+				mq('.fp-ui', root).prepend(createLogoOverlay());
+			});
 		});
-	});
+	}, [src]);
 
 	return src ? (
 		<div
