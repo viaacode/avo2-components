@@ -159,7 +159,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 				mq('.fp-ui', root).prepend(createLogoOverlay());
 			});
 		});
-	}, [src]);
+	}, [src, createLogoOverlay, createTitleOverlay]);
 
 	return src ? (
 		<div
