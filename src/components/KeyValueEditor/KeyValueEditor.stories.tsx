@@ -28,12 +28,7 @@ storiesOf('components/KeyValueEditor', module)
 	.addParameters({ jest: ['KeyValueEditor'] })
 	.add('KeyValueEditor dataArray', () => (
 		<KeyValueEditorStoryComponent initialData={DATA_ARRAY_MOCK}>
-			<KeyValueEditor
-				data={[]}
-				onChange={action('dataChanged')}
-				keyProp="myKey"
-				valueProp="myValue"
-			/>
+			<KeyValueEditor data={[]} onChange={action('dataChanged')} />
 		</KeyValueEditorStoryComponent>
 	))
 	.add('KeyValueEditor dataObject', () => (

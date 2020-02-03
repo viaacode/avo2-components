@@ -60,7 +60,6 @@ export const KeyValueEditor: FunctionComponent<TextInputProps> = ({
 	noDataMessage = 'Geen data',
 	noDataForFilterMessage = 'Geen data die voldoet aan de filter',
 }) => {
-	const [dataLocal, setDataLocal] = useState<KeyValuePairs>(data);
 	const [paginatedData, setPaginatedData] = useState<KeyValuePairs>([]);
 	const [totalFilteredResults, setTotalFilteredResults] = useState<number>(0);
 	const [filterString, setFilterString] = useState<string>('');
@@ -68,7 +67,7 @@ export const KeyValueEditor: FunctionComponent<TextInputProps> = ({
 	const [sortColumn, sortOrder, handleSortClick] = useTableSort<KeyValueEditorTableCols>('0');
 
 	useEffect(() => {
-		const filteredItems = dataLocal.filter(
+		const filteredItems = data.filter(
 			row =>
 				row[0].toLowerCase().includes(filterString.toLowerCase()) ||
 				row[1].toLowerCase().includes(filterString.toLowerCase())
@@ -84,15 +83,15 @@ export const KeyValueEditor: FunctionComponent<TextInputProps> = ({
 		});
 		setPaginatedData(sortedItems.slice(page * ENTRIES_PER_PAGE, (page + 1) * ENTRIES_PER_PAGE));
 		setTotalFilteredResults(sortedItems.length);
-	}, [page, dataLocal, filterString, sortOrder, sortColumn]);
+	}, [page, data, filterString, sortOrder, sortColumn]);
 
 	const onValueChanged = (value: string, key: string) => {
-		const modifiedData: KeyValuePairs = JSON.parse(JSON.stringify(dataLocal)); // Poor man's deep clone
+		const modifiedData: KeyValuePairs = JSON.parse(JSON.stringify(data)); // Poor man's deep clone
 		const index = modifiedData.findIndex(dataItem => dataItem[0] === key);
 		if (index !== -1) {
-			modifiedData[index][0] = value;
+			modifiedData[index][1] = value;
 		}
-		setDataLocal(modifiedData); // Set data without triggering a rerender
+		onChange(modifiedData); // Set data without triggering a rerender
 	};
 
 	const renderCell = (
@@ -121,7 +120,6 @@ export const KeyValueEditor: FunctionComponent<TextInputProps> = ({
 						height="auto"
 						value={rowData[1]}
 						onChange={value => onValueChanged(value, rowData[0])}
-						onBlur={() => onChange(dataLocal)}
 					/>
 				);
 
