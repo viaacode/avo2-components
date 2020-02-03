@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { IconName } from '../../../types';
+import { IconName } from '../../Icon/Icon.types';
 
 import { Tab } from './Tab';
 

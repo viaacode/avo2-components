@@ -1,8 +1,9 @@
 import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
-import { DefaultProps, IconName } from '../../../types';
+import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
+import { IconName } from '../../Icon/Icon.types';
 
 export interface AvatarIconProps extends DefaultProps {
 	initials?: string;
