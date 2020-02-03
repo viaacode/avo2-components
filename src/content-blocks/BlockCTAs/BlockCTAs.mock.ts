@@ -16,7 +16,7 @@ export const CTAS_MOCK: CTAProps[] = [
 			type: 'INTERNAL_LINK',
 			value: '/hulp',
 		},
-		buildAndNavigate: (buttonAction: ButtonAction) => action(buttonAction.value.toString()),
+		navigate: (buttonAction: ButtonAction) => action(buttonAction.value.toString()),
 	},
 	{
 		content,
@@ -27,6 +27,6 @@ export const CTAS_MOCK: CTAProps[] = [
 			type: 'INTERNAL_LINK',
 			value: '/hulp',
 		},
-		buildAndNavigate: (buttonAction: ButtonAction) => action(buttonAction.value.toString()),
+		navigate: (buttonAction: ButtonAction) => action(buttonAction.value.toString()),
 	},
 ];

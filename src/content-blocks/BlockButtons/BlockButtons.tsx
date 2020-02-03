@@ -4,7 +4,8 @@ import React, { FunctionComponent } from 'react';
 import { Button } from '../../components/Button/Button';
 import { ButtonType } from '../../components/Button/Button.types';
 import { ButtonToolbar } from '../../components/ButtonToolbar/ButtonToolbar';
-import { AlignOptions, ButtonAction, DefaultProps, IconName } from '../../types';
+import { IconName } from '../../components/Icon/Icon.types';
+import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
 
 export interface ButtonProps extends DefaultProps {
 	active?: boolean;
@@ -24,14 +25,14 @@ export interface ButtonProps extends DefaultProps {
 export interface BlockButtonsProps extends DefaultProps {
 	elements: ButtonProps[];
 	align?: AlignOptions;
-	buildAndNavigate: (buttonAction: ButtonAction) => void;
+	navigate: (buttonAction: ButtonAction) => void;
 }
 
 export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
 	className,
 	elements,
 	align = 'left',
-	buildAndNavigate,
+	navigate,
 }) => (
 	<ButtonToolbar className={classnames(className, `u-content-flex--${align} `)}>
 		{elements.map((button, index) => (
@@ -39,7 +40,7 @@ export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
 				key={`button-${index}`}
 				type="secondary"
 				{...button}
-				onClick={() => buildAndNavigate(button.action)}
+				onClick={() => navigate(button.action)}
 			/>
 		))}
 	</ButtonToolbar>

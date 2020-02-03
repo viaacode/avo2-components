@@ -65,7 +65,7 @@ export { Header } from './components/Header/Header';
 export { HeaderAvatar, HeaderButtons, HeaderTags } from './components/Header/Header.slots';
 export { HeaderContentType } from './components/HeaderContentType/HeaderContentType';
 export { Icon } from './components/Icon/Icon';
-export { IconType } from './components/Icon/icon.types';
+export { IconType, IconName } from './components/Icon/Icon.types';
 export { Image } from './components/Image/Image';
 export { ImageGrid } from './components/ImageGrid/ImageGrid';
 export { MediaCard } from './components/MediaCard/MediaCard';

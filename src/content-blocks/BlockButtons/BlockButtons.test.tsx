@@ -6,7 +6,7 @@ import { BUTTONS_BUILD_NAVIGATE, BUTTONS_MOCK } from './BlockButtons.mock';
 
 describe('<BlockButtons />', () => {
 	it('Should be able to render', () => {
-		shallow(<BlockButtons elements={BUTTONS_MOCK} buildAndNavigate={BUTTONS_BUILD_NAVIGATE} />);
+		shallow(<BlockButtons elements={BUTTONS_MOCK} navigate={BUTTONS_BUILD_NAVIGATE} />);
 	});
 
 	it('should pass a custom className', () => {
@@ -15,7 +15,7 @@ describe('<BlockButtons />', () => {
 			<BlockButtons
 				className={customClass}
 				elements={BUTTONS_MOCK}
-				buildAndNavigate={BUTTONS_BUILD_NAVIGATE}
+				navigate={BUTTONS_BUILD_NAVIGATE}
 			/>
 		);
 
@@ -24,7 +24,7 @@ describe('<BlockButtons />', () => {
 
 	it('Should correctly pass on elements prop', () => {
 		const ButtonsComponent = mount(
-			<BlockButtons elements={BUTTONS_MOCK} buildAndNavigate={BUTTONS_BUILD_NAVIGATE} />
+			<BlockButtons elements={BUTTONS_MOCK} navigate={BUTTONS_BUILD_NAVIGATE} />
 		);
 
 		expect(ButtonsComponent.prop('elements')).toEqual(BUTTONS_MOCK);
@@ -32,7 +32,7 @@ describe('<BlockButtons />', () => {
 
 	it('Should correctly render Buttons', () => {
 		const ButtonsComponent = mount(
-			<BlockButtons elements={BUTTONS_MOCK} buildAndNavigate={BUTTONS_BUILD_NAVIGATE} />
+			<BlockButtons elements={BUTTONS_MOCK} navigate={BUTTONS_BUILD_NAVIGATE} />
 		);
 		const buttonToolbar = ButtonsComponent.find('.c-button-toolbar');
 		const buttons = buttonToolbar.find('.c-button');

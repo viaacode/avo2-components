@@ -3,13 +3,11 @@ import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
 
-import { BadgeType } from './Badge.types';
-
 import './Badge.scss';
 
 export interface BadgeProps extends DefaultProps {
 	text: string;
-	type?: BadgeType;
+	type?: 'default' | 'success' | 'error';
 }
 
 export const Badge: FunctionComponent<BadgeProps> = ({ className, text, type = 'default' }) => (

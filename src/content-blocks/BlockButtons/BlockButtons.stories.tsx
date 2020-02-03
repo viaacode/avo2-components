@@ -7,7 +7,7 @@ import { BlockButtons } from './BlockButtons';
 import { BUTTONS_BUILD_NAVIGATE, BUTTONS_MOCK } from './BlockButtons.mock';
 
 const renderBlockButtons = (align?: AlignOptions) => () => (
-	<BlockButtons elements={BUTTONS_MOCK} buildAndNavigate={BUTTONS_BUILD_NAVIGATE} align={align} />
+	<BlockButtons elements={BUTTONS_MOCK} navigate={BUTTONS_BUILD_NAVIGATE} align={align} />
 );
 
 storiesOf('BlockButtons', module)

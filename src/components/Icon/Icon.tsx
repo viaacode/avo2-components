@@ -2,9 +2,9 @@ import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
 import { toKebabCase, toPascalCase } from '../../helpers';
-import { DefaultProps, IconName } from '../../types';
+import { DefaultProps } from '../../types';
+import { IconName, IconType } from './Icon.types';
 
-import { IconType } from './icon.types';
 import * as Icons from './Icons';
 
 import './Icon.scss';
