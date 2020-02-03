@@ -2,7 +2,7 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 import { KeyValueEditor } from './KeyValueEditor';
 import { DATA_ARRAY_MOCK, DATA_OBJ_MOCK } from './KeyValueEditor.mock';
 
@@ -24,7 +24,7 @@ const KeyValueEditorStoryComponent = ({
 	});
 };
 
-storiesOf('KeyValueEditor', module)
+storiesOf('components/KeyValueEditor', module)
 	.addParameters({ jest: ['KeyValueEditor'] })
 	.add('KeyValueEditor dataArray', () => (
 		<KeyValueEditorStoryComponent initialData={DATA_ARRAY_MOCK}>

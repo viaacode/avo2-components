@@ -5,7 +5,7 @@ import { BlockImage } from './BlockImage';
 
 const imageSource = '/images/500x200.svg';
 
-storiesOf('BlockImage', module)
+storiesOf('blocks/BlockImage', module)
 	.addParameters({ jest: ['BlockImage'] })
 	.add('BlockImage', () => (
 		<BlockImage

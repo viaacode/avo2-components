@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react';
 
-import { convertToHtml } from '../../../helpers/convertToHtml';
-import { DefaultProps } from '../../../types';
-import { Container } from '../../Container/Container';
-import { ExpandableContainer } from '../../ExpandableContainer/ExpandableContainer';
-import { FlowPlayer, FlowPlayerProps } from '../../FlowPlayer/FlowPlayer';
-import { Column } from '../../Grid/Column/Column';
-import { Grid } from '../../Grid/Grid';
-import { Spacer } from '../../Spacer/Spacer';
-import { VideoWrapper } from '../../VideoWrapper/VideoWrapper';
+import { Container } from '../../components/Container/Container';
+import { ExpandableContainer } from '../../components/ExpandableContainer/ExpandableContainer';
+import { FlowPlayer, FlowPlayerProps } from '../../components/FlowPlayer/FlowPlayer';
+import { Column } from '../../components/Grid/Column/Column';
+import { Grid } from '../../components/Grid/Grid';
+import { Spacer } from '../../components/Spacer/Spacer';
+import { VideoWrapper } from '../../components/VideoWrapper/VideoWrapper';
+import { convertToHtml } from '../../helpers';
+import { DefaultProps } from '../../types';
 
 export interface BlockVideoTitleTextButtonProps extends DefaultProps {
 	flowPlayerProps: FlowPlayerProps;

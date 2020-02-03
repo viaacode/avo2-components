@@ -1,8 +1,8 @@
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
+import { IconName } from '../../Icon/Icon.types';
 
-import { IconName } from '../../Icon/types';
 import { Tab } from './Tab';
 
 const mockTab = {
@@ -17,7 +17,7 @@ const mockTabWithIcon = {
 	icon: 'video' as IconName,
 };
 
-storiesOf('Tab', module)
+storiesOf('components/Tab', module)
 	.addParameters({ jest: ['Tab'] })
 	.add('Tab', () => <Tab {...mockTab} />)
 	.add('Tab with Icon', () => <Tab {...mockTabWithIcon} />);

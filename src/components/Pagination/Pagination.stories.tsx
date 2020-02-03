@@ -2,7 +2,7 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { Pagination } from './Pagination';
 
@@ -24,7 +24,7 @@ const PaginationStoryComponent = ({
 	});
 };
 
-storiesOf('Pagination', module)
+storiesOf('components/Pagination', module)
 	.addParameters({ jest: ['Pagination'] })
 	.add('Pagination', () => (
 		<PaginationStoryComponent initialPageIndex={0}>

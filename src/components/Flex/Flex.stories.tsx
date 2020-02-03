@@ -18,7 +18,7 @@ const dummyFlexItems = (
 	</Fragment>
 );
 
-storiesOf('Flex', module)
+storiesOf('components/Flex', module)
 	.addParameters({ jest: ['Flex'] })
 	.add('Flex', () => <Flex>{dummyFlexItems}</Flex>)
 	.add('Flex (horizontal)', () => <Flex orientation="horizontal">{dummyFlexItems}</Flex>)

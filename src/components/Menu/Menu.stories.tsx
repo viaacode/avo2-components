@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { Menu } from './Menu';
 import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent';
@@ -13,7 +13,7 @@ import {
 	menuItemsWithSearch,
 } from './Menu.mocks';
 
-storiesOf('Menu', module)
+storiesOf('components/Menu', module)
 	.addParameters({ jest: ['Menu'] })
 	.add('Menu', () => <Menu menuItems={menuItems} onClick={action('clicked menu item')} />)
 	.add('Menu with icons', () => <Menu menuItems={menuItemsWithIcons} />)

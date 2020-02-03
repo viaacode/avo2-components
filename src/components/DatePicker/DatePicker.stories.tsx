@@ -2,7 +2,7 @@ import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { Spacer } from '../Spacer/Spacer';
 import { DatePicker } from './DatePicker';
@@ -25,7 +25,7 @@ const DatePickerStoryComponent = ({
 	});
 };
 
-storiesOf('DatePicker', module)
+storiesOf('components/DatePicker', module)
 	.addParameters({ jest: ['DatePicker'] })
 	.add('DatePicker', () => (
 		<Fragment>

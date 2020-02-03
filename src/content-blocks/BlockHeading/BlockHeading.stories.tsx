@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { BlockHeading } from './BlockHeading';
 
-storiesOf('BlockHeading', module)
+storiesOf('blocks/BlockHeading', module)
 	.addParameters({ jest: ['BlockHeading'] })
 	.add('BlockHeadings', () => (
 		<>

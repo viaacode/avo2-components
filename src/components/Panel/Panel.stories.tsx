@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { Panel } from './Panel';
 import { PanelBody, PanelHeader } from './Panel.slots';
 
-storiesOf('Panel', module)
+storiesOf('components/Panel', module)
 	.addParameters({ jest: ['Panel'] })
 	.add('Panel', () => (
 		<Panel>

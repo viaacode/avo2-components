@@ -2,7 +2,7 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { Checkbox } from './Checkbox';
 
@@ -24,7 +24,7 @@ const CheckboxStoryComponent = ({
 	});
 };
 
-storiesOf('Checkbox', module)
+storiesOf('components/Checkbox', module)
 	.addParameters({ jest: ['Checkbox'] })
 	.add('Checkbox', () => (
 		<CheckboxStoryComponent>

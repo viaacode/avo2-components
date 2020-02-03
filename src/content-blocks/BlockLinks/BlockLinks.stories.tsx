@@ -10,6 +10,6 @@ export const links = [
 	{ label: 'Twitter', url: 'http://twitter.com' },
 ];
 
-storiesOf('BlockLinks', module)
+storiesOf('blocks/BlockLinks', module)
 	.addParameters({ jest: ['BlockLinks'] })
 	.add('BlockLinks', () => <BlockLinks uniqueKey="footerlinks" links={links} />);

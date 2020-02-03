@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '../Button/Button';
 import { ButtonToolbar } from './ButtonToolbar';
 
-storiesOf('ButtonToolbar', module)
+storiesOf('components/ButtonToolbar', module)
 	.addParameters({ jest: ['ButtonToolbar'] })
 	.add('ButtonToolbar 5 buttons', () => (
 		<ButtonToolbar>

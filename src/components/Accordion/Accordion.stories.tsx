@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/react';
+import { loremIpsum } from 'lorem-ipsum';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { Button } from '../Button/Button';
@@ -6,6 +7,7 @@ import { Form } from '../Form/Form';
 import { FormGroup } from '../Form/FormGroup/FormGroup';
 import { TextArea } from '../TextArea/TextArea';
 import { TextInput } from '../TextInput/TextInput';
+
 import { Accordion } from './Accordion';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
 
@@ -47,17 +49,13 @@ const AccordionWithSlots = () => {
 	);
 };
 
-storiesOf('Accordion', module)
+storiesOf('components/Accordion', module)
 	.addParameters({ jest: ['Accordion'] })
 	.add('Accordion', () => (
 		<AccordionStoryComponent>
 			<Accordion title="Acordion title">
 				<div className="c-content">
-					<p>
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi ipsa laborum nihil
-						voluptate consequuntur cumque id illo, numquam sint, aperiam tempore. Unde illo sunt
-						earum fugit sit error quasi porro.
-					</p>
+					<p>{loremIpsum({ count: 10 })}</p>
 				</div>
 			</Accordion>
 		</AccordionStoryComponent>

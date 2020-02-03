@@ -1,9 +1,8 @@
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-import { action } from '../../helpers/action';
-
-import { IconName } from '../Icon/types';
+import { action } from '../../helpers';
+import { IconName } from '../Icon/Icon.types';
 import { Tabs } from '../Tabs/Tabs';
 
 const mockTabs = [
@@ -29,7 +28,7 @@ const mockTabsWithIcons = [
 	},
 ];
 
-storiesOf('Tabs', module)
+storiesOf('components/Tabs', module)
 	.addParameters({ jest: ['Tabs'] })
 	.add('Tabs', () => <Tabs tabs={mockTabs} onClick={action('tab clicked')} />)
 	.add('Tabs (border)', () => <Tabs tabs={mockTabs} border onClick={action('tab clicked')} />)

@@ -7,7 +7,7 @@ import { Navbar } from './Navbar';
 
 const content = 'navbar content';
 
-storiesOf('Navbar', module)
+storiesOf('components/Navbar', module)
 	.addParameters({ jest: ['Container'] })
 	.add('Navbar', () => (
 		<Fragment>

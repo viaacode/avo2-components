@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../../types';
-import { Container } from '../../Container/Container';
-import { Flex } from '../../Flex/Flex';
+import { Container } from '../../components/Container/Container';
+import { Flex } from '../../components/Flex/Flex';
+import { DefaultProps } from '../../types';
 
 export interface BlockLinksProps extends DefaultProps {
 	uniqueKey: string; // Needed to ensure react can keep track of the list of rendered items

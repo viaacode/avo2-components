@@ -2,7 +2,7 @@ import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { FileInput } from './FileInput';
 
@@ -24,7 +24,7 @@ const FileInputStoryComponent = ({
 	});
 };
 
-storiesOf('FileInput', module)
+storiesOf('components/FileInput', module)
 	.addParameters({ jest: ['FileInput'] })
 	.add('FileInput', () => (
 		<FileInputStoryComponent>

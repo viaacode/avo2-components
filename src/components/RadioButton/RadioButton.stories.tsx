@@ -2,7 +2,7 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { RadioButton } from './RadioButton';
 
@@ -24,7 +24,7 @@ const RadioButtonStoryComponent = ({
 	});
 };
 
-storiesOf('RadioButton', module)
+storiesOf('components/RadioButton', module)
 	.addParameters({ jest: ['RadioButton'] })
 	.add('Radio Button', () => (
 		<RadioButtonStoryComponent>

@@ -2,7 +2,7 @@ import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
@@ -90,7 +90,7 @@ function renderCell(r: any[], c: any) {
 	}
 }
 
-storiesOf('Table', module)
+storiesOf('components/Table', module)
 	.addParameters({ jest: ['Table'] })
 	.add('Table', () => (
 		<TableStoryComponent>

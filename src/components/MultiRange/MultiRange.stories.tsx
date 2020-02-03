@@ -2,7 +2,7 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { MultiRange } from './MultiRange';
 
@@ -24,7 +24,7 @@ const MultiRangeStoryComponent = ({
 	});
 };
 
-storiesOf('MultiRange', module)
+storiesOf('components/MultiRange', module)
 	.addParameters({ jest: ['MultiRange'] })
 	.add('MultiRange', () => (
 		<MultiRangeStoryComponent>

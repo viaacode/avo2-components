@@ -1,22 +1,20 @@
-import React, { cloneElement } from 'react';
+import React from 'react';
 
 import { mount, shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
 
-import { MOCK_FLOW_PLAYER_PROPS } from '../../FlowPlayer/FlowPlayer.mock';
+import { MOCK_FLOW_PLAYER_PROPS_FULL } from '../../components/FlowPlayer/FlowPlayer.mock';
 
 import { BlockVideoTitleTextButton } from './BlockVideoTitleTextButton';
 
 const customClass = 'c-block-custom';
 const loremIpsumText = loremIpsum({ count: 10 });
-const videoSource =
-	'https://archief-media.viaa.be/viaa/TESTBEELD/ad87ac36b4f640dfb0fc57c26397b7aebb4c49785d2e4a7b8c8069aa95c4db16/browse.mp4';
 
 const titleLink = 'http://google.com?q=title';
 const blockVideoTitleTextButtonExample = (
 	<BlockVideoTitleTextButton
 		className={customClass}
-		flowPlayerProps={MOCK_FLOW_PLAYER_PROPS}
+		flowPlayerProps={MOCK_FLOW_PLAYER_PROPS_FULL}
 		title="Title"
 		titleLink={titleLink}
 		text={loremIpsumText}

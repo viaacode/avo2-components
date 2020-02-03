@@ -7,7 +7,7 @@ import { Container } from './Container';
 
 const content = loremIpsum({ count: 10 });
 
-storiesOf('Container', module)
+storiesOf('components/Container', module)
 	.addParameters({ jest: ['Container'] })
 	.add('Horizontal containers', () => (
 		<Fragment>

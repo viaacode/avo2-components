@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { TagList } from './TagList';
 
@@ -32,7 +32,7 @@ const colorTags = [
 	{ label: 'Uranium', id: 'uranium' },
 ];
 
-storiesOf('TagList', module)
+storiesOf('components/TagList', module)
 	.addParameters({ jest: ['TagList'] })
 	.add('TagList', () => <TagList tags={tags} />)
 	.add('TagList with closable tags', () => (

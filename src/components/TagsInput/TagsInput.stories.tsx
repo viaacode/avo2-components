@@ -2,7 +2,7 @@ import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { TagInfo, TagsInput } from './TagsInput';
 
@@ -38,7 +38,7 @@ const tags = [
 	{ label: 'Uranium', value: 'uranium' },
 ];
 
-storiesOf('TagsInput', module)
+storiesOf('components/TagsInput', module)
 	.addParameters({ jest: ['TagsInput'] })
 	.add('TagsInput', () => (
 		<Fragment>

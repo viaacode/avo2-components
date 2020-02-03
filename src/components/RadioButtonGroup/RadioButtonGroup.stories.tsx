@@ -2,7 +2,7 @@ import React, { Children, Fragment, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { RadioButton, RadioButtonProps } from '../RadioButton/RadioButton';
 import { RadioButtonGroup } from './RadioButtonGroup';
@@ -31,7 +31,7 @@ const RadioButtonGroupStoryComponent = ({
 	);
 };
 
-storiesOf('RadioButtonGroup', module)
+storiesOf('components/RadioButtonGroup', module)
 	.addParameters({ jest: ['RadioButtonGroup'] })
 	.add('RadioButtonGroup', () => (
 		<RadioButtonGroup>

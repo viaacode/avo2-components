@@ -11,7 +11,7 @@ export { useSlot } from './hooks/useSlot';
 export { useTableSort } from './hooks/useTableSort';
 
 // Helpers
-export { convertToHtml } from './helpers/convertToHtml';
+export * from './helpers';
 
 // Components
 export { Alert } from './components/Alert/Alert';
@@ -35,22 +35,22 @@ export { Checkbox } from './components/Checkbox/Checkbox';
 export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 export { Container } from './components/Container/Container';
 export { CTA } from './components/CTA/CTA';
-export { BlockImage, BlockImageProps } from './components/ContentBlocks/BlockImage/BlockImage';
+export { BlockImage, BlockImageProps } from './content-blocks/BlockImage/BlockImage';
 export {
 	BlockImageTitleTextButton,
 	BlockImageTitleTextButtonProps,
-} from './components/ContentBlocks/BlockImageTitleTextButton/BlockImageTitleTextButton';
-export { BlockLinks, BlockLinksProps } from './components/ContentBlocks/BlockLinks/BlockLinks';
-export { BlockQuote, BlockQuoteProps } from './components/ContentBlocks/BlockQuote/BlockQuote';
+} from './content-blocks/BlockImageTitleTextButton/BlockImageTitleTextButton';
+export { BlockLinks, BlockLinksProps } from './content-blocks/BlockLinks/BlockLinks';
+export { BlockQuote, BlockQuoteProps } from './content-blocks/BlockQuote/BlockQuote';
 export {
 	BlockTitleImageText,
 	BlockTitleImageTextProps,
-} from './components/ContentBlocks/BlockTitleImageText/BlockTitleImageText';
-export { BlockVideo, BlockVideoProps } from './components/ContentBlocks/BlockVideo/BlockVideo';
+} from './content-blocks/BlockTitleImageText/BlockTitleImageText';
+export { BlockVideo, BlockVideoProps } from './content-blocks/BlockVideo/BlockVideo';
 export {
 	BlockVideoTitleTextButton,
 	BlockVideoTitleTextButtonProps,
-} from './components/ContentBlocks/BlockVideoTitleTextButton/BlockVideoTitleTextButton';
+} from './content-blocks/BlockVideoTitleTextButton/BlockVideoTitleTextButton';
 export { DatePicker } from './components/DatePicker/DatePicker';
 export { Dropdown, DropdownProps } from './components/Dropdown/Dropdown';
 export { DropdownButton, DropdownContent } from './components/Dropdown/Dropdown.slots';
@@ -66,7 +66,7 @@ export { Header } from './components/Header/Header';
 export { HeaderAvatar, HeaderButtons, HeaderTags } from './components/Header/Header.slots';
 export { HeaderContentType } from './components/HeaderContentType/HeaderContentType';
 export { Icon } from './components/Icon/Icon';
-export { IconName, IconType } from './components/Icon/types';
+export { IconType, IconName } from './components/Icon/Icon.types';
 export { Image } from './components/Image/Image';
 export { ImageGrid } from './components/ImageGrid/ImageGrid';
 export { MediaCard } from './components/MediaCard/MediaCard';
@@ -132,12 +132,10 @@ export { BlockIFrame, BlockIFrameProps } from './content-blocks/BlockIFrame/Bloc
 export { BlockRichText, BlockRichTextProps } from './content-blocks/BlockRichText/BlockRichText';
 export { BlockButtons, BlockButtonsProps } from './content-blocks/BlockButtons/BlockButtons';
 export { BlockCTAs, BlockCTAsProps } from './content-blocks/BlockCTAs/BlockCTAs';
+export {
+	BlockFlowPlayer,
+	BlockFlowPlayerProps,
+} from './content-blocks/BlockFlowPlayer/BlockFlowPlayer';
 
 // Types
-export {
-	Language,
-	EnglishContentType,
-	DutchContentType,
-	ContentType,
-	translateContentType,
-} from './types';
+export * from './types';

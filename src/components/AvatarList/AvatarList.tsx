@@ -1,6 +1,5 @@
-import React, { Fragment, FunctionComponent } from 'react';
-
 import classnames from 'classnames';
+import React, { Fragment, FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Avatar, AvatarProps } from '../Avatar/Avatar';

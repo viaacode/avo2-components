@@ -2,7 +2,7 @@ import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { Spacer } from '../Spacer/Spacer';
 import { TextInput } from './TextInput';
@@ -25,7 +25,7 @@ const TextInputStoryComponent = ({
 	});
 };
 
-storiesOf('TextInput', module)
+storiesOf('components/TextInput', module)
 	.addParameters({ jest: ['TextInput'] })
 	.add('TextInput', () => (
 		<Fragment>

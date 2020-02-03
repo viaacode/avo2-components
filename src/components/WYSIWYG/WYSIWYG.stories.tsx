@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { WYSIWYG } from './WYSIWYG';
 
@@ -16,7 +16,7 @@ const WYSIWYG_OPTIONS = [
 	['link'],
 ];
 
-storiesOf('WYSIWYG', module)
+storiesOf('components/WYSIWYG', module)
 	.addParameters({ jest: ['WYSIWYG'] })
 	.addDecorator(withContent)
 	.add('WYSIWYG', () => (

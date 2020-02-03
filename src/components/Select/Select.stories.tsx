@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { Select } from './Select';
 
@@ -19,7 +19,7 @@ const options = [
 	{ label: 'Uranium (disabled)', value: 'U', disabled: true },
 ];
 
-storiesOf('Select', module)
+storiesOf('components/Select', module)
 	.addParameters({ jest: ['Select'] })
 	.add('Select', () => <Select options={options} value="Db" onChange={action('onChange')} />)
 	.add('Select disabled', () => (

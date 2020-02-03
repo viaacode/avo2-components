@@ -51,7 +51,7 @@ export const mockAvatars = [
 	},
 ];
 
-storiesOf('AvatarList', module)
+storiesOf('components/AvatarList', module)
 	.addParameters({ jest: ['AvatarList', 'AvatarIcon'] })
 	.add('AvatarList (closed dropdown)', () => <AvatarList avatars={mockAvatars} isOpen={false} />)
 	.add('AvatarList (open dropdown)', () => <AvatarList avatars={mockAvatars} isOpen />)

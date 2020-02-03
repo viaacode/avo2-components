@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 import { Box } from '../Box/Box';
 import { Spacer } from '../Spacer/Spacer';
 import { Alert } from './Alert';
@@ -40,7 +40,7 @@ function renderAlertStories(props?: AlertProps, message?: (type: string) => JSX.
 	);
 }
 
-storiesOf('Alert', module)
+storiesOf('components/Alert', module)
 	.addParameters({ jest: ['Alert'] })
 	.add('Alerts', () => <Box backgroundColor="dark">{renderAlertStories()}</Box>)
 	.add('Alerts multiline', () => renderAlertStories({}, getMultiLineAlertMessage))

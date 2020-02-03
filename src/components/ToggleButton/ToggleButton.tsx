@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
-import { IconName } from '../Icon/types';
+import { IconName } from '../Icon/Icon.types';
 
 export interface ToggleButtonProps extends DefaultProps {
 	icon: 'heart' | 'bookmark';

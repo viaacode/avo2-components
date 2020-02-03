@@ -2,7 +2,7 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { Toggle } from './Toggle';
 
@@ -24,7 +24,7 @@ const ToggleStoryComponent = ({
 	});
 };
 
-storiesOf('Toggle', module)
+storiesOf('components/Toggle', module)
 	.addParameters({ jest: ['Toggle'] })
 	.add('Toggle', () => (
 		<ToggleStoryComponent>
