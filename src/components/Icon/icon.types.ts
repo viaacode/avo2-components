@@ -1,3 +1,5 @@
+export type IconType = 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';
+
 export type IconName =
 	| 'activity'
 	| 'add'
@@ -190,5 +192,3 @@ export type IconName =
 	| 'youtube'
 	| 'zoom-in'
 	| 'zoom-out';
-
-export type IconType = 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';

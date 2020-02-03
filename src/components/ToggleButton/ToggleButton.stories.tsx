@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { action } from '../../helpers/action';
+import { action } from '../../helpers';
 
 import { ToggleButton } from './ToggleButton';
 

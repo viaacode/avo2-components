@@ -1,8 +1,8 @@
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-
 import { Spacer } from '../Spacer/Spacer';
+
 import { Blankslate } from './Blankslate';
 
 storiesOf('components/Blankslate', module)

@@ -7,7 +7,7 @@ import { Column } from '../../components/Grid/Column/Column';
 import { Grid } from '../../components/Grid/Grid';
 import { Spacer } from '../../components/Spacer/Spacer';
 import { VideoWrapper } from '../../components/VideoWrapper/VideoWrapper';
-import { convertToHtml } from '../../helpers/convertToHtml';
+import { convertToHtml } from '../../helpers';
 import { DefaultProps } from '../../types';
 
 export interface BlockVideoTitleTextButtonProps extends DefaultProps {

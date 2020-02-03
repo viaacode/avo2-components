@@ -1,9 +1,9 @@
-import React from 'react';
-
 import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
+
 import { Avatar } from './Avatar';
 
 storiesOf('components/Avatar', module)

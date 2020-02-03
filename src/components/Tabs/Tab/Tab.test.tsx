@@ -2,7 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Icon } from '../../Icon/Icon';
-import { IconName } from '../../Icon/types';
+import { IconName } from '../../Icon/Icon.types';
 import { Tab } from './Tab';
 
 const mockTab = {

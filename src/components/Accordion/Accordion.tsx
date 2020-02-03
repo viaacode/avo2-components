@@ -7,6 +7,7 @@ import { Icon } from '../Icon/Icon';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
+
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
 
 import './Accordion.scss';

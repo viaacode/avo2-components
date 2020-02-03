@@ -6,7 +6,7 @@ import { Column } from '../../components/Grid/Column/Column';
 import { Grid } from '../../components/Grid/Grid';
 import { Image } from '../../components/Image/Image';
 import { Spacer } from '../../components/Spacer/Spacer';
-import { convertToHtml } from '../../helpers/convertToHtml';
+import { convertToHtml } from '../../helpers';
 import { DefaultProps } from '../../types';
 
 export interface BlockImageTitleTextButtonProps extends DefaultProps {

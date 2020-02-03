@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const ACCORDIONS_MOCK = [
 	{ title: 'FAQ 1', content: '<p>Lorem ipsum</p>' },
 	{ title: 'FAQ 2', content: '<p>Dolor sit amet</p>' },

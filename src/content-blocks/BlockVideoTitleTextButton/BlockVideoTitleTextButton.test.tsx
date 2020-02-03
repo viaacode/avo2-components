@@ -3,7 +3,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
 
-import { MOCK_FLOW_PLAYER_PROPS } from '../../components/FlowPlayer/FlowPlayer.mock';
+import { MOCK_FLOW_PLAYER_PROPS_FULL } from '../../components/FlowPlayer/FlowPlayer.mock';
 
 import { BlockVideoTitleTextButton } from './BlockVideoTitleTextButton';
 
@@ -14,7 +14,7 @@ const titleLink = 'http://google.com?q=title';
 const blockVideoTitleTextButtonExample = (
 	<BlockVideoTitleTextButton
 		className={customClass}
-		flowPlayerProps={MOCK_FLOW_PLAYER_PROPS}
+		flowPlayerProps={MOCK_FLOW_PLAYER_PROPS_FULL}
 		title="Title"
 		titleLink={titleLink}
 		text={loremIpsumText}

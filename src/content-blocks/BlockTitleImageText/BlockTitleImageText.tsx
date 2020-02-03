@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { Container } from '../../components/Container/Container';
 import { Image } from '../../components/Image/Image';
 import { Spacer } from '../../components/Spacer/Spacer';
-import { convertToHtml } from '../../helpers/convertToHtml';
+import { convertToHtml } from '../../helpers';
 import { DefaultProps } from '../../types';
 
 export interface BlockTitleImageTextProps extends DefaultProps {
