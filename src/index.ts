@@ -131,6 +131,10 @@ export { BlockIFrame, BlockIFrameProps } from './content-blocks/BlockIFrame/Bloc
 export { BlockRichText, BlockRichTextProps } from './content-blocks/BlockRichText/BlockRichText';
 export { BlockButtons, BlockButtonsProps } from './content-blocks/BlockButtons/BlockButtons';
 export { BlockCTAs, BlockCTAsProps } from './content-blocks/BlockCTAs/BlockCTAs';
+export {
+	BlockFlowPlayer,
+	BlockFlowPlayerProps,
+} from './content-blocks/BlockFlowPlayer/BlockFlowPlayer';
 
 // Types
 export {

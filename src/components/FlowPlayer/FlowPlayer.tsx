@@ -14,15 +14,16 @@ import 'flowplayer-files/lib/plugins/subtitles.min';
 
 export interface FlowPlayerProps extends DefaultProps {
 	src: string | null;
-	poster: string;
+	poster?: string;
 	logo?: string;
 	title: string;
-	subtitles: string[];
+	subtitles?: string[];
 	start?: number | null;
 	end?: number | null;
 	onInit?: () => void;
 	token?: string;
 	dataPlayerId?: string;
+	autoplay?: boolean;
 	seekTime?: number;
 }
 
@@ -38,6 +39,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 	token,
 	dataPlayerId,
 	seekTime,
+	autoplay = true,
 	className,
 }) => {
 	const videoContainerRef = useRef(null);
@@ -53,46 +55,6 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 			}
 		}
 	}, [seekTime, lastSeekTime]);
-
-	const createTitleOverlay = () => {
-		const titleOverlay = document.createElement('div');
-		const titleHeader = document.createElement('h5');
-		const publishDiv = document.createElement('div');
-
-		titleOverlay.classList.add('c-title-overlay');
-		titleHeader.classList.add('c-title-overlay__title');
-		publishDiv.classList.add('u-d-flex');
-
-		titleHeader.innerText = title;
-
-		titleOverlay.appendChild(titleHeader);
-		titleOverlay.appendChild(publishDiv);
-
-		subtitles.forEach((subtitle: string) => {
-			const substitleDiv = document.createElement('div');
-			substitleDiv.innerText = subtitle;
-			substitleDiv.classList.add('c-title-overlay__meta');
-			publishDiv.appendChild(substitleDiv);
-		});
-
-		return titleOverlay;
-	};
-
-	const createLogoOverlay = () => {
-		if (logo) {
-			const logoOverlay = document.createElement('div');
-			const logoImg = document.createElement('img');
-
-			logoOverlay.classList.add('c-logo-overlay');
-			logoImg.classList.add('c-logo-overlay__img');
-
-			logoImg.src = logo;
-
-			logoOverlay.appendChild(logoImg);
-
-			return logoOverlay;
-		}
-	};
 
 	const cuePointEndListener = () => {
 		if (videoContainerRef.current) {
@@ -110,7 +72,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 				token,
 
 				// CONFIGURATION
-				autoplay: true,
+				autoplay,
 				ui: flowplayer.ui.LOGO_ON_RIGHT | flowplayer.ui.USE_DRAG_HANDLE,
 				plugins: ['subtitles', 'chromecast', 'cuepoints'],
 
@@ -136,7 +98,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 				videoPlayerRef.current = null;
 			}
 		};
-	}, [videoContainerRef, src, poster, title, start, end, token]);
+	}, [videoContainerRef, src, poster, title, start, end, token, autoplay]);
 
 	// Re-render start/end cuepoints when cropping video
 	useEffect(() => {
@@ -146,16 +108,60 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 	}, [start, end]);
 
 	// Draw custom elements
-	flowplayer((opts: any, root: any, api: any) => {
-		const mq = flowplayer.mq;
+	useEffect(() => {
+		const createTitleOverlay = () => {
+			const titleOverlay = document.createElement('div');
+			const titleHeader = document.createElement('h5');
+			const publishDiv = document.createElement('div');
 
-		api.on('mount', () => {
-			mq('.fp-ui', root).prepend(createTitleOverlay());
-			mq('.fp-ui', root).prepend(createLogoOverlay());
+			titleOverlay.classList.add('c-title-overlay');
+			titleHeader.classList.add('c-title-overlay__title');
+			publishDiv.classList.add('u-d-flex');
+
+			titleHeader.innerText = title;
+
+			titleOverlay.appendChild(titleHeader);
+			titleOverlay.appendChild(publishDiv);
+
+			if (subtitles && subtitles.length) {
+				subtitles.forEach((subtitle: string) => {
+					const substitleDiv = document.createElement('div');
+					substitleDiv.innerText = subtitle;
+					substitleDiv.classList.add('c-title-overlay__meta');
+					publishDiv.appendChild(substitleDiv);
+				});
+			}
+
+			return titleOverlay;
+		};
+
+		const createLogoOverlay = () => {
+			if (logo) {
+				const logoOverlay = document.createElement('div');
+				const logoImg = document.createElement('img');
+
+				logoOverlay.classList.add('c-logo-overlay');
+				logoImg.classList.add('c-logo-overlay__img');
+
+				logoImg.src = logo;
+
+				logoOverlay.appendChild(logoImg);
+
+				return logoOverlay;
+			}
+		};
+
+		flowplayer((opts: any, root: any, api: any) => {
+			const mq = flowplayer.mq;
+
+			api.on('mount', () => {
+				mq('.fp-ui', root).prepend(createTitleOverlay());
+				mq('.fp-ui', root).prepend(createLogoOverlay());
+			});
 		});
-	});
+	}, [src, logo, subtitles, title]);
 
-	return src && poster ? (
+	return src ? (
 		<div
 			className={classnames(className, 'c-video-player')}
 			data-player-id={dataPlayerId}
