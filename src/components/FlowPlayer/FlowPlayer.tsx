@@ -56,48 +56,6 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 		}
 	}, [seekTime, lastSeekTime]);
 
-	const createTitleOverlay = () => {
-		const titleOverlay = document.createElement('div');
-		const titleHeader = document.createElement('h5');
-		const publishDiv = document.createElement('div');
-
-		titleOverlay.classList.add('c-title-overlay');
-		titleHeader.classList.add('c-title-overlay__title');
-		publishDiv.classList.add('u-d-flex');
-
-		titleHeader.innerText = title;
-
-		titleOverlay.appendChild(titleHeader);
-		titleOverlay.appendChild(publishDiv);
-
-		if (subtitles && subtitles.length) {
-			subtitles.forEach((subtitle: string) => {
-				const substitleDiv = document.createElement('div');
-				substitleDiv.innerText = subtitle;
-				substitleDiv.classList.add('c-title-overlay__meta');
-				publishDiv.appendChild(substitleDiv);
-			});
-		}
-
-		return titleOverlay;
-	};
-
-	const createLogoOverlay = () => {
-		if (logo) {
-			const logoOverlay = document.createElement('div');
-			const logoImg = document.createElement('img');
-
-			logoOverlay.classList.add('c-logo-overlay');
-			logoImg.classList.add('c-logo-overlay__img');
-
-			logoImg.src = logo;
-
-			logoOverlay.appendChild(logoImg);
-
-			return logoOverlay;
-		}
-	};
-
 	const cuePointEndListener = () => {
 		if (videoContainerRef.current) {
 			videoPlayerRef.current.pause();
@@ -151,6 +109,48 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 
 	// Draw custom elements
 	useEffect(() => {
+		const createTitleOverlay = () => {
+			const titleOverlay = document.createElement('div');
+			const titleHeader = document.createElement('h5');
+			const publishDiv = document.createElement('div');
+
+			titleOverlay.classList.add('c-title-overlay');
+			titleHeader.classList.add('c-title-overlay__title');
+			publishDiv.classList.add('u-d-flex');
+
+			titleHeader.innerText = title;
+
+			titleOverlay.appendChild(titleHeader);
+			titleOverlay.appendChild(publishDiv);
+
+			if (subtitles && subtitles.length) {
+				subtitles.forEach((subtitle: string) => {
+					const substitleDiv = document.createElement('div');
+					substitleDiv.innerText = subtitle;
+					substitleDiv.classList.add('c-title-overlay__meta');
+					publishDiv.appendChild(substitleDiv);
+				});
+			}
+
+			return titleOverlay;
+		};
+
+		const createLogoOverlay = () => {
+			if (logo) {
+				const logoOverlay = document.createElement('div');
+				const logoImg = document.createElement('img');
+
+				logoOverlay.classList.add('c-logo-overlay');
+				logoImg.classList.add('c-logo-overlay__img');
+
+				logoImg.src = logo;
+
+				logoOverlay.appendChild(logoImg);
+
+				return logoOverlay;
+			}
+		};
+
 		flowplayer((opts: any, root: any, api: any) => {
 			const mq = flowplayer.mq;
 
@@ -159,7 +159,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 				mq('.fp-ui', root).prepend(createLogoOverlay());
 			});
 		});
-	}, [src, createLogoOverlay, createTitleOverlay]);
+	}, [src, logo, subtitles, title]);
 
 	return src ? (
 		<div
