@@ -3,7 +3,7 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers';
-import { IconName } from '../../types';
+import { IconName } from '../Icon/Icon.types';
 import { MenuContent } from '../Menu/MenuContent/MenuContent';
 
 import { Dropdown } from './Dropdown';

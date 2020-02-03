@@ -8,10 +8,10 @@ import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
-import { IconName } from '../../types';
 import { get } from '../../utils/get';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
+import { IconName } from '../Icon/Icon.types';
 import { Menu } from '../Menu/Menu';
 
 import { DropdownButton, DropdownContent } from './Dropdown.slots';

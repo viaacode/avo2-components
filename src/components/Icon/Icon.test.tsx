@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { IconName } from '../../types';
+import { IconName } from './Icon.types';
 
 import { Icon } from './Icon';
 import { Download, Slash, ThumbsUp } from './Icons';
@@ -18,12 +18,6 @@ describe('<Icon />', () => {
 
 		expect(iconComponent.find(Slash)).toHaveLength(1);
 	});
-
-	// it('Should render icon when name was passed as PascalCase', () => {
-	// 	const iconComponent = mount(<Icon name="ThumbsUp" />);
-	//
-	// 	expect(iconComponent.find(ThumbsUp)).toHaveLength(1);
-	// });
 
 	it('Should render icon when name was passed as kebab-case', () => {
 		const iconComponent = mount(<Icon name="thumbs-up" />);

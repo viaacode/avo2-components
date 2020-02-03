@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import { action } from '../../helpers';
-import { IconName } from '../../types';
+import { IconName } from '../Icon/Icon.types';
 import { Tabs } from '../Tabs/Tabs';
 
 const mockTabs = [

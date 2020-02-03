@@ -2,8 +2,8 @@ import { storiesOf } from '@storybook/react';
 import React, { Fragment } from 'react';
 
 import iconList from '../../icons/icons.json';
-import { IconName } from '../../types';
 import { Spacer } from '../Spacer/Spacer';
+import { IconName } from './Icon.types';
 
 import { Icon } from './Icon';
 

@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
-import { IconName } from '../../types';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
+import { IconName } from '../Icon/Icon.types';
 import { Spinner } from '../Spinner/Spinner';
 
 import { AlertProps, AlertTypeWithIcon } from './Alert.types';
