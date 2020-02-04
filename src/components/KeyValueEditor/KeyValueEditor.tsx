@@ -1,18 +1,36 @@
-import React, { FunctionComponent, ReactNode, useState } from 'react';
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 
+import { useTableSort } from '../../hooks/useTableSort';
 import { DefaultProps } from '../../types';
+import { Form } from '../Form/Form';
+import { FormGroup } from '../Form/FormGroup/FormGroup';
+import { Pagination } from '../Pagination/Pagination';
+import { Spacer } from '../Spacer/Spacer';
 import { Table } from '../Table/Table';
+import { TextArea } from '../TextArea/TextArea';
 import { TextInput } from '../TextInput/TextInput';
+import { Toolbar } from '../Toolbar/Toolbar';
+import { ToolbarRight } from '../Toolbar/Toolbar.slots';
+import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import './KeyValueEditor.scss';
 
+export type KeyValuePair = [string, string];
+export type KeyValuePairs = KeyValuePair[];
+export type KeyValueEditorTableCols = '0' | '1';
+
+const ENTRIES_PER_PAGE = 20;
+
 export interface TextInputProps extends DefaultProps {
-	data: any[] | { [key: string]: string };
-	keyProp?: string;
-	valueProp?: string;
+	data: KeyValuePairs;
+	keyLabel?: string;
+	valueLabel?: string;
+	keySeparator?: string;
 	readonly?: boolean;
-	onChange?: (modifiedData: any[] | { [key: string]: string }) => void;
+	onChange?: (modifiedData: KeyValuePairs) => void;
 	className?: string;
+	noDataMessage?: string;
+	noDataForFilterMessage?: string;
 }
 
 /**
@@ -21,51 +39,87 @@ export interface TextInputProps extends DefaultProps {
  * - a dictionary (key value)
  * - or an array of items, then you need to pass the keyProp and valueProp
  * @param data
- * @param keyProp
- * @param valueProp
+ * @param keyLabel
+ * @param valueLabel
+ * @param keySeparator
  * @param readonly
  * @param onChange
  * @param className
+ * @param noDataMessage
+ * @param noDataForFilterMessage
  * @constructor
  */
 export const KeyValueEditor: FunctionComponent<TextInputProps> = ({
 	data,
-	keyProp,
-	valueProp,
+	keyLabel = 'Id',
+	valueLabel = 'Waarde',
+	keySeparator = '___',
 	readonly = false,
 	onChange = () => {},
 	className,
+	noDataMessage = 'Geen data',
+	noDataForFilterMessage = 'Geen data die voldoet aan de filter',
 }) => {
-	const [dataLocal, setDataLocal] = useState<any[] | { [key: string]: string }>(data);
+	const [paginatedData, setPaginatedData] = useState<KeyValuePairs>([]);
+	const [totalFilteredResults, setTotalFilteredResults] = useState<number>(0);
+	const [filterString, setFilterString] = useState<string>('');
+	const [page, setPage] = useState<number>(0);
+	const [sortColumn, sortOrder, handleSortClick] = useTableSort<KeyValueEditorTableCols>('0');
+
+	useEffect(() => {
+		const filteredItems = data.filter(
+			row =>
+				row[0].toLowerCase().includes(filterString.toLowerCase()) ||
+				row[1].toLowerCase().includes(filterString.toLowerCase())
+		);
+		const sortedItems = filteredItems.sort((rowA: [string, string], rowB: [string, string]) => {
+			if (rowA[sortColumn].toLowerCase() < rowB[sortColumn].toLowerCase()) {
+				return sortOrder === 'asc' ? 1 : -1;
+			}
+			if (rowA[sortColumn].toLowerCase() > rowB[sortColumn].toLowerCase()) {
+				return sortOrder === 'asc' ? -1 : 1;
+			}
+			return 0;
+		});
+		setPaginatedData(sortedItems.slice(page * ENTRIES_PER_PAGE, (page + 1) * ENTRIES_PER_PAGE));
+		setTotalFilteredResults(sortedItems.length);
+	}, [page, data, filterString, sortOrder, sortColumn]);
 
 	const onValueChanged = (value: string, key: string) => {
-		const modifiedData: any[] = JSON.parse(JSON.stringify(dataLocal)); // Poor man's deep clone
-		if (Array.isArray(dataLocal)) {
-			const index = modifiedData.findIndex(dataItem => dataItem[keyProp || 'key'] === key);
-			if (index !== -1) {
-				modifiedData[index][valueProp || 'value'] = value;
-			}
-		} else {
-			dataLocal[key] = value;
+		const modifiedData: KeyValuePairs = JSON.parse(JSON.stringify(data)); // Poor man's deep clone
+		const index = modifiedData.findIndex(dataItem => dataItem[0] === key);
+		if (index !== -1) {
+			modifiedData[index][1] = value;
 		}
-		setDataLocal(modifiedData); // Set data without triggering a rerender
+		onChange(modifiedData); // Set data without triggering a rerender
 	};
 
-	const renderCell = (rowData: any, columnId: string): ReactNode | null => {
+	const renderCell = (
+		rowData: KeyValuePair,
+		columnId: KeyValueEditorTableCols
+	): ReactNode | null => {
 		switch (columnId) {
-			case 'id':
-				return <span className="c-keyvalue-label">{rowData[keyProp || 'key']}</span>;
+			case '0':
+				const keyParts = rowData[0].split(keySeparator);
+				return (
+					<div>
+						<div className="c-keyvalue-label c-keyvalue-path">{keyParts[0]}</div>
+						{!!keyParts[1] && (
+							<div className="c-keyvalue-label c-keyvalue-translaton">{keyParts[1]}</div>
+						)}
+					</div>
+				);
 
-			case 'value':
+			case '1':
 				if (readonly) {
-					return <span className="c-keyvalue-label">{rowData[valueProp || 'value']}</span>;
+					return <span className="c-keyvalue-label">{rowData[1]}</span>;
 				}
 
 				return (
-					<TextInput
-						value={rowData[valueProp || 'value']}
-						onChange={value => onValueChanged(value, rowData[keyProp || 'key'])}
-						onBlur={() => onChange(dataLocal)}
+					<TextArea
+						height="auto"
+						value={rowData[1]}
+						onChange={value => onValueChanged(value, rowData[0])}
 					/>
 				);
 
@@ -74,32 +128,42 @@ export const KeyValueEditor: FunctionComponent<TextInputProps> = ({
 		}
 	};
 
-	let dataArray: any[];
-	if (Array.isArray(dataLocal)) {
-		// data array
-		dataArray = dataLocal;
-		if (!keyProp || !valueProp) {
-			console.error(
-				'When passing a data array to the KeyValueEditor, you must also pass keyProp and valueProp properties',
-				dataLocal
-			);
-		}
-	} else {
-		// data object => convert to array
-		dataArray = Object.keys(dataLocal).map((key: string) => {
-			return { key, value: (dataLocal as { [key: string]: string })[key] };
-		});
-	}
 	return (
-		<Table
-			data={dataArray}
-			columns={[
-				{ id: 'id', label: 'Id' },
-				{ id: 'value', label: 'Waarde' },
-			]}
-			renderCell={renderCell}
-			className={`c-key-value-editor ${className}`}
-			rowKey={keyProp || 'key'}
-		/>
+		<div className={`c-key-value-editor ${className}`}>
+			<Toolbar>
+				<ToolbarRight>
+					<ToolbarItem>
+						<Form type="inline">
+							<FormGroup>
+								<TextInput icon="filter" value={filterString} onChange={setFilterString} />
+							</FormGroup>
+						</Form>
+					</ToolbarItem>
+				</ToolbarRight>
+			</Toolbar>
+			<Table
+				columns={[
+					{ id: '0', label: keyLabel, col: '5', sortable: true },
+					{ id: '1', label: valueLabel, col: '7', sortable: true },
+				]}
+				data={paginatedData}
+				emptyStateMessage={filterString ? noDataMessage : noDataForFilterMessage}
+				onColumnClick={columnId => handleSortClick(columnId as KeyValueEditorTableCols)}
+				renderCell={(rowData: KeyValuePair, columnId: string) =>
+					renderCell(rowData, columnId as KeyValueEditorTableCols)
+				}
+				rowKey={'0'}
+				variant="bordered"
+				sortColumn={sortColumn}
+				sortOrder={sortOrder}
+			/>
+			<Spacer margin="top-large">
+				<Pagination
+					pageCount={Math.ceil(totalFilteredResults / ENTRIES_PER_PAGE)}
+					onPageChange={setPage}
+					currentPage={page}
+				/>
+			</Spacer>
+		</div>
 	);
 };
