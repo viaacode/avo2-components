@@ -121,20 +121,7 @@ export { VideoWrapper } from './components/VideoWrapper/VideoWrapper';
 export { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 
 // Content Blocks
-export {
-	BlockAccordions,
-	BlockAccordionsProps,
-} from './content-blocks/BlockAccordions/BlockAccordions';
-export { BlockHeading, BlockHeadingProps } from './content-blocks/BlockHeading/BlockHeading';
-export { BlockIntro, BlockIntroProps } from './content-blocks/BlockIntro/BlockIntro';
-export { BlockIFrame, BlockIFrameProps } from './content-blocks/BlockIFrame/BlockIFrame';
-export { BlockRichText, BlockRichTextProps } from './content-blocks/BlockRichText/BlockRichText';
-export { BlockButtons, BlockButtonsProps } from './content-blocks/BlockButtons/BlockButtons';
-export { BlockCTAs, BlockCTAsProps } from './content-blocks/BlockCTAs/BlockCTAs';
-export {
-	BlockFlowPlayer,
-	BlockFlowPlayerProps,
-} from './content-blocks/BlockFlowPlayer/BlockFlowPlayer';
+export * from './content-blocks';
 
 // Types
 export * from './types';
