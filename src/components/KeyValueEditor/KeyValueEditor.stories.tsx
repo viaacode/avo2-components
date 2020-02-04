@@ -11,13 +11,13 @@ const KeyValueEditorStoryComponent = ({
 	initialData,
 }: {
 	children: ReactElement;
-	initialData: any[] | { [key: string]: string };
+	initialData: [string, string][];
 }) => {
 	const [data, setData] = useState(initialData);
 
 	return cloneElement(children, {
 		data,
-		onChange: (newData: any[] | { [key: string]: string }) => {
+		onChange: (newData: [string, string][]) => {
 			action('Data changed')(newData);
 			setData(newData);
 		},
@@ -28,26 +28,21 @@ storiesOf('components/KeyValueEditor', module)
 	.addParameters({ jest: ['KeyValueEditor'] })
 	.add('KeyValueEditor dataArray', () => (
 		<KeyValueEditorStoryComponent initialData={DATA_ARRAY_MOCK}>
-			<KeyValueEditor
-				data={[]}
-				onChange={action('dataChanged')}
-				keyProp="myKey"
-				valueProp="myValue"
-			/>
+			<KeyValueEditor data={[]} onChange={action('dataChanged')} />
 		</KeyValueEditorStoryComponent>
 	))
 	.add('KeyValueEditor dataObject', () => (
-		<KeyValueEditorStoryComponent initialData={DATA_OBJ_MOCK}>
-			<KeyValueEditor data={{}} onChange={action('dataChanged')} />
+		<KeyValueEditorStoryComponent initialData={Object.entries(DATA_OBJ_MOCK)}>
+			<KeyValueEditor data={[]} onChange={action('dataChanged')} />
 		</KeyValueEditorStoryComponent>
 	))
 	.add('KeyValueEditor readonly', () => (
-		<KeyValueEditorStoryComponent initialData={DATA_OBJ_MOCK}>
-			<KeyValueEditor data={{}} readonly />
+		<KeyValueEditorStoryComponent initialData={DATA_ARRAY_MOCK}>
+			<KeyValueEditor data={[]} readonly />
 		</KeyValueEditorStoryComponent>
 	))
 	.add('KeyValueEditor empty data', () => (
-		<KeyValueEditorStoryComponent initialData={{}}>
-			<KeyValueEditor data={{}} />
+		<KeyValueEditorStoryComponent initialData={[]}>
+			<KeyValueEditor data={[]} />
 		</KeyValueEditorStoryComponent>
 	));
