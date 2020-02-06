@@ -17,6 +17,15 @@ export const BlockIFrame: FunctionComponent<BlockIFrameProps> = ({
 	frameBorder = 0,
 	...iframeProps
 }) => {
+	if (
+		iframeProps.src &&
+		!iframeProps.src.startsWith('//') &&
+		!iframeProps.src.startsWith('http://') &&
+		!iframeProps.src.startsWith('https://')
+	) {
+		iframeProps.src = `//${iframeProps.src}`;
+	}
+
 	return (
 		<AspectRatioWrapper aspect={ratio}>
 			<iframe
