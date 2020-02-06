@@ -21,12 +21,12 @@ describe('<BlockVideo />', () => {
 		const component = mount(blockVideoExampleExample);
 
 		const container = component.find('div').at(0);
-		const videoWrapper = component.find('div').at(1);
+		const aspectRatioWrapper = component.find('div').at(1);
 
 		expect(container.hasClass(customClass)).toEqual(true);
 		expect(container.hasClass('o-container-vertical')).toEqual(true);
 
-		expect(videoWrapper.hasClass('c-video-wrapper')).toEqual(true);
-		expect(videoWrapper.hasClass('c-video-wrapper--aspect-16-9')).toEqual(true);
+		expect(aspectRatioWrapper.hasClass('c-aspect-ratio-wrapper')).toEqual(true);
+		expect(aspectRatioWrapper.hasClass('c-aspect-ratio-wrapper--aspect-16-9')).toEqual(true);
 	});
 });

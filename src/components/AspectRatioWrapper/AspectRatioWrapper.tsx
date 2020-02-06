@@ -4,13 +4,13 @@ import classnames from 'classnames';
 
 import { DefaultProps, VideoAspectRatio } from '../../types';
 
-import './VideoWrapper.scss';
+import './AspectRatioWrapper.scss';
 
-export interface VideoWrapperProps extends DefaultProps {
+export interface AspectRatioWrapperProps extends DefaultProps {
 	aspect?: VideoAspectRatio;
 }
 
-export const VideoWrapper: FunctionComponent<VideoWrapperProps> = ({
+export const AspectRatioWrapper: FunctionComponent<AspectRatioWrapperProps> = ({
 	aspect,
 	children,
 	className,
@@ -18,8 +18,8 @@ export const VideoWrapper: FunctionComponent<VideoWrapperProps> = ({
 	<div
 		className={classnames(
 			className,
-			'c-video-wrapper',
-			!!aspect && `c-video-wrapper--aspect-${aspect.replace(':', '-')}`
+			'c-aspect-ratio-wrapper',
+			!!aspect && `c-aspect-ratio-wrapper--aspect-${aspect.replace(':', '-')}`
 		)}
 	>
 		{children}
