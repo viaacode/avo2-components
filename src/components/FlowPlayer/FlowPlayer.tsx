@@ -102,9 +102,11 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 			videoPlayerRef.current.on('playing', onPlay);
 			videoPlayerRef.current.on('pause', onPause);
 			videoPlayerRef.current.on('ended', onEnded);
-			videoPlayerRef.current.on('timeupdate', () =>
-				onTimeUpdate(videoPlayerRef.current.currentTime)
-			);
+			videoPlayerRef.current.on('timeupdate', () => {
+				if (videoPlayerRef.current) {
+					onTimeUpdate(videoPlayerRef.current.currentTime);
+				}
+			});
 		}
 
 		return () => {
