@@ -5,29 +5,19 @@ import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers';
 
 import { Select } from './Select';
-
-const options = [
-	{ label: 'Aluminium', value: 'Al' },
-	{ label: 'Cadmium', value: 'Cd' },
-	{ label: 'Dubnium', value: 'Db' },
-	{ label: 'Potassium', value: 'K' },
-	{ label: 'Vanadium', value: 'V' },
-	{ label: 'Palladium', value: 'Pd' },
-	{ label: 'Polonium', value: 'Po' },
-	{ label: 'Rhodium (disabled)', value: 'Rh', disabled: true },
-	{ label: 'Yttrium (disabled)', value: 'Y', disabled: true },
-	{ label: 'Uranium (disabled)', value: 'U', disabled: true },
-];
+import { SELECT_MOCK_OPTIONS } from './Select.mock';
 
 storiesOf('components/Select', module)
 	.addParameters({ jest: ['Select'] })
-	.add('Select', () => <Select options={options} value="Db" onChange={action('onChange')} />)
+	.add('Select', () => (
+		<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} />
+	))
 	.add('Select disabled', () => (
-		<Select options={options} value="Db" onChange={action('onChange')} disabled />
+		<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} disabled />
 	))
 	.add('Select clearable', () => (
-		<Select options={options} value="Db" onChange={action('onChange')} clearable />
+		<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} clearable />
 	))
 	.add('Select loading', () => (
-		<Select options={options} value="Db" onChange={action('onChange')} loading />
+		<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} loading />
 	));
