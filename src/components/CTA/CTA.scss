@@ -1,5 +1,6 @@
 @import '../../styles/settings/colors';
 @import '../../styles/settings/variables';
+@import '../../styles/utilities/color';
 
 .c-cta-item {
 	margin-bottom: 3.2rem;
@@ -8,6 +9,7 @@
 
 .c-cta__content {
 	padding: 3.2rem;
+	@extend .u-color-gray-700;
 }
 
 @media (min-width: $g-bp2) {
