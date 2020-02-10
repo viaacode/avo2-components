@@ -17,12 +17,7 @@ export const BlockIFrame: FunctionComponent<BlockIFrameProps> = ({
 	frameBorder = 0,
 	...iframeProps
 }) => {
-	if (
-		iframeProps.src &&
-		!iframeProps.src.startsWith('//') &&
-		!iframeProps.src.startsWith('http://') &&
-		!iframeProps.src.startsWith('https://')
-	) {
+	if (iframeProps.src && !/^(http:|https:)?\/\//.test(iframeProps.src)) {
 		iframeProps.src = `//${iframeProps.src}`;
 	}
 
