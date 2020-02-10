@@ -23,6 +23,7 @@ export {
 	AccordionBody,
 	AccordionTitle,
 } from './components/Accordion/Accordion.slots';
+export { AspectRatioWrapper } from './components/AspectRatioWrapper/AspectRatioWrapper';
 export { AvatarIcon } from './components/Avatar/AvatarIcon/AvatarIcon';
 export { AvatarList } from './components/AvatarList/AvatarList';
 export { Badge } from './components/Badge/Badge';
@@ -118,7 +119,6 @@ export { ToolbarItem } from './components/Toolbar/ToolbarItem/ToolbarItem';
 export { ToolbarTitle } from './components/Toolbar/ToolbarTitle/ToolbarTitle';
 export { Tooltip } from './components/Tooltip/Tooltip';
 export { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slots';
-export { VideoWrapper } from './components/VideoWrapper/VideoWrapper';
 export { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 
 // Content Blocks

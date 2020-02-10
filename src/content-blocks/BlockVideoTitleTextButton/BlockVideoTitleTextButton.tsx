@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
 
+import { AspectRatioWrapper } from '../../components/AspectRatioWrapper/AspectRatioWrapper';
 import { Container } from '../../components/Container/Container';
 import { ExpandableContainer } from '../../components/ExpandableContainer/ExpandableContainer';
 import { FlowPlayer, FlowPlayerProps } from '../../components/FlowPlayer/FlowPlayer';
 import { Column } from '../../components/Grid/Column/Column';
 import { Grid } from '../../components/Grid/Grid';
 import { Spacer } from '../../components/Spacer/Spacer';
-import { VideoWrapper } from '../../components/VideoWrapper/VideoWrapper';
 import { convertToHtml } from '../../helpers';
 import { DefaultProps } from '../../types';
 
@@ -31,9 +31,9 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 			<Spacer>
 				<Grid>
 					<Column size="2-6">
-						<VideoWrapper aspect="16:9">
+						<AspectRatioWrapper aspect="16:9">
 							<FlowPlayer {...flowPlayerProps} />
-						</VideoWrapper>
+						</AspectRatioWrapper>
 					</Column>
 					<Column size="2-6">
 						<div className="c-content">
