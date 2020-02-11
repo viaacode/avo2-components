@@ -38,6 +38,10 @@ export { Container } from './components/Container/Container';
 export { CTA } from './components/CTA/CTA';
 export { BlockImage, BlockImageProps } from './content-blocks/BlockImage/BlockImage';
 export {
+	BlockImageGrid,
+	BlockImageGridProps,
+} from './content-blocks/BlockImageGrid/BlockImageGrid';
+export {
 	BlockImageTitleTextButton,
 	BlockImageTitleTextButtonProps,
 } from './content-blocks/BlockImageTitleTextButton/BlockImageTitleTextButton';

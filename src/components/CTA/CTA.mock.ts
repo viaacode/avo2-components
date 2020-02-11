@@ -6,5 +6,6 @@ export const CTA_MOCK: CTAProps = {
 	content: 'Text',
 	buttonLabel: 'Read more',
 	buttonIcon: 'chevron-down',
-	buttonOnClick: () => {},
+	buttonAction: { type: 'CONTENT_PAGE', value: '' },
+	navigate: () => {},
 };
