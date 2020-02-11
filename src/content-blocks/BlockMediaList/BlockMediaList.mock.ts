@@ -43,20 +43,20 @@ export const MEDIA_LIST_MOCK: MediaListItem[] = [
 		thumbnail: { label: 'Video' },
 		action: { type: 'ITEM', value: '3' },
 	},
-	// {
-	// 	category: 'audio',
-	// 	metadata: [{ icon: 'eye', label: '347' }, { label: '02/02/2020' }],
-	// 	title: 'Audio fragment 2',
-	// 	thumbnail: { label: 'Audio' },
-	// 	action: { type: 'ITEM', value: '4' },
-	// },
-	// {
-	// 	category: 'collection',
-	// 	metadata: [{ label: '02/02/2020' }],
-	// 	title: 'Collectie 4',
-	// 	thumbnail: { label: 'Collectie', meta: '2 items' },
-	// 	action: { type: 'COLLECTION', value: '4' },
-	// },
+	{
+		category: 'audio',
+		metadata: [{ icon: 'eye', label: '347' }, { label: '02/02/2020' }],
+		title: 'Audio fragment 2',
+		thumbnail: { label: 'Audio' },
+		action: { type: 'ITEM', value: '4' },
+	},
+	{
+		category: 'collection',
+		metadata: [{ label: '02/02/2020' }],
+		title: 'Collectie 4',
+		thumbnail: { label: 'Collectie', meta: '2 items' },
+		action: { type: 'COLLECTION', value: '4' },
+	},
 ];
 
 export const MEDIA_LIST_CTA_MOCK: MediaListItem[] = [
