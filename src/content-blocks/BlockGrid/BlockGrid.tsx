@@ -38,7 +38,7 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 		<div className={classnames('c-block-grid', `text-align-${textAlign}`, className)}>
 			{elements.map(element => (
 				<div
-					key={element.source}
+					key={`block-grid-${element.source}`}
 					className={classnames('c-block-grid__item', {
 						'u-clickable': !!navigate && !!element.action,
 					})}
