@@ -3,10 +3,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers';
-import { ButtonAction } from '../../types';
 import { BlockGrid, GridItem } from './BlockGrid';
 
-const items: GridItem[] = [
+const elements: GridItem[] = [
 	{ source: '/images/200x200.svg?id=0' },
 	{ source: '/images/200x200.svg?id=1' },
 	{ source: '/images/200x200.svg?id=2' },
@@ -19,7 +18,7 @@ const items: GridItem[] = [
 	{ source: '/images/200x200.svg?id=9' },
 ];
 
-const items2: GridItem[] = [
+const elements2: GridItem[] = [
 	{
 		source: '/images/500x200.svg?id=0',
 		title: 'Vind inspiratie op jouw maat',
@@ -58,7 +57,7 @@ const items2: GridItem[] = [
 		source: '/images/500x200.svg?id=5',
 		title: 'Links verdwijnen niet',
 		text:
-			'Topfragment gespot? Bookmark je favoriete items en vind ze met gemak terug in je persoonlijke werkruimte.',
+			'Topfragment gespot? Bookmark je favoriete elements en vind ze met gemak terug in je persoonlijke werkruimte.',
 		action: { type: 'EXTERNAL_LINK', value: 'http://google.com' },
 	},
 	{
@@ -88,19 +87,21 @@ const items2: GridItem[] = [
 
 storiesOf('blocks/BlockGrid', module)
 	.addParameters({ jest: ['Image'] })
-	.add('BlockGrid 200x200', () => <BlockGrid items={items} />)
-	.add('BlockGrid 500x200', () => <BlockGrid items={items2} imageWidth={500} imageHeight={200} />)
-	.add('BlockGrid wider item then image', () => (
-		<BlockGrid items={items2} imageWidth={200} imageHeight={150} itemWidth={400} />
+	.add('BlockGrid 200x200', () => <BlockGrid elements={elements} />)
+	.add('BlockGrid 500x200', () => (
+		<BlockGrid elements={elements2} imageWidth={500} imageHeight={200} />
 	))
-	.add('BlockGrid action', () => <BlockGrid items={items2} navigate={action('navigate')} />)
+	.add('BlockGrid wider item then image', () => (
+		<BlockGrid elements={elements2} imageWidth={200} imageHeight={150} itemWidth={400} />
+	))
+	.add('BlockGrid action', () => <BlockGrid elements={elements2} navigate={action('navigate')} />)
 	.add('BlockGrid 150x150 fill contain', () => (
-		<BlockGrid items={items2} imageWidth={150} imageHeight={150} fill="contain" />
+		<BlockGrid elements={elements2} imageWidth={150} imageHeight={150} fill="contain" />
 	))
 	.add('BlockGrid 150x150 fill cover', () => (
-		<BlockGrid items={items2} imageWidth={150} imageHeight={150} fill="cover" />
+		<BlockGrid elements={elements2} imageWidth={150} imageHeight={150} fill="cover" />
 	))
 	.add('BlockGrid 150x150 fill auto', () => (
-		<BlockGrid items={items2} imageWidth={150} imageHeight={150} fill="auto" />
+		<BlockGrid elements={elements2} imageWidth={150} imageHeight={150} fill="auto" />
 	))
-	.add('BlockGrid text right', () => <BlockGrid items={items2} textAlign="right" />);
+	.add('BlockGrid text right', () => <BlockGrid elements={elements2} textAlign="right" />);

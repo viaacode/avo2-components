@@ -14,7 +14,7 @@ export interface GridItem {
 }
 
 export interface BlockGridProps extends DefaultProps {
-	items: GridItem[];
+	elements: GridItem[];
 	imageWidth?: number;
 	imageHeight?: number;
 	itemWidth?: number;
@@ -25,7 +25,7 @@ export interface BlockGridProps extends DefaultProps {
 }
 
 export const BlockGrid: FunctionComponent<BlockGridProps> = ({
-	items = [],
+	elements = [],
 	imageWidth = 200,
 	imageHeight = 200,
 	itemWidth = 200,
@@ -36,11 +36,11 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 }) => {
 	return (
 		<div className={classnames('c-block-grid', `text-align-${textAlign}`, className)}>
-			{items.map(item => (
+			{elements.map(element => (
 				<div
-					key={item.source}
+					key={element.source}
 					className={classnames('c-block-grid__item', {
-						'u-clickable': !!navigate && !!item.action,
+						'u-clickable': !!navigate && !!element.action,
 					})}
 					style={{ width: `${itemWidth}px` }}
 				>
@@ -49,26 +49,26 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 						style={{
 							width: `${imageWidth}px`,
 							height: `${imageHeight}px`,
-							backgroundImage: `url(${item.source})`,
+							backgroundImage: `url(${element.source})`,
 							backgroundSize: fill,
 						}}
 						onClick={() => {
-							if (item.action && navigate) {
-								navigate(item.action);
+							if (element.action && navigate) {
+								navigate(element.action);
 							}
 						}}
 					/>
 					<div>
-						{!!item.title && (
+						{!!element.title && (
 							<Spacer margin="top-small">
 								<h3>
-									<strong>{item.title}</strong>
+									<strong>{element.title}</strong>
 								</h3>
 							</Spacer>
 						)}
-						{!!item.text && (
+						{!!element.text && (
 							<Spacer margin="top-small">
-								<p>{item.text}</p>
+								<p>{element.text}</p>
 							</Spacer>
 						)}
 					</div>
