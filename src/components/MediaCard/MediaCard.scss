@@ -58,20 +58,44 @@
 /* Specific colors for each media type
    ========================================================================== */
 
-.c-media-card:hover .c-media-card__title a {
-	color: $color-teal-bright;
+.c-media-card:hover {
+	.c-media-card__title {
+		color: $color-teal-bright;
+
+		 a {
+			color: inherit;
+		 }
+	}
 }
 
-.c-media-card--collection:hover .c-media-card__title a {
-	color: $color-ocean-green;
+.c-media-card--collection:hover {
+	.c-media-card__title {
+		color: $color-ocean-green;
+
+		 a {
+			color: inherit;
+		 }
+	}
 }
 
-.c-media-card--video:hover .c-media-card__title a {
-	color: $color-night-blue;
+.c-media-card--video:hover {
+	.c-media-card__title {
+		color: $color-night-blue;
+
+		 a {
+			color: inherit;
+		 }
+	}
 }
 
-.c-media-card--audio:hover .c-media-card__title a {
-	color: $color-teal-bright;
+.c-media-card--audio:hover {
+	.c-media-card__title {
+		color: $color-teal-bright;
+
+		 a {
+			color: inherit;
+		 }
+	}
 }
 
 /* Different thumbnail size for folders

@@ -9,11 +9,13 @@ import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 import './MediaCard.scss';
 
+export type MediaCardOrientation = 'horizontal' | 'vertical';
+
 export interface MediaCardProps extends DefaultProps {
 	title: string;
 	category: EnglishContentType;
 	children?: ReactNode;
-	orientation?: 'horizontal' | 'vertical';
+	orientation?: MediaCardOrientation;
 	onClick?: () => void;
 }
 
@@ -23,7 +25,7 @@ export const MediaCard: FunctionComponent<MediaCardProps> = ({
 	category,
 	children = [],
 	orientation = 'vertical',
-	onClick = () => {},
+	onClick,
 }) => {
 	const thumbnail = useSlot(MediaCardThumbnail, children);
 	const metaData = useSlot(MediaCardMetaData, children);
@@ -32,6 +34,7 @@ export const MediaCard: FunctionComponent<MediaCardProps> = ({
 		<div
 			className={classnames(className, 'c-media-card', `c-media-card--${category}`, {
 				'c-media-card--horizontal': orientation === 'horizontal',
+				'u-clickable': !!onClick,
 			})}
 			onClick={onClick}
 		>
