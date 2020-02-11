@@ -11,7 +11,7 @@ export interface ImageGridProps extends DefaultProps {
 	value?: string[];
 	width?: number;
 	height?: number;
-	fill?: 'cover' | 'contain';
+	fill?: 'cover' | 'contain' | 'auto';
 	className?: string;
 	backgroundColor?: string;
 	allowSelect?: boolean;
