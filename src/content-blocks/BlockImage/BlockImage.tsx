@@ -33,7 +33,7 @@ export const BlockImage: FunctionComponent<BlockImageProps> = ({
 			)}
 			mode="vertical"
 		>
-			<Image src={imageSource} alt={imageDescription} wide={!!width} />
+			<Image src={imageSource} alt={imageDescription || title || text} wide />
 			{title && <h3>{title}</h3>}
 			{text && <p className="a-block-image-text">{text}</p>}
 		</Container>
