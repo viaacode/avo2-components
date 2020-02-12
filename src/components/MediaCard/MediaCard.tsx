@@ -36,7 +36,7 @@ export const MediaCard: FunctionComponent<MediaCardProps> = ({
 				'c-media-card--horizontal': orientation === 'horizontal',
 				'u-clickable': !!onClick,
 			})}
-			onClick={onClick}
+			onClick={() => onClick && onClick()}
 		>
 			{thumbnail && <div className="c-media-card-thumb">{thumbnail}</div>}
 			<div className="c-media-card-content">
