@@ -77,6 +77,12 @@ export class WYSIWYG extends React.Component<WYSIWYGProps> {
 		this.reInitEditor(this.props);
 	}
 
+	componentWillUnmount() {
+		if (this.editor) {
+			this.editor.trumbowyg('destroy');
+		}
+	}
+
 	// Switched to class based component so we can use this lifecycle hook inside the component
 	// so we can check the value of the Trumbowyg editor
 	// to see if the sate is equal to the externally received props.data value
