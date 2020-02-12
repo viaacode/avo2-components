@@ -58,7 +58,7 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 							}
 						}}
 					/>
-					<div>
+					<div className="c-block-grid__text-wrapper">
 						{!!element.title && (
 							<Spacer margin="top-small">
 								<h3>
