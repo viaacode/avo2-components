@@ -34,7 +34,6 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	tabs?: string[];
 	tabStyle?: 'ROUNDED_BADGES' | 'MENU_BAR';
 	allowMultiple?: boolean;
-	contentType: string; // lookup options in lookup.enum_content_types
 	itemStyle?: 'GRID' | 'LIST';
 	showTitle?: boolean;
 	showDescription?: boolean;

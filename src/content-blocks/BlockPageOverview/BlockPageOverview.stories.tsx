@@ -57,7 +57,6 @@ const BlockPageOverviewStoryComponent = ({
 const baseProps = {
 	tabs,
 	itemsPerPage,
-	contentType: 'PROJECT',
 	currentPage: 0,
 	onCurrentPageChanged: () => {},
 	onSelectedTabsChanged: () => {},
