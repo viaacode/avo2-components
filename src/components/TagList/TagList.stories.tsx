@@ -1,10 +1,8 @@
-import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
+import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers';
 
-import { intersection } from 'lodash-es';
-import { ContentPage } from '../../content-blocks/BlockPageOverview/BlockPageOverview';
 import { TagList } from './TagList';
 
 const tags = [

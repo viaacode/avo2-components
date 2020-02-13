@@ -53,11 +53,18 @@ storiesOf('components/Accordion', module)
 	.addParameters({ jest: ['Accordion'] })
 	.add('Accordion', () => (
 		<AccordionStoryComponent>
-			<Accordion title="Acordion title">
+			<Accordion title="Accordion title">
 				<div className="c-content">
 					<p>{loremIpsum({ count: 10 })}</p>
 				</div>
 			</Accordion>
 		</AccordionStoryComponent>
 	))
-	.add('Accordion with slots', () => <AccordionWithSlots />);
+	.add('Accordion with slots', () => <AccordionWithSlots />)
+	.add('Accordion toggle self', () => (
+		<Accordion title="Accordion title">
+			<div className="c-content">
+				<p>{loremIpsum({ count: 10 })}</p>
+			</div>
+		</Accordion>
+	));

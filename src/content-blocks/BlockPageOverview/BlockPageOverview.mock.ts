@@ -1,10 +1,9 @@
-import { ContentPage } from './BlockPageOverview';
+import { ContentPageInfo } from './BlockPageOverview';
 
-export const CONTENT_PAGES_MOCK: ContentPage[] = [
+export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-24T13:46:05.862681+00:00',
-		content_type: 'PAGINA',
 		description: 'DIt is een test',
 		title: 'Test buttons',
 		id: 52,
@@ -14,7 +13,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-24T15:07:45.868917+00:00',
-		content_type: 'PAGINA',
 		description: 'Testy',
 		title: 'Testland',
 		id: 53,
@@ -24,7 +22,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-20T16:45:40.346734+00:00',
-		content_type: 'PAGINA',
 		description: null,
 		title: 'Ontdek',
 		id: 31,
@@ -34,7 +31,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-20T17:14:26.616585+00:00',
-		content_type: 'PAGINA',
 		description: 'Hulp',
 		title: 'Hulp',
 		id: 32,
@@ -44,7 +40,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-22T10:54:22.744477+00:00',
-		content_type: 'PAGINA',
 		description:
 			'Meer video en audio in je les? Ontdek op de online beeldbank Het Archief voor Onderwijs\neen gevarieerd aanbod aan Nederlandstalige audiovisuele fragmenten.',
 		title: 'Over ons｜Het Archief voor Onderwijs',
@@ -55,7 +50,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-30T15:15:57.779099+00:00',
-		content_type: 'PAGINA',
 		description: null,
 		title: 'test',
 		id: 73,
@@ -65,7 +59,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-09T10:52:03.051781+00:00',
-		content_type: 'PAGINA',
 		description: null,
 		title: 'FAQ pagina met blocks',
 		id: 15,
@@ -75,7 +68,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-30T15:35:41.586532+00:00',
-		content_type: 'PAGINA',
 		description: null,
 		title: 'qewqweqw',
 		id: 76,
@@ -85,7 +77,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-31T15:49:05.678252+00:00',
-		content_type: 'PAGINA',
 		description: null,
 		title: 'qweweq',
 		id: 78,
@@ -95,7 +86,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-02-03T14:47:22.718945+00:00',
-		content_type: 'PAGINA',
 		description: null,
 		title: 'wqewq',
 		id: 85,
@@ -105,7 +95,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-30T15:54:58.997813+00:00',
-		content_type: 'PAGINA',
 		description: null,
 		title: 'Test-pagina van Benjamón',
 		id: 77,
@@ -115,7 +104,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-02-11T13:37:49.376298+00:00',
-		content_type: 'PAGINA',
 		description: null,
 		title: 'wqe',
 		id: 105,
@@ -125,7 +113,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-02-09T20:53:07.289224+00:00',
-		content_type: 'PAGINA',
 		description: null,
 		title: 'weqw',
 		id: 97,
@@ -135,7 +122,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-02-11T14:12:16.357995+00:00',
-		content_type: 'PAGINA',
 		description: null,
 		title: 'both test 1 and test 2',
 		id: 106,
@@ -145,7 +131,6 @@ export const CONTENT_PAGES_MOCK: ContentPage[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-02-04T11:42:59.966439+00:00',
-		content_type: 'FAQ_ITEM',
 		description: 'test',
 		title: 'no labels test',
 		id: 86,

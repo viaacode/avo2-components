@@ -4,11 +4,15 @@ import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
 
 import { action } from '../../helpers';
 
-import { BlockPageOverview, ContentPage } from './BlockPageOverview';
+import { BlockPageOverview, ContentPageInfo } from './BlockPageOverview';
 import { CONTENT_PAGES_MOCK } from './BlockPageOverview.mock';
 
 const tabs = ['test1', 'test2'];
 const itemsPerPage = 2;
+const mockPages = CONTENT_PAGES_MOCK.map(page => ({
+	...page,
+	blocks: <p>Test content page blocks</p>,
+}));
 
 const BlockPageOverviewStoryComponent = ({
 	children,
@@ -21,21 +25,21 @@ const BlockPageOverviewStoryComponent = ({
 }) => {
 	const [currentPage, setCurrentPage] = useState<number>(initialPageIndex);
 	const [selectedTabs, setSelectedTabs] = useState<string[]>([]);
-	const [pages, setPages] = useState<ContentPage[]>(CONTENT_PAGES_MOCK.slice(0, itemsOnPage));
-	const [pageCount, setPageCount] = useState<number>(CONTENT_PAGES_MOCK.length / itemsOnPage);
+	const [pages, setPages] = useState<ContentPageInfo[]>(mockPages.slice(0, itemsOnPage));
+	const [pageCount, setPageCount] = useState<number>(mockPages.length / itemsOnPage);
 
 	useEffect(() => {
-		let filteredPages: ContentPage[];
+		let filteredPages: ContentPageInfo[];
 		if (selectedTabs.length) {
-			filteredPages = CONTENT_PAGES_MOCK.filter(page => {
+			filteredPages = mockPages.filter(page => {
 				return !!intersection(page.labels, selectedTabs).length;
 			});
 		} else {
-			filteredPages = CONTENT_PAGES_MOCK;
+			filteredPages = mockPages;
 		}
 		setPages(filteredPages.slice(itemsOnPage * currentPage, itemsOnPage * (currentPage + 1)));
 		setPageCount(Math.ceil(filteredPages.length / itemsOnPage));
-	}, [selectedTabs, currentPage]);
+	}, [selectedTabs, currentPage, itemsOnPage]);
 
 	return cloneElement(children, {
 		currentPage,
@@ -72,6 +76,11 @@ storiesOf('blocks/BlockPageOverview', module)
 	.add('BlockPageOverview menu list', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
 			<BlockPageOverview {...baseProps} />
+		</BlockPageOverviewStoryComponent>
+	))
+	.add('BlockPageOverview accordions', () => (
+		<BlockPageOverviewStoryComponent initialPageIndex={0}>
+			<BlockPageOverview {...baseProps} itemStyle="ACCORDION" />
 		</BlockPageOverviewStoryComponent>
 	))
 	.add('BlockPageOverview menu grid', () => (

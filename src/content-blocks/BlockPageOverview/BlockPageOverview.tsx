@@ -1,8 +1,9 @@
 import { format } from 'date-fns';
-import { flatten, groupBy, uniq } from 'lodash-es';
-import React, { FunctionComponent, ReactText } from 'react';
+import { flatten, uniq } from 'lodash-es';
+import React, { FunctionComponent, ReactNode, ReactText } from 'react';
 
 import {
+	Accordion,
 	BlockGrid,
 	BlockHeading,
 	BlockImageTitleTextButton,
@@ -17,24 +18,24 @@ import { GridItem } from '../BlockGrid/BlockGrid';
 
 export type ContentWidthSchema = 'REGULAR' | 'LARGE' | 'MEDIUM';
 
-export interface ContentPage {
+export interface ContentPageInfo {
 	id: number;
 	title: string;
 	description: string | null;
 	created_at: string;
-	content_type: string;
 	content_width: ContentWidthSchema;
 	// TODO add thumbnail_path to content page
 	thumbnail_path: string;
 	// TODO add labels to content page
 	labels: string[];
+	blocks?: ReactNode; // Client knows how to convert ContentBlockSchema[] into a ReactNode
 }
 
 export interface BlockPageOverviewProps extends DefaultProps {
 	tabs?: string[];
 	tabStyle?: 'ROUNDED_BADGES' | 'MENU_BAR';
 	allowMultiple?: boolean;
-	itemStyle?: 'GRID' | 'LIST';
+	itemStyle?: 'GRID' | 'LIST' | 'ACCORDION';
 	showTitle?: boolean;
 	showDescription?: boolean;
 	showDate?: boolean;
@@ -48,7 +49,7 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	onCurrentPageChanged: (newPage: number) => void;
 	pageCount: number;
 	itemsPerPage?: number;
-	pages: ContentPage[];
+	pages: ContentPageInfo[];
 	navigate?: (action: ButtonAction) => void;
 }
 
@@ -101,7 +102,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		onSelectedTabsChanged(newSelectedTabs.filter(tab => tab !== allLabel));
 	};
 
-	const handlePageClick = (page: ContentPage) => {
+	const handlePageClick = (page: ContentPageInfo) => {
 		if (navigate) {
 			navigate({
 				type: 'CONTENT_PAGE',
@@ -110,7 +111,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		}
 	};
 
-	const formatDateString = (dateString: string, page: ContentPage): string => {
+	const formatDateString = (dateString: string, page: ContentPageInfo): string => {
 		return dateString
 			.replace('%label%', page.labels[0])
 			.replace('%', format(new Date(page.created_at), 'd MMMM yyyy'));
@@ -135,7 +136,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		if (itemStyle === 'GRID') {
 			const uniqueLabels: string[] = uniq(flatten(pages.map((page): string[] => page.labels)));
 			const pagesByLabel = Object.fromEntries(
-				uniqueLabels.map((label: string): [string, ContentPage[]] => {
+				uniqueLabels.map((label: string): [string, ContentPageInfo[]] => {
 					return [label, pages.filter(page => page.labels.includes(label))];
 				})
 			);
@@ -154,7 +155,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 						)}
 						<BlockGrid
 							elements={(pagesByLabel[label] || []).map(
-								(page: ContentPage): GridItem => ({
+								(page: ContentPageInfo): GridItem => ({
 									title: showTitle ? page.title : undefined,
 									text: showDescription ? page.description || undefined : undefined,
 									source: page.thumbnail_path,
@@ -172,10 +173,20 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 				);
 			});
 		}
+		if (itemStyle === 'ACCORDION') {
+			return pages.map((page, index) => {
+				return (
+					<Accordion title={page.title} isOpen={false} key={`block-page-${page.id}`}>
+						{page.blocks}
+					</Accordion>
+				);
+			});
+		}
 	};
 
 	const renderHeader = () => {
-		if (tabs.length) {
+		// if only one tab, only show the content of that one tab, don't show the header
+		if (tabs.length > 1) {
 			// Add "all" option to the front
 			const extendedTabs = [allLabel, ...tabs];
 			let extendedSelectedTabs: string[] = selectedTabs;
