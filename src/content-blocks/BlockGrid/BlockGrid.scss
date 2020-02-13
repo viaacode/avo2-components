@@ -50,4 +50,12 @@
 			text-align: right;
 		}
 	}
+
+	&.item-align-left {
+		justify-content: flex-start;
+	}
+
+	&.item-align-right {
+		justify-content: flex-end;
+	}
 }

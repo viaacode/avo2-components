@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { groupBy } from 'lodash-es';
+import { flatten, groupBy, uniq } from 'lodash-es';
 import React, { FunctionComponent, ReactText } from 'react';
 
 import {
@@ -7,6 +7,7 @@ import {
 	BlockHeading,
 	BlockImageTitleTextButton,
 	ButtonAction,
+	Pagination,
 	Spacer,
 	Tabs,
 	TagList,
@@ -16,7 +17,7 @@ import { GridItem } from '../BlockGrid/BlockGrid';
 
 export type ContentWidthSchema = 'REGULAR' | 'LARGE' | 'MEDIUM';
 
-interface ContentPage {
+export interface ContentPage {
 	id: number;
 	title: string;
 	description: string | null;
@@ -34,15 +35,20 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	tabStyle?: 'ROUNDED_BADGES' | 'MENU_BAR';
 	allowMultiple?: boolean;
 	contentType: string; // lookup options in lookup.enum_content_types
-	itemStyle?: 'grid' | 'list';
+	itemStyle?: 'GRID' | 'LIST';
 	showTitle?: boolean;
 	showDescription?: boolean;
 	showDate?: boolean;
 	dateString?: string;
 	buttonLabel?: string;
 	allLabel?: string;
+	noLabel?: string;
 	selectedTabs: string[];
-	selectedTabsChanged: (selectedTabs: string[]) => void;
+	onSelectedTabsChanged: (selectedTabs: string[]) => void;
+	currentPage: number;
+	onCurrentPageChanged: (newPage: number) => void;
+	pageCount: number;
+	itemsPerPage?: number;
 	pages: ContentPage[];
 	navigate?: (action: ButtonAction) => void;
 }
@@ -52,33 +58,48 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	tabStyle = 'MENU_BAR',
 	allowMultiple = false,
 	itemStyle = 'list',
-	showTitle = false,
-	showDescription = false,
+	showTitle = true,
+	showDescription = true,
 	showDate = false,
 	dateString = 'Geplaatst in %label% op %date%',
 	buttonLabel = 'Lees meer',
 	allLabel = 'alle',
+	noLabel = 'Overige',
 	selectedTabs,
-	selectedTabsChanged,
+	onSelectedTabsChanged,
+	currentPage = 0,
+	onCurrentPageChanged,
+	pageCount,
 	pages = [],
 	navigate,
 }) => {
 	const handleTabClick = (tab: string) => {
+		if (tab === allLabel) {
+			// Click on all selected tabs => clear other filters automatically
+			// Empty selected tabs signifies to the outsides: show all items / do not apply any label filters
+			onSelectedTabsChanged([]);
+			return;
+		}
+
+		let newSelectedTabs: string[];
 		if (allowMultiple) {
 			const indexOf = selectedTabs.indexOf(tab);
 			if (indexOf !== -1) {
 				// already in the selected tabs => remove the tab
 				const newTabs = [...selectedTabs];
 				newTabs.splice(indexOf, 1);
-				selectedTabsChanged(newTabs);
+				newSelectedTabs = newTabs;
 			} else {
 				// add the tab
-				selectedTabsChanged([...selectedTabs, tab]);
+				newSelectedTabs = [...selectedTabs, tab];
 			}
 		} else {
 			// Replace the current selected tab
-			selectedTabsChanged([tab]);
+			newSelectedTabs = [tab];
 		}
+
+		// Empty selected tabs signifies to the outsides: show all items / do not apply any label filters
+		onSelectedTabsChanged(newSelectedTabs.filter(tab => tab !== allLabel));
 	};
 
 	const handlePageClick = (page: ContentPage) => {
@@ -97,7 +118,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	};
 
 	const renderPages = () => {
-		if (itemStyle === 'list') {
+		if (itemStyle === 'LIST') {
 			return pages.map(page => {
 				return (
 					<BlockImageTitleTextButton
@@ -111,47 +132,66 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 				);
 			});
 		}
-		if (itemStyle === 'grid') {
-			const pagesByLabel = groupBy(pages, page => page.labels[0]);
-			return Object.keys(pagesByLabel)
-				.sort()
-				.map(label => {
-					return (
-						<Spacer margin="top-large">
-							<BlockHeading type={'h2'}>{label}</BlockHeading>
-							<BlockGrid
-								elements={pagesByLabel[label].map(
-									(page: ContentPage): GridItem => ({
-										title: showTitle ? page.title : undefined,
-										text: showDescription ? page.description || undefined : undefined,
-										source: page.thumbnail_path,
-										action: { type: 'CONTENT_PAGE', value: page.id },
-									})
-								)}
-								itemWidth={307}
-								imageHeight={172}
-								imageWidth={307}
-								navigate={navigate}
-								fill="cover"
-								textAlign="left"
-							/>
-						</Spacer>
-					);
-				});
+		if (itemStyle === 'GRID') {
+			const uniqueLabels: string[] = uniq(flatten(pages.map((page): string[] => page.labels)));
+			const pagesByLabel = Object.fromEntries(
+				uniqueLabels.map((label: string): [string, ContentPage[]] => {
+					return [label, pages.filter(page => page.labels.includes(label))];
+				})
+			);
+			// Put the pages that do not have a label under their own category
+			pagesByLabel[noLabel] = pages.filter(page => !page.labels || !page.labels.length);
+			const showAllLabels = !selectedTabs.length || selectedTabs[0] === allLabel;
+			const labelsToShow = showAllLabels ? [...tabs, noLabel] : selectedTabs;
+
+			return labelsToShow.map(label => {
+				return (
+					<Spacer margin="top-extra-large" key={`block-page-label-${label}`}>
+						{(showAllLabels || allowMultiple) && (
+							<Spacer margin="left-small">
+								<BlockHeading type={'h2'}>{label}</BlockHeading>
+							</Spacer>
+						)}
+						<BlockGrid
+							elements={(pagesByLabel[label] || []).map(
+								(page: ContentPage): GridItem => ({
+									title: showTitle ? page.title : undefined,
+									text: showDescription ? page.description || undefined : undefined,
+									source: page.thumbnail_path,
+									action: { type: 'CONTENT_PAGE', value: page.id },
+								})
+							)}
+							itemWidth={307}
+							imageHeight={172}
+							imageWidth={307}
+							navigate={navigate}
+							fill="cover"
+							textAlign="left"
+						/>
+					</Spacer>
+				);
+			});
 		}
 	};
 
 	const renderHeader = () => {
 		if (tabs.length) {
+			// Add "all" option to the front
 			const extendedTabs = [allLabel, ...tabs];
+			let extendedSelectedTabs: string[] = selectedTabs;
+			if (!extendedSelectedTabs || !extendedSelectedTabs.length) {
+				// Select the "all" option if no tabs are selected
+				extendedSelectedTabs = [extendedTabs[0]];
+			}
 			if (tabStyle === 'ROUNDED_BADGES') {
 				return (
 					<TagList
 						tags={extendedTabs.map(tab => ({
 							id: tab,
 							label: tab,
-							active: selectedTabs.includes(tab),
+							active: extendedSelectedTabs.includes(tab),
 						}))}
+						swatches={false}
 						onTagClicked={(tagId: string | number) => handleTabClick(tagId as string)}
 					/>
 				);
@@ -162,7 +202,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 						tabs={extendedTabs.map(tab => ({
 							id: tab,
 							label: tab,
-							active: selectedTabs.includes(tab),
+							active: extendedSelectedTabs.includes(tab),
 						}))}
 						onClick={(tabId: ReactText) => handleTabClick(tabId.toString())}
 					/>
@@ -177,6 +217,14 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		<div className="c-content-page-overview-block">
 			{renderHeader()}
 			{renderPages()}
+			{pageCount > 1 && (
+				<Pagination
+					pageCount={pageCount}
+					currentPage={currentPage}
+					displayCount={5}
+					onPageChange={onCurrentPageChanged}
+				/>
+			)}
 		</div>
 	);
 };

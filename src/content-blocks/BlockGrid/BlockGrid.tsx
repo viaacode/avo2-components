@@ -20,6 +20,7 @@ export interface BlockGridProps extends DefaultProps {
 	itemWidth?: number;
 	fill?: 'cover' | 'contain' | 'auto';
 	textAlign?: 'left' | 'center' | 'right';
+	itemAlign?: 'left' | 'center' | 'right';
 	className?: string;
 	navigate?: (action: ButtonAction) => void;
 }
@@ -31,14 +32,22 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 	itemWidth = 200,
 	fill = 'cover',
 	textAlign = 'center',
+	itemAlign = 'center',
 	className,
 	navigate,
 }) => {
 	return (
-		<div className={classnames('c-block-grid', `text-align-${textAlign}`, className)}>
+		<div
+			className={classnames(
+				'c-block-grid',
+				`text-align-${textAlign}`,
+				`item-align-${textAlign}`,
+				className
+			)}
+		>
 			{elements.map(element => (
 				<div
-					key={`block-grid-${element.source}`}
+					key={`block-grid-${element.title}-${element.source}`}
 					className={classnames('c-block-grid__item', {
 						'u-clickable': !!navigate && !!element.action,
 					})}
