@@ -128,6 +128,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 						text={showDescription ? page.description || undefined : undefined}
 						buttonLabel={buttonLabel}
 						onClick={() => handlePageClick(page)}
+						key={`content-block-page-${page.id}`}
 					/>
 				);
 			});
