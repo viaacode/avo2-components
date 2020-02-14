@@ -17,6 +17,8 @@ import { DefaultProps } from '../../types';
 import { GridItem } from '../BlockGrid/BlockGrid';
 
 export type ContentWidthSchema = 'REGULAR' | 'LARGE' | 'MEDIUM';
+export type ContentTabStyle = 'ROUNDED_BADGES' | 'MENU_BAR';
+export type ContentItemStyle = 'GRID' | 'LIST' | 'ACCORDION';
 
 export interface ContentPageInfo {
 	id: number;
@@ -33,9 +35,9 @@ export interface ContentPageInfo {
 
 export interface BlockPageOverviewProps extends DefaultProps {
 	tabs?: string[];
-	tabStyle?: 'ROUNDED_BADGES' | 'MENU_BAR';
+	tabStyle?: ContentTabStyle;
 	allowMultiple?: boolean;
-	itemStyle?: 'GRID' | 'LIST' | 'ACCORDION';
+	itemStyle?: ContentItemStyle;
 	showTitle?: boolean;
 	showDescription?: boolean;
 	showDate?: boolean;
