@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
-import { flatten, uniq } from 'lodash-es';
-import React, { FunctionComponent, ReactNode, ReactText } from 'react';
+import { findIndex, flatten, uniqBy } from 'lodash-es';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import {
 	Accordion,
@@ -26,15 +26,20 @@ export interface ContentPageInfo {
 	description: string | null;
 	created_at: string;
 	content_width: ContentWidthSchema;
-	// TODO add thumbnail_path to content page
+	// TODO add thumbnail_path to content page in database
 	thumbnail_path: string;
-	// TODO add labels to content page
-	labels: string[];
+	// TODO add labels to content page in database
+	labels: LabelObj[];
 	blocks?: ReactNode; // Client knows how to convert ContentBlockSchema[] into a ReactNode
 }
 
+export type LabelObj = {
+	label: string;
+	id: number;
+};
+
 export interface BlockPageOverviewProps extends DefaultProps {
-	tabs?: string[];
+	tabs?: { label: string; id: number }[];
 	tabStyle?: ContentTabStyle;
 	allowMultiple?: boolean;
 	itemStyle?: ContentItemStyle;
@@ -45,8 +50,8 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	buttonLabel?: string;
 	allLabel?: string;
 	noLabel?: string;
-	selectedTabs: string[];
-	onSelectedTabsChanged: (selectedTabs: string[]) => void;
+	selectedTabs: LabelObj[];
+	onSelectedTabsChanged: (selectedTabs: LabelObj[]) => void;
 	currentPage: number;
 	onCurrentPageChanged: (newPage: number) => void;
 	pageCount: number;
@@ -75,17 +80,20 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	pages = [],
 	navigate,
 }) => {
-	const handleTabClick = (tab: string) => {
-		if (tab === allLabel) {
+	const allLabelObj = { label: allLabel, id: -2 };
+	const noLabelObj = { label: noLabel, id: -2 };
+
+	const handleTabClick = (tab: LabelObj | undefined) => {
+		if (!tab || tab.id === allLabelObj.id) {
 			// Click on all selected tabs => clear other filters automatically
 			// Empty selected tabs signifies to the outsides: show all items / do not apply any label filters
 			onSelectedTabsChanged([]);
 			return;
 		}
 
-		let newSelectedTabs: string[];
+		let newSelectedTabs: LabelObj[];
 		if (allowMultiple) {
-			const indexOf = selectedTabs.indexOf(tab);
+			const indexOf = findIndex(selectedTabs, { id: tab.id });
 			if (indexOf !== -1) {
 				// already in the selected tabs => remove the tab
 				const newTabs = [...selectedTabs];
@@ -101,7 +109,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		}
 
 		// Empty selected tabs signifies to the outsides: show all items / do not apply any label filters
-		onSelectedTabsChanged(newSelectedTabs.filter(tab => tab !== allLabel));
+		onSelectedTabsChanged(newSelectedTabs.filter(tab => tab.id !== allLabelObj.id));
 	};
 
 	const handlePageClick = (page: ContentPageInfo) => {
@@ -115,7 +123,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 
 	const formatDateString = (dateString: string, page: ContentPageInfo): string => {
 		return dateString
-			.replace('%label%', page.labels[0])
+			.replace('%label%', page.labels[0].label)
 			.replace('%', format(new Date(page.created_at), 'd MMMM yyyy'));
 	};
 
@@ -136,27 +144,35 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 			});
 		}
 		if (itemStyle === 'GRID') {
-			const uniqueLabels: string[] = uniq(flatten(pages.map((page): string[] => page.labels)));
-			const pagesByLabel = Object.fromEntries(
-				uniqueLabels.map((label: string): [string, ContentPageInfo[]] => {
-					return [label, pages.filter(page => page.labels.includes(label))];
+			const uniqueLabels: LabelObj[] = uniqBy(
+				flatten(pages.map((page): LabelObj[] => page.labels)),
+				'id'
+			);
+			const pagesByLabel: { [labelId: number]: ContentPageInfo[] } = Object.fromEntries(
+				uniqueLabels.map((labelObj: LabelObj): [number, ContentPageInfo[]] => {
+					return [
+						labelObj.id,
+						pages.filter(page =>
+							page.labels.map(pageLabelObj => pageLabelObj.id).includes(labelObj.id)
+						),
+					];
 				})
 			);
 			// Put the pages that do not have a label under their own category
-			pagesByLabel[noLabel] = pages.filter(page => !page.labels || !page.labels.length);
-			const showAllLabels = !selectedTabs.length || selectedTabs[0] === allLabel;
-			const labelsToShow = showAllLabels ? [...tabs, noLabel] : selectedTabs;
+			pagesByLabel[noLabelObj.id] = pages.filter(page => !page.labels || !page.labels.length);
+			const showAllLabels = !selectedTabs.length || selectedTabs[0].id === allLabelObj.id;
+			const labelsToShow: LabelObj[] = showAllLabels ? [...tabs, noLabelObj] : selectedTabs;
 
-			return labelsToShow.map(label => {
+			return labelsToShow.map(labelObj => {
 				return (
-					<Spacer margin="top-extra-large" key={`block-page-label-${label}`}>
+					<Spacer margin="top-extra-large" key={`block-page-label-${labelObj.id}`}>
 						{(showAllLabels || allowMultiple) && (
 							<Spacer margin="left-small">
-								<BlockHeading type={'h2'}>{label}</BlockHeading>
+								<BlockHeading type={'h2'}>{labelObj.label}</BlockHeading>
 							</Spacer>
 						)}
 						<BlockGrid
-							elements={(pagesByLabel[label] || []).map(
+							elements={(pagesByLabel[labelObj.id] || []).map(
 								(page: ContentPageInfo): GridItem => ({
 									title: showTitle ? page.title : undefined,
 									text: showDescription ? page.description || undefined : undefined,
@@ -176,7 +192,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 			});
 		}
 		if (itemStyle === 'ACCORDION') {
-			return pages.map((page, index) => {
+			return pages.map(page => {
 				return (
 					<Accordion title={page.title} isOpen={false} key={`block-page-${page.id}`}>
 						{page.blocks}
@@ -190,8 +206,8 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		// if only one tab, only show the content of that one tab, don't show the header
 		if (tabs.length > 1) {
 			// Add "all" option to the front
-			const extendedTabs = [allLabel, ...tabs];
-			let extendedSelectedTabs: string[] = selectedTabs;
+			const extendedTabs = [allLabelObj, ...tabs];
+			let extendedSelectedTabs: LabelObj[] = selectedTabs;
 			if (!extendedSelectedTabs || !extendedSelectedTabs.length) {
 				// Select the "all" option if no tabs are selected
 				extendedSelectedTabs = [extendedTabs[0]];
@@ -200,12 +216,14 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 				return (
 					<TagList
 						tags={extendedTabs.map(tab => ({
-							id: tab,
-							label: tab,
-							active: extendedSelectedTabs.includes(tab),
+							id: tab.id,
+							label: tab.label,
+							active: !!extendedSelectedTabs.find(extendedTab => extendedTab.id === tab.id),
 						}))}
 						swatches={false}
-						onTagClicked={(tagId: string | number) => handleTabClick(tagId as string)}
+						onTagClicked={(tagId: string | number) =>
+							handleTabClick(tabs.find(tab => tab.id === tagId))
+						}
 					/>
 				);
 			}
@@ -213,11 +231,11 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 				return (
 					<Tabs
 						tabs={extendedTabs.map(tab => ({
-							id: tab,
-							label: tab,
-							active: extendedSelectedTabs.includes(tab),
+							id: tab.id,
+							label: tab.label,
+							active: !!extendedSelectedTabs.find(extendedTab => extendedTab.id === tab.id),
 						}))}
-						onClick={(tabId: ReactText) => handleTabClick(tabId.toString())}
+						onClick={tabId => handleTabClick(tabs.find(tab => tab.id === tabId))}
 					/>
 				);
 			}

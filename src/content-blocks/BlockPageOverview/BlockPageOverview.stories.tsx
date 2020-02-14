@@ -1,13 +1,16 @@
 import { storiesOf } from '@storybook/react';
-import { intersection } from 'lodash-es';
+import { intersectionBy } from 'lodash-es';
 import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
 
 import { action } from '../../helpers';
 
-import { BlockPageOverview, ContentPageInfo } from './BlockPageOverview';
+import { BlockPageOverview, ContentPageInfo, LabelObj } from './BlockPageOverview';
 import { CONTENT_PAGES_MOCK } from './BlockPageOverview.mock';
 
-const tabs = ['test1', 'test2'];
+const tabs = [
+	{ label: 'test1', id: 1 },
+	{ label: 'test2', id: 2 },
+];
 const itemsPerPage = 2;
 const mockPages = CONTENT_PAGES_MOCK.map(page => ({
 	...page,
@@ -24,7 +27,7 @@ const BlockPageOverviewStoryComponent = ({
 	itemsOnPage?: number;
 }) => {
 	const [currentPage, setCurrentPage] = useState<number>(initialPageIndex);
-	const [selectedTabs, setSelectedTabs] = useState<string[]>([]);
+	const [selectedTabs, setSelectedTabs] = useState<LabelObj[]>([]);
 	const [pages, setPages] = useState<ContentPageInfo[]>(mockPages.slice(0, itemsOnPage));
 	const [pageCount, setPageCount] = useState<number>(mockPages.length / itemsOnPage);
 
@@ -32,7 +35,8 @@ const BlockPageOverviewStoryComponent = ({
 		let filteredPages: ContentPageInfo[];
 		if (selectedTabs.length) {
 			filteredPages = mockPages.filter(page => {
-				return !!intersection(page.labels, selectedTabs).length;
+				return !!intersectionBy(page.labels, selectedTabs, (labelObj: LabelObj) => labelObj.id)
+					.length;
 			});
 		} else {
 			filteredPages = mockPages;
@@ -50,7 +54,7 @@ const BlockPageOverviewStoryComponent = ({
 			action('page changed')(pageIndex);
 			setCurrentPage(pageIndex);
 		},
-		onSelectedTabsChanged: (tabs: string[]) => {
+		onSelectedTabsChanged: (tabs: LabelObj[]) => {
 			action('tabs changed')(tabs);
 			setSelectedTabs(tabs);
 			setCurrentPage(0);

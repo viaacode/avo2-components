@@ -44,6 +44,7 @@ export {
 	ContentPageInfo,
 	ContentTabStyle,
 	ContentItemStyle,
+	LabelObj,
 } from './content-blocks/BlockPageOverview/BlockPageOverview';
 export {
 	BlockImageTitleTextButton,

@@ -8,7 +8,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'Test buttons',
 		id: 52,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test1'],
+		labels: [{ label: 'test1', id: 1 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -17,7 +17,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'Testland',
 		id: 53,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test1'],
+		labels: [{ label: 'test1', id: 1 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -26,7 +26,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'Ontdek',
 		id: 31,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test1'],
+		labels: [{ label: 'test1', id: 1 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -35,7 +35,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'Hulp',
 		id: 32,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test1'],
+		labels: [{ label: 'test1', id: 1 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -45,7 +45,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'Over ons｜Het Archief voor Onderwijs',
 		id: 36,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test1'],
+		labels: [{ label: 'test1', id: 1 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -54,7 +54,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'test',
 		id: 73,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test1'],
+		labels: [{ label: 'test1', id: 1 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -63,7 +63,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'FAQ pagina met blocks',
 		id: 15,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test2'],
+		labels: [{ label: 'test2', id: 1 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -72,7 +72,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'qewqweqw',
 		id: 76,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test2'],
+		labels: [{ label: 'test2', id: 1 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -81,7 +81,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'qweweq',
 		id: 78,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test2'],
+		labels: [{ label: 'test2', id: 2 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -90,7 +90,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'wqewq',
 		id: 85,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test2'],
+		labels: [{ label: 'test2', id: 2 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -99,7 +99,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'Test-pagina van Benjamón',
 		id: 77,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test2'],
+		labels: [{ label: 'test2', id: 2 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -108,7 +108,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'wqe',
 		id: 105,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test2'],
+		labels: [{ label: 'test2', id: 2 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -117,7 +117,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'weqw',
 		id: 97,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test2'],
+		labels: [{ label: 'test2', id: 2 }],
 	},
 	{
 		content_width: 'REGULAR',
@@ -126,7 +126,10 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		title: 'both test 1 and test 2',
 		id: 106,
 		thumbnail_path: '/images/500x200.svg',
-		labels: ['test1', 'test2'],
+		labels: [
+			{ label: 'test1', id: 1 },
+			{ label: 'test2', id: 2 },
+		],
 	},
 	{
 		content_width: 'REGULAR',
