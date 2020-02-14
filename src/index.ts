@@ -39,6 +39,13 @@ export { CTA } from './components/CTA/CTA';
 export { BlockImage, BlockImageProps } from './content-blocks/BlockImage/BlockImage';
 export { BlockGrid, BlockGridProps } from './content-blocks/BlockGrid/BlockGrid';
 export {
+	BlockPageOverview,
+	BlockPageOverviewProps,
+	ContentPageInfo,
+	ContentTabStyle,
+	ContentItemStyle,
+} from './content-blocks/BlockPageOverview/BlockPageOverview';
+export {
 	BlockImageTitleTextButton,
 	BlockImageTitleTextButtonProps,
 } from './content-blocks/BlockImageTitleTextButton/BlockImageTitleTextButton';
