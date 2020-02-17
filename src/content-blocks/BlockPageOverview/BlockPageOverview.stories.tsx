@@ -106,4 +106,9 @@ storiesOf('blocks/BlockPageOverview', module)
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
 			<BlockPageOverview {...baseProps} tabStyle={'ROUNDED_BADGES'} allowMultiple />
 		</BlockPageOverviewStoryComponent>
+	))
+	.add('BlockPageOverview show date', () => (
+		<BlockPageOverviewStoryComponent initialPageIndex={0}>
+			<BlockPageOverview {...baseProps} showDate />
+		</BlockPageOverviewStoryComponent>
 	));

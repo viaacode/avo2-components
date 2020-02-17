@@ -124,7 +124,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	const formatDateString = (dateString: string, page: ContentPageInfo): string => {
 		return dateString
 			.replace('%label%', page.labels[0].label)
-			.replace('%', format(new Date(page.created_at), 'd MMMM yyyy'));
+			.replace('%date%', format(new Date(page.created_at), 'd MMMM yyyy'));
 	};
 
 	const renderPages = () => {
