@@ -2,19 +2,16 @@ import { format } from 'date-fns';
 import { findIndex, flatten, uniqBy } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import {
-	Accordion,
-	BlockGrid,
-	BlockHeading,
-	BlockImageTitleTextButton,
-	ButtonAction,
-	Pagination,
-	Spacer,
-	Tabs,
-	TagList,
-} from '../..';
-import { DefaultProps } from '../../types';
-import { GridItem } from '../BlockGrid/BlockGrid';
+import { Accordion } from '../../components/Accordion/Accordion';
+import { Pagination } from '../../components/Pagination/Pagination';
+import { Spacer } from '../../components/Spacer/Spacer';
+import { Tabs } from '../../components/Tabs/Tabs';
+import { TagList } from '../../components/TagList/TagList';
+import { ButtonAction, DefaultProps } from '../../types';
+
+import { BlockGrid, GridItem } from '../BlockGrid/BlockGrid';
+import { BlockHeading } from '../BlockHeading/BlockHeading';
+import { BlockImageTitleTextButton } from '../BlockImageTitleTextButton/BlockImageTitleTextButton';
 
 export type ContentWidthSchema = 'REGULAR' | 'LARGE' | 'MEDIUM';
 export type ContentTabStyle = 'ROUNDED_BADGES' | 'MENU_BAR';

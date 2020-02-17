@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
 import { Spacer } from '../../components/Spacer/Spacer';
-import { ButtonAction, DefaultProps } from '../../types';
+import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
 
 import './BlockGrid.scss';
 
@@ -19,8 +19,8 @@ export interface BlockGridProps extends DefaultProps {
 	imageHeight?: number;
 	itemWidth?: number;
 	fill?: 'cover' | 'contain' | 'auto';
-	textAlign?: 'left' | 'center' | 'right';
-	itemAlign?: 'left' | 'center' | 'right';
+	textAlign?: AlignOptions;
+	itemAlign?: AlignOptions;
 	className?: string;
 	navigate?: (action: ButtonAction) => void;
 }
