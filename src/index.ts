@@ -134,6 +134,10 @@ export { BlockRichText, BlockRichTextProps } from './content-blocks/BlockRichTex
 export { BlockButtons, BlockButtonsProps } from './content-blocks/BlockButtons/BlockButtons';
 export { BlockCTAs, BlockCTAsProps } from './content-blocks/BlockCTAs/BlockCTAs';
 export {
+	BlockProjectsSpotlight,
+	BlockProjectsSpotlightProps,
+} from './content-blocks/BlockProjectsSpotlight/BlockProjectsSpotlight';
+export {
 	BlockFlowPlayer,
 	BlockFlowPlayerProps,
 } from './content-blocks/BlockFlowPlayer/BlockFlowPlayer';

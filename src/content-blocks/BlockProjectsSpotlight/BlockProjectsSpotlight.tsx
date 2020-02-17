@@ -14,12 +14,12 @@ export interface ImageInfo {
 	className?: string;
 }
 
-export interface BlockImageProps extends DefaultProps {
+export interface BlockProjectsSpotlightProps extends DefaultProps {
 	imageInfos: ImageInfo[];
 	navigate?: (buttonAction: ButtonAction) => void;
 }
 
-export const BlockProjectsSpotlight: FunctionComponent<BlockImageProps> = ({
+export const BlockProjectsSpotlight: FunctionComponent<BlockProjectsSpotlightProps> = ({
 	imageInfos,
 	navigate,
 	className,
