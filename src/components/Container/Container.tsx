@@ -2,12 +2,12 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps, Orientation } from '../../types';
 
 import './Container.scss';
 
 export interface ContainerProps extends DefaultProps {
-	mode?: 'horizontal' | 'vertical';
+	mode?: Orientation;
 	size?: 'small' | 'medium' | 'large';
 	background?: 'white' | 'alt' | 'inverse';
 	bordered?: boolean;

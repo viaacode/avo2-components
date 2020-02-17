@@ -2,6 +2,10 @@
 @import '../../styles/settings/variables';
 
 .c-select {
+	.c-select__menu {
+		z-index: 12;
+	}
+
 	&.c-select--is-disabled {
 		.c-select__control {
 			background: $color-gray-100;

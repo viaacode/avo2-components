@@ -1,6 +1,9 @@
 @import '../../styles/settings/colors';
 
 .c-tags-input {
+	.c-tags-input__menu {
+		z-index: 12;
+	}
 
 	&.c-tags-input--is-disabled {
 		.c-tags-input__control {

@@ -22,3 +22,5 @@ export interface ButtonAction {
 	type: ContentPickerType;
 	value: string | number;
 }
+
+export type Orientation = 'horizontal' | 'vertical';
