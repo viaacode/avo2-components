@@ -1,0 +1,47 @@
+@import '../../styles/settings/colors';
+
+.o-projects-spotlight {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+	grid-template-areas: "primary secondary-1" "primary secondary-2";
+	align-items: stretch;
+	justify-items: stretch;
+	height: 400px;
+
+	.c-project-spotlight-primary {
+		grid-area: primary;
+	}
+
+	.c-project-spotlight-secondary {
+		&:first-child {
+			grid-area: secondary-1;
+		}
+
+		&:last-child {
+			grid-area: secondary-2;
+		}
+	}
+
+	[class^="c-project-spotlight"] {
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		position: relative;
+	}
+
+	p {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		height: 40px;
+		line-height: 40px;
+		background-color: rgba(0, 0, 0, 0.42);
+		padding-left: 10px;
+		color: white;
+		text-decoration: none;
+	}
+}
