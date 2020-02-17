@@ -37,6 +37,7 @@ export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
 export { Container } from './components/Container/Container';
 export { CTA } from './components/CTA/CTA';
 export { BlockImage, BlockImageProps } from './content-blocks/BlockImage/BlockImage';
+export { BlockGrid, BlockGridProps } from './content-blocks/BlockGrid/BlockGrid';
 export {
 	BlockImageTitleTextButton,
 	BlockImageTitleTextButtonProps,
