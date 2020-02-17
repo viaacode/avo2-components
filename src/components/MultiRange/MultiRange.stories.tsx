@@ -50,4 +50,9 @@ storiesOf('components/MultiRange', module)
 		<MultiRangeStoryComponent defaultValues={[20]}>
 			<MultiRange />
 		</MultiRangeStoryComponent>
+	))
+	.add('MultiRange with number field', () => (
+		<MultiRangeStoryComponent defaultValues={[20]}>
+			<MultiRange showNumber />
+		</MultiRangeStoryComponent>
 	));

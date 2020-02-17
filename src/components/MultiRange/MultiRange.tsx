@@ -3,6 +3,7 @@ import { getTrackBackground, Range } from 'react-range';
 
 import classnames from 'classnames';
 
+import { TextInput } from '../../components/TextInput/TextInput';
 import { DefaultProps } from '../../types';
 
 import './MultiRange.scss';
@@ -15,6 +16,7 @@ export interface MultiRangeProps extends DefaultProps {
 	min?: number;
 	max?: number;
 	allowOverlap?: boolean;
+	showNumber?: boolean;
 	onChange?: (values: number[]) => void;
 }
 
@@ -27,8 +29,18 @@ export const MultiRange: FunctionComponent<MultiRangeProps> = ({
 	min = 0,
 	max = 100,
 	allowOverlap = false,
+	showNumber = false,
 	onChange = () => {},
 }) => {
+	const handleInputChanged = (value: string) => {
+		try {
+			const val = parseInt(value, 10);
+			onChange([Math.min(Math.max(val, min), max)]);
+		} catch (err) {
+			console.error('Multirange value must be number');
+		}
+	};
+
 	const classes = classnames('c-input-range', className, { 'c-input-range__disabled': disabled });
 
 	const sortedValues = [...values];
@@ -86,6 +98,7 @@ export const MultiRange: FunctionComponent<MultiRangeProps> = ({
 					/>
 				)}
 			/>
+			{showNumber && <TextInput value={values[0].toString()} onChange={handleInputChanged} />}
 		</div>
 	);
 };
