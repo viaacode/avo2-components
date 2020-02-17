@@ -62,41 +62,30 @@
 	.c-media-card__title {
 		color: $color-teal-bright;
 
-		 a {
+		a {
 			color: inherit;
-		 }
+		}
+	}
+
+	&.c-media-card--collection {
+		.c-media-card__title {
+			color: $color-ocean-green;
+		}
+	}
+
+	&.c-media-card--video {
+		.c-media-card__title {
+			color: $color-night-blue;
+		}
+	}
+
+	&.c-media-card--audio {
+		.c-media-card__title {
+			color: $color-teal-bright;
+		}
 	}
 }
 
-.c-media-card--collection:hover {
-	.c-media-card__title {
-		color: $color-ocean-green;
-
-		 a {
-			color: inherit;
-		 }
-	}
-}
-
-.c-media-card--video:hover {
-	.c-media-card__title {
-		color: $color-night-blue;
-
-		 a {
-			color: inherit;
-		 }
-	}
-}
-
-.c-media-card--audio:hover {
-	.c-media-card__title {
-		color: $color-teal-bright;
-
-		 a {
-			color: inherit;
-		 }
-	}
-}
 
 /* Different thumbnail size for folders
    ========================================================================== */
