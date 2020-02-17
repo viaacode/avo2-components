@@ -136,6 +136,7 @@ export { BlockCTAs, BlockCTAsProps } from './content-blocks/BlockCTAs/BlockCTAs'
 export {
 	BlockProjectsSpotlight,
 	BlockProjectsSpotlightProps,
+	ImageInfo,
 } from './content-blocks/BlockProjectsSpotlight/BlockProjectsSpotlight';
 export {
 	BlockFlowPlayer,
