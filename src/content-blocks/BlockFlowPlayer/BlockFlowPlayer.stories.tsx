@@ -6,7 +6,7 @@ import { MOCK_FLOW_PLAYER_PROPS } from '../../components/FlowPlayer/FlowPlayer.m
 
 import { BlockFlowPlayer } from './BlockFlowPlayer';
 
-storiesOf('BlockFlowPlayer', module)
+storiesOf('blocks/BlockFlowPlayer', module)
 	.addParameters({ jest: ['BlockFlowPlayer'] })
 	.add('BlockFlowPlayer', () => (
 		<div className="o-grid-col-bp3-4">
