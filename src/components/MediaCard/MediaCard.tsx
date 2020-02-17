@@ -4,18 +4,16 @@ import classnames from 'classnames';
 
 import { useSlot } from '../../hooks/useSlot';
 
-import { DefaultProps, EnglishContentType } from '../../types';
+import { DefaultProps, EnglishContentType, Orientation } from '../../types';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 import './MediaCard.scss';
-
-export type MediaCardOrientation = 'horizontal' | 'vertical';
 
 export interface MediaCardProps extends DefaultProps {
 	title: string;
 	category: EnglishContentType;
 	children?: ReactNode;
-	orientation?: MediaCardOrientation;
+	orientation?: Orientation;
 	onClick?: () => void;
 }
 
