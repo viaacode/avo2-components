@@ -11,18 +11,31 @@ import './BlockImage.scss';
 export interface BlockImageProps extends DefaultProps {
 	imageSource: string;
 	imageDescription?: string;
-	width?: 'full-width';
+	title?: string;
+	text?: string;
+	width?: 'full-width' | '500px' | '400px';
 }
 
 export const BlockImage: FunctionComponent<BlockImageProps> = ({
 	className,
 	imageSource,
 	imageDescription = '',
+	title = '',
+	text = '',
 	width = 'full-width',
 }) => {
 	return (
-		<Container className={classnames(className, 'o-container-vertical-image')} mode="vertical">
-			<Image src={imageSource} alt={imageDescription} wide={!!width} />
+		<Container
+			className={classnames(
+				className,
+				'o-container-vertical-image',
+				`o-image-block-width-${width}`
+			)}
+			mode="vertical"
+		>
+			<Image src={imageSource} alt={imageDescription || title || text} wide />
+			{title && <h3>{title}</h3>}
+			{text && <p className="a-block-image-text">{text}</p>}
 		</Container>
 	);
 };
