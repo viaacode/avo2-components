@@ -15,30 +15,33 @@ export interface ImageInfo {
 }
 
 export interface BlockProjectsSpotlightProps extends DefaultProps {
-	imageInfos: ImageInfo[];
+	elements: ImageInfo[];
 	navigate?: (buttonAction: ButtonAction) => void;
 }
 
 export const BlockProjectsSpotlight: FunctionComponent<BlockProjectsSpotlightProps> = ({
-	imageInfos,
+	elements,
 	navigate,
 	className,
 }) => {
 	const navigateToProject = (index: number) => {
-		const action = get(imageInfos, [index, 'buttonAction']);
+		const action = get(elements, [index, 'buttonAction']);
 		if (action && navigate) {
 			navigate(action);
 		}
 	};
 
 	function renderProject(index: number, type: 'primary' | 'secondary') {
+		if (!elements[index]) {
+			return null;
+		}
 		return (
 			<div
 				className={classnames(`c-project-spotlight-${type}`, { 'u-clickable': !!navigate })}
-				style={{ backgroundImage: `url(${get(imageInfos, [index, 'image'])})` }}
-				onClick={() => navigateToProject(0)}
+				style={{ backgroundImage: `url(${get(elements, [index, 'image'])})` }}
+				onClick={() => navigateToProject(index)}
 			>
-				<p>{get(imageInfos, [0, 'title'])}</p>
+				<p>{get(elements, [index, 'title'])}</p>
 			</div>
 		);
 	}
@@ -46,8 +49,8 @@ export const BlockProjectsSpotlight: FunctionComponent<BlockProjectsSpotlightPro
 	return (
 		<div className={classnames(className, 'o-projects-spotlight')}>
 			{renderProject(0, 'primary')}
-			{renderProject(0, 'secondary')}
-			{renderProject(0, 'secondary')}
+			{renderProject(1, 'secondary')}
+			{renderProject(2, 'secondary')}
 		</div>
 	);
 };
