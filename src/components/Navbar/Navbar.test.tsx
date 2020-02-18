@@ -1,7 +1,6 @@
 import { shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
-import { COLORS } from '../../colors';
 import { Navbar } from './Navbar';
 
 describe('<Navbar />', () => {

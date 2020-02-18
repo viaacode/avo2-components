@@ -9,7 +9,6 @@ import './Navbar.scss';
 export interface NavbarProps extends DefaultProps {
 	placement?: 'top' | 'bottom';
 	position?: 'fixed';
-	spacing?: 'regular' | 'double';
 	autoHeight?: boolean;
 	background?: 'white' | 'alt' | 'inverse';
 	children: ReactNode;
@@ -19,7 +18,6 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
 	className,
 	placement = 'top',
 	position,
-	spacing = 'regular',
 	autoHeight = false,
 	background,
 	children,

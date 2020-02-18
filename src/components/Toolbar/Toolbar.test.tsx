@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { Toolbar } from './Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';

@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react';
 import { CTA } from '../../components/CTA/CTA';
 import { Column } from '../../components/Grid/Column/Column';
 import { Grid } from '../../components/Grid/Grid';
-import { MediaCard, MediaCardOrientation } from '../../components/MediaCard/MediaCard';
+import { MediaCard } from '../../components/MediaCard/MediaCard';
 import { MediaCardMetaData, MediaCardThumbnail } from '../../components/MediaCard/MediaCard.slots';
 import { MetaData } from '../../components/MetaData/MetaData';
 import {
@@ -12,7 +12,7 @@ import {
 	MetaDataItemProps,
 } from '../../components/MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../../components/Thumbnail/Thumbnail';
-import { ButtonAction, DefaultProps, EnglishContentType } from '../../types';
+import { ButtonAction, DefaultProps, EnglishContentType, Orientation } from '../../types';
 
 import './BlockMediaList.scss';
 
@@ -28,7 +28,7 @@ export type MediaListItem = {
 export interface BlockMediaListProps extends DefaultProps {
 	elements: MediaListItem[];
 	navigate: (action: ButtonAction) => void;
-	orientation?: MediaCardOrientation;
+	orientation?: Orientation;
 }
 
 export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({

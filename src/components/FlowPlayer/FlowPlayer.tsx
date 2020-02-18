@@ -28,7 +28,7 @@ export interface FlowPlayerProps extends DefaultProps {
 	onPlay?: () => void;
 	onPause?: () => void;
 	onEnded?: () => void;
-	onTimeUpdate?: () => void;
+	onTimeUpdate?: (time: number) => void;
 }
 
 export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
@@ -48,7 +48,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 	onPlay = () => {},
 	onPause = () => {},
 	onEnded = () => {},
-	onTimeUpdate = (time: number) => {},
+	onTimeUpdate = () => {},
 }) => {
 	const videoContainerRef = useRef(null);
 	const videoPlayerRef: MutableRefObject<any | undefined> = useRef<any>();
@@ -181,6 +181,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 			}
 		};
 
+		// @ts-ignore
 		flowplayer((opts: any, root: any, api: any) => {
 			const mq = flowplayer.mq;
 
