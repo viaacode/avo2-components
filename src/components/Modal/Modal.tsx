@@ -8,6 +8,10 @@ import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps } from '../../types';
 
 import { Button } from '../Button/Button';
+import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
+import { Toolbar } from '../Toolbar/Toolbar';
+import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
+import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import { ModalBody, ModalFooterLeft, ModalFooterRight, ModalHeaderRight } from './Modal.slots';
 import { ModalBackdrop } from './ModalBackdrop';
@@ -72,49 +76,49 @@ export const Modal: FunctionComponent<ModalProps> = ({
 				>
 					{(!!title || !!headerRight || !!onClose) && (
 						<div className="c-modal__header c-modal__header--bordered">
-							<div className="c-toolbar c-toolbar--spaced">
+							<Toolbar autoHeight spaced>
 								{title && (
-									<div className="c-toolbar__left">
-										<div className="c-toolbar__item">
-											<h2 className="c-modal__title">{title}</h2>
-										</div>
-									</div>
+									<ToolbarLeft>
+										<ToolbarItem>
+											<h2 className="c-modal__title" dangerouslySetInnerHTML={{ __html: title }} />
+										</ToolbarItem>
+									</ToolbarLeft>
 								)}
-								<div className="c-toolbar__right">
-									{headerRight && <div className="c-toolbar__item">{headerRight}</div>}
+								<ToolbarRight>
+									{headerRight && <ToolbarItem>{headerRight}</ToolbarItem>}
 									{!!onClose && (
-										<div className="c-toolbar__item">
+										<ToolbarItem>
 											<Button
 												onClick={close}
 												icon="close"
 												type="borderless"
 												ariaLabel="close modal"
 											/>
-										</div>
+										</ToolbarItem>
 									)}
-								</div>
-							</div>
+								</ToolbarRight>
+							</Toolbar>
 						</div>
 					)}
 					<div className="c-modal__body">{body}</div>
 					{(footerLeft || footerRight) && (
 						<div className="c-modal__footer c-modal__footer--bordered">
-							<div className="c-toolbar c-toolbar--spaced">
+							<Toolbar spaced>
 								{footerLeft && (
-									<div className="c-toolbar__left">
-										<div className="c-toolbar__item">
-											<div className="c-button-toolbar">{footerLeft}</div>
-										</div>
-									</div>
+									<ToolbarLeft>
+										<ToolbarItem>
+											<ButtonToolbar>{footerLeft}</ButtonToolbar>
+										</ToolbarItem>
+									</ToolbarLeft>
 								)}
 								{footerRight && (
-									<div className="c-toolbar__right">
-										<div className="c-toolbar__item">
-											<div className="c-button-toolbar">{footerRight}</div>
-										</div>
-									</div>
+									<ToolbarRight>
+										<ToolbarItem>
+											<ButtonToolbar>{footerRight}</ButtonToolbar>
+										</ToolbarItem>
+									</ToolbarRight>
 								)}
-							</div>
+							</Toolbar>
 						</div>
 					)}
 				</div>
