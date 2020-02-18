@@ -7,7 +7,7 @@ import { DefaultProps, VideoAspectRatio } from '../../types';
 import './AspectRatioWrapper.scss';
 
 export interface AspectRatioWrapperProps extends DefaultProps {
-	aspect?: VideoAspectRatio;
+	aspect?: VideoAspectRatio | number;
 }
 
 export const AspectRatioWrapper: FunctionComponent<AspectRatioWrapperProps> = ({
@@ -19,8 +19,13 @@ export const AspectRatioWrapper: FunctionComponent<AspectRatioWrapperProps> = ({
 		className={classnames(
 			className,
 			'c-aspect-ratio-wrapper',
-			!!aspect && `c-aspect-ratio-wrapper--aspect-${aspect.replace(':', '-')}`
+			!!aspect &&
+				typeof aspect === 'string' &&
+				`c-aspect-ratio-wrapper--aspect-${(aspect as string).replace(':', '-')}`
 		)}
+		style={
+			typeof aspect === 'number' ? { paddingBottom: `${Math.round(10000 / aspect) / 100}%` } : {}
+		}
 	>
 		{children}
 	</div>
