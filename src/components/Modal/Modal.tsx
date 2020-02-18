@@ -76,7 +76,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
 				>
 					{(!!title || !!headerRight || !!onClose) && (
 						<div className="c-modal__header c-modal__header--bordered">
-							<Toolbar spaced>
+							<Toolbar autoHeight spaced>
 								{title && (
 									<ToolbarLeft>
 										<ToolbarItem>

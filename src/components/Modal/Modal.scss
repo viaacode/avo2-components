@@ -83,6 +83,16 @@ $g-c-modal-z: 50 !default;
 .c-modal__header {
 	background-color: $c-modal-header-bg-color;
 	border-radius: $c-modal-border-radius $c-modal-border-radius 0 0;
+
+	.c-toolbar {
+		min-height: $g-bar-size-regular;
+		padding-top: 0.4rem;
+		padding-bottom: 0.4rem;
+	}
+
+	.c-toolbar__left {
+		flex-shrink: 1;
+	}
 }
 
 .c-modal__header--bg-alt {
