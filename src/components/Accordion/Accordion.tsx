@@ -31,17 +31,18 @@ export const Accordion: FunctionComponent<AccordionProps> = ({
 
 	const [isOpenSelf, setIsOpenSelf] = useState<boolean>(isOpen);
 
+	const hasSlots = !!titleSlot || !!actionsSlot || !!bodySlot;
+
 	const getIsOpen = () => {
-		return onToggle ? isOpen : isOpenSelf;
+		return onToggle || hasSlots ? isOpen : isOpenSelf;
 	};
 
 	const accordionIcon = getIsOpen() ? 'chevron-up' : 'chevron-down';
-	const hasSlots = !!titleSlot || !!actionsSlot || !!bodySlot;
 
 	const handleToggle = () => {
 		if (onToggle) {
 			onToggle();
-		} else {
+		} else if (!hasSlots) {
 			setIsOpenSelf(!isOpenSelf);
 		}
 	};
