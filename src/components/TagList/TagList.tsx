@@ -43,7 +43,7 @@ export const TagList: FunctionComponent<TagListProps> = ({
 					className={classnames({
 						'c-tag': bordered,
 						'c-label': !bordered,
-						'c-tag__active': tag.active,
+						'c-tag__active': selectable && tag.active,
 					})}
 					key={tag.id}
 				>

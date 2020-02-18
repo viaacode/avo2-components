@@ -20,7 +20,6 @@ export interface BlockGridProps extends DefaultProps {
 	itemWidth?: number;
 	fill?: 'cover' | 'contain' | 'auto';
 	textAlign?: AlignOptions;
-	itemAlign?: AlignOptions;
 	className?: string;
 	navigate?: (action: ButtonAction) => void;
 }
@@ -32,7 +31,6 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 	itemWidth = 200,
 	fill = 'cover',
 	textAlign = 'center',
-	itemAlign = 'center',
 	className,
 	navigate,
 }) => {
