@@ -43,7 +43,7 @@ storiesOf('components/Modal', module)
 	))
 	.add('Small modal', () => (
 		<ModalStoryComponent>
-			<Modal isOpen={true} title="Modal title" size="small">
+			<Modal isOpen title="Modal title" size="small">
 				<ModalBody>
 					<p>
 						It doesn't matter where this modal occurs in the source code, React automatically moves
@@ -58,7 +58,7 @@ storiesOf('components/Modal', module)
 	))
 	.add('Medium modal', () => (
 		<ModalStoryComponent>
-			<Modal isOpen={true} title="Modal title" size="medium">
+			<Modal isOpen title="Modal title" size="medium">
 				<ModalBody>
 					<p>
 						It doesn't matter where this modal occurs in the source code, React automatically moves
@@ -73,7 +73,7 @@ storiesOf('components/Modal', module)
 	))
 	.add('Large modal', () => (
 		<ModalStoryComponent>
-			<Modal isOpen={true} title="Modal title" size="large">
+			<Modal isOpen title="Modal title" size="large">
 				<ModalBody>
 					<p>
 						It doesn't matter where this modal occurs in the source code, React automatically moves
@@ -88,7 +88,7 @@ storiesOf('components/Modal', module)
 	))
 	.add('Extra large modal', () => (
 		<ModalStoryComponent>
-			<Modal isOpen={true} title="Modal title" size="extra-large">
+			<Modal isOpen title="Modal title" size="extra-large">
 				<ModalBody>
 					<p>
 						It doesn't matter where this modal occurs in the source code, React automatically moves
@@ -101,9 +101,19 @@ storiesOf('components/Modal', module)
 			</Modal>
 		</ModalStoryComponent>
 	))
+	.add('Wide title modal', () => (
+		<Modal isOpen title={loremIpsum({ count: 2 })} size="small">
+			<ModalBody>
+				<p>{loremIpsum({ count: 5 })}</p>
+			</ModalBody>
+			<ModalFooterRight>
+				<Button type="primary" label="Ok" ariaLabel="Ok" />
+			</ModalFooterRight>
+		</Modal>
+	))
 	.add('Fullscreen modal', () => (
 		<ModalStoryComponent>
-			<Modal isOpen={true} title="Modal title" size="fullscreen">
+			<Modal isOpen title="Modal title" size="fullscreen">
 				<ModalBody>
 					<p>
 						It doesn't matter where this modal occurs in the source code, React automatically moves
@@ -118,7 +128,7 @@ storiesOf('components/Modal', module)
 	))
 	.add('Auto-height modal', () => (
 		<ModalStoryComponent>
-			<Modal isOpen={true} title="Modal title" size="auto">
+			<Modal isOpen title="Modal title" size="auto">
 				<ModalBody>
 					<p>
 						It doesn't matter where this modal occurs in the source code, React automatically moves
@@ -132,7 +142,7 @@ storiesOf('components/Modal', module)
 		</ModalStoryComponent>
 	))
 	.add('Scrollable modal', () => (
-		<Modal isOpen={true} title="Modal title" size="small" scrollable={true}>
+		<Modal isOpen title="Modal title" size="small" scrollable>
 			<ModalBody>
 				<p>{loremIpsum({ count: 20 })}</p>
 			</ModalBody>
@@ -142,7 +152,7 @@ storiesOf('components/Modal', module)
 		</Modal>
 	))
 	.add('Headless modal', () => (
-		<Modal isOpen={true} size="small" scrollable={true}>
+		<Modal isOpen size="small" scrollable>
 			<ModalBody>
 				<p>{loremIpsum({ count: 20 })}</p>
 			</ModalBody>
