@@ -10,7 +10,7 @@ storiesOf('blocks/BlockProjectsSpotlight', module)
 	.addParameters({ jest: ['BlockProjectsSpotlight'] })
 	.add('BlockProjectsSpotlight', () => (
 		<BlockProjectsSpotlight
-			imageInfos={MOCK_SPOTLIGHT_PROJECTS}
+			elements={MOCK_SPOTLIGHT_PROJECTS}
 			navigate={action('clicked project')}
 		/>
 	));

@@ -31,13 +31,13 @@ export const BlockProjectsSpotlight: FunctionComponent<BlockProjectsSpotlightPro
 		}
 	};
 
-	function renderProject(index: number, type: 'primary' | 'secondary') {
+	function renderProject(index: number) {
 		if (!elements[index]) {
 			return null;
 		}
 		return (
 			<div
-				className={classnames(`c-project-spotlight-${type}`, { 'u-clickable': !!navigate })}
+				className={classnames('c-projects-grid-item', { 'u-clickable': !!navigate })}
 				style={{ backgroundImage: `url(${get(elements, [index, 'image'])})` }}
 				onClick={() => navigateToProject(index)}
 			>
@@ -47,10 +47,10 @@ export const BlockProjectsSpotlight: FunctionComponent<BlockProjectsSpotlightPro
 	}
 
 	return (
-		<div className={classnames(className, 'o-projects-spotlight')}>
-			{renderProject(0, 'primary')}
-			{renderProject(1, 'secondary')}
-			{renderProject(2, 'secondary')}
+		<div className={classnames(className, 'c-projects-grid')}>
+			{renderProject(0)}
+			{renderProject(1)}
+			{renderProject(2)}
 		</div>
 	);
 };
