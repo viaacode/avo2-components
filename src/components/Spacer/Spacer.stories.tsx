@@ -19,7 +19,7 @@ storiesOf('components/Spacer', module)
 				<b>small </b>
 				{content}
 			</Spacer>
-			<Spacer margin="medium">
+			<Spacer>
 				<b>medium </b>
 				{content}
 			</Spacer>
