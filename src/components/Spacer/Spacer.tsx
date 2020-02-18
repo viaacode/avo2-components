@@ -53,7 +53,7 @@ const spacersToClasses = (
 export const Spacer: FunctionComponent<SpacerProps> = ({
 	children,
 	className,
-	margin,
+	margin = 'medium',
 	padding,
 }) => {
 	const marginClasses = spacersToClasses(margin, 'u-spacer');
