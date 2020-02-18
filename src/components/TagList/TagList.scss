@@ -25,11 +25,15 @@
 	text-decoration: none;
 
 	// Label
-	.c-tag__label {
+	&.c-tag__label {
 		white-space: nowrap;
 		flex: 1 1 100%;
 	}
 
+	&.c-tag__active {
+		background-color: $color-teal-bright;
+		color: white;
+	}
 }
 
 .c-tag--simple {

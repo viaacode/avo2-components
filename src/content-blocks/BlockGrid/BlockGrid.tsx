@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
 import { Spacer } from '../../components/Spacer/Spacer';
-import { ButtonAction, DefaultProps } from '../../types';
+import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
 
 import './BlockGrid.scss';
 
@@ -19,7 +19,8 @@ export interface BlockGridProps extends DefaultProps {
 	imageHeight?: number;
 	itemWidth?: number;
 	fill?: 'cover' | 'contain' | 'auto';
-	textAlign?: 'left' | 'center' | 'right';
+	textAlign?: AlignOptions;
+	itemAlign?: AlignOptions;
 	className?: string;
 	navigate?: (action: ButtonAction) => void;
 }
@@ -31,14 +32,22 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 	itemWidth = 200,
 	fill = 'cover',
 	textAlign = 'center',
+	itemAlign = 'center',
 	className,
 	navigate,
 }) => {
 	return (
-		<div className={classnames('c-block-grid', `text-align-${textAlign}`, className)}>
+		<div
+			className={classnames(
+				'c-block-grid',
+				`text-align-${textAlign}`,
+				`item-align-${textAlign}`,
+				className
+			)}
+		>
 			{elements.map(element => (
 				<div
-					key={`block-grid-${element.source}`}
+					key={`block-grid-${element.title}-${element.source}`}
 					className={classnames('c-block-grid__item', {
 						'u-clickable': !!navigate && !!element.action,
 					})}

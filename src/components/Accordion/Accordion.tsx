@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps } from '../../types';
@@ -14,7 +14,7 @@ import './Accordion.scss';
 
 export interface AccordionProps extends DefaultProps {
 	isOpen?: boolean;
-	onToggle?: () => void;
+	onToggle?: () => void; // If undefined, the accordion will be able to toggle itself
 	title?: string;
 }
 
@@ -29,14 +29,33 @@ export const Accordion: FunctionComponent<AccordionProps> = ({
 	const actionsSlot = useSlot(AccordionActions, children);
 	const bodySlot = useSlot(AccordionBody, children);
 
-	const accordionIcon = isOpen ? 'chevron-up' : 'chevron-down';
+	const [isOpenSelf, setIsOpenSelf] = useState<boolean>(isOpen);
+
 	const hasSlots = !!titleSlot || !!actionsSlot || !!bodySlot;
 
+	const getIsOpen = () => {
+		return onToggle || hasSlots ? isOpen : isOpenSelf;
+	};
+
+	const accordionIcon = getIsOpen() ? 'chevron-up' : 'chevron-down';
+
+	const handleToggle = () => {
+		if (onToggle) {
+			onToggle();
+		} else if (!hasSlots) {
+			setIsOpenSelf(!isOpenSelf);
+		}
+	};
+
 	return (
-		<div className={classnames(className, 'c-accordion', { 'c-accordion--closed': !isOpen })}>
+		<div
+			className={classnames(className, 'c-accordion', {
+				'c-accordion--closed': !getIsOpen(),
+			})}
+		>
 			<div
-				className={classnames('c-accordion__header', { 'u-clickable': !actionsSlot && onToggle })}
-				onClick={actionsSlot ? undefined : onToggle}
+				className={classnames('c-accordion__header', { 'u-clickable': !actionsSlot })}
+				onClick={actionsSlot ? undefined : handleToggle}
 			>
 				<Toolbar autoHeight>
 					<ToolbarLeft>

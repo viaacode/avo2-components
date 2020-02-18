@@ -11,6 +11,7 @@ export interface TagOption {
 	label: string;
 	id: string | number;
 	color?: string;
+	active?: boolean;
 }
 
 export interface TagListProps extends DefaultProps {
@@ -18,6 +19,7 @@ export interface TagListProps extends DefaultProps {
 	swatches?: boolean;
 	bordered?: boolean;
 	closable?: boolean;
+	selectable?: boolean;
 	onTagClosed?: (tagId: string | number, clickEvent: MouseEvent) => void;
 	onTagClicked?: (tagId: string | number, clickEvent: MouseEvent) => void;
 }
@@ -28,6 +30,7 @@ export const TagList: FunctionComponent<TagListProps> = ({
 	swatches = true,
 	bordered = true,
 	closable = false,
+	selectable = false,
 	onTagClosed = () => {},
 	onTagClicked,
 }) => {
@@ -36,7 +39,14 @@ export const TagList: FunctionComponent<TagListProps> = ({
 	return !!tags && !!tags.length ? (
 		<ul className={classnames(className, 'c-tag-list')}>
 			{tags.map((tag: TagOption, index) => (
-				<li className={classnames({ 'c-tag': bordered, 'c-label': !bordered })} key={tag.id}>
+				<li
+					className={classnames({
+						'c-tag': bordered,
+						'c-label': !bordered,
+						'c-tag__active': tag.active,
+					})}
+					key={tag.id}
+				>
 					{/* output swatch element */}
 					{swatches && (
 						<div
