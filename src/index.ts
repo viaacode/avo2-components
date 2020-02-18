@@ -14,6 +14,7 @@ export { useTableSort } from './hooks/useTableSort';
 export * from './helpers';
 
 // Components
+export * from './components';
 export { Alert } from './components/Alert/Alert';
 export { AlertProps, AlertType } from './components/Alert/Alert.types';
 export { Avatar, AvatarProps } from './components/Avatar/Avatar';
@@ -123,25 +124,7 @@ export { TooltipContent, TooltipTrigger } from './components/Tooltip/Tooltip.slo
 export { WYSIWYG } from './components/WYSIWYG/WYSIWYG';
 
 // Content Blocks
-export {
-	BlockAccordions,
-	BlockAccordionsProps,
-} from './content-blocks/BlockAccordions/BlockAccordions';
-export { BlockHeading, BlockHeadingProps } from './content-blocks/BlockHeading/BlockHeading';
-export { BlockIntro, BlockIntroProps } from './content-blocks/BlockIntro/BlockIntro';
-export { BlockIFrame, BlockIFrameProps } from './content-blocks/BlockIFrame/BlockIFrame';
-export { BlockRichText, BlockRichTextProps } from './content-blocks/BlockRichText/BlockRichText';
-export { BlockButtons, BlockButtonsProps } from './content-blocks/BlockButtons/BlockButtons';
-export { BlockCTAs, BlockCTAsProps } from './content-blocks/BlockCTAs/BlockCTAs';
-export {
-	BlockProjectsSpotlight,
-	BlockProjectsSpotlightProps,
-	ImageInfo,
-} from './content-blocks/BlockProjectsSpotlight/BlockProjectsSpotlight';
-export {
-	BlockFlowPlayer,
-	BlockFlowPlayerProps,
-} from './content-blocks/BlockFlowPlayer/BlockFlowPlayer';
+export * from './content-blocks';
 
 // Types
 export * from './types';

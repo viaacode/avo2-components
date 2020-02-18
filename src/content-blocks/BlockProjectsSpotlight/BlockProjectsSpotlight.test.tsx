@@ -20,10 +20,10 @@ describe('<BlockProjectsSpotlight />', () => {
 		const projectSecondary1 = component.find('div').at(2);
 		const projectSecondary2 = component.find('div').at(3);
 
-		expect(mainDiv.hasClass('o-projects-spotlight')).toEqual(true);
-		expect(projectPrimary.hasClass('c-project-spotlight-primary')).toEqual(true);
-		expect(projectSecondary1.hasClass('c-project-spotlight-secondary')).toEqual(true);
-		expect(projectSecondary2.hasClass('c-project-spotlight-secondary')).toEqual(true);
+		expect(mainDiv.hasClass('c-projects-grid')).toEqual(true);
+		expect(projectPrimary.hasClass('c-projects-grid-item')).toEqual(true);
+		expect(projectSecondary1.hasClass('c-projects-grid-item')).toEqual(true);
+		expect(projectSecondary2.hasClass('c-projects-grid-item')).toEqual(true);
 	});
 
 	it('Should set the correct title', () => {

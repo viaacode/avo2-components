@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import classnames from 'classnames';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps, Orientation } from '../../types';
 
 import './Flex.scss';
 
@@ -11,7 +11,7 @@ export interface FlexProps extends DefaultProps {
 	center?: boolean;
 	children: ReactNode;
 	justify?: 'around' | 'between' | 'end';
-	orientation?: 'horizontal' | 'vertical';
+	orientation?: Orientation;
 	spaced?: 'regular' | 'wide';
 	wrap?: boolean;
 }
