@@ -1,6 +1,6 @@
 import React, { FunctionComponent, IframeHTMLAttributes } from 'react';
 
-import { VideoWrapper } from '../../components/VideoWrapper/VideoWrapper';
+import { AspectRatioWrapper } from '../../components/AspectRatioWrapper/AspectRatioWrapper';
 import { VideoAspectRatio } from '../../types';
 
 import './BlockIFrame.scss';
@@ -17,14 +17,18 @@ export const BlockIFrame: FunctionComponent<BlockIFrameProps> = ({
 	frameBorder = 0,
 	...iframeProps
 }) => {
+	if (iframeProps.src && !/^(http:|https:)?\/\//.test(iframeProps.src)) {
+		iframeProps.src = `//${iframeProps.src}`;
+	}
+
 	return (
-		<VideoWrapper aspect={ratio}>
+		<AspectRatioWrapper aspect={ratio}>
 			<iframe
 				title={title}
 				allowFullScreen={allowFullScreen}
 				frameBorder={frameBorder}
 				{...iframeProps}
 			/>
-		</VideoWrapper>
+		</AspectRatioWrapper>
 	);
 };

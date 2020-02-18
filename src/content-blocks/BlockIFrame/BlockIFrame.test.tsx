@@ -11,9 +11,9 @@ describe('<BlockIFrame />', () => {
 	it('Should correctly set the wrapper `className`', () => {
 		const blockIframeComponent = mount(<BlockIFrame title="test" />);
 
-		const videoWrapper = blockIframeComponent.find('div').at(0);
+		const aspectRatioWrapper = blockIframeComponent.find('div').at(0);
 
-		expect(videoWrapper.hasClass('c-video-wrapper')).toEqual(true);
+		expect(aspectRatioWrapper.hasClass('c-aspect-ratio-wrapper')).toEqual(true);
 	});
 
 	it('Should correctly set the wrapper `className` for the aspect ratios', () => {
@@ -23,8 +23,8 @@ describe('<BlockIFrame />', () => {
 		const video32Wrapper = blockIframe32Component.find('div').at(0);
 		const video169Wrapper = blockIframe169Component.find('div').at(0);
 
-		expect(video32Wrapper.hasClass('c-video-wrapper--aspect-3-2')).toEqual(true);
-		expect(video169Wrapper.hasClass('c-video-wrapper--aspect-16-9')).toEqual(true);
+		expect(video32Wrapper.hasClass('c-aspect-ratio-wrapper--aspect-3-2')).toEqual(true);
+		expect(video169Wrapper.hasClass('c-aspect-ratio-wrapper--aspect-16-9')).toEqual(true);
 	});
 
 	it('Should correctly pass on the supported iframe-props', () => {

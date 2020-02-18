@@ -1,3 +1,5 @@
+import { action } from '../../helpers';
+
 import { CTAProps } from './CTA';
 
 export const CTA_MOCK: CTAProps = {
@@ -6,5 +8,6 @@ export const CTA_MOCK: CTAProps = {
 	content: 'Text',
 	buttonLabel: 'Read more',
 	buttonIcon: 'chevron-down',
-	buttonOnClick: () => {},
+	buttonAction: { type: 'CONTENT_PAGE', value: '1' },
+	navigate: action('Clicked CTA button'),
 };

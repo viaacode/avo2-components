@@ -25,6 +25,10 @@ export interface FlowPlayerProps extends DefaultProps {
 	dataPlayerId?: string;
 	autoplay?: boolean;
 	seekTime?: number;
+	onPlay?: () => void;
+	onPause?: () => void;
+	onEnded?: () => void;
+	onTimeUpdate?: (time: number) => void;
 }
 
 export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
@@ -41,6 +45,10 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 	seekTime,
 	autoplay = true,
 	className,
+	onPlay = () => {},
+	onPause = () => {},
+	onEnded = () => {},
+	onTimeUpdate = () => {},
 }) => {
 	const videoContainerRef = useRef(null);
 	const videoPlayerRef: MutableRefObject<any | undefined> = useRef<any>();
@@ -90,6 +98,15 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 			if (end) {
 				videoPlayerRef.current.on('cuepointend', cuePointEndListener);
 			}
+
+			videoPlayerRef.current.on('playing', onPlay);
+			videoPlayerRef.current.on('pause', onPause);
+			videoPlayerRef.current.on('ended', onEnded);
+			videoPlayerRef.current.on('timeupdate', () => {
+				if (videoPlayerRef.current) {
+					onTimeUpdate(videoPlayerRef.current.currentTime);
+				}
+			});
 		}
 
 		return () => {
@@ -98,7 +115,20 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 				videoPlayerRef.current = null;
 			}
 		};
-	}, [videoContainerRef, src, poster, title, start, end, token, autoplay]);
+	}, [
+		videoContainerRef,
+		src,
+		poster,
+		title,
+		start,
+		end,
+		token,
+		autoplay,
+		onPlay,
+		onPause,
+		onEnded,
+		onTimeUpdate,
+	]);
 
 	// Re-render start/end cuepoints when cropping video
 	useEffect(() => {
@@ -151,6 +181,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 			}
 		};
 
+		// @ts-ignore
 		flowplayer((opts: any, root: any, api: any) => {
 			const mq = flowplayer.mq;
 

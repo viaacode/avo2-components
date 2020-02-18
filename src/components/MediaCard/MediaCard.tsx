@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { useSlot } from '../../hooks/useSlot';
 
-import { DefaultProps, EnglishContentType } from '../../types';
+import { DefaultProps, EnglishContentType, Orientation } from '../../types';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 import './MediaCard.scss';
@@ -13,7 +13,7 @@ export interface MediaCardProps extends DefaultProps {
 	title: string;
 	category: EnglishContentType;
 	children?: ReactNode;
-	orientation?: 'horizontal' | 'vertical';
+	orientation?: Orientation;
 	onClick?: () => void;
 }
 
@@ -23,7 +23,7 @@ export const MediaCard: FunctionComponent<MediaCardProps> = ({
 	category,
 	children = [],
 	orientation = 'vertical',
-	onClick = () => {},
+	onClick,
 }) => {
 	const thumbnail = useSlot(MediaCardThumbnail, children);
 	const metaData = useSlot(MediaCardMetaData, children);
@@ -32,8 +32,9 @@ export const MediaCard: FunctionComponent<MediaCardProps> = ({
 		<div
 			className={classnames(className, 'c-media-card', `c-media-card--${category}`, {
 				'c-media-card--horizontal': orientation === 'horizontal',
+				'u-clickable': !!onClick,
 			})}
-			onClick={onClick}
+			onClick={() => onClick && onClick()}
 		>
 			{thumbnail && <div className="c-media-card-thumb">{thumbnail}</div>}
 			<div className="c-media-card-content">

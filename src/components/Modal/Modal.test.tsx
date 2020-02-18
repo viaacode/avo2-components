@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
 import { Modal } from './Modal';
@@ -107,7 +107,7 @@ describe('<Modal />', () => {
 	it('Should be able to render with a title', () => {
 		const title = 'Modal test';
 
-		const modalComponent = shallow(
+		const modalComponent = mount(
 			<Modal isOpen={false} title={title}>
 				<Fragment />
 			</Modal>
@@ -237,7 +237,7 @@ describe('<Modal />', () => {
 	});
 
 	it('Should be able to render items in the header (right)', () => {
-		const modalComponent = shallow(
+		const modalComponent = mount(
 			<Modal isOpen={true}>
 				<ModalHeaderRight>
 					<p>Test (right)</p>
@@ -258,7 +258,7 @@ describe('<Modal />', () => {
 	});
 
 	it('Should be able to render items in the footer (left)', () => {
-		const modalComponent = shallow(
+		const modalComponent = mount(
 			<Modal isOpen={true}>
 				<ModalFooterLeft>
 					<p>Test (left)</p>
@@ -275,7 +275,7 @@ describe('<Modal />', () => {
 	});
 
 	it('Should be able to render items in the footer (right)', () => {
-		const modalComponent = shallow(
+		const modalComponent = mount(
 			<Modal isOpen={true}>
 				<ModalFooterRight>
 					<p>Test (right)</p>

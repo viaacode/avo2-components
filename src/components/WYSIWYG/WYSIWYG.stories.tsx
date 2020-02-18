@@ -3,6 +3,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers';
 
+import { Select } from '../Select/Select';
+import { SELECT_MOCK_OPTIONS } from '../Select/Select.mock';
 import { WYSIWYG } from './WYSIWYG';
 
 const withContent = (story: Function) => <div className="c-content">{story()}</div>;
@@ -48,4 +50,20 @@ storiesOf('components/WYSIWYG', module)
 				},
 			}}
 		/>
+	))
+	.add('WYSIWYG with select above it (z-index)', () => (
+		<>
+			<Select options={SELECT_MOCK_OPTIONS} />
+			<WYSIWYG
+				id="story-wysiwyg-4"
+				btns={[...WYSIWYG_OPTIONS, ['table']]}
+				plugins={{
+					table: {
+						rows: 3,
+						columns: 4,
+						styler: 'c-table--styled',
+					},
+				}}
+			/>
+		</>
 	));

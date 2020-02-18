@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from 'react';
+import classnames from 'classnames';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import { Button } from '../../components/Button/Button';
 import { Container } from '../../components/Container/Container';
@@ -9,11 +10,14 @@ import { Spacer } from '../../components/Spacer/Spacer';
 import { convertToHtml } from '../../helpers';
 import { DefaultProps } from '../../types';
 
+import './BlockImageTitleTextButton.scss';
+
 export interface BlockImageTitleTextButtonProps extends DefaultProps {
 	imageSource: string;
 	imageDescription?: string;
-	title?: string;
-	text?: string;
+	title?: ReactNode | string;
+	subtitle?: ReactNode | string;
+	text?: ReactNode | string;
 	buttonLabel?: string;
 	onClick?: () => void;
 }
@@ -22,13 +26,29 @@ export const BlockImageTitleTextButton: FunctionComponent<BlockImageTitleTextBut
 	className,
 	imageSource,
 	imageDescription,
-	title,
+	title = '',
+	subtitle = '',
 	text = '',
 	buttonLabel,
 	onClick,
 }) => {
+	const renderText = (text: string | ReactNode, className?: string) => {
+		if (text) {
+			if (typeof text === 'string') {
+				return (
+					<p
+						className={className}
+						dangerouslySetInnerHTML={{ __html: convertToHtml(text as string) }}
+					/>
+				);
+			}
+			return text;
+		}
+		return null;
+	};
+
 	return (
-		<Container className={className} mode="vertical">
+		<Container className={classnames('c-block-image-title-text-button', className)} mode="vertical">
 			<Container mode="horizontal">
 				<Grid>
 					<Column size="2-4">
@@ -37,7 +57,8 @@ export const BlockImageTitleTextButton: FunctionComponent<BlockImageTitleTextBut
 					<Column size="2-8">
 						<div className="c-content">
 							{title && <h2>{title}</h2>}
-							{text && <p dangerouslySetInnerHTML={{ __html: convertToHtml(text) }} />}
+							{renderText(subtitle, 'a-subtitle')}
+							{renderText(text)}
 							{buttonLabel && (
 								<Spacer margin="top">
 									<Button

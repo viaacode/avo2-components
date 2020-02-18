@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers';
@@ -32,6 +32,32 @@ const colorTags = [
 	{ label: 'Uranium', id: 'uranium' },
 ];
 
+const TagListStoryComponent = ({
+	children,
+}: {
+	children: ReactElement;
+	initialPageIndex?: number;
+}) => {
+	const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+	return cloneElement(children, {
+		tags: tags.map(tag => ({ ...tag, active: selectedTags.includes(tag.id) })),
+		onTagClicked: (tagId: string) => {
+			action('tag toggled')(tagId);
+			const indexOf = selectedTags.indexOf(tagId);
+			if (indexOf !== -1) {
+				// already in the selected tags => remove the tag
+				const newTabs = [...selectedTags];
+				newTabs.splice(indexOf, 1);
+				setSelectedTags(newTabs);
+			} else {
+				// add the tag
+				setSelectedTags([...selectedTags, tagId]);
+			}
+		},
+	});
+};
+
 storiesOf('components/TagList', module)
 	.addParameters({ jest: ['TagList'] })
 	.add('TagList', () => <TagList tags={tags} />)
@@ -43,6 +69,17 @@ storiesOf('components/TagList', module)
 			onTagClosed={action('Tag closed')}
 			onTagClicked={action('Tag clicked')}
 		/>
+	))
+	.add('TagList with selectable tags', () => (
+		<TagListStoryComponent>
+			<TagList
+				tags={tags}
+				closable={false}
+				swatches={false}
+				selectable={true}
+				onTagClicked={action('selected a tag')}
+			/>
+		</TagListStoryComponent>
 	))
 	.add('TagList with custom color swatches', () => <TagList tags={colorTags} swatches />)
 	.add('TagList without swatches', () => <TagList tags={tags} swatches={false} />)
