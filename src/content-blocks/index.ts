@@ -25,3 +25,8 @@ export {
 	BlockVideoTitleTextButtonProps,
 } from './BlockVideoTitleTextButton/BlockVideoTitleTextButton';
 export { BlockGrid, BlockGridProps } from './BlockGrid/BlockGrid';
+export {
+	BlockProjectsSpotlight,
+	BlockProjectsSpotlightProps,
+	ImageInfo,
+} from './BlockProjectsSpotlight/BlockProjectsSpotlight';

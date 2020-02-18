@@ -3,9 +3,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers';
 
-import { WYSIWYG } from './WYSIWYG';
 import { Select } from '../Select/Select';
 import { SELECT_MOCK_OPTIONS } from '../Select/Select.mock';
+import { WYSIWYG } from './WYSIWYG';
 
 const withContent = (story: Function) => <div className="c-content">{story()}</div>;
 
