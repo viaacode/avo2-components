@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 
 import { AspectRatioWrapper, AspectRatioWrapperProps } from './AspectRatioWrapper';

@@ -30,11 +30,13 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 	function generatePages() {
 		// generate all pages if pageCount is less than the displayCount
 		if (pageCount < displayCount) {
+			// @ts-ignore
 			return Array.from({ length: pageCount }, (value: number, index: number) => index);
 		}
 
 		// generate first x pages if currentPage is less than the displayCount
 		if (currentPage < displayCount / 2) {
+			// @ts-ignore
 			return Array.from({ length: displayCount }, (value: number, index: number) => index);
 		}
 
@@ -42,6 +44,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 		if (currentPage >= Math.floor(pageCount - displayCount / 2)) {
 			return Array.from(
 				{ length: displayCount },
+				// @ts-ignore
 				(value: number, index: number) => pageCount - (displayCount - index)
 			);
 		}
@@ -49,6 +52,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 		// generate x pages padding the current page
 		return Array.from(
 			{ length: displayCount },
+			// @ts-ignore
 			(value: number, index: number) => index + currentPage - Math.ceil(displayCount / 2) + 1
 		);
 	}
