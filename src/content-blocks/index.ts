@@ -24,9 +24,17 @@ export {
 	BlockVideoTitleTextButton,
 	BlockVideoTitleTextButtonProps,
 } from './BlockVideoTitleTextButton/BlockVideoTitleTextButton';
-export { BlockGrid, BlockGridProps } from './BlockGrid/BlockGrid';
+export { BlockGrid, BlockGridProps, GridItem } from './BlockGrid/BlockGrid';
 export {
 	BlockProjectsSpotlight,
 	BlockProjectsSpotlightProps,
 	ImageInfo,
 } from './BlockProjectsSpotlight/BlockProjectsSpotlight';
+export {
+	BlockPageOverview,
+	BlockPageOverviewProps,
+	ContentPageInfo,
+	ContentTabStyle,
+	ContentItemStyle,
+	LabelObj,
+} from './BlockPageOverview/BlockPageOverview';
