@@ -5,7 +5,9 @@ import { mount, shallow } from 'enzyme';
 import { BlockProjectsSpotlight } from './BlockProjectsSpotlight';
 import { MOCK_SPOTLIGHT_PROJECTS } from './BlockProjectsSpotlight.mock';
 
-const BlockProjectsSpotlightExample = <BlockProjectsSpotlight elements={MOCK_SPOTLIGHT_PROJECTS} />;
+const BlockProjectsSpotlightExample = (
+	<BlockProjectsSpotlight elements={MOCK_SPOTLIGHT_PROJECTS} navigate={() => {}} />
+);
 
 describe('<BlockProjectsSpotlight />', () => {
 	it('Should be able to render', () => {

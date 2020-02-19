@@ -9,6 +9,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 52,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test1', id: 1 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -18,6 +19,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 53,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test1', id: 1 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -27,6 +29,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 31,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test1', id: 1 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -36,6 +39,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 32,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test1', id: 1 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -46,6 +50,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 36,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test1', id: 1 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -55,6 +60,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 73,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test1', id: 1 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -64,6 +70,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 15,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test2', id: 1 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -73,6 +80,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 76,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test2', id: 1 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -82,6 +90,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 78,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test2', id: 2 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -91,6 +100,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 85,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test2', id: 2 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -100,6 +110,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 77,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test2', id: 2 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -109,6 +120,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 105,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test2', id: 2 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -118,6 +130,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 97,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [{ label: 'test2', id: 2 }],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -130,6 +143,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 			{ label: 'test1', id: 1 },
 			{ label: 'test2', id: 2 },
 		],
+		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
@@ -139,5 +153,6 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 		id: 86,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [],
+		path: '/fake-page',
 	},
 ];
