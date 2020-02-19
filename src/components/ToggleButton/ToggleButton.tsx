@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
+import { ButtonType } from '../Button/Button.types';
 import { IconName } from '../Icon/Icon.types';
 
 export interface ToggleButtonProps extends DefaultProps {
@@ -9,16 +10,7 @@ export interface ToggleButtonProps extends DefaultProps {
 	active: boolean;
 	ariaLabel: string;
 	title?: string;
-	type?:
-		| 'primary'
-		| 'secondary'
-		| 'secondary-i'
-		| 'tertiary'
-		| 'borderless'
-		| 'borderless-i'
-		| 'danger'
-		| 'danger-hover'
-		| 'link';
+	type?: ButtonType;
 	onClick?: (active: boolean) => void;
 }
 
