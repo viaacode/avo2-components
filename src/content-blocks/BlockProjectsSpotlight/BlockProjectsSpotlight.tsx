@@ -10,13 +10,13 @@ import './BlockProjectsSpotlight.scss';
 export interface ImageInfo {
 	image: string;
 	title: string;
-	buttonAction: ButtonAction;
+	buttonAction?: ButtonAction;
 	className?: string;
 }
 
 export interface BlockProjectsSpotlightProps extends DefaultProps {
 	elements: ImageInfo[];
-	navigate?: (buttonAction: ButtonAction) => void;
+	navigate: (buttonAction: ButtonAction) => void;
 }
 
 export const BlockProjectsSpotlight: FunctionComponent<BlockProjectsSpotlightProps> = ({
@@ -37,7 +37,9 @@ export const BlockProjectsSpotlight: FunctionComponent<BlockProjectsSpotlightPro
 		}
 		return (
 			<div
-				className={classnames('c-projects-grid-item', { 'u-clickable': !!navigate })}
+				className={classnames('c-projects-grid-item', {
+					'u-clickable': !!get(elements, [index, 'buttonAction']),
+				})}
 				style={{ backgroundImage: `url(${get(elements, [index, 'image'])})` }}
 				onClick={() => navigateToProject(index)}
 			>
