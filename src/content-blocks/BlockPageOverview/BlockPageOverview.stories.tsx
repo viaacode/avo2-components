@@ -109,6 +109,6 @@ storiesOf('blocks/BlockPageOverview', module)
 	))
 	.add('BlockPageOverview show date', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
-			<BlockPageOverview {...baseProps} showDate />
+			<BlockPageOverview {...baseProps} showDate dateString="Geplaatst in %label% op %date%" />
 		</BlockPageOverviewStoryComponent>
 	));
