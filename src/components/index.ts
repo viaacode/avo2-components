@@ -10,6 +10,7 @@ export { Badge } from './Badge/Badge';
 export { Blankslate } from './Blankslate/Blankslate';
 export { Box } from './Box/Box';
 export { Button } from './Button/Button';
+export { ButtonType } from './Button/Button.types';
 export { ButtonGroup } from './ButtonGroup/ButtonGroup';
 export { ButtonToolbar } from './ButtonToolbar/ButtonToolbar';
 export { Checkbox } from './Checkbox/Checkbox';
