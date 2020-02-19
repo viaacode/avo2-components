@@ -53,7 +53,6 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	currentPage: number;
 	onCurrentPageChanged: (newPage: number) => void;
 	pageCount: number;
-	itemsPerPage?: number;
 	pages: ContentPageInfo[];
 	navigate?: (action: ButtonAction) => void;
 }
