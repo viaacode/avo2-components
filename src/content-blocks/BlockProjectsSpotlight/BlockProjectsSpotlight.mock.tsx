@@ -21,6 +21,6 @@ export const MOCK_SPOTLIGHT_PROJECTS: ImageInfo[] = [
 	{
 		image: '/images/500x200.svg',
 		title: 'My project 3',
-		buttonAction: MOCK_BUTTON_ACTION,
+		buttonAction: undefined,
 	},
 ];
