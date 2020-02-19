@@ -11,7 +11,7 @@ describe('<Spacer />', () => {
 	it('Should set the correct className', () => {
 		const cumstomClass = 'c-spacer-custom';
 
-		const spacerComponent = shallow(<Spacer className={cumstomClass} margin="medium" />);
+		const spacerComponent = shallow(<Spacer className={cumstomClass} />);
 
 		expect(spacerComponent.hasClass(cumstomClass)).toBeTruthy();
 		expect(spacerComponent.hasClass('u-spacer')).toBeTruthy();
