@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { findIndex, flatten, uniqBy } from 'lodash-es';
+import { findIndex, flatten, get, uniqBy } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { Accordion } from '../../components/Accordion/Accordion';
@@ -28,6 +28,7 @@ export interface ContentPageInfo {
 	// TODO add labels to content page in database
 	labels: LabelObj[];
 	blocks?: ReactNode; // Client knows how to convert ContentBlockSchema[] into a ReactNode
+	path: string;
 }
 
 export type LabelObj = {
@@ -52,7 +53,6 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	currentPage: number;
 	onCurrentPageChanged: (newPage: number) => void;
 	pageCount: number;
-	itemsPerPage?: number;
 	pages: ContentPageInfo[];
 	navigate?: (action: ButtonAction) => void;
 }
@@ -113,14 +113,14 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		if (navigate) {
 			navigate({
 				type: 'CONTENT_PAGE',
-				value: page.id,
+				value: page.path,
 			} as ButtonAction);
 		}
 	};
 
 	const formatDateString = (dateString: string, page: ContentPageInfo): string => {
 		return dateString
-			.replace('%label%', page.labels[0].label)
+			.replace('%label%', get(page, 'labels[0].label', noLabelObj.label))
 			.replace('%date%', format(new Date(page.created_at), 'd MMMM yyyy'));
 	};
 
