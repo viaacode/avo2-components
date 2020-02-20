@@ -55,6 +55,15 @@ export const FlowPlayer: FunctionComponent<FlowPlayerProps> = ({
 	const [lastSeekTime, setLastSeekTime] = useState<number | undefined>(undefined);
 
 	useEffect(() => {
+		return () => {
+			// Destroy handler
+			if (videoPlayerRef.current) {
+				videoPlayerRef.current.destroy();
+			}
+		};
+	});
+
+	useEffect(() => {
 		if (typeof seekTime !== 'undefined' && seekTime !== lastSeekTime && seekTime !== 0) {
 			setLastSeekTime(seekTime);
 			// seekTime should be updated
