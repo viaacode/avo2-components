@@ -64,8 +64,8 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 		}
 
 		if (this.state.flowPlayerInstance) {
-			if (nextProps.seekTime !== this.props.seekTime) {
-				this.state.flowPlayerInstance.currentTime = nextProps.seekTime || 0;
+			if (nextProps.seekTime !== this.props.seekTime && nextProps.seekTime) {
+				this.state.flowPlayerInstance.currentTime = nextProps.seekTime;
 			}
 
 			if (nextProps.start !== this.props.start || nextProps.end !== this.props.end) {
