@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers';
+import { Button } from '../Button/Button';
+import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
 
 import { FlowPlayer } from './FlowPlayer';
 import { MOCK_FLOW_PLAYER_PROPS_FULL } from './FlowPlayer.mock';
+
+const FlowPlayerStoryComponent = ({ children }: { children: ReactElement }) => {
+	const [seekTime, setSeekTime] = useState(0);
+
+	return (
+		<>
+			{cloneElement(children, {
+				seekTime,
+			})}
+			<br />
+			<ButtonToolbar>
+				{[0, 0.001, 10, 20, 30].map(s => (
+					<Button label={`${s} seconds`} onClick={() => setSeekTime(s)} />
+				))}
+			</ButtonToolbar>
+		</>
+	);
+};
 
 storiesOf('components/FlowPlayer', module)
 	.addParameters({ jest: ['FlowPlayer'] })
@@ -22,6 +42,13 @@ storiesOf('components/FlowPlayer', module)
 	.add('FlowPlayer Thumbnail met Geknipt', () => (
 		<div className="o-grid-col-bp3-4">
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} src={null} start={10} end={100} />
+		</div>
+	))
+	.add('FlowPlayer set time', () => (
+		<div className="o-grid-col-bp3-4">
+			<FlowPlayerStoryComponent>
+				<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} />
+			</FlowPlayerStoryComponent>
 		</div>
 	))
 	.add('FlowPlayer events', () => (
