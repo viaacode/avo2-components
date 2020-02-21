@@ -4,10 +4,10 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers';
 import { Button } from '../Button/Button';
+import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
 
 import { FlowPlayer } from './FlowPlayer';
 import { MOCK_FLOW_PLAYER_PROPS_FULL } from './FlowPlayer.mock';
-import { ButtonToolbar } from '..';
 
 const FlowPlayerStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [seekTime, setSeekTime] = useState(0);
@@ -19,10 +19,9 @@ const FlowPlayerStoryComponent = ({ children }: { children: ReactElement }) => {
 			})}
 			<br />
 			<ButtonToolbar>
-				<Button label="0 seconds" onClick={() => setSeekTime(0)} />
-				<Button label="10 seconds" onClick={() => setSeekTime(10)} />
-				<Button label="20 seconds" onClick={() => setSeekTime(20)} />
-				<Button label="30 seconds" onClick={() => setSeekTime(30)} />
+				{[0, 0.001, 10, 20, 30].map(s => (
+					<Button label={`${s} seconds`} onClick={() => setSeekTime(s)} />
+				))}
 			</ButtonToolbar>
 		</>
 	);

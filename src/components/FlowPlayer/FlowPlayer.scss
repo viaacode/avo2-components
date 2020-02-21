@@ -31,7 +31,7 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		padding: 0.5rem 1rem;
 
 		background-color: $color-teal-bright;
-		box-shadow: 0 0 5px 0 rgba(#222, 0.5);
+		box-shadow: 0 0 5px 0 rgba($color-gray-shadow, 0.5);
 
 		font-size: 1.2rem;
 		font-weight: 500;
@@ -64,11 +64,11 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 
 			background-color: rgba($c-play-overlay-inner-bg, 0.5);
 			border-radius: 50%;
-			box-shadow: 0 0 5px 0 rgba(#222, 0.5);
+			box-shadow: 0 0 5px 0 rgba($color-gray-shadow, 0.5);
 
 			&:hover {
 				background-color: rgba($c-play-overlay-inner-bg, 0.7);
-				box-shadow: 0 0 10px 0 rgba(#222, 0.7);
+				box-shadow: 0 0 10px 0 rgba($color-gray-shadow, 0.7);
 
 				transition: 0.14s background $player-easing-soft;
 			}
