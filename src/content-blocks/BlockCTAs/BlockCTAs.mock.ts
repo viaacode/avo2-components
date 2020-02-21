@@ -11,13 +11,13 @@ export const CTAS_MOCK: CTAProps[] = [
 		heading: 'CTA 1',
 		headingType: 'h2',
 		buttonLabel: 'Button 1',
-		navigate: () => action('CTA 1'),
+		navigate: action('CTA 1'),
 	},
 	{
 		content,
 		heading: 'CTA 2',
 		headingType: 'h2',
 		buttonLabel: 'Button 2',
-		navigate: () => action('CTA 2'),
+		navigate: action('CTA 2'),
 	},
 ];
