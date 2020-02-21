@@ -1,5 +1,4 @@
 @import '~flowplayer-files/lib/styles/flowplayer.css';
-
 @import '../../styles/settings/colors';
 @import '../../styles/settings/variables';
 
@@ -20,7 +19,7 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 	width: 100%;
 
 	color: rgba(#fff, 0.67);
-	background-color: none;
+	background-color: transparent;
 
 	.c-cut-overlay {
 		position: absolute;
@@ -32,7 +31,7 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		padding: 0.5rem 1rem;
 
 		background-color: $color-teal-bright;
-		box-shadow: 0 0 5px 0px rgba(#222, 0.5);
+		box-shadow: 0 0 5px 0 rgba($color-gray-shadow, 0.5);
 
 		font-size: 1.2rem;
 		font-weight: 500;
@@ -65,11 +64,11 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 
 			background-color: rgba($c-play-overlay-inner-bg, 0.5);
 			border-radius: 50%;
-			box-shadow: 0 0 5px 0px rgba(#222, 0.5);
+			box-shadow: 0 0 5px 0 rgba($color-gray-shadow, 0.5);
 
 			&:hover {
 				background-color: rgba($c-play-overlay-inner-bg, 0.7);
-				box-shadow: 0 0 10px 0px rgba(#222, 0.7);
+				box-shadow: 0 0 10px 0 rgba($color-gray-shadow, 0.7);
 
 				transition: 0.14s background $player-easing-soft;
 			}
@@ -117,12 +116,11 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 			text-overflow: ellipsis;
 			display: inline-block;
 			max-width: calc(100% - 3.2rem);
-			margin: 0.6rem 1.2rem;
-			margin-top: 1.2rem;
+			margin: 1.2rem 1.2rem 0.6rem 1.2rem;
 		}
 
 		.u-d-flex {
-			margin: 0rem 1.2rem;
+			margin: 0 1.2rem;
 		}
 
 		&__meta {
@@ -196,7 +194,7 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 	.fp-progress,
 	.fp-bar,
 	.fp-buffer,
-	fp-hover {
+	.fp-hover {
 		width: 40%;
 		height: 6px;
 	}
@@ -316,7 +314,7 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 }
 
 .c-button--borderless {
-	background-color: none;
+	background-color: transparent;
 	color: #fff;
 	border-color: transparent;
 
