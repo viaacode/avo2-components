@@ -49,6 +49,7 @@ export default {
 		'react-select/creatable',
 		'lodash-es',
 		'trumbowyg/dist/ui/sass/trumbowyg.scss',
-		'trumbowyg/dist/ui/icons.svg'
+		'trumbowyg/dist/ui/icons.svg',
+		'@storybook/addon-actions'
 	]
 }
