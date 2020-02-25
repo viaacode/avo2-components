@@ -23,7 +23,7 @@ export { DropdownButton, DropdownContent } from './Dropdown/Dropdown.slots';
 export { ExpandableContainer } from './ExpandableContainer/ExpandableContainer';
 export { Flex } from './Flex/Flex';
 export { FlexItem } from './Flex/FlexItem/FlexItem';
-export { FlowPlayer } from './FlowPlayer/FlowPlayer';
+export { FlowPlayer, FlowPlayerProps } from './FlowPlayer/FlowPlayer';
 export { Form } from './Form/Form';
 export { FormGroup } from './Form/FormGroup/FormGroup';
 export { Column } from './Grid/Column/Column';
