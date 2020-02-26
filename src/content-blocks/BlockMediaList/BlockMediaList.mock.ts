@@ -1,3 +1,4 @@
+import { ContentPickerType } from '../../types';
 import { MediaListItem } from './BlockMediaList';
 
 export const MEDIA_LIST_MOCK: MediaListItem[] = [
@@ -59,12 +60,9 @@ export const MEDIA_LIST_MOCK: MediaListItem[] = [
 	},
 ];
 
-export const MEDIA_LIST_CTA_MOCK: MediaListItem[] = [
-	...MEDIA_LIST_MOCK.slice(0, -1),
-	{
-		category: 'cta',
-		cta: { buttonLabel: 'Ontdek meer', content: 'Wil je meer weten?' },
-		title: 'Call to action',
-		action: { type: 'CONTENT_PAGE', value: '1' },
-	},
-];
+export const MEDIA_LIST_CTA_MOCK = {
+	ctaButtonAction: { type: 'COLLECTION' as ContentPickerType, value: '1234-5678' },
+	ctaButtonLabel: 'Ontdek meer',
+	ctaContent: 'Wil je meer weten?',
+	ctaTitle: 'Call to action',
+};

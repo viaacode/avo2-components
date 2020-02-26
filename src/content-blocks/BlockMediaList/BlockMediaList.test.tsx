@@ -31,15 +31,14 @@ describe('<BlockMediaList />', () => {
 	});
 
 	it('Should correctly render a CTA when given', () => {
-		const CTA_ITEM = MEDIA_LIST_CTA_MOCK[MEDIA_LIST_CTA_MOCK.length - 1].cta as any;
 		const blockMediaList = mount(
-			<BlockMediaList elements={MEDIA_LIST_CTA_MOCK} navigate={() => {}} />
+			<BlockMediaList elements={MEDIA_LIST_MOCK} navigate={() => {}} {...MEDIA_LIST_CTA_MOCK} />
 		);
 
 		const ctaItem = blockMediaList.find('.c-cta-item');
 		const ctaButtonLabel = ctaItem.find('.c-cta__content .c-button__label');
 
 		expect(ctaItem).toHaveLength(1);
-		expect(ctaButtonLabel.text()).toBe(CTA_ITEM.buttonLabel);
+		expect(ctaButtonLabel.text()).toBe(MEDIA_LIST_CTA_MOCK.ctaButtonLabel);
 	});
 });
