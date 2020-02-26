@@ -12,5 +12,9 @@ storiesOf('blocks/BlockMediaList', module)
 		<BlockMediaList elements={MEDIA_LIST_MOCK} navigate={action('Clicked media')} />
 	))
 	.add('BlockMediaList with CTA', () => (
-		<BlockMediaList elements={MEDIA_LIST_CTA_MOCK} navigate={action('Clicked media')} />
+		<BlockMediaList
+			elements={MEDIA_LIST_MOCK.slice(0, -1)}
+			navigate={action('Clicked media')}
+			{...MEDIA_LIST_CTA_MOCK}
+		/>
 	));
