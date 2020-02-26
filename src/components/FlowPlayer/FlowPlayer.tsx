@@ -53,10 +53,11 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 	}
 
 	private destroyPlayer() {
-		if (this.state.flowPlayerInstance) {
-			this.state.flowPlayerInstance.destroy();
-			if (this.state.flowPlayerInstance.parentElement) {
-				this.state.flowPlayerInstance.parentElement.innerHTML = '';
+		const flowPlayerInstance = this.state.flowPlayerInstance;
+		if (flowPlayerInstance) {
+			flowPlayerInstance.destroy();
+			if (flowPlayerInstance.parentElement) {
+				flowPlayerInstance.parentElement.innerHTML = '';
 			}
 		}
 	}
