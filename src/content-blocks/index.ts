@@ -8,7 +8,11 @@ export { BlockHeading, BlockHeadingProps } from './BlockHeading/BlockHeading';
 export { BlockIFrame, BlockIFrameProps } from './BlockIFrame/BlockIFrame';
 export { BlockIntro, BlockIntroProps } from './BlockIntro/BlockIntro';
 export { BlockLinks, BlockLinksProps } from './BlockLinks/BlockLinks';
-export { BlockMediaList, BlockMediaListProps } from './BlockMediaList/BlockMediaList';
+export {
+	BlockMediaList,
+	BlockMediaListProps,
+	MediaListItem,
+} from './BlockMediaList/BlockMediaList';
 export { BlockRichText, BlockRichTextProps } from './BlockRichText/BlockRichText';
 export { BlockImage, BlockImageProps } from './BlockImage/BlockImage';
 export {
