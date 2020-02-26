@@ -1,4 +1,5 @@
 import { ContentPickerType } from '../../types';
+
 import { MediaListItem } from './BlockMediaList';
 
 export const MEDIA_LIST_MOCK: MediaListItem[] = [
