@@ -18,8 +18,7 @@ import './BlockMediaList.scss';
 
 export type MediaListItem = {
 	action: ButtonAction;
-	category: EnglishContentType | 'cta';
-	cta?: { buttonLabel: string; content: string };
+	category: EnglishContentType;
 	metadata?: MetaDataItemProps[];
 	thumbnail?: { label: string; meta?: string; src?: string };
 	title: string;
@@ -29,61 +28,61 @@ export interface BlockMediaListProps extends DefaultProps {
 	elements: MediaListItem[];
 	navigate: (action: ButtonAction) => void;
 	orientation?: Orientation;
+	ctaTitle?: string;
+	ctaContent?: string;
+	ctaButtonAction?: ButtonAction;
+	ctaButtonLabel?: string;
 }
 
 export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 	className,
-	elements,
+	ctaButtonAction = { type: 'COLLECTION', value: '' },
+	ctaButtonLabel = '',
+	ctaContent = '',
+	ctaTitle = '',
+	elements = [],
 	navigate,
 	orientation,
 }) => {
 	return (
 		<div className={classnames(className, 'c-block-media-list c-media-card-list')}>
 			<Grid>
-				{elements.map(
-					(
-						{
-							action,
-							category,
-							cta = { buttonLabel: '', content: '' },
-							metadata,
-							thumbnail,
-							title,
-						},
-						i
-					) => (
-						<Column key={`block-media-list-${i}`} size="3-3">
-							{category !== 'cta' ? (
-								<MediaCard
-									category={category}
-									onClick={() => navigate(action)}
-									orientation={orientation}
-									title={title}
-								>
-									<MediaCardThumbnail>
-										<Thumbnail alt={title} category={category} {...thumbnail} />
-									</MediaCardThumbnail>
-									{metadata && metadata.length > 0 && (
-										<MediaCardMetaData>
-											<MetaData category={category}>
-												{metadata.map(props => (
-													<MetaDataItem {...props} />
-												))}
-											</MetaData>
-										</MediaCardMetaData>
-									)}
-								</MediaCard>
-							) : (
-								<CTA
-									heading={title}
-									headingType="h3"
-									buttonAction={action}
-									navigate={navigate}
-									{...cta}
-								/>
+				{elements.map(({ action, category, metadata, thumbnail, title }, i) => (
+					<Column key={`block-media-list-${i}`} size="3-3">
+						<MediaCard
+							category={category}
+							onClick={() => navigate(action)}
+							orientation={orientation}
+							title={title}
+						>
+							{thumbnail && (
+								<MediaCardThumbnail>
+									<Thumbnail alt={title} category={category} {...thumbnail} />
+								</MediaCardThumbnail>
 							)}
-						</Column>
-					)
+							{metadata && metadata.length > 0 && (
+								<MediaCardMetaData>
+									<MetaData category={category}>
+										{metadata.map((props, i) => (
+											<MetaDataItem key={`block-media-list-meta-${i}`} {...props} />
+										))}
+									</MetaData>
+								</MediaCardMetaData>
+							)}
+						</MediaCard>
+					</Column>
+				))}
+				{(ctaTitle || ctaButtonLabel || ctaButtonAction.value) && (
+					<Column size="3-3">
+						<CTA
+							buttonAction={ctaButtonAction}
+							buttonLabel={ctaButtonLabel}
+							heading={ctaTitle}
+							content={ctaContent}
+							headingType="h3"
+							navigate={navigate}
+						/>
+					</Column>
 				)}
 			</Grid>
 		</div>
