@@ -10,7 +10,7 @@ import './Blankslate.scss';
 
 export interface BlankslateProps extends DefaultProps {
 	title: string;
-	body: string;
+	body?: string;
 	spacious?: boolean;
 	icon?: IconName;
 	children?: ReactNode;
@@ -33,7 +33,7 @@ export const Blankslate: FunctionComponent<BlankslateProps> = ({
 			</Spacer>
 		)}
 		<h4 className="c-h4" dangerouslySetInnerHTML={{ __html: title }} />
-		<p className="c-body-1" dangerouslySetInnerHTML={{ __html: body }} />
+		{!!body && <p className="c-body-1" dangerouslySetInnerHTML={{ __html: body }} />}
 		{children}
 	</div>
 );
