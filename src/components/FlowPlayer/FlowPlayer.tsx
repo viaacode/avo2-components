@@ -3,6 +3,7 @@ import { get } from 'lodash-es';
 import React, { createRef } from 'react';
 
 import { formatDuration } from '../../helpers';
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
 import './FlowPlayer.scss';
@@ -18,7 +19,7 @@ interface FlowplayerInstance extends HTMLVideoElement {
 	emit: Function;
 }
 
-export interface FlowPlayerProps {
+export interface FlowPlayerProps extends DefaultProps {
 	src: string | null;
 	poster?: string;
 	logo?: string;
@@ -35,7 +36,6 @@ export interface FlowPlayerProps {
 	onPause?: () => void;
 	onEnded?: () => void;
 	onTimeUpdate?: (time: number) => void;
-	className?: string;
 }
 
 interface FlowPlayerState {
@@ -52,42 +52,62 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 		};
 	}
 
-	componentWillUnmount() {
-		if (this.state.flowPlayerInstance) {
-			this.state.flowPlayerInstance.destroy();
+	private destroyPlayer() {
+		const flowPlayerInstance = this.state.flowPlayerInstance;
+		if (flowPlayerInstance) {
+			flowPlayerInstance.destroy();
+			if (flowPlayerInstance.parentElement) {
+				flowPlayerInstance.parentElement.innerHTML = '';
+			}
 		}
 	}
 
-	shouldComponentUpdate(nextProps: FlowPlayerProps) {
-		if (!this.videoContainerRef.current) {
-			return true;
-		}
+	componentWillUnmount() {
+		this.destroyPlayer();
+	}
 
-		if (this.state.flowPlayerInstance) {
-			if (nextProps.seekTime !== this.props.seekTime && nextProps.seekTime) {
-				this.state.flowPlayerInstance.currentTime = nextProps.seekTime;
+	shouldComponentUpdate(nextProps: FlowPlayerProps) {
+		try {
+			if (!this.videoContainerRef.current) {
+				return true;
 			}
 
-			if (nextProps.start !== this.props.start || nextProps.end !== this.props.end) {
-				if (this.videoContainerRef) {
-					this.state.flowPlayerInstance.emit(flowplayer.events.CUEPOINTS, {
-						cuepoints: [
-							{
-								start: nextProps.start,
-								end: nextProps.end,
-							},
-						],
-					});
+			const flowPlayerInstance = this.state.flowPlayerInstance;
+			if (flowPlayerInstance) {
+				if (nextProps.seekTime !== this.props.seekTime && nextProps.seekTime) {
+					flowPlayerInstance.currentTime = nextProps.seekTime;
+				}
+
+				if (nextProps.start !== this.props.start || nextProps.end !== this.props.end) {
+					if (this.videoContainerRef) {
+						flowPlayerInstance.emit(flowplayer.events.CUEPOINTS, {
+							cuepoints: [
+								{
+									start: nextProps.start,
+									end: nextProps.end,
+								},
+							],
+						});
+					}
 				}
 			}
-		}
 
-		if (nextProps.src && nextProps.src !== this.props.src) {
-			this.reInitFlowPlayer(nextProps);
-			return true;
-		}
+			if (nextProps.src !== this.props.src) {
+				if (nextProps.src) {
+					// User clicked the post to play the video
+					this.reInitFlowPlayer(nextProps);
+				} else {
+					// User clicked another video and the video src has been set to undefined
+					this.destroyPlayer();
+				}
+				return true;
+			}
 
-		return false;
+			return false;
+		} catch (err) {
+			console.log('test', err);
+			throw err;
+		}
 	}
 
 	componentDidMount() {
@@ -98,6 +118,7 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 
 	private createTitleOverlay() {
 		const titleOverlay = document.createElement('div');
+		titleOverlay.className = 'a-flowplayer__title';
 		const titleHeader = document.createElement('h5');
 		const publishDiv = document.createElement('div');
 
@@ -138,17 +159,18 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 		}
 	}
 
-	private drawCustomElements() {
-		if (this.props.src && this.props.logo && this.props.subtitles && this.props.title) {
-			// @ts-ignore
-			flowplayer((opts: any, root: any, api: any) => {
-				const mq = flowplayer.mq;
-
-				api.on('mount', () => {
-					mq('.fp-ui', root).prepend(this.createTitleOverlay());
-					mq('.fp-ui', root).prepend(this.createLogoOverlay());
-				});
-			});
+	private drawCustomElements(flowplayerInstance: FlowplayerInstance) {
+		if (!flowplayerInstance.parentElement) {
+			return;
+		}
+		const flowPlayerUi = flowplayerInstance.parentElement.querySelector('.fp-ui');
+		const titleElem = this.createTitleOverlay();
+		const logoElem = this.createLogoOverlay();
+		if (flowPlayerUi) {
+			flowPlayerUi.prepend(titleElem);
+			if (logoElem) {
+				flowPlayerUi.prepend(logoElem);
+			}
 		}
 	}
 
@@ -159,9 +181,7 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 	}
 
 	private reInitFlowPlayer(props: FlowPlayerProps) {
-		if (this.state.flowPlayerInstance) {
-			this.state.flowPlayerInstance.destroy();
-		}
+		this.destroyPlayer();
 
 		if (!this.videoContainerRef.current) {
 			return;
@@ -198,7 +218,7 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 			flowplayerInstance.on('cuepointend', this.cuePointEndListener);
 		}
 
-		this.drawCustomElements();
+		this.drawCustomElements(flowplayerInstance);
 
 		flowplayerInstance.on('playing', this.props.onPlay || (() => {}));
 		flowplayerInstance.on('pause', this.props.onPause || (() => {}));
@@ -216,15 +236,17 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 
 	render() {
 		return (
-			<>
+			<div className={classnames(this.props.className, 'c-video-player')}>
 				<div
-					className={classnames(this.props.className, 'c-video-player')}
+					className={classnames('c-video-player-inner', {
+						'c-video-player__initialized': !!this.props.src,
+					})}
 					data-player-id={this.props.dataPlayerId}
 					ref={this.videoContainerRef}
 					style={{ display: this.props.src ? 'block' : 'none' }}
 				/>
 				<div
-					className={classnames(this.props.className, 'c-video-player')}
+					className={'c-video-player-inner'}
 					onClick={this.props.onInit}
 					style={{ display: this.props.src ? 'none' : 'block' }}
 				>
@@ -243,7 +265,7 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 						</div>
 					)}
 				</div>
-			</>
+			</div>
 		);
 	}
 }
