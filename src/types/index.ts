@@ -14,6 +14,7 @@ export type ContentPickerType =
 	| 'CONTENT_PAGE'
 	| 'COLLECTION'
 	| 'ITEM'
+	| 'BUNDLE'
 	| 'DROPDOWN'
 	| 'INTERNAL_LINK'
 	| 'EXTERNAL_LINK';
