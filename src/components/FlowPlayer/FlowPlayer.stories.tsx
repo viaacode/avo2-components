@@ -44,6 +44,11 @@ storiesOf('components/FlowPlayer', module)
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} src={null} start={10} end={100} />
 		</div>
 	))
+	.add('FlowPlayer logo', () => (
+		<div className="o-grid-col-bp3-4">
+			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} logo="images/100x100.svg" />
+		</div>
+	))
 	.add('FlowPlayer set time', () => (
 		<div className="o-grid-col-bp3-4">
 			<FlowPlayerStoryComponent>

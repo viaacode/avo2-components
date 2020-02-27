@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
 import { BlockRichText } from '../../content-blocks/BlockRichText/BlockRichText';
-import { ButtonAction, DefaultProps, HeadingType } from '../../types';
+import { DefaultProps, HeadingType } from '../../types';
 import { Button, ButtonProps } from '../Button/Button';
 import { ButtonType } from '../Button/Button.types';
 import { IconName } from '../Icon/Icon.types';
@@ -18,8 +18,7 @@ export interface CTAProps extends DefaultProps {
 	buttonLabel: string;
 	buttonIcon?: IconName;
 	buttonType?: ButtonType;
-	buttonAction: ButtonAction;
-	navigate: (buttonAction: ButtonAction) => void;
+	navigate: () => void;
 }
 
 export const CTA: FunctionComponent<CTAProps> = ({
@@ -30,14 +29,13 @@ export const CTA: FunctionComponent<CTAProps> = ({
 	buttonLabel,
 	buttonIcon,
 	buttonType = 'secondary',
-	buttonAction,
 	navigate,
 }) => {
 	const buttonProps: ButtonProps = {
 		label: buttonLabel,
 		title: buttonLabel,
 		ariaLabel: buttonLabel,
-		onClick: () => navigate(buttonAction),
+		onClick: navigate,
 		icon: buttonIcon,
 		type: buttonType,
 	};

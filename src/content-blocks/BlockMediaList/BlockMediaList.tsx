@@ -12,12 +12,11 @@ import {
 	MetaDataItemProps,
 } from '../../components/MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../../components/Thumbnail/Thumbnail';
-import { ButtonAction, DefaultProps, EnglishContentType, Orientation } from '../../types';
+import { DefaultProps, EnglishContentType, Orientation } from '../../types';
 
 import './BlockMediaList.scss';
 
 export type MediaListItem = {
-	action: ButtonAction;
 	category: EnglishContentType;
 	metadata?: MetaDataItemProps[];
 	thumbnail?: { label: string; meta?: string; src?: string };
@@ -26,17 +25,15 @@ export type MediaListItem = {
 
 export interface BlockMediaListProps extends DefaultProps {
 	elements: MediaListItem[];
-	navigate: (action: ButtonAction) => void;
+	navigate: () => void;
 	orientation?: Orientation;
 	ctaTitle?: string;
 	ctaContent?: string;
-	ctaButtonAction?: ButtonAction;
 	ctaButtonLabel?: string;
 }
 
 export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 	className,
-	ctaButtonAction = { type: 'COLLECTION', value: '' },
 	ctaButtonLabel = '',
 	ctaContent = '',
 	ctaTitle = '',
@@ -44,14 +41,16 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 	navigate,
 	orientation,
 }) => {
+	const hasCTA = ctaTitle || ctaButtonLabel || ctaContent;
+
 	return (
 		<div className={classnames(className, 'c-block-media-list c-media-card-list')}>
 			<Grid>
-				{elements.map(({ action, category, metadata, thumbnail, title }, i) => (
+				{elements.map(({ category, metadata, thumbnail, title }, i) => (
 					<Column key={`block-media-list-${i}`} size="3-3">
 						<MediaCard
 							category={category}
-							onClick={() => navigate(action)}
+							onClick={() => navigate()}
 							orientation={orientation}
 							title={title}
 						>
@@ -72,10 +71,9 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 						</MediaCard>
 					</Column>
 				))}
-				{(ctaTitle || ctaButtonLabel || ctaButtonAction.value) && (
+				{hasCTA && (
 					<Column size="3-3">
 						<CTA
-							buttonAction={ctaButtonAction}
 							buttonLabel={ctaButtonLabel}
 							heading={ctaTitle}
 							content={ctaContent}

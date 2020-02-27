@@ -3,6 +3,7 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers';
 
+import { loremIpsum } from 'lorem-ipsum';
 import { TagList } from './TagList';
 
 const tags = [
@@ -69,6 +70,11 @@ storiesOf('components/TagList', module)
 			onTagClosed={action('Tag closed')}
 			onTagClicked={action('Tag clicked')}
 		/>
+	))
+	.add('TagList with multiline tags', () => (
+		<div style={{ width: '300px' }}>
+			<TagList tags={[{ label: loremIpsum({ count: 1 }), id: 'test' }]} closable swatches={false} />
+		</div>
 	))
 	.add('TagList with selectable tags', () => (
 		<TagListStoryComponent>
