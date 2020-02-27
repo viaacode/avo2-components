@@ -3,6 +3,7 @@ import { get } from 'lodash-es';
 import React, { createRef } from 'react';
 
 import { formatDuration } from '../../helpers';
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
 import './FlowPlayer.scss';
@@ -18,7 +19,7 @@ interface FlowplayerInstance extends HTMLVideoElement {
 	emit: Function;
 }
 
-export interface FlowPlayerProps {
+export interface FlowPlayerProps extends DefaultProps {
 	src: string | null;
 	poster?: string;
 	logo?: string;
@@ -35,7 +36,6 @@ export interface FlowPlayerProps {
 	onPause?: () => void;
 	onEnded?: () => void;
 	onTimeUpdate?: (time: number) => void;
-	className?: string;
 }
 
 interface FlowPlayerState {
@@ -236,9 +236,9 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 
 	render() {
 		return (
-			<>
+			<div className={classnames(this.props.className, 'c-video-player')}>
 				<div
-					className={classnames(this.props.className, 'c-video-player', {
+					className={classnames('c-video-player-inner', {
 						'c-video-player__initialized': !!this.props.src,
 					})}
 					data-player-id={this.props.dataPlayerId}
@@ -246,7 +246,7 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 					style={{ display: this.props.src ? 'block' : 'none' }}
 				/>
 				<div
-					className={classnames(this.props.className, 'c-video-player')}
+					className={'c-video-player-inner'}
 					onClick={this.props.onInit}
 					style={{ display: this.props.src ? 'none' : 'block' }}
 				>
@@ -265,7 +265,7 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 						</div>
 					)}
 				</div>
-			</>
+			</div>
 		);
 	}
 }
