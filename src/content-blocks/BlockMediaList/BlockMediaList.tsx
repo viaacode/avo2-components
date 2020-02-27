@@ -27,7 +27,7 @@ export type MediaListItem = {
 
 export interface BlockMediaListProps extends DefaultProps {
 	elements: MediaListItem[];
-	navigate: (action: ButtonAction) => void;
+	navigate: () => void;
 	orientation?: Orientation;
 }
 
@@ -41,22 +41,12 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 		<div className={classnames(className, 'c-block-media-list c-media-card-list')}>
 			<Grid>
 				{elements.map(
-					(
-						{
-							action,
-							category,
-							cta = { buttonLabel: '', content: '' },
-							metadata,
-							thumbnail,
-							title,
-						},
-						i
-					) => (
+					({ category, cta = { buttonLabel: '', content: '' }, metadata, thumbnail, title }, i) => (
 						<Column key={`block-media-list-${i}`} size="3-3">
 							{category !== 'cta' ? (
 								<MediaCard
 									category={category}
-									onClick={() => navigate(action)}
+									onClick={navigate}
 									orientation={orientation}
 									title={title}
 								>
@@ -74,13 +64,7 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 									)}
 								</MediaCard>
 							) : (
-								<CTA
-									heading={title}
-									headingType="h3"
-									buttonAction={action}
-									navigate={navigate}
-									{...cta}
-								/>
+								<CTA heading={title} headingType="h3" navigate={navigate} {...cta} />
 							)}
 						</Column>
 					)
