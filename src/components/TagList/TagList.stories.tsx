@@ -3,8 +3,8 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers';
 
-import { TagList } from './TagList';
 import { loremIpsum } from 'lorem-ipsum';
+import { TagList } from './TagList';
 
 const tags = [
 	{ label: 'Aluminium', id: 'aluminium' },
