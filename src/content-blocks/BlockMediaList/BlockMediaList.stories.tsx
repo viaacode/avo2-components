@@ -9,12 +9,12 @@ import { MEDIA_LIST_CTA_MOCK, MEDIA_LIST_MOCK } from './BlockMediaList.mock';
 storiesOf('blocks/BlockMediaList', module)
 	.addParameters({ jest: ['BlockMediaList'] })
 	.add('BlockMediaList', () => (
-		<BlockMediaList elements={MEDIA_LIST_MOCK} navigate={action('Clicked media')} />
+		<BlockMediaList elements={MEDIA_LIST_MOCK} ctaNavigate={action('Clicked media')} />
 	))
 	.add('BlockMediaList with CTA', () => (
 		<BlockMediaList
 			elements={MEDIA_LIST_MOCK.slice(0, -1)}
-			navigate={action('Clicked media')}
+			ctaNavigate={action('Clicked media')}
 			{...MEDIA_LIST_CTA_MOCK}
 		/>
 	));

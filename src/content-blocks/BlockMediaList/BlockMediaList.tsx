@@ -19,26 +19,27 @@ import './BlockMediaList.scss';
 export type MediaListItem = {
 	category: EnglishContentType;
 	metadata?: MetaDataItemProps[];
+	navigate: () => void;
 	thumbnail?: { label: string; meta?: string; src?: string };
 	title: string;
 };
 
 export interface BlockMediaListProps extends DefaultProps {
-	elements: MediaListItem[];
-	navigate: () => void;
-	orientation?: Orientation;
-	ctaTitle?: string;
-	ctaContent?: string;
 	ctaButtonLabel?: string;
+	ctaContent?: string;
+	ctaNavigate?: () => void;
+	ctaTitle?: string;
+	elements: MediaListItem[];
+	orientation?: Orientation;
 }
 
 export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 	className,
 	ctaButtonLabel = '',
 	ctaContent = '',
+	ctaNavigate = () => {},
 	ctaTitle = '',
 	elements = [],
-	navigate,
 	orientation,
 }) => {
 	const hasCTA = ctaTitle || ctaButtonLabel || ctaContent;
@@ -46,11 +47,11 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 	return (
 		<div className={classnames(className, 'c-block-media-list c-media-card-list')}>
 			<Grid>
-				{elements.map(({ category, metadata, thumbnail, title }, i) => (
+				{elements.map(({ category, metadata, navigate, thumbnail, title }, i) => (
 					<Column key={`block-media-list-${i}`} size="3-3">
 						<MediaCard
 							category={category}
-							onClick={() => navigate()}
+							onClick={navigate}
 							orientation={orientation}
 							title={title}
 						>
@@ -78,7 +79,7 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 							heading={ctaTitle}
 							content={ctaContent}
 							headingType="h3"
-							navigate={navigate}
+							navigate={ctaNavigate}
 						/>
 					</Column>
 				)}
