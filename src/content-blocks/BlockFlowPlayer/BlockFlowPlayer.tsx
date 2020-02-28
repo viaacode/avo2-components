@@ -15,5 +15,6 @@ export interface BlockFlowPlayerProps extends DefaultProps {
 
 export const BlockFlowPlayer: FunctionComponent<BlockFlowPlayerProps> = ({
 	className,
+	autoplay = true,
 	...flowPlayerProps
-}) => <FlowPlayer className={className} {...flowPlayerProps} />;
+}) => <FlowPlayer className={className} {...flowPlayerProps} autoplay={autoplay} />;
