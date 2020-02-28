@@ -14,9 +14,11 @@ export type ContentPickerType =
 	| 'CONTENT_PAGE'
 	| 'COLLECTION'
 	| 'ITEM'
+	| 'BUNDLE'
 	| 'DROPDOWN'
 	| 'INTERNAL_LINK'
-	| 'EXTERNAL_LINK';
+	| 'EXTERNAL_LINK'
+	| 'SEARCH_QUERY'; // TODO move to typings and make typings repo a dependency of the components repo
 
 export interface ButtonAction {
 	type: ContentPickerType;
