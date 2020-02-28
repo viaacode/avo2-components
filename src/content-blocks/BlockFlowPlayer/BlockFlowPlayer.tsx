@@ -1,4 +1,3 @@
-import { isNil } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { FlowPlayer } from '../../components/FlowPlayer/FlowPlayer';
@@ -16,11 +15,6 @@ export interface BlockFlowPlayerProps extends DefaultProps {
 
 export const BlockFlowPlayer: FunctionComponent<BlockFlowPlayerProps> = ({
 	className,
+	autoplay = true,
 	...flowPlayerProps
-}) => (
-	<FlowPlayer
-		className={className}
-		{...flowPlayerProps}
-		autoplay={isNil(flowPlayerProps.autoplay) ? true : flowPlayerProps.autoplay}
-	/>
-);
+}) => <FlowPlayer className={className} {...flowPlayerProps} autoplay={autoplay} />;
