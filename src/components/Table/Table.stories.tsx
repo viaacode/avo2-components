@@ -134,4 +134,15 @@ storiesOf('components/Table', module)
 				emptyStateMessage="No data was found. Try again later."
 			/>
 		</TableStoryComponent>
+	))
+	.add('Table clickable row', () => (
+		<TableStoryComponent>
+			<Table
+				columns={COLUMNS}
+				data={DATA}
+				rowKey="id"
+				renderCell={(row, cell) => renderCell(row, cell)}
+				onRowClick={action('Row clicked')}
+			/>
+		</TableStoryComponent>
 	));
