@@ -67,6 +67,12 @@ export const Table: FunctionComponent<TableProps> = ({
 	untable,
 	variant,
 }) => {
+	const handleRowClick = (rowData: any) => {
+		if (onRowClick) {
+			onRowClick(rowData);
+		}
+	};
+
 	const renderHeading = (heading: TableColumn) => {
 		const { id, col, sortable, label } = heading;
 
@@ -130,7 +136,7 @@ export const Table: FunctionComponent<TableProps> = ({
 									<tr
 										key={`table-row-${rowData[rowKey]}`}
 										className={onRowClick ? 'u-clickable' : ''}
-										onClick={() => (onRowClick ? onRowClick(rowData) : () => {})}
+										onClick={() => handleRowClick(rowData)}
 									>
 										{columns
 											.map(col => col.id)
