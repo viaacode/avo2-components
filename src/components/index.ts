@@ -13,7 +13,7 @@ export { Button } from './Button/Button';
 export { ButtonType } from './Button/Button.types';
 export { ButtonGroup } from './ButtonGroup/ButtonGroup';
 export { ButtonToolbar } from './ButtonToolbar/ButtonToolbar';
-export { Checkbox } from './Checkbox/Checkbox';
+export { Checkbox, CheckboxProps } from './Checkbox/Checkbox';
 export { CheckboxGroup } from './CheckboxGroup/CheckboxGroup';
 export { Container } from './Container/Container';
 export { CTA } from './CTA/CTA';
@@ -52,7 +52,7 @@ export {
 	ModalFooterRight,
 	ModalHeaderRight,
 } from './Modal/Modal.slots';
-export { MultiRange } from './MultiRange/MultiRange';
+export { MultiRange, MultiRangeProps } from './MultiRange/MultiRange';
 export { Navbar } from './Navbar/Navbar';
 export { Pagination } from './Pagination/Pagination';
 export { Panel } from './Panel/Panel';
