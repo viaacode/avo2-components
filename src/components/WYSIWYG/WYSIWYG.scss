@@ -30,3 +30,12 @@
 .trumbowyg-box, .trumbowyg-editor {
 	margin: 0;
 }
+
+
+// Modifiers
+
+.trumbowyg-fullscreen {
+	.trumbowyg-editor {
+		max-height: 100vh;
+	}
+}
