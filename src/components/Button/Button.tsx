@@ -42,7 +42,6 @@ const Button: FunctionComponent<ButtonProps> = ({
 	type = 'primary',
 }) => {
 	const handleButtonClick = (evt: MouseEvent<HTMLElement>) => {
-		evt.stopPropagation();
 		if (!disabled && onClick) {
 			onClick(evt);
 		}
