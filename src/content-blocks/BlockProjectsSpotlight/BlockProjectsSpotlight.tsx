@@ -12,25 +12,17 @@ export interface ImageInfo {
 	title: string;
 	buttonAction?: ButtonAction;
 	className?: string;
+	navigate: () => void;
 }
 
 export interface BlockProjectsSpotlightProps extends DefaultProps {
 	elements: ImageInfo[];
-	navigate: (buttonAction: ButtonAction) => void;
 }
 
 export const BlockProjectsSpotlight: FunctionComponent<BlockProjectsSpotlightProps> = ({
 	elements,
-	navigate,
 	className,
 }) => {
-	const navigateToProject = (index: number) => {
-		const action = get(elements, [index, 'buttonAction']);
-		if (action && navigate) {
-			navigate(action);
-		}
-	};
-
 	function renderProject(index: number) {
 		if (!elements[index]) {
 			return null;
@@ -41,7 +33,7 @@ export const BlockProjectsSpotlight: FunctionComponent<BlockProjectsSpotlightPro
 					'u-clickable': !!get(elements, [index, 'buttonAction']),
 				})}
 				style={{ backgroundImage: `url(${get(elements, [index, 'image'])})` }}
-				onClick={() => navigateToProject(index)}
+				onClick={get(elements, [index, 'navigate'])}
 			>
 				<p>{get(elements, [index, 'title'])}</p>
 			</div>
