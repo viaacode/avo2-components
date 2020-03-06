@@ -35,6 +35,11 @@ export { Icon } from './Icon/Icon';
 export { IconType, IconName } from './Icon/Icon.types';
 export { Image } from './Image/Image';
 export { ImageGrid } from './ImageGrid/ImageGrid';
+export {
+	KeyValueEditor,
+	KeyValuePair,
+	KeyValueEditorTableCols,
+} from './KeyValueEditor/KeyValueEditor';
 export { MediaCard } from './MediaCard/MediaCard';
 export { MediaCardMetaData, MediaCardThumbnail } from './MediaCard/MediaCard.slots';
 export { Menu } from './Menu/Menu';
