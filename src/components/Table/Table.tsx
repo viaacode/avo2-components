@@ -38,6 +38,7 @@ export interface TableProps extends DefaultProps {
 	horizontal?: boolean;
 	nowrap?: boolean;
 	onColumnClick?: (id: string) => void;
+	onRowClick?: (rowData: any) => void;
 	renderCell?: (rowData: any, columnId: string, rowIndex: number, columnIndex: number) => ReactNode;
 	rowKey?: string;
 	sortColumn?: string;
@@ -57,6 +58,7 @@ export const Table: FunctionComponent<TableProps> = ({
 	horizontal,
 	nowrap,
 	onColumnClick = () => {},
+	onRowClick,
 	renderCell = () => null,
 	rowKey,
 	sortColumn,
@@ -65,6 +67,12 @@ export const Table: FunctionComponent<TableProps> = ({
 	untable,
 	variant,
 }) => {
+	const handleRowClick = (rowData: any) => {
+		if (onRowClick) {
+			onRowClick(rowData);
+		}
+	};
+
 	const renderHeading = (heading: TableColumn) => {
 		const { id, col, sortable, label } = heading;
 
@@ -125,7 +133,11 @@ export const Table: FunctionComponent<TableProps> = ({
 						{data.length > 0 && rowKey && (
 							<tbody>
 								{data.map((rowData, rowIndex) => (
-									<tr key={`table-row-${rowData[rowKey]}`}>
+									<tr
+										key={`table-row-${rowData[rowKey]}`}
+										className={onRowClick ? 'u-clickable' : ''}
+										onClick={() => handleRowClick(rowData)}
+									>
 										{columns
 											.map(col => col.id)
 											.map((columnId, columnIndex) => (
