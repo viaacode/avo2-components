@@ -12,7 +12,7 @@ export interface MenuSearchResultItemInfo {
 	type: EnglishContentType;
 }
 
-export interface MenuContentProps extends DefaultProps {
+export interface MenuSearchResultContentProps extends DefaultProps {
 	menuItems: MenuSearchResultItemInfo[];
 	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;
@@ -26,7 +26,7 @@ export const CONTENT_TYPE_TO_LABEL: { [contentType in EnglishContentType]?: stri
 	search: 'Zoekopdracht',
 };
 
-export const MenuSearchResultContent: FunctionComponent<MenuContentProps> = ({
+export const MenuSearchResultContent: FunctionComponent<MenuSearchResultContentProps> = ({
 	className,
 	menuItems,
 	noResultsLabel,

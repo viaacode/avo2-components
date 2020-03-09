@@ -6,16 +6,12 @@ import { DefaultProps } from '../../types';
 
 import './Form.scss';
 
-export interface FormGroupProps extends DefaultProps {
+export interface FormProps extends DefaultProps {
 	type?: 'standard' | 'horizontal' | 'inline';
 	children: ReactNode;
 }
 
-export const Form: FunctionComponent<FormGroupProps> = ({
-	className,
-	type = 'standard',
-	children,
-}) => (
+export const Form: FunctionComponent<FormProps> = ({ className, type = 'standard', children }) => (
 	<div className={classnames(className, 'o-form-group-layout', `o-form-group-layout--${type}`)}>
 		{children}
 	</div>

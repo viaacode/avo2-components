@@ -16,7 +16,7 @@ import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 
-interface HeaderProps extends DefaultProps {
+export interface HeaderProps extends DefaultProps {
 	bookmarks?: string;
 	category?: EnglishContentType;
 	children?: ReactNode;
