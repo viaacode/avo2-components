@@ -41,6 +41,12 @@ export { Icon, IconProps } from './Icon/Icon';
 export { IconType, IconName } from './Icon/Icon.types';
 export { Image, ImageProps } from './Image/Image';
 export { ImageGrid, ImageGridProps } from './ImageGrid/ImageGrid';
+export {
+	KeyValueEditor,
+	KeyValueEditorProps,
+	KeyValuePair,
+	KeyValueEditorTableCols,
+} from './KeyValueEditor/KeyValueEditor';
 export { MediaCard, MediaCardProps } from './MediaCard/MediaCard';
 export { MediaCardMetaData, MediaCardThumbnail } from './MediaCard/MediaCard.slots';
 export { Menu, MenuProps } from './Menu/Menu';

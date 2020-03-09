@@ -21,7 +21,7 @@ export type KeyValueEditorTableCols = '0' | '1';
 
 const ENTRIES_PER_PAGE = 20;
 
-export interface TextInputProps extends DefaultProps {
+export interface KeyValueEditorProps extends DefaultProps {
 	data: KeyValuePairs;
 	keyLabel?: string;
 	valueLabel?: string;
@@ -49,7 +49,7 @@ export interface TextInputProps extends DefaultProps {
  * @param noDataForFilterMessage
  * @constructor
  */
-export const KeyValueEditor: FunctionComponent<TextInputProps> = ({
+export const KeyValueEditor: FunctionComponent<KeyValueEditorProps> = ({
 	data,
 	keyLabel = 'Id',
 	valueLabel = 'Waarde',
