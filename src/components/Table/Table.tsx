@@ -171,7 +171,7 @@ export const Table: FunctionComponent<TableProps> = ({
 											<Checkbox
 												label=""
 												checked={areAllItemsSelected()}
-												onChange={() => toggleAllItemSelection()}
+												onChange={toggleAllItemSelection}
 											/>
 										</th>
 									)}
