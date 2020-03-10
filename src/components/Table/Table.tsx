@@ -5,6 +5,8 @@ import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/Icon.types';
 
+import { every, without } from 'lodash-es';
+import { Checkbox } from '..';
 import './Table.scss';
 
 export type TableColumn = {
@@ -46,6 +48,9 @@ export interface TableProps extends DefaultProps {
 	striped?: boolean;
 	untable?: boolean;
 	variant?: 'bordered' | 'invisible' | 'styled';
+	showCheckboxes?: boolean;
+	selectedItems?: any[];
+	onSelectionChanged?: (selectedItems: any[]) => void;
 }
 
 export const Table: FunctionComponent<TableProps> = ({
@@ -66,10 +71,15 @@ export const Table: FunctionComponent<TableProps> = ({
 	striped,
 	untable,
 	variant,
+	showCheckboxes = false,
+	selectedItems = [],
+	onSelectionChanged = () => {},
 }) => {
 	const handleRowClick = (rowData: any) => {
 		if (onRowClick) {
 			onRowClick(rowData);
+		} else if (showCheckboxes) {
+			toggleItemSelection(rowData);
 		}
 	};
 
@@ -107,6 +117,34 @@ export const Table: FunctionComponent<TableProps> = ({
 		);
 	};
 
+	const areAllItemsSelected = () =>
+		every(
+			data,
+			dataItem =>
+				!!selectedItems.find(
+					selectedItem => selectedItem[rowKey || 'id'] === dataItem[rowKey || 'id']
+				)
+		);
+
+	const isItemSelected = (dataItem: any) =>
+		selectedItems.find(selectedItem => selectedItem[rowKey || 'id'] === dataItem[rowKey || 'id']);
+
+	const toggleAllItemSelection = () => {
+		if (areAllItemsSelected()) {
+			onSelectionChanged([]);
+		} else {
+			onSelectionChanged(data);
+		}
+	};
+
+	const toggleItemSelection = (item: any) => {
+		if (isItemSelected(item)) {
+			onSelectionChanged(without(selectedItems, item));
+		} else {
+			onSelectionChanged([...selectedItems, item]);
+		}
+	};
+
 	return (
 		<Fragment>
 			<table
@@ -127,7 +165,18 @@ export const Table: FunctionComponent<TableProps> = ({
 					<Fragment>
 						{columns.length > 0 && (
 							<thead>
-								<tr>{columns.map(renderHeading)}</tr>
+								<tr>
+									{showCheckboxes && (
+										<th className="c-table__checkbox-column">
+											<Checkbox
+												label=""
+												checked={areAllItemsSelected()}
+												onChange={() => toggleAllItemSelection()}
+											/>
+										</th>
+									)}
+									{columns.map(renderHeading)}
+								</tr>
 							</thead>
 						)}
 						{data.length > 0 && rowKey && (
@@ -135,9 +184,23 @@ export const Table: FunctionComponent<TableProps> = ({
 								{data.map((rowData, rowIndex) => (
 									<tr
 										key={`table-row-${rowData[rowKey]}`}
-										className={onRowClick ? 'u-clickable' : ''}
+										className={onRowClick || showCheckboxes ? 'u-clickable' : ''}
 										onClick={() => handleRowClick(rowData)}
 									>
+										{showCheckboxes && (
+											<td className="c-table__checkbox-column">
+												<Checkbox
+													label=""
+													checked={
+														!!selectedItems.find(
+															selectedItem =>
+																selectedItem[rowKey || 'id'] === rowData[rowKey || 'id']
+														)
+													}
+													onChange={() => toggleItemSelection(rowData)}
+												/>
+											</td>
+										)}
 										{columns
 											.map(col => col.id)
 											.map((columnId, columnIndex) => (

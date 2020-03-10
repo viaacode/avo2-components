@@ -42,8 +42,8 @@ const comparators: any = {
 };
 
 const TableStoryComponent = ({ children }: { children: ReactElement }) => {
-	const [sortColumn, setSortColumn] = useState('name');
-	const [sortOrder, setSortOrder] = useState('asc');
+	const [sortColumn, setSortColumn] = useState<string>('name');
+	const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
 	const sort = useCallback(
 		(items: any[]) => {
@@ -52,6 +52,7 @@ const TableStoryComponent = ({ children }: { children: ReactElement }) => {
 		[sortColumn, sortOrder]
 	);
 
+	const [selectedItems, setSelectedItems] = useState<any[]>(sort(children.props.data).slice(2, 4));
 	const [data, setData] = useState(sort(children.props.data));
 
 	useEffect(() => {
@@ -73,6 +74,11 @@ const TableStoryComponent = ({ children }: { children: ReactElement }) => {
 					setSortColumn(id);
 					setSortOrder('asc');
 				}
+			}}
+			selectedItems={selectedItems}
+			onSelectionChanged={(newSelectedItems: any[]) => {
+				setSelectedItems(newSelectedItems);
+				action('Selection changed')(newSelectedItems);
 			}}
 		/>
 	);
@@ -143,6 +149,17 @@ storiesOf('components/Table', module)
 				rowKey="id"
 				renderCell={(row, cell) => renderCell(row, cell)}
 				onRowClick={action('Row clicked')}
+			/>
+		</TableStoryComponent>
+	))
+	.add('Table checkboxes', () => (
+		<TableStoryComponent>
+			<Table
+				columns={COLUMNS}
+				data={DATA}
+				rowKey="id"
+				renderCell={(row, cell) => renderCell(row, cell)}
+				showCheckboxes
 			/>
 		</TableStoryComponent>
 	));
