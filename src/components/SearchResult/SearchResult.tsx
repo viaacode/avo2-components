@@ -1,14 +1,8 @@
+import classnames from 'classnames';
+import { truncate } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classnames from 'classnames';
-
 import { useSlot } from '../../hooks/useSlot';
-import {
-	SearchResultSubtitle,
-	SearchResultThumbnail,
-	SearchResultTitle,
-} from './SearchResult.slots';
-
 import { DefaultProps, EnglishContentType } from '../../types';
 import { Flex } from '../Flex/Flex';
 import { FlexItem } from '../Flex/FlexItem/FlexItem';
@@ -19,7 +13,11 @@ import { TagList } from '../TagList/TagList';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
 
 import './SearchResult.scss';
-import { truncate } from 'lodash-es';
+import {
+	SearchResultSubtitle,
+	SearchResultThumbnail,
+	SearchResultTitle,
+} from './SearchResult.slots';
 
 export interface SearchResultProps extends DefaultProps {
 	children: ReactNode;
