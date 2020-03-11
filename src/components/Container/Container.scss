@@ -51,6 +51,12 @@ $o-container-max-width: 130rem;
 	max-width: $o-container-max-width-large;
 }
 
+.o-container--full-width {
+	max-width: none;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
 @media (min-width: $g-bp2) {
 	.o-container-bp2 {
 		max-width: $o-container-max-width;
