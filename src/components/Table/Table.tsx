@@ -1,12 +1,12 @@
 import classnames from 'classnames';
-import React, { Fragment, FunctionComponent, ReactNode } from 'react';
+import { every, without } from 'lodash-es';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
+import { Checkbox } from '../Checkbox/Checkbox';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/Icon.types';
 
-import { every, without } from 'lodash-es';
-import { Checkbox } from '..';
 import './Table.scss';
 
 export type TableColumn = {
@@ -146,7 +146,7 @@ export const Table: FunctionComponent<TableProps> = ({
 	};
 
 	return (
-		<Fragment>
+		<>
 			<table
 				className={classnames(className, 'c-table', {
 					'c-table--align-middle': align,
@@ -162,7 +162,7 @@ export const Table: FunctionComponent<TableProps> = ({
 				{children ? (
 					children
 				) : (
-					<Fragment>
+					<>
 						{columns.length > 0 && (
 							<thead>
 								<tr>
@@ -212,12 +212,12 @@ export const Table: FunctionComponent<TableProps> = ({
 								))}
 							</tbody>
 						)}
-					</Fragment>
+					</>
 				)}
 			</table>
 			{!children && !data.length && emptyStateMessage && (
 				<p className="u-spacer-top">{emptyStateMessage}</p>
 			)}
-		</Fragment>
+		</>
 	);
 };
