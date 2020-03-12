@@ -83,3 +83,5 @@ story.add('Icon sizes', () => (
 		</Spacer>
 	</Fragment>
 ));
+
+story.add('Unknown icon', () => <Icon name={'does-not-exist' as IconName} size="large" />);
