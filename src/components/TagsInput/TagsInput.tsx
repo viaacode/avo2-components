@@ -72,6 +72,9 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 			isMulti={allowMulti}
 			isLoading={isLoading}
 			onChange={onValueChange}
+			noOptionsMessage={() => 'Geen opties'}
+			loadingMessage={() => 'Bezig met laden'}
+			formatCreateLabel={(value: string) => `"${value}" aanmaken`}
 		/>
 	) : (
 		<Select
@@ -86,6 +89,9 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 			isMulti={allowMulti}
 			isLoading={isLoading}
 			onChange={onValueChange}
+			noOptionsMessage={() => 'Geen opties'}
+			loadingMessage={() => 'Bezig met laden'}
+			formatCreateLabel={(value: string) => `"${value}" aanmaken`}
 		/>
 	);
 };

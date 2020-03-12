@@ -74,7 +74,7 @@ storiesOf('components/TagsInput', module)
 	.add('TagsInput isLoading', () => (
 		<Fragment>
 			<TagsInputStoryComponent>
-				<TagsInput options={tags} isLoading={true} />
+				<TagsInput options={[]} isLoading={true} />
 			</TagsInputStoryComponent>
 		</Fragment>
 	));
