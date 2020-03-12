@@ -21,7 +21,7 @@ export interface TagsInputProps extends DefaultProps {
 	value?: TagInfo[];
 	className?: string;
 	placeholder?: string;
-	isMulti?: boolean;
+	allowMulti?: boolean;
 	allowCreate?: boolean;
 	onChange?: (selectedValues: TagInfo[]) => void;
 	onCreate?: (value: TagInfo) => void;
@@ -31,7 +31,7 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 	options,
 	id,
 	disabled = false,
-	isMulti = true,
+	allowMulti = true,
 	value = [],
 	className = '',
 	placeholder = '',
@@ -39,14 +39,19 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 	onChange = () => {},
 	onCreate = () => {},
 }) => {
-	function onValueChange(changedValue: ValueType<TagInfo>, actionMeta: ActionMeta) {
-		if (!value) {
-			return;
-		}
+	function onValueChange(changedValues: ValueType<TagInfo>, actionMeta: ActionMeta) {
 		if (actionMeta.action === 'create-option') {
-			onCreate(changedValue as TagInfo);
+			const tagsToCreate: TagInfo[] = ((changedValues as TagInfo[]) || []).filter(
+				tag => (tag as any).__isNew__
+			);
+			if (tagsToCreate[0]) {
+				onCreate({
+					label: tagsToCreate[0].label,
+					value: tagsToCreate[0].value,
+				});
+			}
 		} else {
-			onChange(changedValue as TagInfo[]);
+			onChange(changedValues as TagInfo[]);
 		}
 	}
 
@@ -62,7 +67,7 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 			isDisabled={disabled}
 			placeholder={placeholder}
 			isSearchable={true}
-			isMulti={isMulti}
+			isMulti={allowMulti}
 			onChange={onValueChange}
 		/>
 	) : (
@@ -75,7 +80,7 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 			isDisabled={disabled}
 			placeholder={placeholder}
 			isSearchable={true}
-			isMulti={isMulti}
+			isMulti={allowMulti}
 			onChange={onValueChange}
 		/>
 	);

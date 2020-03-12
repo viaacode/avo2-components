@@ -17,10 +17,13 @@ const TagsInputStoryComponent = ({
 
 	return cloneElement(children, {
 		value,
-		onChange: (changedValue: TagInfo[]) => {
-			action('tags input changed')(value);
-
-			setValue([...value, ...changedValue]);
+		onChange: (changedValues: TagInfo[]) => {
+			action('tags input changed')(changedValues);
+			setValue(changedValues);
+		},
+		onCreate: (tagToBeCreated: TagInfo) => {
+			action('creating tag')(tagToBeCreated);
+			setValue([...value, tagToBeCreated]);
 		},
 	});
 };
@@ -64,7 +67,7 @@ storiesOf('components/TagsInput', module)
 	.add('TagsInput single value', () => (
 		<Fragment>
 			<TagsInputStoryComponent>
-				<TagsInput options={tags} isMulti={false} />
+				<TagsInput options={tags} allowMulti={false} />
 			</TagsInputStoryComponent>
 		</Fragment>
 	));
