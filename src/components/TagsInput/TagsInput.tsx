@@ -23,6 +23,7 @@ export interface TagsInputProps extends DefaultProps {
 	placeholder?: string;
 	allowMulti?: boolean;
 	allowCreate?: boolean;
+	isLoading?: boolean;
 	onChange?: (selectedValues: TagInfo[]) => void;
 	onCreate?: (value: TagInfo) => void;
 }
@@ -36,6 +37,7 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 	className = '',
 	placeholder = '',
 	allowCreate = false,
+	isLoading = false,
 	onChange = () => {},
 	onCreate = () => {},
 }) => {
@@ -68,6 +70,7 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 			placeholder={placeholder}
 			isSearchable={true}
 			isMulti={allowMulti}
+			isLoading={isLoading}
 			onChange={onValueChange}
 		/>
 	) : (
@@ -81,6 +84,7 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 			placeholder={placeholder}
 			isSearchable={true}
 			isMulti={allowMulti}
+			isLoading={isLoading}
 			onChange={onValueChange}
 		/>
 	);
