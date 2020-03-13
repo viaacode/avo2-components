@@ -7,7 +7,6 @@ import classnames from 'classnames';
 import { DefaultProps } from '../../types';
 
 import './Select.scss';
-import CreatableSelect from 'react-select/creatable';
 
 export interface SelectOption<T = string> {
 	value: T;

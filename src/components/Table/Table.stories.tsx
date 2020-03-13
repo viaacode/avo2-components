@@ -155,6 +155,7 @@ storiesOf('components/Table', module)
 	.add('Table checkboxes', () => (
 		<TableStoryComponent>
 			<Table
+				align
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
