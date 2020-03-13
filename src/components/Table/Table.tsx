@@ -6,9 +6,9 @@ import { DefaultProps } from '../../types';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/Icon.types';
+import { Spacer } from '../Spacer/Spacer';
 
 import './Table.scss';
-import { Spacer } from '../Spacer/Spacer';
 
 export type TableColumn = {
 	col?:
