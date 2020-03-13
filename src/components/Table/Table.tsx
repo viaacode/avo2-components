@@ -8,6 +8,7 @@ import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/Icon.types';
 
 import './Table.scss';
+import { Spacer } from '../Spacer/Spacer';
 
 export type TableColumn = {
 	col?:
@@ -216,7 +217,7 @@ export const Table: FunctionComponent<TableProps> = ({
 				)}
 			</table>
 			{!children && !data.length && emptyStateMessage && (
-				<p className="u-spacer-top">{emptyStateMessage}</p>
+				<Spacer margin={['left-small', 'top']}>{emptyStateMessage}</Spacer>
 			)}
 		</>
 	);
