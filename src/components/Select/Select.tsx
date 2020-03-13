@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import { DefaultProps } from '../../types';
 
 import './Select.scss';
+import CreatableSelect from 'react-select/creatable';
 
 export interface SelectOption<T = string> {
 	value: T;
@@ -56,6 +57,9 @@ export const Select: FunctionComponent<SelectProps> = ({
 			isOptionDisabled={option => !!option.disabled}
 			placeholder={placeholder}
 			onChange={onValueChange}
+			noOptionsMessage={() => 'Geen opties'}
+			loadingMessage={() => 'Bezig met laden'}
+			formatCreateLabel={(value: string) => `"${value}" aanmaken`}
 		/>
 	);
 };
