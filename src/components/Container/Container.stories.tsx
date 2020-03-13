@@ -13,6 +13,10 @@ storiesOf('components/Container', module)
 		<Fragment>
 			<Container mode="horizontal">{content}</Container>
 			<br />
+			<Container mode="horizontal" size="full-width">
+				{content}
+			</Container>
+			<br />
 			<Container mode="horizontal" size="large">
 				{content}
 			</Container>
