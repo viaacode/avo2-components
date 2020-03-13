@@ -1,7 +1,7 @@
 import classnames from 'classnames';
+import { camelCase, kebabCase, upperFirst } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
-import { toKebabCase, toPascalCase } from '../../helpers';
 import { DefaultProps } from '../../types';
 import { IconName, IconType } from './Icon.types';
 
@@ -25,18 +25,18 @@ export const Icon: FunctionComponent<IconProps> = ({
 	subtle = false,
 	active,
 }) => {
-	let IconToRender = (Icons as any)[toPascalCase(name)];
+	let IconToRender = (Icons as any)[upperFirst(camelCase(name))];
 
 	function getIconName() {
 		const base = 'o-svg-icon';
-		const iconName = toKebabCase(name);
+		const iconName = kebabCase(name);
 
 		return `${base}-${type || ''}-${iconName}`;
 	}
 
 	if (!IconToRender) {
 		console.error(`Icon with name: ${name} was not found.`);
-		IconToRender = (Icons as any)[toPascalCase('slash')];
+		IconToRender = (Icons as any)['Slash'];
 	}
 
 	return (

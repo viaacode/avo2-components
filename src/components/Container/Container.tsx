@@ -8,7 +8,7 @@ import './Container.scss';
 
 export interface ContainerProps extends DefaultProps {
 	mode?: Orientation;
-	size?: 'small' | 'medium' | 'large';
+	size?: 'small' | 'medium' | 'large' | 'full-width';
 	background?: 'white' | 'alt' | 'inverse';
 	bordered?: boolean;
 	children: ReactNode;

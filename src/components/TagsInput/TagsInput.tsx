@@ -21,8 +21,9 @@ export interface TagsInputProps extends DefaultProps {
 	value?: TagInfo[];
 	className?: string;
 	placeholder?: string;
-	isMulti?: boolean;
+	allowMulti?: boolean;
 	allowCreate?: boolean;
+	isLoading?: boolean;
 	onChange?: (selectedValues: TagInfo[]) => void;
 	onCreate?: (value: TagInfo) => void;
 }
@@ -31,22 +32,28 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 	options,
 	id,
 	disabled = false,
-	isMulti = true,
+	allowMulti = true,
 	value = [],
 	className = '',
 	placeholder = '',
 	allowCreate = false,
+	isLoading = false,
 	onChange = () => {},
 	onCreate = () => {},
 }) => {
-	function onValueChange(changedValue: ValueType<TagInfo>, actionMeta: ActionMeta) {
-		if (!value) {
-			return;
-		}
+	function onValueChange(changedValues: ValueType<TagInfo>, actionMeta: ActionMeta) {
 		if (actionMeta.action === 'create-option') {
-			onCreate(changedValue as TagInfo);
+			const tagsToCreate: TagInfo[] = ((changedValues as TagInfo[]) || []).filter(
+				tag => (tag as any).__isNew__
+			);
+			if (tagsToCreate[0]) {
+				onCreate({
+					label: tagsToCreate[0].label,
+					value: tagsToCreate[0].value,
+				});
+			}
 		} else {
-			onChange(changedValue as TagInfo[]);
+			onChange(changedValues as TagInfo[]);
 		}
 	}
 
@@ -62,8 +69,12 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 			isDisabled={disabled}
 			placeholder={placeholder}
 			isSearchable={true}
-			isMulti={isMulti}
+			isMulti={allowMulti}
+			isLoading={isLoading}
 			onChange={onValueChange}
+			noOptionsMessage={() => 'Geen opties'}
+			loadingMessage={() => 'Bezig met laden'}
+			formatCreateLabel={(value: string) => `"${value}" aanmaken`}
 		/>
 	) : (
 		<Select
@@ -75,8 +86,12 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 			isDisabled={disabled}
 			placeholder={placeholder}
 			isSearchable={true}
-			isMulti={isMulti}
+			isMulti={allowMulti}
+			isLoading={isLoading}
 			onChange={onValueChange}
+			noOptionsMessage={() => 'Geen opties'}
+			loadingMessage={() => 'Bezig met laden'}
+			formatCreateLabel={(value: string) => `"${value}" aanmaken`}
 		/>
 	);
 };

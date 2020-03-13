@@ -27,7 +27,6 @@ $c-table-row-selected-bg: $color-primary !default;
 		text-align: left;
 		padding: 0.8rem 0;
 		position: relative;
-		vertical-align: middle;
 	}
 
 	th {
@@ -35,19 +34,25 @@ $c-table-row-selected-bg: $color-primary !default;
 	}
 
 	tr {
-		> td,
-		> th {
-			&:first-child {
-				padding-left: 5px;
-			}
-			&:last-child {
-				padding-right: 5px;
-			}
+		.c-table__checkbox-column {
+			width: 4rem;
+		}
+
+		&.u-clickable:hover {
+			background-color: $color-gray-50;
 		}
 	}
 
-	tr.u-clickable:hover {
-		background-color: $color-gray-50;
+	&:not(.c-table--styled) {
+		th,
+		td {
+			&:first-child {
+				padding-left: 1rem;
+			}
+			&:last-child {
+				padding-right: 1rem;
+			}
+		}
 	}
 }
 
@@ -73,9 +78,7 @@ $c-table-row-selected-bg: $color-primary !default;
 
 	td,
 	th {
-		text-align: left;
 		padding: 1.6rem;
-		position: relative;
 
 		.c-button {
 			margin-bottom: -0.8rem;
@@ -98,6 +101,7 @@ $c-table-row-selected-bg: $color-primary !default;
 }
 
 .c-table--align-middle {
+	th,
 	td {
 		vertical-align: middle;
 	}

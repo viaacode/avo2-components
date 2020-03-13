@@ -1,11 +1,14 @@
 import classnames from 'classnames';
-import React, { Fragment, FunctionComponent, ReactNode } from 'react';
+import { every, without } from 'lodash-es';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
+import { Checkbox } from '../Checkbox/Checkbox';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/Icon.types';
 
 import './Table.scss';
+import { Spacer } from '../Spacer/Spacer';
 
 export type TableColumn = {
 	col?:
@@ -46,6 +49,9 @@ export interface TableProps extends DefaultProps {
 	striped?: boolean;
 	untable?: boolean;
 	variant?: 'bordered' | 'invisible' | 'styled';
+	showCheckboxes?: boolean;
+	selectedItems?: any[];
+	onSelectionChanged?: (selectedItems: any[]) => void;
 }
 
 export const Table: FunctionComponent<TableProps> = ({
@@ -66,10 +72,15 @@ export const Table: FunctionComponent<TableProps> = ({
 	striped,
 	untable,
 	variant,
+	showCheckboxes = false,
+	selectedItems = [],
+	onSelectionChanged = () => {},
 }) => {
 	const handleRowClick = (rowData: any) => {
 		if (onRowClick) {
 			onRowClick(rowData);
+		} else if (showCheckboxes) {
+			toggleItemSelection(rowData);
 		}
 	};
 
@@ -107,8 +118,36 @@ export const Table: FunctionComponent<TableProps> = ({
 		);
 	};
 
+	const areAllItemsSelected = () =>
+		every(
+			data,
+			dataItem =>
+				!!selectedItems.find(
+					selectedItem => selectedItem[rowKey || 'id'] === dataItem[rowKey || 'id']
+				)
+		);
+
+	const isItemSelected = (dataItem: any) =>
+		selectedItems.find(selectedItem => selectedItem[rowKey || 'id'] === dataItem[rowKey || 'id']);
+
+	const toggleAllItemSelection = () => {
+		if (areAllItemsSelected()) {
+			onSelectionChanged([]);
+		} else {
+			onSelectionChanged(data);
+		}
+	};
+
+	const toggleItemSelection = (item: any) => {
+		if (isItemSelected(item)) {
+			onSelectionChanged(without(selectedItems, item));
+		} else {
+			onSelectionChanged([...selectedItems, item]);
+		}
+	};
+
 	return (
-		<Fragment>
+		<>
 			<table
 				className={classnames(className, 'c-table', {
 					'c-table--align-middle': align,
@@ -124,10 +163,21 @@ export const Table: FunctionComponent<TableProps> = ({
 				{children ? (
 					children
 				) : (
-					<Fragment>
+					<>
 						{columns.length > 0 && (
 							<thead>
-								<tr>{columns.map(renderHeading)}</tr>
+								<tr>
+									{showCheckboxes && (
+										<th className="c-table__checkbox-column">
+											<Checkbox
+												label=""
+												checked={areAllItemsSelected()}
+												onChange={toggleAllItemSelection}
+											/>
+										</th>
+									)}
+									{columns.map(renderHeading)}
+								</tr>
 							</thead>
 						)}
 						{data.length > 0 && rowKey && (
@@ -135,9 +185,23 @@ export const Table: FunctionComponent<TableProps> = ({
 								{data.map((rowData, rowIndex) => (
 									<tr
 										key={`table-row-${rowData[rowKey]}`}
-										className={onRowClick ? 'u-clickable' : ''}
+										className={onRowClick || showCheckboxes ? 'u-clickable' : ''}
 										onClick={() => handleRowClick(rowData)}
 									>
+										{showCheckboxes && (
+											<td className="c-table__checkbox-column">
+												<Checkbox
+													label=""
+													checked={
+														!!selectedItems.find(
+															selectedItem =>
+																selectedItem[rowKey || 'id'] === rowData[rowKey || 'id']
+														)
+													}
+													onChange={() => toggleItemSelection(rowData)}
+												/>
+											</td>
+										)}
 										{columns
 											.map(col => col.id)
 											.map((columnId, columnIndex) => (
@@ -149,12 +213,12 @@ export const Table: FunctionComponent<TableProps> = ({
 								))}
 							</tbody>
 						)}
-					</Fragment>
+					</>
 				)}
 			</table>
 			{!children && !data.length && emptyStateMessage && (
-				<p className="u-spacer-top">{emptyStateMessage}</p>
+				<Spacer margin={['left-small', 'top']}>{emptyStateMessage}</Spacer>
 			)}
-		</Fragment>
+		</>
 	);
 };

@@ -1,14 +1,8 @@
+import classnames from 'classnames';
+import { truncate } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classnames from 'classnames';
-
 import { useSlot } from '../../hooks/useSlot';
-import {
-	SearchResultSubtitle,
-	SearchResultThumbnail,
-	SearchResultTitle,
-} from './SearchResult.slots';
-
 import { DefaultProps, EnglishContentType } from '../../types';
 import { Flex } from '../Flex/Flex';
 import { FlexItem } from '../Flex/FlexItem/FlexItem';
@@ -19,6 +13,11 @@ import { TagList } from '../TagList/TagList';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
 
 import './SearchResult.scss';
+import {
+	SearchResultSubtitle,
+	SearchResultThumbnail,
+	SearchResultTitle,
+} from './SearchResult.slots';
 
 export interface SearchResultProps extends DefaultProps {
 	children: ReactNode;
@@ -49,13 +48,6 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 	const subTitle = useSlot(SearchResultSubtitle, children);
 	const thumbnail = useSlot(SearchResultThumbnail, children);
 
-	const getTruncatedDescription = () => {
-		if (description && description.length > maxDescriptionLength - 3) {
-			return `${description.substring(0, maxDescriptionLength)}...`;
-		}
-		return description;
-	};
-
 	return (
 		<div className={classnames(className, 'c-search-result')}>
 			<div className="c-search-result__image">{thumbnail}</div>
@@ -76,7 +68,9 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 						</div>
 					</FlexItem>
 				</Flex>
-				<p className="c-search-result__description">{getTruncatedDescription()}</p>
+				<p className="c-search-result__description">
+					{truncate(description, { length: maxDescriptionLength })}
+				</p>
 				<Spacer margin="bottom-small">
 					<Flex justify="between" wrap>
 						<MetaData category={type}>

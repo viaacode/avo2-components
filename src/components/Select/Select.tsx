@@ -56,6 +56,9 @@ export const Select: FunctionComponent<SelectProps> = ({
 			isOptionDisabled={option => !!option.disabled}
 			placeholder={placeholder}
 			onChange={onValueChange}
+			noOptionsMessage={() => 'Geen opties'}
+			loadingMessage={() => 'Bezig met laden'}
+			formatCreateLabel={(value: string) => `"${value}" aanmaken`}
 		/>
 	);
 };
