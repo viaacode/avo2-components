@@ -64,6 +64,7 @@ $c-table-row-selected-bg: $color-primary !default;
 
 	td {
 		border-bottom: 0.1rem solid $c-table-border-color;
+		vertical-align: middle;
 
 		input[type=checkbox] {
 			margin: 0 auto;
