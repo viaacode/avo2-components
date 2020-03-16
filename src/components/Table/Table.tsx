@@ -55,7 +55,7 @@ export interface TableProps extends DefaultProps {
 }
 
 export const Table: FunctionComponent<TableProps> = ({
-	align,
+	align = true,
 	children,
 	className,
 	columns = [],
