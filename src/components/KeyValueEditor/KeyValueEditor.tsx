@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { cloneDeep } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 
 import { useTableSort } from '../../hooks/useTableSort';
@@ -14,7 +15,6 @@ import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
-import { cloneDeep } from 'lodash-es';
 import './KeyValueEditor.scss';
 
 export type KeyValuePair = [string, string];
