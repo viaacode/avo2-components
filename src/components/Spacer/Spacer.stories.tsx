@@ -15,20 +15,24 @@ storiesOf('components/Spacer', module)
 				<b>none </b>
 				{content}
 			</p>
+			<Spacer margin="none">
+				<b>none </b>
+				{content}
+			</Spacer>
 			<Spacer margin="small">
-				<b>small </b>
+				<b>small</b>
 				{content}
 			</Spacer>
 			<Spacer>
-				<b>medium </b>
+				<b>medium</b>
 				{content}
 			</Spacer>
 			<Spacer margin="large">
-				<b>large </b>
+				<b>large</b>
 				{content}
 			</Spacer>
 			<Spacer margin="extra-large">
-				<b>extra-large </b>
+				<b>extra-large</b>
 				{content}
 			</Spacer>
 			<p>{content}</p>
