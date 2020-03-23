@@ -3,18 +3,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { Quote } from './Quote';
-
-const quote =
-	'There are only two ways to live your life. ' +
-	'One is as though nothing is a miracle. ' +
-	'The other is as though everything is a miracle.';
-const authorImage = '/images/50x50.svg';
-const authorName = 'Albert Einstein';
-const authorInitials = 'AE';
+import { MOCK_QUOTE, MOCK_QUOTE_WITH_IMG } from './Quote.mock';
 
 storiesOf('components/Quote', module)
 	.addParameters({ jest: ['Quote'] })
-	.add('Quote', () => <Quote quote={quote} authorImage={authorImage} authorName={authorName} />)
-	.add('Quote no avatar', () => (
-		<Quote quote={quote} authorName={authorName} authorInitials={authorInitials} />
-	));
+	.add('Quote', () => <Quote {...MOCK_QUOTE_WITH_IMG} />)
+	.add('Quote no avatar', () => <Quote {...MOCK_QUOTE} />);

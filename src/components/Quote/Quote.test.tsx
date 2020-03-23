@@ -1,25 +1,13 @@
 import React from 'react';
 
 import { mount, shallow } from 'enzyme';
-import { loremIpsum } from 'lorem-ipsum';
 
 import { Quote } from './Quote';
+import { MOCK_QUOTE_WITH_IMG } from './Quote.mock';
 
-const customClass = 'c-block-custom';
-const quote = loremIpsum({ count: 10 });
-const authorImage = '/images/50x50.svg';
-const authorName = loremIpsum({ count: 2 });
-const authorInitials = 'AE';
+const CUSTOM_CLASS = 'c-block-custom';
 
-export const quoteExample = (
-	<Quote
-		className={customClass}
-		quote={quote}
-		authorImage={authorImage}
-		authorName={authorName}
-		authorInitials={authorInitials}
-	/>
-);
+export const quoteExample = <Quote className={CUSTOM_CLASS} {...MOCK_QUOTE_WITH_IMG} />;
 
 describe('<Quote />', () => {
 	it('Should be able to render', () => {
@@ -31,7 +19,7 @@ describe('<Quote />', () => {
 
 		const quoteElement = component.find('blockquote');
 
-		expect(quoteElement.html()).toContain(`>${quote}<`);
+		expect(quoteElement.html()).toContain(`>${MOCK_QUOTE_WITH_IMG.quote}<`);
 	});
 
 	it('Should render the author name correctly', () => {
@@ -39,7 +27,7 @@ describe('<Quote />', () => {
 
 		const spanElement = component.find('span');
 
-		expect(spanElement.html()).toContain(`>${authorName}<`);
+		expect(spanElement.html()).toContain(`>${MOCK_QUOTE_WITH_IMG.authorName}<`);
 	});
 
 	it('Should set the correct className', () => {
@@ -51,7 +39,7 @@ describe('<Quote />', () => {
 		const citeElement = quoteDivElement.find('cite');
 
 		expect(verticalWrapper).toHaveLength(1);
-		expect(verticalWrapper.hasClass(customClass)).toBeTruthy();
+		expect(verticalWrapper.hasClass(CUSTOM_CLASS)).toBeTruthy();
 		expect(verticalWrapper.hasClass('o-container-vertical-quote')).toBeTruthy();
 
 		expect(quoteDivElement).toHaveLength(1);
