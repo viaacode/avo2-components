@@ -1,40 +1,27 @@
 import React, { FunctionComponent } from 'react';
 
-import classnames from 'classnames';
-
-import { Container } from '../../components/Container/Container';
+import { Quote } from '../../components/Quote/Quote';
 import { DefaultProps } from '../../types';
 
 export interface BlockQuoteProps extends DefaultProps {
-	quoteText: string;
-	authorAvatarSource?: string;
+	quote: string;
+	authorImage?: string;
 	authorName: string;
+	authorInitials?: string;
 }
 
 export const BlockQuote: FunctionComponent<BlockQuoteProps> = ({
 	className,
-	quoteText,
-	authorAvatarSource,
+	quote,
+	authorImage,
 	authorName,
-}) => {
-	return (
-		<Container className={classnames(className, 'o-container-vertical-quote')} mode="vertical">
-			<div className="c-quote">
-				<blockquote className="c-quote__text">{quoteText}</blockquote>
-				{authorName && (
-					<cite className="c-quote__author">
-						{authorAvatarSource && (
-							<img
-								className="c-quote__avatar"
-								src={authorAvatarSource}
-								alt="avatar of the author"
-								style={{ marginRight: '10px' }}
-							/>
-						)}
-						<span>{authorName}</span>
-					</cite>
-				)}
-			</div>
-		</Container>
-	);
-};
+	authorInitials,
+}) => (
+	<Quote
+		className={className}
+		quote={quote}
+		authorImage={authorImage}
+		authorName={authorName}
+		authorInitials={authorInitials}
+	/>
+);
