@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { mount, shallow } from 'enzyme';
+import React from 'react';
 
 import { Quote } from './Quote';
 import { MOCK_QUOTE_WITH_IMG } from './Quote.mock';
