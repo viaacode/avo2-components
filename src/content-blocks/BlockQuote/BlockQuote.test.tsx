@@ -1,7 +1,6 @@
-import React from 'react';
-
 import { shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
+import React from 'react';
 
 import { BlockQuote } from './BlockQuote';
 
