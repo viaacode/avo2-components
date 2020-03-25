@@ -18,6 +18,7 @@ export interface CTAProps extends DefaultProps {
 	buttonLabel: string;
 	buttonIcon?: IconName;
 	buttonType?: ButtonType;
+	width?: string;
 	navigate: () => void;
 }
 
@@ -29,6 +30,7 @@ export const CTA: FunctionComponent<CTAProps> = ({
 	buttonLabel,
 	buttonIcon,
 	buttonType = 'secondary',
+	width = '50%',
 	navigate,
 }) => {
 	const buttonProps: ButtonProps = {
@@ -41,7 +43,7 @@ export const CTA: FunctionComponent<CTAProps> = ({
 	};
 
 	return (
-		<div className={classnames(className, 'c-cta-item')}>
+		<div className={classnames(className, 'c-cta-item')} style={{ width }}>
 			<div className="c-cta__content">
 				<div className="c-content">
 					<BlockHeading type={headingType}>{heading}</BlockHeading>
