@@ -1,5 +1,5 @@
-import { shallow } from 'enzyme';
-import React from 'react';
+import { mount, shallow } from 'enzyme';
+import React, { Fragment } from 'react';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
@@ -200,11 +200,13 @@ describe('<Table />', () => {
 	it('Should render an `emptyStateMessage` when no data is passed', () => {
 		const emptyStateMessage = 'No data test test no data...';
 
-		const tableComponent = shallow(
-			<Table columns={COLUMNS} data={[]} rowKey="id" emptyStateMessage={emptyStateMessage} />
+		const tableComponent = mount(
+			<Fragment>
+				<Table columns={COLUMNS} data={[]} rowKey="id" emptyStateMessage={emptyStateMessage} />
+			</Fragment>
 		);
 
-		const emptyStateParagraph = tableComponent.find('p.u-spacer-top');
+		const emptyStateParagraph = tableComponent.find('div.u-spacer-left-s.u-spacer-top');
 
 		expect(emptyStateParagraph.text()).toEqual(emptyStateMessage);
 	});
