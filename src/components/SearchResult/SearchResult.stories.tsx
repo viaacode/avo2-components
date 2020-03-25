@@ -59,6 +59,7 @@ const renderSearchResult = (result: any) => {
 		<SearchResult
 			type={result.administrative_type}
 			date={result.dcterms_issued}
+			isBookmarked={false}
 			viewCount={41}
 			bookmarkCount={12}
 			description={result.dcterms_abstract}
