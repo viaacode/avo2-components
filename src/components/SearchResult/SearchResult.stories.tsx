@@ -100,4 +100,22 @@ storiesOf('components/SearchResult', module)
 			...fakeSearchResult,
 			dcterms_abstract: 'korte beschrijving zonder elipsis',
 		})
+	)
+	.add('SearchResult audio', () =>
+		renderSearchResult({
+			...fakeSearchResult,
+			administrative_type: 'audio',
+		})
+	)
+	.add('SearchResult collection', () =>
+		renderSearchResult({
+			...fakeSearchResult,
+			administrative_type: 'collection',
+		})
+	)
+	.add('SearchResult bundel', () =>
+		renderSearchResult({
+			...fakeSearchResult,
+			administrative_type: 'bundle',
+		})
 	);

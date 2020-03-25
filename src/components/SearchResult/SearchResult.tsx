@@ -10,6 +10,7 @@ import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Spacer } from '../Spacer/Spacer';
 import { TagList, TagOption } from '../TagList/TagList';
+import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
 
 import './SearchResult.scss';
@@ -81,10 +82,7 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 					<Flex justify="between" wrap>
 						<MetaData category={type}>
 							<MetaDataItem label={date} />
-							<MetaDataItem
-								label={String(viewCount)}
-								icon={type === 'audio' ? 'headphone' : 'eye'}
-							/>
+							<MetaDataItem label={String(viewCount)} icon={CATEGORY_TO_ICON[type]} />
 							<MetaDataItem label={String(bookmarkCount)} icon="bookmark" />
 						</MetaData>
 						<TagList
