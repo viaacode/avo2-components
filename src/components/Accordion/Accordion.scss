@@ -58,6 +58,8 @@ $c-accordion-border: $color-gray-100 !default;
 	padding: 0.8rem 1.6rem;
 }
 
+
 .c-accordion__body {
 	border-top: 1px solid $c-accordion-border;
+	color: $color-gray-700 !important;
 }
