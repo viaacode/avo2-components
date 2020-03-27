@@ -24,6 +24,12 @@ describe('<Spacer />', () => {
 		expect(spacerComponent.hasClass('u-padding-left-s')).toBeTruthy();
 	});
 
+	it('Should set no padding/margin when none is passed', () => {
+		const spacerComponent = shallow(<Spacer margin="none" padding="none" />);
+
+		expect(spacerComponent.prop('className')).toBe('');
+	});
+
 	it('Should set the correct className when margin/padding is passed (array)', () => {
 		const spacerComponent = shallow(<Spacer margin={['left-small']} padding={['left-small']} />);
 

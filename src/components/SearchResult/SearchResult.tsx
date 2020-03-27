@@ -1,6 +1,6 @@
 import classnames from 'classnames';
-import { truncate } from 'lodash-es';
-import React, { FunctionComponent, ReactNode } from 'react';
+import { isNil, truncate } from 'lodash-es';
+import React, { FunctionComponent, ReactNode, ReactText } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps, EnglishContentType } from '../../types';
@@ -9,7 +9,8 @@ import { FlexItem } from '../Flex/FlexItem/FlexItem';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Spacer } from '../Spacer/Spacer';
-import { TagList } from '../TagList/TagList';
+import { TagList, TagOption } from '../TagList/TagList';
+import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
 
 import './SearchResult.scss';
@@ -25,11 +26,13 @@ export interface SearchResultProps extends DefaultProps {
 	thumbnailPath?: string;
 	description?: string;
 	maxDescriptionLength?: number;
+	isBookmarked: boolean | null;
 	date: string;
 	bookmarkCount: number;
 	viewCount: number;
-	tags?: { label: string; id: string }[];
+	tags?: TagOption[];
 	onToggleBookmark?: (active: boolean) => void;
+	onTagClicked?: (tagId: string) => void;
 }
 
 export const SearchResult: FunctionComponent<SearchResultProps> = ({
@@ -38,11 +41,13 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 	type,
 	description = '',
 	maxDescriptionLength = 300,
+	isBookmarked,
 	date,
 	bookmarkCount,
 	viewCount,
 	tags = [],
 	onToggleBookmark = () => {},
+	onTagClicked = () => {},
 }) => {
 	const title = useSlot(SearchResultTitle, children);
 	const subTitle = useSlot(SearchResultSubtitle, children);
@@ -57,16 +62,18 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 						<h2 className="c-search-result__title">{title}</h2>
 						{subTitle}
 					</FlexItem>
-					<FlexItem shrink>
-						<div className="c-button-toolbar">
-							<ToggleButton
-								active={false}
-								icon="bookmark"
-								onClick={(active: boolean) => onToggleBookmark(active)}
-								ariaLabel="toggle bookmark"
-							/>
-						</div>
-					</FlexItem>
+					{!isNil(isBookmarked) && (
+						<FlexItem shrink>
+							<div className="c-button-toolbar">
+								<ToggleButton
+									active={isBookmarked}
+									icon="bookmark"
+									onClick={(active: boolean) => onToggleBookmark(active)}
+									ariaLabel="toggle bookmark"
+								/>
+							</div>
+						</FlexItem>
+					)}
 				</Flex>
 				<p className="c-search-result__description">
 					{truncate(description, { length: maxDescriptionLength })}
@@ -75,13 +82,14 @@ export const SearchResult: FunctionComponent<SearchResultProps> = ({
 					<Flex justify="between" wrap>
 						<MetaData category={type}>
 							<MetaDataItem label={date} />
-							<MetaDataItem
-								label={String(viewCount)}
-								icon={type === 'audio' ? 'headphone' : 'eye'}
-							/>
+							<MetaDataItem label={String(viewCount)} icon={CATEGORY_TO_ICON[type]} />
 							<MetaDataItem label={String(bookmarkCount)} icon="bookmark" />
 						</MetaData>
-						<TagList tags={tags} swatches={false} />
+						<TagList
+							tags={tags}
+							swatches={false}
+							onTagClicked={(tagId: ReactText) => onTagClicked(tagId.toString())}
+						/>
 					</Flex>
 				</Spacer>
 			</div>

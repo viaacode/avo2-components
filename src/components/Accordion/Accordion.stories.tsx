@@ -67,4 +67,19 @@ storiesOf('components/Accordion', module)
 				<p>{loremIpsum({ count: 10 })}</p>
 			</div>
 		</Accordion>
+	))
+	.add('Accordion dark container', () => (
+		<div
+			className="u-color-white"
+			style={{
+				backgroundColor: '#2B414F',
+				padding: '20px',
+			}}
+		>
+			<Accordion title="Accordion title">
+				<div className="c-content">
+					<p>{loremIpsum({ count: 10 })}</p>
+				</div>
+			</Accordion>
+		</div>
 	));

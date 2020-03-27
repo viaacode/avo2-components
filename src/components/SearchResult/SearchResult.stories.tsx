@@ -59,6 +59,7 @@ const renderSearchResult = (result: any) => {
 		<SearchResult
 			type={result.administrative_type}
 			date={result.dcterms_issued}
+			isBookmarked={false}
 			viewCount={41}
 			bookmarkCount={12}
 			description={result.dcterms_abstract}
@@ -98,5 +99,23 @@ storiesOf('components/SearchResult', module)
 		renderSearchResult({
 			...fakeSearchResult,
 			dcterms_abstract: 'korte beschrijving zonder elipsis',
+		})
+	)
+	.add('SearchResult audio', () =>
+		renderSearchResult({
+			...fakeSearchResult,
+			administrative_type: 'audio',
+		})
+	)
+	.add('SearchResult collection', () =>
+		renderSearchResult({
+			...fakeSearchResult,
+			administrative_type: 'collection',
+		})
+	)
+	.add('SearchResult bundel', () =>
+		renderSearchResult({
+			...fakeSearchResult,
+			administrative_type: 'bundle',
 		})
 	);

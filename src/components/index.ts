@@ -70,6 +70,7 @@ export { Navbar, NavbarProps } from './Navbar/Navbar';
 export { Pagination, PaginationProps } from './Pagination/Pagination';
 export { Panel, PanelProps } from './Panel/Panel';
 export { PanelBody, PanelHeader } from './Panel/Panel.slots';
+export { Quote, QuoteProps } from './Quote/Quote';
 export { RadioButton, RadioButtonProps } from './RadioButton/RadioButton';
 export { RadioButtonGroup, RadioButtonGroupProps } from './RadioButtonGroup/RadioButtonGroup';
 export { SearchResult, SearchResultProps } from './SearchResult/SearchResult';

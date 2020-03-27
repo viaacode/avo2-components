@@ -1,4 +1,6 @@
-import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
+import classnames from 'classnames';
+import { cloneDeep } from 'lodash-es';
+import React, { FunctionComponent, ReactNode, useState } from 'react';
 
 import { useTableSort } from '../../hooks/useTableSort';
 import { DefaultProps } from '../../types';
@@ -60,13 +62,11 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorProps> = ({
 	noDataMessage = 'Geen data',
 	noDataForFilterMessage = 'Geen data die voldoet aan de filter',
 }) => {
-	const [paginatedData, setPaginatedData] = useState<KeyValuePairs>([]);
-	const [totalFilteredResults, setTotalFilteredResults] = useState<number>(0);
 	const [filterString, setFilterString] = useState<string>('');
 	const [page, setPage] = useState<number>(0);
 	const [sortColumn, sortOrder, handleSortClick] = useTableSort<KeyValueEditorTableCols>('0');
 
-	useEffect(() => {
+	const getPaginatedData = (): [KeyValuePairs, number] => {
 		const filteredItems = data.filter(
 			row =>
 				row[0].toLowerCase().includes(filterString.toLowerCase()) ||
@@ -81,17 +81,19 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorProps> = ({
 			}
 			return 0;
 		});
-		setPaginatedData(sortedItems.slice(page * ENTRIES_PER_PAGE, (page + 1) * ENTRIES_PER_PAGE));
-		setTotalFilteredResults(sortedItems.length);
-	}, [page, data, filterString, sortOrder, sortColumn]);
+		return [
+			sortedItems.slice(page * ENTRIES_PER_PAGE, (page + 1) * ENTRIES_PER_PAGE),
+			sortedItems.length,
+		];
+	};
 
 	const onValueChanged = (value: string, key: string) => {
-		const modifiedData: KeyValuePairs = JSON.parse(JSON.stringify(data)); // Poor man's deep clone
-		const index = modifiedData.findIndex(dataItem => dataItem[0] === key);
-		if (index !== -1) {
-			modifiedData[index][1] = value;
+		const modifiedData: KeyValuePairs = cloneDeep(data);
+		const row: [string, string] | undefined = modifiedData.find(dataItem => dataItem[0] === key);
+		if (row) {
+			row[1] = value;
+			onChange(modifiedData);
 		}
-		onChange(modifiedData); // Set data without triggering a rerender
 	};
 
 	const renderCell = (
@@ -128,8 +130,9 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorProps> = ({
 		}
 	};
 
+	const [paginatedData, totalFilteredResults] = getPaginatedData();
 	return (
-		<div className={`c-key-value-editor ${className}`}>
+		<div className={classnames('c-key-value-editor', className)}>
 			<Toolbar>
 				<ToolbarRight>
 					<ToolbarItem>
@@ -141,22 +144,26 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorProps> = ({
 					</ToolbarItem>
 				</ToolbarRight>
 			</Toolbar>
-			<Table
-				columns={[
-					{ id: '0', label: keyLabel, col: '5', sortable: true },
-					{ id: '1', label: valueLabel, col: '7', sortable: true },
-				]}
-				data={paginatedData}
-				emptyStateMessage={filterString ? noDataMessage : noDataForFilterMessage}
-				onColumnClick={columnId => handleSortClick(columnId as KeyValueEditorTableCols)}
-				renderCell={(rowData: KeyValuePair, columnId: string) =>
-					renderCell(rowData, columnId as KeyValueEditorTableCols)
-				}
-				rowKey={'0'}
-				variant="bordered"
-				sortColumn={sortColumn}
-				sortOrder={sortOrder}
-			/>
+			{!!paginatedData && !!paginatedData.length ? (
+				<Table
+					columns={[
+						{ id: '0', label: keyLabel, col: '5', sortable: true },
+						{ id: '1', label: valueLabel, col: '7', sortable: true },
+					]}
+					data={paginatedData}
+					emptyStateMessage={filterString ? noDataMessage : noDataForFilterMessage}
+					onColumnClick={columnId => handleSortClick(columnId as KeyValueEditorTableCols)}
+					renderCell={(rowData: KeyValuePair, columnId: string) =>
+						renderCell(rowData, columnId as KeyValueEditorTableCols)
+					}
+					rowKey={'0'}
+					variant="bordered"
+					sortColumn={sortColumn}
+					sortOrder={sortOrder}
+				/>
+			) : (
+				<>Geen resultaten</>
+			)}
 			<Spacer margin="top-large">
 				<Pagination
 					pageCount={Math.ceil(totalFilteredResults / ENTRIES_PER_PAGE)}
