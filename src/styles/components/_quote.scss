@@ -15,8 +15,9 @@
 
 	&:before {
 		content: '\201C';
-		position: absolute;
 		transform: translateX(-150%);
+		left: 0;
+		top: 0;
 	}
 
 	&:after {
