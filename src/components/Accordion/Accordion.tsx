@@ -42,7 +42,7 @@ export const Accordion: FunctionComponent<AccordionProps> = ({
 	const handleToggle = () => {
 		if (onToggle) {
 			onToggle();
-		} else if (!hasSlots) {
+		} else {
 			setIsOpenSelf(!isOpenSelf);
 		}
 	};
@@ -53,10 +53,7 @@ export const Accordion: FunctionComponent<AccordionProps> = ({
 				'c-accordion--closed': !getIsOpen(),
 			})}
 		>
-			<div
-				className={classnames('c-accordion__header', { 'u-clickable': !actionsSlot })}
-				onClick={actionsSlot ? undefined : handleToggle}
-			>
+			<div className={classnames('c-accordion__header', 'u-clickable')} onClick={handleToggle}>
 				<Toolbar autoHeight>
 					<ToolbarLeft>
 						<ToolbarItem>
@@ -65,11 +62,12 @@ export const Accordion: FunctionComponent<AccordionProps> = ({
 					</ToolbarLeft>
 					<ToolbarRight>
 						<ToolbarItem>
-							{actionsSlot || (
-								<div className="c-accordion__icon">
-									<Icon name={accordionIcon} type="arrows" />
-								</div>
-							)}
+							<div onClick={evt => evt.stopPropagation()}>{actionsSlot}</div>
+						</ToolbarItem>
+						<ToolbarItem>
+							<div className="c-accordion__icon">
+								<Icon name={accordionIcon} type="arrows" />
+							</div>
 						</ToolbarItem>
 					</ToolbarRight>
 				</Toolbar>

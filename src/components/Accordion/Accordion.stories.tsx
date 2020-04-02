@@ -10,6 +10,8 @@ import { TextInput } from '../TextInput/TextInput';
 
 import { Accordion } from './Accordion';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
+import { action } from '../../helpers';
+import { ButtonGroup, ButtonToolbar } from '..';
 
 const AccordionStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -24,16 +26,20 @@ const AccordionWithSlots = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<Accordion isOpen={isOpen} title="Acordion title">
+		<Accordion isOpen={isOpen} title="Accordion title" onToggle={() => setIsOpen(!isOpen)}>
 			<AccordionTitle>Accordion title slot</AccordionTitle>
 			<AccordionActions>
-				<Button
-					className="u-spacer-right-s"
-					icon="edit"
-					onClick={() => setIsOpen(!isOpen)}
-					type="tertiary"
-				/>
-				<Button icon="delete" type="tertiary" />
+				<ButtonToolbar>
+					<ButtonGroup>
+						<Button
+							icon="chevron-down"
+							type="tertiary"
+							onClick={action('move down button clicked')}
+						/>
+						<Button icon="chevron-up" type="tertiary" onClick={action('move up button clicked')} />
+					</ButtonGroup>
+					<Button icon="delete" type="tertiary" onClick={action('delete button clicked')} />
+				</ButtonToolbar>
 			</AccordionActions>
 			<AccordionBody>
 				<Form>

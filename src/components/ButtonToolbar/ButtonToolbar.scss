@@ -8,11 +8,11 @@ Group multiple buttons together
 	align-items: center;
 	display: flex;
 
-	.c-button + .c-button {
+	> * + * {
 		margin-left: 0.8rem;
 	}
 
-	.c-button--link + .c-button--link {
+	> .c-button--link + .c-button--link {
 		margin-left: 1.6rem;
 	}
 }
