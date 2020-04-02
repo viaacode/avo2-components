@@ -6,6 +6,8 @@ import { DefaultProps } from '../../types';
 import { AvatarIcon } from '../Avatar/AvatarIcon/AvatarIcon';
 import { Container } from '../Container/Container';
 
+import './Quote.scss';
+
 export interface QuoteProps extends DefaultProps {
 	quote: string;
 	authorImage?: string;
