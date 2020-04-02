@@ -10,6 +10,10 @@ import iconsPath from 'trumbowyg/dist/ui/icons.svg';
 import './WYSIWYG.scss';
 
 ($ as any).trumbowyg.svgPath = iconsPath;
+($ as any).trumbowyg.langs.nl = {
+	...($ as any).trumbowyg.langs.nl,
+	target: '_blank (nieuwe tab)<br/>_self (zelfde tab)',
+};
 
 type TrumbowygEvent = (e: JQuery.Event) => void;
 
@@ -118,7 +122,7 @@ export class WYSIWYG extends React.Component<WYSIWYGProps> {
 			this.editor.trumbowyg('destroy');
 			this.editor.trumbowyg({
 				lang: 'nl',
-				defaultLinkTarget: '_self',
+				defaultLinkTarget: '_blank',
 				...props,
 				onChange: this.handleChange,
 			});
