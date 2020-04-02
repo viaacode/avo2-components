@@ -6,3 +6,9 @@
 	background: $color-gray-150;
 	margin: 0 0.8rem;
 }
+
+.c-block-buttons {
+	> .c-block-buttons__divider + * {
+		margin-left: 0;
+	}
+}
