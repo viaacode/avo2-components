@@ -70,12 +70,6 @@ $c-table-row-selected-bg: $color-primary !default;
 		}
 	}
 
-	tr:last-child {
-		td {
-			border: none;
-		}
-	}
-
 	td,
 	th {
 		padding: 1.6rem;
