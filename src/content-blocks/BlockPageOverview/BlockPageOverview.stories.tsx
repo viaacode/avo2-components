@@ -83,7 +83,7 @@ storiesOf('blocks/BlockPageOverview', module)
 			<BlockPageOverview {...baseProps} />
 		</BlockPageOverviewStoryComponent>
 	))
-	.add('BlockPageOverview header background', () => (
+	.add('BlockPageOverview header background + center', () => (
 		<>
 			<Container background="alt" mode="vertical">
 				<Container mode="horizontal">
@@ -91,7 +91,7 @@ storiesOf('blocks/BlockPageOverview', module)
 				</Container>
 			</Container>
 			<BlockPageOverviewStoryComponent initialPageIndex={0}>
-				<BlockPageOverview {...baseProps} headerBackgroundColor="#EDEFF2" />
+				<BlockPageOverview {...baseProps} headerBackgroundColor="#EDEFF2" centerHeader />
 			</BlockPageOverviewStoryComponent>
 		</>
 	))
