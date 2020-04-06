@@ -38,12 +38,12 @@ export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
 }) => (
 	<ButtonToolbar className={classnames(className, 'c-block-buttons', `u-content-flex--${align}`)}>
 		{elements.map((button, index) => (
-			<>
+			<div key={`buttons_block_${button.label}`}>
 				<Button key={`button-${index}`} type="secondary" {...button} onClick={button.navigate} />
 				{hasDividers && index !== elements.length - 1 && (
 					<span className="c-block-buttons__divider" />
 				)}
-			</>
+			</div>
 		))}
 	</ButtonToolbar>
 );
