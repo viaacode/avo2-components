@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers';
 import { BlockGrid, GridItem } from './BlockGrid';
+import { ButtonAction } from '../../types';
 
 const elements: GridItem[] = [
 	{ source: '/images/200x200.svg?id=0' },
@@ -85,23 +86,54 @@ const elements2: GridItem[] = [
 	},
 ];
 
+const navigate = (buttonAction: ButtonAction) => {
+	action('navigate')(buttonAction);
+	window.location.href = buttonAction.value as string;
+};
+
 storiesOf('blocks/BlockGrid', module)
 	.addParameters({ jest: ['Image'] })
 	.add('BlockGrid 200x200', () => <BlockGrid elements={elements} />)
 	.add('BlockGrid 500x200', () => (
-		<BlockGrid elements={elements2} imageWidth={500} imageHeight={200} />
+		<BlockGrid elements={elements2} imageWidth={500} imageHeight={200} navigate={navigate} />
 	))
 	.add('BlockGrid wider item then image', () => (
-		<BlockGrid elements={elements2} imageWidth={200} imageHeight={150} itemWidth={400} />
+		<BlockGrid
+			elements={elements2}
+			imageWidth={200}
+			imageHeight={150}
+			itemWidth={400}
+			navigate={navigate}
+		/>
 	))
-	.add('BlockGrid action', () => <BlockGrid elements={elements2} navigate={action('navigate')} />)
+	.add('BlockGrid action', () => <BlockGrid elements={elements2} navigate={navigate} />)
 	.add('BlockGrid 150x150 fill contain', () => (
-		<BlockGrid elements={elements2} imageWidth={150} imageHeight={150} fill="contain" />
+		<BlockGrid
+			elements={elements2}
+			imageWidth={150}
+			imageHeight={150}
+			fill="contain"
+			navigate={navigate}
+		/>
 	))
 	.add('BlockGrid 150x150 fill cover', () => (
-		<BlockGrid elements={elements2} imageWidth={150} imageHeight={150} fill="cover" />
+		<BlockGrid
+			elements={elements2}
+			imageWidth={150}
+			imageHeight={150}
+			fill="cover"
+			navigate={navigate}
+		/>
 	))
 	.add('BlockGrid 150x150 fill auto', () => (
-		<BlockGrid elements={elements2} imageWidth={150} imageHeight={150} fill="auto" />
+		<BlockGrid
+			elements={elements2}
+			imageWidth={150}
+			imageHeight={150}
+			fill="auto"
+			navigate={navigate}
+		/>
 	))
-	.add('BlockGrid text right', () => <BlockGrid elements={elements2} textAlign="right" />);
+	.add('BlockGrid text right', () => (
+		<BlockGrid elements={elements2} textAlign="right" navigate={navigate} />
+	));
