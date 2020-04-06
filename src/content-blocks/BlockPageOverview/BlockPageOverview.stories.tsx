@@ -6,6 +6,7 @@ import { action } from '../../helpers';
 
 import { BlockPageOverview, ContentPageInfo, LabelObj } from './BlockPageOverview';
 import { CONTENT_PAGES_MOCK } from './BlockPageOverview.mock';
+import { Container } from '../../components';
 
 const tabs = [
 	{ label: 'test1', id: 1 },
@@ -81,6 +82,18 @@ storiesOf('blocks/BlockPageOverview', module)
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
 			<BlockPageOverview {...baseProps} />
 		</BlockPageOverviewStoryComponent>
+	))
+	.add('BlockPageOverview header background', () => (
+		<>
+			<Container background="alt" mode="vertical">
+				<Container mode="horizontal">
+					test block above the page block iwth identical background as the header
+				</Container>
+			</Container>
+			<BlockPageOverviewStoryComponent initialPageIndex={0}>
+				<BlockPageOverview {...baseProps} headerBackgroundColor="#EDEFF2" />
+			</BlockPageOverviewStoryComponent>
+		</>
 	))
 	.add('BlockPageOverview accordions', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
