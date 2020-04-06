@@ -1,7 +1,10 @@
+import { CSSProperties } from 'react';
+
 export * from './content-type';
 
 export type DefaultProps = {
 	className?: string;
+	style?: CSSProperties;
 };
 
 export type VideoAspectRatio = '3:2' | '16:9';
