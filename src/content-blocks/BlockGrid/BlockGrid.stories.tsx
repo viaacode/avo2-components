@@ -26,6 +26,9 @@ const elements2: GridItem[] = [
 		text:
 			'Zoek materiaal op jouw onderwijsniveau, domein, vak en methode of laat je inspireren door een voorselectie.',
 		action: { type: 'EXTERNAL_LINK', value: 'http://google.com' },
+		buttonLabel: 'a button',
+		buttonTitle: 'the button tooltip',
+		buttonType: 'danger',
 	},
 	{
 		source: '/images/500x200.svg?id=1',
