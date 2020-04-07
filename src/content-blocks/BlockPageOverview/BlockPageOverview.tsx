@@ -2,16 +2,14 @@ import { format } from 'date-fns';
 import { findIndex, flatten, get, uniqBy } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import { Accordion } from '../../components/Accordion/Accordion';
-import { Pagination } from '../../components/Pagination/Pagination';
-import { Spacer } from '../../components/Spacer/Spacer';
-import { Tabs } from '../../components/Tabs/Tabs';
-import { TagList } from '../../components/TagList/TagList';
+import { Accordion, Flex, Pagination, Spacer, Tabs, TagList } from '../../components';
 import { ButtonAction, DefaultProps } from '../../types';
 
 import { BlockGrid, GridItem } from '../BlockGrid/BlockGrid';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 import { BlockImageTitleTextButton } from '../BlockImageTitleTextButton/BlockImageTitleTextButton';
+
+import './BlockPageOverview.scss';
 
 export type ContentWidthSchema = 'REGULAR' | 'LARGE' | 'MEDIUM';
 export type ContentTabStyle = 'ROUNDED_BADGES' | 'MENU_BAR';
@@ -40,6 +38,8 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	tabs?: { label: string; id: number }[];
 	tabStyle?: ContentTabStyle;
 	allowMultiple?: boolean;
+	centerHeader?: boolean;
+	headerBackgroundColor?: string;
 	itemStyle?: ContentItemStyle;
 	showTitle?: boolean;
 	showDescription?: boolean;
@@ -61,6 +61,8 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	tabs = [],
 	tabStyle = 'MENU_BAR',
 	allowMultiple = false,
+	headerBackgroundColor = 'transparent',
+	centerHeader = false,
 	itemStyle = 'list',
 	showTitle = true,
 	showDescription = true,
@@ -218,6 +220,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 							active: !!extendedSelectedTabs.find(extendedTab => extendedTab.id === tab.id),
 						}))}
 						swatches={false}
+						selectable
 						onTagClicked={(tagId: string | number) =>
 							handleTabClick(tabs.find(tab => tab.id === tagId))
 						}
@@ -243,7 +246,9 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 
 	return (
 		<div className="c-content-page-overview-block">
-			{renderHeader()}
+			<Flex center={centerHeader} style={{ backgroundColor: headerBackgroundColor }}>
+				{renderHeader()}
+			</Flex>
 			{renderPages()}
 			{pageCount > 1 && (
 				<Pagination
