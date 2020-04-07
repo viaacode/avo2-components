@@ -30,6 +30,11 @@
 		}
 	}
 
+	.c-block-grid__button-spacer {
+		display: flex;
+		justify-content: center;
+	}
+
 	&.text-align-left {
 		h3,
 		p {
@@ -53,9 +58,17 @@
 
 	&.item-align-left {
 		justify-content: flex-start;
+
+		.c-block-grid__button-spacer {
+			justify-content: flex-start;
+		}
 	}
 
 	&.item-align-right {
 		justify-content: flex-end;
+
+		.c-block-grid__button-spacer {
+			justify-content: flex-end;
+		}
 	}
 }

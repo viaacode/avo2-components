@@ -1,7 +1,8 @@
 import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
-import { Spacer } from '../../components/Spacer/Spacer';
+import { Spacer, Button } from '../../components';
+import { ButtonType } from '../../components';
 import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
 
 import './BlockGrid.scss';
@@ -10,6 +11,9 @@ export interface GridItem {
 	source: string;
 	title?: string;
 	text?: string;
+	buttonLabel?: string;
+	buttonType?: ButtonType;
+	buttonTitle?: string;
 	action?: ButtonAction;
 }
 
@@ -50,6 +54,11 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 						'u-clickable': !!navigate && !!element.action,
 					})}
 					style={{ width: `${itemWidth}px` }}
+					onClick={() => {
+						if (element.action && navigate) {
+							navigate(element.action);
+						}
+					}}
 				>
 					<div
 						className="c-block-grid__image"
@@ -58,11 +67,6 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 							height: `${imageHeight}px`,
 							backgroundImage: `url(${element.source})`,
 							backgroundSize: fill,
-						}}
-						onClick={() => {
-							if (element.action && navigate) {
-								navigate(element.action);
-							}
 						}}
 					/>
 					<div className="c-block-grid__text-wrapper">
@@ -76,6 +80,16 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 						{!!element.text && (
 							<Spacer margin="top-small">
 								<p>{element.text}</p>
+							</Spacer>
+						)}
+						{!!element.buttonLabel && (
+							<Spacer margin="top-small" className="c-block-grid__button-spacer">
+								<Button
+									label={element.buttonLabel}
+									type={element.buttonType}
+									title={element.buttonTitle}
+									ariaLabel={element.buttonLabel || element.buttonTitle}
+								/>
 							</Spacer>
 						)}
 					</div>
