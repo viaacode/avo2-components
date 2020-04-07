@@ -1,16 +1,16 @@
 import React, { FunctionComponent } from 'react';
 
-import { Column, GridSize } from '../../components/Grid/Column/Column';
-import { Grid } from '../../components/Grid/Grid';
+import { Column, Grid, GridSize } from '../../components';
 import { convertToHtml } from '../../helpers';
 import { DefaultProps } from '../../types';
 
-interface BlockRichTextElements {
+interface BlockRichTextElement {
 	content: string;
+	color?: string;
 }
 
 export interface BlockRichTextProps extends DefaultProps {
-	elements: BlockRichTextElements | BlockRichTextElements[];
+	elements: BlockRichTextElement | BlockRichTextElement[];
 }
 
 export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
@@ -21,22 +21,26 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 		},
 	],
 }) => {
-	const renderContent = (content: string) => (
-		<div className="c-content" dangerouslySetInnerHTML={{ __html: convertToHtml(content) }} />
+	const renderContent = (contentElem: BlockRichTextElement) => (
+		<div
+			className="c-content"
+			dangerouslySetInnerHTML={{ __html: convertToHtml(contentElem.content) }}
+			style={contentElem.color ? { color: contentElem.color } : {}}
+		/>
 	);
 
 	return Array.isArray(elements) ? (
 		<Grid className={className}>
-			{elements.map((column, index) => (
+			{(elements as BlockRichTextElement[]).map((column, index) => (
 				<Column
 					size={(12 / elements.length).toString() as GridSize}
 					key={`rich-text-column-${index}`}
 				>
-					{renderContent(column.content)}
+					{renderContent(column)}
 				</Column>
 			))}
 		</Grid>
 	) : (
-		renderContent(elements.content)
+		renderContent(elements)
 	);
 };

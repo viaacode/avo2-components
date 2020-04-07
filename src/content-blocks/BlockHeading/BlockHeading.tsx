@@ -6,19 +6,25 @@ import { AlignOptions, DefaultProps, HeadingType } from '../../types';
 
 export interface BlockHeadingProps extends DefaultProps {
 	type: HeadingType;
-	onClick?: (() => void) | undefined;
+	color?: string;
 	children: ReactNode;
 	align?: AlignOptions;
+	onClick?: (() => void) | undefined;
 }
 
 export const BlockHeading: FunctionComponent<BlockHeadingProps> = ({
-	className,
-	children,
 	type: Type,
-	onClick,
+	color,
+	children,
 	align = 'left',
+	onClick,
+	className,
 }) => (
-	<Type className={classnames(className, `c-${Type}`, `u-text-${align}`)} onClick={onClick}>
+	<Type
+		className={classnames(className, `c-${Type}`, `u-text-${align}`)}
+		onClick={onClick}
+		style={color ? { color } : {}}
+	>
 		{children}
 	</Type>
 );
