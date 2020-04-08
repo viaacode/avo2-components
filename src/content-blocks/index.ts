@@ -27,11 +27,7 @@ export {
 	ContentItemStyle,
 	LabelObj,
 } from './BlockPageOverview/BlockPageOverview';
-export {
-	BlockProjectsSpotlight,
-	BlockProjectsSpotlightProps,
-	ImageInfo,
-} from './BlockProjectsSpotlight/BlockProjectsSpotlight';
+export { BlockSpotlight, BlockSpotlightProps, ImageInfo } from './BlockSpotlight/BlockSpotlight';
 export { BlockQuote, BlockQuoteProps } from './BlockQuote/BlockQuote';
 export {
 	BlockTitleImageText,
