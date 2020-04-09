@@ -25,6 +25,7 @@ export const Flex: FunctionComponent<FlexProps> = ({
 	orientation,
 	spaced,
 	wrap,
+	style,
 }) => {
 	let orientationClass = '';
 
@@ -49,6 +50,7 @@ export const Flex: FunctionComponent<FlexProps> = ({
 				[`o-flex--justify-${justify}`]: justify,
 				'o-flex--wrap': wrap,
 			})}
+			style={style}
 		>
 			{children}
 		</div>

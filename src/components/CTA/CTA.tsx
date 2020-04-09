@@ -14,23 +14,29 @@ import './CTA.scss';
 export interface CTAProps extends DefaultProps {
 	heading: string;
 	headingType: HeadingType;
+	headingColor?: string;
 	content: string;
+	contentColor?: string;
 	buttonLabel: string;
 	buttonIcon?: IconName;
 	buttonType?: ButtonType;
 	width?: string;
+	backgroundColor?: string;
 	navigate: () => void;
 }
 
 export const CTA: FunctionComponent<CTAProps> = ({
 	className,
 	headingType = 'h3',
+	headingColor,
 	heading,
 	content,
+	contentColor,
 	buttonLabel,
 	buttonIcon,
 	buttonType = 'secondary',
 	width = '50%',
+	backgroundColor = '#EDEFF2',
 	navigate,
 }) => {
 	const buttonProps: ButtonProps = {
@@ -43,11 +49,13 @@ export const CTA: FunctionComponent<CTAProps> = ({
 	};
 
 	return (
-		<div className={classnames(className, 'c-cta-item')} style={{ width }}>
+		<div className={classnames(className, 'c-cta-item')} style={{ width, backgroundColor }}>
 			<div className="c-cta__content">
 				<div className="c-content">
-					<BlockHeading type={headingType}>{heading}</BlockHeading>
-					<BlockRichText elements={{ content }} />
+					<BlockHeading type={headingType} color={headingColor}>
+						{heading}
+					</BlockHeading>
+					<BlockRichText elements={{ content, color: contentColor }} />
 					<Button {...buttonProps} />
 				</div>
 			</div>

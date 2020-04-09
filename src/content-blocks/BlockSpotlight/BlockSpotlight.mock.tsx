@@ -1,7 +1,6 @@
-import { action } from '../../helpers';
 import { ButtonAction } from '../../types';
 
-import { ImageInfo } from './BlockProjectsSpotlight';
+import { ImageInfo } from './BlockSpotlight';
 
 const MOCK_BUTTON_ACTION: ButtonAction = {
 	type: 'EXTERNAL_LINK',
@@ -11,20 +10,17 @@ const MOCK_BUTTON_ACTION: ButtonAction = {
 export const MOCK_SPOTLIGHT_PROJECTS: ImageInfo[] = [
 	{
 		image: '/images/500x200.svg',
-		title: 'My project',
+		title: 'Big item',
 		buttonAction: MOCK_BUTTON_ACTION,
-		navigate: action('Clicked on My project'),
 	},
 	{
 		image: '/images/500x200.svg',
-		title: 'My project 2',
+		title: 'Small item',
 		buttonAction: MOCK_BUTTON_ACTION,
-		navigate: action('Clicked on My project 2'),
 	},
 	{
 		image: '/images/500x200.svg',
-		title: 'My project 3',
+		title: 'Small item bis',
 		buttonAction: undefined,
-		navigate: action('Clicked on My project 3'),
 	},
 ];

@@ -61,9 +61,14 @@ export const Spacer: FunctionComponent<SpacerProps> = ({
 	className,
 	margin = 'medium',
 	padding,
+	style = {},
 }) => {
 	const marginClasses = spacersToClasses(margin, 'u-spacer');
 	const paddingClasses = spacersToClasses(padding, 'u-padding');
 
-	return <div className={classnames(className, marginClasses, paddingClasses)}>{children}</div>;
+	return (
+		<div className={classnames(className, marginClasses, paddingClasses)} style={style}>
+			{children}
+		</div>
+	);
 };

@@ -20,6 +20,7 @@ const searchResult = (
 		viewCount={41}
 		bookmarkCount={12}
 		description={fakeSearchResult.dcterms_abstract}
+		isBookmarked={false}
 		tags={[
 			{ label: 'Redactiekeuze', id: 'redactiekeuze' },
 			{ label: 'Partner', id: 'partner' },
@@ -177,6 +178,7 @@ describe('<SearchResult />', () => {
 				viewCount={41}
 				bookmarkCount={12}
 				description={fakeSearchResult.dcterms_abstract}
+				isBookmarked={false}
 				tags={[
 					{ label: 'Redactiekeuze', id: 'redactiekeuze' },
 					{ label: 'Partner', id: 'partner' },

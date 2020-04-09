@@ -1,0 +1,14 @@
+@import '../../styles/settings/colors';
+
+.c-block-buttons__divider {
+	width: 0.1rem;
+	height: 3.2rem;
+	background: $color-gray-150;
+	margin: 0 0.8rem;
+}
+
+.c-block-buttons {
+	> .c-block-buttons__divider + * {
+		margin-left: 0;
+	}
+}

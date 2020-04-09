@@ -39,3 +39,27 @@
 		max-height: 100vh;
 	}
 }
+
+.trumbowyg-modal {
+	max-width: 553px !important;
+}
+
+.trumbowyg-modal-box {
+	max-width: 533px !important;
+}
+
+.trumbowyg-modal-box label:last-child {
+	height: 60px !important;
+}
+
+.trumbowyg-modal-box label input:last-child {
+	height: 52px !important;
+}
+
+.trumbowyg-modal-box label {
+	margin: 5px 12px !important;
+}
+
+.trumbowyg-button-pane {
+	z-index: 0;
+}

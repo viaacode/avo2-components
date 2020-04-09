@@ -7,6 +7,8 @@ import { ButtonToolbar } from '../../components/ButtonToolbar/ButtonToolbar';
 import { IconName } from '../../components/Icon/Icon.types';
 import { AlignOptions, DefaultProps } from '../../types';
 
+import './BlockButtons.scss';
+
 export interface ButtonProps extends DefaultProps {
 	active?: boolean;
 	ariaLabel?: string;
@@ -25,16 +27,23 @@ export interface ButtonProps extends DefaultProps {
 export interface BlockButtonsProps extends DefaultProps {
 	elements: ButtonProps[];
 	align?: AlignOptions;
+	hasDividers?: boolean;
 }
 
 export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
 	className,
 	elements,
 	align = 'left',
+	hasDividers = false,
 }) => (
-	<ButtonToolbar className={classnames(className, `u-content-flex--${align} `)}>
+	<ButtonToolbar className={classnames(className, 'c-block-buttons', `u-content-flex--${align}`)}>
 		{elements.map((button, index) => (
-			<Button key={`button-${index}`} type="secondary" {...button} onClick={button.navigate} />
+			<div key={`buttons_block_${button.label}`}>
+				<Button key={`button-${index}`} type="secondary" {...button} onClick={button.navigate} />
+				{hasDividers && index !== elements.length - 1 && (
+					<span className="c-block-buttons__divider" />
+				)}
+			</div>
 		))}
 	</ButtonToolbar>
 );
