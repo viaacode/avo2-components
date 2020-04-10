@@ -3,8 +3,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers';
-import { BlockGrid, GridItem } from './BlockGrid';
 import { ButtonAction } from '../../types';
+
+import { BlockGrid, GridItem } from './BlockGrid';
 
 const elements: GridItem[] = [
 	{ source: '/images/200x200.svg?id=0' },

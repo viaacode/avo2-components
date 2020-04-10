@@ -2,16 +2,17 @@ import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
+import { action } from '../../helpers';
 import { Button } from '../Button/Button';
 import { Form } from '../Form/Form';
 import { FormGroup } from '../Form/FormGroup/FormGroup';
 import { TextArea } from '../TextArea/TextArea';
 import { TextInput } from '../TextInput/TextInput';
+import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
+import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
 
 import { Accordion } from './Accordion';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
-import { action } from '../../helpers';
-import { ButtonGroup, ButtonToolbar } from '..';
 
 const AccordionStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [isOpen, setIsOpen] = useState(false);
