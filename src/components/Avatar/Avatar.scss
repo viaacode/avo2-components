@@ -9,8 +9,8 @@
 /* Variables
    ========================================================================== */
 
-$c-avatar-default-bg:   $color-night-blue !default;
-$c-avatar-dimensions:   3.2rem !default;
+$c-avatar-default-bg: $color-night-blue !default;
+$c-avatar-dimensions: 3.2rem !default;
 $c-avatar-dimensions-s: 2.4rem !default;
 $c-avatar-dimensions-l: 9.6rem !default;
 
@@ -24,11 +24,11 @@ $c-avatar-dimensions-l: 9.6rem !default;
 	min-height: $c-avatar-dimensions;
 	font-size: 1.2rem;
 	display: inline-flex;
-	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
 	background-color: $c-avatar-default-bg;
-	color: #FFF;
+	color: #fff;
+	object-fit: cover;
 
 	.o-svg-icon {
 		width: 2.4rem;
