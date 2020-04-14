@@ -25,7 +25,6 @@ export const BlockSpotlight: FunctionComponent<BlockSpotlightProps> = ({
 	className,
 }) => {
 	function renderItem(index: number) {
-		console.log('render item ', index, elements);
 		if (!elements[index]) {
 			return null;
 		}

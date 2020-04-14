@@ -125,6 +125,14 @@ a.c-button {
 	}
 }
 
+/* Large size
+   ========================================================================== */
+
+.c-button--large {
+	padding: 0.9rem 1.8rem;
+	max-height: 4.3rem;
+}
+
 /* Icon-only Button (Square)
    ========================================================================== */
 
@@ -149,7 +157,7 @@ a.c-button {
 
 .c-button--auto {
 	max-height: none;
-	min-height:$c-button-height;
+	min-height: $c-button-height;
 }
 
 /* Button action

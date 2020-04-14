@@ -67,47 +67,42 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 	}
 
 	shouldComponentUpdate(nextProps: FlowPlayerProps) {
-		try {
-			if (!this.videoContainerRef.current) {
-				return true;
-			}
-
-			const flowPlayerInstance = this.state.flowPlayerInstance;
-			if (flowPlayerInstance) {
-				if (nextProps.seekTime !== this.props.seekTime && nextProps.seekTime) {
-					flowPlayerInstance.currentTime = nextProps.seekTime;
-				}
-
-				if (nextProps.start !== this.props.start || nextProps.end !== this.props.end) {
-					if (this.videoContainerRef) {
-						flowPlayerInstance.emit(flowplayer.events.CUEPOINTS, {
-							cuepoints: [
-								{
-									start: nextProps.start,
-									end: nextProps.end,
-								},
-							],
-						});
-					}
-				}
-			}
-
-			if (nextProps.src !== this.props.src) {
-				if (nextProps.src) {
-					// User clicked the post to play the video
-					this.reInitFlowPlayer(nextProps);
-				} else {
-					// User clicked another video and the video src has been set to undefined
-					this.destroyPlayer();
-				}
-				return true;
-			}
-
-			return false;
-		} catch (err) {
-			console.log('test', err);
-			throw err;
+		if (!this.videoContainerRef.current) {
+			return true;
 		}
+
+		const flowPlayerInstance = this.state.flowPlayerInstance;
+		if (flowPlayerInstance) {
+			if (nextProps.seekTime !== this.props.seekTime && nextProps.seekTime) {
+				flowPlayerInstance.currentTime = nextProps.seekTime;
+			}
+
+			if (nextProps.start !== this.props.start || nextProps.end !== this.props.end) {
+				if (this.videoContainerRef) {
+					flowPlayerInstance.emit(flowplayer.events.CUEPOINTS, {
+						cuepoints: [
+							{
+								start: nextProps.start,
+								end: nextProps.end,
+							},
+						],
+					});
+				}
+			}
+		}
+
+		if (nextProps.src !== this.props.src) {
+			if (nextProps.src) {
+				// User clicked the post to play the video
+				this.reInitFlowPlayer(nextProps);
+			} else {
+				// User clicked another video and the video src has been set to undefined
+				this.destroyPlayer();
+			}
+			return true;
+		}
+
+		return false;
 	}
 
 	componentDidMount() {
