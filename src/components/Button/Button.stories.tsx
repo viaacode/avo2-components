@@ -86,6 +86,7 @@ storiesOf('components/Button', module)
 	.add('Icon only button', () => renderButtonStories(buttonIconProps, false))
 	.add('Button with arrow', () => renderButtonStories(buttonIconProps, true, { arrow: true }))
 	.add('Small buttons', () => renderButtonStories(buttonIconProps, true, { size: 'small' }))
+	.add('Large buttons', () => renderButtonStories(buttonIconProps, true, { size: 'large' }))
 	.add('Block buttons', () => renderButtonStories(buttonIconProps, true, { block: true }))
 	.add('Inverse buttons', () => (
 		<div style={{ display: 'inline-block', padding: '20px', background: COLORS.GRAYSCALE.G800 }}>

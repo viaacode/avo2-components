@@ -20,7 +20,7 @@ export interface ButtonProps extends DefaultProps {
 	icon?: IconName;
 	label?: string;
 	onClick?(event: MouseEvent<HTMLElement>): void;
-	size?: 'small';
+	size?: 'small' | 'large';
 	title?: string;
 	type?: ButtonType;
 }
@@ -53,6 +53,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 				'c-button--active': active,
 				'c-button--auto': autoHeight,
 				'c-button--small': size === 'small',
+				'c-button--large': size === 'large',
 				'c-button--block': block,
 				'c-button--icon': icon && !label,
 				[`c-button--${type}`]: type,
