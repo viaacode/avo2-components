@@ -1,8 +1,7 @@
 import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
-import { Spacer, Button } from '../../components';
-import { ButtonType } from '../../components';
+import { Spacer, Button, ButtonType } from '../../components';
 import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
 
 import './BlockGrid.scss';

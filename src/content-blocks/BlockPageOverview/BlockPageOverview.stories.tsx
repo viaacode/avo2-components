@@ -3,10 +3,10 @@ import { intersectionBy } from 'lodash-es';
 import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
 
 import { action } from '../../helpers';
+import { Container } from '../../components';
 
 import { BlockPageOverview, ContentPageInfo, LabelObj } from './BlockPageOverview';
 import { CONTENT_PAGES_MOCK } from './BlockPageOverview.mock';
-import { Container } from '../../components';
 
 const tabs = [
 	{ label: 'test1', id: 1 },
