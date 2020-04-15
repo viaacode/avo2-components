@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react';
+import React, { CSSProperties, FunctionComponent } from 'react';
 
 import classnames from 'classnames';
 
 import { Container } from '../../components/Container/Container';
 import { Image } from '../../components/Image/Image';
-import { DefaultProps } from '../../types';
+import { AlignOptions, DefaultProps } from '../../types';
 
 import './BlockImage.scss';
 
@@ -13,7 +13,8 @@ export interface BlockImageProps extends DefaultProps {
 	imageDescription?: string;
 	title?: string;
 	text?: string;
-	width?: 'full-width' | '500px' | '400px';
+	width?: 'page-header' | 'full-width' | string;
+	align?: AlignOptions;
 }
 
 export const BlockImage: FunctionComponent<BlockImageProps> = ({
@@ -22,20 +23,35 @@ export const BlockImage: FunctionComponent<BlockImageProps> = ({
 	imageDescription = '',
 	title = '',
 	text = '',
-	width = 'full-width',
+	width = '100%',
+	align = 'center',
 }) => {
+	const style: CSSProperties = {};
+	if (width === 'page-header') {
+		style.paddingTop = `${100 * (521 / 1920)}%`;
+		style.width = '100%';
+		style.backgroundImage = `url('${imageSource}')`;
+	} else if (width === 'full-width') {
+		style.width = '100%';
+	} else {
+		style.width = width;
+	}
+
 	return (
 		<Container
-			className={classnames(
-				className,
-				'o-container-vertical-image',
-				`o-image-block-width-${width}`
-			)}
+			className={classnames(className, 'o-block-image', `o-block-image__${align}`, {
+				'o-block-image__page-header-image': width === 'page-header',
+			})}
 			mode="vertical"
+			style={style}
 		>
-			<Image src={imageSource} alt={imageDescription || title || text} wide />
-			{title && <h3>{title}</h3>}
-			{text && <p className="a-block-image-text">{text}</p>}
+			{width !== 'page-header' && (
+				<>
+					<Image src={imageSource} alt={imageDescription || title || text} wide />
+					{title && <h3>{title}</h3>}
+					{text && <p className="a-block-image__text">{text}</p>}
+				</>
+			)}
 		</Container>
 	);
 };
