@@ -38,9 +38,6 @@ export interface KeyValueEditorProps extends DefaultProps {
 
 /**
  * Shows a tabular view of the data and allows the user to edit the data
- * Data can be either:
- * - a dictionary (key value)
- * - or an array of items, then you need to pass the keyProp and valueProp
  * @param initialData Contains the key value pairs when the page is loaded, and are only updated on save
  *        This extra prop is needed so we can keep fields visible that were searched for, while the user is modifying them
  * @param data Contains the key value pairs while the user is modifying them, updated on every key stroke
