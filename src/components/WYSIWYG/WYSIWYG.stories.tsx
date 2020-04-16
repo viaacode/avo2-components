@@ -39,9 +39,10 @@ storiesOf('components/WYSIWYG', module)
 	.add('WYSIWYG with limited buttons', () => (
 		<WYSIWYG id="story-wysiwyg-3" btns={WYSIWYG_OPTIONS} />
 	))
+	.add('WYSIWYG with simple links', () => <WYSIWYG id="story-wysiwyg-4" minimalLinks />)
 	.add('WYSIWYG with table button', () => (
 		<WYSIWYG
-			id="story-wysiwyg-4"
+			id="story-wysiwyg-5"
 			btns={[...WYSIWYG_OPTIONS, ['table']]}
 			plugins={{
 				table: {
@@ -56,7 +57,7 @@ storiesOf('components/WYSIWYG', module)
 		<>
 			<Select options={SELECT_MOCK_OPTIONS} />
 			<WYSIWYG
-				id="story-wysiwyg-4"
+				id="story-wysiwyg-6"
 				btns={[...WYSIWYG_OPTIONS, ['table']]}
 				plugins={{
 					table: {
