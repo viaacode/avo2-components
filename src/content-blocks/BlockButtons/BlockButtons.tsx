@@ -1,11 +1,11 @@
 import classnames from 'classnames';
+import { flatten } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { Button, ButtonType, ButtonToolbar, IconName } from '../../components';
 import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
 
 import './BlockButtons.scss';
-import { flatten } from 'lodash-es';
 
 export interface ButtonProps extends DefaultProps {
 	active?: boolean;
