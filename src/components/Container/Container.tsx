@@ -21,6 +21,7 @@ export const Container: FunctionComponent<ContainerProps> = ({
 	bordered,
 	className,
 	children,
+	style = {},
 }) => (
 	<div
 		className={classnames(className, {
@@ -31,6 +32,7 @@ export const Container: FunctionComponent<ContainerProps> = ({
 			[`o-container-vertical--bg-${background}`]: background,
 			'o-container-vertical--bottom-bordered': bordered,
 		})}
+		style={style}
 	>
 		{children}
 	</div>
