@@ -227,6 +227,23 @@ $c-button-link-color: $color-primary !default;
 	}
 }
 
+/* Button underlined-link
+   ========================================================================== */
+
+.c-button.c-button--underlined-link {
+	@extend .c-button.c-button--link;
+	text-decoration: underline;
+
+	&:hover,
+	&:active,
+	&:focus,
+	&.c-button--active,
+	&.c-button--active:focus {
+		background: transparent;
+		color: $color-teal;
+	}
+}
+
 /* Shared disabled state for all buttons
    ========================================================================== */
 
