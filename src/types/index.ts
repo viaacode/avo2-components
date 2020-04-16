@@ -21,7 +21,9 @@ export type ContentPickerType =
 	| 'DROPDOWN'
 	| 'INTERNAL_LINK'
 	| 'EXTERNAL_LINK'
-	| 'SEARCH_QUERY'; // TODO move to typings and make typings repo a dependency of the components repo
+	| 'SEARCH_QUERY'
+	| 'PROJECTS'
+	| 'ANCHOR_LINK'; // TODO move to typings and make typings repo a dependency of the components repo
 
 export enum LinkTarget {
 	Self = '_self',

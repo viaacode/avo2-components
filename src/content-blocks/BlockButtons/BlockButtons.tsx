@@ -1,11 +1,9 @@
 import classnames from 'classnames';
+import { flatten } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
-import { Button } from '../../components/Button/Button';
-import { ButtonType } from '../../components/Button/Button.types';
-import { ButtonToolbar } from '../../components/ButtonToolbar/ButtonToolbar';
-import { IconName } from '../../components/Icon/Icon.types';
-import { AlignOptions, DefaultProps } from '../../types';
+import { Button, ButtonType, ButtonToolbar, IconName } from '../../components';
+import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
 
 import './BlockButtons.scss';
 
@@ -21,13 +19,14 @@ export interface ButtonProps extends DefaultProps {
 	size?: 'small';
 	title?: string;
 	type?: ButtonType;
-	navigate: () => void;
+	buttonAction: ButtonAction;
 }
 
 export interface BlockButtonsProps extends DefaultProps {
 	elements: ButtonProps[];
 	align?: AlignOptions;
 	hasDividers?: boolean;
+	navigate: (buttonAction: ButtonAction) => void;
 }
 
 export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
@@ -35,15 +34,31 @@ export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
 	elements,
 	align = 'left',
 	hasDividers = false,
+	navigate,
 }) => (
 	<ButtonToolbar className={classnames(className, 'c-block-buttons', `u-content-flex--${align}`)}>
-		{elements.map((button, index) => (
-			<div key={`buttons_block_${button.label}`}>
-				<Button key={`button-${index}`} type="secondary" {...button} onClick={button.navigate} />
-				{hasDividers && index !== elements.length - 1 && (
-					<span className="c-block-buttons__divider" />
-				)}
-			</div>
-		))}
+		{flatten(
+			elements.map((button, index) => {
+				const nodes = [
+					<div key={`buttons_block_${button.label}`}>
+						<Button
+							key={`button-${index}`}
+							type="secondary"
+							{...button}
+							onClick={() => navigate(button.buttonAction)}
+						/>
+					</div>,
+				];
+				if (hasDividers && index !== elements.length - 1) {
+					nodes.push(
+						<span
+							className="c-block-buttons__divider"
+							key={`buttons_block_${button.label}_divider`}
+						/>
+					);
+				}
+				return nodes;
+			})
+		)}
 	</ButtonToolbar>
 );

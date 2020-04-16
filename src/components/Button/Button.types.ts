@@ -5,6 +5,7 @@ export type ButtonType =
 	| 'danger'
 	| 'link'
 	| 'inline-link'
+	| 'underlined-link'
 	| 'primary'
 	| 'secondary-i'
 	| 'secondary'
