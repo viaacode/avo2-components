@@ -16,6 +16,14 @@ const COLUMNS: TableColumn[] = [
 	{ id: 'actions', label: '' },
 ];
 
+const COLUMNS_WITH_ICONS: TableColumn[] = [
+	{ id: 'name', label: 'Name', sortable: true },
+	{ icon: 'clock', id: 'age', label: '', sortable: true },
+	{ icon: 'inbox', id: 'cat', label: 'Has cat?', col: '2' },
+	{ icon: 'home', id: 'dog', label: 'Has dog?', col: '2' },
+	{ icon: 'star', id: '', label: '' },
+];
+
 const DATA = [
 	{ id: 0, name: 'Mark', age: '28', cat: true, dog: false },
 	{ id: 1, name: 'Jessica', age: '34', cat: true, dog: true },
@@ -157,6 +165,18 @@ storiesOf('components/Table', module)
 			<Table
 				align
 				columns={COLUMNS}
+				data={DATA}
+				rowKey="id"
+				renderCell={(row, cell) => renderCell(row, cell)}
+				showCheckboxes
+			/>
+		</TableStoryComponent>
+	))
+	.add('Table icon headers', () => (
+		<TableStoryComponent>
+			<Table
+				align
+				columns={COLUMNS_WITH_ICONS}
 				data={DATA}
 				rowKey="id"
 				renderCell={(row, cell) => renderCell(row, cell)}
