@@ -17,11 +17,11 @@ const COLUMNS: TableColumn[] = [
 ];
 
 const COLUMNS_WITH_ICONS: TableColumn[] = [
-	{ id: 'name', label: 'Name', sortable: true },
-	{ icon: 'clock', id: 'age', label: '', sortable: true },
-	{ icon: 'inbox', id: 'cat', label: 'Has cat?', col: '2' },
-	{ icon: 'home', id: 'dog', label: 'Has dog?', col: '2' },
-	{ icon: 'star', id: '', label: '' },
+	{ tooltip: 'Name of the person', id: 'name', label: 'Name', sortable: true },
+	{ tooltip: 'Age', icon: 'clock', id: 'age', label: '', sortable: true },
+	{ tooltip: 'Has cats', icon: 'inbox', id: 'cat', label: 'Has cat?', col: '2' },
+	{ tooltip: 'Has dogs', icon: 'home', id: 'dog', label: 'Has dog?', col: '2' },
+	{ tooltip: 'Actions', icon: 'star', id: '', label: '' },
 ];
 
 const DATA = [

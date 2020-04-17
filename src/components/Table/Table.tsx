@@ -31,6 +31,7 @@ export type TableColumn = {
 	id: string;
 	label: string;
 	icon?: IconName;
+	tooltip?: string;
 	sortable?: boolean;
 };
 
@@ -87,7 +88,7 @@ export const Table: FunctionComponent<TableProps> = ({
 	};
 
 	const renderHeading = (heading: TableColumn) => {
-		const { id, col, sortable, label, icon } = heading;
+		const { id, col, sortable, label, icon, tooltip } = heading;
 
 		const isColumnSorted = sortColumn === id;
 		const sortIconProps = {
@@ -115,19 +116,21 @@ export const Table: FunctionComponent<TableProps> = ({
 				onClick={() => sortable && onColumnClick(id)}
 			>
 				{
-					<Flex>
-						{!!icon && (
-							<Spacer margin="right-small">
-								<Icon name={icon} />
-							</Spacer>
-						)}
-						{label}
-						{sortable && (
-							<Spacer margin="left-small">
-								<Icon {...sortIconProps} />
-							</Spacer>
-						)}
-					</Flex>
+					<div title={tooltip}>
+						<Flex>
+							{!!icon && (
+								<Spacer margin="right-small">
+									<Icon name={icon} />
+								</Spacer>
+							)}
+							{label}
+							{sortable && (
+								<Spacer margin="left-small">
+									<Icon {...sortIconProps} />
+								</Spacer>
+							)}
+						</Flex>
+					</div>
 				}
 			</th>
 		);
