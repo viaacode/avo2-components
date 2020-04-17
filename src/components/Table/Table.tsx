@@ -29,7 +29,7 @@ export type TableColumn = {
 		| '14'
 		| '15';
 	id: string;
-	label: string;
+	label?: string;
 	icon?: IconName;
 	tooltip?: string;
 	sortable?: boolean;
@@ -123,7 +123,7 @@ export const Table: FunctionComponent<TableProps> = ({
 									<Icon name={icon} />
 								</Spacer>
 							)}
-							{label}
+							{label || null}
 							{sortable && (
 								<Spacer margin="left-small">
 									<Icon {...sortIconProps} />
