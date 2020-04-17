@@ -7,6 +7,7 @@ export { BlockGrid, BlockGridProps, GridItem } from './BlockGrid/BlockGrid';
 export { BlockHeading, BlockHeadingProps } from './BlockHeading/BlockHeading';
 export { BlockIFrame, BlockIFrameProps } from './BlockIFrame/BlockIFrame';
 export { BlockIntro, BlockIntroProps } from './BlockIntro/BlockIntro';
+export { BlockKlaar, BlockKlaarProps } from './BlockKlaar/BlockKlaar';
 export { BlockLinks, BlockLinksProps } from './BlockLinks/BlockLinks';
 export {
 	BlockMediaList,
