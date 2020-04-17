@@ -34,7 +34,7 @@ export const Accordion: FunctionComponent<AccordionProps> = ({
 	const hasSlots = !!titleSlot || !!actionsSlot || !!bodySlot;
 
 	const getIsOpen = () => {
-		return onToggle || hasSlots ? isOpen : isOpenSelf;
+		return onToggle ? isOpen : isOpenSelf;
 	};
 
 	const accordionIcon = getIsOpen() ? 'chevron-up' : 'chevron-down';
