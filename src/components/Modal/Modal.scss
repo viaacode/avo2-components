@@ -167,8 +167,14 @@ $g-c-modal-z: 50 !default;
 	height: auto;
 }
 
-.c-modal--scrollable {
-	max-height: calc(100% - #{$c-modal-padding-vertical * 2});
+.c-modal {
+	&.c-modal--scrollable {
+		max-height: calc(100% - #{$c-modal-padding-vertical * 2});
+	}
+
+	&:not(.c-modal--scrollable) {
+		overflow: visible;
+	}
 }
 
 /* Backdrop
