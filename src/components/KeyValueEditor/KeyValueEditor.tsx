@@ -24,6 +24,7 @@ export type KeyValueEditorTableCols = '0' | '1';
 const ENTRIES_PER_PAGE = 20;
 
 export interface KeyValueEditorProps extends DefaultProps {
+	initialData: KeyValuePairs;
 	data: KeyValuePairs;
 	keyLabel?: string;
 	valueLabel?: string;
@@ -37,10 +38,9 @@ export interface KeyValueEditorProps extends DefaultProps {
 
 /**
  * Shows a tabular view of the data and allows the user to edit the data
- * Data can be either:
- * - a dictionary (key value)
- * - or an array of items, then you need to pass the keyProp and valueProp
- * @param data
+ * @param initialData Contains the key value pairs when the page is loaded, and are only updated on save
+ *        This extra prop is needed so we can keep fields visible that were searched for, while the user is modifying them
+ * @param data Contains the key value pairs while the user is modifying them, updated on every key stroke
  * @param keyLabel
  * @param valueLabel
  * @param keySeparator
@@ -52,6 +52,7 @@ export interface KeyValueEditorProps extends DefaultProps {
  * @constructor
  */
 export const KeyValueEditor: FunctionComponent<KeyValueEditorProps> = ({
+	initialData,
 	data,
 	keyLabel = 'Id',
 	valueLabel = 'Waarde',
@@ -67,11 +68,23 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorProps> = ({
 	const [sortColumn, sortOrder, handleSortClick] = useTableSort<KeyValueEditorTableCols>('0');
 
 	const getPaginatedData = (): [KeyValuePairs, number] => {
-		const filteredItems = data.filter(
-			row =>
-				row[0].toLowerCase().includes(filterString.toLowerCase()) ||
-				row[1].toLowerCase().includes(filterString.toLowerCase())
-		);
+		const filteredItems = data.filter(row => {
+			const query = filterString.toLowerCase();
+
+			// If key or value contains the searched value, show the row
+			if (row[0].toLowerCase().includes(query) || row[1].toLowerCase().includes(query)) {
+				return true;
+			}
+
+			// If the initial row value contains the searched value, show the row
+			const initialRow = initialData.find(initialRow => initialRow[0] === row[0]);
+			if (initialRow && initialRow[1].toLowerCase().includes(query)) {
+				return true;
+			}
+
+			// Else, do not show the row
+			return false;
+		});
 		const sortedItems = filteredItems.sort((rowA: [string, string], rowB: [string, string]) => {
 			if (rowA[sortColumn].toLowerCase() < rowB[sortColumn].toLowerCase()) {
 				return sortOrder === 'asc' ? 1 : -1;

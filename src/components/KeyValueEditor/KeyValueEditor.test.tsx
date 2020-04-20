@@ -8,7 +8,9 @@ const customClass = 'c-input-custom';
 
 describe('<KeyValueEditor />', () => {
 	it('Should be able to render with data array', () => {
-		const keyValueEditorComponent = mount(<KeyValueEditor data={DATA_ARRAY_MOCK} />);
+		const keyValueEditorComponent = mount(
+			<KeyValueEditor data={DATA_ARRAY_MOCK} initialData={DATA_ARRAY_MOCK} />
+		);
 
 		const inputElement = keyValueEditorComponent.find('textarea');
 
@@ -17,14 +19,20 @@ describe('<KeyValueEditor />', () => {
 
 	it('Should set the correct className', () => {
 		const keyValueEditorComponent = shallow(
-			<KeyValueEditor data={DATA_ARRAY_MOCK} className={customClass} />
+			<KeyValueEditor
+				data={DATA_ARRAY_MOCK}
+				initialData={DATA_ARRAY_MOCK}
+				className={customClass}
+			/>
 		);
 
 		expect(keyValueEditorComponent.hasClass(customClass)).toEqual(true);
 	});
 
 	it('Should be able to set the readonly state', () => {
-		const keyValueEditorComponent = mount(<KeyValueEditor data={DATA_ARRAY_MOCK} readonly />);
+		const keyValueEditorComponent = mount(
+			<KeyValueEditor data={DATA_ARRAY_MOCK} initialData={DATA_ARRAY_MOCK} readonly />
+		);
 
 		const inputElements = keyValueEditorComponent.find('textarea');
 		const spanElements = keyValueEditorComponent.find('.c-keyvalue-label');
@@ -38,7 +46,7 @@ describe('<KeyValueEditor />', () => {
 		const newValue = 'my new value';
 
 		const keyValueEditorComponent = mount(
-			<KeyValueEditor data={DATA_ARRAY_MOCK} onChange={onChange} />
+			<KeyValueEditor data={DATA_ARRAY_MOCK} initialData={DATA_ARRAY_MOCK} onChange={onChange} />
 		);
 
 		expect(onChange).toBeCalledTimes(0);

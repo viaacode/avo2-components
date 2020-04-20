@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "1.36.0",
+  "version": "1.37.0",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "style": "dist/styles/main.css",
@@ -46,7 +46,7 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.0.0-beta.1",
     "flowplayer-files": "^2.2.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "lodash-es": "^4.17.15",
     "marked": "^0.7.0",
     "react": "^16.8.6",

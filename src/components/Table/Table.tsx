@@ -7,6 +7,7 @@ import { Checkbox } from '../Checkbox/Checkbox';
 import { Icon } from '../Icon/Icon';
 import { IconName } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
+import { Flex } from '../Flex/Flex';
 
 import './Table.scss';
 
@@ -28,7 +29,9 @@ export type TableColumn = {
 		| '14'
 		| '15';
 	id: string;
-	label: string;
+	label?: string;
+	icon?: IconName;
+	tooltip?: string;
 	sortable?: boolean;
 };
 
@@ -85,7 +88,7 @@ export const Table: FunctionComponent<TableProps> = ({
 	};
 
 	const renderHeading = (heading: TableColumn) => {
-		const { id, col, sortable, label } = heading;
+		const { id, col, sortable, label, icon, tooltip } = heading;
 
 		const isColumnSorted = sortColumn === id;
 		const sortIconProps = {
@@ -112,8 +115,23 @@ export const Table: FunctionComponent<TableProps> = ({
 				})}
 				onClick={() => sortable && onColumnClick(id)}
 			>
-				{label}
-				{sortable && <Icon {...sortIconProps} />}
+				{
+					<div title={tooltip}>
+						<Flex>
+							{!!icon && (
+								<Spacer margin="right-small">
+									<Icon name={icon} />
+								</Spacer>
+							)}
+							{label || null}
+							{sortable && (
+								<Spacer margin="left-small">
+									<Icon {...sortIconProps} />
+								</Spacer>
+							)}
+						</Flex>
+					</div>
+				}
 			</th>
 		);
 	};

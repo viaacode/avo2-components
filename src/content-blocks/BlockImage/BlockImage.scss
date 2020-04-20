@@ -1,26 +1,26 @@
 @import '../../styles/settings/colors';
 
-/* Block type: hero image
-   ========================================================================== */
-
 .o-container-vertical {
-	&.o-container-vertical-image {
+	&.o-block-image {
 		padding-top: 0;
+	}
+
+	&.o-block-image__page-header-image {
+		background-size: cover;
+		background-position: center;
+	}
+
+	&.o-block-image__center {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&.o-block-image__right {
+		margin-left: auto;
+		margin-right: 0;
 	}
 }
 
-.a-block-image-text {
+.a-block-image__text {
 	color: $color-gray-200;
-}
-
-.o-image-block-width-full-width {
-	width: 100%;
-}
-
-.o-image-block-width-500px {
-	width: 500px;
-}
-
-.o-image-block-width-400px {
-	width: 400px;
 }

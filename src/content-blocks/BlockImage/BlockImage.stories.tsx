@@ -13,6 +13,10 @@ storiesOf('blocks/BlockImage', module)
 			imageDescription="image showing the default dimensions on a grey background"
 		/>
 	))
+	.add('BlockImage full-width', () => <BlockImage imageSource={imageSource} width={'full-width'} />)
+	.add('BlockImage page header', () => (
+		<BlockImage imageSource={imageSource} width={'page-header'} />
+	))
 	.add('BlockImage 500px', () => (
 		<BlockImage
 			imageSource={imageSource}
@@ -27,12 +31,35 @@ storiesOf('blocks/BlockImage', module)
 			width="400px"
 		/>
 	))
+	.add('BlockImage align', () => (
+		<>
+			<BlockImage
+				imageSource={imageSource}
+				imageDescription="image showing the default dimensions on a grey background"
+				width="400px"
+				align="left"
+			/>
+			<BlockImage
+				imageSource={imageSource}
+				imageDescription="image showing the default dimensions on a grey background"
+				width="400px"
+				align="center"
+			/>{' '}
+			<BlockImage
+				imageSource={imageSource}
+				imageDescription="image showing the default dimensions on a grey background"
+				width="400px"
+				align="right"
+			/>
+		</>
+	))
 	.add('BlockImage title and text', () => (
 		<BlockImage
 			imageSource={imageSource}
 			imageDescription="image showing the default dimensions on a grey background"
 			title="A big image showing its dimensions on a grey background"
 			text="The author of the image"
+			width="500px"
 		/>
 	))
 	.add('BlockImage dark container', () => (
@@ -42,6 +69,7 @@ storiesOf('blocks/BlockImage', module)
 				imageDescription="image showing the default dimensions on a grey background"
 				title="A big image showing its dimensions on a grey background"
 				text="The author of the image"
+				width="500px"
 			/>
 		</div>
 	));

@@ -2,6 +2,7 @@ import { throttle } from 'lodash-es';
 import React from 'react';
 import 'trumbowyg/dist/trumbowyg.min';
 import 'trumbowyg/dist/ui/sass/trumbowyg.scss';
+import 'trumbowyg/dist/plugins/table/ui/sass/trumbowyg.table.scss';
 
 import 'trumbowyg/dist/langs/nl.min';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
@@ -12,6 +13,7 @@ import './WYSIWYG.scss';
 ($ as any).trumbowyg.svgPath = iconsPath;
 ($ as any).trumbowyg.langs.nl = {
 	...($ as any).trumbowyg.langs.nl,
+	// linkUrl: 'URL<br/>(mailto:email voor mail link)', // TODO enable after merge of: https://github.com/Alex-D/Trumbowyg/pull/1097
 	target: '_blank (nieuwe tab)<br/>_self (zelfde tab)',
 };
 
@@ -27,6 +29,7 @@ export interface WYSIWYGProps {
 	resetCss?: boolean;
 	autogrow?: boolean;
 	disabled?: boolean;
+	minimalLinks?: boolean;
 	removeFormatPasted?: boolean;
 	shouldUseSvgIcons?: boolean;
 	shouldInjectSvgIcons?: boolean;
