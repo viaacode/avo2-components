@@ -6,7 +6,7 @@ import { DefaultProps, Orientation } from '../../types';
 
 import './Container.scss';
 
-export interface ContainerProps extends DefaultProps {
+export interface ContainerPropsSchema extends DefaultProps {
 	mode?: Orientation;
 	size?: 'small' | 'medium' | 'large' | 'full-width';
 	background?: 'white' | 'alt' | 'inverse';
@@ -14,7 +14,7 @@ export interface ContainerProps extends DefaultProps {
 	children: ReactNode;
 }
 
-export const Container: FunctionComponent<ContainerProps> = ({
+export const Container: FunctionComponent<ContainerPropsSchema> = ({
 	mode,
 	size,
 	background,

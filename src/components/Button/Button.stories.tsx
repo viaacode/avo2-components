@@ -5,9 +5,9 @@ import { storiesOf } from '@storybook/react';
 import { COLORS } from '../../colors';
 import { action } from '../../helpers';
 import { Spacer } from '../Spacer/Spacer';
-import { Button, ButtonProps } from './Button';
+import { Button, ButtonPropsSchema } from './Button';
 
-const buttonProps: Partial<ButtonProps>[] = [
+const buttonProps: Partial<ButtonPropsSchema>[] = [
 	{ label: 'Primary', type: 'primary' },
 	{ label: 'Secondary', type: 'secondary' },
 	{ label: 'Tertiary', type: 'tertiary' },
@@ -19,7 +19,7 @@ const buttonProps: Partial<ButtonProps>[] = [
 	{ label: 'Disabled', disabled: true, title: 'reason why this button is disabled' },
 ];
 
-const buttonIconProps: Partial<ButtonProps>[] = [
+const buttonIconProps: Partial<ButtonPropsSchema>[] = [
 	{ ...buttonProps[0], icon: 'plus' },
 	{ ...buttonProps[1], icon: 'search' },
 	{ ...buttonProps[2], icon: 'database' },
@@ -30,12 +30,12 @@ const buttonIconProps: Partial<ButtonProps>[] = [
 	{ ...buttonProps[7], icon: 'tag' },
 ];
 
-const buttonInverseProps: Partial<ButtonProps>[] = [
+const buttonInverseProps: Partial<ButtonPropsSchema>[] = [
 	{ ...buttonIconProps[1], type: 'secondary-i' },
 	{ ...buttonIconProps[7], type: 'borderless-i' },
 ];
 
-const buttonActiveProps: Partial<ButtonProps>[] = [
+const buttonActiveProps: Partial<ButtonPropsSchema>[] = [
 	{ ...buttonIconProps[1], label: 'Active', active: true },
 	{ ...buttonIconProps[1], label: 'Inctive' },
 ];
@@ -47,13 +47,13 @@ const autoHeightChildren = (
 		Height
 	</div>
 );
-const buttonAutoHeightProps: Partial<ButtonProps>[] = [
+const buttonAutoHeightProps: Partial<ButtonPropsSchema>[] = [
 	{ ...buttonIconProps[1], children: autoHeightChildren, autoHeight: true },
 	{ ...buttonIconProps[1], children: autoHeightChildren },
 ];
 
 const renderButtonStories = (
-	propsArray: Partial<ButtonProps>[],
+	propsArray: Partial<ButtonPropsSchema>[],
 	hasLabel = true,
 	extraProps = {}
 ) => (

@@ -6,7 +6,7 @@ import { DefaultProps } from '../../types';
 
 import './Image.scss';
 
-export interface ImageProps extends DefaultProps {
+export interface ImagePropsSchema extends DefaultProps {
 	src: string;
 	alt?: string;
 	wide?: boolean;
@@ -14,7 +14,7 @@ export interface ImageProps extends DefaultProps {
 	height?: string;
 }
 
-export const Image: FunctionComponent<ImageProps> = ({
+export const Image: FunctionComponent<ImagePropsSchema> = ({
 	className,
 	src,
 	alt,

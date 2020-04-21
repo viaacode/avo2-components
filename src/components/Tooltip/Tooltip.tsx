@@ -9,13 +9,13 @@ import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
 import './Tooltip.scss';
 
-export interface TooltipProps {
+export interface TooltipPropsSchema {
 	children: ReactNode;
 	position: 'top' | 'right' | 'bottom' | 'left';
 	contentClassName?: string;
 }
 
-export const Tooltip: FunctionComponent<TooltipProps> = ({
+export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 	children,
 	position = 'bottom',
 	contentClassName,

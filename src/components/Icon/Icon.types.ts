@@ -1,6 +1,6 @@
-export type IconType = 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';
+export type IconTypeSchema = 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';
 
-export type IconName =
+export type IconNameSchema =
 	| 'activity'
 	| 'add'
 	| 'alert-circle'

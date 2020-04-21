@@ -4,7 +4,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
 import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps, EnglishContentType, translateContentType } from '../../types';
-import { Container, ContainerProps } from '../Container/Container';
+import { Container, ContainerPropsSchema } from '../Container/Container';
 import { Flex } from '../Flex/Flex';
 import { HeaderContentType } from '../HeaderContentType/HeaderContentType';
 import { MetaData } from '../MetaData/MetaData';
@@ -16,18 +16,18 @@ import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 
-export interface HeaderProps extends DefaultProps {
+export interface HeaderPropsSchema extends DefaultProps {
 	bookmarks?: string;
 	category?: EnglishContentType;
 	children?: ReactNode;
-	containerSize?: ContainerProps['size'];
+	containerSize?: ContainerPropsSchema['size'];
 	onClickTitle?: () => void;
 	showMetaData: boolean;
 	title: string;
 	views?: string;
 }
 
-export const Header: FunctionComponent<HeaderProps> = ({
+export const Header: FunctionComponent<HeaderPropsSchema> = ({
 	bookmarks,
 	category,
 	children,

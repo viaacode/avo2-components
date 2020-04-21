@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { IconName } from './Icon.types';
+import { IconNameSchema } from './Icon.types';
 
 import { Icon } from './Icon';
 import { Download, Slash, ThumbsUp } from './Icons';
@@ -14,7 +14,7 @@ describe('<Icon />', () => {
 	});
 
 	it('Should render slash icon when an unknown icon name is passed', () => {
-		const iconComponent = shallow(<Icon name={'foobar' as IconName} />);
+		const iconComponent = shallow(<Icon name={'foobar' as IconNameSchema} />);
 
 		expect(iconComponent.find(Slash)).toHaveLength(1);
 	});

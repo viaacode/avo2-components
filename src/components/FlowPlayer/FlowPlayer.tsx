@@ -19,7 +19,7 @@ interface FlowplayerInstance extends HTMLVideoElement {
 	emit: Function;
 }
 
-export interface FlowPlayerProps extends DefaultProps {
+export interface FlowPlayerPropsSchema extends DefaultProps {
 	src: string | null;
 	poster?: string;
 	logo?: string;
@@ -42,10 +42,10 @@ interface FlowPlayerState {
 	flowPlayerInstance: FlowplayerInstance | null;
 }
 
-export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState> {
+export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlayerState> {
 	private videoContainerRef = createRef<HTMLDivElement>();
 
-	constructor(props: FlowPlayerProps) {
+	constructor(props: FlowPlayerPropsSchema) {
 		super(props);
 		this.state = {
 			flowPlayerInstance: null,
@@ -66,7 +66,7 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 		this.destroyPlayer();
 	}
 
-	shouldComponentUpdate(nextProps: FlowPlayerProps) {
+	shouldComponentUpdate(nextProps: FlowPlayerPropsSchema) {
 		if (!this.videoContainerRef.current) {
 			return true;
 		}
@@ -175,7 +175,7 @@ export class FlowPlayer extends React.Component<FlowPlayerProps, FlowPlayerState
 		}
 	}
 
-	private reInitFlowPlayer(props: FlowPlayerProps) {
+	private reInitFlowPlayer(props: FlowPlayerPropsSchema) {
 		this.destroyPlayer();
 
 		if (!this.videoContainerRef.current) {

@@ -6,12 +6,16 @@ import { DefaultProps } from '../../types';
 
 import './Spinner.scss';
 
-export interface SpinnerProps extends DefaultProps {
+export interface SpinnerPropsSchema extends DefaultProps {
 	size?: 'large';
 	light?: boolean;
 }
 
-export const Spinner: FunctionComponent<SpinnerProps> = ({ className, size, light = false }) => {
+export const Spinner: FunctionComponent<SpinnerPropsSchema> = ({
+	className,
+	size,
+	light = false,
+}) => {
 	return (
 		<div
 			className={classnames(className, 'c-spinner', {

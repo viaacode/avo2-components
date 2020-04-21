@@ -18,7 +18,7 @@ import { ModalBackdrop } from './ModalBackdrop';
 
 import './Modal.scss';
 
-export interface ModalProps extends DefaultProps {
+export interface ModalPropsSchema extends DefaultProps {
 	children: ReactNode;
 	disableContextClick?: boolean;
 	isOpen: boolean;
@@ -28,7 +28,7 @@ export interface ModalProps extends DefaultProps {
 	onClose?: () => void;
 }
 
-export const Modal: FunctionComponent<ModalProps> = ({
+export const Modal: FunctionComponent<ModalPropsSchema> = ({
 	children,
 	className,
 	disableContextClick = false,

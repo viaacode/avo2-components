@@ -4,12 +4,16 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 
-export interface FlexItemProps extends DefaultProps {
+export interface FlexItemPropsSchema extends DefaultProps {
 	shrink?: boolean;
 	children?: ReactNode;
 }
 
-export const FlexItem: FunctionComponent<FlexItemProps> = ({ className, shrink, children }) => (
+export const FlexItem: FunctionComponent<FlexItemPropsSchema> = ({
+	className,
+	shrink,
+	children,
+}) => (
 	<div
 		className={classnames(className, 'o-flex__item', {
 			'o-flex__item--shrink': shrink,

@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers';
 
-import { RadioButton, RadioButtonProps } from '../RadioButton/RadioButton';
+import { RadioButton, RadioButtonPropsSchema } from '../RadioButton/RadioButton';
 import { RadioButtonGroup } from './RadioButtonGroup';
 
 const RadioButtonGroupStoryComponent = ({
@@ -18,7 +18,7 @@ const RadioButtonGroupStoryComponent = ({
 
 	return (
 		<Fragment>
-			{Children.map(children, (checkbox: ReactElement<RadioButtonProps>) =>
+			{Children.map(children, (checkbox: ReactElement<RadioButtonPropsSchema>) =>
 				React.cloneElement(checkbox, {
 					checked: checkbox.props.value === value,
 					onChange: (checked: boolean) => {

@@ -8,14 +8,14 @@ import { DefaultProps } from '../../types';
 
 import './Select.scss';
 
-export interface SelectOption<T = string> {
+export interface SelectOptionSchema<T = string> {
 	value: T;
 	label: string;
 	disabled?: boolean;
 }
 
-export interface SelectProps extends DefaultProps {
-	options: SelectOption[];
+export interface SelectPropsSchema extends DefaultProps {
+	options: SelectOptionSchema[];
 	id?: string;
 	disabled?: boolean;
 	loading?: boolean;
@@ -25,7 +25,7 @@ export interface SelectProps extends DefaultProps {
 	onChange?: (value: string) => void;
 }
 
-export const Select: FunctionComponent<SelectProps> = ({
+export const Select: FunctionComponent<SelectPropsSchema> = ({
 	className,
 	options,
 	id,
@@ -36,9 +36,9 @@ export const Select: FunctionComponent<SelectProps> = ({
 	value = null,
 	onChange = () => {},
 }) => {
-	function onValueChange(changedValue: ValueType<SelectOption>, actionMeta: ActionMeta) {
+	function onValueChange(changedValue: ValueType<SelectOptionSchema>, actionMeta: ActionMeta) {
 		if (actionMeta.action !== 'create-option') {
-			onChange((changedValue as SelectOption).value);
+			onChange((changedValue as SelectOptionSchema).value);
 		}
 	}
 

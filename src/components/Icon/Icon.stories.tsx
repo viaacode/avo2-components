@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 
 import iconList from '../../icons/icons.json';
 import { Spacer } from '../Spacer/Spacer';
-import { IconName } from './Icon.types';
+import { IconNameSchema } from './Icon.types';
 
 import { Icon } from './Icon';
 
@@ -33,7 +33,7 @@ stories.forEach(([title, icons]: any) =>
 		<Fragment>
 			<div className="c-styleguide-svg-icons__category">
 				<div className="c-styleguide-svg-icons__type">
-					{icons.map(({ name, type }: { name: IconName; type: any }, index: number) => (
+					{icons.map(({ name, type }: { name: IconNameSchema; type: any }, index: number) => (
 						<div className="c-styleguide-svg-icon" key={index}>
 							<Fragment>
 								<Icon name={name} type={type} />
@@ -84,4 +84,4 @@ story.add('Icon sizes', () => (
 	</Fragment>
 ));
 
-story.add('Unknown icon', () => <Icon name={'does-not-exist' as IconName} size="large" />);
+story.add('Unknown icon', () => <Icon name={'does-not-exist' as IconNameSchema} size="large" />);

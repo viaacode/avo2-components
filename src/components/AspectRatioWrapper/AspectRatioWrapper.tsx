@@ -6,11 +6,11 @@ import { DefaultProps, VideoAspectRatio } from '../../types';
 
 import './AspectRatioWrapper.scss';
 
-export interface AspectRatioWrapperProps extends DefaultProps {
+export interface AspectRatioWrapperPropsSchema extends DefaultProps {
 	aspect?: VideoAspectRatio | number;
 }
 
-export const AspectRatioWrapper: FunctionComponent<AspectRatioWrapperProps> = ({
+export const AspectRatioWrapper: FunctionComponent<AspectRatioWrapperPropsSchema> = ({
 	aspect,
 	children,
 	className,

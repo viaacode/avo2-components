@@ -3,19 +3,19 @@ import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
-import { IconName } from '../../Icon/Icon.types';
+import { IconNameSchema } from '../../Icon/Icon.types';
 
 import './Tab.scss';
 
-export interface TabProps extends DefaultProps {
+export interface TabPropsSchema extends DefaultProps {
 	label: string;
 	id: string | number;
-	icon?: IconName;
+	icon?: IconNameSchema;
 	active?: boolean;
 	onClick?: () => void;
 }
 
-export const Tab: FunctionComponent<TabProps> = ({
+export const Tab: FunctionComponent<TabPropsSchema> = ({
 	className,
 	label,
 	icon,

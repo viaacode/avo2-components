@@ -9,26 +9,26 @@ import { DefaultProps } from '../../types';
 
 import './TagsInput.scss';
 
-export interface TagInfo {
+export interface TagInfoSchema {
 	label: string;
 	value: string | number;
 }
 
-export interface TagsInputProps extends DefaultProps {
-	options: TagInfo[];
+export interface TagsInputPropsSchema extends DefaultProps {
+	options: TagInfoSchema[];
 	id?: string;
 	disabled?: boolean;
-	value?: TagInfo[];
+	value?: TagInfoSchema[];
 	className?: string;
 	placeholder?: string;
 	allowMulti?: boolean;
 	allowCreate?: boolean;
 	isLoading?: boolean;
-	onChange?: (selectedValues: TagInfo[]) => void;
-	onCreate?: (value: TagInfo) => void;
+	onChange?: (selectedValues: TagInfoSchema[]) => void;
+	onCreate?: (value: TagInfoSchema) => void;
 }
 
-export const TagsInput: FunctionComponent<TagsInputProps> = ({
+export const TagsInput: FunctionComponent<TagsInputPropsSchema> = ({
 	options,
 	id,
 	disabled = false,
@@ -41,9 +41,9 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 	onChange = () => {},
 	onCreate = () => {},
 }) => {
-	function onValueChange(changedValues: ValueType<TagInfo>, actionMeta: ActionMeta) {
+	function onValueChange(changedValues: ValueType<TagInfoSchema>, actionMeta: ActionMeta) {
 		if (actionMeta.action === 'create-option') {
-			const tagsToCreate: TagInfo[] = ((changedValues as TagInfo[]) || []).filter(
+			const tagsToCreate: TagInfoSchema[] = ((changedValues as TagInfoSchema[]) || []).filter(
 				tag => (tag as any).__isNew__
 			);
 			if (tagsToCreate[0]) {
@@ -53,7 +53,7 @@ export const TagsInput: FunctionComponent<TagsInputProps> = ({
 				});
 			}
 		} else {
-			onChange(changedValues as TagInfo[]);
+			onChange(changedValues as TagInfoSchema[]);
 		}
 	}
 
