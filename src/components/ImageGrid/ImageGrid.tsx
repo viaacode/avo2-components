@@ -6,7 +6,7 @@ import { DefaultProps } from '../../types';
 
 import './ImageGrid.scss';
 
-export interface ImageGridProps extends DefaultProps {
+export interface ImageGridPropsSchema extends DefaultProps {
 	images: string[];
 	value?: string[];
 	width?: number;
@@ -19,7 +19,7 @@ export interface ImageGridProps extends DefaultProps {
 	onChange?: (selectedImages: string[]) => void;
 }
 
-export const ImageGrid: FunctionComponent<ImageGridProps> = ({
+export const ImageGrid: FunctionComponent<ImageGridPropsSchema> = ({
 	images,
 	value = [],
 	width = 200,

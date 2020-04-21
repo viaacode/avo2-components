@@ -9,11 +9,11 @@ import { PanelBody, PanelHeader } from './Panel.slots';
 
 import './Panel.scss';
 
-export interface PanelProps extends DefaultProps {
+export interface PanelPropsSchema extends DefaultProps {
 	children: ReactNode;
 }
 
-export const Panel: FunctionComponent<PanelProps> = ({ children, className }) => {
+export const Panel: FunctionComponent<PanelPropsSchema> = ({ children, className }) => {
 	const header = useSlot(PanelHeader, children);
 	const body = useSlot(PanelBody, children);
 

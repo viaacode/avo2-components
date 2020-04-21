@@ -6,9 +6,9 @@ import { action } from '../../helpers';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
-import { Table, TableColumn } from './Table';
+import { Table, TableColumnSchema } from './Table';
 
-const COLUMNS: TableColumn[] = [
+const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },
 	{ id: 'age', label: 'Age (in yrs)', sortable: true },
 	{ id: 'cat', label: 'Has cat?', col: '2' },
@@ -16,7 +16,7 @@ const COLUMNS: TableColumn[] = [
 	{ id: 'actions', label: '' },
 ];
 
-const COLUMNS_WITH_ICONS: TableColumn[] = [
+const COLUMNS_WITH_ICONS: TableColumnSchema[] = [
 	{ tooltip: 'Name of the person', id: 'name', label: 'Name', sortable: true },
 	{ tooltip: 'Age', icon: 'clock', id: 'age', sortable: true },
 	{ tooltip: 'Has cats', icon: 'inbox', id: 'cat', label: 'Has cat?', col: '2' },

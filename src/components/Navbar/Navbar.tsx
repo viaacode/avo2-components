@@ -6,7 +6,7 @@ import { DefaultProps } from '../../types';
 
 import './Navbar.scss';
 
-export interface NavbarProps extends DefaultProps {
+export interface NavbarPropsSchema extends DefaultProps {
 	placement?: 'top' | 'bottom';
 	position?: 'fixed';
 	autoHeight?: boolean;
@@ -14,7 +14,7 @@ export interface NavbarProps extends DefaultProps {
 	children: ReactNode;
 }
 
-export const Navbar: FunctionComponent<NavbarProps> = ({
+export const Navbar: FunctionComponent<NavbarPropsSchema> = ({
 	className,
 	placement = 'top',
 	position,

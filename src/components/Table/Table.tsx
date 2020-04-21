@@ -5,13 +5,13 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import { DefaultProps } from '../../types';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
 import { Flex } from '../Flex/Flex';
 
 import './Table.scss';
 
-export type TableColumn = {
+export type TableColumnSchema = {
 	col?:
 		| '1'
 		| '2'
@@ -30,15 +30,15 @@ export type TableColumn = {
 		| '15';
 	id: string;
 	label?: string;
-	icon?: IconName;
+	icon?: IconNameSchema;
 	tooltip?: string;
 	sortable?: boolean;
 };
 
-export interface TableProps extends DefaultProps {
+export interface TablePropsSchema extends DefaultProps {
 	align?: boolean;
 	children?: ReactNode;
-	columns?: TableColumn[];
+	columns?: TableColumnSchema[];
 	data?: any[];
 	emptyStateMessage?: string;
 	horizontal?: boolean;
@@ -57,7 +57,7 @@ export interface TableProps extends DefaultProps {
 	onSelectionChanged?: (selectedItems: any[]) => void;
 }
 
-export const Table: FunctionComponent<TableProps> = ({
+export const Table: FunctionComponent<TablePropsSchema> = ({
 	align = true,
 	children,
 	className,
@@ -87,7 +87,7 @@ export const Table: FunctionComponent<TableProps> = ({
 		}
 	};
 
-	const renderHeading = (heading: TableColumn) => {
+	const renderHeading = (heading: TableColumnSchema) => {
 		const { id, col, sortable, label, icon, tooltip } = heading;
 
 		const isColumnSorted = sortColumn === id;
@@ -96,7 +96,7 @@ export const Table: FunctionComponent<TableProps> = ({
 				? sortOrder === 'asc'
 					? 'chevron-up'
 					: 'chevron-down'
-				: 'chevrons-up-and-down') as IconName,
+				: 'chevrons-up-and-down') as IconNameSchema,
 			className: isColumnSorted ? undefined : 'c-table__header--sortable-icon',
 		};
 

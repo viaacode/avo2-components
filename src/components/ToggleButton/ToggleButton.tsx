@@ -2,19 +2,19 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
-import { ButtonType } from '../Button/Button.types';
-import { IconName } from '../Icon/Icon.types';
+import { ButtonTypeSchema } from '../Button/Button.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 
-export interface ToggleButtonProps extends DefaultProps {
+export interface ToggleButtonPropsSchema extends DefaultProps {
 	icon: 'heart' | 'bookmark';
 	active: boolean;
 	ariaLabel: string;
 	title?: string;
-	type?: ButtonType;
+	type?: ButtonTypeSchema;
 	onClick?: (active: boolean) => void;
 }
 
-export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
+export const ToggleButton: FunctionComponent<ToggleButtonPropsSchema> = ({
 	className,
 	icon,
 	active,
@@ -37,9 +37,9 @@ export const ToggleButton: FunctionComponent<ToggleButtonProps> = ({
 		}
 	}
 
-	function getIcon(): IconName {
+	function getIcon(): IconNameSchema {
 		if (filled) {
-			return `${icon}-filled` as IconName;
+			return `${icon}-filled` as IconNameSchema;
 		}
 
 		return icon;

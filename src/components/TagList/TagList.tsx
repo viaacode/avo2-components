@@ -7,15 +7,15 @@ import { Icon } from '../Icon/Icon';
 
 import './TagList.scss';
 
-export interface TagOption {
+export interface TagOptionSchema {
 	label: string;
 	id: string | number;
 	color?: string;
 	active?: boolean;
 }
 
-export interface TagListProps extends DefaultProps {
-	tags: TagOption[];
+export interface TagListPropsSchema extends DefaultProps {
+	tags: TagOptionSchema[];
 	swatches?: boolean;
 	bordered?: boolean;
 	closable?: boolean;
@@ -24,7 +24,7 @@ export interface TagListProps extends DefaultProps {
 	onTagClicked?: (tagId: string | number, clickEvent: MouseEvent) => void;
 }
 
-export const TagList: FunctionComponent<TagListProps> = ({
+export const TagList: FunctionComponent<TagListPropsSchema> = ({
 	className,
 	tags,
 	swatches = true,
@@ -38,7 +38,7 @@ export const TagList: FunctionComponent<TagListProps> = ({
 
 	return !!tags && !!tags.length ? (
 		<ul className={classnames(className, 'c-tag-list')}>
-			{tags.map((tag: TagOption, index) => (
+			{tags.map((tag: TagOptionSchema, index) => (
 				<li
 					className={classnames({
 						'c-tag': bordered,

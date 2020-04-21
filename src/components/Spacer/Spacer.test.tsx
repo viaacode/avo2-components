@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Spacer, SpacerOption } from './Spacer';
+import { Spacer, SpacerOptionSchema } from './Spacer';
 
 describe('<Spacer />', () => {
 	it('Should be able to render', () => {
@@ -38,7 +38,7 @@ describe('<Spacer />', () => {
 	});
 
 	it('Should set the correct className when multiple margins/paddings are passed', () => {
-		const spacers: SpacerOption[] = ['left-small', 'top-large', 'right-extra-large'];
+		const spacers: SpacerOptionSchema[] = ['left-small', 'top-large', 'right-extra-large'];
 		const spacerComponent = shallow(<Spacer margin={spacers} padding={spacers} />);
 
 		expect(spacerComponent.hasClass('u-spacer-left-s')).toBeTruthy();

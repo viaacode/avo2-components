@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import React, { Fragment, FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
-import { Avatar, AvatarProps } from '../Avatar/Avatar';
+import { Avatar, AvatarPropsSchema } from '../Avatar/Avatar';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots';
 import { Flex } from '../Flex/Flex';
@@ -12,17 +12,17 @@ import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 
 import './AvatarList.scss';
 
-interface ExtendedAvatarProps extends AvatarProps {
+interface ExtendedAvatarProps extends AvatarPropsSchema {
 	onClick?: (avatar: ExtendedAvatarProps) => void;
 	subtitle?: string;
 }
 
-export interface AvatarListProps extends DefaultProps {
+export interface AvatarListPropsSchema extends DefaultProps {
 	avatars: ExtendedAvatarProps[];
 	isOpen: boolean;
 }
 
-export const AvatarList: FunctionComponent<AvatarListProps> = ({
+export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 	avatars,
 	className,
 	isOpen = false,

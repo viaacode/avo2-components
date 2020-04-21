@@ -11,16 +11,16 @@ import { useSlot } from '../../hooks/useSlot';
 import { get } from '../../utils/get';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Menu } from '../Menu/Menu';
 
 import { DropdownButton, DropdownContent } from './Dropdown.slots';
 
 import './Dropdown.scss';
 
-export interface DropdownProps {
+export interface DropdownPropsSchema {
 	children: ReactNode;
-	icon?: IconName;
+	icon?: IconNameSchema;
 	isOpen: boolean;
 	label?: string;
 	menuClassName?: string;
@@ -41,7 +41,7 @@ export interface DropdownProps {
  * - The button with down arrow is called the "reference"
  * - The flyout element that contains the children is called the "popper"
  */
-export const Dropdown: FunctionComponent<DropdownProps> = ({
+export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	children,
 	icon,
 	isOpen,

@@ -3,7 +3,7 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers';
-import { IconName } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { MenuContent } from '../Menu/MenuContent/MenuContent';
 
 import { Dropdown } from './Dropdown';
@@ -16,10 +16,10 @@ const menuItems = [
 ];
 
 const menuItemsWithIcons = [
-	{ ...menuItems[0], label: 'Aluminium with an icon', icon: 'circle' as IconName },
-	{ ...menuItems[1], label: 'Cadmium with an icon', icon: 'box' as IconName },
-	{ ...menuItems[2], label: 'Dubnium with an icon', icon: 'square' as IconName },
-	{ ...menuItems[3], label: 'Potassium with an icon', icon: 'triangle' as IconName },
+	{ ...menuItems[0], label: 'Aluminium with an icon', icon: 'circle' as IconNameSchema },
+	{ ...menuItems[1], label: 'Cadmium with an icon', icon: 'box' as IconNameSchema },
+	{ ...menuItems[2], label: 'Dubnium with an icon', icon: 'square' as IconNameSchema },
+	{ ...menuItems[3], label: 'Potassium with an icon', icon: 'triangle' as IconNameSchema },
 ];
 
 const DropdownStoryComponent = ({ children }: { children: ReactElement }) => {

@@ -9,7 +9,7 @@ import { MediaCardMetaData, MediaCardThumbnail } from '../../components/MediaCar
 import { MetaData } from '../../components/MetaData/MetaData';
 import {
 	MetaDataItem,
-	MetaDataItemProps,
+	MetaDataItemPropsSchema,
 } from '../../components/MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../../components/Thumbnail/Thumbnail';
 import { DefaultProps, EnglishContentType, Orientation } from '../../types';
@@ -18,7 +18,7 @@ import './BlockMediaList.scss';
 
 export type MediaListItem = {
 	category: EnglishContentType;
-	metadata?: MetaDataItemProps[];
+	metadata?: MetaDataItemPropsSchema[];
 	navigate: () => void;
 	thumbnail?: { label: string; meta?: string; src?: string };
 	title: string;

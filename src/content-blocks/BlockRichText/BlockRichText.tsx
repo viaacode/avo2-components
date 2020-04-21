@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
-import { Column, Grid, GridSize } from '../../components';
+import { Column, GridSizeSchema } from '../../components/Grid/Column/Column';
+import { Grid } from '../../components/Grid/Grid';
 import { convertToHtml } from '../../helpers';
 import { DefaultProps } from '../../types';
 
@@ -33,7 +34,7 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 		<Grid className={className}>
 			{(elements as BlockRichTextElement[]).map((column, index) => (
 				<Column
-					size={(12 / elements.length).toString() as GridSize}
+					size={(12 / elements.length).toString() as GridSizeSchema}
 					key={`rich-text-column-${index}`}
 				>
 					{renderContent(column)}

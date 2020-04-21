@@ -1,9 +1,9 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { AspectRatioWrapper, AspectRatioWrapperProps } from './AspectRatioWrapper';
+import { AspectRatioWrapper, AspectRatioWrapperPropsSchema } from './AspectRatioWrapper';
 
-const aspectRatioWrapper = (props: AspectRatioWrapperProps = {}) => (
+const aspectRatioWrapper = (props: AspectRatioWrapperPropsSchema = {}) => (
 	<AspectRatioWrapper {...props}>
 		<video
 			src="https://archief-media.viaa.be/viaa/TESTBEELD/c44b877a9a7d4b1a99c5b8b676c3aef4ca370f2fe15d42d49b438e71eea6b99d/browse.mp4"

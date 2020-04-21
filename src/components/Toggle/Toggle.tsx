@@ -6,14 +6,14 @@ import { DefaultProps } from '../../types';
 
 import './Toggle.scss';
 
-export interface ToggleProps extends DefaultProps {
+export interface TogglePropsSchema extends DefaultProps {
 	id?: string;
 	checked?: boolean;
 	disabled?: boolean;
 	onChange?: (checked: boolean) => void;
 }
 
-export const Toggle: FunctionComponent<ToggleProps> = ({
+export const Toggle: FunctionComponent<TogglePropsSchema> = ({
 	className,
 	id,
 	checked,

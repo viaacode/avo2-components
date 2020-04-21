@@ -4,7 +4,7 @@ import { Spacer } from '../Spacer/Spacer';
 
 import useCollapsed from '../../hooks/react-collapsed/react-collapsed';
 
-export interface ExpandableContainerProps {
+export interface ExpandableContainerPropsSchema {
 	expandLabel?: string;
 	collapseLabel?: string;
 	collapsedHeight?: number;
@@ -12,7 +12,7 @@ export interface ExpandableContainerProps {
 	children: ReactNode;
 }
 
-export const ExpandableContainer: FunctionComponent<ExpandableContainerProps> = ({
+export const ExpandableContainer: FunctionComponent<ExpandableContainerPropsSchema> = ({
 	expandLabel = 'Meer lezen',
 	collapseLabel = 'Minder lezen',
 	collapsedHeight = 44,

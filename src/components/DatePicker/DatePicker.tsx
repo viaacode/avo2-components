@@ -14,7 +14,7 @@ import './DatePicker.scss';
 registerLocale('nl', nl);
 setDefaultLocale('nl');
 
-export interface DatePickerProps extends DefaultProps {
+export interface DatePickerPropsSchema extends DefaultProps {
 	disabled?: boolean;
 	required?: boolean;
 	showTimeInput?: boolean;
@@ -23,7 +23,7 @@ export interface DatePickerProps extends DefaultProps {
 	onChange?: (date: Date | null) => void;
 }
 
-export const DatePicker: FunctionComponent<DatePickerProps> = ({
+export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	className,
 	disabled = false,
 	required = false,

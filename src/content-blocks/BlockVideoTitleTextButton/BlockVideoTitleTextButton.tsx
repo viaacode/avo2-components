@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { AspectRatioWrapper } from '../../components/AspectRatioWrapper/AspectRatioWrapper';
 import { Container } from '../../components/Container/Container';
 import { ExpandableContainer } from '../../components/ExpandableContainer/ExpandableContainer';
-import { FlowPlayer, FlowPlayerProps } from '../../components/FlowPlayer/FlowPlayer';
+import { FlowPlayer, FlowPlayerPropsSchema } from '../../components/FlowPlayer/FlowPlayer';
 import { Column } from '../../components/Grid/Column/Column';
 import { Grid } from '../../components/Grid/Grid';
 import { Spacer } from '../../components/Spacer/Spacer';
@@ -11,7 +11,7 @@ import { convertToHtml } from '../../helpers';
 import { DefaultProps } from '../../types';
 
 export interface BlockVideoTitleTextButtonProps extends DefaultProps {
-	flowPlayerProps: FlowPlayerProps;
+	flowPlayerProps: FlowPlayerPropsSchema;
 	title?: string;
 	titleLink?: string;
 	text?: string;

@@ -3,20 +3,20 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
 
 import './Blankslate.scss';
 
-export interface BlankslateProps extends DefaultProps {
+export interface BlankslatePropsSchema extends DefaultProps {
 	title: string;
 	body?: string;
 	spacious?: boolean;
-	icon?: IconName;
+	icon?: IconNameSchema;
 	children?: ReactNode;
 }
 
-export const Blankslate: FunctionComponent<BlankslateProps> = ({
+export const Blankslate: FunctionComponent<BlankslatePropsSchema> = ({
 	body,
 	children,
 	className,

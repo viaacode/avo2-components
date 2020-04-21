@@ -4,16 +4,16 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 type InputType = 'password' | 'text' | 'email' | 'search' | 'number' | 'tel' | 'url';
 
-export interface TextInputProps extends DefaultProps {
+export interface TextInputPropsSchema extends DefaultProps {
 	id?: string;
 	disabled?: boolean;
 	placeholder?: string;
 	value?: string;
-	icon?: IconName;
+	icon?: IconNameSchema;
 	type?: InputType;
 	ariaLabel?: string;
 	onChange?: (value: string) => void;
@@ -21,7 +21,7 @@ export interface TextInputProps extends DefaultProps {
 	onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export const TextInput: FunctionComponent<TextInputProps> = ({
+export const TextInput: FunctionComponent<TextInputPropsSchema> = ({
 	className,
 	id,
 	disabled = false,

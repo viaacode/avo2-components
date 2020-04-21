@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { useDeselectEvent } from '../../hooks/useDeselectEvent';
 import { DefaultProps } from '../../types';
 
-export interface RadioButtonProps extends DefaultProps {
+export interface RadioButtonPropsSchema extends DefaultProps {
 	label: string;
 	name: string;
 	value: string;
@@ -15,7 +15,7 @@ export interface RadioButtonProps extends DefaultProps {
 	onChange?: (checked: boolean) => void;
 }
 
-export const RadioButton: FunctionComponent<RadioButtonProps> = ({
+export const RadioButton: FunctionComponent<RadioButtonPropsSchema> = ({
 	className,
 	label,
 	name,

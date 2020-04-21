@@ -2,7 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Menu } from './Menu';
-import { MenuItemInfo } from './MenuContent/MenuContent';
+import { MenuItemInfoSchema } from './MenuContent/MenuContent';
 import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent';
 
 import {
@@ -75,7 +75,7 @@ describe('<MenuItem />', () => {
 	});
 
 	it('Should render using custom render function', () => {
-		const customRenderFunction = (menuItem: MenuItemInfo) => {
+		const customRenderFunction = (menuItem: MenuItemInfoSchema) => {
 			return (
 				<div className="custom-item" key={`menu-search-item-${menuItem.id}`}>
 					{menuItem.label}

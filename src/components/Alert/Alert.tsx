@@ -4,20 +4,20 @@ import classnames from 'classnames';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Spinner } from '../Spinner/Spinner';
 
-import { AlertProps, AlertTypeWithIcon } from './Alert.types';
+import { AlertPropsSchema, AlertTypeWithIcon } from './Alert.types';
 
 import './Alert.scss';
 
-const ALERT_TYPE_TO_ICON_MAPPING: { [type in AlertTypeWithIcon]: IconName } = {
+const ALERT_TYPE_TO_ICON_MAPPING: { [type in AlertTypeWithIcon]: IconNameSchema } = {
 	info: 'circle-info',
 	success: 'circle-check',
 	danger: 'circle-warning',
 };
 
-export const Alert: FunctionComponent<AlertProps> = ({
+export const Alert: FunctionComponent<AlertPropsSchema> = ({
 	children,
 	className,
 	dark = false,

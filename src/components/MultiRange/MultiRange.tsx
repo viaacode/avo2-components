@@ -8,7 +8,7 @@ import { DefaultProps } from '../../types';
 
 import './MultiRange.scss';
 
-export interface MultiRangeProps extends DefaultProps {
+export interface MultiRangePropsSchema extends DefaultProps {
 	id?: string;
 	disabled?: boolean;
 	values?: number[];
@@ -20,7 +20,7 @@ export interface MultiRangeProps extends DefaultProps {
 	onChange?: (values: number[]) => void;
 }
 
-export const MultiRange: FunctionComponent<MultiRangeProps> = ({
+export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 	className,
 	id,
 	disabled = false,
