@@ -245,7 +245,7 @@ export {
 
 export { Select } from './Select/Select';
 export type SelectProps = SelectPropsSchema;
-export type SelectOption = SelectOptionSchema;
+export type SelectOption<T> = SelectOptionSchema<T>;
 
 export { Spacer } from './Spacer/Spacer';
 export type SpacerProps = SpacerPropsSchema;
