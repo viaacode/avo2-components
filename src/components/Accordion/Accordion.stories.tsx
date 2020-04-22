@@ -4,12 +4,12 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { action } from '../../helpers';
 import { Button } from '../Button/Button';
+import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
+import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
 import { Form } from '../Form/Form';
 import { FormGroup } from '../Form/FormGroup/FormGroup';
 import { TextArea } from '../TextArea/TextArea';
 import { TextInput } from '../TextInput/TextInput';
-import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
-import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
 
 import { Accordion } from './Accordion';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';

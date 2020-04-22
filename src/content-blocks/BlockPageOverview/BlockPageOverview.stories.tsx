@@ -2,8 +2,8 @@ import { storiesOf } from '@storybook/react';
 import { intersectionBy } from 'lodash-es';
 import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
 
-import { action } from '../../helpers';
 import { Container } from '../../components';
+import { action } from '../../helpers';
 
 import { BlockPageOverview, ContentPageInfo, LabelObj } from './BlockPageOverview';
 import { CONTENT_PAGES_MOCK } from './BlockPageOverview.mock';

@@ -1,8 +1,8 @@
 import { throttle } from 'lodash-es';
 import React from 'react';
+import 'trumbowyg/dist/plugins/table/ui/sass/trumbowyg.table.scss';
 import 'trumbowyg/dist/trumbowyg.min';
 import 'trumbowyg/dist/ui/sass/trumbowyg.scss';
-import 'trumbowyg/dist/plugins/table/ui/sass/trumbowyg.table.scss';
 
 import 'trumbowyg/dist/langs/nl.min';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';

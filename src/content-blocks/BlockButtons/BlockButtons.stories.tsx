@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { AlignOptions } from '../../types';
 import { ButtonType } from '../../components';
 import { action } from '../../helpers';
+import { AlignOptions } from '../../types';
 
 import { BlockButtons } from './BlockButtons';
 import { BUTTONS_MOCK } from './BlockButtons.mock';
@@ -14,7 +14,7 @@ const renderBlockButtons = (
 	type: ButtonType = 'secondary'
 ) => () => (
 	<BlockButtons
-		elements={BUTTONS_MOCK.map(button => ({ ...button, type: type }))}
+		elements={BUTTONS_MOCK.map(button => ({ ...button, type }))}
 		align={align}
 		hasDividers={dividers}
 		navigate={action('button clicked')}
