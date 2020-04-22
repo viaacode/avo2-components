@@ -62,7 +62,16 @@ export const MEDIA_LIST_MOCK: MediaListItem[] = [
 ];
 
 export const MEDIA_LIST_CTA_MOCK = {
-	ctaButtonLabel: 'Ontdek meer',
-	ctaContent: 'Wil je meer weten?',
 	ctaTitle: 'Call to action',
+	ctaContent: 'Wil je meer weten?',
+	ctaButtonLabel: 'Ontdek meer',
+};
+
+export const MEDIA_LIST_COLORED_CTA_MOCK = {
+	ctaTitle: 'Call to action',
+	ctaTitleColor: '#FF0000',
+	ctaContent: 'Wil je meer weten?',
+	ctaContentColor: '#00FF00',
+	ctaButtonLabel: 'Ontdek meer',
+	ctaBackgroundColor: '#0000FF',
 };
