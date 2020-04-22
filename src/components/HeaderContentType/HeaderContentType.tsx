@@ -6,12 +6,12 @@ import { DefaultProps, EnglishContentType } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail';
 
-export interface HeaderContentTypeProps extends DefaultProps {
+export interface HeaderContentTypePropsSchema extends DefaultProps {
 	category: EnglishContentType;
 	label: string;
 }
 
-export const HeaderContentType: FunctionComponent<HeaderContentTypeProps> = ({
+export const HeaderContentType: FunctionComponent<HeaderContentTypePropsSchema> = ({
 	category,
 	label,
 	className,

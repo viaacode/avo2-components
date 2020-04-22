@@ -4,11 +4,11 @@ import classnames from 'classnames';
 
 import { DefaultProps, EnglishContentType } from '../../types';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import './Thumbnail.scss';
 
-export const CATEGORY_TO_ICON: { [category: string]: IconName } = {
+export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
 	audio: 'headphone',
 	video: 'video',
 	collection: 'collection',
@@ -16,7 +16,7 @@ export const CATEGORY_TO_ICON: { [category: string]: IconName } = {
 	search: 'search',
 };
 
-export interface ThumbnailProps extends DefaultProps {
+export interface ThumbnailPropsSchema extends DefaultProps {
 	category: EnglishContentType;
 	src?: string;
 	alt?: string;
@@ -24,7 +24,7 @@ export interface ThumbnailProps extends DefaultProps {
 	meta?: string;
 }
 
-export const Thumbnail: FunctionComponent<ThumbnailProps> = ({
+export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 	category,
 	className,
 	src,

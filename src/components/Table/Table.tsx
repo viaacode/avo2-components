@@ -4,13 +4,14 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Checkbox } from '../Checkbox/Checkbox';
+import { Flex } from '../Flex/Flex';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
 
 import './Table.scss';
 
-export type TableColumn = {
+export type TableColumnSchema = {
 	col?:
 		| '1'
 		| '2'
@@ -28,14 +29,16 @@ export type TableColumn = {
 		| '14'
 		| '15';
 	id: string;
-	label: string;
+	label?: string;
+	icon?: IconNameSchema;
+	tooltip?: string;
 	sortable?: boolean;
 };
 
-export interface TableProps extends DefaultProps {
+export interface TablePropsSchema extends DefaultProps {
 	align?: boolean;
 	children?: ReactNode;
-	columns?: TableColumn[];
+	columns?: TableColumnSchema[];
 	data?: any[];
 	emptyStateMessage?: string;
 	horizontal?: boolean;
@@ -54,7 +57,7 @@ export interface TableProps extends DefaultProps {
 	onSelectionChanged?: (selectedItems: any[]) => void;
 }
 
-export const Table: FunctionComponent<TableProps> = ({
+export const Table: FunctionComponent<TablePropsSchema> = ({
 	align = true,
 	children,
 	className,
@@ -84,8 +87,8 @@ export const Table: FunctionComponent<TableProps> = ({
 		}
 	};
 
-	const renderHeading = (heading: TableColumn) => {
-		const { id, col, sortable, label } = heading;
+	const renderHeading = (heading: TableColumnSchema) => {
+		const { id, col, sortable, label, icon, tooltip } = heading;
 
 		const isColumnSorted = sortColumn === id;
 		const sortIconProps = {
@@ -93,7 +96,7 @@ export const Table: FunctionComponent<TableProps> = ({
 				? sortOrder === 'asc'
 					? 'chevron-up'
 					: 'chevron-down'
-				: 'chevrons-up-and-down') as IconName,
+				: 'chevrons-up-and-down') as IconNameSchema,
 			className: isColumnSorted ? undefined : 'c-table__header--sortable-icon',
 		};
 
@@ -112,8 +115,23 @@ export const Table: FunctionComponent<TableProps> = ({
 				})}
 				onClick={() => sortable && onColumnClick(id)}
 			>
-				{label}
-				{sortable && <Icon {...sortIconProps} />}
+				{
+					<div title={tooltip}>
+						<Flex>
+							{!!icon && (
+								<Spacer margin="right-small">
+									<Icon name={icon} />
+								</Spacer>
+							)}
+							{label || null}
+							{sortable && (
+								<Spacer margin="left-small">
+									<Icon {...sortIconProps} />
+								</Spacer>
+							)}
+						</Flex>
+					</div>
+				}
 			</th>
 		);
 	};

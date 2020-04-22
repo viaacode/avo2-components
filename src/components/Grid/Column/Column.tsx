@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 
-export type GridSize =
+export type GridSizeSchema =
 	| '1'
 	| '2'
 	| '3'
@@ -56,19 +56,19 @@ export type GridSize =
 	| 'static'
 	| 'flex';
 
-export interface ColumnProps extends DefaultProps {
+export interface ColumnPropsSchema extends DefaultProps {
 	children: ReactNode;
-	size: GridSize[] | GridSize;
+	size: GridSizeSchema[] | GridSizeSchema;
 	tag?: ElementType;
 }
 
-export const Column: FunctionComponent<ColumnProps> = ({
+export const Column: FunctionComponent<ColumnPropsSchema> = ({
 	children,
 	className,
 	size,
 	tag: Tag = 'div',
 }) => {
-	const getGridSizeColumn = (size: GridSize): string => {
+	const getGridSizeColumn = (size: GridSizeSchema): string => {
 		const prefix = size.includes('-') ? 'bp' : '';
 
 		return `o-grid-col-${prefix}${size}`;

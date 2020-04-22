@@ -2,7 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Icon } from '../../Icon/Icon';
-import { IconName } from '../../Icon/Icon.types';
+import { IconNameSchema } from '../../Icon/Icon.types';
 import { Tab } from './Tab';
 
 const mockTab = {
@@ -14,7 +14,7 @@ const mockTab = {
 
 const mockTabWithIcon = {
 	...mockTab,
-	icon: 'video' as IconName,
+	icon: 'video' as IconNameSchema,
 };
 
 describe('<Tab />', () => {

@@ -6,12 +6,12 @@ import { DefaultProps } from '../../../types';
 
 import './ToolbarItem.scss';
 
-export interface ToolbarItemProps extends DefaultProps {
+export interface ToolbarItemPropsSchema extends DefaultProps {
 	children: ReactNode;
 	grow?: boolean;
 }
 
-export const ToolbarItem: FunctionComponent<ToolbarItemProps> = ({
+export const ToolbarItem: FunctionComponent<ToolbarItemPropsSchema> = ({
 	children,
 	grow = false,
 	className,

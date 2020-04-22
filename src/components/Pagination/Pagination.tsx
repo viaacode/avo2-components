@@ -7,14 +7,14 @@ import { Icon } from '../Icon/Icon';
 
 import './Pagination.scss';
 
-export interface PaginationProps extends DefaultProps {
+export interface PaginationPropsSchema extends DefaultProps {
 	pageCount: number;
 	displayCount?: number;
 	currentPage?: number;
 	onPageChange?: (page: number) => void;
 }
 
-export const Pagination: FunctionComponent<PaginationProps> = ({
+export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 	className,
 	pageCount,
 	displayCount = 5,

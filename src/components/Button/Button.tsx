@@ -3,13 +3,13 @@ import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
-import { IconName } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 
-import { ButtonType } from './Button.types';
+import { ButtonTypeSchema } from './Button.types';
 
 import './Button.scss';
 
-export interface ButtonProps extends DefaultProps {
+export interface ButtonPropsSchema extends DefaultProps {
 	active?: boolean;
 	ariaLabel?: string;
 	arrow?: boolean;
@@ -17,15 +17,15 @@ export interface ButtonProps extends DefaultProps {
 	block?: boolean;
 	children?: ReactNode;
 	disabled?: boolean;
-	icon?: IconName;
+	icon?: IconNameSchema;
 	label?: string;
 	onClick?(event: MouseEvent<HTMLElement>): void;
 	size?: 'small' | 'large';
 	title?: string;
-	type?: ButtonType;
+	type?: ButtonTypeSchema;
 }
 
-const Button: FunctionComponent<ButtonProps> = ({
+const Button: FunctionComponent<ButtonPropsSchema> = ({
 	active,
 	ariaLabel,
 	arrow,

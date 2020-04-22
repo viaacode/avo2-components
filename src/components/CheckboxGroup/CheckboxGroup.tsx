@@ -3,12 +3,12 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 
-export interface CheckboxGroupProps extends DefaultProps {
+export interface CheckboxGroupPropsSchema extends DefaultProps {
 	inline?: boolean;
 	children: ReactNode;
 }
 
-export const CheckboxGroup: FunctionComponent<CheckboxGroupProps> = ({
+export const CheckboxGroup: FunctionComponent<CheckboxGroupPropsSchema> = ({
 	children,
 	className,
 	inline = false,

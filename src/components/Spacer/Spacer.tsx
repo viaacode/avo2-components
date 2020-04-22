@@ -6,7 +6,7 @@ import { DefaultProps } from '../../types';
 
 import './Spacer.scss';
 
-export type SpacerOption =
+export type SpacerOptionSchema =
 	| 'small'
 	| 'medium'
 	| 'large'
@@ -29,10 +29,10 @@ export type SpacerOption =
 	| 'bottom-extra-large'
 	| 'none'; // Useful for having a margin on desktop, but no margin on mobile
 
-export interface SpacerProps extends DefaultProps {
+export interface SpacerPropsSchema extends DefaultProps {
 	children?: ReactNode;
-	margin?: SpacerOption | SpacerOption[];
-	padding?: SpacerOption | SpacerOption[];
+	margin?: SpacerOptionSchema | SpacerOptionSchema[];
+	padding?: SpacerOptionSchema | SpacerOptionSchema[];
 }
 
 const abbreviateSizes = (input: string): string => {
@@ -43,7 +43,7 @@ const abbreviateSizes = (input: string): string => {
 };
 
 const spacersToClasses = (
-	spacer: SpacerOption | SpacerOption[] = [],
+	spacer: SpacerOptionSchema | SpacerOptionSchema[] = [],
 	classPrefix: string
 ): string[] => {
 	if (spacer === 'none') {
@@ -56,7 +56,7 @@ const spacersToClasses = (
 	);
 };
 
-export const Spacer: FunctionComponent<SpacerProps> = ({
+export const Spacer: FunctionComponent<SpacerPropsSchema> = ({
 	children,
 	className,
 	margin = 'medium',

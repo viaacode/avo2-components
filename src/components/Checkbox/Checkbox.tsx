@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 
-export interface CheckboxProps extends DefaultProps {
+export interface CheckboxPropsSchema extends DefaultProps {
 	label: string;
 	checked?: boolean;
 	id?: string;
@@ -12,7 +12,7 @@ export interface CheckboxProps extends DefaultProps {
 	onChange?: (checked: boolean) => void;
 }
 
-export const Checkbox: FunctionComponent<CheckboxProps> = ({
+export const Checkbox: FunctionComponent<CheckboxPropsSchema> = ({
 	className,
 	label,
 	id,

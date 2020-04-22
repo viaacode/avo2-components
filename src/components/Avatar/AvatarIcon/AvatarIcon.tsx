@@ -3,16 +3,16 @@ import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
-import { IconName } from '../../Icon/Icon.types';
+import { IconNameSchema } from '../../Icon/Icon.types';
 
-export interface AvatarIconProps extends DefaultProps {
+export interface AvatarIconPropsSchema extends DefaultProps {
 	initials?: string;
 	image?: string;
-	icon?: IconName;
+	icon?: IconNameSchema;
 	size?: 'small' | 'large';
 }
 
-export const AvatarIcon: FunctionComponent<AvatarIconProps> = ({
+export const AvatarIcon: FunctionComponent<AvatarIconPropsSchema> = ({
 	className,
 	initials,
 	image,

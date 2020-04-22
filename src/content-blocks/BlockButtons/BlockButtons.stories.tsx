@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { ButtonType } from '../../components';
+import { ButtonTypeSchema } from '../../components/Button/Button.types';
 import { action } from '../../helpers';
 import { AlignOptions } from '../../types';
 
@@ -11,7 +11,7 @@ import { BUTTONS_MOCK } from './BlockButtons.mock';
 const renderBlockButtons = (
 	align?: AlignOptions,
 	dividers = false,
-	type: ButtonType = 'secondary'
+	type: ButtonTypeSchema = 'secondary'
 ) => () => (
 	<BlockButtons
 		elements={BUTTONS_MOCK.map(button => ({ ...button, type }))}

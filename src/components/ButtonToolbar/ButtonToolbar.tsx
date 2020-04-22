@@ -6,12 +6,13 @@ import { DefaultProps } from '../../types';
 
 import './ButtonToolbar.scss';
 
-export interface ButtonToolbarProps extends DefaultProps {
+export interface ButtonToolbarPropsSchema extends DefaultProps {
 	children: ReactNode;
 }
 
-const ButtonToolbar: FunctionComponent<ButtonToolbarProps> = ({ className = '', children }) => (
-	<div className={classnames(className, 'c-button-toolbar')}>{children}</div>
-);
+const ButtonToolbar: FunctionComponent<ButtonToolbarPropsSchema> = ({
+	className = '',
+	children,
+}) => <div className={classnames(className, 'c-button-toolbar')}>{children}</div>;
 
 export { ButtonToolbar };

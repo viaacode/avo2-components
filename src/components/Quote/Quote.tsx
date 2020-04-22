@@ -8,14 +8,14 @@ import { Container } from '../Container/Container';
 
 import './Quote.scss';
 
-export interface QuoteProps extends DefaultProps {
+export interface QuotePropsSchema extends DefaultProps {
 	quote: string;
 	authorImage?: string;
 	authorName: string;
 	authorInitials?: string;
 }
 
-export const Quote: FunctionComponent<QuoteProps> = ({
+export const Quote: FunctionComponent<QuotePropsSchema> = ({
 	className,
 	quote,
 	authorImage,

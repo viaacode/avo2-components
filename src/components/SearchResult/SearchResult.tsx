@@ -9,7 +9,7 @@ import { FlexItem } from '../Flex/FlexItem/FlexItem';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Spacer } from '../Spacer/Spacer';
-import { TagList, TagOption } from '../TagList/TagList';
+import { TagList, TagOptionSchema } from '../TagList/TagList';
 import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
 
@@ -20,7 +20,7 @@ import {
 	SearchResultTitle,
 } from './SearchResult.slots';
 
-export interface SearchResultProps extends DefaultProps {
+export interface SearchResultPropsSchema extends DefaultProps {
 	children: ReactNode;
 	type: EnglishContentType;
 	thumbnailPath?: string;
@@ -30,12 +30,12 @@ export interface SearchResultProps extends DefaultProps {
 	date: string;
 	bookmarkCount: number;
 	viewCount: number;
-	tags?: TagOption[];
+	tags?: TagOptionSchema[];
 	onToggleBookmark?: (active: boolean) => void;
 	onTagClicked?: (tagId: string) => void;
 }
 
-export const SearchResult: FunctionComponent<SearchResultProps> = ({
+export const SearchResult: FunctionComponent<SearchResultPropsSchema> = ({
 	children,
 	className,
 	type,

@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { DefaultProps } from '../../types';
 
-export interface TextAreaProps extends DefaultProps {
+export interface TextAreaPropsSchema extends DefaultProps {
 	id?: string;
 	name?: string;
 	rows?: number;
@@ -19,7 +19,7 @@ export interface TextAreaProps extends DefaultProps {
 	onBlur?: () => void;
 }
 
-export const TextArea: FunctionComponent<TextAreaProps> = ({
+export const TextArea: FunctionComponent<TextAreaPropsSchema> = ({
 	className,
 	id,
 	name,

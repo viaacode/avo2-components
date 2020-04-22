@@ -6,14 +6,14 @@ import { Icon } from '../../Icon/Icon';
 import { CATEGORY_TO_ICON } from '../../Thumbnail/Thumbnail';
 import { MenuContent } from '../MenuContent/MenuContent';
 
-export interface MenuSearchResultItemInfo {
+export interface MenuSearchResultItemInfoSchema {
 	label: string;
 	id: string | number;
 	type: EnglishContentType;
 }
 
-export interface MenuSearchResultContentProps extends DefaultProps {
-	menuItems: MenuSearchResultItemInfo[];
+export interface MenuSearchResultContentPropsSchema extends DefaultProps {
+	menuItems: MenuSearchResultItemInfoSchema[];
 	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;
 }
@@ -26,13 +26,13 @@ export const CONTENT_TYPE_TO_LABEL: { [contentType in EnglishContentType]?: stri
 	search: 'Zoekopdracht',
 };
 
-export const MenuSearchResultContent: FunctionComponent<MenuSearchResultContentProps> = ({
+export const MenuSearchResultContent: FunctionComponent<MenuSearchResultContentPropsSchema> = ({
 	className,
 	menuItems,
 	noResultsLabel,
 	onClick = () => {},
 }) => {
-	const renderMenuItem = (menuItemInfo: MenuSearchResultItemInfo) => {
+	const renderMenuItem = (menuItemInfo: MenuSearchResultItemInfoSchema) => {
 		return (
 			<div
 				className={classnames(className, 'c-menu__item')}
