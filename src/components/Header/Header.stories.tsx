@@ -9,6 +9,8 @@ import { TagList } from '../TagList/TagList';
 import { Header } from './Header';
 import { MOCK_HEADER_PROPS, MOCK_HEADER_PROPS_FULL } from './Header.mock';
 import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
+import { ButtonToolbar } from '..';
+import { times } from 'lodash-es';
 
 storiesOf('components/Header', module)
 	.addParameters({ jest: ['Header'] })
@@ -33,5 +35,24 @@ storiesOf('components/Header', module)
 					]}
 				/>
 			</HeaderTags>
+		</Header>
+	))
+	.add('Header with long title', () => (
+		<Header
+			{...MOCK_HEADER_PROPS_FULL}
+			title="overlap video test Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis odio udgse sdfes se"
+		>
+			<HeaderButtons>
+				<ButtonToolbar>
+					{times(4).map(index => (
+						<Button
+							type="secondary"
+							label="Bekijk"
+							onClick={() => null}
+							key={`header-button-${index}`}
+						/>
+					))}
+				</ButtonToolbar>
+			</HeaderButtons>
 		</Header>
 	));
