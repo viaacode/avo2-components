@@ -28,9 +28,10 @@ $c-avatar-dimensions-l: 9.6rem !default;
 	border-radius: 50%;
 	background-color: $c-avatar-default-bg;
 	color: #fff;
-	object-fit: cover;
+	align-items: center;
 
-	.o-svg-icon {
+	.o-svg-icon,
+	img {
 		width: 2.4rem;
 		height: 2.4rem;
 	}
@@ -44,7 +45,8 @@ $c-avatar-dimensions-l: 9.6rem !default;
 	line-height: $c-avatar-dimensions-s;
 	font-size: 80%;
 
-	.o-svg-icon {
+	.o-svg-icon,
+	img {
 		width: 1.6rem;
 		height: 1.6rem;
 	}
@@ -57,7 +59,8 @@ $c-avatar-dimensions-l: 9.6rem !default;
 	min-height: $c-avatar-dimensions-l;
 	background-color: $color-gray-200;
 
-	.o-svg-icon {
+	.o-svg-icon,
+	img {
 		width: 5.6rem;
 		height: 5.6rem;
 	}
@@ -71,15 +74,15 @@ $c-avatar-dimensions-l: 9.6rem !default;
 	background: none;
 
 	img {
+		object-fit: cover;
 		border-radius: 50%;
 	}
 }
 
-
 .c-avatar-and-text {
-	 display: flex;
-	 align-items: center;
-	 min-width: 0;
+	display: flex;
+	align-items: center;
+	min-width: 0;
 
 	.c-avatar-and-text__text {
 		flex: 1;
