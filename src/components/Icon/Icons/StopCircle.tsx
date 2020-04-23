@@ -6,7 +6,7 @@ export const StopCircle = (props: SVGProps<SVGSVGElement>) => (
 			fill="#000"
 		/>
 		<path
-			d="M15 16H9a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1zm-5-2h4v-4h-4v4z"
+			d="M15 16H9a1 1 0 01-1-1V9a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1zm-5-2h4v-4h-4v4z"
 			fill="#000"
 		/>
 	</svg>

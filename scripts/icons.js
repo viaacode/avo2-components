@@ -60,10 +60,10 @@ glob(`${directory}/**/*.svg`, function(err, res) {
 			})
 		).join("'\n  | '");
 
-		let iconTypeFileContent = `export type IconName =
+		let iconTypeFileContent = `export type IconNameSchema =
   | \'${iconNames}\';
 
-export type IconType =
+export type IconTypeSchema =
   | \'${iconTypeNames}\';
 `;
 
