@@ -39,6 +39,8 @@ export default {
 		'react-datepicker/dist/react-datepicker.css',
 		'jquery',
 		'marked',
+		'moment',
+		'moment/locale/nl-be',
 		'popper.js',
 		'raf',
 		'react',
