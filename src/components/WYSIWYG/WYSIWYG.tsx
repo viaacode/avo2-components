@@ -1,8 +1,8 @@
 import { throttle } from 'lodash-es';
 import React from 'react';
+import 'trumbowyg/dist/plugins/table/ui/sass/trumbowyg.table.scss';
 import 'trumbowyg/dist/trumbowyg.min';
 import 'trumbowyg/dist/ui/sass/trumbowyg.scss';
-import 'trumbowyg/dist/plugins/table/ui/sass/trumbowyg.table.scss';
 
 import 'trumbowyg/dist/langs/nl.min';
 import 'trumbowyg/dist/plugins/table/trumbowyg.table';
@@ -19,7 +19,7 @@ import './WYSIWYG.scss';
 
 type TrumbowygEvent = (e: JQuery.Event) => void;
 
-export interface WYSIWYGProps {
+export interface WYSIWYGPropsSchema {
 	id: string;
 	data?: string;
 	placeholder?: string;
@@ -49,7 +49,7 @@ export interface WYSIWYGProps {
 	onModalClose?: TrumbowygEvent;
 }
 
-const COMPARE_PROPS: (keyof WYSIWYGProps)[] = [
+const COMPARE_PROPS: (keyof WYSIWYGPropsSchema)[] = [
 	'id',
 	'placeholder',
 	'lang',
@@ -77,7 +77,7 @@ const COMPARE_PROPS: (keyof WYSIWYGProps)[] = [
 	'onModalClose',
 ];
 
-export class WYSIWYG extends React.Component<WYSIWYGProps> {
+export class WYSIWYG extends React.Component<WYSIWYGPropsSchema> {
 	private editor: (JQuery<HTMLDivElement> & { trumbowyg: Function }) | null = null;
 
 	componentDidMount() {
@@ -93,7 +93,7 @@ export class WYSIWYG extends React.Component<WYSIWYGProps> {
 	// Switched to class based component so we can use this lifecycle hook inside the component
 	// so we can check the value of the Trumbowyg editor
 	// to see if the sate is equal to the externally received props.data value
-	shouldComponentUpdate(nextProps: WYSIWYGProps) {
+	shouldComponentUpdate(nextProps: WYSIWYGPropsSchema) {
 		if (!this.editor) {
 			return true;
 		}
@@ -120,7 +120,7 @@ export class WYSIWYG extends React.Component<WYSIWYGProps> {
 		return false;
 	}
 
-	private reInitEditor(props: WYSIWYGProps) {
+	private reInitEditor(props: WYSIWYGPropsSchema) {
 		if (this.editor) {
 			this.editor.trumbowyg('destroy');
 			this.editor.trumbowyg({

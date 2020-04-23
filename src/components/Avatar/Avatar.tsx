@@ -2,17 +2,17 @@ import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
-import { AvatarIcon, AvatarIconProps } from './AvatarIcon/AvatarIcon';
+import { AvatarIcon, AvatarIconPropsSchema } from './AvatarIcon/AvatarIcon';
 
 import './Avatar.scss';
 
-export interface AvatarProps extends DefaultProps, AvatarIconProps {
+export interface AvatarPropsSchema extends DefaultProps, AvatarIconPropsSchema {
 	name?: string;
 	title?: string;
 	dark?: boolean;
 }
 
-export const Avatar: FunctionComponent<AvatarProps> = ({
+export const Avatar: FunctionComponent<AvatarPropsSchema> = ({
 	className,
 	initials,
 	size,

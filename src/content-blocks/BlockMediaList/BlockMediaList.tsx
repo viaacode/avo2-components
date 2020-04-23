@@ -9,7 +9,7 @@ import { MediaCardMetaData, MediaCardThumbnail } from '../../components/MediaCar
 import { MetaData } from '../../components/MetaData/MetaData';
 import {
 	MetaDataItem,
-	MetaDataItemProps,
+	MetaDataItemPropsSchema,
 } from '../../components/MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../../components/Thumbnail/Thumbnail';
 import { DefaultProps, EnglishContentType, Orientation } from '../../types';
@@ -18,27 +18,35 @@ import './BlockMediaList.scss';
 
 export type MediaListItem = {
 	category: EnglishContentType;
-	metadata?: MetaDataItemProps[];
+	metadata?: MetaDataItemPropsSchema[];
 	navigate: () => void;
 	thumbnail?: { label: string; meta?: string; src?: string };
 	title: string;
 };
 
 export interface BlockMediaListProps extends DefaultProps {
-	ctaButtonLabel?: string;
-	ctaContent?: string;
-	ctaNavigate?: () => void;
 	ctaTitle?: string;
+	ctaTitleColor?: string;
+	ctaContent?: string;
+	ctaContentColor?: string;
+	ctaButtonLabel?: string;
+	ctaBackgroundColor?: string;
+	ctaWidth?: string;
+	ctaNavigate?: () => void;
 	elements: MediaListItem[];
 	orientation?: Orientation;
 }
 
 export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
-	className,
-	ctaButtonLabel = '',
-	ctaContent = '',
-	ctaNavigate = () => {},
 	ctaTitle = '',
+	ctaTitleColor,
+	ctaContent = '',
+	ctaContentColor,
+	ctaButtonLabel = '',
+	ctaBackgroundColor,
+	ctaWidth = '100%',
+	ctaNavigate = () => {},
+	className,
 	elements = [],
 	orientation,
 }) => {
@@ -77,9 +85,13 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 						<CTA
 							buttonLabel={ctaButtonLabel}
 							heading={ctaTitle}
+							headingColor={ctaTitleColor}
 							content={ctaContent}
+							contentColor={ctaContentColor}
 							headingType="h3"
+							backgroundColor={ctaBackgroundColor}
 							navigate={ctaNavigate}
+							width={ctaWidth}
 						/>
 					</Column>
 				)}

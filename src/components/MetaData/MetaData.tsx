@@ -6,13 +6,13 @@ import { DefaultProps, EnglishContentType } from '../../types';
 
 import './MetaData.scss';
 
-export interface MetaDataProps extends DefaultProps {
+export interface MetaDataPropsSchema extends DefaultProps {
 	children: ReactNode;
 	category: EnglishContentType;
 	spaced?: boolean;
 }
 
-export const MetaData: FunctionComponent<MetaDataProps> = ({
+export const MetaData: FunctionComponent<MetaDataPropsSchema> = ({
 	children,
 	className,
 	category,

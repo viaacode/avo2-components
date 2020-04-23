@@ -3,9 +3,9 @@ import React, { Fragment } from 'react';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
-import { Table, TableColumn } from './Table';
+import { Table, TableColumnSchema } from './Table';
 
-const COLUMNS: TableColumn[] = [
+const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },
 	{ id: 'age', label: 'Age (in yrs)', sortable: true },
 	{ id: 'cat', label: 'Has cat?', col: '2' },

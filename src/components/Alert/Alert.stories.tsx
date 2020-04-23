@@ -5,7 +5,7 @@ import { action } from '../../helpers';
 import { Box } from '../Box/Box';
 import { Spacer } from '../Spacer/Spacer';
 import { Alert } from './Alert';
-import { AlertProps, AlertType } from './Alert.types';
+import { AlertPropsSchema, AlertTypeSchema } from './Alert.types';
 
 function getMultiLineAlertMessage(type: string) {
 	return (
@@ -20,8 +20,8 @@ function getMultiLineAlertMessage(type: string) {
 	);
 }
 
-function renderAlertStories(props?: AlertProps, message?: (type: string) => JSX.Element) {
-	const types: AlertType[] = ['info', 'success', 'danger', 'spinner'];
+function renderAlertStories(props?: AlertPropsSchema, message?: (type: string) => JSX.Element) {
+	const types: AlertTypeSchema[] = ['info', 'success', 'danger', 'spinner'];
 
 	return (
 		<>

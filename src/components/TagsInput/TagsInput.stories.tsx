@@ -4,24 +4,24 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers';
 
-import { TagInfo, TagsInput } from './TagsInput';
+import { TagInfoSchema, TagsInput } from './TagsInput';
 
 const TagsInputStoryComponent = ({
 	children,
-	defaultValue = [] as TagInfo[],
+	defaultValue = [] as TagInfoSchema[],
 }: {
 	children: ReactElement;
-	defaultValue?: TagInfo[];
+	defaultValue?: TagInfoSchema[];
 }) => {
 	const [value, setValue] = useState(defaultValue);
 
 	return cloneElement(children, {
 		value,
-		onChange: (changedValues: TagInfo[]) => {
+		onChange: (changedValues: TagInfoSchema[]) => {
 			action('tags input changed')(changedValues);
 			setValue(changedValues);
 		},
-		onCreate: (tagToBeCreated: TagInfo) => {
+		onCreate: (tagToBeCreated: TagInfoSchema) => {
 			action('creating tag')(tagToBeCreated);
 			setValue([...value, tagToBeCreated]);
 		},

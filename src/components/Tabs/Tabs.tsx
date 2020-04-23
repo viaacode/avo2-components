@@ -3,17 +3,17 @@ import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
-import { Tab, TabProps } from './Tab/Tab';
+import { Tab, TabPropsSchema } from './Tab/Tab';
 
 import './Tabs.scss';
 
-export interface TabsProps extends DefaultProps {
-	tabs: TabProps[];
+export interface TabsPropsSchema extends DefaultProps {
+	tabs: TabPropsSchema[];
 	border?: boolean;
 	onClick?: (tabId: string | number) => void;
 }
 
-export const Tabs: FunctionComponent<TabsProps> = ({
+export const Tabs: FunctionComponent<TabsPropsSchema> = ({
 	className,
 	tabs,
 	border,

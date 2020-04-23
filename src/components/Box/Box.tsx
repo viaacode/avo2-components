@@ -6,13 +6,13 @@ import { DefaultProps } from '../../types';
 
 import './Box.scss';
 
-export interface BoxProps extends DefaultProps {
+export interface BoxPropsSchema extends DefaultProps {
 	condensed?: boolean;
 	backgroundColor?: 'gray' | 'soft-white' | 'white' | 'dark';
 	children: ReactNode;
 }
 
-export const Box: FunctionComponent<BoxProps> = ({
+export const Box: FunctionComponent<BoxPropsSchema> = ({
 	children,
 	className,
 	condensed,

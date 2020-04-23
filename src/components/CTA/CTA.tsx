@@ -5,27 +5,27 @@ import classnames from 'classnames';
 import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
 import { BlockRichText } from '../../content-blocks/BlockRichText/BlockRichText';
 import { DefaultProps, HeadingType } from '../../types';
-import { Button, ButtonProps } from '../Button/Button';
-import { ButtonType } from '../Button/Button.types';
-import { IconName } from '../Icon/Icon.types';
+import { Button, ButtonPropsSchema } from '../Button/Button';
+import { ButtonTypeSchema } from '../Button/Button.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import './CTA.scss';
 
-export interface CTAProps extends DefaultProps {
+export interface CTAPropsSchema extends DefaultProps {
 	heading: string;
 	headingType: HeadingType;
 	headingColor?: string;
 	content: string;
 	contentColor?: string;
 	buttonLabel: string;
-	buttonIcon?: IconName;
-	buttonType?: ButtonType;
+	buttonIcon?: IconNameSchema;
+	buttonType?: ButtonTypeSchema;
 	width?: string;
 	backgroundColor?: string;
 	navigate: () => void;
 }
 
-export const CTA: FunctionComponent<CTAProps> = ({
+export const CTA: FunctionComponent<CTAPropsSchema> = ({
 	className,
 	headingType = 'h3',
 	headingColor,
@@ -39,7 +39,7 @@ export const CTA: FunctionComponent<CTAProps> = ({
 	backgroundColor = '#EDEFF2',
 	navigate,
 }) => {
-	const buttonProps: ButtonProps = {
+	const buttonProps: ButtonPropsSchema = {
 		label: buttonLabel,
 		title: buttonLabel,
 		ariaLabel: buttonLabel,

@@ -6,14 +6,14 @@ import { DefaultProps } from '../../types';
 
 import './Grid.scss';
 
-export interface GridProps extends DefaultProps {
+export interface GridPropsSchema extends DefaultProps {
 	children: ReactNode;
 	noWrap?: boolean;
 	reverse?: boolean;
 	tag?: ElementType;
 }
 
-export const Grid: FunctionComponent<GridProps> = ({
+export const Grid: FunctionComponent<GridPropsSchema> = ({
 	children,
 	className,
 	noWrap,

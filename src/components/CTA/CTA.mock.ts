@@ -1,6 +1,6 @@
-import { CTAProps } from './CTA';
+import { CTAPropsSchema } from './CTA';
 
-export const CTA_MOCK: CTAProps = {
+export const CTA_MOCK: CTAPropsSchema = {
 	heading: 'Titel',
 	headingType: 'h3',
 	content: 'Text',

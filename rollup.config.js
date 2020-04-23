@@ -39,6 +39,8 @@ export default {
 		'react-datepicker/dist/react-datepicker.css',
 		'jquery',
 		'marked',
+		'moment',
+		'moment/locale/nl-be',
 		'popper.js',
 		'raf',
 		'react',
@@ -49,6 +51,7 @@ export default {
 		'react-select/creatable',
 		'lodash-es',
 		'trumbowyg/dist/ui/sass/trumbowyg.scss',
+		'trumbowyg/dist/plugins/table/ui/sass/trumbowyg.table.scss',
 		'trumbowyg/dist/ui/icons.svg',
 		'@storybook/addon-actions'
 	]

@@ -6,11 +6,11 @@ import { DefaultProps } from '../../types';
 
 import './ButtonGroup.scss';
 
-export interface ButtonGroupProps extends DefaultProps {
+export interface ButtonGroupPropsSchema extends DefaultProps {
 	children: ReactNode;
 }
 
-const ButtonGroup: FunctionComponent<ButtonGroupProps> = ({ className = '', children }) => (
+const ButtonGroup: FunctionComponent<ButtonGroupPropsSchema> = ({ className = '', children }) => (
 	<div className={classnames(className, 'c-button-group')}>{children}</div>
 );
 

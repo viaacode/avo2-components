@@ -3,17 +3,17 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
-import { IconName } from '../../Icon/Icon.types';
+import { IconNameSchema } from '../../Icon/Icon.types';
 
 import './MetaDataItem.scss';
 
-export interface MetaDataItemProps extends DefaultProps {
-	icon?: IconName;
+export interface MetaDataItemPropsSchema extends DefaultProps {
+	icon?: IconNameSchema;
 	label?: string;
 	children?: ReactNode;
 }
 
-export const MetaDataItem: FunctionComponent<MetaDataItemProps> = ({
+export const MetaDataItem: FunctionComponent<MetaDataItemPropsSchema> = ({
 	className,
 	icon,
 	label,

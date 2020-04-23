@@ -9,7 +9,7 @@ import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 import './MediaCard.scss';
 
-export interface MediaCardProps extends DefaultProps {
+export interface MediaCardPropsSchema extends DefaultProps {
 	title: string;
 	category: EnglishContentType;
 	children?: ReactNode;
@@ -17,7 +17,7 @@ export interface MediaCardProps extends DefaultProps {
 	onClick?: () => void;
 }
 
-export const MediaCard: FunctionComponent<MediaCardProps> = ({
+export const MediaCard: FunctionComponent<MediaCardPropsSchema> = ({
 	className,
 	title,
 	category,

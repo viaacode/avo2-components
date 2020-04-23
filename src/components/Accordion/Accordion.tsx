@@ -12,13 +12,13 @@ import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slo
 
 import './Accordion.scss';
 
-export interface AccordionProps extends DefaultProps {
+export interface AccordionPropsSchema extends DefaultProps {
 	isOpen?: boolean;
 	onToggle?: () => void; // If undefined, the accordion will be able to toggle itself
 	title?: string;
 }
 
-export const Accordion: FunctionComponent<AccordionProps> = ({
+export const Accordion: FunctionComponent<AccordionPropsSchema> = ({
 	children,
 	className,
 	isOpen = true,

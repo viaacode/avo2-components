@@ -2,10 +2,10 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Alert } from './Alert';
-import { AlertProps } from './Alert.types';
+import { AlertPropsSchema } from './Alert.types';
 
 describe('<Alert />', () => {
-	const alertProps: AlertProps = {
+	const alertProps: AlertPropsSchema = {
 		className: 'c-alert-custom',
 		onClose: () => {},
 		dark: false,

@@ -4,31 +4,31 @@ import classnames from 'classnames';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
-import { IconName } from '../../Icon/Icon.types';
+import { IconNameSchema } from '../../Icon/Icon.types';
 
 import './MenuContent.scss';
 
-export interface MenuItemInfo {
+export interface MenuItemInfoSchema {
 	label: string;
 	id: string | number;
-	icon?: IconName;
+	icon?: IconNameSchema;
 }
 
-export interface MenuContentProps extends DefaultProps {
-	menuItems: MenuItemInfo[] | MenuItemInfo[][]; // Between arrays, there will be a divider
-	renderItem?: (menuItem: MenuItemInfo) => ReactNode; // If you want to render your own item
+export interface MenuContentPropsSchema extends DefaultProps {
+	menuItems: MenuItemInfoSchema[] | MenuItemInfoSchema[][]; // Between arrays, there will be a divider
+	renderItem?: (menuItem: MenuItemInfoSchema) => ReactNode; // If you want to render your own item
 	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;
 }
 
-export const MenuContent: FunctionComponent<MenuContentProps> = ({
+export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 	className,
 	menuItems,
 	renderItem,
 	noResultsLabel,
 	onClick = () => {},
 }) => {
-	const renderMenuItem = (menuItemInfo: MenuItemInfo) => {
+	const renderMenuItem = (menuItemInfo: MenuItemInfoSchema) => {
 		if (renderItem) {
 			return renderItem(menuItemInfo);
 		}
@@ -46,17 +46,17 @@ export const MenuContent: FunctionComponent<MenuContentProps> = ({
 		);
 	};
 
-	const renderMenuItems = (menuItems: MenuItemInfo[]) => {
+	const renderMenuItems = (menuItems: MenuItemInfoSchema[]) => {
 		return menuItems.map(renderMenuItem);
 	};
 
-	const renderMenuItemArrays = (menuItemArrays: MenuItemInfo[] | MenuItemInfo[][]) => {
+	const renderMenuItemArrays = (menuItemArrays: MenuItemInfoSchema[] | MenuItemInfoSchema[][]) => {
 		if (menuItems.length) {
 			if (Array.isArray(menuItemArrays[0])) {
 				// Array of arrays with dividers in between
 				return (
 					<Fragment>
-						{(menuItemArrays as MenuItemInfo[][]).map((menuItems, index) => {
+						{(menuItemArrays as MenuItemInfoSchema[][]).map((menuItems, index) => {
 							if (index < menuItemArrays.length - 1) {
 								return (
 									<Fragment key={`menu-item-group-${menuItems.map(mi => mi.id).join('-')}`}>
@@ -76,8 +76,8 @@ export const MenuContent: FunctionComponent<MenuContentProps> = ({
 			}
 			// Regular list of menuItems
 			return (
-				<Fragment key={(menuItemArrays as MenuItemInfo[]).map(mi => mi.id).join('-')}>
-					{renderMenuItems(menuItems as MenuItemInfo[])}
+				<Fragment key={(menuItemArrays as MenuItemInfoSchema[]).map(mi => mi.id).join('-')}>
+					{renderMenuItems(menuItems as MenuItemInfoSchema[])}
 				</Fragment>
 			);
 		}

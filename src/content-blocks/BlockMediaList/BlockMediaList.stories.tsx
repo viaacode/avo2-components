@@ -4,7 +4,11 @@ import React from 'react';
 import { action } from '../../helpers';
 
 import { BlockMediaList } from './BlockMediaList';
-import { MEDIA_LIST_CTA_MOCK, MEDIA_LIST_MOCK } from './BlockMediaList.mock';
+import {
+	MEDIA_LIST_COLORED_CTA_MOCK,
+	MEDIA_LIST_CTA_MOCK,
+	MEDIA_LIST_MOCK,
+} from './BlockMediaList.mock';
 
 storiesOf('blocks/BlockMediaList', module)
 	.addParameters({ jest: ['BlockMediaList'] })
@@ -16,5 +20,12 @@ storiesOf('blocks/BlockMediaList', module)
 			elements={MEDIA_LIST_MOCK.slice(0, -1)}
 			ctaNavigate={action('Clicked media')}
 			{...MEDIA_LIST_CTA_MOCK}
+		/>
+	))
+	.add('BlockMediaList with colored CTA', () => (
+		<BlockMediaList
+			elements={MEDIA_LIST_MOCK.slice(0, -1)}
+			ctaNavigate={action('Clicked media')}
+			{...MEDIA_LIST_COLORED_CTA_MOCK}
 		/>
 	));

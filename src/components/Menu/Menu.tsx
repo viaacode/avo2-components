@@ -4,13 +4,13 @@ import classnames from 'classnames';
 import { Placement } from 'popper.js';
 
 import { DefaultProps } from '../../types';
-import { MenuContent, MenuItemInfo } from './MenuContent/MenuContent';
+import { MenuContent, MenuItemInfoSchema } from './MenuContent/MenuContent';
 
 import './Menu.scss';
 
-export interface MenuProps extends DefaultProps {
-	menuItems?: MenuItemInfo[] | MenuItemInfo[][]; // Between arrays, there will be a divider
-	renderItem?: (menuItem: MenuItemInfo) => ReactNode; // If you want to render your own item
+export interface MenuPropsSchema extends DefaultProps {
+	menuItems?: MenuItemInfoSchema[] | MenuItemInfoSchema[][]; // Between arrays, there will be a divider
+	renderItem?: (menuItem: MenuItemInfoSchema) => ReactNode; // If you want to render your own item
 	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;
 	innerRef?: (ref: HTMLElement | null) => void;
@@ -20,7 +20,7 @@ export interface MenuProps extends DefaultProps {
 	style?: CSSProperties;
 }
 
-export const Menu: FunctionComponent<MenuProps> = ({
+export const Menu: FunctionComponent<MenuPropsSchema> = ({
 	className,
 	children,
 	menuItems = [],

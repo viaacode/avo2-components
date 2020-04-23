@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import { action } from '../../helpers';
-import { IconName } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Tabs } from '../Tabs/Tabs';
 
 const mockTabs = [
@@ -20,11 +20,11 @@ const mockTabs = [
 const mockTabsWithIcons = [
 	{
 		...mockTabs[0],
-		icon: 'video' as IconName,
+		icon: 'video' as IconNameSchema,
 	},
 	{
 		...mockTabs[1],
-		icon: 'folder' as IconName,
+		icon: 'folder' as IconNameSchema,
 	},
 ];
 

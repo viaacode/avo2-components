@@ -1,5 +1,5 @@
-import { MenuItemInfo } from './MenuContent/MenuContent';
-import { MenuSearchResultItemInfo } from './MenuSearchResultContent/MenuSearchResultContent';
+import { MenuItemInfoSchema } from './MenuContent/MenuContent';
+import { MenuSearchResultItemInfoSchema } from './MenuSearchResultContent/MenuSearchResultContent';
 
 export const menuItems = [
 	{ label: 'Aluminium', id: 'aluminium' },
@@ -8,7 +8,7 @@ export const menuItems = [
 	{ label: 'Potassium', id: 'potassium' },
 ];
 
-export const menuItemsWithIcons: MenuItemInfo[] = [
+export const menuItemsWithIcons: MenuItemInfoSchema[] = [
 	{ ...menuItems[0], icon: 'circle' },
 	{ ...menuItems[1], icon: 'box' },
 	{ ...menuItems[2], icon: 'square' },
@@ -21,7 +21,7 @@ export const menuItemsWithDivider = [
 	[{ ...menuItems[3] }],
 ];
 
-export const menuItemsWithSearch: MenuSearchResultItemInfo[] = [
+export const menuItemsWithSearch: MenuSearchResultItemInfoSchema[] = [
 	{ label: 'WK Voetbal', id: 0, type: 'collection' },
 	{ label: 'Wereldkampioenschap Voetbal 2018', id: 1, type: 'collection' },
 	{ label: 'Journaal: voetbij bij jongeren', id: 2, type: 'bundle' },

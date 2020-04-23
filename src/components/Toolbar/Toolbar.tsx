@@ -9,7 +9,7 @@ import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
 
 import './Toolbar.scss';
 
-export interface ToolbarProps extends DefaultProps {
+export interface ToolbarPropsSchema extends DefaultProps {
 	children: ReactNode;
 	size?: 'medium' | 'large' | 'huge';
 	spaced?: boolean;
@@ -18,7 +18,7 @@ export interface ToolbarProps extends DefaultProps {
 	justify?: boolean;
 }
 
-export const Toolbar: FunctionComponent<ToolbarProps> = ({
+export const Toolbar: FunctionComponent<ToolbarPropsSchema> = ({
 	children,
 	className,
 	size,

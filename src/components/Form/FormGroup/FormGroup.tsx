@@ -5,7 +5,7 @@ import { DefaultProps } from '../../../types';
 
 import './FormGroup.scss';
 
-export interface FormGroupProps extends DefaultProps {
+export interface FormGroupPropsSchema extends DefaultProps {
 	label?: string;
 	labelFor?: string;
 	required?: boolean;
@@ -14,7 +14,7 @@ export interface FormGroupProps extends DefaultProps {
 	children: ReactNode;
 }
 
-export const FormGroup: FunctionComponent<FormGroupProps> = ({
+export const FormGroup: FunctionComponent<FormGroupPropsSchema> = ({
 	className,
 	label,
 	labelFor,

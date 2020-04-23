@@ -1,4 +1,4 @@
-export type ButtonType =
+export type ButtonTypeSchema =
 	| 'borderless-i'
 	| 'borderless'
 	| 'danger-hover'

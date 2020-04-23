@@ -6,10 +6,13 @@ import { DefaultProps } from '../../../types';
 
 import './ToolbarTitle.scss';
 
-export interface ToolbarTitleProps extends DefaultProps {
+export interface ToolbarTitlePropsSchema extends DefaultProps {
 	children: ReactNode;
 }
 
-export const ToolbarTitle: FunctionComponent<ToolbarTitleProps> = ({ children, className }) => {
+export const ToolbarTitle: FunctionComponent<ToolbarTitlePropsSchema> = ({
+	children,
+	className,
+}) => {
 	return <h2 className={classnames(className, 'c-toolbar__title')}>{children}</h2>;
 };

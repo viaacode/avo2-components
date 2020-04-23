@@ -17,13 +17,13 @@ import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import './KeyValueEditor.scss';
 
-export type KeyValuePair = [string, string];
-export type KeyValuePairs = KeyValuePair[];
-export type KeyValueEditorTableCols = '0' | '1';
+export type KeyValuePairSchema = [string, string];
+export type KeyValuePairs = KeyValuePairSchema[];
+export type KeyValueEditorTableColsSchema = '0' | '1';
 
 const ENTRIES_PER_PAGE = 20;
 
-export interface KeyValueEditorProps extends DefaultProps {
+export interface KeyValueEditorPropsSchema extends DefaultProps {
 	initialData: KeyValuePairs;
 	data: KeyValuePairs;
 	keyLabel?: string;
@@ -51,7 +51,7 @@ export interface KeyValueEditorProps extends DefaultProps {
  * @param noDataForFilterMessage
  * @constructor
  */
-export const KeyValueEditor: FunctionComponent<KeyValueEditorProps> = ({
+export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 	initialData,
 	data,
 	keyLabel = 'Id',
@@ -65,7 +65,7 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorProps> = ({
 }) => {
 	const [filterString, setFilterString] = useState<string>('');
 	const [page, setPage] = useState<number>(0);
-	const [sortColumn, sortOrder, handleSortClick] = useTableSort<KeyValueEditorTableCols>('0');
+	const [sortColumn, sortOrder, handleSortClick] = useTableSort<KeyValueEditorTableColsSchema>('0');
 
 	const getPaginatedData = (): [KeyValuePairs, number] => {
 		const filteredItems = data.filter(row => {
@@ -110,8 +110,8 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorProps> = ({
 	};
 
 	const renderCell = (
-		rowData: KeyValuePair,
-		columnId: KeyValueEditorTableCols
+		rowData: KeyValuePairSchema,
+		columnId: KeyValueEditorTableColsSchema
 	): ReactNode | null => {
 		switch (columnId) {
 			case '0':
@@ -165,9 +165,9 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorProps> = ({
 					]}
 					data={paginatedData}
 					emptyStateMessage={filterString ? noDataMessage : noDataForFilterMessage}
-					onColumnClick={columnId => handleSortClick(columnId as KeyValueEditorTableCols)}
-					renderCell={(rowData: KeyValuePair, columnId: string) =>
-						renderCell(rowData, columnId as KeyValueEditorTableCols)
+					onColumnClick={columnId => handleSortClick(columnId as KeyValueEditorTableColsSchema)}
+					renderCell={(rowData: KeyValuePairSchema, columnId: string) =>
+						renderCell(rowData, columnId as KeyValueEditorTableColsSchema)
 					}
 					rowKey={'0'}
 					variant="bordered"
