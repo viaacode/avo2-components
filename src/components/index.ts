@@ -2,77 +2,77 @@
 import { AccordionPropsSchema } from './Accordion/Accordion';
 import { AlertPropsSchema, AlertTypeSchema } from './Alert/Alert.types';
 import { AspectRatioWrapperPropsSchema } from './AspectRatioWrapper/AspectRatioWrapper';
+import { AvatarPropsSchema } from './Avatar/Avatar';
 import { AvatarIconPropsSchema } from './Avatar/AvatarIcon/AvatarIcon';
 import { AvatarListPropsSchema } from './AvatarList/AvatarList';
-import { AvatarPropsSchema } from './Avatar/Avatar';
 import { BadgePropsSchema } from './Badge/Badge';
 import { BlankslatePropsSchema } from './Blankslate/Blankslate';
 import { BoxPropsSchema } from './Box/Box';
-import { ButtonGroupPropsSchema } from './ButtonGroup/ButtonGroup';
 import { ButtonPropsSchema } from './Button/Button';
-import { ButtonToolbarPropsSchema } from './ButtonToolbar/ButtonToolbar';
 import { ButtonTypeSchema } from './Button/Button.types';
-import { CTAPropsSchema } from './CTA/CTA';
-import { CheckboxGroupPropsSchema } from './CheckboxGroup/CheckboxGroup';
+import { ButtonGroupPropsSchema } from './ButtonGroup/ButtonGroup';
+import { ButtonToolbarPropsSchema } from './ButtonToolbar/ButtonToolbar';
 import { CheckboxPropsSchema } from './Checkbox/Checkbox';
-import { ColumnPropsSchema, GridSizeSchema } from './Grid/Column/Column';
+import { CheckboxGroupPropsSchema } from './CheckboxGroup/CheckboxGroup';
 import { ContainerPropsSchema } from './Container/Container';
+import { CTAPropsSchema } from './CTA/CTA';
 import { DatePickerPropsSchema } from './DatePicker/DatePicker';
 import { DropdownPropsSchema } from './Dropdown/Dropdown';
 import { ExpandableContainerPropsSchema } from './ExpandableContainer/ExpandableContainer';
-import { FlexItemPropsSchema } from './Flex/FlexItem/FlexItem';
 import { FlexPropsSchema } from './Flex/Flex';
+import { FlexItemPropsSchema } from './Flex/FlexItem/FlexItem';
 import { FlowPlayerPropsSchema } from './FlowPlayer/FlowPlayer';
 import { FormPropsSchema } from './Form/Form';
+import { FormGroupPropsSchema } from './Form/FormGroup/FormGroup';
+import { ColumnPropsSchema, GridSizeSchema } from './Grid/Column/Column';
 import { GridPropsSchema } from './Grid/Grid';
-import { HeaderContentTypePropsSchema } from './HeaderContentType/HeaderContentType';
 import { HeaderPropsSchema } from './Header/Header';
+import { HeaderContentTypePropsSchema } from './HeaderContentType/HeaderContentType';
 import { IconPropsSchema } from './Icon/Icon';
-import { IconTypeSchema, IconNameSchema } from './Icon/Icon.types';
-import { ImageGridPropsSchema } from './ImageGrid/ImageGrid';
+import { IconNameSchema, IconTypeSchema } from './Icon/Icon.types';
 import { ImagePropsSchema } from './Image/Image';
+import { ImageGridPropsSchema } from './ImageGrid/ImageGrid';
 import {
 	KeyValueEditorPropsSchema,
 	KeyValueEditorTableColsSchema,
 	KeyValuePairSchema,
 } from './KeyValueEditor/KeyValueEditor';
 import { MediaCardPropsSchema } from './MediaCard/MediaCard';
-import { MenuContentPropsSchema, MenuItemInfoSchema } from './Menu/MenuContent/MenuContent';
 import { MenuPropsSchema } from './Menu/Menu';
+import { MenuContentPropsSchema, MenuItemInfoSchema } from './Menu/MenuContent/MenuContent';
 import {
 	MenuSearchResultContentPropsSchema,
 	MenuSearchResultItemInfoSchema,
 } from './Menu/MenuSearchResultContent/MenuSearchResultContent';
-import { MetaDataItemPropsSchema } from './MetaData/MetaDataItem/MetaDataItem';
 import { MetaDataPropsSchema } from './MetaData/MetaData';
+import { MetaDataItemPropsSchema } from './MetaData/MetaDataItem/MetaDataItem';
 import { ModalPropsSchema } from './Modal/Modal';
 import { MultiRangePropsSchema } from './MultiRange/MultiRange';
 import { NavbarPropsSchema } from './Navbar/Navbar';
 import { PaginationPropsSchema } from './Pagination/Pagination';
 import { PanelPropsSchema } from './Panel/Panel';
 import { QuotePropsSchema } from './Quote/Quote';
-import { RadioButtonGroupPropsSchema } from './RadioButtonGroup/RadioButtonGroup';
 import { RadioButtonPropsSchema } from './RadioButton/RadioButton';
+import { RadioButtonGroupPropsSchema } from './RadioButtonGroup/RadioButtonGroup';
 import { SearchResultPropsSchema } from './SearchResult/SearchResult';
 import { SelectOptionSchema, SelectPropsSchema } from './Select/Select';
-import { SpacerPropsSchema, SpacerOptionSchema } from './Spacer/Spacer';
+import { SpacerOptionSchema, SpacerPropsSchema } from './Spacer/Spacer';
 import { SpinnerPropsSchema } from './Spinner/Spinner';
+import { TableColumnSchema, TablePropsSchema } from './Table/Table';
 import { TabPropsSchema } from './Tabs/Tab/Tab';
-import { TablePropsSchema, TableColumnSchema } from './Table/Table';
 import { TabsPropsSchema } from './Tabs/Tabs';
 import { TagListPropsSchema, TagOptionSchema } from './TagList/TagList';
-import { TagsInputPropsSchema, TagInfoSchema } from './TagsInput/TagsInput';
+import { TagInfoSchema, TagsInputPropsSchema } from './TagsInput/TagsInput';
 import { TextAreaPropsSchema } from './TextArea/TextArea';
 import { TextInputPropsSchema } from './TextInput/TextInput';
 import { ThumbnailPropsSchema } from './Thumbnail/Thumbnail';
-import { ToggleButtonPropsSchema } from './ToggleButton/ToggleButton';
 import { TogglePropsSchema } from './Toggle/Toggle';
-import { ToolbarItemPropsSchema } from './Toolbar/ToolbarItem/ToolbarItem';
+import { ToggleButtonPropsSchema } from './ToggleButton/ToggleButton';
 import { ToolbarPropsSchema } from './Toolbar/Toolbar';
+import { ToolbarItemPropsSchema } from './Toolbar/ToolbarItem/ToolbarItem';
 import { ToolbarTitlePropsSchema } from './Toolbar/ToolbarTitle/ToolbarTitle';
 import { TooltipPropsSchema } from './Tooltip/Tooltip';
 import { WYSIWYGPropsSchema } from './WYSIWYG/WYSIWYG';
-import { FormGroupPropsSchema } from './Form/FormGroup/FormGroup';
 
 export { Accordion } from './Accordion/Accordion';
 export type AccordionProps = AccordionPropsSchema;

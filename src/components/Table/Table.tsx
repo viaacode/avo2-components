@@ -4,10 +4,10 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Checkbox } from '../Checkbox/Checkbox';
+import { Flex } from '../Flex/Flex';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
-import { Flex } from '../Flex/Flex';
 
 import './Table.scss';
 
