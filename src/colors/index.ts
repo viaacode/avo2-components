@@ -34,7 +34,7 @@ export const COLORS: Colors = {
 		ORANGE: '#D03F06',
 		OCEAN_GREEN: '#57C2A0',
 		JUNIPER: '#678588',
-		SOFT_BLUE: '#7CAACF',
+		SOFT_BLUE: '#8AC1CE',
 		GREEN_500: '#1FC5A0',
 		GREEN_200: '#5AD6BB',
 		RED_500: '#FF1744',
