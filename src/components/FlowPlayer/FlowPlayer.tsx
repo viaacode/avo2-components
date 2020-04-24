@@ -91,6 +91,11 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			}
 		}
 
+		if (nextProps.poster !== this.props.poster && this.props.poster) {
+			// Video was changed before playing the video
+			return true;
+		}
+
 		if (nextProps.src !== this.props.src) {
 			if (nextProps.src) {
 				// User clicked the post to play the video
