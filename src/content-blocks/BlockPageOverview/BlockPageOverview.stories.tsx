@@ -12,6 +12,7 @@ const tabs = [
 	{ label: 'test1', id: 1 },
 	{ label: 'test2', id: 2 },
 ];
+
 const itemsPerPage = 2;
 const mockPages = CONTENT_PAGES_MOCK.map(page => ({
 	...page,
@@ -83,7 +84,7 @@ storiesOf('blocks/BlockPageOverview', module)
 			<BlockPageOverview {...baseProps} />
 		</BlockPageOverviewStoryComponent>
 	))
-	.add('BlockPageOverview header background + center', () => (
+	.add('BlockPageOverview header center', () => (
 		<>
 			<Container background="alt" mode="vertical">
 				<Container mode="horizontal">
@@ -91,7 +92,7 @@ storiesOf('blocks/BlockPageOverview', module)
 				</Container>
 			</Container>
 			<BlockPageOverviewStoryComponent initialPageIndex={0}>
-				<BlockPageOverview {...baseProps} headerBackgroundColor="#EDEFF2" centerHeader />
+				<BlockPageOverview {...baseProps} centerHeader />
 			</BlockPageOverviewStoryComponent>
 		</>
 	))
