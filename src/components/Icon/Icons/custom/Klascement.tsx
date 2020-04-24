@@ -4,7 +4,7 @@ export const Klascement = (props: SVGProps<SVGSVGElement>) => (
 		<path
 			fillRule="evenodd"
 			clipRule="evenodd"
-			d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 1a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"
+			d="M12 20a8 8 0 100-16 8 8 0 000 16zm0 1a9 9 0 100-18 9 9 0 000 18z"
 			fill="#000"
 		/>
 		<path
