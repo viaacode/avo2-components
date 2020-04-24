@@ -1,9 +1,11 @@
+import { times } from 'lodash-es';
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
 import { Avatar } from '../Avatar/Avatar';
 import { Button } from '../Button/Button';
+import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
 import { TagList } from '../TagList/TagList';
 
 import { Header } from './Header';
@@ -33,5 +35,24 @@ storiesOf('components/Header', module)
 					]}
 				/>
 			</HeaderTags>
+		</Header>
+	))
+	.add('Header with long title', () => (
+		<Header
+			{...MOCK_HEADER_PROPS_FULL}
+			title="overlap video test Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis odio udgse sdfes se"
+		>
+			<HeaderButtons>
+				<ButtonToolbar>
+					{times(4).map(index => (
+						<Button
+							type="secondary"
+							label="Bekijk"
+							onClick={() => null}
+							key={`header-button-${index}`}
+						/>
+					))}
+				</ButtonToolbar>
+			</HeaderButtons>
 		</Header>
 	));
