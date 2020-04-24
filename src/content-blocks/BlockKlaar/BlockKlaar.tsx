@@ -9,22 +9,18 @@ import './BlockKlaar.scss';
 
 moment.locale('nl-be');
 
-export interface KlaarElement {
-	title: string;
-}
-
 export interface BlockKlaarProps extends DefaultProps {
 	className?: string;
 	date: string;
-	elements: KlaarElement[];
+	titles: string[];
 }
 
-export const BlockKlaar: FunctionComponent<BlockKlaarProps> = ({ className, date, elements }) => (
+export const BlockKlaar: FunctionComponent<BlockKlaarProps> = ({ className, date, titles }) => (
 	<div className={classnames(className, 'klaar-header')} role="banner">
 		<div className="klaar-header__logo">
 			<span>KLAAR</span>
 		</div>
 		<div className="klaar-header__date">{moment(date).format('LL')}</div>
-		<div className="klaar-header__titles">{elements.map(elem => elem.title).join(' • ')}</div>
+		<div className="klaar-header__titles">{titles.join(' • ')}</div>
 	</div>
 );
