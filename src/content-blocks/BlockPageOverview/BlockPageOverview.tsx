@@ -39,7 +39,6 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	tabStyle?: ContentTabStyle;
 	allowMultiple?: boolean;
 	centerHeader?: boolean;
-	headerBackgroundColor?: string;
 	itemStyle?: ContentItemStyle;
 	showTitle?: boolean;
 	showDescription?: boolean;
@@ -61,7 +60,6 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	tabs = [],
 	tabStyle = 'MENU_BAR',
 	allowMultiple = false,
-	headerBackgroundColor = 'transparent',
 	centerHeader = false,
 	itemStyle = 'list',
 	showTitle = true,
@@ -246,8 +244,8 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 
 	return (
 		<div className="c-content-page-overview-block">
-			<Flex center={centerHeader} style={{ backgroundColor: headerBackgroundColor }}>
-				{renderHeader()}
+			<Flex center={centerHeader} className="c-content-page-overview-block__header">
+				<Spacer margin={['left', 'bottom', 'right']}>{renderHeader()}</Spacer>
 			</Flex>
 			{renderPages()}
 			{pageCount > 1 && (

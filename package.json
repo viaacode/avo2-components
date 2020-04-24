@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "1.38.0",
+  "version": "1.39.0",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "style": "dist/styles/main.css",
@@ -14,7 +14,7 @@
     "format": "npm run lint -- --fix",
     "preicons": "node scripts/icons.js src/icons",
     "icons": "rimraf src/components/Icon/Icons && svgr -d src/components/Icon/Icons src/icons --ext ts",
-    "posticons": "named-exports --dir=src/components/Icon/Icons && renamer --find ts --replace tsx \"./src/components/Icon/Icons/**\"",
+    "posticons": "named-exports --dir=src/components/Icon/Icons && renamer --find .ts --replace .tsx \"./src/components/Icon/Icons/**\"",
     "lint": "tslint -p .",
     "start": "start-storybook -s ./static -p 3020 --ci",
     "test": "jest --verbose",
@@ -56,7 +56,7 @@
     "react": "^16.8.6",
     "react-datepicker": "^2.10.0",
     "react-dom": "^16.8.6",
-    "react-range": "^1.3.0",
+    "react-range": "^1.6.0",
     "react-select": "^3.1.0",
     "trumbowyg": "2.21.0"
   },

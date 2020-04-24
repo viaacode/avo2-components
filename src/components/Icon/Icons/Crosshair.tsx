@@ -6,7 +6,7 @@ export const Crosshair = (props: SVGProps<SVGSVGElement>) => (
 			fill="#000"
 		/>
 		<path
-			d="M22 13h-4a1 1 0 1 1 0-2h4a1 1 0 1 1 0 2zM6 13H2a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zM12 7a1 1 0 0 1-1-1V2a1 1 0 0 1 2 0v4a1 1 0 0 1-1 1zM12 23a1 1 0 0 1-1-1v-4a1 1 0 1 1 2 0v4a1 1 0 0 1-1 1z"
+			d="M22 13h-4a1 1 0 110-2h4a1 1 0 110 2zM6 13H2a1 1 0 010-2h4a1 1 0 010 2zM12 7a1 1 0 01-1-1V2a1 1 0 012 0v4a1 1 0 01-1 1zM12 23a1 1 0 01-1-1v-4a1 1 0 112 0v4a1 1 0 01-1 1z"
 			fill="#000"
 		/>
 	</svg>

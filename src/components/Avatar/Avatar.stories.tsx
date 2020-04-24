@@ -11,7 +11,10 @@ storiesOf('components/Avatar', module)
 	.add('Avatar', () => <Avatar initials="JD" />)
 	.add('Small avatar', () => <Avatar initials="JD" size="small" />)
 	.add('Avatar with image', () => (
-		<Avatar initials="JD" image="https://api.adorable.io/avatars/128/john" />
+		<>
+			<Avatar initials="JD" image="https://api.adorable.io/avatars/128/john" />
+			<Avatar initials="JD" image="/images/400x300.svg" />
+		</>
 	))
 	.add('Avatar with name', () => (
 		<>

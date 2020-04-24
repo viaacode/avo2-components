@@ -36,6 +36,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	onPause?: () => void;
 	onEnded?: () => void;
 	onTimeUpdate?: (time: number) => void;
+	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
 }
 
 interface FlowPlayerState {
@@ -89,6 +90,17 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 					});
 				}
 			}
+
+			// Pause video when modal opens in front
+			// Or pause video when modal is closed which contains this flowplayer
+			if (!nextProps.canPlay && this.props.canPlay) {
+				flowPlayerInstance.pause();
+			}
+		}
+
+		if (nextProps.poster !== this.props.poster && this.props.poster) {
+			// Video was changed before playing the video
+			return true;
 		}
 
 		if (nextProps.src !== this.props.src) {

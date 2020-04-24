@@ -14,6 +14,7 @@ import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
+import './Header.scss';
 import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 
 export interface HeaderPropsSchema extends DefaultProps {
@@ -43,7 +44,12 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 	const tagSlot = useSlot(HeaderTags, children);
 
 	return (
-		<Container className={className} background="alt" mode="vertical" size={containerSize}>
+		<Container
+			className={classnames('c-header', className)}
+			background="alt"
+			mode="vertical"
+			size={containerSize}
+		>
 			<Container mode="horizontal">
 				<Toolbar autoHeight>
 					<ToolbarLeft>
