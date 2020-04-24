@@ -44,7 +44,12 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 	const tagSlot = useSlot(HeaderTags, children);
 
 	return (
-		<Container className={className} background="alt" mode="vertical" size={containerSize}>
+		<Container
+			className={classnames('c-header', className)}
+			background="alt"
+			mode="vertical"
+			size={containerSize}
+		>
 			<Container mode="horizontal">
 				<Toolbar autoHeight>
 					<ToolbarLeft>
