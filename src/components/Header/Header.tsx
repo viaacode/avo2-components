@@ -14,8 +14,8 @@ import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
-import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 import './Header.scss';
+import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
 
 export interface HeaderPropsSchema extends DefaultProps {
 	bookmarks?: string;

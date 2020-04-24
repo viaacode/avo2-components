@@ -1,16 +1,16 @@
+import { times } from 'lodash-es';
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
 import { Avatar } from '../Avatar/Avatar';
 import { Button } from '../Button/Button';
+import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
 import { TagList } from '../TagList/TagList';
 
 import { Header } from './Header';
 import { MOCK_HEADER_PROPS, MOCK_HEADER_PROPS_FULL } from './Header.mock';
 import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
-import { ButtonToolbar } from '..';
-import { times } from 'lodash-es';
 
 storiesOf('components/Header', module)
 	.addParameters({ jest: ['Header'] })
