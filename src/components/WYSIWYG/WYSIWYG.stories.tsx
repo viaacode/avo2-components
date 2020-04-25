@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { action } from '../../helpers';
 
-import { BraftEditorState, WYSIWYG } from './WYSIWYG';
+import { WYSIWYG } from './WYSIWYG';
 
 const withContent = (story: Function) => <div className="c-content">{story()}</div>;
 
@@ -22,7 +22,7 @@ const WYSIWYGStoryComponent = ({ children }: { children: ReactElement }) => {
 
 	return cloneElement(children, {
 		state,
-		onChange: (newState: BraftEditorState) => {
+		onChange: (newState: any) => {
 			action('html changes')(newState.toHTML());
 			setState(newState);
 		},
