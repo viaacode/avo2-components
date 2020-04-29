@@ -1,6 +1,7 @@
 import { action } from '../../helpers';
 
 import { MediaListItem } from './BlockMediaList';
+import { ButtonTypeSchema } from '../../components/Button/Button.types';
 
 export const MEDIA_LIST_MOCK: MediaListItem[] = [
 	{
@@ -65,13 +66,19 @@ export const MEDIA_LIST_CTA_MOCK = {
 	ctaTitle: 'Call to action',
 	ctaContent: 'Wil je meer weten?',
 	ctaButtonLabel: 'Ontdek meer',
+	elements: MEDIA_LIST_MOCK.slice(0, -1),
+	ctaNavigate: action('Clicked cta button'),
 };
 
 export const MEDIA_LIST_COLORED_CTA_MOCK = {
-	ctaTitle: 'Call to action',
+	...MEDIA_LIST_CTA_MOCK,
 	ctaTitleColor: '#FF0000',
-	ctaContent: 'Wil je meer weten?',
 	ctaContentColor: '#00FF00',
-	ctaButtonLabel: 'Ontdek meer',
+	ctaButtonType: 'danger' as ButtonTypeSchema,
 	ctaBackgroundColor: '#0000FF',
+};
+
+export const MEDIA_LIST_IMAGE_CTA_MOCK = {
+	...MEDIA_LIST_COLORED_CTA_MOCK,
+	ctaBackgroundImage: '/images/thumbnail.jpg',
 };

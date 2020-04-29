@@ -1,24 +1,37 @@
+@import '../../styles/settings/colors';
+
 .c-block-media-list {
-	.c-cta-item {
-		width: 100%;
-		height: calc(100% - 2.4rem);
-		margin-bottom: 2.4rem;
-		max-width: 45rem;
-	}
+	.c-media-card__cta {
+		display: flex;
+		flex-direction: column;
 
-	.c-cta__content {
-		height: 100%;
-		padding: 2.4rem;
-
-		> .c-content {
-			display: flex;
-			align-items: flex-start;
-			flex-direction: column;
-			height: 100%;
+		.c-media-card-thumb {
+			width: 100%;
+			flex: initial;
 		}
 
-		.c-button {
-			margin-top: auto;
+		.c-thumbnail {
+			background-color: $color-gray-50;
+			position: relative;
+			border-radius: 0.3rem;
+			width: 100%;
+			padding-top: calc(100% * 9 / 16);
+			height: auto;
+
+			.c-thumbnail__content {
+				position: absolute;
+				top: 2rem;
+				right: 2rem;
+				bottom: 2rem;
+				left: 2rem;
+
+				> *:first-child {
+					margin-top: 0;
+				}
+			}
+		}
+		.c-media-card-content {
+			margin-top: 0.8rem;
 		}
 	}
 
