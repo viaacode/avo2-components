@@ -13,20 +13,33 @@ import {
 	MetaDataItemPropsSchema,
 } from '../../components/MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../../components/Thumbnail/Thumbnail';
-import { DefaultProps, EnglishContentType, HeadingType, Orientation } from '../../types';
+import {
+	ButtonAction,
+	DefaultProps,
+	EnglishContentType,
+	HeadingType,
+	Orientation,
+} from '../../types';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import './BlockMediaList.scss';
+import { IconName, Spacer, Toolbar, ToolbarLeft, ToolbarRight } from '../../components';
 
 export type MediaListItem = {
 	category: EnglishContentType;
 	metadata?: MetaDataItemPropsSchema[];
-	navigate: () => void;
 	thumbnail?: { label: string; meta?: string; src?: string };
 	title: string;
+	buttonLabel?: string;
+	buttonIcon?: IconName;
+	buttonType?: ButtonTypeSchema;
+	buttonAction: ButtonAction;
 };
 
 export interface BlockMediaListProps extends DefaultProps {
+	title?: string;
+	buttonLabel?: string;
+	buttonAction?: ButtonAction;
 	ctaTitle?: string;
 	ctaTitleColor?: string;
 	ctaTitleSize?: HeadingType;
@@ -34,15 +47,20 @@ export interface BlockMediaListProps extends DefaultProps {
 	ctaContentColor?: string;
 	ctaButtonLabel?: string;
 	ctaButtonType?: ButtonTypeSchema;
+	ctaButtonIcon?: IconName;
 	ctaBackgroundColor?: string;
 	ctaBackgroundImage?: string;
 	ctaWidth?: string;
-	ctaNavigate?: () => void;
+	ctaButtonAction?: ButtonAction;
 	elements: MediaListItem[];
 	orientation?: Orientation;
+	navigate?: (buttonAction?: ButtonAction) => void;
 }
 
 export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
+	title,
+	buttonLabel,
+	buttonAction,
 	ctaTitle = '',
 	ctaTitleColor,
 	ctaTitleSize = 'h4',
@@ -52,41 +70,72 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 	ctaBackgroundColor,
 	ctaBackgroundImage,
 	ctaButtonType = 'secondary',
-	ctaNavigate = () => {},
+	ctaButtonIcon,
+	ctaButtonAction,
 	className,
 	elements = [],
 	orientation,
+	navigate = () => {},
 }) => {
 	const hasCTA = ctaTitle || ctaButtonLabel || ctaContent;
 
 	return (
 		<div className={classnames(className, 'c-block-media-list c-media-card-list')}>
+			{(!!title || !!buttonLabel) && (
+				<Toolbar>
+					<ToolbarLeft>{title && <BlockHeading type="h2">{title}</BlockHeading>}</ToolbarLeft>
+					<ToolbarRight>
+						{buttonLabel && (
+							<Button label={buttonLabel} type="secondary" onClick={() => navigate(buttonAction)} />
+						)}
+					</ToolbarRight>
+				</Toolbar>
+			)}
 			<Grid>
-				{elements.map(({ category, metadata, navigate, thumbnail, title }, i) => (
-					<Column key={`block-media-list-${i}`} size="3-3">
-						<MediaCard
-							category={category}
-							onClick={navigate}
-							orientation={orientation}
-							title={title}
-						>
-							{thumbnail && (
-								<MediaCardThumbnail>
-									<Thumbnail alt={title} category={category} {...thumbnail} />
-								</MediaCardThumbnail>
-							)}
-							{metadata && metadata.length > 0 && (
+				{elements.map(
+					(
+						{
+							category,
+							metadata,
+							thumbnail,
+							title,
+							buttonLabel,
+							buttonIcon,
+							buttonType,
+							buttonAction,
+						},
+						i
+					) => (
+						<Column key={`block-media-list-${i}`} size="3-3">
+							<MediaCard
+								category={category}
+								onClick={() => navigate(buttonAction)}
+								orientation={orientation}
+								title={title}
+							>
+								{thumbnail && (
+									<MediaCardThumbnail>
+										<Thumbnail alt={title} category={category} {...thumbnail} />
+									</MediaCardThumbnail>
+								)}
 								<MediaCardMetaData>
-									<MetaData category={category}>
-										{metadata.map((props, i) => (
-											<MetaDataItem key={`block-media-list-meta-${i}`} {...props} />
-										))}
-									</MetaData>
+									{metadata && metadata.length > 0 && (
+										<MetaData category={category}>
+											{metadata.map((props, i) => (
+												<MetaDataItem key={`block-media-list-meta-${i}`} {...props} />
+											))}
+										</MetaData>
+									)}
+									{(!!buttonIcon || !!buttonLabel) && (
+										<Spacer margin="top-small">
+											<Button label={buttonLabel} type={buttonType} icon={buttonIcon} />
+										</Spacer>
+									)}
 								</MediaCardMetaData>
-							)}
-						</MediaCard>
-					</Column>
-				))}
+							</MediaCard>
+						</Column>
+					)
+				)}
 				{hasCTA && (
 					<Column size="3-3">
 						<div
@@ -96,10 +145,10 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 								'c-media-card--horizontal',
 								'c-media-card__cta',
 								{
-									'u-clickable': !!ctaNavigate,
+									'u-clickable': !!ctaButtonAction,
 								}
 							)}
-							onClick={() => ctaNavigate && ctaNavigate()}
+							onClick={() => navigate(ctaButtonAction)}
 						>
 							<div className="c-media-card-thumb">
 								<div
@@ -120,7 +169,7 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 								</div>
 							</div>
 							<div className="c-media-card-content">
-								<Button label={ctaButtonLabel} type={ctaButtonType} />
+								<Button label={ctaButtonLabel} type={ctaButtonType} icon={ctaButtonIcon} />
 							</div>
 						</div>
 					</Column>
