@@ -82,7 +82,7 @@ export const SearchResult: FunctionComponent<SearchResultPropsSchema> = ({
 					<Flex justify="between" wrap>
 						<MetaData category={type}>
 							<MetaDataItem label={date} />
-							<MetaDataItem label={String(viewCount)} icon={CATEGORY_TO_ICON[type]} />
+							<MetaDataItem label={String(viewCount)} icon="eye" />
 							<MetaDataItem label={String(bookmarkCount)} icon="bookmark" />
 						</MetaData>
 						<TagList
