@@ -5,6 +5,8 @@ import { Grid } from '../../components/Grid/Grid';
 import { convertToHtml } from '../../helpers';
 import { DefaultProps } from '../../types';
 
+import './BlockRichText.scss';
+
 interface BlockRichTextElement {
 	content: string;
 	color?: string;
@@ -24,7 +26,7 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 }) => {
 	const renderContent = (contentElem: BlockRichTextElement) => (
 		<div
-			className="c-content"
+			className="c-content c-rich-text-block"
 			dangerouslySetInnerHTML={{ __html: convertToHtml(contentElem.content) }}
 			style={contentElem.color ? { color: contentElem.color } : {}}
 		/>
