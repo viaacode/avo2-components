@@ -16,7 +16,6 @@ $c-accordion-border: $color-gray-100 !default;
 	background-color: #FFF;
 	border-radius: 0.5rem;
 	border: 0.1rem solid $c-accordion-border;
-	margin: 2rem 0;
 
 	.c-toolbar__left {
 		flex: 1 1 auto;
@@ -41,6 +40,10 @@ $c-accordion-border: $color-gray-100 !default;
 		.c-accordion__body {
 			display: none;
 		}
+	}
+
+	+.c-accordion {
+		margin-top: 2rem;
 	}
 }
 
