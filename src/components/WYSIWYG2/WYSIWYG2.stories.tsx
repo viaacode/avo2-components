@@ -31,7 +31,7 @@ const WYSIWYG2StoryComponent = ({ children }: { children: ReactElement }) => {
 	return cloneElement(children, {
 		state,
 		onChange: (newState: any) => {
-			action('html changes')(newState.toHTML());
+			action('onChange')(newState.toHTML());
 			setState(newState);
 		},
 	});

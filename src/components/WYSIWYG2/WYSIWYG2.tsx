@@ -1,5 +1,5 @@
 import BraftEditor from 'braft-editor';
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
 import 'braft-editor/dist/index.css';
@@ -13,7 +13,7 @@ const options = {
 	defaultColumns: 3, //  default number of columns
 	defaultRows: 3, //  default number of rows
 	withDropdown: true, //  Whether a drop-down menu pops up before inserting a table
-	columnResizable: true, //  Whether to allow drag to adjust the column width, default false
+	columnResizable: false, //  Whether to allow drag to adjust the column width, default false
 	exportAttrString: 'class="c-editor-table"', //  Specify the attribute string attached to the table tag when outputting HTML
 	includeEditors: ['editor-1'], //  Specify which CraftEditor this module is valid for, and if not pass this property, it will be valid for all CraftEditors
 	// excludeEditors: [' editor-id-2 '], //  Specify which CraftEditor this module is invalid
@@ -33,7 +33,7 @@ export interface WYSIWYG2PropsSchema {
 	controls?: (string[] | string)[];
 	disabled?: boolean;
 	onFocus?: () => void;
-	onBlur?: (editorState: RichEditorStateSchema | undefined) => void;
+	onBlur?: () => void;
 	onChange?: (editorState: RichEditorStateSchema) => void;
 	onTab?: () => void;
 	onDelete?: () => void;
@@ -54,10 +54,6 @@ export const WYSIWYG2: FunctionComponent<WYSIWYG2PropsSchema> = ({
 	onDelete,
 	onSave,
 }) => {
-	const [editorState, setEditorState] = useState<RichEditorStateSchema>(
-		state || BraftEditor.createEditorState(initialHtml || '')
-	);
-
 	const getLanguage = (languages: any, context: string): any => {
 		if (context === 'braft-table') {
 			return {
@@ -165,14 +161,13 @@ export const WYSIWYG2: FunctionComponent<WYSIWYG2PropsSchema> = ({
 				language={getLanguage}
 				controls={controls}
 				onChange={(newState: RichEditorStateSchema) => {
-					setEditorState(newState); // used to pass editor state with onBlur handler, when onchange cannot be used
 					if (onChange) {
 						onChange(newState);
 					}
 				}}
 				onBlur={() => {
 					if (onBlur) {
-						onBlur(editorState);
+						onBlur();
 					}
 				}}
 				onFocus={onFocus}
