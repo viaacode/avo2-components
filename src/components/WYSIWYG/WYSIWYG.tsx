@@ -1,83 +1,175 @@
-import BraftEditor from 'braft-editor';
-import React, { FunctionComponent } from 'react';
+import { throttle } from 'lodash-es';
+import React from 'react';
+import 'trumbowyg/dist/plugins/table/ui/sass/trumbowyg.table.scss';
+import 'trumbowyg/dist/trumbowyg.min';
+import 'trumbowyg/dist/ui/sass/trumbowyg.scss';
 
-import 'braft-editor/dist/index.css';
-import 'braft-extensions/dist/table.css';
-
-import Table from 'braft-extensions/dist/table';
+import 'trumbowyg/dist/langs/nl.min';
+import 'trumbowyg/dist/plugins/table/trumbowyg.table';
+import iconsPath from 'trumbowyg/dist/ui/icons.svg';
 
 import './WYSIWYG.scss';
 
-const options = {
-	defaultColumns: 3, //  default number of columns
-	defaultRows: 3, //  default number of rows
-	withDropdown: true, //  Whether a drop-down menu pops up before inserting a table
-	columnResizable: true, //  Whether to allow drag to adjust the column width, default false
-	exportAttrString: 'class="c-editor-table"', //  Specify the attribute string attached to the table tag when outputting HTML
-	includeEditors: ['editor-1'], //  Specify which CraftEditor this module is valid for, and if not pass this property, it will be valid for all CraftEditors
-	// excludeEditors: [' editor-id-2 '], //  Specify which CraftEditor this module is invalid
+($ as any).trumbowyg.svgPath = iconsPath;
+($ as any).trumbowyg.langs.nl = {
+	...($ as any).trumbowyg.langs.nl,
+	// linkUrl: 'URL<br/>(mailto:email voor mail link)', // TODO enable after merge of: https://github.com/Alex-D/Trumbowyg/pull/1097
+	target: '_blank (nieuwe tab)<br/>_self (zelfde tab)',
 };
 
-BraftEditor.use(Table(options));
+type TrumbowygEvent = (e: JQuery.Event) => void;
 
 export interface WYSIWYGPropsSchema {
 	id: string;
-	initialHtml?: string;
-	state?: any;
+	data?: string;
 	placeholder?: string;
-	language?: string;
-	controls?: (string[] | string)[];
+	lang?: string;
+	btns?: (string[] | string)[];
+	semantic?: boolean;
+	resetCss?: boolean;
+	autogrow?: boolean;
 	disabled?: boolean;
 	minimalLinks?: boolean;
 	removeFormatPasted?: boolean;
-	onFocus?: () => void;
-	onBlur?: () => void;
-	onChange?: (editorState: any) => void;
-	onTab?: () => void;
-	onDelete?: () => void;
-	onSave?: () => void;
+	shouldUseSvgIcons?: boolean;
+	shouldInjectSvgIcons?: boolean;
+	svgIconsPath?: string;
+	btnsDef?: Object;
+	plugins?: Object;
+	onFocus?: TrumbowygEvent;
+	onBlur?: TrumbowygEvent;
+	onInit?: TrumbowygEvent;
+	onChange?: (html: string) => void;
+	onResize?: TrumbowygEvent;
+	onPaste?: TrumbowygEvent;
+	onOpenFullScreen?: TrumbowygEvent;
+	onCloseFullScreen?: TrumbowygEvent;
+	onClose?: TrumbowygEvent;
+	onModalOpen?: TrumbowygEvent;
+	onModalClose?: TrumbowygEvent;
 }
 
-export const WYSIWYG: FunctionComponent<WYSIWYGPropsSchema> = ({
-	// id,
-	initialHtml,
-	state,
-	placeholder,
-	language,
-	controls,
-	disabled,
-	// minimalLinks,
-	// removeFormatPasted,
-	onFocus,
-	onBlur,
-	onChange,
-	onTab,
-	onDelete,
-	onSave,
-}) => {
-	return (
-		<div className="my-component">
-			<BraftEditor
-				editorId="editor-1"
-				value={state || BraftEditor.createEditorState(initialHtml || '')}
-				placeholder={placeholder}
-				readonly={disabled}
-				language={language || 'en'}
-				controls={controls}
-				onChange={onChange}
-				onBlur={onBlur}
-				onFocus={onFocus}
-				onTab={onTab}
-				onDelete={onDelete}
-				onSave={() => {
-					if (!state) {
-						return;
-					}
-					if (onSave) {
-						onSave();
-					}
-				}}
-			/>
-		</div>
+const COMPARE_PROPS: (keyof WYSIWYGPropsSchema)[] = [
+	'id',
+	'placeholder',
+	'lang',
+	'btns',
+	'semantic',
+	'resetCss',
+	'disabled',
+	'autogrow',
+	'removeFormatPasted',
+	'shouldUseSvgIcons',
+	'shouldInjectSvgIcons',
+	'svgIconsPath',
+	'btnsDef',
+	'plugins',
+	'onFocus',
+	'onBlur',
+	'onInit',
+	'onChange',
+	'onResize',
+	'onPaste',
+	'onOpenFullScreen',
+	'onCloseFullScreen',
+	'onClose',
+	'onModalOpen',
+	'onModalClose',
+];
+
+export class WYSIWYG extends React.Component<WYSIWYGPropsSchema> {
+	private editor: (JQuery<HTMLDivElement> & { trumbowyg: Function }) | null = null;
+
+	componentDidMount() {
+		this.reInitEditor(this.props);
+	}
+
+	componentWillUnmount() {
+		if (this.editor) {
+			this.editor.trumbowyg('destroy');
+		}
+	}
+
+	// Switched to class based component so we can use this lifecycle hook inside the component
+	// so we can check the value of the Trumbowyg editor
+	// to see if the sate is equal to the externally received props.data value
+	shouldComponentUpdate(nextProps: WYSIWYGPropsSchema) {
+		if (!this.editor) {
+			return true;
+		}
+
+		const { data: prevData, ...prevRestProps } = this.props;
+		const { data: nextData, ...nextNextProps } = nextProps;
+
+		let arePropsEqual = true;
+		COMPARE_PROPS.forEach(propName => {
+			const prevProp = (prevRestProps as any)[propName];
+			const nextProp = (nextNextProps as any)[propName];
+			if (typeof prevProp === 'function' || typeof nextProp === 'function') {
+				if (prevProp.toString() !== nextProp.toString()) {
+					arePropsEqual = false;
+				}
+			} else if (prevProp !== nextProp) {
+				arePropsEqual = false;
+			}
+		});
+		if (!arePropsEqual) {
+			this.reInitEditor(nextProps);
+		}
+
+		return false;
+	}
+
+	private reInitEditor(props: WYSIWYGPropsSchema) {
+		if (this.editor) {
+			this.editor.trumbowyg('destroy');
+			this.editor.trumbowyg({
+				lang: 'nl',
+				defaultLinkTarget: '_blank',
+				...props,
+				onChange: this.handleChange,
+			});
+			this.setEditorData(props.data || '');
+			this.editor
+				.trumbowyg()
+				.on('tbwfocus', props.onFocus)
+				.on('tbwblur', props.onBlur)
+				.on('tbwinit ', props.onInit)
+				.on('tbwchange ', this.handleChange)
+				.on('tbwresize ', props.onResize)
+				.on('tbwpaste ', props.onPaste)
+				.on('tbwopenfullscreen ', props.onOpenFullScreen)
+				.on('tbwclosefullscreen ', props.onCloseFullScreen)
+				.on('tbwclose ', props.onClose)
+				.on('tbwmodalopen ', props.onModalOpen)
+				.on('tbwmodalclose ', props.onModalClose);
+		}
+	}
+
+	private handleChange = throttle(
+		() => {
+			if (this.editor) {
+				(this.props.onChange || (() => {}))(this.getEditorData());
+			}
+		},
+		100,
+		{ leading: true, trailing: true }
 	);
-};
+
+	private getEditorData(): string {
+		if (this.editor) {
+			return this.editor.trumbowyg('html');
+		}
+		return '';
+	}
+
+	private setEditorData(data: string = '') {
+		if (this.editor) {
+			($(this.editor) as any).trumbowyg('html', data);
+		}
+	}
+
+	render() {
+		return <div ref={ref => (this.editor = $(ref as HTMLDivElement) as any)} id={this.props.id} />;
+	}
+}

@@ -1,27 +1,26 @@
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 import cjs from 'rollup-plugin-commonjs';
-import { terser } from "rollup-plugin-terser";
+import { terser } from 'rollup-plugin-terser';
 
 import autoprefixer from 'autoprefixer';
 
 export default {
 	input: 'src/index.ts',
-	output: [{
-		file: 'dist/bundle.esm.js',
-		format: 'esm'
-	},
+	output: [
+		{
+			file: 'dist/bundle.esm.js',
+			format: 'esm',
+		},
 		{
 			file: 'dist/bundle.cjs.js',
-			format: 'cjs'
+			format: 'cjs',
 		},
 	],
 	plugins: [
 		postcss({
 			extensions: ['.scss', '.css'],
-			plugins: [
-				autoprefixer(),
-			],
+			plugins: [autoprefixer()],
 			minimize: true,
 		}),
 		typescript({
@@ -30,8 +29,13 @@ export default {
 		cjs(),
 		terser(),
 	],
-	external: [ // Suppresses warnings about external dependencies
+	external: [
+		// Suppresses warnings about external dependencies
 		'autosize',
+		'braft-editor',
+		'braft-extensions/dist/table.css',
+		'braft-editor/dist/index.css',
+		'braft-extensions/dist/table',
 		'classnames',
 		'date-fns',
 		'date-fns/locale/nl',
@@ -53,6 +57,6 @@ export default {
 		'trumbowyg/dist/ui/sass/trumbowyg.scss',
 		'trumbowyg/dist/plugins/table/ui/sass/trumbowyg.table.scss',
 		'trumbowyg/dist/ui/icons.svg',
-		'@storybook/addon-actions'
-	]
-}
+		'@storybook/addon-actions',
+	],
+};
