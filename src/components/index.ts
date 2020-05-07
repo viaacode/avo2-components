@@ -73,7 +73,12 @@ import { ToolbarItemPropsSchema } from './Toolbar/ToolbarItem/ToolbarItem';
 import { ToolbarTitlePropsSchema } from './Toolbar/ToolbarTitle/ToolbarTitle';
 import { TooltipPropsSchema } from './Tooltip/Tooltip';
 import { WYSIWYGPropsSchema } from './WYSIWYG/WYSIWYG';
-import { RichEditorStateSchema, WYSIWYG2PropsSchema } from './WYSIWYG2/WYSIWYG2';
+import {
+	RichEditorStateSchema,
+	WYSIWYG2MediaSchema,
+	WYSIWYG2PropsSchema,
+	WYSIWYG2UploadInfoSchema,
+} from './WYSIWYG2/WYSIWYG2';
 
 export { Accordion } from './Accordion/Accordion';
 export type AccordionProps = AccordionPropsSchema;
@@ -308,3 +313,5 @@ export type WYSIWYGProps = WYSIWYGPropsSchema;
 export { WYSIWYG2 } from './WYSIWYG2/WYSIWYG2';
 export type WYSIWYG2Props = WYSIWYG2PropsSchema;
 export type RichEditorState = RichEditorStateSchema;
+export type WYSIWYG2Media = WYSIWYG2MediaSchema;
+export type WYSIWYG2UploadInfo = WYSIWYG2UploadInfoSchema;

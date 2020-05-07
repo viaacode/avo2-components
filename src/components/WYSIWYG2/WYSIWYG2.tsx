@@ -25,6 +25,28 @@ export interface RichEditorStateSchema {
 	toHTML: () => string;
 }
 
+export interface WYSIWYG2UploadInfoSchema {
+	file: File;
+	progress: (progress: number) => void;
+	libraryId: string;
+	success: (res: { url: string; meta?: any }) => void;
+	error: (err: Error) => void;
+}
+
+export interface WYSIWYG2MediaSchema {
+	uploadFn: (uploadInfo: WYSIWYG2UploadInfoSchema) => void;
+	validateFn?: (file: File) => Promise<boolean>;
+	/**
+	 * defaults to:
+	 *  {
+	 *  	image: 'image/png,image/jpeg,image/gif,image/webp,image/apng,image/svg',
+	 *		video: 'video/mp4',
+	 *		audio : 'audio / mp3'
+	 *	}
+	 */
+	accepts?: { [type: string]: string };
+}
+
 export interface WYSIWYG2PropsSchema {
 	id: string;
 	initialHtml?: string;
@@ -32,6 +54,7 @@ export interface WYSIWYG2PropsSchema {
 	placeholder?: string;
 	controls?: (string[] | string)[];
 	disabled?: boolean;
+	media?: WYSIWYG2MediaSchema;
 	onFocus?: () => void;
 	onBlur?: () => void;
 	onChange?: (editorState: RichEditorStateSchema) => void;
@@ -47,6 +70,7 @@ export const WYSIWYG2: FunctionComponent<WYSIWYG2PropsSchema> = ({
 	placeholder,
 	controls,
 	disabled,
+	media,
 	onFocus,
 	onBlur,
 	onChange,
@@ -160,6 +184,7 @@ export const WYSIWYG2: FunctionComponent<WYSIWYG2PropsSchema> = ({
 				readonly={disabled}
 				language={getLanguage}
 				controls={controls}
+				media={media}
 				onChange={(newState: RichEditorStateSchema) => {
 					if (onChange) {
 						onChange(newState);
