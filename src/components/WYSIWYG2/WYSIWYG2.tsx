@@ -35,7 +35,7 @@ export interface WYSIWYG2UploadInfoSchema {
 
 export interface WYSIWYG2MediaSchema {
 	uploadFn: (uploadInfo: WYSIWYG2UploadInfoSchema) => void;
-	validateFn?: (file: File) => Promise<boolean>;
+	validateFn?: (file: File) => boolean | Promise<boolean>;
 	/**
 	 * defaults to:
 	 *  {
