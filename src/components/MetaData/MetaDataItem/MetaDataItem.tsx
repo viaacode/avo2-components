@@ -18,11 +18,13 @@ export const MetaDataItem: FunctionComponent<MetaDataItemPropsSchema> = ({
 	icon,
 	label,
 	children,
+	style,
 }) => (
 	<li
 		className={classnames(className, 'c-meta-data__item', {
 			'c-meta-data-item--icon': icon,
 		})}
+		style={style}
 	>
 		{icon && !children && <Icon name={icon} />}
 		{!children && <p>{label}</p>}
