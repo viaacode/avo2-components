@@ -94,6 +94,32 @@ export const WYSIWYG2: FunctionComponent<WYSIWYG2PropsSchema> = ({
 				splitCell: 'Split cell',
 			};
 		}
+		if (context === 'braft-finder') {
+			return {
+				remove: 'Verwijder',
+				cancel: 'Annueer',
+				confirm: 'Bevestig',
+				insert: 'Voeg selectie in',
+				width: 'Breedte',
+				height: 'Hoogte',
+				image: 'Afbeelding',
+				video: 'Video',
+				audio: 'Audio',
+				embed: 'Embed',
+				caption: 'Media Bibliotheek',
+				dragTip: 'Klik of sleep bestanden hier',
+				dropTip: 'Drop om te uploaden',
+				selectAll: 'Selecteer alle',
+				deselect: 'Deselecteren',
+				removeSelected: 'Verwijder selectie',
+				externalInputPlaceHolder: 'Bron naam|Bron URL',
+				externalInputTip: 'Splits bron naam en brond URL met "|", bevestig met enter.',
+				addLocalFile: 'Voeg lokale bestanden toe',
+				addExternalSource: 'Voeg bestanden toe van internet',
+				unnamedItem: 'Naamloos item',
+				confirmInsert: 'Voeg selectie in',
+			};
+		}
 		if (context === 'braft-editor') {
 			return {
 				base: {
