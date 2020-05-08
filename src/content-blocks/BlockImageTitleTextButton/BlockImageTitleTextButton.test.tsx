@@ -1,7 +1,6 @@
-import React, { cloneElement } from 'react';
-
 import { mount, shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
+import React, { cloneElement } from 'react';
 
 import { BlockImageTitleTextButton } from './BlockImageTitleTextButton';
 

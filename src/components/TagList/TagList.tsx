@@ -1,6 +1,5 @@
-import React, { FunctionComponent, MouseEvent } from 'react';
-
 import classnames from 'classnames';
+import React, { FunctionComponent, MouseEvent } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';

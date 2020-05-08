@@ -1,6 +1,5 @@
-import React, { ChangeEvent, FunctionComponent, KeyboardEvent } from 'react';
-
 import classnames from 'classnames';
+import React, { ChangeEvent, FunctionComponent, KeyboardEvent } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';

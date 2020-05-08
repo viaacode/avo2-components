@@ -2,7 +2,6 @@ import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
-
 import { AvatarIcon } from '../Avatar/AvatarIcon/AvatarIcon';
 import { Container } from '../Container/Container';
 

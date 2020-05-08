@@ -2,6 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 import { Button } from '../Button/Button';
+
 import { ButtonToolbar } from './ButtonToolbar';
 
 describe('<ButtonToolbar />', () => {

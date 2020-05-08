@@ -1,6 +1,5 @@
-import React, { ElementType, FunctionComponent, ReactNode } from 'react';
-
 import classnames from 'classnames';
+import React, { ElementType, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 

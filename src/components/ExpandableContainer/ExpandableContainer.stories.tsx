@@ -1,8 +1,7 @@
+import { storiesOf } from '@storybook/react';
+import { loremIpsum } from 'lorem-ipsum';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-
-import { loremIpsum } from 'lorem-ipsum';
 import { ExpandableContainer } from './ExpandableContainer';
 
 storiesOf('components/ExpandableContainer', module)

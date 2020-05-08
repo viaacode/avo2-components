@@ -1,6 +1,5 @@
-import React, { FunctionComponent } from 'react';
-
 import classnames from 'classnames';
+import React, { FunctionComponent } from 'react';
 
 import { Container } from '../../components/Container/Container';
 import { AlignOptions, DefaultProps } from '../../types';

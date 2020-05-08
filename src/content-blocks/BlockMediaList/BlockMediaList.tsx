@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
+import { IconName, Spacer, Toolbar, ToolbarLeft, ToolbarRight } from '../../components';
 import { Button } from '../../components/Button/Button';
 import { ButtonTypeSchema } from '../../components/Button/Button.types';
 import { Column } from '../../components/Grid/Column/Column';
@@ -23,7 +24,6 @@ import {
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import './BlockMediaList.scss';
-import { IconName, Spacer, Toolbar, ToolbarLeft, ToolbarRight } from '../../components';
 
 export type MediaListItem = {
 	category: EnglishContentType;

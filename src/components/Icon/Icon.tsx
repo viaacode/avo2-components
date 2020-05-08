@@ -3,11 +3,10 @@ import { camelCase, kebabCase, upperFirst } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
-import { IconNameSchema, IconTypeSchema } from './Icon.types';
-
-import * as Icons from './Icons';
 
 import './Icon.scss';
+import { IconNameSchema, IconTypeSchema } from './Icon.types';
+import * as Icons from './Icons';
 
 export interface IconPropsSchema extends DefaultProps {
 	name?: IconNameSchema;

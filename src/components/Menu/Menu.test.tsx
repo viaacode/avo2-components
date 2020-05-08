@@ -2,15 +2,14 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Menu } from './Menu';
-import { MenuItemInfoSchema } from './MenuContent/MenuContent';
-import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent';
-
 import {
 	menuItems,
 	menuItemsWithDivider,
 	menuItemsWithIcons,
 	menuItemsWithSearch,
 } from './Menu.mocks';
+import { MenuItemInfoSchema } from './MenuContent/MenuContent';
+import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent';
 
 describe('<MenuItem />', () => {
 	it('Should be able to render', () => {

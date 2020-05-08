@@ -2,6 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
 import { Button } from '../Button/Button';
+
 import { Dropdown } from './Dropdown';
 import { DropdownButton, DropdownContent } from './Dropdown.slots';
 

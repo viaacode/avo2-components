@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Icon } from '../../Icon/Icon';
 import { IconNameSchema } from '../../Icon/Icon.types';
+
 import { Tab } from './Tab';
 
 const mockTab = {

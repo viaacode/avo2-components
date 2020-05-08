@@ -1,6 +1,6 @@
+import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classnames from 'classnames';
 import { DefaultProps } from '../../../types';
 
 import './FormGroup.scss';

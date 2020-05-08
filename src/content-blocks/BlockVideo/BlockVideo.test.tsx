@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { mount, shallow } from 'enzyme';
+import React from 'react';
 
 import { MOCK_FLOW_PLAYER_PROPS_FULL } from '../../components/FlowPlayer/FlowPlayer.mock';
 

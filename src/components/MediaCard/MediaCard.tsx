@@ -1,13 +1,11 @@
+import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classnames from 'classnames';
-
 import { useSlot } from '../../hooks/useSlot';
-
 import { DefaultProps, EnglishContentType, Orientation } from '../../types';
-import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 import './MediaCard.scss';
+import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 export interface MediaCardPropsSchema extends DefaultProps {
 	title: string;

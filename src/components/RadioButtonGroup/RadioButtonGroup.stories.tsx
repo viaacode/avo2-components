@@ -1,10 +1,9 @@
+import { storiesOf } from '@storybook/react';
 import React, { Children, Fragment, ReactElement, useState } from 'react';
 
-import { storiesOf } from '@storybook/react';
-
 import { action } from '../../helpers';
-
 import { RadioButton, RadioButtonPropsSchema } from '../RadioButton/RadioButton';
+
 import { RadioButtonGroup } from './RadioButtonGroup';
 
 const RadioButtonGroupStoryComponent = ({

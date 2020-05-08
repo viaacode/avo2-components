@@ -1,8 +1,8 @@
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-
 import { Checkbox } from '../Checkbox/Checkbox';
+
 import { CheckboxGroup } from './CheckboxGroup';
 
 storiesOf('components/CheckboxGroup', module)

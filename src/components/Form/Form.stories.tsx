@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
-
 import { storiesOf } from '@storybook/react';
+import React, { Fragment } from 'react';
 
 import { Button } from '../Button/Button';
 import { Select } from '../Select/Select';

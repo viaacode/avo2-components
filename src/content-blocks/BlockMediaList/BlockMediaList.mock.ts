@@ -1,7 +1,7 @@
+import { ButtonTypeSchema } from '../../components/Button/Button.types';
 import { action } from '../../helpers';
 
 import { BlockMediaListProps, MediaListItem } from './BlockMediaList';
-import { ButtonTypeSchema } from '../../components/Button/Button.types';
 
 export const MEDIA_LIST_MOCK: MediaListItem[] = [
 	{

@@ -1,8 +1,8 @@
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-
 import { COLORS } from '../../colors';
+
 import { Spinner } from './Spinner';
 
 storiesOf('components/Spinner', module)

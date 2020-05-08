@@ -1,13 +1,12 @@
+import { storiesOf } from '@storybook/react';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
-import { storiesOf } from '@storybook/react';
-
+import { Spacer } from '..';
 import { action } from '../../helpers';
 import { Select } from '../Select/Select';
 import { SELECT_MOCK_OPTIONS } from '../Select/Select.mock';
 
 import { WYSIWYG2 } from './WYSIWYG2';
-import { Spacer } from '..';
 
 const withContent = (story: Function) => <div className="c-content">{story()}</div>;
 

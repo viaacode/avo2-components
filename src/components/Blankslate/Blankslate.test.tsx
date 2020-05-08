@@ -2,6 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Icon } from '../Icon/Icon';
+
 import { Blankslate } from './Blankslate';
 
 describe('<Blankslate />', () => {

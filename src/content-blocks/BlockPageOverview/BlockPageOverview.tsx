@@ -4,7 +4,6 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import { Accordion, Flex, Pagination, Spacer, Tabs, TagList } from '../../components';
 import { ButtonAction, DefaultProps } from '../../types';
-
 import { BlockGrid, GridItem } from '../BlockGrid/BlockGrid';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 import { BlockImageTitleTextButton } from '../BlockImageTitleTextButton/BlockImageTitleTextButton';

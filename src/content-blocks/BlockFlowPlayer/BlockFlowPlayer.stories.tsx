@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 import { MOCK_FLOW_PLAYER_PROPS } from '../../components/FlowPlayer/FlowPlayer.mock';
 

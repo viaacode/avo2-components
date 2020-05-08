@@ -1,11 +1,10 @@
+import { storiesOf } from '@storybook/react';
 import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 
-import { storiesOf } from '@storybook/react';
-
 import { action } from '../../helpers';
-
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
+
 import { Table, TableColumnSchema } from './Table';
 
 const COLUMNS: TableColumnSchema[] = [

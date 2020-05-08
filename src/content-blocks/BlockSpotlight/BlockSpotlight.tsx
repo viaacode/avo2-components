@@ -1,7 +1,6 @@
+import classnames from 'classnames';
 import { get } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
-
-import classnames from 'classnames';
 
 import { ButtonAction, DefaultProps } from '../../types';
 
