@@ -1,9 +1,7 @@
 @import '../../styles/settings/colors';
 
-.o-container-vertical {
-	&.o-block-image {
-		padding-top: 0;
-	}
+.o-block-image {
+	padding-top: 0;
 
 	&.o-block-image__page-header-image {
 		background-size: cover;
