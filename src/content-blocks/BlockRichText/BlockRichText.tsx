@@ -24,7 +24,7 @@ interface BlockRichTextElement {
 
 export interface BlockRichTextProps extends DefaultProps {
 	elements: BlockRichTextElement | BlockRichTextElement[];
-	navigate: (buttonAction: any) => void;
+	navigate?: (buttonAction: any) => void;
 }
 
 export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
