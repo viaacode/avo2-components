@@ -1,8 +1,7 @@
+import { storiesOf } from '@storybook/react';
+import { loremIpsum } from 'lorem-ipsum';
 import React, { Fragment } from 'react';
 
-import { storiesOf } from '@storybook/react';
-
-import { loremIpsum } from 'lorem-ipsum';
 import { Navbar } from './Navbar';
 
 const content = 'navbar content';

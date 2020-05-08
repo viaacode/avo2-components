@@ -5,9 +5,8 @@ import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 
-import { ButtonTypeSchema } from './Button.types';
-
 import './Button.scss';
+import { ButtonTypeSchema } from './Button.types';
 
 export interface ButtonPropsSchema extends DefaultProps {
 	active?: boolean;

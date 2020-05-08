@@ -1,7 +1,6 @@
-import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
+import React from 'react';
 
 import { BlockImageTitleTextButton } from './BlockImageTitleTextButton';
 

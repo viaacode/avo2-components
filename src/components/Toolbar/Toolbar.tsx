@@ -1,13 +1,11 @@
+import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classnames from 'classnames';
-
 import { useSlot } from '../../hooks/useSlot';
-
 import { DefaultProps } from '../../types';
-import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
 
 import './Toolbar.scss';
+import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
 
 export interface ToolbarPropsSchema extends DefaultProps {
 	children: ReactNode;

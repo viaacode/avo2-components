@@ -1,6 +1,5 @@
-import React, { ChangeEvent, FunctionComponent } from 'react';
-
 import classnames from 'classnames';
+import React, { ChangeEvent, FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
 

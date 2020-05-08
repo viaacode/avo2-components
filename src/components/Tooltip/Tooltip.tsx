@@ -1,13 +1,12 @@
+import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
-import classnames from 'classnames';
-
 import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { useSlot } from '../../hooks/useSlot';
-import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
 import './Tooltip.scss';
+import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
 export interface TooltipPropsSchema {
 	children: ReactNode;

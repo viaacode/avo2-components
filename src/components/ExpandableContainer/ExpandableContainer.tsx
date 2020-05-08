@@ -1,8 +1,8 @@
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';
-import { Button } from '../Button/Button';
-import { Spacer } from '../Spacer/Spacer';
 
 import useCollapsed from '../../hooks/react-collapsed/react-collapsed';
+import { Button } from '../Button/Button';
+import { Spacer } from '../Spacer/Spacer';
 
 export interface ExpandableContainerPropsSchema {
 	expandLabel?: string;

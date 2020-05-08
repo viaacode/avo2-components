@@ -1,6 +1,6 @@
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
 import { BlockKlaar } from './BlockKlaar';
 
 storiesOf('blocks/BlockKlaar', module)

@@ -1,12 +1,11 @@
-import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
-
 import classnames from 'classnames';
 import { Placement } from 'popper.js';
+import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
-import { MenuContent, MenuItemInfoSchema } from './MenuContent/MenuContent';
 
 import './Menu.scss';
+import { MenuContent, MenuItemInfoSchema } from './MenuContent/MenuContent';
 
 export interface MenuPropsSchema extends DefaultProps {
 	menuItems?: MenuItemInfoSchema[] | MenuItemInfoSchema[][]; // Between arrays, there will be a divider

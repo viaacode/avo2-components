@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 import { BlockCTAs } from './BlockCTAs';
 import { CTAS_MOCK } from './BlockCTAs.mock';

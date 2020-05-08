@@ -7,1351 +7,964 @@
 /**
  * ACTIVITY
  */
-export {
- Activity,
-} from './Activity';
+export { Activity } from './Activity';
 
 /**
  * ADD
  */
-export {
- Add,
-} from './Add';
+export { Add } from './Add';
 
 /**
  * ALERTCIRCLE
  */
-export {
- AlertCircle,
-} from './AlertCircle';
+export { AlertCircle } from './AlertCircle';
 
 /**
  * ALERTOCTAGON
  */
-export {
- AlertOctagon,
-} from './AlertOctagon';
+export { AlertOctagon } from './AlertOctagon';
 
 /**
  * ALERTTRIANGLE
  */
-export {
- AlertTriangle,
-} from './AlertTriangle';
+export { AlertTriangle } from './AlertTriangle';
 
 /**
  * ARCHIVE
  */
-export {
- Archive,
-} from './Archive';
+export { Archive } from './Archive';
 
 /**
  * ARROWDOWN
  */
-export {
- ArrowDown,
-} from './arrows/ArrowDown';
+export { ArrowDown } from './arrows/ArrowDown';
 
 /**
  * ARROWDOWNCIRCLE
  */
-export {
- ArrowDownCircle,
-} from './arrows/ArrowDownCircle';
+export { ArrowDownCircle } from './arrows/ArrowDownCircle';
 
 /**
  * ARROWDOWNLEFT
  */
-export {
- ArrowDownLeft,
-} from './arrows/ArrowDownLeft';
+export { ArrowDownLeft } from './arrows/ArrowDownLeft';
 
 /**
  * ARROWDOWNRIGHT
  */
-export {
- ArrowDownRight,
-} from './arrows/ArrowDownRight';
+export { ArrowDownRight } from './arrows/ArrowDownRight';
 
 /**
  * ARROWLEFT
  */
-export {
- ArrowLeft,
-} from './arrows/ArrowLeft';
+export { ArrowLeft } from './arrows/ArrowLeft';
 
 /**
  * ARROWRIGHT
  */
-export {
- ArrowRight,
-} from './arrows/ArrowRight';
+export { ArrowRight } from './arrows/ArrowRight';
 
 /**
  * ARROWUP
  */
-export {
- ArrowUp,
-} from './arrows/ArrowUp';
+export { ArrowUp } from './arrows/ArrowUp';
 
 /**
  * CARETDOWN
  */
-export {
- CaretDown,
-} from './arrows/CaretDown';
+export { CaretDown } from './arrows/CaretDown';
 
 /**
  * CARETLEFT
  */
-export {
- CaretLeft,
-} from './arrows/CaretLeft';
+export { CaretLeft } from './arrows/CaretLeft';
 
 /**
  * CARETRIGHT
  */
-export {
- CaretRight,
-} from './arrows/CaretRight';
+export { CaretRight } from './arrows/CaretRight';
 
 /**
  * CARETUP
  */
-export {
- CaretUp,
-} from './arrows/CaretUp';
+export { CaretUp } from './arrows/CaretUp';
 
 /**
  * CHEVRONDOWN
  */
-export {
- ChevronDown,
-} from './arrows/ChevronDown';
+export { ChevronDown } from './arrows/ChevronDown';
 
 /**
  * CHEVRONLEFT
  */
-export {
- ChevronLeft,
-} from './arrows/ChevronLeft';
+export { ChevronLeft } from './arrows/ChevronLeft';
 
 /**
  * CHEVRONRIGHT
  */
-export {
- ChevronRight,
-} from './arrows/ChevronRight';
+export { ChevronRight } from './arrows/ChevronRight';
 
 /**
  * CHEVRONSDOWN
  */
-export {
- ChevronsDown,
-} from './arrows/ChevronsDown';
+export { ChevronsDown } from './arrows/ChevronsDown';
 
 /**
  * CHEVRONSLEFT
  */
-export {
- ChevronsLeft,
-} from './arrows/ChevronsLeft';
+export { ChevronsLeft } from './arrows/ChevronsLeft';
 
 /**
  * CHEVRONSLEFTANDRIGHT
  */
-export {
- ChevronsLeftAndRight,
-} from './arrows/ChevronsLeftAndRight';
+export { ChevronsLeftAndRight } from './arrows/ChevronsLeftAndRight';
 
 /**
  * CHEVRONSRIGHT
  */
-export {
- ChevronsRight,
-} from './arrows/ChevronsRight';
+export { ChevronsRight } from './arrows/ChevronsRight';
 
 /**
  * CHEVRONSUP
  */
-export {
- ChevronsUp,
-} from './arrows/ChevronsUp';
+export { ChevronsUp } from './arrows/ChevronsUp';
 
 /**
  * CHEVRONSUPANDDOWN
  */
-export {
- ChevronsUpAndDown,
-} from './arrows/ChevronsUpAndDown';
+export { ChevronsUpAndDown } from './arrows/ChevronsUpAndDown';
 
 /**
  * CHEVRONUP
  */
-export {
- ChevronUp,
-} from './arrows/ChevronUp';
+export { ChevronUp } from './arrows/ChevronUp';
 
 /**
  * BARCHART
  */
-export {
- BarChart,
-} from './BarChart';
+export { BarChart } from './BarChart';
 
 /**
  * BELL
  */
-export {
- Bell,
-} from './Bell';
+export { Bell } from './Bell';
 
 /**
  * BELLOFF
  */
-export {
- BellOff,
-} from './BellOff';
+export { BellOff } from './BellOff';
 
 /**
  * BOOK
  */
-export {
- Book,
-} from './Book';
+export { Book } from './Book';
 
 /**
  * BOOKMARK
  */
-export {
- Bookmark,
-} from './Bookmark';
+export { Bookmark } from './Bookmark';
 
 /**
  * BOOKMARKFILLED
  */
-export {
- BookmarkFilled,
-} from './BookmarkFilled';
+export { BookmarkFilled } from './BookmarkFilled';
 
 /**
  * BOOKOPEN
  */
-export {
- BookOpen,
-} from './BookOpen';
+export { BookOpen } from './BookOpen';
 
 /**
  * BOX
  */
-export {
- Box,
-} from './Box';
+export { Box } from './Box';
 
 /**
  * BRIEFCASE
  */
-export {
- Briefcase,
-} from './Briefcase';
+export { Briefcase } from './Briefcase';
 
 /**
  * CALENDAR
  */
-export {
- Calendar,
-} from './Calendar';
+export { Calendar } from './Calendar';
 
 /**
  * CAMERA
  */
-export {
- Camera,
-} from './Camera';
+export { Camera } from './Camera';
 
 /**
  * CAMERAOFF
  */
-export {
- CameraOff,
-} from './CameraOff';
+export { CameraOff } from './CameraOff';
 
 /**
  * CHECK
  */
-export {
- Check,
-} from './Check';
+export { Check } from './Check';
 
 /**
  * CHECKCIRCLE
  */
-export {
- CheckCircle,
-} from './CheckCircle';
+export { CheckCircle } from './CheckCircle';
 
 /**
  * CHECKSQUARE
  */
-export {
- CheckSquare,
-} from './CheckSquare';
+export { CheckSquare } from './CheckSquare';
 
 /**
  * CIRCLE
  */
-export {
- Circle,
-} from './Circle';
+export { Circle } from './Circle';
 
 /**
  * CLIPBOARD
  */
-export {
- Clipboard,
-} from './Clipboard';
+export { Clipboard } from './Clipboard';
 
 /**
  * CLOCK
  */
-export {
- Clock,
-} from './Clock';
+export { Clock } from './Clock';
 
 /**
  * CLOSE
  */
-export {
- Close,
-} from './Close';
+export { Close } from './Close';
 
 /**
  * CODE
  */
-export {
- Code,
-} from './Code';
+export { Code } from './Code';
 
 /**
  * COLLECTION
  */
-export {
- Collection,
-} from './Collection';
+export { Collection } from './Collection';
 
 /**
  * CONTRACT
  */
-export {
- Contract,
-} from './Contract';
+export { Contract } from './Contract';
 
 /**
  * COPY
  */
-export {
- Copy,
-} from './Copy';
+export { Copy } from './Copy';
 
 /**
  * CREDITCARD
  */
-export {
- CreditCard,
-} from './CreditCard';
+export { CreditCard } from './CreditCard';
 
 /**
  * CROP
  */
-export {
- Crop,
-} from './Crop';
+export { Crop } from './Crop';
 
 /**
  * CROSSHAIR
  */
-export {
- Crosshair,
-} from './Crosshair';
+export { Crosshair } from './Crosshair';
 
 /**
  * KLASCEMENT
  */
-export {
- Klascement,
-} from './custom/Klascement';
+export { Klascement } from './custom/Klascement';
 
 /**
  * SMARTSCHOOL
  */
-export {
- Smartschool,
-} from './custom/Smartschool';
+export { Smartschool } from './custom/Smartschool';
 
 /**
  * DATABASE
  */
-export {
- Database,
-} from './Database';
+export { Database } from './Database';
 
 /**
  * DELETE
  */
-export {
- Delete,
-} from './Delete';
+export { Delete } from './Delete';
 
 /**
  * DOWNLOAD
  */
-export {
- Download,
-} from './Download';
+export { Download } from './Download';
 
 /**
  * DOWNLOADCLOUD
  */
-export {
- DownloadCloud,
-} from './DownloadCloud';
+export { DownloadCloud } from './DownloadCloud';
 
 /**
  * EDIT
  */
-export {
- Edit,
-} from './Edit';
+export { Edit } from './Edit';
 
 /**
  * EDIT2
  */
-export {
- Edit2,
-} from './Edit2';
+export { Edit2 } from './Edit2';
 
 /**
  * EDIT3
  */
-export {
- Edit3,
-} from './Edit3';
+export { Edit3 } from './Edit3';
 
 /**
  * EXTERNALLINK
  */
-export {
- ExternalLink,
-} from './ExternalLink';
+export { ExternalLink } from './ExternalLink';
 
 /**
  * EYE
  */
-export {
- Eye,
-} from './Eye';
+export { Eye } from './Eye';
 
 /**
  * EYEOFF
  */
-export {
- EyeOff,
-} from './EyeOff';
+export { EyeOff } from './EyeOff';
 
 /**
  * FASTFORWARD
  */
-export {
- FastForward,
-} from './FastForward';
+export { FastForward } from './FastForward';
 
 /**
  * FILE
  */
-export {
- File,
-} from './File';
+export { File } from './File';
 
 /**
  * FILEMINUS
  */
-export {
- FileMinus,
-} from './FileMinus';
+export { FileMinus } from './FileMinus';
 
 /**
  * FILEPLUS
  */
-export {
- FilePlus,
-} from './FilePlus';
+export { FilePlus } from './FilePlus';
 
 /**
  * FILETEXT
  */
-export {
- FileText,
-} from './FileText';
+export { FileText } from './FileText';
 
 /**
  * FILTER
  */
-export {
- Filter,
-} from './Filter';
+export { Filter } from './Filter';
 
 /**
  * FLAG
  */
-export {
- Flag,
-} from './Flag';
+export { Flag } from './Flag';
 
 /**
  * FOLDER
  */
-export {
- Folder,
-} from './Folder';
+export { Folder } from './Folder';
 
 /**
  * FOLDERMINUS
  */
-export {
- FolderMinus,
-} from './FolderMinus';
+export { FolderMinus } from './FolderMinus';
 
 /**
  * FOLDERPLUS
  */
-export {
- FolderPlus,
-} from './FolderPlus';
+export { FolderPlus } from './FolderPlus';
 
 /**
  * FULLSCREEN
  */
-export {
- Fullscreen,
-} from './Fullscreen';
+export { Fullscreen } from './Fullscreen';
 
 /**
  * GIFT
  */
-export {
- Gift,
-} from './Gift';
+export { Gift } from './Gift';
 
 /**
  * GLOBE
  */
-export {
- Globe,
-} from './Globe';
+export { Globe } from './Globe';
 
 /**
  * HASH
  */
-export {
- Hash,
-} from './Hash';
+export { Hash } from './Hash';
 
 /**
  * HEADPHONE
  */
-export {
- Headphone,
-} from './Headphone';
+export { Headphone } from './Headphone';
 
 /**
  * HEART
  */
-export {
- Heart,
-} from './Heart';
+export { Heart } from './Heart';
 
 /**
  * HEARTFILLED
  */
-export {
- HeartFilled,
-} from './HeartFilled';
+export { HeartFilled } from './HeartFilled';
 
 /**
  * HELPCIRCLE
  */
-export {
- HelpCircle,
-} from './HelpCircle';
+export { HelpCircle } from './HelpCircle';
 
 /**
  * HOME
  */
-export {
- Home,
-} from './Home';
+export { Home } from './Home';
 
 /**
  * IMAGE
  */
-export {
- Image,
-} from './Image';
+export { Image } from './Image';
 
 /**
  * INBOX
  */
-export {
- Inbox,
-} from './Inbox';
+export { Inbox } from './Inbox';
 
 /**
  * INFO
  */
-export {
- Info,
-} from './Info';
+export { Info } from './Info';
 
 /**
  * LAYOUT
  */
-export {
- Layout,
-} from './Layout';
+export { Layout } from './Layout';
 
 /**
  * LINK
  */
-export {
- Link,
-} from './Link';
+export { Link } from './Link';
 
 /**
  * LINK2
  */
-export {
- Link2,
-} from './Link2';
+export { Link2 } from './Link2';
 
 /**
  * LIST
  */
-export {
- List,
-} from './List';
+export { List } from './List';
 
 /**
  * LOCK
  */
-export {
- Lock,
-} from './Lock';
+export { Lock } from './Lock';
 
 /**
  * LOGIN
  */
-export {
- LogIn,
-} from './LogIn';
+export { LogIn } from './LogIn';
 
 /**
  * LOGOUT
  */
-export {
- LogOut,
-} from './LogOut';
+export { LogOut } from './LogOut';
 
 /**
  * MAIL
  */
-export {
- Mail,
-} from './Mail';
+export { Mail } from './Mail';
 
 /**
  * MAXIMIZE
  */
-export {
- Maximize,
-} from './Maximize';
+export { Maximize } from './Maximize';
 
 /**
  * MAXIMIZE2
  */
-export {
- Maximize2,
-} from './Maximize2';
+export { Maximize2 } from './Maximize2';
 
 /**
  * MENU
  */
-export {
- Menu,
-} from './Menu';
+export { Menu } from './Menu';
 
 /**
  * MESSAGECIRCLE
  */
-export {
- MessageCircle,
-} from './MessageCircle';
+export { MessageCircle } from './MessageCircle';
 
 /**
  * MESSAGESQUARE
  */
-export {
- MessageSquare,
-} from './MessageSquare';
+export { MessageSquare } from './MessageSquare';
 
 /**
  * MIC
  */
-export {
- Mic,
-} from './Mic';
+export { Mic } from './Mic';
 
 /**
  * MINIMIZE
  */
-export {
- Minimize,
-} from './Minimize';
+export { Minimize } from './Minimize';
 
 /**
  * MINIMIZE2
  */
-export {
- Minimize2,
-} from './Minimize2';
+export { Minimize2 } from './Minimize2';
 
 /**
  * MINUSCIRCLE
  */
-export {
- MinusCircle,
-} from './MinusCircle';
+export { MinusCircle } from './MinusCircle';
 
 /**
  * MOREHORIZONTAL
  */
-export {
- MoreHorizontal,
-} from './MoreHorizontal';
+export { MoreHorizontal } from './MoreHorizontal';
 
 /**
  * MOVE
  */
-export {
- Move,
-} from './Move';
+export { Move } from './Move';
 
 /**
  * CIRCLECHECK
  */
-export {
- CircleCheck,
-} from './multicolor/CircleCheck';
+export { CircleCheck } from './multicolor/CircleCheck';
 
 /**
  * CIRCLEINFO
  */
-export {
- CircleInfo,
-} from './multicolor/CircleInfo';
+export { CircleInfo } from './multicolor/CircleInfo';
 
 /**
  * CIRCLEWARNING
  */
-export {
- CircleWarning,
-} from './multicolor/CircleWarning';
+export { CircleWarning } from './multicolor/CircleWarning';
 
 /**
  * MUSIC
  */
-export {
- Music,
-} from './Music';
+export { Music } from './Music';
 
 /**
  * NOTIFICATION
  */
-export {
- Notification,
-} from './Notification';
+export { Notification } from './Notification';
 
 /**
  * NOTIFICATIONS
  */
-export {
- Notifications,
-} from './Notifications';
+export { Notifications } from './Notifications';
 
 /**
  * OCTAGON
  */
-export {
- Octagon,
-} from './Octagon';
+export { Octagon } from './Octagon';
 
 /**
  * PACKAGE
  */
-export {
- Package,
-} from './Package';
+export { Package } from './Package';
 
 /**
  * PAPERCLIP
  */
-export {
- Paperclip,
-} from './Paperclip';
+export { Paperclip } from './Paperclip';
 
 /**
  * PAUSE
  */
-export {
- Pause,
-} from './Pause';
+export { Pause } from './Pause';
 
 /**
  * PAUSEADD
  */
-export {
- PauseAdd,
-} from './PauseAdd';
+export { PauseAdd } from './PauseAdd';
 
 /**
  * PAUSECIRCLE
  */
-export {
- PauseCircle,
-} from './PauseCircle';
+export { PauseCircle } from './PauseCircle';
 
 /**
  * PERCENT
  */
-export {
- Percent,
-} from './Percent';
+export { Percent } from './Percent';
 
 /**
  * PIECHART
  */
-export {
- PieChart,
-} from './PieChart';
+export { PieChart } from './PieChart';
 
 /**
  * PLAY
  */
-export {
- Play,
-} from './Play';
+export { Play } from './Play';
 
 /**
  * PLAYCIRCLE
  */
-export {
- PlayCircle,
-} from './PlayCircle';
+export { PlayCircle } from './PlayCircle';
 
 /**
  * PLAYSMALL
  */
-export {
- PlaySmall,
-} from './PlaySmall';
+export { PlaySmall } from './PlaySmall';
 
 /**
  * PLUS
  */
-export {
- Plus,
-} from './Plus';
+export { Plus } from './Plus';
 
 /**
  * PLUSCIRCLE
  */
-export {
- PlusCircle,
-} from './PlusCircle';
+export { PlusCircle } from './PlusCircle';
 
 /**
  * POWER
  */
-export {
- Power,
-} from './Power';
+export { Power } from './Power';
 
 /**
  * PRINTER
  */
-export {
- Printer,
-} from './Printer';
+export { Printer } from './Printer';
 
 /**
  * RADIO
  */
-export {
- Radio,
-} from './Radio';
+export { Radio } from './Radio';
 
 /**
  * REFRESHCCW
  */
-export {
- RefreshCcw,
-} from './RefreshCcw';
+export { RefreshCcw } from './RefreshCcw';
 
 /**
  * REFRESHCW
  */
-export {
- RefreshCw,
-} from './RefreshCw';
+export { RefreshCw } from './RefreshCw';
 
 /**
  * REPEAT
  */
-export {
- Repeat,
-} from './Repeat';
+export { Repeat } from './Repeat';
 
 /**
  * REWIND
  */
-export {
- Rewind,
-} from './Rewind';
+export { Rewind } from './Rewind';
 
 /**
  * ROTATECCW
  */
-export {
- RotateCcw,
-} from './RotateCcw';
+export { RotateCcw } from './RotateCcw';
 
 /**
  * ROTATECW
  */
-export {
- RotateCw,
-} from './RotateCw';
+export { RotateCw } from './RotateCw';
 
 /**
  * RSS
  */
-export {
- Rss,
-} from './Rss';
+export { Rss } from './Rss';
 
 /**
  * SCISSORS
  */
-export {
- Scissors,
-} from './Scissors';
+export { Scissors } from './Scissors';
 
 /**
  * SEARCH
  */
-export {
- Search,
-} from './Search';
+export { Search } from './Search';
 
 /**
  * SEND
  */
-export {
- Send,
-} from './Send';
+export { Send } from './Send';
 
 /**
  * SETTINGS
  */
-export {
- Settings,
-} from './Settings';
+export { Settings } from './Settings';
 
 /**
  * SHARE
  */
-export {
- Share,
-} from './Share';
+export { Share } from './Share';
 
 /**
  * SHARE2
  */
-export {
- Share2,
-} from './Share2';
+export { Share2 } from './Share2';
 
 /**
  * SHUFFLE
  */
-export {
- Shuffle,
-} from './Shuffle';
+export { Shuffle } from './Shuffle';
 
 /**
  * SIDEBAR
  */
-export {
- Sidebar,
-} from './Sidebar';
+export { Sidebar } from './Sidebar';
 
 /**
  * SKIPBACK
  */
-export {
- SkipBack,
-} from './SkipBack';
+export { SkipBack } from './SkipBack';
 
 /**
  * SKIPFORWARD
  */
-export {
- SkipForward,
-} from './SkipForward';
+export { SkipForward } from './SkipForward';
 
 /**
  * SLASH
  */
-export {
- Slash,
-} from './Slash';
+export { Slash } from './Slash';
 
 /**
  * SLIDERS
  */
-export {
- Sliders,
-} from './Sliders';
+export { Sliders } from './Sliders';
 
 /**
  * INSTAGRAM
  */
-export {
- Instagram,
-} from './social/Instagram';
+export { Instagram } from './social/Instagram';
 
 /**
  * TWITTER
  */
-export {
- Twitter,
-} from './social/Twitter';
+export { Twitter } from './social/Twitter';
 
 /**
  * SQUARE
  */
-export {
- Square,
-} from './Square';
+export { Square } from './Square';
 
 /**
  * STAR
  */
-export {
- Star,
-} from './Star';
+export { Star } from './Star';
 
 /**
  * STOPCIRCLE
  */
-export {
- StopCircle,
-} from './StopCircle';
+export { StopCircle } from './StopCircle';
 
 /**
  * SUBTITLES
  */
-export {
- Subtitles,
-} from './Subtitles';
+export { Subtitles } from './Subtitles';
 
 /**
  * TAG
  */
-export {
- Tag,
-} from './Tag';
+export { Tag } from './Tag';
 
 /**
  * TARGET
  */
-export {
- Target,
-} from './Target';
+export { Target } from './Target';
 
 /**
  * TERMINAL
  */
-export {
- Terminal,
-} from './Terminal';
+export { Terminal } from './Terminal';
 
 /**
  * THUMBSDOWN
  */
-export {
- ThumbsDown,
-} from './ThumbsDown';
+export { ThumbsDown } from './ThumbsDown';
 
 /**
  * THUMBSUP
  */
-export {
- ThumbsUp,
-} from './ThumbsUp';
+export { ThumbsUp } from './ThumbsUp';
 
 /**
  * TRASH2
  */
-export {
- Trash2,
-} from './Trash2';
+export { Trash2 } from './Trash2';
 
 /**
  * TRENDINGDOWN
  */
-export {
- TrendingDown,
-} from './TrendingDown';
+export { TrendingDown } from './TrendingDown';
 
 /**
  * TRENDINGUP
  */
-export {
- TrendingUp,
-} from './TrendingUp';
+export { TrendingUp } from './TrendingUp';
 
 /**
  * TRIANGLE
  */
-export {
- Triangle,
-} from './Triangle';
+export { Triangle } from './Triangle';
 
 /**
  * TV
  */
-export {
- Tv,
-} from './Tv';
+export { Tv } from './Tv';
 
 /**
  * TYPE
  */
-export {
- Type,
-} from './Type';
+export { Type } from './Type';
 
 /**
  * UNDERLINE
  */
-export {
- Underline,
-} from './Underline';
+export { Underline } from './Underline';
 
 /**
  * UNLOCK
  */
-export {
- Unlock,
-} from './Unlock';
+export { Unlock } from './Unlock';
 
 /**
  * UNLOCK2
  */
-export {
- Unlock2,
-} from './Unlock2';
+export { Unlock2 } from './Unlock2';
 
 /**
  * UNLOCK3
  */
-export {
- Unlock3,
-} from './Unlock3';
+export { Unlock3 } from './Unlock3';
 
 /**
  * UPLOAD
  */
-export {
- Upload,
-} from './Upload';
+export { Upload } from './Upload';
 
 /**
  * USER
  */
-export {
- User,
-} from './User';
+export { User } from './User';
 
 /**
  * USERCHECK
  */
-export {
- UserCheck,
-} from './UserCheck';
+export { UserCheck } from './UserCheck';
 
 /**
  * USERPLUS
  */
-export {
- UserPlus,
-} from './UserPlus';
+export { UserPlus } from './UserPlus';
 
 /**
  * USERS
  */
-export {
- Users,
-} from './Users';
+export { Users } from './Users';
 
 /**
  * USERX
  */
-export {
- UserX,
-} from './UserX';
+export { UserX } from './UserX';
 
 /**
  * VIDEO
  */
-export {
- Video,
-} from './Video';
+export { Video } from './Video';
 
 /**
  * VIDEOOFF
  */
-export {
- VideoOff,
-} from './VideoOff';
+export { VideoOff } from './VideoOff';
 
 /**
  * VOLUME
  */
-export {
- Volume,
-} from './Volume';
+export { Volume } from './Volume';
 
 /**
  * VOLUME1
  */
-export {
- Volume1,
-} from './Volume1';
+export { Volume1 } from './Volume1';
 
 /**
  * VOLUME2
  */
-export {
- Volume2,
-} from './Volume2';
+export { Volume2 } from './Volume2';
 
 /**
  * VOLUMEMUTE
  */
-export {
- VolumeMute,
-} from './VolumeMute';
+export { VolumeMute } from './VolumeMute';
 
 /**
  * VOLUMEX
  */
-export {
- VolumeX,
-} from './VolumeX';
+export { VolumeX } from './VolumeX';
 
 /**
  * ALIGNCENTER
  */
-export {
- AlignCenter,
-} from './wysiwyg/AlignCenter';
+export { AlignCenter } from './wysiwyg/AlignCenter';
 
 /**
  * ALIGNJUSTIFY
  */
-export {
- AlignJustify,
-} from './wysiwyg/AlignJustify';
+export { AlignJustify } from './wysiwyg/AlignJustify';
 
 /**
  * ALIGNLEFT
  */
-export {
- AlignLeft,
-} from './wysiwyg/AlignLeft';
+export { AlignLeft } from './wysiwyg/AlignLeft';
 
 /**
  * ALIGNRIGHT
  */
-export {
- AlignRight,
-} from './wysiwyg/AlignRight';
+export { AlignRight } from './wysiwyg/AlignRight';
 
 /**
  * BOLD
  */
-export {
- Bold,
-} from './wysiwyg/Bold';
+export { Bold } from './wysiwyg/Bold';
 
 /**
  * ITALIC
  */
-export {
- Italic,
-} from './wysiwyg/Italic';
+export { Italic } from './wysiwyg/Italic';
 
 /**
  * X
  */
-export {
- X,
-} from './X';
+export { X } from './X';
 
 /**
  * XCIRCLE
  */
-export {
- XCircle,
-} from './XCircle';
+export { XCircle } from './XCircle';
 
 /**
  * XSQUARE
  */
-export {
- XSquare,
-} from './XSquare';
+export { XSquare } from './XSquare';
 
 /**
  * YOUTUBE
  */
-export {
- Youtube,
-} from './Youtube';
+export { Youtube } from './Youtube';
 
 /**
  * ZOOMIN
  */
-export {
- ZoomIn,
-} from './ZoomIn';
+export { ZoomIn } from './ZoomIn';
 
 /**
  * ZOOMOUT
  */
-export {
- ZoomOut,
-} from './ZoomOut';
-
+export { ZoomOut } from './ZoomOut';

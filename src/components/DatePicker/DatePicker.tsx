@@ -4,11 +4,11 @@ import { setHours, setMinutes } from 'date-fns';
 import nl from 'date-fns/locale/nl';
 import React, { FunctionComponent } from 'react';
 import ReactDatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
-import 'react-datepicker/dist/react-datepicker.css';
 import './DatePicker.scss';
 
 registerLocale('nl', nl);
