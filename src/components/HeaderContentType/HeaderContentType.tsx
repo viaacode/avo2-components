@@ -1,6 +1,5 @@
-import React, { FunctionComponent } from 'react';
-
 import classnames from 'classnames';
+import React, { FunctionComponent } from 'react';
 
 import { DefaultProps, EnglishContentType } from '../../types';
 import { Icon } from '../Icon/Icon';

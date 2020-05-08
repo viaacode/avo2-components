@@ -2,9 +2,9 @@ import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
-import { AvatarIcon, AvatarIconPropsSchema } from './AvatarIcon/AvatarIcon';
 
 import './Avatar.scss';
+import { AvatarIcon, AvatarIconPropsSchema } from './AvatarIcon/AvatarIcon';
 
 export interface AvatarPropsSchema extends DefaultProps, AvatarIconPropsSchema {
 	name?: string;

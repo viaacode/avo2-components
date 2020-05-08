@@ -1,9 +1,8 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { IconNameSchema } from './Icon.types';
-
 import { Icon } from './Icon';
+import { IconNameSchema } from './Icon.types';
 import { Download, Slash, ThumbsUp } from './Icons';
 
 describe('<Icon />', () => {

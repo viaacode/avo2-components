@@ -1,6 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+
 import { Button } from '../Button/Button';
+
 import { ButtonToolbar } from './ButtonToolbar';
 
 storiesOf('components/ButtonToolbar', module)

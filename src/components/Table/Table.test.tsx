@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
+
 import { Table, TableColumnSchema } from './Table';
 
 const COLUMNS: TableColumnSchema[] = [

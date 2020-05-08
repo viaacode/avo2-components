@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { mount, shallow } from 'enzyme';
+import React from 'react';
 
 import { BlockMediaList } from './BlockMediaList';
 import { MEDIA_LIST_CTA_MOCK, MEDIA_LIST_MOCK } from './BlockMediaList.mock';
@@ -8,7 +7,7 @@ import { MEDIA_LIST_CTA_MOCK, MEDIA_LIST_MOCK } from './BlockMediaList.mock';
 describe('<BlockMediaList />', () => {
 	const customClass = 'c-custom-block';
 	const BlockMediaListComponent = (
-		<BlockMediaList className={customClass} elements={MEDIA_LIST_MOCK} ctaNavigate={() => {}} />
+		<BlockMediaList className={customClass} elements={MEDIA_LIST_MOCK} navigate={() => {}} />
 	);
 
 	it('Should be able to render', () => {
@@ -32,7 +31,7 @@ describe('<BlockMediaList />', () => {
 
 	it('Should correctly render a CTA when given', () => {
 		const blockMediaList = mount(
-			<BlockMediaList elements={MEDIA_LIST_MOCK} ctaNavigate={() => {}} {...MEDIA_LIST_CTA_MOCK} />
+			<BlockMediaList elements={MEDIA_LIST_MOCK} navigate={() => {}} {...MEDIA_LIST_CTA_MOCK} />
 		);
 
 		const ctaItem = blockMediaList.find('.c-cta-item');

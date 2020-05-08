@@ -1,16 +1,16 @@
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
 import { BlockKlaar } from './BlockKlaar';
 
 storiesOf('blocks/BlockKlaar', module)
 	.addParameters({ jest: ['BlockKlaar'] })
 	.add('BlockKlaar (1 titel)', () => (
-		<BlockKlaar date="2016-07-13T18:46:01.933Z" elements={[{ title: 'Dit is een leuke titel' }]} />
+		<BlockKlaar date="2016-07-13T18:46:01.933Z" titles={['Dit is een leuke titel']} />
 	))
 	.add('BlockKlaar (meerdere titels)', () => (
-		<BlockKlaar
-			date="2016-07-13T18:46:01.933Z"
-			elements={[{ title: 'Dit is een leuke titel' }, { title: 'Awesome' }]}
-		/>
+		<BlockKlaar date="2016-07-13T18:46:01.933Z" titles={['Dit is een leuke titel', 'Awesome']} />
+	))
+	.add('BlockKlaar (geen datum)', () => (
+		<BlockKlaar date="" titles={['Dit is een leuke titel', 'Awesome']} />
 	));

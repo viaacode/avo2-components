@@ -1,8 +1,8 @@
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-
 import { MetaData } from '../MetaData';
+
 import { MetaDataItem } from './MetaDataItem';
 
 storiesOf('components/MetaDataItem', module)

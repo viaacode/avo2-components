@@ -4,6 +4,7 @@ import React from 'react';
 import { action } from '../../helpers';
 import { Box } from '../Box/Box';
 import { Spacer } from '../Spacer/Spacer';
+
 import { Alert } from './Alert';
 import { AlertPropsSchema, AlertTypeSchema } from './Alert.types';
 

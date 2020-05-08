@@ -1,6 +1,5 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
-
 import classnames from 'classnames';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 
 import { DefaultProps, EnglishContentType } from '../../types';
 import { Icon } from '../Icon/Icon';
@@ -31,6 +30,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 	alt,
 	label,
 	meta,
+	style,
 }) => {
 	const [loaded, setLoaded] = useState(false);
 	const iconName = CATEGORY_TO_ICON[category];
@@ -59,6 +59,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 				'c-thumbnail-media',
 				`c-thumbnail-media--${category}`
 			)}
+			style={style}
 		>
 			<div className="c-thumbnail-placeholder">{category && <Icon name={iconName} />}</div>
 			{src && (

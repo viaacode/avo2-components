@@ -1,6 +1,5 @@
-import React, { CSSProperties, FunctionComponent } from 'react';
-
 import classnames from 'classnames';
+import React, { CSSProperties, FunctionComponent } from 'react';
 
 import { Container } from '../../components/Container/Container';
 import { Image } from '../../components/Image/Image';
@@ -42,7 +41,6 @@ export const BlockImage: FunctionComponent<BlockImageProps> = ({
 			className={classnames(className, 'o-block-image', `o-block-image__${align}`, {
 				'o-block-image__page-header-image': width === 'page-header',
 			})}
-			mode="vertical"
 			style={style}
 		>
 			{width !== 'page-header' && (

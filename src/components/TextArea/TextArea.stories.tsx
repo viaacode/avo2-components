@@ -1,10 +1,9 @@
+import { storiesOf } from '@storybook/react';
 import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
-import { storiesOf } from '@storybook/react';
-
 import { action } from '../../helpers';
-
 import { Spacer } from '../Spacer/Spacer';
+
 import { TextArea } from './TextArea';
 
 const TextAreaStoryComponent = ({

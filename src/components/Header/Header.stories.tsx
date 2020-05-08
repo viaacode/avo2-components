@@ -1,7 +1,6 @@
+import { storiesOf } from '@storybook/react';
 import { times } from 'lodash-es';
 import React from 'react';
-
-import { storiesOf } from '@storybook/react';
 
 import { Avatar } from '../Avatar/Avatar';
 import { Button } from '../Button/Button';

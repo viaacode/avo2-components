@@ -2,6 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 import { Button } from '../Button/Button';
+
 import { ButtonGroup } from './ButtonGroup';
 
 describe('<ButtonGroup />', () => {

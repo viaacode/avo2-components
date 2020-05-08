@@ -1,7 +1,6 @@
-import React, { ChangeEvent, FunctionComponent, useEffect } from 'react';
-
 import autosize from 'autosize';
 import classnames from 'classnames';
+import React, { ChangeEvent, FunctionComponent, useEffect } from 'react';
 
 import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { DefaultProps } from '../../types';

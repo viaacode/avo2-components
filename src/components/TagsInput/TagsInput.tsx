@@ -1,6 +1,5 @@
-import React, { FunctionComponent } from 'react';
-
 import classnames from 'classnames';
+import React, { FunctionComponent } from 'react';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { ActionMeta, ValueType } from 'react-select/src/types';

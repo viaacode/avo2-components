@@ -1,17 +1,16 @@
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
 import { action } from '../../helpers';
 
 import { Menu } from './Menu';
-import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent';
-
 import {
 	menuItems,
 	menuItemsWithDivider,
 	menuItemsWithIcons,
 	menuItemsWithSearch,
 } from './Menu.mocks';
+import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent';
 
 storiesOf('components/Menu', module)
 	.addParameters({ jest: ['Menu'] })

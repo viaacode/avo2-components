@@ -1,13 +1,11 @@
+import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import classnames from 'classnames';
-
 import { useSlot } from '../../hooks/useSlot';
-
 import { DefaultProps } from '../../types';
-import { PanelBody, PanelHeader } from './Panel.slots';
 
 import './Panel.scss';
+import { PanelBody, PanelHeader } from './Panel.slots';
 
 export interface PanelPropsSchema extends DefaultProps {
 	children: ReactNode;
