@@ -211,30 +211,38 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 			}
 			if (tabStyle === 'ROUNDED_BADGES') {
 				return (
-					<TagList
-						tags={extendedTabs.map(tab => ({
-							id: tab.id,
-							label: tab.label,
-							active: !!extendedSelectedTabs.find(extendedTab => extendedTab.id === tab.id),
-						}))}
-						swatches={false}
-						selectable
-						onTagClicked={(tagId: string | number) =>
-							handleTabClick(tabs.find(tab => tab.id === tagId))
-						}
-					/>
+					<Flex center={centerHeader} className="c-content-page-overview-block__header">
+						<Spacer margin={['left', 'bottom', 'right']}>
+							<TagList
+								tags={extendedTabs.map(tab => ({
+									id: tab.id,
+									label: tab.label,
+									active: !!extendedSelectedTabs.find(extendedTab => extendedTab.id === tab.id),
+								}))}
+								swatches={false}
+								selectable
+								onTagClicked={(tagId: string | number) =>
+									handleTabClick(tabs.find(tab => tab.id === tagId))
+								}
+							/>
+						</Spacer>
+					</Flex>
 				);
 			}
 			if (tabStyle === 'MENU_BAR') {
 				return (
-					<Tabs
-						tabs={extendedTabs.map(tab => ({
-							id: tab.id,
-							label: tab.label,
-							active: !!extendedSelectedTabs.find(extendedTab => extendedTab.id === tab.id),
-						}))}
-						onClick={tabId => handleTabClick(tabs.find(tab => tab.id === tabId))}
-					/>
+					<Flex center={centerHeader} className="c-content-page-overview-block__header">
+						<Spacer margin={['left', 'bottom', 'right']}>
+							<Tabs
+								tabs={extendedTabs.map(tab => ({
+									id: tab.id,
+									label: tab.label,
+									active: !!extendedSelectedTabs.find(extendedTab => extendedTab.id === tab.id),
+								}))}
+								onClick={tabId => handleTabClick(tabs.find(tab => tab.id === tabId))}
+							/>
+						</Spacer>
+					</Flex>
 				);
 			}
 		} else {
@@ -244,9 +252,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 
 	return (
 		<div className="c-content-page-overview-block">
-			<Flex center={centerHeader} className="c-content-page-overview-block__header">
-				<Spacer margin={['left', 'bottom', 'right']}>{renderHeader()}</Spacer>
-			</Flex>
+			{renderHeader()}
 			{renderPages()}
 			{pageCount > 1 && (
 				<Pagination

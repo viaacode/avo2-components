@@ -42,7 +42,6 @@ export const BlockImage: FunctionComponent<BlockImageProps> = ({
 			className={classnames(className, 'o-block-image', `o-block-image__${align}`, {
 				'o-block-image__page-header-image': width === 'page-header',
 			})}
-			mode="vertical"
 			style={style}
 		>
 			{width !== 'page-header' && (

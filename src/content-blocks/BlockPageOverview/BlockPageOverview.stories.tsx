@@ -2,7 +2,6 @@ import { storiesOf } from '@storybook/react';
 import { intersectionBy } from 'lodash-es';
 import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
 
-import { Container } from '../../components';
 import { action } from '../../helpers';
 
 import { BlockPageOverview, ContentPageInfo, LabelObj } from './BlockPageOverview';
@@ -79,24 +78,27 @@ const baseProps = {
 
 storiesOf('blocks/BlockPageOverview', module)
 	.addParameters({ jest: ['BlockPageOverview'] })
+	.add('BlockPageOverview', () => (
+		<BlockPageOverviewStoryComponent initialPageIndex={0}>
+			<BlockPageOverview {...baseProps} tabs={[]} />
+		</BlockPageOverviewStoryComponent>
+	))
+	.add('BlockPageOverview accordions', () => (
+		<BlockPageOverviewStoryComponent initialPageIndex={0}>
+			<BlockPageOverview {...baseProps} tabs={[]} itemStyle="ACCORDION" />
+		</BlockPageOverviewStoryComponent>
+	))
 	.add('BlockPageOverview menu list', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
 			<BlockPageOverview {...baseProps} />
 		</BlockPageOverviewStoryComponent>
 	))
 	.add('BlockPageOverview header center', () => (
-		<>
-			<Container background="alt" mode="vertical">
-				<Container mode="horizontal">
-					test block above the page block iwth identical background as the header
-				</Container>
-			</Container>
-			<BlockPageOverviewStoryComponent initialPageIndex={0}>
-				<BlockPageOverview {...baseProps} centerHeader />
-			</BlockPageOverviewStoryComponent>
-		</>
+		<BlockPageOverviewStoryComponent initialPageIndex={0}>
+			<BlockPageOverview {...baseProps} centerHeader />
+		</BlockPageOverviewStoryComponent>
 	))
-	.add('BlockPageOverview accordions', () => (
+	.add('BlockPageOverview accordions with header', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
 			<BlockPageOverview {...baseProps} itemStyle="ACCORDION" />
 		</BlockPageOverviewStoryComponent>
