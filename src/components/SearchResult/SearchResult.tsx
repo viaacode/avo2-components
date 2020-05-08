@@ -10,7 +10,6 @@ import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Spacer } from '../Spacer/Spacer';
 import { TagList, TagOptionSchema } from '../TagList/TagList';
-import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
 
 import './SearchResult.scss';

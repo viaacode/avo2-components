@@ -13,6 +13,7 @@ import {
 	MetaDataItemPropsSchema,
 } from '../../components/MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../../components/Thumbnail/Thumbnail';
+import { IconName, Spacer, Toolbar, ToolbarLeft, ToolbarRight } from '../../components';
 import {
 	ButtonAction,
 	DefaultProps,
@@ -23,7 +24,6 @@ import {
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import './BlockMediaList.scss';
-import { IconName, Spacer, Toolbar, ToolbarLeft, ToolbarRight } from '../../components';
 
 export type MediaListItem = {
 	category: EnglishContentType;
