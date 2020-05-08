@@ -3,9 +3,9 @@ import React, { Fragment } from 'react';
 
 import iconList from '../../icons/icons.json';
 import { Spacer } from '../Spacer/Spacer';
-import { IconNameSchema } from './Icon.types';
 
 import { Icon } from './Icon';
+import { IconNameSchema } from './Icon.types';
 
 const baseIcons = iconList.filter(i => i.type === '');
 const arrowsIcons = iconList.filter(i => i.type === 'arrows');

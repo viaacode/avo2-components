@@ -1,10 +1,9 @@
+import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
-import classnames from 'classnames';
-
 import { DefaultProps } from '../../types';
-import { Tab, TabPropsSchema } from './Tab/Tab';
 
+import { Tab, TabPropsSchema } from './Tab/Tab';
 import './Tabs.scss';
 
 export interface TabsPropsSchema extends DefaultProps {

@@ -1,7 +1,6 @@
-import React, { FunctionComponent, ReactNode } from 'react';
-
 import classnames from 'classnames';
 import PopperJS, { Data, ModifierFn, Placement } from 'popper.js';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
 import { useCallbackRef } from '../../hooks/useCallbackRef';
@@ -14,9 +13,8 @@ import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Menu } from '../Menu/Menu';
 
-import { DropdownButton, DropdownContent } from './Dropdown.slots';
-
 import './Dropdown.scss';
+import { DropdownButton, DropdownContent } from './Dropdown.slots';
 
 export interface DropdownPropsSchema {
 	children: ReactNode;

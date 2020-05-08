@@ -1,9 +1,9 @@
-import React from 'react';
-
 import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 import { EnglishContentType } from '../../types';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
+
 import { SearchResult } from './SearchResult';
 import {
 	SearchResultSubtitle,

@@ -1,22 +1,19 @@
-import React, { Fragment, FunctionComponent, MouseEvent, ReactNode } from 'react';
-
 import classnames from 'classnames';
+import React, { Fragment, FunctionComponent, MouseEvent, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps } from '../../types';
-
 import { Button } from '../Button/Button';
 import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
+import './Modal.scss';
 import { ModalBody, ModalFooterLeft, ModalFooterRight, ModalHeaderRight } from './Modal.slots';
 import { ModalBackdrop } from './ModalBackdrop';
-
-import './Modal.scss';
 
 export interface ModalPropsSchema extends DefaultProps {
 	children: ReactNode;

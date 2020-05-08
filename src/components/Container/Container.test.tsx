@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
-
 import { shallow } from 'enzyme';
+import React, { Fragment } from 'react';
 
 import { Container } from './Container';
 

@@ -1,4 +1,8 @@
 import classnames from 'classnames';
+import flowplayer from 'flowplayer-files';
+import 'flowplayer-files/lib/plugins/chromecast.min';
+import 'flowplayer-files/lib/plugins/cuepoints.min';
+import 'flowplayer-files/lib/plugins/subtitles.min';
 import { get } from 'lodash-es';
 import React, { createRef } from 'react';
 
@@ -7,11 +11,6 @@ import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
 import './FlowPlayer.scss';
-
-import flowplayer from 'flowplayer-files';
-import 'flowplayer-files/lib/plugins/chromecast.min';
-import 'flowplayer-files/lib/plugins/cuepoints.min';
-import 'flowplayer-files/lib/plugins/subtitles.min';
 
 interface FlowplayerInstance extends HTMLVideoElement {
 	destroy: Function;

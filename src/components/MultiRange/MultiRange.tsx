@@ -1,7 +1,6 @@
+import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 import { getTrackBackground, Range } from 'react-range';
-
-import classnames from 'classnames';
 
 import { TextInput } from '../../components/TextInput/TextInput';
 import { DefaultProps } from '../../types';

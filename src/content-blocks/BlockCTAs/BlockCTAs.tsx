@@ -1,9 +1,7 @@
+import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
-import classnames from 'classnames';
-
 import { CTA, CTAProps } from '../../components';
-
 import { DefaultProps } from '../../types';
 
 export interface BlockCTAsProps extends DefaultProps {

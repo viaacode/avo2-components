@@ -1,11 +1,9 @@
 import BraftEditor from 'braft-editor';
-import React, { FunctionComponent } from 'react';
-import classnames from 'classnames';
-
 import 'braft-editor/dist/index.css';
-import 'braft-extensions/dist/table.css';
-
 import Table from 'braft-extensions/dist/table';
+import 'braft-extensions/dist/table.css';
+import classnames from 'classnames';
+import React, { FunctionComponent } from 'react';
 
 import './WYSIWYG2.scss';
 

@@ -1,9 +1,7 @@
+import { storiesOf } from '@storybook/react';
 import React, { Fragment } from 'react';
 
-import { storiesOf } from '@storybook/react';
-
 import { Button } from '../Button/Button';
-
 import { Icon } from '../Icon/Icon';
 
 import { Toolbar } from './Toolbar';

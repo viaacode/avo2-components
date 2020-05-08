@@ -1,15 +1,13 @@
-import React, { FunctionComponent } from 'react';
-
 import classnames from 'classnames';
+import React, { FunctionComponent } from 'react';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Spinner } from '../Spinner/Spinner';
 
-import { AlertPropsSchema, AlertTypeWithIcon } from './Alert.types';
-
 import './Alert.scss';
+import { AlertPropsSchema, AlertTypeWithIcon } from './Alert.types';
 
 const ALERT_TYPE_TO_ICON_MAPPING: { [type in AlertTypeWithIcon]: IconNameSchema } = {
 	info: 'circle-info',

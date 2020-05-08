@@ -1,8 +1,7 @@
+import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 import ReactSelect from 'react-select';
 import { ActionMeta, ValueType } from 'react-select/src/types';
-
-import classnames from 'classnames';
 
 import { DefaultProps } from '../../types';
 

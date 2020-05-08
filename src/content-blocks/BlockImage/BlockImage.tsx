@@ -1,6 +1,5 @@
-import React, { CSSProperties, FunctionComponent } from 'react';
-
 import classnames from 'classnames';
+import React, { CSSProperties, FunctionComponent } from 'react';
 
 import { Container } from '../../components/Container/Container';
 import { Image } from '../../components/Image/Image';

@@ -2,6 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React, { cloneElement } from 'react';
 
 import { Thumbnail } from '../Thumbnail/Thumbnail';
+
 import { SearchResult } from './SearchResult';
 import {
 	SearchResultSubtitle,

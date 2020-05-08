@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
-
 import { storiesOf } from '@storybook/react';
+import React, { Fragment } from 'react';
 
 import { COLORS } from '../../colors';
 import { action } from '../../helpers';
 import { Spacer } from '../Spacer/Spacer';
+
 import { Button, ButtonPropsSchema } from './Button';
 
 const buttonProps: Partial<ButtonPropsSchema>[] = [

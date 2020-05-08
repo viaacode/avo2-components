@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
+import { IconName, Spacer, Toolbar, ToolbarLeft, ToolbarRight } from '../../components';
 import { Button } from '../../components/Button/Button';
 import { ButtonTypeSchema } from '../../components/Button/Button.types';
 import { Column } from '../../components/Grid/Column/Column';
@@ -13,7 +14,6 @@ import {
 	MetaDataItemPropsSchema,
 } from '../../components/MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../../components/Thumbnail/Thumbnail';
-import { IconName, Spacer, Toolbar, ToolbarLeft, ToolbarRight } from '../../components';
 import {
 	ButtonAction,
 	DefaultProps,

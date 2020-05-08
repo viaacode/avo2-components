@@ -1,7 +1,6 @@
-import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
+import React from 'react';
 
 import { MOCK_FLOW_PLAYER_PROPS_FULL } from '../../components/FlowPlayer/FlowPlayer.mock';
 

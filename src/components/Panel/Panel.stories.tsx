@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { storiesOf } from '@storybook/react';
+import React from 'react';
 
 import { Panel } from './Panel';
 import { PanelBody, PanelHeader } from './Panel.slots';
