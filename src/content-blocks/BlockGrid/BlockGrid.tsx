@@ -5,6 +5,7 @@ import { Button, ButtonType, Spacer } from '../../components';
 import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
 
 import './BlockGrid.scss';
+import { get } from 'lodash-es';
 
 export interface GridItem {
 	source: string;
@@ -48,7 +49,7 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 		>
 			{elements.map(element => (
 				<div
-					key={`block-grid-${element.title}-${element.source}`}
+					key={`block-grid-${get(element, 'action.value')}`}
 					className={classnames('c-block-grid__item', {
 						'u-clickable': !!navigate && !!element.action,
 					})}
