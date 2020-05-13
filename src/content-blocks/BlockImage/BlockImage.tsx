@@ -38,17 +38,25 @@ export const BlockImage: FunctionComponent<BlockImageProps> = ({
 
 	return (
 		<Container
-			className={classnames(className, 'o-block-image', `o-block-image__${align}`, {
-				'o-block-image__page-header-image': width === 'page-header',
-			})}
+			className={classnames(
+				className,
+				'o-block-image',
+				`o-block-image__${align}`,
+				`o-block-image__${width}`,
+				{
+					'o-block-image__page-header-image': width === 'page-header',
+				}
+			)}
 			style={style}
 		>
 			{width !== 'page-header' && (
-				<>
-					<Image src={imageSource} alt={imageDescription || title || text} wide />
+				<Image src={imageSource} alt={imageDescription || title || text} wide />
+			)}
+			{(!!title || !!text) && (
+				<div className="a-block-image__annotation">
 					{title && <h3>{title}</h3>}
 					{text && <p className="a-block-image__text">{text}</p>}
-				</>
+				</div>
 			)}
 		</Container>
 	);

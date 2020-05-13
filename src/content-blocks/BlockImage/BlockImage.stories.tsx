@@ -14,8 +14,24 @@ storiesOf('blocks/BlockImage', module)
 		/>
 	))
 	.add('BlockImage full-width', () => <BlockImage imageSource={imageSource} width={'full-width'} />)
+	.add('BlockImage full-width with annotation', () => (
+		<BlockImage
+			imageSource={imageSource}
+			width={'full-width'}
+			title="Dit is een bijschrift"
+			text="Dit is een subscript"
+		/>
+	))
 	.add('BlockImage page header', () => (
 		<BlockImage imageSource={imageSource} width={'page-header'} />
+	))
+	.add('BlockImage page header with annotation', () => (
+		<BlockImage
+			imageSource={imageSource}
+			width={'page-header'}
+			title="Dit is een bijschrift"
+			text="Dit is een subscript "
+		/>
 	))
 	.add('BlockImage 500px', () => (
 		<BlockImage
