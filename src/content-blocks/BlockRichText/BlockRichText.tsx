@@ -41,7 +41,7 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 			<Spacer key={`rich-text-column-${columnIndex}-button-${buttonIndex}`} margin="top">
 				<Button
 					{...buttonProps}
-					onClick={navigate ? () => navigate(buttonProps.buttonAction.value) : () => null}
+					onClick={navigate ? () => navigate(buttonProps.buttonAction) : () => null}
 				/>
 			</Spacer>
 		));
