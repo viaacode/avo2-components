@@ -17,6 +17,23 @@
 		margin-left: auto;
 		margin-right: 0;
 	}
+
+	&.o-block-image__full-width {
+		.a-block-image__annotation {
+			padding: 10px 20px 0 20px;
+		}
+	}
+
+	&.o-block-image__page-header {
+		position: relative;
+
+		.a-block-image__annotation {
+			padding: 0 20px 10px 20px;
+			position: absolute;
+			top: calc(100% + 10px);
+			left: 0;
+		}
+	}
 }
 
 .a-block-image__text {
