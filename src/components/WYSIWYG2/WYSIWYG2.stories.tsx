@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
-import { Spacer } from '..';
-import { action } from '../../helpers';
+import { Spacer } from '../Spacer/Spacer';
 import { Select } from '../Select/Select';
 import { SELECT_MOCK_OPTIONS } from '../Select/Select.mock';
+import { action } from '../../helpers';
 
 import { WYSIWYG2 } from './WYSIWYG2';
 
@@ -42,7 +42,6 @@ storiesOf('components/WYSIWYG2', module)
 	.add('WYSIWYG2', () => (
 		<WYSIWYG2StoryComponent>
 			<WYSIWYG2
-				id="story-WYSIWYG2-1"
 				initialHtml={
 					'<h2>Welcome!</h2><p>This prefilled content is all <strong>editable</strong>.</p>'
 				}
@@ -52,7 +51,6 @@ storiesOf('components/WYSIWYG2', module)
 	.add('WYSIWYG2 disabled', () => (
 		<WYSIWYG2StoryComponent>
 			<WYSIWYG2
-				id="story-WYSIWYG2-2"
 				initialHtml={
 					'<h2>Welcome!</h2><p>This prefilled content is all <strong>editable</strong>.</p>'
 				}
@@ -62,12 +60,22 @@ storiesOf('components/WYSIWYG2', module)
 	))
 	.add('WYSIWYG2 with limited buttons', () => (
 		<WYSIWYG2StoryComponent>
-			<WYSIWYG2 id="story-WYSIWYG2-3" controls={WYSIWYG2_OPTIONS} />
+			<WYSIWYG2 controls={WYSIWYG2_OPTIONS} />
 		</WYSIWYG2StoryComponent>
 	))
 	.add('WYSIWYG2 with table button', () => (
 		<WYSIWYG2StoryComponent>
-			<WYSIWYG2 id="story-WYSIWYG2-5" controls={[...WYSIWYG2_OPTIONS, 'separator', 'table']} />
+			<WYSIWYG2 controls={[...WYSIWYG2_OPTIONS, 'separator', 'table']} />
+		</WYSIWYG2StoryComponent>
+	))
+	.add('WYSIWYG2 with initial table html', () => (
+		<WYSIWYG2StoryComponent>
+			<WYSIWYG2
+				controls={[...WYSIWYG2_OPTIONS, 'separator', 'table']}
+				initialHtml={
+					'<p></p><p></p><table class="c-editor-table"><tr><td colSpan="1" rowSpan="1"><u>dit is een test</u></td><td colSpan="1" rowSpan="1"><u>dit ook</u></td><td colSpan="1" rowSpan="1"><u>ook dit</u></td></tr><tr><td colSpan="1" rowSpan="1">test</td><td colSpan="1" rowSpan="1"><strong>test</strong></td><td colSpan="1" rowSpan="1">test</td></tr><tr><td colSpan="1" rowSpan="1"></td><td colSpan="1" rowSpan="1"></td><td colSpan="1" rowSpan="1"></td></tr></table><p></p>'
+				}
+			/>
 		</WYSIWYG2StoryComponent>
 	))
 	.add('WYSIWYG2 with select above it (z-index)', () => (
@@ -77,7 +85,7 @@ storiesOf('components/WYSIWYG2', module)
 			</Spacer>
 
 			<WYSIWYG2StoryComponent>
-				<WYSIWYG2 id="story-WYSIWYG2-6" controls={[...WYSIWYG2_OPTIONS, 'separator', 'table']} />
+				<WYSIWYG2 controls={[...WYSIWYG2_OPTIONS, 'separator', 'table']} />
 			</WYSIWYG2StoryComponent>
 		</>
 	));
