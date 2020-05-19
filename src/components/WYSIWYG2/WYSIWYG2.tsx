@@ -7,18 +7,6 @@ import React, { FunctionComponent } from 'react';
 
 import './WYSIWYG2.scss';
 
-const options = {
-	defaultColumns: 3, //  default number of columns
-	defaultRows: 3, //  default number of rows
-	withDropdown: true, //  Whether a drop-down menu pops up before inserting a table
-	columnResizable: false, //  Whether to allow drag to adjust the column width, default false
-	exportAttrString: 'class="c-editor-table"', //  Specify the attribute string attached to the table tag when outputting HTML
-	includeEditors: ['editor-1'], //  Specify which CraftEditor this module is valid for, and if not pass this property, it will be valid for all CraftEditors
-	// excludeEditors: [' editor-id-2 '], //  Specify which CraftEditor this module is invalid
-};
-
-BraftEditor.use(Table(options));
-
 export interface RichEditorStateSchema {
 	toHTML: () => string;
 }
@@ -75,7 +63,7 @@ export type WYSIWYG2ControlSchema =
 	| 'separator'; // Split line, continuous multiple separators will only be displayed as 1
 
 export interface WYSIWYG2PropsSchema {
-	id: string;
+	id?: string;
 	initialHtml?: string;
 	state?: RichEditorStateSchema;
 	placeholder?: string;
@@ -105,6 +93,16 @@ export const WYSIWYG2: FunctionComponent<WYSIWYG2PropsSchema> = ({
 	onDelete,
 	onSave,
 }) => {
+	const options = {
+		defaultColumns: 3, //  default number of columns
+		defaultRows: 3, //  default number of rows
+		withDropdown: true, //  Whether a drop-down menu pops up before inserting a table
+		columnResizable: false, //  Whether to allow drag to adjust the column width, default false
+		exportAttrString: 'class="c-editor-table"', //  Specify the attribute string attached to the table tag when outputting HTML
+	};
+
+	BraftEditor.use(Table(options));
+
 	const getLanguage = (languages: any, context: string): any => {
 		if (context === 'braft-table') {
 			return {
@@ -231,7 +229,6 @@ export const WYSIWYG2: FunctionComponent<WYSIWYG2PropsSchema> = ({
 		<div className={classnames('c-rich-text-editor c-content', { disabled })}>
 			<BraftEditor
 				id={id}
-				editorId="editor-1"
 				value={state || BraftEditor.createEditorState(initialHtml || '')}
 				placeholder={placeholder}
 				readonly={disabled}
