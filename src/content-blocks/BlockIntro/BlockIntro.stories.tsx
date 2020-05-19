@@ -9,4 +9,12 @@ storiesOf('blocks/BlockIntro', module)
 	.add('BlockIntro', () => <BlockIntro title="Page title" content={loremIpsum({ count: 3 })} />)
 	.add('BlockIntro (right)', () => (
 		<BlockIntro title="Page title" content={loremIpsum({ count: 3 })} align="right" />
+	))
+	.add('BlockIntro with heading type', () => (
+		<BlockIntro
+			headingType="h3"
+			title="Page title"
+			content={loremIpsum({ count: 3 })}
+			align="right"
+		/>
 	));
