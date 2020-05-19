@@ -36,7 +36,11 @@ export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
 	hasDividers = false,
 	navigate,
 }) => (
-	<ButtonToolbar className={classnames(className, 'c-block-buttons', `u-content-flex--${align}`)}>
+	<ButtonToolbar
+		className={classnames(className, 'c-block-buttons', `u-content-flex--${align}`, {
+			'c-block-buttons__dividers': hasDividers,
+		})}
+	>
 		{flatten(
 			elements.map((button, index) => {
 				const nodes = [
