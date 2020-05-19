@@ -77,6 +77,7 @@ import {
 	RichEditorStateSchema,
 	WYSIWYG2MediaSchema,
 	WYSIWYG2PropsSchema,
+	WYSIWYG2ControlSchema,
 	WYSIWYG2UploadInfoSchema,
 } from './WYSIWYG2/WYSIWYG2';
 
@@ -312,6 +313,7 @@ export type WYSIWYGProps = WYSIWYGPropsSchema;
 
 export { WYSIWYG2 } from './WYSIWYG2/WYSIWYG2';
 export type WYSIWYG2Props = WYSIWYG2PropsSchema;
+export type WYSIWYG2Control = WYSIWYG2ControlSchema;
 export type RichEditorState = RichEditorStateSchema;
 export type WYSIWYG2Media = WYSIWYG2MediaSchema;
 export type WYSIWYG2UploadInfo = WYSIWYG2UploadInfoSchema;
