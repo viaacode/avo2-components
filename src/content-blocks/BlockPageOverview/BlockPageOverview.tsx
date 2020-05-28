@@ -160,9 +160,12 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 			const labelsToShow: LabelObj[] = showAllLabels ? [...tabs, noLabelObj] : selectedTabs;
 
 			return labelsToShow.map(labelObj => {
+				if (!(pagesByLabel[labelObj.id] || []).length) {
+					return null;
+				}
 				return (
 					<Spacer margin="top-extra-large" key={`block-page-label-${labelObj.id}`}>
-						{(showAllLabels || allowMultiple) && (
+						{(showAllLabels || allowMultiple) && !!(tabs || []).length && (
 							<Spacer margin="left-small">
 								<BlockHeading type={'h2'}>{labelObj.label}</BlockHeading>
 							</Spacer>
