@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 import flowplayer from 'flowplayer-files';
-import 'flowplayer-files/lib/plugins/chromecast.min';
-import 'flowplayer-files/lib/plugins/cuepoints.min';
-import 'flowplayer-files/lib/plugins/subtitles.min';
+import chromecast from 'flowplayer-files/lib/plugins/chromecast.min';
+import cuepoints from 'flowplayer-files/lib/plugins/cuepoints.min';
+import subtitles from 'flowplayer-files/lib/plugins/subtitles.min';
 import { get } from 'lodash-es';
 import React, { createRef } from 'react';
 
@@ -11,6 +11,10 @@ import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
 import './FlowPlayer.scss';
+
+flowplayer.extensions.push(chromecast);
+flowplayer.extensions.push(cuepoints);
+flowplayer.extensions.push(subtitles);
 
 interface FlowplayerInstance extends HTMLVideoElement {
 	destroy: Function;
@@ -181,7 +185,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 	}
 
 	private cuePointEndListener() {
-		if (this.state.flowPlayerInstance) {
+		if (this.state && this.state.flowPlayerInstance) {
 			this.state.flowPlayerInstance.pause();
 		}
 	}
@@ -221,7 +225,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 
 		// Pause video at end cuepoint
 		if (props.end) {
-			flowplayerInstance.on('cuepointend', this.cuePointEndListener);
+			flowplayerInstance.on(flowplayer.events.CUEPOINT_END, this.cuePointEndListener);
 		}
 
 		this.drawCustomElements(flowplayerInstance);
