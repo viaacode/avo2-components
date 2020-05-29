@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 
 import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
 import { BlockRichText } from '../../content-blocks/BlockRichText/BlockRichText';
-import { DefaultProps, HeadingType } from '../../types';
+import { ButtonAction, DefaultProps, HeadingType } from '../../types';
 import { Button, ButtonPropsSchema } from '../Button/Button';
 import { ButtonTypeSchema } from '../Button/Button.types';
 import { IconNameSchema } from '../Icon/Icon.types';
@@ -19,9 +19,10 @@ export interface CTAPropsSchema extends DefaultProps {
 	buttonLabel: string;
 	buttonIcon?: IconNameSchema;
 	buttonType?: ButtonTypeSchema;
+	buttonAction?: ButtonAction;
 	width?: string;
 	backgroundColor?: string;
-	navigate: () => void;
+	navigate: (buttonAction: ButtonAction) => void;
 }
 
 export const CTA: FunctionComponent<CTAPropsSchema> = ({
@@ -34,6 +35,7 @@ export const CTA: FunctionComponent<CTAPropsSchema> = ({
 	buttonLabel,
 	buttonIcon,
 	buttonType = 'secondary',
+	buttonAction,
 	width = '50%',
 	backgroundColor = '#EDEFF2',
 	navigate,
@@ -42,7 +44,7 @@ export const CTA: FunctionComponent<CTAPropsSchema> = ({
 		label: buttonLabel,
 		title: buttonLabel,
 		ariaLabel: buttonLabel,
-		onClick: navigate,
+		onClick: () => buttonAction && navigate(buttonAction),
 		icon: buttonIcon,
 		type: buttonType,
 	};
