@@ -262,7 +262,9 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 									{columns
 										.map(col => col.id)
 										.map((columnId, columnIndex) => (
-											<div>{renderCell(rowData, columnId, rowIndex, columnIndex)}</div>
+											<div key={columnIndex}>
+												{renderCell(rowData, columnId, rowIndex, columnIndex)}
+											</div>
 										))}
 								</PanelBody>
 							</Panel>
