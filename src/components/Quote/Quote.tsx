@@ -3,7 +3,6 @@ import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
 import { AvatarIcon } from '../Avatar/AvatarIcon/AvatarIcon';
-import { Container } from '../Container/Container';
 
 import './Quote.scss';
 
@@ -21,15 +20,13 @@ export const Quote: FunctionComponent<QuotePropsSchema> = ({
 	authorName,
 	authorInitials,
 }) => (
-	<Container className={classnames(className, 'o-container-vertical-quote')} mode="vertical">
-		<div className="c-quote">
-			<blockquote className="c-quote__text">{quote}</blockquote>
-			{authorName && (
-				<cite className="c-quote__author">
-					<AvatarIcon initials={authorInitials} image={authorImage} />
-					<span>{authorName}</span>
-				</cite>
-			)}
-		</div>
-	</Container>
+	<div className={classnames('c-quote', className)}>
+		<blockquote className="c-quote__text">{quote}</blockquote>
+		{authorName && (
+			<cite className="c-quote__author">
+				<AvatarIcon initials={authorInitials} image={authorImage} />
+				<span>{authorName}</span>
+			</cite>
+		)}
+	</div>
 );
