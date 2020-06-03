@@ -1,4 +1,4 @@
-@import '~flowplayer-files/lib/styles/flowplayer.css';
+@import '~flowplayer-files/lib/style/flowplayer.css';
 @import '../../styles/settings/colors';
 @import '../../styles/settings/variables';
 
@@ -205,6 +205,21 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 	.fp-hover {
 		width: 40%;
 		height: 6px;
+	}
+
+	.fp-progress {
+		background-color: #25a4cf87;
+	}
+
+	.fp-cuepoint {
+		background-color: #25a4cf !important;
+		height: 100%;
+		cursor: pointer;
+		width: 5px;
+	}
+
+	.fp-middle {
+		padding-top: 50px;
 	}
 
 	.fp-color {
