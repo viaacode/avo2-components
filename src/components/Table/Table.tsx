@@ -10,6 +10,8 @@ import { IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
 
 import './Table.scss';
+import { Panel } from '..';
+import { PanelBody } from '../Panel/PanelBody/PanelBody';
 
 export type TableColumnSchema = {
 	col?:
@@ -53,6 +55,7 @@ export interface TablePropsSchema extends DefaultProps {
 	untable?: boolean;
 	variant?: 'bordered' | 'invisible' | 'styled';
 	showCheckboxes?: boolean;
+	useCards?: boolean;
 	selectedItems?: any[];
 	onSelectionChanged?: (selectedItems: any[]) => void;
 }
@@ -76,6 +79,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	untable,
 	variant,
 	showCheckboxes = false,
+	useCards = false,
 	selectedItems = [],
 	onSelectionChanged = () => {},
 }) => {
@@ -164,7 +168,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 		}
 	};
 
-	return (
+	const renderTable = () => (
 		<>
 			<table
 				className={classnames(className, 'c-table', {
@@ -239,4 +243,37 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 			)}
 		</>
 	);
+
+	const renderCards = () => {
+		if (!data || !rowKey) {
+			return null;
+		}
+		return (
+			<>
+				{(data || []).map((rowData, rowIndex) => (
+					<div
+						key={`table-card-${rowData[rowKey]}`}
+						className={onRowClick || showCheckboxes ? 'u-clickable' : ''}
+						onClick={() => handleRowClick(rowData)}
+					>
+						<Spacer margin="bottom">
+							<Panel>
+								<PanelBody>
+									{columns
+										.map(col => col.id)
+										.map((columnId, columnIndex) => (
+											<div key={columnIndex}>
+												{renderCell(rowData, columnId, rowIndex, columnIndex)}
+											</div>
+										))}
+								</PanelBody>
+							</Panel>
+						</Spacer>
+					</div>
+				))}
+			</>
+		);
+	};
+
+	return useCards ? renderCards() : renderTable();
 };

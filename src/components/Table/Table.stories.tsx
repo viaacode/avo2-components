@@ -182,4 +182,15 @@ storiesOf('components/Table', module)
 				showCheckboxes
 			/>
 		</TableStoryComponent>
+	))
+	.add('Table mobile cards', () => (
+		<TableStoryComponent>
+			<Table
+				columns={COLUMNS}
+				data={DATA}
+				rowKey="id"
+				renderCell={(row, cell) => renderCell(row, cell)}
+				useCards
+			/>
+		</TableStoryComponent>
 	));
