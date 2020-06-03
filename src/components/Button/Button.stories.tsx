@@ -16,6 +16,9 @@ const buttonProps: Partial<ButtonPropsSchema>[] = [
 	{ label: 'Danger', type: 'danger' },
 	{ label: 'Danger hover', type: 'danger-hover' },
 	{ label: 'Borderless', type: 'borderless' },
+	{ label: 'Pupil primary', type: 'pupil-primary' },
+	{ label: 'Pupil Link', type: 'pupil-link' },
+	{ label: 'Pupil Inline Link', type: 'pupil-inline-link' },
 	{ label: 'Disabled', disabled: true, title: 'reason why this button is disabled' },
 ];
 
@@ -28,6 +31,9 @@ const buttonIconProps: Partial<ButtonPropsSchema>[] = [
 	{ ...buttonProps[5], icon: 'x-circle' },
 	{ ...buttonProps[6], icon: 'x-square' },
 	{ ...buttonProps[7], icon: 'tag' },
+	{ ...buttonProps[8], icon: 'delete' },
+	{ ...buttonProps[9], icon: 'circle' },
+	{ ...buttonProps[10], icon: 'check-square' },
 ];
 
 const buttonInverseProps: Partial<ButtonPropsSchema>[] = [

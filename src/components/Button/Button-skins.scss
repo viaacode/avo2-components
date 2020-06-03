@@ -244,6 +244,82 @@ $c-button-link-color: $color-primary !default;
 	}
 }
 
+/* Pupil Primary
+   ========================================================================== */
+
+.c-button.c-button--pupil-primary {
+	border: 1px solid $color-yellow;
+	background: $color-yellow;
+	color: $color-gray-700;
+
+	svg * {
+		fill: $color-gray-700;
+	}
+
+	&:hover,
+	&:active,
+	&.c-button--active,
+	&:active:focus,
+	&.c-button--active:focus {
+		background: darken($color-yellow, 15%);
+		border-color: darken($color-yellow, 15%);
+	}
+}
+
+/* Pupil Button link
+   ========================================================================== */
+
+.c-button.c-button--pupil-link {
+	background: none;
+	border: none;
+	color: $color-yellow;
+
+	&:hover,
+	&:active,
+	&:focus,
+	&.c-button--active,
+	&.c-button--active:focus {
+		background: $color-gray-50;
+	}
+}
+
+/* Pupil Button inline-link
+   ========================================================================== */
+
+.c-button.c-button--pupil-inline-link {
+	background: none;
+	border: none;
+	color: $color-yellow;
+	padding: 0;
+	margin-top: -2px;
+
+	&:hover,
+	&:active,
+	&:focus,
+	&.c-button--active,
+	&.c-button--active:focus {
+		background: $color-gray-50;
+	}
+}
+
+/* Pupil Button underlined-link
+   ========================================================================== */
+
+.c-button.c-button--pupil-underlined-link {
+	@extend .c-button.c-button--link;
+	text-decoration: underline;
+
+	&:hover,
+	&:active,
+	&:focus,
+	&.c-button--active,
+	&.c-button--active:focus {
+		background: transparent;
+		color: $color-yellow;
+	}
+}
+
+
 /* Shared disabled state for all buttons
    ========================================================================== */
 

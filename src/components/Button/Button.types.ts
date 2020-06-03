@@ -9,4 +9,7 @@ export type ButtonTypeSchema =
 	| 'primary'
 	| 'secondary-i'
 	| 'secondary'
-	| 'tertiary';
+	| 'tertiary'
+	| 'pupil-primary'
+	| 'pupil-link'
+	| 'pupil-inline-link';
