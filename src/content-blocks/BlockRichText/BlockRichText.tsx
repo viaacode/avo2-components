@@ -5,21 +5,16 @@ import { Column, GridSizeSchema } from '../../components/Grid/Column/Column';
 import { Grid } from '../../components/Grid/Grid';
 import { Spacer } from '../../components/Spacer/Spacer';
 import { convertToHtml } from '../../helpers';
-import { DefaultProps } from '../../types';
+import { ButtonAction, DefaultProps } from '../../types';
 
 interface BlockRichTextElement {
 	content: string;
+	buttons?: (ButtonPropsSchema & { buttonAction: ButtonAction })[];
 	color?: string;
 }
 
 export interface BlockRichTextProps extends DefaultProps {
 	elements: BlockRichTextElement | BlockRichTextElement[];
-}
-
-interface BlockRichTextElement {
-	content: string;
-	buttons?: ButtonPropsSchema[];
-	color?: string;
 }
 
 export interface BlockRichTextProps extends DefaultProps {
