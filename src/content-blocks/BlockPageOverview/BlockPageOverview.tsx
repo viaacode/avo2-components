@@ -52,6 +52,7 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	onCurrentPageChanged: (newPage: number) => void;
 	pageCount: number;
 	pages: ContentPageInfo[];
+	activePageId?: number; // Used to expand the active accordion
 	navigate?: (action: ButtonAction) => void;
 }
 
@@ -74,6 +75,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	onCurrentPageChanged,
 	pageCount,
 	pages = [],
+	activePageId,
 	navigate,
 }) => {
 	const allLabelObj = { label: allLabel, id: -2 };
@@ -160,9 +162,12 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 			const labelsToShow: LabelObj[] = showAllLabels ? [...tabs, noLabelObj] : selectedTabs;
 
 			return labelsToShow.map(labelObj => {
+				if (!(pagesByLabel[labelObj.id] || []).length) {
+					return null;
+				}
 				return (
 					<Spacer margin="top-extra-large" key={`block-page-label-${labelObj.id}`}>
-						{(showAllLabels || allowMultiple) && (
+						{(showAllLabels || allowMultiple) && !!(tabs || []).length && (
 							<Spacer margin="left-small">
 								<BlockHeading type={'h2'}>{labelObj.label}</BlockHeading>
 							</Spacer>
@@ -190,7 +195,11 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		if (itemStyle === 'ACCORDION') {
 			return pages.map(page => {
 				return (
-					<Accordion title={page.title} isOpen={false} key={`block-page-${page.id}`}>
+					<Accordion
+						title={page.title}
+						isOpen={page.id === activePageId}
+						key={`block-page-${page.id}`}
+					>
 						{page.blocks}
 					</Accordion>
 				);

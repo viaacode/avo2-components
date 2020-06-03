@@ -18,4 +18,9 @@ storiesOf('blocks/BlockQuote', module)
 	))
 	.add('BlockQuote no avatar', () => (
 		<BlockQuote quote={quote} authorName={authorName} authorInitials={authorInitials} />
+	))
+	.add('BlockQuote verify no padding', () => (
+		<div style={{ backgroundColor: 'grey' }}>
+			<BlockQuote quote={quote} authorName={authorName} authorInitials={authorInitials} />
+		</div>
 	));

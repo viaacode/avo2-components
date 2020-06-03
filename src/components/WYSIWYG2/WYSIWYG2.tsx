@@ -60,6 +60,8 @@ export type WYSIWYG2ControlSchema =
 	| 'clear' // Content removal tool
 	| 'undo' // Undo operation
 	| 'redo' // Redo operation
+	| 'table' // Table
+	| 'fullscreen' // Make editor fullscreen
 	| 'separator'; // Split line, continuous multiple separators will only be displayed as 1
 
 export interface WYSIWYG2PropsSchema {

@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "1.41.0",
+  "version": "1.42.0",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "style": "dist/styles/main.css",
@@ -20,8 +20,7 @@
     "test": "jest --verbose",
     "test:output": "cross-env CI=true jest --json --outputFile=.storybook/test-results.json",
     "licenses": "license-checker --csv --out licenses.csv",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "snyk-protect": "snyk protect"
   },
   "browserslist": {
     "production": [
@@ -52,7 +51,7 @@
     "braft-extensions": "^0.1.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.0.0-beta.1",
-    "flowplayer-files": "^2.2.1",
+    "flowplayer-files": "^2.5.1",
     "jquery": "^3.5.0",
     "lodash-es": "^4.17.15",
     "marked": "^0.7.0",

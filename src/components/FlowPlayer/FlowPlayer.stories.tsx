@@ -40,7 +40,7 @@ storiesOf('components/FlowPlayer', module)
 	))
 	.add('FlowPlayer Thumbnail met Geknipt', () => (
 		<div className="o-grid-col-bp3-4">
-			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} src={null} start={10} end={100} />
+			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} start={60} end={180} />
 		</div>
 	))
 	.add('FlowPlayer logo', () => (

@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import React, { ChangeEvent, FunctionComponent } from 'react';
+import React, { ChangeEvent, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 
 export interface CheckboxPropsSchema extends DefaultProps {
-	label: string;
+	label: string | ReactNode;
 	checked?: boolean;
 	id?: string;
 	disabled?: boolean;

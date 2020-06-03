@@ -17,4 +17,14 @@ storiesOf('blocks/BlockIntro', module)
 			content={loremIpsum({ count: 3 })}
 			align="right"
 		/>
+	))
+	.add('BlockIntro verify no padding top/bottom', () => (
+		<div style={{ backgroundColor: 'gray' }}>
+			<BlockIntro
+				headingType="h3"
+				title="Page title"
+				content={loremIpsum({ count: 3 })}
+				align="right"
+			/>
+		</div>
 	));
