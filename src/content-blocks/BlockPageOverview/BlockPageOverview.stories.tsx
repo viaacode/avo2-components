@@ -65,7 +65,6 @@ const BlockPageOverviewStoryComponent = ({
 
 const baseProps = {
 	tabs,
-	itemsPerPage,
 	currentPage: 0,
 	onCurrentPageChanged: () => {},
 	onSelectedTabsChanged: () => {},
@@ -101,6 +100,11 @@ storiesOf('blocks/BlockPageOverview', module)
 	.add('BlockPageOverview accordions with header', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
 			<BlockPageOverview {...baseProps} itemStyle="ACCORDION" />
+		</BlockPageOverviewStoryComponent>
+	))
+	.add('BlockPageOverview accordions with focus', () => (
+		<BlockPageOverviewStoryComponent initialPageIndex={0} itemsOnPage={20}>
+			<BlockPageOverview {...baseProps} itemStyle="ACCORDION" activePageId={31} />
 		</BlockPageOverviewStoryComponent>
 	))
 	.add('BlockPageOverview menu grid', () => (
