@@ -12,4 +12,5 @@ export type ButtonTypeSchema =
 	| 'tertiary'
 	| 'pupil-primary'
 	| 'pupil-link'
-	| 'pupil-inline-link';
+	| 'pupil-inline-link'
+	| 'pupil-underlined-link';
