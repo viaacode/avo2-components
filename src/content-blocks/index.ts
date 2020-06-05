@@ -24,7 +24,7 @@ export {
 export {
 	BlockPageOverview,
 	BlockPageOverviewProps,
-	ContentPageInfo,
+	PageInfo,
 	ContentTabStyle,
 	ContentItemStyle,
 	LabelObj,

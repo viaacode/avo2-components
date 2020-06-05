@@ -14,7 +14,7 @@ export type ContentWidthSchema = 'REGULAR' | 'LARGE' | 'MEDIUM';
 export type ContentTabStyle = 'ROUNDED_BADGES' | 'MENU_BAR';
 export type ContentItemStyle = 'GRID' | 'LIST' | 'ACCORDION';
 
-export interface ContentPageInfo {
+export interface PageInfo {
 	id: number;
 	title: string;
 	description: string | null;
@@ -51,7 +51,7 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	currentPage: number;
 	onCurrentPageChanged: (newPage: number) => void;
 	pageCount: number;
-	pages: ContentPageInfo[];
+	pages: PageInfo[];
 	activePageId?: number; // Used to expand the active accordion
 	navigate?: (action: ButtonAction) => void;
 }
@@ -110,7 +110,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		onSelectedTabsChanged(newSelectedTabs.filter(tab => tab.id !== allLabelObj.id));
 	};
 
-	const handlePageClick = (page: ContentPageInfo) => {
+	const handlePageClick = (page: PageInfo) => {
 		if (navigate) {
 			navigate({
 				type: 'CONTENT_PAGE',
@@ -119,13 +119,13 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		}
 	};
 
-	const formatDateString = (dateString: string, page: ContentPageInfo): string => {
+	const formatDateString = (dateString: string, page: PageInfo): string => {
 		return dateString
 			.replace('%label%', get(page, 'labels[0].label', noLabelObj.label))
 			.replace('%date%', format(new Date(page.created_at), 'd MMMM yyyy'));
 	};
 
-	const getDescription = (page: ContentPageInfo) => {
+	const getDescription = (page: PageInfo) => {
 		return showDescription && page.description
 			? <div dangerouslySetInnerHTML={{ __html: page.description }} /> || undefined
 			: undefined;
@@ -152,8 +152,8 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 				flatten(pages.map((page): LabelObj[] => page.labels)),
 				'id'
 			);
-			const pagesByLabel: { [labelId: number]: ContentPageInfo[] } = Object.fromEntries(
-				uniqueLabels.map((labelObj: LabelObj): [number, ContentPageInfo[]] => {
+			const pagesByLabel: { [labelId: number]: PageInfo[] } = Object.fromEntries(
+				uniqueLabels.map((labelObj: LabelObj): [number, PageInfo[]] => {
 					return [
 						labelObj.id,
 						pages.filter(page =>
@@ -180,7 +180,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 						)}
 						<BlockGrid
 							elements={(pagesByLabel[labelObj.id] || []).map(
-								(page: ContentPageInfo): GridItem => ({
+								(page: PageInfo): GridItem => ({
 									title: showTitle ? page.title : undefined,
 									text: getDescription(page),
 									source: page.thumbnail_path,
