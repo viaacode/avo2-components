@@ -14,7 +14,7 @@ export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-24T15:07:45.868917+00:00',
-		description: 'Testy',
+		description: '<strong>Testy</strong>',
 		title: 'Testland',
 		id: 53,
 		thumbnail_path: '/images/500x200.svg',

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import { Button, ButtonType, Spacer } from '../../components';
 import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
@@ -10,7 +10,7 @@ import { get } from 'lodash-es';
 export interface GridItem {
 	source: string;
 	title?: string;
-	text?: string;
+	text?: string | ReactNode;
 	buttonLabel?: string;
 	buttonType?: ButtonType;
 	buttonTitle?: string;
