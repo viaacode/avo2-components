@@ -207,6 +207,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			autoplay: this.props.autoplay,
 			ui: flowplayer.ui.LOGO_ON_RIGHT | flowplayer.ui.USE_DRAG_HANDLE,
 			plugins: ['subtitles', 'chromecast', 'cuepoints'],
+			preload: props.src && !props.poster ? 'metadata' : 'none',
 
 			// CUEPOINTS
 			...(props.end ? { cuepoints: [{ start: props.start, end: props.end }] } : {}), // Only set cuepoints if end is passed

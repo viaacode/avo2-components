@@ -4,7 +4,7 @@ import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
 
 import { action } from '../../helpers';
 
-import { BlockPageOverview, ContentPageInfo, LabelObj } from './BlockPageOverview';
+import { BlockPageOverview, PageInfo, LabelObj } from './BlockPageOverview';
 import { CONTENT_PAGES_MOCK } from './BlockPageOverview.mock';
 
 const tabs = [
@@ -29,11 +29,11 @@ const BlockPageOverviewStoryComponent = ({
 }) => {
 	const [currentPage, setCurrentPage] = useState<number>(initialPageIndex);
 	const [selectedTabs, setSelectedTabs] = useState<LabelObj[]>([]);
-	const [pages, setPages] = useState<ContentPageInfo[]>(mockPages.slice(0, itemsOnPage));
+	const [pages, setPages] = useState<PageInfo[]>(mockPages.slice(0, itemsOnPage));
 	const [pageCount, setPageCount] = useState<number>(mockPages.length / itemsOnPage);
 
 	useEffect(() => {
-		let filteredPages: ContentPageInfo[];
+		let filteredPages: PageInfo[];
 		if (selectedTabs.length) {
 			filteredPages = mockPages.filter(page => {
 				return !!intersectionBy(page.labels, selectedTabs, (labelObj: LabelObj) => labelObj.id)
