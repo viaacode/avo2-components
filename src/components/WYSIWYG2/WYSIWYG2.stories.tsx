@@ -7,10 +7,11 @@ import { SELECT_MOCK_OPTIONS } from '../Select/Select.mock';
 import { action } from '../../helpers';
 
 import { WYSIWYG2 } from './WYSIWYG2';
+import { WYSIWYG2Control } from '../index';
 
 const withContent = (story: Function) => <div className="c-content">{story()}</div>;
 
-export const WYSIWYG2_OPTIONS = [
+export const WYSIWYG2_OPTIONS: WYSIWYG2Control[] = [
 	'undo',
 	'redo',
 	'separator',
