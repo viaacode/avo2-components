@@ -1,6 +1,6 @@
-import { ContentPageInfo } from './BlockPageOverview';
+import { PageInfo } from './BlockPageOverview';
 
-export const CONTENT_PAGES_MOCK: ContentPageInfo[] = [
+export const CONTENT_PAGES_MOCK: PageInfo[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-24T13:46:05.862681+00:00',
