@@ -125,6 +125,12 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 			.replace('%date%', format(new Date(page.created_at), 'd MMMM yyyy'));
 	};
 
+	const getDescription = (page: ContentPageInfo) => {
+		return showDescription && page.description
+			? <div dangerouslySetInnerHTML={{ __html: page.description }} /> || undefined
+			: undefined;
+	};
+
 	const renderPages = () => {
 		if (itemStyle === 'LIST') {
 			return pages.map(page => {
@@ -133,7 +139,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 						imageSource={page.thumbnail_path}
 						title={showTitle ? page.title : undefined}
 						subtitle={showDate ? formatDateString(dateString, page) : undefined}
-						text={showDescription ? page.description || undefined : undefined}
+						text={getDescription(page)}
 						buttonLabel={buttonLabel}
 						onClick={() => handlePageClick(page)}
 						key={`content-block-page-${page.id}`}
@@ -176,7 +182,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 							elements={(pagesByLabel[labelObj.id] || []).map(
 								(page: ContentPageInfo): GridItem => ({
 									title: showTitle ? page.title : undefined,
-									text: showDescription ? page.description || undefined : undefined,
+									text: getDescription(page),
 									source: page.thumbnail_path,
 									action: { type: 'CONTENT_PAGE', value: page.id },
 								})
