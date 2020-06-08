@@ -42,8 +42,12 @@
 		margin: 0 0 0 3px;
 	}
 
-	// The same as: .c-content p
-	.public-DraftEditor-content > div > div {
-		margin: 1.5rem 0;
+	.public-DraftEditor-content {
+		word-break: normal;
+
+		// The same as: .c-content p
+		> div > div {
+			margin: 1.5rem 0;
+		}
 	}
 }
