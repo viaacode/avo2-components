@@ -8,6 +8,7 @@ import React, { createRef } from 'react';
 
 import { formatDuration } from '../../helpers';
 import { DefaultProps } from '../../types';
+import { AspectRatioWrapper } from '../AspectRatioWrapper/AspectRatioWrapper';
 import { Icon } from '../Icon/Icon';
 
 import './FlowPlayer.scss';
@@ -261,9 +262,10 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 					onClick={this.props.onInit}
 					style={{ display: this.props.src ? 'none' : 'block' }}
 				>
-					<div className="c-video-player__item c-video-player__thumbnail">
-						<img src={this.props.poster} alt={`Thumbnail voor video over ${this.props.title}.`} />
-					</div>
+					<AspectRatioWrapper
+						className="c-video-player__item c-video-player__thumbnail"
+						style={{ backgroundImage: `url(${this.props.poster})` }}
+					/>
 					<div className="c-play-overlay">
 						<div className="c-play-overlay__inner">
 							<Icon name="play" className="c-play-overlay__button" />
