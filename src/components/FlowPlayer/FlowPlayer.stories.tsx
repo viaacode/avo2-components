@@ -38,6 +38,17 @@ storiesOf('components/FlowPlayer', module)
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} src={null} />
 		</div>
 	))
+	.add('FlowPlayer Thumbnail 4:3', () => (
+		<div className="o-grid-col-bp3-4">
+			<FlowPlayer
+				{...MOCK_FLOW_PLAYER_PROPS_FULL}
+				poster={
+					'https://archief-media.viaa.be/viaa/TESTBEELD/70412f5bdb594b7eb7518e261ec01d57973cba5becca46dab6870d78246c4b05/keyframes/keyframes_1_1/keyframe1.jpg'
+				}
+				src={null}
+			/>
+		</div>
+	))
 	.add('FlowPlayer without thumbnail', () => (
 		<div className="o-grid-col-bp3-4">
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} poster={undefined} />

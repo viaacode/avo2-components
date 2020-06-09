@@ -10,9 +10,10 @@ export interface AspectRatioWrapperPropsSchema extends DefaultProps {
 }
 
 export const AspectRatioWrapper: FunctionComponent<AspectRatioWrapperPropsSchema> = ({
-	aspect,
+	aspect = 1.777777,
 	children,
 	className,
+	style,
 }) => (
 	<div
 		className={classnames(
@@ -22,9 +23,12 @@ export const AspectRatioWrapper: FunctionComponent<AspectRatioWrapperPropsSchema
 				typeof aspect === 'string' &&
 				`c-aspect-ratio-wrapper--aspect-${(aspect as string).replace(':', '-')}`
 		)}
-		style={
-			typeof aspect === 'number' ? { paddingBottom: `${Math.round(10000 / aspect) / 100}%` } : {}
-		}
+		style={{
+			...style,
+			...(typeof aspect === 'number'
+				? { paddingBottom: `${Math.round(10000 / aspect) / 100}%` }
+				: {}),
+		}}
 	>
 		{children}
 	</div>
