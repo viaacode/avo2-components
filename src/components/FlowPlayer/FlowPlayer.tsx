@@ -102,7 +102,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			}
 		}
 
-		if (nextProps.poster !== this.props.poster && this.props.poster) {
+		if (nextProps.poster !== this.props.poster && (this.props.poster || nextProps.poster)) {
 			// Video was changed before playing the video
 			return true;
 		}
@@ -200,12 +200,11 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 
 		const flowplayerInstance: FlowplayerInstance = flowplayer(this.videoContainerRef.current, {
 			// DATA
-			poster: props.poster,
 			src: props.src,
 			token: props.token,
 
 			// CONFIGURATION
-			autoplay: this.props.autoplay,
+			autoplay: !this.props.src || this.props.autoplay,
 			ui: flowplayer.ui.LOGO_ON_RIGHT | flowplayer.ui.USE_DRAG_HANDLE,
 			plugins: ['subtitles', 'chromecast', 'cuepoints'],
 			preload: props.src && !props.poster ? 'metadata' : 'none',
@@ -246,6 +245,18 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		});
 	}
 
+	private handlePosterClicked = () => {
+		if (!this.props.src) {
+			if (this.props.onInit) {
+				this.props.onInit();
+			}
+		} else {
+			if (this.state.flowPlayerInstance) {
+				this.state.flowPlayerInstance.play();
+			}
+		}
+	};
+
 	render() {
 		return (
 			<div className={classnames(this.props.className, 'c-video-player')}>
@@ -255,12 +266,10 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 					})}
 					data-player-id={this.props.dataPlayerId}
 					ref={this.videoContainerRef}
-					style={{ display: this.props.src ? 'block' : 'none' }}
 				/>
 				<div
-					className={'c-video-player-inner'}
-					onClick={this.props.onInit}
-					style={{ display: this.props.src ? 'none' : 'block' }}
+					className="c-video-player-inner c-video-player__overlay"
+					onClick={this.handlePosterClicked}
 				>
 					<AspectRatioWrapper
 						className="c-video-player__item c-video-player__thumbnail"

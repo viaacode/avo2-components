@@ -21,6 +21,8 @@ export interface BlockHeroProps extends DefaultProps {
 	src?: string;
 	poster?: string;
 	altText?: string;
+	token?: string;
+	dataPlayerId?: string;
 	buttons?: (ButtonProps & { buttonAction: ButtonAction })[];
 	navigate?: (buttonAction: ButtonAction) => void;
 }
@@ -33,6 +35,8 @@ export const BlockHero: FunctionComponent<BlockHeroProps> = ({
 	src,
 	poster,
 	altText,
+	token,
+	dataPlayerId,
 	buttons = [],
 	navigate,
 }) => (
@@ -68,7 +72,15 @@ export const BlockHero: FunctionComponent<BlockHeroProps> = ({
 					)}
 				</div>
 				<div className="c-home-hero__image">
-					{!!src && <FlowPlayer src={src} poster={poster} title={altText || 'Hero video'} />}
+					{!!src && (
+						<FlowPlayer
+							src={src}
+							poster={poster}
+							title={altText || 'Hero video'}
+							token={token}
+							dataPlayerId={dataPlayerId}
+						/>
+					)}
 					{!src && poster && <img src={poster} alt={altText || 'Hero afbeelding'} />}
 				</div>
 			</div>
