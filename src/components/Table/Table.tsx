@@ -7,11 +7,11 @@ import { Checkbox } from '../Checkbox/Checkbox';
 import { Flex } from '../Flex/Flex';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
+import { Panel } from '../Panel/Panel';
+import { PanelBody } from '../Panel/PanelBody/PanelBody';
 import { Spacer } from '../Spacer/Spacer';
 
 import './Table.scss';
-import { Panel } from '..';
-import { PanelBody } from '../Panel/PanelBody/PanelBody';
 
 export type TableColumnSchema = {
 	col?:
@@ -47,7 +47,12 @@ export interface TablePropsSchema extends DefaultProps {
 	nowrap?: boolean;
 	onColumnClick?: (id: string) => void;
 	onRowClick?: (rowData: any) => void;
-	renderCell?: (rowData: any, columnId: string, rowIndex: number, columnIndex: number) => ReactNode;
+	renderCell?: (
+		rowData: any,
+		columnId: string,
+		rowIndex: number,
+		columnIndex: number
+	) => ReactNode;
 	rowKey?: string;
 	sortColumn?: string;
 	sortOrder?: 'asc' | 'desc';
@@ -150,7 +155,9 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 		);
 
 	const isItemSelected = (dataItem: any) =>
-		selectedItems.find(selectedItem => selectedItem[rowKey || 'id'] === dataItem[rowKey || 'id']);
+		selectedItems.find(
+			selectedItem => selectedItem[rowKey || 'id'] === dataItem[rowKey || 'id']
+		);
 
 	const toggleAllItemSelection = () => {
 		if (areAllItemsSelected()) {
@@ -207,7 +214,9 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 								{data.map((rowData, rowIndex) => (
 									<tr
 										key={`table-row-${rowData[rowKey]}`}
-										className={onRowClick || showCheckboxes ? 'u-clickable' : ''}
+										className={
+											onRowClick || showCheckboxes ? 'u-clickable' : ''
+										}
 										onClick={() => handleRowClick(rowData)}
 									>
 										{showCheckboxes && (
@@ -217,7 +226,8 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 													checked={
 														!!selectedItems.find(
 															selectedItem =>
-																selectedItem[rowKey || 'id'] === rowData[rowKey || 'id']
+																selectedItem[rowKey || 'id'] ===
+																rowData[rowKey || 'id']
 														)
 													}
 													onChange={() => toggleItemSelection(rowData)}
@@ -228,7 +238,12 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 											.map(col => col.id)
 											.map((columnId, columnIndex) => (
 												<td key={columnIndex}>
-													{renderCell(rowData, columnId, rowIndex, columnIndex)}
+													{renderCell(
+														rowData,
+														columnId,
+														rowIndex,
+														columnIndex
+													)}
 												</td>
 											))}
 									</tr>
@@ -263,7 +278,12 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 										.map(col => col.id)
 										.map((columnId, columnIndex) => (
 											<div key={columnIndex}>
-												{renderCell(rowData, columnId, rowIndex, columnIndex)}
+												{renderCell(
+													rowData,
+													columnId,
+													rowIndex,
+													columnIndex
+												)}
 											</div>
 										))}
 								</PanelBody>

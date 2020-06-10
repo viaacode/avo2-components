@@ -1,7 +1,3 @@
-import jquery from 'jquery';
-
-(window as any).jQuery = jquery;
-
 // Colors
 export { COLORS } from './colors';
 
