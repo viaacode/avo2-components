@@ -1,105 +1,53 @@
 @import '../../styles/settings/colors';
 
-.trumbowyg-disabled .trumbowyg-editor {
-	background: #D6DEE3;
-}
-
-.trumbowyg-editor {
-	max-height: 350px;
-
-	strong {
-		// Fixes strange bug in Chrome where the wysiwyg wouldn't clear bold styling
-		font-weight: 600;
-	}
-
-	ol, ul {
-		padding-left: 20px;
-	}
-
-	ul {
-		list-style: disc;
-	}
-
-	ol {
-		list-style: decimal;
-	}
-}
-
 .c-content table td {
 	border: 1px solid $color-gray-100;
 }
 
-.trumbowyg-box, .trumbowyg-editor {
-	margin: 0;
-}
+.c-rich-text-editor {
+	border: 1px solid #bac7d1;
+	border-radius: 0.3rem;
 
+	&.disabled {
+		.bf-controlbar {
+			pointer-events: none;
+		}
 
-// Modifiers
-
-.trumbowyg-fullscreen {
-	.trumbowyg-editor {
-		max-height: 100vh;
+		background: $color-gray-100;
 	}
-}
 
-.trumbowyg-modal {
-	max-width: 553px !important;
-}
-
-.trumbowyg-modal-box {
-	max-width: 533px !important;
-}
-
-.trumbowyg-modal-box label:nth-child(4) {
-	height: 60px !important;
-}
-
-.trumbowyg-modal-box label:nth-child(4) input {
-	height: 52px !important;
-}
-
-.trumbowyg-modal-box label {
-	margin: 5px 12px !important;
-}
-
-.trumbowyg-modal-box label .trumbowyg-input-infos span {
-	width: 180px;
-}
-
-.trumbowyg-button-pane {
-	z-index: 0;
-}
-
-
-.trumbowyg-dropdown-table table {
-	tr {
-		padding: 0;
+	ul, ol {
 		margin: 0;
-		line-height: 0;
-
-		&:last-child td {
-			border-bottom-width: 1px;
-		}
+		padding: 5px;
 	}
 
-	td {
-		margin: 0;
-		border: 1px solid #cecece;
-		border-right-width: 0;
-		border-bottom-width: 0;
-		box-shadow: none;
+	.bf-table-dropdown-control .button {
+		width: auto;
+	}
 
+	.bf-controlbar {
+		background: #ecf0f1;
+	}
 
-		&:last-child {
-				border-right-width: 1px;
-		}
+	.bf-content {
+		font-size: 15px;
+	}
 
-		&.active {
-			background-color: $color-teal-bright;
+	.bf-controlbar .separator-line {
+		margin: 0 5px;
+		height: 35px;
+	}
+
+	.bf-controlbar .control-item {
+		margin: 0 0 0 3px;
+	}
+
+	.public-DraftEditor-content {
+		word-break: normal;
+
+		// The same as: .c-content p
+		> div > div {
+			margin: 1.5rem 0;
 		}
 	}
-}
-
-.trumbowyg-dropdown button {
-	height: 34px;
 }

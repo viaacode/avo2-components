@@ -41,7 +41,6 @@ export default {
 		'date-fns/locale/nl',
 		'react-datepicker',
 		'react-datepicker/dist/react-datepicker.css',
-		'jquery',
 		'marked',
 		'moment',
 		'moment/locale/nl-be',
@@ -54,9 +53,6 @@ export default {
 		'react-select',
 		'react-select/creatable',
 		'lodash-es',
-		'trumbowyg/dist/ui/sass/trumbowyg.scss',
-		'trumbowyg/dist/plugins/table/ui/sass/trumbowyg.table.scss',
-		'trumbowyg/dist/ui/icons.svg',
 		'@storybook/addon-actions',
 	],
 };
