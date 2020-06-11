@@ -301,6 +301,11 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		}
 	}
 
+	.is-starting .fp-header {
+		visibility: hidden;
+		display: none;
+	}
+
 	&.is-hovered,
 	&.is-paused {
 		.fp-header {
