@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from 'react';
+import { isString } from 'lodash-es';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import { ButtonAction, DefaultProps } from '../../types';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
@@ -21,7 +22,10 @@ export interface BlockHeroProps extends DefaultProps {
 	src?: string;
 	poster?: string;
 	altText?: string;
+	token?: string;
+	dataPlayerId?: string;
 	buttons?: (ButtonProps & { buttonAction: ButtonAction })[];
+	textBelowButtons?: string | ReactNode;
 	navigate?: (buttonAction: ButtonAction) => void;
 }
 
@@ -33,7 +37,10 @@ export const BlockHero: FunctionComponent<BlockHeroProps> = ({
 	src,
 	poster,
 	altText,
+	token,
+	dataPlayerId,
 	buttons = [],
+	textBelowButtons,
 	navigate,
 }) => (
 	<Container mode="vertical" size="large">
@@ -66,9 +73,25 @@ export const BlockHero: FunctionComponent<BlockHeroProps> = ({
 							</ButtonToolbar>
 						</Spacer>
 					)}
+					{!!textBelowButtons && (
+						<Spacer margin="top-large" style={{ color: contentColor }}>
+							{isString(textBelowButtons) && (
+								<p dangerouslySetInnerHTML={{ __html: textBelowButtons }} />
+							)}
+							{!isString(textBelowButtons) && textBelowButtons}
+						</Spacer>
+					)}
 				</div>
 				<div className="c-home-hero__image">
-					{!!src && <FlowPlayer src={src} poster={poster} title={altText || 'Hero video'} />}
+					{!!src && (
+						<FlowPlayer
+							src={src}
+							poster={poster}
+							title={altText || 'Hero video'}
+							token={token}
+							dataPlayerId={dataPlayerId}
+						/>
+					)}
 					{!src && poster && <img src={poster} alt={altText || 'Hero afbeelding'} />}
 				</div>
 			</div>

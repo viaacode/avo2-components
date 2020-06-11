@@ -1,70 +1,92 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
+import React, { cloneElement, ReactElement, useState } from 'react';
 
-import { action } from '../../helpers';
+import { Spacer } from '../Spacer/Spacer';
 import { Select } from '../Select/Select';
 import { SELECT_MOCK_OPTIONS } from '../Select/Select.mock';
+import { action } from '../../helpers';
 
 import { WYSIWYG } from './WYSIWYG';
+import { WYSIWYGControl } from '../index';
 
 const withContent = (story: Function) => <div className="c-content">{story()}</div>;
 
-const WYSIWYG_OPTIONS = [
-	['bold', 'italic'],
-	['undo', 'redo'],
-	['formatting'],
-	['unorderedList', 'orderedList'],
-	['removeformat'],
-	['link'],
+export const WYSIWYG_OPTIONS: WYSIWYGControl[] = [
+	'undo',
+	'redo',
+	'separator',
+	'bold',
+	'italic',
+	'underline',
+	'separator',
+	'list-ul',
+	'list-ol',
+	'separator',
+	'link',
 ];
+
+const WYSIWYGStoryComponent = ({ children }: { children: ReactElement }) => {
+	const [state, setState] = useState(null);
+
+	return cloneElement(children, {
+		state,
+		onChange: (newState: any) => {
+			action('onChange')(newState.toHTML());
+			setState(newState);
+		},
+	});
+};
 
 storiesOf('components/WYSIWYG', module)
 	.addParameters({ jest: ['WYSIWYG'] })
 	.addDecorator(withContent)
 	.add('WYSIWYG', () => (
-		<WYSIWYG
-			id="story-wysiwyg-1"
-			data={'<h2>Welcome!</h2><p>This prefilled content is all <strong>editable</strong>.</p>'}
-			onChange={action(`editor changed value`)}
-		/>
+		<WYSIWYGStoryComponent>
+			<WYSIWYG
+				initialHtml={
+					'<h2>Welcome!</h2><p>This prefilled content is all <strong>editable</strong>.</p>'
+				}
+			/>
+		</WYSIWYGStoryComponent>
 	))
 	.add('WYSIWYG disabled', () => (
-		<WYSIWYG
-			id="story-wysiwyg-2"
-			data={'<h2>Welcome!</h2><p>This prefilled content is all <strong>editable</strong>.</p>'}
-			disabled
-		/>
+		<WYSIWYGStoryComponent>
+			<WYSIWYG
+				initialHtml={
+					'<h2>Welcome!</h2><p>This prefilled content is all <strong>editable</strong>.</p>'
+				}
+				disabled
+			/>
+		</WYSIWYGStoryComponent>
 	))
 	.add('WYSIWYG with limited buttons', () => (
-		<WYSIWYG id="story-wysiwyg-3" btns={WYSIWYG_OPTIONS} />
+		<WYSIWYGStoryComponent>
+			<WYSIWYG controls={WYSIWYG_OPTIONS} />
+		</WYSIWYGStoryComponent>
 	))
-	.add('WYSIWYG with simple links', () => <WYSIWYG id="story-wysiwyg-4" minimalLinks />)
 	.add('WYSIWYG with table button', () => (
-		<WYSIWYG
-			id="story-wysiwyg-5"
-			btns={[...WYSIWYG_OPTIONS, ['table']]}
-			plugins={{
-				table: {
-					rows: 3,
-					columns: 4,
-					styler: 'c-table--styled',
-				},
-			}}
-		/>
+		<WYSIWYGStoryComponent>
+			<WYSIWYG controls={[...WYSIWYG_OPTIONS, 'separator', 'table']} />
+		</WYSIWYGStoryComponent>
+	))
+	.add('WYSIWYG with initial table html', () => (
+		<WYSIWYGStoryComponent>
+			<WYSIWYG
+				controls={[...WYSIWYG_OPTIONS, 'separator', 'table']}
+				initialHtml={
+					'<p></p><p></p><table class="c-editor-table"><tr><td colSpan="1" rowSpan="1"><u>dit is een test</u></td><td colSpan="1" rowSpan="1"><u>dit ook</u></td><td colSpan="1" rowSpan="1"><u>ook dit</u></td></tr><tr><td colSpan="1" rowSpan="1">test</td><td colSpan="1" rowSpan="1"><strong>test</strong></td><td colSpan="1" rowSpan="1">test</td></tr><tr><td colSpan="1" rowSpan="1"></td><td colSpan="1" rowSpan="1"></td><td colSpan="1" rowSpan="1"></td></tr></table><p></p>'
+				}
+			/>
+		</WYSIWYGStoryComponent>
 	))
 	.add('WYSIWYG with select above it (z-index)', () => (
 		<>
-			<Select options={SELECT_MOCK_OPTIONS} />
-			<WYSIWYG
-				id="story-wysiwyg-6"
-				btns={[...WYSIWYG_OPTIONS, ['table']]}
-				plugins={{
-					table: {
-						rows: 3,
-						columns: 4,
-						styler: 'c-table--styled',
-					},
-				}}
-			/>
+			<Spacer margin="bottom-small">
+				<Select options={SELECT_MOCK_OPTIONS} />
+			</Spacer>
+
+			<WYSIWYGStoryComponent>
+				<WYSIWYG controls={[...WYSIWYG_OPTIONS, 'separator', 'table']} />
+			</WYSIWYGStoryComponent>
 		</>
 	));

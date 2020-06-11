@@ -11,6 +11,10 @@ $c-play-overlay-inner-bg: $color-gray-900;
 $c-spinner-fullscreen-holder-bg: rgba(#000, 0.5);
 $c-video-player-progress-inner-bg: $color-teal-bright;
 
+.c-video-player {
+	position: relative;
+}
+
 .c-video-player__thumbnail {
 	background-size: cover;
 	background-position: center;
@@ -32,6 +36,14 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+
+	&.c-video-player__overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
 
 	.c-cut-overlay {
 		position: absolute;
@@ -289,6 +301,11 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		}
 	}
 
+	.is-starting .fp-header {
+		visibility: hidden;
+		display: none;
+	}
+
 	&.is-hovered,
 	&.is-paused {
 		.fp-header {
@@ -373,6 +390,10 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 			border-radius: 50%;
 		}
 	}
+}
+
+.c-video-player-inner:not(.is-starting) + .c-video-player__overlay {
+	display: none;
 }
 
 .c-button--borderless {

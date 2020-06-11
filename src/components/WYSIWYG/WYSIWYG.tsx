@@ -1,176 +1,264 @@
-import { throttle } from 'lodash-es';
-import React from 'react';
-
-import 'trumbowyg/dist/trumbowyg.min';
-
-import 'trumbowyg/dist/langs/nl.min';
-import 'trumbowyg/dist/plugins/table/trumbowyg.table';
-import 'trumbowyg/dist/plugins/table/ui/sass/trumbowyg.table.scss';
-import iconsPath from 'trumbowyg/dist/ui/icons.svg';
-import 'trumbowyg/dist/ui/sass/trumbowyg.scss';
+import BraftEditor from 'braft-editor';
+import 'braft-editor/dist/index.css';
+import Table from 'braft-extensions/dist/table';
+import 'braft-extensions/dist/table.css';
+import classnames from 'classnames';
+import React, { FunctionComponent } from 'react';
 
 import './WYSIWYG.scss';
 
-($ as any).trumbowyg.svgPath = iconsPath;
-($ as any).trumbowyg.langs.nl = {
-	...($ as any).trumbowyg.langs.nl,
-	// linkUrl: 'URL<br/>(mailto:email voor mail link)', // TODO enable after merge of: https://github.com/Alex-D/Trumbowyg/pull/1097
-	target: '_blank (nieuwe tab)<br/>_self (zelfde tab)',
-};
+export interface RichEditorStateSchema {
+	toHTML: () => string;
+}
 
-type TrumbowygEvent = (e: JQuery.Event) => void;
+export interface WYSIWYGUploadInfoSchema {
+	file: File;
+	progress: (progress: number) => void;
+	libraryId: string;
+	success: (res: { url: string; meta?: any }) => void;
+	error: (err: Error) => void;
+}
+
+export interface WYSIWYGMediaSchema {
+	uploadFn: (uploadInfo: WYSIWYGUploadInfoSchema) => void;
+	validateFn?: (file: File) => boolean | Promise<boolean>;
+	/**
+	 * defaults to:
+	 *  {
+	 *  	image: 'image/png,image/jpeg,image/gif,image/webp,image/apng,image/svg',
+	 *		video: 'video/mp4',
+	 *		audio : 'audio / mp3'
+	 *	}
+	 */
+	accepts?: { [type: string]: string };
+}
+
+export type WYSIWYGControlSchema =
+	| 'font-size' // Text size selector
+	| 'font-family' // Text font selector
+	| 'line-height' // Text line height selector
+	| 'letter-spacing' // Text pitch selector
+	| 'text-color' // Text color selector, including text background color settings
+	| 'bold' // Set text bold
+	| 'italic' // Italicize text
+	| 'underline' // Underline text
+	| 'strike-through' // Set Strikethrough
+	| 'superscript' // Set text as superscript
+	| 'subscript' // Set text as subscript
+	| 'remove-styles' // Clear text style
+	| 'emoji' // Emoji emoticon selector
+	| 'text-align' // Text alignment tool, you can use the textAligns property to specify which alignment can be used
+	| 'text-indent' // Paragraph indent tool, indent up to 6 levels
+	| 'link' // Link insertion tool
+	| 'headings' // Paragraph type (Title 1-6, General)
+	| 'list-ul' // Unordered list
+	| 'list-ol' // Ordered list
+	| 'blockquote' // Quoted paragraph
+	| 'code' // Code block
+	| 'hr' // Horizontal line tool
+	| 'media' // Multimedia insertion tool
+	| 'clear' // Content removal tool
+	| 'undo' // Undo operation
+	| 'redo' // Redo operation
+	| 'table' // Table
+	| 'fullscreen' // Make editor fullscreen
+	| 'separator'; // Split line, continuous multiple separators will only be displayed as 1
 
 export interface WYSIWYGPropsSchema {
-	id: string;
-	data?: string;
+	id?: string;
+	initialHtml?: string;
+	state?: RichEditorStateSchema;
 	placeholder?: string;
-	lang?: string;
-	btns?: (string[] | string)[];
-	semantic?: boolean;
-	resetCss?: boolean;
-	autogrow?: boolean;
+	controls?: (WYSIWYGControlSchema[] | WYSIWYGControlSchema)[];
 	disabled?: boolean;
-	minimalLinks?: boolean;
-	removeFormatPasted?: boolean;
-	shouldUseSvgIcons?: boolean;
-	shouldInjectSvgIcons?: boolean;
-	svgIconsPath?: string;
-	btnsDef?: Object;
-	plugins?: Object;
-	onFocus?: TrumbowygEvent;
-	onBlur?: TrumbowygEvent;
-	onInit?: TrumbowygEvent;
-	onChange?: (html: string) => void;
-	onResize?: TrumbowygEvent;
-	onPaste?: TrumbowygEvent;
-	onOpenFullScreen?: TrumbowygEvent;
-	onCloseFullScreen?: TrumbowygEvent;
-	onClose?: TrumbowygEvent;
-	onModalOpen?: TrumbowygEvent;
-	onModalClose?: TrumbowygEvent;
+	media?: WYSIWYGMediaSchema;
+	onFocus?: () => void;
+	onBlur?: () => void;
+	onChange?: (editorState: RichEditorStateSchema) => void;
+	onTab?: () => void;
+	onDelete?: () => void;
+	onSave?: () => void;
 }
 
-const COMPARE_PROPS: (keyof WYSIWYGPropsSchema)[] = [
-	'id',
-	'placeholder',
-	'lang',
-	'btns',
-	'semantic',
-	'resetCss',
-	'disabled',
-	'autogrow',
-	'removeFormatPasted',
-	'shouldUseSvgIcons',
-	'shouldInjectSvgIcons',
-	'svgIconsPath',
-	'btnsDef',
-	'plugins',
-	'onFocus',
-	'onBlur',
-	'onInit',
-	'onChange',
-	'onResize',
-	'onPaste',
-	'onOpenFullScreen',
-	'onCloseFullScreen',
-	'onClose',
-	'onModalOpen',
-	'onModalClose',
-];
+export const WYSIWYG: FunctionComponent<WYSIWYGPropsSchema> = ({
+	id,
+	initialHtml,
+	state,
+	placeholder,
+	controls,
+	disabled,
+	media,
+	onFocus,
+	onBlur,
+	onChange,
+	onTab,
+	onDelete,
+	onSave,
+}) => {
+	const options = {
+		defaultColumns: 3, //  default number of columns
+		defaultRows: 3, //  default number of rows
+		withDropdown: true, //  Whether a drop-down menu pops up before inserting a table
+		columnResizable: false, //  Whether to allow drag to adjust the column width, default false
+		exportAttrString: 'class="c-editor-table"', //  Specify the attribute string attached to the table tag when outputting HTML
+	};
 
-export class WYSIWYG extends React.Component<WYSIWYGPropsSchema> {
-	private editor: (JQuery<HTMLDivElement> & { trumbowyg: Function }) | null = null;
+	BraftEditor.use(Table(options));
 
-	componentDidMount() {
-		this.reInitEditor(this.props);
-	}
-
-	componentWillUnmount() {
-		if (this.editor) {
-			this.editor.trumbowyg('destroy');
+	const getLanguage = (languages: any, context: string): any => {
+		if (context === 'braft-table') {
+			return {
+				rows: 'Rijen',
+				columns: 'Kolommen',
+				cancel: 'Annuleer',
+				insertTable: 'Tabel invoegen',
+				removeTable: 'Verwijder Tabel',
+				insertColumn: 'Voeg kolom in',
+				removeColumn: 'Verwijder kolom',
+				insertRow: 'Voeg rij in',
+				removeRow: 'Verwijder rij',
+				mergeCells: 'Samenvoegen cellen',
+				splitCell: 'Split cell',
+			};
 		}
-	}
-
-	// Switched to class based component so we can use this lifecycle hook inside the component
-	// so we can check the value of the Trumbowyg editor
-	// to see if the sate is equal to the externally received props.data value
-	shouldComponentUpdate(nextProps: WYSIWYGPropsSchema) {
-		if (!this.editor) {
-			return true;
+		if (context === 'braft-finder') {
+			return {
+				remove: 'Verwijder',
+				cancel: 'Annueer',
+				confirm: 'Bevestig',
+				insert: 'Voeg selectie in',
+				width: 'Breedte',
+				height: 'Hoogte',
+				image: 'Afbeelding',
+				video: 'Video',
+				audio: 'Audio',
+				embed: 'Embed',
+				caption: 'Media Bibliotheek',
+				dragTip: 'Klik of sleep bestanden hier',
+				dropTip: 'Drop om te uploaden',
+				selectAll: 'Selecteer alle',
+				deselect: 'Deselecteren',
+				removeSelected: 'Verwijder selectie',
+				externalInputPlaceHolder: 'Bron naam|Bron URL',
+				externalInputTip: 'Splits bron naam en brond URL met "|", bevestig met enter.',
+				addLocalFile: 'Voeg lokale bestanden toe',
+				addExternalSource: 'Voeg bestanden toe van internet',
+				unnamedItem: 'Naamloos item',
+				confirmInsert: 'Voeg selectie in',
+			};
 		}
-
-		const { data: prevData, ...prevRestProps } = this.props;
-		const { data: nextData, ...nextNextProps } = nextProps;
-
-		let arePropsEqual = true;
-		COMPARE_PROPS.forEach(propName => {
-			const prevProp = (prevRestProps as any)[propName];
-			const nextProp = (nextNextProps as any)[propName];
-			if (typeof prevProp === 'function' || typeof nextProp === 'function') {
-				if (prevProp.toString() !== nextProp.toString()) {
-					arePropsEqual = false;
-				}
-			} else if (prevProp !== nextProp) {
-				arePropsEqual = false;
-			}
-		});
-		if (!arePropsEqual) {
-			this.reInitEditor(nextProps);
+		if (context === 'braft-editor') {
+			return {
+				base: {
+					remove: 'Verwijder',
+					cancel: 'Annuleer',
+					confirm: 'Bevestig',
+					inert: 'Invoegen',
+					width: 'Breedte',
+					height: 'Hoogte',
+				},
+				controls: {
+					clear: 'Wis',
+					undo: 'Ongedaan maken',
+					redo: 'Opnieuw doen',
+					fontSize: 'Font grootte',
+					color: 'Kleur',
+					textColor: 'Tekst',
+					tempColors: 'Tijdelijke Kleuren',
+					backgroundColor: 'Achtergrond',
+					bold: 'Vet',
+					lineHeight: 'Regel hoogte',
+					letterSpacing: 'Letterafstand',
+					textIndent: 'Tekst inspringen',
+					increaseIndent: 'Inspringing vergroten',
+					decreaseIndent: 'Inspringing verkleinen',
+					italic: 'Cursief',
+					underline: 'Onderstreept',
+					strikeThrough: 'Doorstreept',
+					fontFamily: 'Font Familie',
+					textAlign: 'Tekstuitlijning',
+					alignLeft: 'Uitlijning links',
+					alignCenter: 'Uitlijning midden',
+					alignRight: 'Uitlijning rechts',
+					alignJustify: 'Uitvullen',
+					floatLeft: 'Links zwevend',
+					floatRight: 'Rechts zwevend',
+					superScript: 'Superscript',
+					subScript: 'Subscript',
+					removeStyles: 'Verwijder stijl',
+					headings: 'Koppen',
+					header: 'Koptekst',
+					normal: 'Normaal',
+					orderedList: 'Geordende lijst',
+					unorderedList: 'Ongeordende lijst',
+					blockQuote: 'Quote',
+					code: 'Code',
+					link: 'Link',
+					unlink: 'Unlink',
+					hr: 'Horizontale regel',
+					media: 'Media',
+					mediaLibirary: 'Media bibliotheek',
+					emoji: 'Emoji',
+					fullscreen: 'Fullscreen',
+					exitFullscreen: 'Fullscreen sluiten',
+				},
+				linkEditor: {
+					textInputPlaceHolder: 'Link tekst invoeren',
+					linkInputPlaceHolder: 'Link URL invoeren',
+					inputWithEnterPlaceHolder: 'Voeg link URL in en druk op enter',
+					openInNewWindow: 'Openen in een nieuw venster',
+					removeLink: 'Verwijder link',
+				},
+				audioPlayer: {
+					title: 'Audio afspelen',
+				},
+				videoPlayer: {
+					title: 'Video afspelen',
+					embedTitle: 'Embed media',
+				},
+				media: {
+					image: 'Afbeelding',
+					video: 'Video',
+					audio: 'Audio',
+					embed: 'Embed',
+				},
+			};
 		}
+		return languages['nl'] || languages['en'];
+	};
 
-		return false;
-	}
-
-	private reInitEditor(props: WYSIWYGPropsSchema) {
-		if (this.editor) {
-			this.editor.trumbowyg('destroy');
-			this.editor.trumbowyg({
-				lang: 'nl',
-				defaultLinkTarget: '_blank',
-				...props,
-				onChange: this.handleChange,
-			});
-			this.setEditorData(props.data || '');
-			this.editor
-				.trumbowyg()
-				.on('tbwfocus', props.onFocus)
-				.on('tbwblur', props.onBlur)
-				.on('tbwinit ', props.onInit)
-				.on('tbwchange ', this.handleChange)
-				.on('tbwresize ', props.onResize)
-				.on('tbwpaste ', props.onPaste)
-				.on('tbwopenfullscreen ', props.onOpenFullScreen)
-				.on('tbwclosefullscreen ', props.onCloseFullScreen)
-				.on('tbwclose ', props.onClose)
-				.on('tbwmodalopen ', props.onModalOpen)
-				.on('tbwmodalclose ', props.onModalClose);
-		}
-	}
-
-	private handleChange = throttle(
-		() => {
-			if (this.editor) {
-				(this.props.onChange || (() => {}))(this.getEditorData());
-			}
-		},
-		100,
-		{ leading: true, trailing: true }
+	return (
+		<div className={classnames('c-rich-text-editor c-content', { disabled })}>
+			<BraftEditor
+				id={id}
+				value={state || BraftEditor.createEditorState(initialHtml || '')}
+				placeholder={placeholder}
+				readOnly={disabled}
+				language={getLanguage}
+				controls={controls}
+				media={media}
+				onChange={(newState: RichEditorStateSchema) => {
+					if (onChange) {
+						onChange(newState);
+					}
+				}}
+				onBlur={() => {
+					if (onBlur) {
+						onBlur();
+					}
+				}}
+				onFocus={onFocus}
+				onTab={onTab}
+				onDelete={onDelete}
+				onSave={() => {
+					if (!state) {
+						return;
+					}
+					if (onSave) {
+						onSave();
+					}
+				}}
+			/>
+		</div>
 	);
-
-	private getEditorData(): string {
-		if (this.editor) {
-			return this.editor.trumbowyg('html');
-		}
-		return '';
-	}
-
-	private setEditorData(data: string = '') {
-		if (this.editor) {
-			($(this.editor) as any).trumbowyg('html', data);
-		}
-	}
-
-	render() {
-		return <div ref={ref => (this.editor = $(ref as HTMLDivElement) as any)} id={this.props.id} />;
-	}
-}
+};

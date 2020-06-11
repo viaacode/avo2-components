@@ -4,21 +4,27 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-24T13:46:05.862681+00:00',
-		description: 'DIt is een test',
+		description:
+			'Gedetacheerde leerkracht Katrijn draagt haar steentje bij: ze verrijkte het aanbod op Het Archief voor Onderwijs met collecties voor de kunstvakken. Geef jij les in een architecturale richting of wil je werken rond bouwen en wonen? Dan geef je jouw lessen met deze acht collecties boordevol actueel beeldmateriaal nog meer kleur.',
 		title: 'Test buttons',
 		id: 52,
-		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test1', id: 1 }],
+		thumbnail_path: 'http://master.viaa2.mono.digital/images/news/lq/news_01.jpg',
+		labels: [{ label: 'tips', id: 1 }],
 		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-24T15:07:45.868917+00:00',
-		description: '<strong>Testy</strong>',
+		description:
+			'<strong>Met</strong> ‘Nieuws in de klas’ brengt Mediawijs een rijk aanbod aan kranten en digitale media in jouw klaslokaal. Vandaag lanceren de - bestaande en nieuwe - partners in het project een vernieuwde website met een pak meer materiaal, o.a. van Het Archief voor Onderwijs. Mediawijs, de Vlaamse Nieuwsmedia, WE MEDIA, Media.21, VRT en VIAA slaan de handen in elkaar en staan voortaan samen in voor jouw afspraak met de actualiteit.',
 		title: 'Testland',
 		id: 53,
-		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test1', id: 1 }],
+		thumbnail_path: 'http://master.viaa2.mono.digital/images/news/lq/news_02.jpg',
+		labels: [
+			{ label: 'projecten', id: 2 },
+			{ label: 'in de kijker', id: 3 },
+			{ label: 'tips', id: 1 },
+		],
 		path: '/fake-page',
 	},
 	{
@@ -27,18 +33,19 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 		description: null,
 		title: 'Ontdek',
 		id: 31,
-		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test1', id: 1 }],
+		thumbnail_path: 'http://master.viaa2.mono.digital/images/news/lq/news_04.jpg',
+		labels: [{ label: 'tips', id: 1 }],
 		path: '/fake-page',
 	},
 	{
 		content_width: 'REGULAR',
 		created_at: '2020-01-20T17:14:26.616585+00:00',
-		description: 'Hulp',
+		description:
+			'Katrijn bouwt als gedetacheerde leerkracht mee aan de collecties voor de kunstvakken op Het Archief voor Onderwijs. Ze ploos het beeldmateriaal van onze partners grondig uit en koos op basis van de leerplannen voor de modevakken fascinerende fragmenten uit o.a. modeprogramma’s en catwalks die je leerlingen zeker zullen prikkelen.',
 		title: 'Hulp',
 		id: 32,
-		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test1', id: 1 }],
+		thumbnail_path: 'http://master.viaa2.mono.digital/images/news/lq/news_05.jpg',
+		labels: [{ label: 'tips', id: 1 }],
 		path: '/fake-page',
 	},
 	{
@@ -48,8 +55,8 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 			'Meer video en audio in je les? Ontdek op de online beeldbank Het Archief voor Onderwijs\neen gevarieerd aanbod aan Nederlandstalige audiovisuele fragmenten.',
 		title: 'Over ons｜Het Archief voor Onderwijs',
 		id: 36,
-		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test1', id: 1 }],
+		thumbnail_path: 'http://master.viaa2.mono.digital/images/news/lq/news_06.jpg',
+		labels: [{ label: 'tips', id: 1 }],
 		path: '/fake-page',
 	},
 	{
@@ -58,8 +65,8 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 		description: null,
 		title: 'test',
 		id: 73,
-		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test1', id: 1 }],
+		thumbnail_path: 'http://master.viaa2.mono.digital/images/photos/klas.jpg',
+		labels: [{ label: 'tips', id: 1 }],
 		path: '/fake-page',
 	},
 	{
@@ -69,7 +76,7 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 		title: 'FAQ pagina met blocks',
 		id: 15,
 		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test2', id: 1 }],
+		labels: [{ label: 'projecten', id: 1 }],
 		path: '/fake-page',
 	},
 	{
@@ -79,7 +86,7 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 		title: 'qewqweqw',
 		id: 76,
 		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test2', id: 1 }],
+		labels: [{ label: 'projecten', id: 1 }],
 		path: '/fake-page',
 	},
 	{
@@ -89,7 +96,7 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 		title: 'qweweq',
 		id: 78,
 		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test2', id: 2 }],
+		labels: [{ label: 'projecten', id: 2 }],
 		path: '/fake-page',
 	},
 	{
@@ -99,7 +106,7 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 		title: 'wqewq',
 		id: 85,
 		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test2', id: 2 }],
+		labels: [{ label: 'projecten', id: 2 }],
 		path: '/fake-page',
 	},
 	{
@@ -109,7 +116,7 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 		title: 'Test-pagina van Benjamón',
 		id: 77,
 		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test2', id: 2 }],
+		labels: [{ label: 'projecten', id: 2 }],
 		path: '/fake-page',
 	},
 	{
@@ -119,7 +126,7 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 		title: 'wqe',
 		id: 105,
 		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test2', id: 2 }],
+		labels: [{ label: 'projecten', id: 2 }],
 		path: '/fake-page',
 	},
 	{
@@ -129,7 +136,7 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 		title: 'weqw',
 		id: 97,
 		thumbnail_path: '/images/500x200.svg',
-		labels: [{ label: 'test2', id: 2 }],
+		labels: [{ label: 'projecten', id: 2 }],
 		path: '/fake-page',
 	},
 	{
@@ -140,8 +147,8 @@ export const CONTENT_PAGES_MOCK: PageInfo[] = [
 		id: 106,
 		thumbnail_path: '/images/500x200.svg',
 		labels: [
-			{ label: 'test1', id: 1 },
-			{ label: 'test2', id: 2 },
+			{ label: 'tips', id: 1 },
+			{ label: 'projecten', id: 2 },
 		],
 		path: '/fake-page',
 	},

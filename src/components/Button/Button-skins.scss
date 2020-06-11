@@ -308,6 +308,7 @@ $c-button-link-color: $color-primary !default;
 .c-button.c-button--pupil-underlined-link {
 	@extend .c-button.c-button--link;
 	text-decoration: underline;
+	color: $color-yellow;
 
 	&:hover,
 	&:active,
@@ -315,10 +316,9 @@ $c-button-link-color: $color-primary !default;
 	&.c-button--active,
 	&.c-button--active:focus {
 		background: transparent;
-		color: $color-yellow;
+		color: darken($color-yellow, 15%);
 	}
 }
-
 
 /* Shared disabled state for all buttons
    ========================================================================== */
@@ -328,7 +328,6 @@ $c-button-link-color: $color-primary !default;
 .c-button.c-button--tertiary,
 .c-button.c-button--danger,
 .c-button.c-button--danger-hover {
-
 	&:disabled,
 	&.c-button--disabled {
 		background: $color-gray-100;
