@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from 'react';
+import { isString } from 'lodash-es';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import { ButtonAction, DefaultProps } from '../../types';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
@@ -22,6 +23,7 @@ export interface BlockHeroProps extends DefaultProps {
 	poster?: string;
 	altText?: string;
 	buttons?: (ButtonProps & { buttonAction: ButtonAction })[];
+	textBelowButtons?: string | ReactNode;
 	navigate?: (buttonAction: ButtonAction) => void;
 }
 
@@ -34,6 +36,7 @@ export const BlockHero: FunctionComponent<BlockHeroProps> = ({
 	poster,
 	altText,
 	buttons = [],
+	textBelowButtons,
 	navigate,
 }) => (
 	<Container mode="vertical" size="large">
@@ -64,6 +67,14 @@ export const BlockHero: FunctionComponent<BlockHeroProps> = ({
 									);
 								})}
 							</ButtonToolbar>
+						</Spacer>
+					)}
+					{!!textBelowButtons && (
+						<Spacer margin="top-large">
+							{isString(textBelowButtons) && (
+								<p dangerouslySetInnerHTML={{ __html: textBelowButtons }} />
+							)}
+							{!isString(textBelowButtons) && textBelowButtons}
 						</Spacer>
 					)}
 				</div>
