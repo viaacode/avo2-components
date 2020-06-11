@@ -19,6 +19,7 @@ const buttonProps: Partial<ButtonPropsSchema>[] = [
 	{ label: 'Pupil primary', type: 'pupil-primary' },
 	{ label: 'Pupil Link', type: 'pupil-link' },
 	{ label: 'Pupil Inline Link', type: 'pupil-inline-link' },
+	{ label: 'Pupil Underlined Link', type: 'pupil-underlined-link' },
 	{ label: 'Disabled', disabled: true, title: 'reason why this button is disabled' },
 ];
 
