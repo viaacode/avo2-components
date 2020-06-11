@@ -70,7 +70,7 @@ export const BlockHero: FunctionComponent<BlockHeroProps> = ({
 						</Spacer>
 					)}
 					{!!textBelowButtons && (
-						<Spacer margin="top-large">
+						<Spacer margin="top-large" style={{ color: contentColor }}>
 							{isString(textBelowButtons) && (
 								<p dangerouslySetInnerHTML={{ __html: textBelowButtons }} />
 							)}
