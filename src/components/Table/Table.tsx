@@ -10,7 +10,7 @@ import { IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
 
 import './Table.scss';
-import { Panel } from '..';
+import { Panel } from '../Panel/Panel';
 import { PanelBody } from '../Panel/PanelBody/PanelBody';
 
 export type TableColumnSchema = {

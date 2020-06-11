@@ -36,8 +36,11 @@ const BlockPageOverviewStoryComponent = ({
 		let filteredPages: PageInfo[];
 		if (selectedTabs.length) {
 			filteredPages = mockPages.filter(page => {
-				return !!intersectionBy(page.labels, selectedTabs, (labelObj: LabelObj) => labelObj.id)
-					.length;
+				return !!intersectionBy(
+					page.labels,
+					selectedTabs,
+					(labelObj: LabelObj) => labelObj.id
+				).length;
 			});
 		} else {
 			filteredPages = mockPages;
@@ -73,6 +76,7 @@ const baseProps = {
 	selectedTabs: [],
 	itemStyle: 'LIST' as any,
 	tabStyle: 'MENU_BAR' as any,
+	navigate: action('navigate'),
 };
 
 storiesOf('blocks/BlockPageOverview', module)
@@ -87,9 +91,23 @@ storiesOf('blocks/BlockPageOverview', module)
 			<BlockPageOverview {...baseProps} tabs={[]} itemStyle="ACCORDION" />
 		</BlockPageOverviewStoryComponent>
 	))
-	.add('BlockPageOverview menu list', () => (
+	.add('BlockPageOverview menu NEWS_LIST', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
-			<BlockPageOverview {...baseProps} />
+			<BlockPageOverview
+				{...baseProps}
+				itemStyle="NEWS_LIST"
+				showDate
+				onLabelClicked={action('label clicked')}
+			/>
+		</BlockPageOverviewStoryComponent>
+	))
+	.add('BlockPageOverview menu PROJECT_LIST', () => (
+		<BlockPageOverviewStoryComponent initialPageIndex={0}>
+			<BlockPageOverview
+				{...baseProps}
+				itemStyle="PROJECT_LIST"
+				buttonLabel="Bekijk project"
+			/>
 		</BlockPageOverviewStoryComponent>
 	))
 	.add('BlockPageOverview header center', () => (
@@ -129,6 +147,10 @@ storiesOf('blocks/BlockPageOverview', module)
 	))
 	.add('BlockPageOverview show date', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
-			<BlockPageOverview {...baseProps} showDate dateString="Geplaatst in %label% op %date%" />
+			<BlockPageOverview
+				{...baseProps}
+				showDate
+				dateString="Geplaatst in %label% op %date%"
+			/>
 		</BlockPageOverviewStoryComponent>
 	));

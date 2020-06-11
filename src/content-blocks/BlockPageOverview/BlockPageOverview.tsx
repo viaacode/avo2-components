@@ -1,18 +1,31 @@
 import { format } from 'date-fns';
 import { findIndex, flatten, get, uniqBy } from 'lodash-es';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode, MouseEvent } from 'react';
 
-import { Accordion, Flex, Pagination, Spacer, Tabs, TagList } from '../../components';
+import {
+	Accordion,
+	AspectRatioWrapper,
+	Button,
+	Column,
+	Container,
+	Flex,
+	Grid,
+	Image,
+	Pagination,
+	Spacer,
+	Tabs,
+	TagList,
+} from '../../components';
+import { convertToHtml } from '../../helpers';
 import { ButtonAction, DefaultProps } from '../../types';
 import { BlockGrid, GridItem } from '../BlockGrid/BlockGrid';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
-import { BlockImageTitleTextButton } from '../BlockImageTitleTextButton/BlockImageTitleTextButton';
 
 import './BlockPageOverview.scss';
 
 export type ContentWidthSchema = 'REGULAR' | 'LARGE' | 'MEDIUM';
 export type ContentTabStyle = 'ROUNDED_BADGES' | 'MENU_BAR';
-export type ContentItemStyle = 'GRID' | 'LIST' | 'ACCORDION';
+export type ContentItemStyle = 'GRID' | 'NEWS_LIST' | 'PROJECT_LIST' | 'ACCORDION';
 
 export interface PageInfo {
 	id: number;
@@ -53,6 +66,7 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	pageCount: number;
 	pages: PageInfo[];
 	activePageId?: number; // Used to expand the active accordion
+	onLabelClicked?: (label: string) => void;
 	navigate?: (action: ButtonAction) => void;
 }
 
@@ -61,11 +75,11 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	tabStyle = 'MENU_BAR',
 	allowMultiple = false,
 	centerHeader = false,
-	itemStyle = 'list',
+	itemStyle = 'NEWS_LIST',
 	showTitle = true,
 	showDescription = true,
 	showDate = false,
-	dateString = 'Geplaatst in %label% op %date%',
+	dateString = 'Geplaatst %label% op %date%',
 	buttonLabel = 'Lees meer',
 	allLabel = 'alle',
 	noLabel = 'Overige',
@@ -76,6 +90,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	pageCount,
 	pages = [],
 	activePageId,
+	onLabelClicked,
 	navigate,
 }) => {
 	const allLabelObj = { label: allLabel, id: -2 };
@@ -119,9 +134,30 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		}
 	};
 
+	const renderLabel = (labelObj: any) => {
+		return `<span class="c-content-page__label">${labelObj.label}</span>`;
+	};
+
+	const renderLabels = (page: PageInfo) => {
+		if (!page.labels || !page.labels.length) {
+			return '';
+		}
+		return ` in ${page.labels
+			.map((labelObj, index) => {
+				if (index === page.labels.length - 1) {
+					return renderLabel(labelObj);
+				}
+				if (index === page.labels.length - 2) {
+					return `${renderLabel(labelObj)} en `;
+				}
+				return `${renderLabel(labelObj)}, `;
+			})
+			.join('')}`;
+	};
+
 	const formatDateString = (dateString: string, page: PageInfo): string => {
 		return dateString
-			.replace('%label%', get(page, 'labels[0].label', noLabelObj.label))
+			.replace('%label%', renderLabels(page))
 			.replace('%date%', format(new Date(page.created_at), 'd MMMM yyyy'));
 	};
 
@@ -131,19 +167,83 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 			: undefined;
 	};
 
+	const renderText = (text: string | ReactNode, className?: string) => {
+		if (text) {
+			if (typeof text === 'string') {
+				return (
+					<p
+						className={className}
+						dangerouslySetInnerHTML={{ __html: convertToHtml(text as string) }}
+					/>
+				);
+			}
+			return text;
+		}
+		return null;
+	};
+
+	const handleLabelClicked = (evt: MouseEvent<HTMLDivElement>) => {
+		if (get(evt.target, 'className') === 'c-content-page__label' && onLabelClicked) {
+			onLabelClicked((evt.target as HTMLSpanElement).innerText);
+		}
+	};
+
 	const renderPages = () => {
-		if (itemStyle === 'LIST') {
+		if (itemStyle === 'NEWS_LIST' || itemStyle === 'PROJECT_LIST') {
 			return pages.map(page => {
 				return (
-					<BlockImageTitleTextButton
-						imageSource={page.thumbnail_path}
-						title={showTitle ? page.title : undefined}
-						subtitle={showDate ? formatDateString(dateString, page) : undefined}
-						text={getDescription(page)}
-						buttonLabel={buttonLabel}
-						onClick={() => handlePageClick(page)}
+					<Container
+						className="c-block-image-title-text-button"
+						mode="vertical"
 						key={`content-block-page-${page.id}`}
-					/>
+					>
+						<Container mode="horizontal">
+							<Grid>
+								<Column size={itemStyle === 'NEWS_LIST' ? '2-5' : '2-4'}>
+									{itemStyle === 'NEWS_LIST' ? (
+										<Image src={page.thumbnail_path} />
+									) : (
+										<AspectRatioWrapper
+											style={{
+												backgroundImage: `url(${page.thumbnail_path})`,
+											}}
+											aspect={2.5}
+										/>
+									)}
+								</Column>
+								<Column size="2-7">
+									<div className="c-content">
+										{showTitle &&
+											(itemStyle === 'NEWS_LIST' ? (
+												<h3 onClick={() => handlePageClick(page)}>{page.title}</h3>
+											) : (
+												<h2 onClick={() => handlePageClick(page)}>{page.title}</h2>
+											))}
+										{showDate && (
+											<div onClick={handleLabelClicked}>
+												{renderText(formatDateString(dateString, page), 'a-subtitle')}
+											</div>
+										)}
+										{
+											<div className="a-content-page__description">
+												{renderText(getDescription(page))}
+											</div>
+										}
+										{buttonLabel && (
+											<Spacer margin="top">
+												<Button
+													label={buttonLabel}
+													type="tertiary"
+													onClick={() => handlePageClick(page)}
+													size="large"
+												/>
+											</Spacer>
+										)}
+									</div>
+								</Column>
+							</Grid>
+						</Container>
+					</Container>
 				);
 			});
 		}
