@@ -306,19 +306,21 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 			});
 		}
 		if (itemStyle === 'ACCORDION') {
-			return pages.map(page => {
-				return (
-					<Spacer margin="top-large">
-						<Accordion
-							title={page.title}
-							isOpen={page.id === activePageId}
-							key={`block-page-${page.id}`}
-						>
-							{page.blocks}
-						</Accordion>
-					</Spacer>
-				);
-			});
+			return (
+				<Spacer margin="top-large">
+					{pages.map(page => {
+						return (
+							<Accordion
+								title={page.title}
+								isOpen={page.id === activePageId}
+								key={`block-page-${page.id}`}
+							>
+								{page.blocks}
+							</Accordion>
+						);
+					})}
+				</Spacer>
+			);
 		}
 	};
 
