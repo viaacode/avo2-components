@@ -235,7 +235,6 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 													label={buttonLabel}
 													type="tertiary"
 													onClick={() => handlePageClick(page)}
-													size="large"
 												/>
 											</Spacer>
 										)}
