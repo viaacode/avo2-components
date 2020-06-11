@@ -215,13 +215,20 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 									<div className="c-content">
 										{showTitle &&
 											(itemStyle === 'NEWS_LIST' ? (
-												<h3 onClick={() => handlePageClick(page)}>{page.title}</h3>
+												<h3 onClick={() => handlePageClick(page)}>
+													{page.title}
+												</h3>
 											) : (
-												<h2 onClick={() => handlePageClick(page)}>{page.title}</h2>
+												<h2 onClick={() => handlePageClick(page)}>
+													{page.title}
+												</h2>
 											))}
 										{showDate && (
 											<div onClick={handleLabelClicked}>
-												{renderText(formatDateString(dateString, page), 'a-subtitle')}
+												{renderText(
+													formatDateString(dateString, page),
+													'a-subtitle'
+												)}
 											</div>
 										)}
 										{
@@ -301,13 +308,15 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		if (itemStyle === 'ACCORDION') {
 			return pages.map(page => {
 				return (
-					<Accordion
-						title={page.title}
-						isOpen={page.id === activePageId}
-						key={`block-page-${page.id}`}
-					>
-						{page.blocks}
-					</Accordion>
+					<Spacer margin="top-large">
+						<Accordion
+							title={page.title}
+							isOpen={page.id === activePageId}
+							key={`block-page-${page.id}`}
+						>
+							{page.blocks}
+						</Accordion>
+					</Spacer>
 				);
 			});
 		}
@@ -331,7 +340,9 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 								tags={extendedTabs.map(tab => ({
 									id: tab.id,
 									label: tab.label,
-									active: !!extendedSelectedTabs.find(extendedTab => extendedTab.id === tab.id),
+									active: !!extendedSelectedTabs.find(
+										extendedTab => extendedTab.id === tab.id
+									),
 								}))}
 								swatches={false}
 								selectable
@@ -351,9 +362,13 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 								tabs={extendedTabs.map(tab => ({
 									id: tab.id,
 									label: tab.label,
-									active: !!extendedSelectedTabs.find(extendedTab => extendedTab.id === tab.id),
+									active: !!extendedSelectedTabs.find(
+										extendedTab => extendedTab.id === tab.id
+									),
 								}))}
-								onClick={tabId => handleTabClick(tabs.find(tab => tab.id === tabId))}
+								onClick={tabId =>
+									handleTabClick(tabs.find(tab => tab.id === tabId))
+								}
 							/>
 						</Spacer>
 					</Flex>
