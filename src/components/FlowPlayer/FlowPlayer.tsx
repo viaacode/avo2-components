@@ -45,6 +45,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 
 interface FlowPlayerState {
 	flowPlayerInstance: FlowplayerInstance | null;
+	startedPlaying: boolean;
 }
 
 export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlayerState> {
@@ -54,6 +55,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		super(props);
 		this.state = {
 			flowPlayerInstance: null,
+			startedPlaying: false,
 		};
 	}
 
@@ -246,6 +248,10 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 	}
 
 	private handlePosterClicked = () => {
+		this.setState({
+			...this.state,
+			startedPlaying: true,
+		});
 		if (!this.props.src) {
 			if (this.props.onInit) {
 				this.props.onInit();
@@ -270,6 +276,13 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 				<div
 					className="c-video-player-inner c-video-player__overlay"
 					onClick={this.handlePosterClicked}
+					style={{
+						position: !this.props.src ? 'relative' : 'absolute',
+						display:
+							!!this.props.src && (this.state.startedPlaying || this.props.autoplay)
+								? 'none'
+								: 'block',
+					}}
 				>
 					<AspectRatioWrapper
 						className="c-video-player__item c-video-player__thumbnail"
@@ -283,7 +296,9 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 					{(this.props.start || this.props.start === 0) && this.props.end && (
 						<div className="c-cut-overlay">
 							<Icon name="scissors" />
-							{`${formatDuration(this.props.start)} - ${formatDuration(this.props.end)}`}
+							{`${formatDuration(this.props.start)} - ${formatDuration(
+								this.props.end
+							)}`}
 						</div>
 					)}
 				</div>
