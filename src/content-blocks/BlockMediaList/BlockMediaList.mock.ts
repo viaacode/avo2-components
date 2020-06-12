@@ -79,7 +79,7 @@ export const MEDIA_LIST_MOCK: MediaListItem[] = [
 	{
 		category: 'audio',
 		metadata: [{ icon: 'eye', label: '347' }, { label: '02/02/2020' }],
-		title: 'Audio fragment 2',
+		title: 'Audio fragment 2 en nog wat lange tekst die op 2 regels over loopt',
 		buttonLabel: 'meer lezen',
 		buttonIcon: 'eye',
 		buttonType: 'danger',
