@@ -6,10 +6,7 @@ import subtitles from 'flowplayer-files/lib/plugins/subtitles.min';
 import { get } from 'lodash-es';
 import React, { createRef } from 'react';
 
-import { formatDuration } from '../../helpers';
 import { DefaultProps } from '../../types';
-import { AspectRatioWrapper } from '../AspectRatioWrapper/AspectRatioWrapper';
-import { Icon } from '../Icon/Icon';
 
 import './FlowPlayer.scss';
 
@@ -24,14 +21,13 @@ interface FlowplayerInstance extends HTMLVideoElement {
 }
 
 export interface FlowPlayerPropsSchema extends DefaultProps {
-	src: string | null;
+	src: string;
 	poster?: string;
 	logo?: string;
-	title: string;
+	title?: string;
 	subtitles?: string[];
 	start?: number | null;
 	end?: number | null;
-	onInit?: () => void;
 	token?: string;
 	dataPlayerId?: string;
 	autoplay?: boolean;
@@ -40,7 +36,9 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	onPause?: () => void;
 	onEnded?: () => void;
 	onTimeUpdate?: (time: number) => void;
+	preload?: 'none' | 'auto' | 'metdata';
 	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
+	className?: string;
 }
 
 interface FlowPlayerState {
@@ -131,17 +129,19 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 
 	private createTitleOverlay() {
 		const titleOverlay = document.createElement('div');
-		titleOverlay.className = 'a-flowplayer__title';
-		const titleHeader = document.createElement('h5');
-		const publishDiv = document.createElement('div');
-
 		titleOverlay.classList.add('c-title-overlay');
-		titleHeader.classList.add('c-title-overlay__title');
+
+		const publishDiv = document.createElement('div');
 		publishDiv.classList.add('u-d-flex');
 
-		titleHeader.innerText = this.props.title;
+		if (this.props.title) {
+			const titleHeader = document.createElement('h5');
+			titleHeader.classList.add('c-title-overlay__title');
+			titleHeader.innerText = this.props.title || '';
+			titleOverlay.appendChild(titleHeader);
+		}
 
-		titleOverlay.appendChild(titleHeader);
+		titleOverlay.classList.add('a-flowplayer__title');
 		titleOverlay.appendChild(publishDiv);
 
 		if (this.props.subtitles && this.props.subtitles.length) {
@@ -204,12 +204,13 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			// DATA
 			src: props.src,
 			token: props.token,
+			poster: props.poster,
 
 			// CONFIGURATION
-			autoplay: !this.props.src || this.props.autoplay,
+			autoplay: this.props.autoplay,
 			ui: flowplayer.ui.LOGO_ON_RIGHT | flowplayer.ui.USE_DRAG_HANDLE,
 			plugins: ['subtitles', 'chromecast', 'cuepoints'],
-			preload: props.src && !props.poster ? 'metadata' : 'none',
+			preload: props.preload || (!props.poster ? 'metadata' : 'none'),
 
 			// CUEPOINTS
 			...(props.end ? { cuepoints: [{ start: props.start, end: props.end }] } : {}), // Only set cuepoints if end is passed
@@ -247,61 +248,14 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		});
 	}
 
-	private handlePosterClicked = () => {
-		this.setState({
-			...this.state,
-			startedPlaying: true,
-		});
-		if (!this.props.src) {
-			if (this.props.onInit) {
-				this.props.onInit();
-			}
-		} else {
-			if (this.state.flowPlayerInstance) {
-				this.state.flowPlayerInstance.play();
-			}
-		}
-	};
-
 	render() {
 		return (
 			<div className={classnames(this.props.className, 'c-video-player')}>
 				<div
-					className={classnames('c-video-player-inner', {
-						'c-video-player__initialized': !!this.props.src,
-					})}
+					className={classnames('c-video-player-inner')}
 					data-player-id={this.props.dataPlayerId}
 					ref={this.videoContainerRef}
 				/>
-				<div
-					className="c-video-player-inner c-video-player__overlay"
-					onClick={this.handlePosterClicked}
-					style={{
-						position: !this.props.src ? 'relative' : 'absolute',
-						display:
-							!!this.props.src && (this.state.startedPlaying || this.props.autoplay)
-								? 'none'
-								: 'block',
-					}}
-				>
-					<AspectRatioWrapper
-						className="c-video-player__item c-video-player__thumbnail"
-						style={{ backgroundImage: `url(${this.props.poster})` }}
-					/>
-					<div className="c-play-overlay">
-						<div className="c-play-overlay__inner">
-							<Icon name="play" className="c-play-overlay__button" />
-						</div>
-					</div>
-					{(this.props.start || this.props.start === 0) && this.props.end && (
-						<div className="c-cut-overlay">
-							<Icon name="scissors" />
-							{`${formatDuration(this.props.start)} - ${formatDuration(
-								this.props.end
-							)}`}
-						</div>
-					)}
-				</div>
 			</div>
 		);
 	}
