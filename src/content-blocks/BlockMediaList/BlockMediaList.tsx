@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { get, last } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { IconName, Spacer, Toolbar, ToolbarLeft, ToolbarRight } from '../../components';
@@ -83,10 +84,16 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 		<div className={classnames(className, 'c-block-media-list c-media-card-list')}>
 			{(!!title || !!buttonLabel) && (
 				<Toolbar>
-					<ToolbarLeft>{title && <BlockHeading type="h2">{title}</BlockHeading>}</ToolbarLeft>
+					<ToolbarLeft>
+						{title && <BlockHeading type="h2">{title}</BlockHeading>}
+					</ToolbarLeft>
 					<ToolbarRight>
 						{buttonLabel && (
-							<Button label={buttonLabel} type="secondary" onClick={() => navigate(buttonAction)} />
+							<Button
+								label={buttonLabel}
+								type="secondary"
+								onClick={() => navigate(buttonAction)}
+							/>
 						)}
 					</ToolbarRight>
 				</Toolbar>
@@ -122,13 +129,20 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 									{metadata && metadata.length > 0 && (
 										<MetaData category={category}>
 											{metadata.map((props, i) => (
-												<MetaDataItem key={`block-media-list-meta-${i}`} {...props} />
+												<MetaDataItem
+													key={`block-media-list-meta-${i}`}
+													{...props}
+												/>
 											))}
 										</MetaData>
 									)}
 									{(!!buttonIcon || !!buttonLabel) && (
 										<Spacer margin="top-small">
-											<Button label={buttonLabel} type={buttonType} icon={buttonIcon} />
+											<Button
+												label={buttonLabel}
+												type={buttonType}
+												icon={buttonIcon}
+											/>
 										</Spacer>
 									)}
 								</MediaCardMetaData>
@@ -154,7 +168,9 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 								<div
 									className="c-thumbnail"
 									style={{
-										backgroundImage: ctaBackgroundImage ? `url('${ctaBackgroundImage}')` : 'none',
+										backgroundImage: ctaBackgroundImage
+											? `url('${ctaBackgroundImage}')`
+											: 'none',
 										backgroundColor: ctaBackgroundColor,
 									}}
 								>
@@ -164,12 +180,33 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 												{ctaTitle}
 											</BlockHeading>
 										)}
-										{ctaContent && <div style={{ color: ctaContentColor }}>{ctaContent}</div>}
+										{ctaContent && (
+											<div style={{ color: ctaContentColor }}>
+												{ctaContent}
+											</div>
+										)}
 									</div>
 								</div>
 							</div>
 							<div className="c-media-card-content">
-								<Button label={ctaButtonLabel} type={ctaButtonType} icon={ctaButtonIcon} />
+								{!!get(last(elements), 'buttonLabel') && (
+									<div>
+										<h4 className="c-media-card__title">titel</h4>
+										<MetaData category="item">
+											<MetaDataItem
+												key={`block-media-list-meta-cta`}
+												label="meta"
+											/>
+										</MetaData>
+									</div>
+								)}
+								<Spacer margin="top-small">
+									<Button
+										label={ctaButtonLabel}
+										type={ctaButtonType}
+										icon={ctaButtonIcon}
+									/>
+								</Spacer>
 							</div>
 						</div>
 					</Column>

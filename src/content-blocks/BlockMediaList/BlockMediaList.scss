@@ -35,6 +35,11 @@
 		}
 		.c-media-card-content {
 			margin-top: 0.8rem;
+
+			p,
+			h4 {
+				color: transparent !important;
+			}
 		}
 	}
 
