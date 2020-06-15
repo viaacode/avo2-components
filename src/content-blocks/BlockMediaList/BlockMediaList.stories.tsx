@@ -5,6 +5,7 @@ import { BlockMediaList } from './BlockMediaList';
 import {
 	MEDIA_LIST_COLORED_CTA_MOCK,
 	MEDIA_LIST_CTA_MOCK,
+	MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS,
 	MEDIA_LIST_IMAGE_CTA_MOCK,
 	MEDIA_LIST_MOCK,
 	MEDIA_LIST_TITLE_BUTTON_MOCK,
@@ -19,5 +20,10 @@ storiesOf('blocks/BlockMediaList', module)
 		<BlockMediaList {...MEDIA_LIST_TITLE_BUTTON_MOCK} />
 	))
 	.add('BlockMediaList with CTA', () => <BlockMediaList {...MEDIA_LIST_CTA_MOCK} />)
-	.add('BlockMediaList with colored CTA', () => <BlockMediaList {...MEDIA_LIST_COLORED_CTA_MOCK} />)
+	.add('BlockMediaList with CTA without buttons', () => (
+		<BlockMediaList {...MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS} />
+	))
+	.add('BlockMediaList with colored CTA', () => (
+		<BlockMediaList {...MEDIA_LIST_COLORED_CTA_MOCK} />
+	))
 	.add('BlockMediaList with image CTA', () => <BlockMediaList {...MEDIA_LIST_IMAGE_CTA_MOCK} />);

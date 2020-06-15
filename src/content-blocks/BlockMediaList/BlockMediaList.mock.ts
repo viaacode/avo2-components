@@ -21,6 +21,9 @@ export const MEDIA_LIST_MOCK: MediaListItem[] = [
 		category: 'audio',
 		metadata: [{ label: '02/02/2020' }],
 		title: 'Audio fragment 1',
+		buttonLabel: 'meer lezen',
+		buttonIcon: 'eye',
+		buttonType: 'danger',
 		buttonAction: {
 			type: 'INTERNAL_LINK',
 			value: '/items/1',
@@ -31,6 +34,9 @@ export const MEDIA_LIST_MOCK: MediaListItem[] = [
 		category: 'collection',
 		metadata: [{ label: '02/02/2020' }],
 		title: 'Collectie 2',
+		buttonLabel: 'meer lezen',
+		buttonIcon: 'eye',
+		buttonType: 'secondary',
 		buttonAction: {
 			type: 'INTERNAL_LINK',
 			value: '/collecties/2',
@@ -61,6 +67,9 @@ export const MEDIA_LIST_MOCK: MediaListItem[] = [
 		category: 'video',
 		metadata: [{ label: '02/02/2020' }],
 		title: 'Video fragment 2',
+		buttonLabel: 'meer lezen',
+		buttonIcon: 'eye',
+		buttonType: 'danger',
 		buttonAction: {
 			type: 'INTERNAL_LINK',
 			value: '/items/3',
@@ -70,7 +79,10 @@ export const MEDIA_LIST_MOCK: MediaListItem[] = [
 	{
 		category: 'audio',
 		metadata: [{ icon: 'eye', label: '347' }, { label: '02/02/2020' }],
-		title: 'Audio fragment 2',
+		title: 'Audio fragment 2 en nog wat lange tekst die op 2 regels over loopt',
+		buttonLabel: 'meer lezen',
+		buttonIcon: 'eye',
+		buttonType: 'danger',
 		buttonAction: {
 			type: 'INTERNAL_LINK',
 			value: '/items/4',
@@ -81,6 +93,9 @@ export const MEDIA_LIST_MOCK: MediaListItem[] = [
 		category: 'collection',
 		metadata: [{ label: '02/02/2020' }],
 		title: 'Collectie 4',
+		buttonLabel: 'meer lezen',
+		buttonIcon: 'eye',
+		buttonType: 'danger',
 		buttonAction: {
 			type: 'INTERNAL_LINK',
 			value: '/collecties/4',
@@ -110,6 +125,22 @@ export const MEDIA_LIST_CTA_MOCK: BlockMediaListProps = {
 	ctaButtonLabel: 'Ontdek meer',
 	ctaButtonIcon: 'delete',
 	elements: MEDIA_LIST_MOCK.slice(0, -1),
+	ctaButtonAction: {
+		type: 'EXTERNAL_LINK',
+		value: 'http://google.com',
+	},
+	navigate: action('navigate to: '),
+};
+
+export const MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS: BlockMediaListProps = {
+	ctaTitle: 'Call to action',
+	ctaContent: 'Wil je meer weten?',
+	ctaButtonLabel: 'Ontdek meer',
+	ctaButtonIcon: 'delete',
+	elements: MEDIA_LIST_MOCK.slice(0, -1).map(mock => {
+		const { buttonLabel, buttonIcon, buttonType, ...rest } = mock;
+		return rest;
+	}),
 	ctaButtonAction: {
 		type: 'EXTERNAL_LINK',
 		value: 'http://google.com',
