@@ -187,7 +187,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		}
 	}
 
-	private cuePointEndListener(flowplayerInstance: any) {
+	private cuePointEndListener(flowplayerInstance: FlowplayerInstance | null | undefined) {
 		if (flowplayerInstance) {
 			flowplayerInstance.pause();
 		}
