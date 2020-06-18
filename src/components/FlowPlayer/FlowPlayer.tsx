@@ -187,9 +187,9 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		}
 	}
 
-	private cuePointEndListener() {
-		if (this.state && this.state.flowPlayerInstance) {
-			this.state.flowPlayerInstance.pause();
+	private cuePointEndListener(flowplayerInstance: FlowplayerInstance | null | undefined) {
+		if (flowplayerInstance) {
+			flowplayerInstance.pause();
 		}
 	}
 
@@ -229,7 +229,9 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 
 		// Pause video at end cuepoint
 		if (props.end) {
-			flowplayerInstance.on(flowplayer.events.CUEPOINT_END, this.cuePointEndListener);
+			flowplayerInstance.on(flowplayer.events.CUEPOINT_END, () =>
+				this.cuePointEndListener(flowplayerInstance)
+			);
 		}
 
 		this.drawCustomElements(flowplayerInstance);
