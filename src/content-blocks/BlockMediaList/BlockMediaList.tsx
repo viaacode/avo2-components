@@ -53,6 +53,7 @@ export interface BlockMediaListProps extends DefaultProps {
 	ctaBackgroundImage?: string;
 	ctaWidth?: string;
 	ctaButtonAction?: ButtonAction;
+	fullWidth?: boolean;
 	elements: MediaListItem[];
 	orientation?: Orientation;
 	navigate?: (buttonAction?: ButtonAction) => void;
@@ -73,6 +74,7 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 	ctaButtonType = 'secondary',
 	ctaButtonIcon,
 	ctaButtonAction,
+	fullWidth = false,
 	className,
 	elements = [],
 	orientation,
@@ -113,7 +115,7 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 						},
 						i
 					) => (
-						<Column key={`block-media-list-${i}`} size="3-3">
+						<Column key={`block-media-list-${i}`} size={fullWidth ? '3-12' : '3-3'}>
 							<MediaCard
 								category={category}
 								onClick={() => navigate(buttonAction)}
@@ -151,7 +153,7 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 					)
 				)}
 				{hasCTA && (
-					<Column size="3-3">
+					<Column size={fullWidth ? '3-12' : '3-3'}>
 						<div
 							className={classnames(
 								className,
@@ -189,7 +191,7 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 								</div>
 							</div>
 							<div className="c-media-card-content">
-								{!!get(last(elements), 'buttonLabel') && (
+								{!!get(last(elements), 'buttonLabel') && !fullWidth && (
 									<div>
 										<h4 className="c-media-card__title">titel</h4>
 										<MetaData category="item">

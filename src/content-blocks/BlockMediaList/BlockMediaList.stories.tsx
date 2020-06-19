@@ -26,4 +26,7 @@ storiesOf('blocks/BlockMediaList', module)
 	.add('BlockMediaList with colored CTA', () => (
 		<BlockMediaList {...MEDIA_LIST_COLORED_CTA_MOCK} />
 	))
-	.add('BlockMediaList with image CTA', () => <BlockMediaList {...MEDIA_LIST_IMAGE_CTA_MOCK} />);
+	.add('BlockMediaList with image CTA', () => <BlockMediaList {...MEDIA_LIST_IMAGE_CTA_MOCK} />)
+	.add('BlockMediaList with CTA full width', () => (
+		<BlockMediaList {...MEDIA_LIST_CTA_MOCK} fullWidth />
+	));
