@@ -22,7 +22,7 @@ describe('<FlowPlayer />', () => {
 
 	it('Should not render cut-overlay when end is not passed', () => {
 		const FlowPlayerComponent = mount(
-			<FlowPlayer className={customClass} {...MOCK_FLOW_PLAYER_PROPS_FULL} src={null} />
+			<FlowPlayer className={customClass} {...MOCK_FLOW_PLAYER_PROPS_FULL} />
 		);
 
 		expect(FlowPlayerComponent.find('.c-cut-overlay')).toHaveLength(0);
@@ -33,7 +33,6 @@ describe('<FlowPlayer />', () => {
 			<FlowPlayer
 				className={customClass}
 				{...MOCK_FLOW_PLAYER_PROPS_FULL}
-				src={null}
 				start={0}
 				end={100}
 			/>
