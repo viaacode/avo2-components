@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { get, last } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
-import { BlockHeading } from '..';
+import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import {
 	Button,
