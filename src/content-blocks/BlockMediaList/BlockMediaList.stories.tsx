@@ -1,5 +1,7 @@
 import { storiesOf } from '@storybook/react';
+import { get } from 'lodash-es';
 import React from 'react';
+import { FlowPlayer } from '../../components';
 
 import { BlockMediaList } from './BlockMediaList';
 import {
@@ -18,6 +20,15 @@ storiesOf('blocks/BlockMediaList', module)
 	.add('BlockMediaList with title', () => <BlockMediaList {...MEDIA_LIST_TITLE_MOCK} />)
 	.add('BlockMediaList with title and button', () => (
 		<BlockMediaList {...MEDIA_LIST_TITLE_BUTTON_MOCK} />
+	))
+	.add('BlockMediaList with modal player', () => (
+		<BlockMediaList
+			elements={MEDIA_LIST_MOCK}
+			openMediaInModal
+			renderPlayerModalBody={item => (
+				<FlowPlayer src={item.src as string} poster={get(item, 'thumbnail.src')} />
+			)}
+		/>
 	))
 	.add('BlockMediaList with CTA', () => <BlockMediaList {...MEDIA_LIST_CTA_MOCK} />)
 	.add('BlockMediaList with CTA without buttons', () => (

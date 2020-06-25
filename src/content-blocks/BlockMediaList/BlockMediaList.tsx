@@ -1,20 +1,28 @@
 import classnames from 'classnames';
 import { get, last } from 'lodash-es';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode, useState } from 'react';
+import { BlockHeading } from '../BlockHeading/BlockHeading';
 
-import { IconName, Spacer, Toolbar, ToolbarLeft, ToolbarRight } from '../../components';
-import { Button } from '../../components/Button/Button';
-import { ButtonTypeSchema } from '../../components/Button/Button.types';
-import { Column } from '../../components/Grid/Column/Column';
-import { Grid } from '../../components/Grid/Grid';
-import { MediaCard } from '../../components/MediaCard/MediaCard';
-import { MediaCardMetaData, MediaCardThumbnail } from '../../components/MediaCard/MediaCard.slots';
-import { MetaData } from '../../components/MetaData/MetaData';
 import {
+	Button,
+	Column,
+	Grid,
+	IconName,
+	MediaCard,
+	MediaCardMetaData,
+	MediaCardThumbnail,
+	MetaData,
 	MetaDataItem,
-	MetaDataItemPropsSchema,
-} from '../../components/MetaData/MetaDataItem/MetaDataItem';
-import { Thumbnail } from '../../components/Thumbnail/Thumbnail';
+	Modal,
+	ModalBody,
+	Spacer,
+	Thumbnail,
+	Toolbar,
+	ToolbarLeft,
+	ToolbarRight,
+} from '../../components';
+import { ButtonTypeSchema } from '../../components/Button/Button.types';
+import { MetaDataItemPropsSchema } from '../../components/MetaData/MetaDataItem/MetaDataItem';
 import {
 	ButtonAction,
 	DefaultProps,
@@ -22,14 +30,12 @@ import {
 	HeadingType,
 	Orientation,
 } from '../../types';
-import { BlockHeading } from '../BlockHeading/BlockHeading';
-
-import './BlockMediaList.scss';
 
 export type MediaListItem = {
 	category: EnglishContentType;
 	metadata?: MetaDataItemPropsSchema[];
 	thumbnail?: { label: string; meta?: string; src?: string };
+	src?: string;
 	title: string;
 	buttonLabel?: string;
 	buttonIcon?: IconName;
@@ -54,9 +60,11 @@ export interface BlockMediaListProps extends DefaultProps {
 	ctaWidth?: string;
 	ctaButtonAction?: ButtonAction;
 	fullWidth?: boolean;
+	openMediaInModal?: boolean;
 	elements: MediaListItem[];
 	orientation?: Orientation;
 	navigate?: (buttonAction?: ButtonAction) => void;
+	renderPlayerModalBody?: (item: MediaListItem) => ReactNode;
 }
 
 export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
@@ -75,12 +83,25 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 	ctaButtonIcon,
 	ctaButtonAction,
 	fullWidth = false,
+	openMediaInModal = false,
 	className,
 	elements = [],
 	orientation,
 	navigate = () => {},
+	renderPlayerModalBody = () => null,
 }) => {
 	const hasCTA = ctaTitle || ctaButtonLabel || ctaContent;
+
+	const [activeItem, setActiveItem] = useState<MediaListItem | null>(null);
+
+	const onClickMediaCard = (mediaListItem: MediaListItem) => {
+		if (openMediaInModal && get(mediaListItem, 'buttonAction.type') === 'ITEM') {
+			// Open modal
+			setActiveItem(mediaListItem);
+		} else {
+			navigate(buttonAction);
+		}
+	};
 
 	return (
 		<div className={classnames(className, 'c-block-media-list c-media-card-list')}>
@@ -101,24 +122,22 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 				</Toolbar>
 			)}
 			<Grid>
-				{elements.map(
-					(
-						{
-							category,
-							metadata,
-							thumbnail,
-							title,
-							buttonLabel,
-							buttonIcon,
-							buttonType,
-							buttonAction,
-						},
-						i
-					) => (
+				{elements.map((mediaListItem, i) => {
+					const {
+						category,
+						metadata,
+						thumbnail,
+						title,
+						buttonLabel,
+						buttonIcon,
+						buttonType,
+					} = mediaListItem;
+
+					return (
 						<Column key={`block-media-list-${i}`} size={fullWidth ? '3-12' : '3-3'}>
 							<MediaCard
 								category={category}
-								onClick={() => navigate(buttonAction)}
+								onClick={() => onClickMediaCard(mediaListItem)}
 								orientation={orientation}
 								title={title}
 							>
@@ -150,8 +169,8 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 								</MediaCardMetaData>
 							</MediaCard>
 						</Column>
-					)
-				)}
+					);
+				})}
 				{hasCTA && (
 					<Column size={fullWidth ? '3-12' : '3-3'}>
 						<div
@@ -214,6 +233,14 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 					</Column>
 				)}
 			</Grid>
+			<Modal
+				isOpen={!!activeItem && !!activeItem.src}
+				onClose={() => setActiveItem(null)}
+				scrollable
+				size="medium"
+			>
+				<ModalBody>{!!activeItem && renderPlayerModalBody(activeItem)}</ModalBody>
+			</Modal>
 		</div>
 	);
 };
