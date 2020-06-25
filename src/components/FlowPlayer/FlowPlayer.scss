@@ -82,6 +82,8 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 	}
 
 	.c-logo-overlay {
+		display: none;
+
 		position: relative;
 
 		width: 100%;
@@ -234,13 +236,15 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		}
 	}
 
+	&:not(.is-starting) {
+		.c-logo-overlay {
+			display: block;
+		}
+	}
+
 	&.is-hovered,
 	&.is-paused {
 		.fp-header {
-			display: block;
-		}
-
-		.c-logo-overlay {
 			display: block;
 		}
 	}
