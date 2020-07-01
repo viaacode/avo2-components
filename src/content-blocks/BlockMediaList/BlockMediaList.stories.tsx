@@ -17,7 +17,7 @@ import {
 
 storiesOf('blocks/BlockMediaList', module)
 	.addParameters({ jest: ['BlockMediaList'] })
-	.add('BlockMediaList', () => <BlockMediaList elements={MEDIA_LIST_MOCK} />)
+	.add('BlockMediaList', () => <BlockMediaList {...MEDIA_LIST_MOCK} />)
 	.add('BlockMediaList with title', () => <BlockMediaList {...MEDIA_LIST_TITLE_MOCK} />)
 	.add('BlockMediaList with title and button', () => (
 		<BlockMediaList {...MEDIA_LIST_TITLE_BUTTON_MOCK} />
