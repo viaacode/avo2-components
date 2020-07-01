@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import { get, last } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
-import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import {
 	Button,
@@ -30,6 +29,7 @@ import {
 	HeadingType,
 	Orientation,
 } from '../../types';
+import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 export type MediaListItem = {
 	category: EnglishContentType;
@@ -99,7 +99,7 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 			// Open modal
 			setActiveItem(mediaListItem);
 		} else {
-			navigate(buttonAction);
+			navigate(mediaListItem.buttonAction);
 		}
 	};
 

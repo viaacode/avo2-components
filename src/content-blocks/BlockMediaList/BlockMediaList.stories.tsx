@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import { get } from 'lodash-es';
 import React from 'react';
+
 import { FlowPlayer } from '../../components';
 
 import { BlockMediaList } from './BlockMediaList';
