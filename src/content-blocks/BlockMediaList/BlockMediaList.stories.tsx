@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import { get } from 'lodash-es';
 import React from 'react';
+
 import { FlowPlayer } from '../../components';
 
 import { BlockMediaList } from './BlockMediaList';
@@ -9,6 +10,7 @@ import {
 	MEDIA_LIST_CTA_MOCK,
 	MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS,
 	MEDIA_LIST_IMAGE_CTA_MOCK,
+	MEDIA_LIST_ITEMS_MOCK,
 	MEDIA_LIST_MOCK,
 	MEDIA_LIST_TITLE_BUTTON_MOCK,
 	MEDIA_LIST_TITLE_MOCK,
@@ -16,14 +18,14 @@ import {
 
 storiesOf('blocks/BlockMediaList', module)
 	.addParameters({ jest: ['BlockMediaList'] })
-	.add('BlockMediaList', () => <BlockMediaList elements={MEDIA_LIST_MOCK} />)
+	.add('BlockMediaList', () => <BlockMediaList {...MEDIA_LIST_MOCK} />)
 	.add('BlockMediaList with title', () => <BlockMediaList {...MEDIA_LIST_TITLE_MOCK} />)
 	.add('BlockMediaList with title and button', () => (
 		<BlockMediaList {...MEDIA_LIST_TITLE_BUTTON_MOCK} />
 	))
 	.add('BlockMediaList with modal player', () => (
 		<BlockMediaList
-			elements={MEDIA_LIST_MOCK}
+			elements={MEDIA_LIST_ITEMS_MOCK}
 			openMediaInModal
 			renderPlayerModalBody={item => (
 				<FlowPlayer src={item.src as string} poster={get(item, 'thumbnail.src')} />
