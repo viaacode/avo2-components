@@ -3,7 +3,7 @@ import { action } from '../../helpers';
 
 import { BlockMediaListProps, MediaListItem } from './BlockMediaList';
 
-export const MEDIA_LIST_MOCK: MediaListItem[] = [
+export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 	{
 		category: 'collection',
 		metadata: [{ icon: 'eye', label: '1005' }, { label: '10/10/2020' }],
@@ -108,9 +108,15 @@ export const MEDIA_LIST_MOCK: MediaListItem[] = [
 	},
 ];
 
+export const MEDIA_LIST_MOCK: BlockMediaListProps = {
+	title: 'Collecties secundair onderwijs',
+	elements: MEDIA_LIST_ITEMS_MOCK,
+	navigate: action('navigate to: '),
+};
+
 export const MEDIA_LIST_TITLE_MOCK: BlockMediaListProps = {
 	title: 'Collecties secundair onderwijs',
-	elements: MEDIA_LIST_MOCK,
+	elements: MEDIA_LIST_ITEMS_MOCK,
 	navigate: action('navigate to: '),
 };
 
@@ -128,7 +134,7 @@ export const MEDIA_LIST_CTA_MOCK: BlockMediaListProps = {
 	ctaContent: 'Wil je meer weten?',
 	ctaButtonLabel: 'Ontdek meer',
 	ctaButtonIcon: 'delete',
-	elements: MEDIA_LIST_MOCK.slice(0, -1),
+	elements: MEDIA_LIST_ITEMS_MOCK.slice(0, -1),
 	ctaButtonAction: {
 		type: 'EXTERNAL_LINK',
 		value: 'http://google.com',
@@ -141,7 +147,7 @@ export const MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS: BlockMediaListProps = {
 	ctaContent: 'Wil je meer weten?',
 	ctaButtonLabel: 'Ontdek meer',
 	ctaButtonIcon: 'delete',
-	elements: MEDIA_LIST_MOCK.slice(0, -1).map(mock => {
+	elements: MEDIA_LIST_ITEMS_MOCK.slice(0, -1).map(mock => {
 		const { buttonLabel, buttonIcon, buttonType, ...rest } = mock;
 		return rest;
 	}),
