@@ -1,6 +1,6 @@
 {
 	"name": "@viaa/avo2-components",
-	"version": "1.47.1",
+	"version": "1.48.0",
 	"main": "dist/bundle.cjs.js",
 	"module": "dist/bundle.esm.js",
 	"style": "dist/styles/main.css",
