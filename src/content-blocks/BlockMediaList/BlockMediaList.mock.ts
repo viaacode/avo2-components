@@ -14,6 +14,10 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 			type: 'INTERNAL_LINK',
 			value: '/collecties/1',
 		},
+		itemAction: {
+			type: 'COLLECTION',
+			value: '/collecties/1',
+		},
 		title: 'Collectie 1',
 		thumbnail: { label: 'Collectie', meta: '3 items' },
 	},
@@ -28,6 +32,10 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 			type: 'INTERNAL_LINK',
 			value: '/items/1',
 		},
+		itemAction: {
+			type: 'INTERNAL_LINK',
+			value: '/items/1',
+		},
 		thumbnail: { label: 'audio', meta: '5 items', src: '/images/500x200.svg' },
 		src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
 	},
@@ -35,12 +43,16 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 		category: 'collection',
 		metadata: [{ label: '02/02/2020' }],
 		title: 'Collectie 2',
-		buttonLabel: 'meer lezen',
+		buttonLabel: 'google',
 		buttonIcon: 'eye',
 		buttonType: 'secondary',
 		buttonAction: {
+			type: 'EXTERNAL_LINK',
+			value: 'http://google.com',
+		},
+		itemAction: {
 			type: 'INTERNAL_LINK',
-			value: '/collecties/2',
+			value: '/items/1',
 		},
 		thumbnail: { label: 'Collectie', meta: '7 items', src: '/images/500x200.svg' },
 	},
@@ -52,13 +64,17 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 			type: 'INTERNAL_LINK',
 			value: '/collecties/3',
 		},
+		itemAction: {
+			type: 'INTERNAL_LINK',
+			value: '/items/1',
+		},
 		thumbnail: { label: 'Collectie', meta: '5 items', src: '/images/500x200.svg' },
 	},
 	{
 		category: 'video',
 		metadata: [{ icon: 'eye', label: '195' }, { label: '02/02/2020' }],
 		title: 'Video fragment 1',
-		buttonAction: {
+		itemAction: {
 			type: 'ITEM',
 			value: 'pv6b29xh1k',
 		},
@@ -76,6 +92,10 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 			type: 'INTERNAL_LINK',
 			value: '/items/3',
 		},
+		itemAction: {
+			type: 'INTERNAL_LINK',
+			value: '/items/1',
+		},
 		thumbnail: { label: 'Video', src: '/images/500x200.svg' },
 		src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
 	},
@@ -90,6 +110,10 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 			type: 'INTERNAL_LINK',
 			value: '/items/4',
 		},
+		itemAction: {
+			type: 'INTERNAL_LINK',
+			value: '/items/4',
+		},
 		thumbnail: { label: 'Audio' },
 		src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
 	},
@@ -101,6 +125,10 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 		buttonIcon: 'eye',
 		buttonType: 'danger',
 		buttonAction: {
+			type: 'INTERNAL_LINK',
+			value: '/collecties/4',
+		},
+		itemAction: {
 			type: 'INTERNAL_LINK',
 			value: '/collecties/4',
 		},

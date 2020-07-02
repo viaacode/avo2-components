@@ -37,10 +37,11 @@ export type MediaListItem = {
 	thumbnail?: { label: string; meta?: string; src?: string };
 	src?: string;
 	title: string;
+	itemAction: ButtonAction;
 	buttonLabel?: string;
 	buttonIcon?: IconName;
 	buttonType?: ButtonTypeSchema;
-	buttonAction: ButtonAction;
+	buttonAction?: ButtonAction;
 };
 
 export interface BlockMediaListProps extends DefaultProps {
@@ -99,7 +100,7 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 			// Open modal
 			setActiveItem(mediaListItem);
 		} else {
-			navigate(mediaListItem.buttonAction);
+			navigate(mediaListItem.itemAction || (() => {}));
 		}
 	};
 
@@ -135,37 +136,47 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 
 					return (
 						<Column key={`block-media-list-${i}`} size={fullWidth ? '3-12' : '3-3'}>
-							<MediaCard
-								category={category}
-								onClick={() => onClickMediaCard(mediaListItem)}
-								orientation={orientation}
-								title={title}
-							>
+							<MediaCard category={category} orientation={orientation} title={title}>
 								{thumbnail && (
 									<MediaCardThumbnail>
-										<Thumbnail alt={title} category={category} {...thumbnail} />
+										<Thumbnail
+											alt={title}
+											category={category}
+											{...thumbnail}
+											onClick={() => onClickMediaCard(mediaListItem)}
+										/>
 									</MediaCardThumbnail>
 								)}
 								<MediaCardMetaData>
-									{metadata && metadata.length > 0 && (
-										<MetaData category={category}>
-											{metadata.map((props, i) => (
-												<MetaDataItem
-													key={`block-media-list-meta-${i}`}
-													{...props}
+									<div
+										onClick={() =>
+											!!mediaListItem.buttonAction &&
+											navigate(
+												mediaListItem.buttonAction ||
+													mediaListItem.itemAction
+											)
+										}
+									>
+										{metadata && metadata.length > 0 && (
+											<MetaData category={category}>
+												{metadata.map((props, i) => (
+													<MetaDataItem
+														key={`block-media-list-meta-${i}`}
+														{...props}
+													/>
+												))}
+											</MetaData>
+										)}
+										{(!!buttonIcon || !!buttonLabel) && (
+											<Spacer margin="top-small">
+												<Button
+													label={buttonLabel}
+													type={buttonType}
+													icon={buttonIcon}
 												/>
-											))}
-										</MetaData>
-									)}
-									{(!!buttonIcon || !!buttonLabel) && (
-										<Spacer margin="top-small">
-											<Button
-												label={buttonLabel}
-												type={buttonType}
-												icon={buttonIcon}
-											/>
-										</Spacer>
-									)}
+											</Spacer>
+										)}
+									</div>
 								</MediaCardMetaData>
 							</MediaCard>
 						</Column>
