@@ -21,6 +21,7 @@ export interface ThumbnailPropsSchema extends DefaultProps {
 	alt?: string;
 	label?: string;
 	meta?: string;
+	onClick?: () => void;
 }
 
 export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
@@ -30,6 +31,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 	alt,
 	label,
 	meta,
+	onClick = () => {},
 	style,
 }) => {
 	const [loaded, setLoaded] = useState(false);
@@ -60,6 +62,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 				`c-thumbnail-media--${category}`
 			)}
 			style={style}
+			onClick={onClick}
 		>
 			<div className="c-thumbnail-placeholder">{category && <Icon name={iconName} />}</div>
 			{src && (
