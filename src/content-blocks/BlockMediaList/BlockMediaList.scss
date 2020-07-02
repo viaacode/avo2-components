@@ -1,5 +1,10 @@
 @import '../../styles/settings/colors';
 
+.c-media-card__cta {
+	.c-thumbnail {
+		padding-top: 0;
+	}
+}
 .c-block-media-list {
 	.c-media-card__cta {
 		display: flex;
@@ -42,5 +47,4 @@
 			}
 		}
 	}
-
 }

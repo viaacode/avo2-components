@@ -31,6 +31,8 @@ import {
 } from '../../types';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
+import './BlockMediaList.scss';
+
 export type MediaListItem = {
 	category: EnglishContentType;
 	metadata?: MetaDataItemPropsSchema[];
