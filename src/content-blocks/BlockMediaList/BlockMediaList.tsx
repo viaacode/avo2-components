@@ -174,15 +174,9 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 				{hasCTA && (
 					<Column size={fullWidth ? '3-12' : '3-3'}>
 						<div
-							className={classnames(
-								className,
-								'c-media-card',
-								'c-media-card--horizontal',
-								'c-media-card__cta',
-								{
-									'u-clickable': !!ctaButtonAction,
-								}
-							)}
+							className={classnames(className, 'c-media-card', 'c-media-card__cta', {
+								'u-clickable': !!ctaButtonAction,
+							})}
 							onClick={() => navigate(ctaButtonAction)}
 						>
 							<div className="c-media-card-thumb">
