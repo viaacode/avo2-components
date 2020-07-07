@@ -2,6 +2,7 @@ import { loremIpsum } from 'lorem-ipsum';
 
 import { CTAProps } from '../../components';
 import { action } from '../../helpers';
+import { LinkTarget } from '../../types';
 
 const content = loremIpsum({ count: 10 });
 
@@ -11,6 +12,11 @@ export const CTAS_MOCK: CTAProps[] = [
 		heading: 'CTA 1',
 		headingType: 'h2',
 		buttonLabel: 'Button 1',
+		buttonAction: {
+			type: 'EXTERNAL_LINK',
+			value: 'https://google.com',
+			target: LinkTarget.Blank,
+		},
 		navigate: action('CTA 1'),
 	},
 	{
@@ -22,6 +28,11 @@ export const CTAS_MOCK: CTAProps[] = [
 		buttonLabel: 'Button 2',
 		buttonType: 'danger',
 		backgroundColor: 'green',
+		buttonAction: {
+			type: 'EXTERNAL_LINK',
+			value: 'https://google.com',
+			target: LinkTarget.Blank,
+		},
 		navigate: action('CTA 2'),
 	},
 ];
