@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import { format } from 'date-fns';
 import { findIndex, flatten, get, uniqBy } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, MouseEvent } from 'react';
@@ -193,7 +194,11 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 			return pages.map(page => {
 				return (
 					<Container
-						className="c-block-image-title-text-button"
+						className={classnames(
+							'c-block-image-title-text-button',
+							itemStyle === 'NEWS_LIST' && 'c-page-overview-news-list',
+							itemStyle === 'PROJECT_LIST' && 'c-page-overview-project-list'
+						)}
 						mode="vertical"
 						key={`content-block-page-${page.id}`}
 					>
