@@ -34,8 +34,8 @@ describe('<Tabs />', () => {
 		const tabsComponent1 = shallow(<Tabs tabs={mockTabs} border />);
 		const tabsComponent2 = shallow(<Tabs tabs={mockTabs} />);
 
-		expect(tabsComponent1.hasClass('c-tabs--bottom-border')).toEqual(true);
-		expect(tabsComponent2.hasClass('c-tabs--bottom-border')).toEqual(false);
+		expect(tabsComponent1.hasClass('c-tabs__bottom-border')).toEqual(true);
+		expect(tabsComponent2.hasClass('c-tabs__bottom-border')).toEqual(false);
 	});
 
 	it('Should correctly render `Tab`-components as children', () => {

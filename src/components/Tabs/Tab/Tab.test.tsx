@@ -42,7 +42,7 @@ describe('<Tab />', () => {
 	it('Should set the correct className when passing `active`', () => {
 		const tabComponent = shallow(<Tab {...mockTab} />);
 
-		expect(tabComponent.hasClass('c-tabs__item--active')).toEqual(true);
+		expect(tabComponent.hasClass('c-tab-item__active')).toEqual(true);
 	});
 
 	it('Should render `label` correctly', () => {
