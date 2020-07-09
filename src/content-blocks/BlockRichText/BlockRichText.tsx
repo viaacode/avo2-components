@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import classnames from 'classnames';
 
 import { Button, ButtonPropsSchema } from '../../components/Button/Button';
 import { Column, GridSizeSchema } from '../../components/Grid/Column/Column';
@@ -6,6 +7,8 @@ import { Grid } from '../../components/Grid/Grid';
 import { Spacer } from '../../components/Spacer/Spacer';
 import { convertToHtml } from '../../helpers';
 import { ButtonAction, DefaultProps } from '../../types';
+
+import './BlockRichText.scss';
 
 interface BlockRichTextElement {
 	content: string;
@@ -19,6 +22,7 @@ export interface BlockRichTextProps extends DefaultProps {
 
 export interface BlockRichTextProps extends DefaultProps {
 	elements: BlockRichTextElement | BlockRichTextElement[];
+	maxTextWidth?: string;
 	navigate?: (buttonAction: any) => void;
 }
 
@@ -29,6 +33,7 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 			content: '',
 		},
 	],
+	maxTextWidth,
 	navigate,
 }) => {
 	const renderButtons = (columnIndex: number, buttons: any[]) =>
@@ -49,7 +54,10 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 				<div
 					className="c-content"
 					dangerouslySetInnerHTML={{ __html: convertToHtml(content) }}
-					style={color ? { color } : {}}
+					style={{
+						...(color ? { color } : {}),
+						...(maxTextWidth ? { maxWidth: maxTextWidth } : {}),
+					}}
 				/>
 				{buttons && !!buttons.length && renderButtons(columnIndex, buttons)}
 			</>
@@ -57,7 +65,7 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 	};
 
 	const renderElements = (elements: BlockRichTextElement[]) => (
-		<Grid className={className}>
+		<Grid>
 			{elements.map((column, columnIndex) => (
 				<Column
 					size={(12 / elements.length).toString() as GridSizeSchema}
@@ -69,5 +77,9 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 		</Grid>
 	);
 
-	return Array.isArray(elements) ? renderElements(elements) : renderContent(elements);
+	return (
+		<div className={classnames('c-rich-text-block', className)}>
+			{Array.isArray(elements) ? renderElements(elements) : renderContent(elements)}
+		</div>
+	);
 };
