@@ -74,7 +74,7 @@ const baseProps = {
 	pageCount: 1,
 	pages: [],
 	selectedTabs: [],
-	itemStyle: 'LIST' as any,
+	itemStyle: 'NEWS_LIST' as any,
 	tabStyle: 'MENU_BAR' as any,
 	navigate: action('navigate'),
 };
@@ -109,6 +109,29 @@ storiesOf('blocks/BlockPageOverview', module)
 				buttonLabel="Bekijk project"
 			/>
 		</BlockPageOverviewStoryComponent>
+	))
+	.add('BlockPageOverview dark tabs', () => (
+		<div style={{ position: 'relative' }}>
+			<div
+				style={{
+					position: 'absolute',
+					top: 0,
+					left: 0,
+					right: 0,
+					height: '60px',
+					backgroundColor: '#1D637A',
+				}}
+			/>
+			<BlockPageOverviewStoryComponent initialPageIndex={0}>
+				<BlockPageOverview
+					{...baseProps}
+					darkTabs
+					itemStyle="NEWS_LIST"
+					showDate
+					onLabelClicked={action('label clicked')}
+				/>
+			</BlockPageOverviewStoryComponent>
+		</div>
 	))
 	.add('BlockPageOverview header center', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
@@ -151,6 +174,15 @@ storiesOf('blocks/BlockPageOverview', module)
 				{...baseProps}
 				showDate
 				dateString="Geplaatst in %label% op %date%"
+			/>
+		</BlockPageOverviewStoryComponent>
+	))
+	.add('BlockPageOverview empty tab', () => (
+		<BlockPageOverviewStoryComponent initialPageIndex={0}>
+			<BlockPageOverview
+				{...baseProps}
+				tabs={[{ label: 'empty', id: 0 }, ...baseProps.tabs]}
+				tabStyle={'MENU_BAR'}
 			/>
 		</BlockPageOverviewStoryComponent>
 	));

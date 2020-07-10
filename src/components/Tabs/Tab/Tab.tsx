@@ -12,6 +12,7 @@ export interface TabPropsSchema extends DefaultProps {
 	id: string | number;
 	icon?: IconNameSchema;
 	active?: boolean;
+	dark?: boolean;
 	onClick?: () => void;
 }
 
@@ -20,11 +21,13 @@ export const Tab: FunctionComponent<TabPropsSchema> = ({
 	label,
 	icon,
 	active,
+	dark = false,
 	onClick = () => {},
 }) => (
 	<div
-		className={classnames(className, 'c-tabs__item', {
-			'c-tabs__item--active': active,
+		className={classnames(className, 'c-tab-item', {
+			'c-tab-item__active': active,
+			'c-tab-item__dark': dark,
 		})}
 		style={{ cursor: 'pointer' }}
 		onClick={onClick}

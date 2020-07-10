@@ -9,6 +9,7 @@ import './Tabs.scss';
 export interface TabsPropsSchema extends DefaultProps {
 	tabs: TabPropsSchema[];
 	border?: boolean;
+	dark?: boolean;
 	onClick?: (tabId: string | number) => void;
 }
 
@@ -16,15 +17,16 @@ export const Tabs: FunctionComponent<TabsPropsSchema> = ({
 	className,
 	tabs,
 	border,
+	dark = false,
 	onClick = () => {},
 }) => (
 	<nav
 		className={classnames(className, 'c-tabs', {
-			'c-tabs--bottom-border': border,
+			'c-tabs__bottom-border': border,
 		})}
 	>
 		{tabs.map(tab => (
-			<Tab key={tab.label} {...tab} onClick={() => onClick(tab.id)} />
+			<Tab key={tab.label} {...tab} dark={dark} onClick={() => onClick(tab.id)} />
 		))}
 	</nav>
 );
