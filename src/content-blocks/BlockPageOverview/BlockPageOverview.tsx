@@ -48,6 +48,7 @@ export type LabelObj = {
 
 export interface BlockPageOverviewProps extends DefaultProps {
 	tabs?: { label: string; id: number }[];
+	darkTabs?: boolean;
 	tabStyle?: ContentTabStyle;
 	allowMultiple?: boolean;
 	centerHeader?: boolean;
@@ -72,6 +73,7 @@ export interface BlockPageOverviewProps extends DefaultProps {
 
 export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	tabs = [],
+	darkTabs = false,
 	tabStyle = 'MENU_BAR',
 	allowMultiple = false,
 	centerHeader = false,
@@ -367,6 +369,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 										extendedTab => extendedTab.id === tab.id
 									),
 								}))}
+								dark={darkTabs}
 								onClick={tabId =>
 									handleTabClick(tabs.find(tab => tab.id === tabId))
 								}
