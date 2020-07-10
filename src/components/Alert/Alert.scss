@@ -32,6 +32,14 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 	.o-svg-icon-button-actions-close {
 		cursor: pointer;
 	}
+
+	.c-content {
+		h1, h2, h3, h4, h5, h6 {
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
 }
 
 .c-alert__body {

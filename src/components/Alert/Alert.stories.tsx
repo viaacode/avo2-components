@@ -52,4 +52,12 @@ storiesOf('components/Alert', module)
 				Info alert message <a href="#alert">with link</a>
 			</span>
 		</Alert>
+	))
+	.add('Alerts heading', () => (
+		<Alert>
+			<span className="c-content">
+				<h4>Test heading</h4>
+				Heading should not have any margin top
+			</span>
+		</Alert>
 	));
