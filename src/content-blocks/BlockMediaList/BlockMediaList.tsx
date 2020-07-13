@@ -98,7 +98,7 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 	const [activeItem, setActiveItem] = useState<MediaListItem | null>(null);
 
 	const onClickMediaCard = (mediaListItem: MediaListItem) => {
-		if (openMediaInModal && get(mediaListItem, 'buttonAction.type') === 'ITEM') {
+		if (openMediaInModal && get(mediaListItem, 'itemAction.type') === 'ITEM') {
 			// Open modal
 			setActiveItem(mediaListItem);
 		} else {
