@@ -1,6 +1,6 @@
 import classnames from 'classnames';
-import { format } from 'date-fns';
 import { findIndex, flatten, get, uniqBy } from 'lodash-es';
+import moment from 'moment';
 import React, { FunctionComponent, ReactNode, MouseEvent } from 'react';
 
 import {
@@ -23,6 +23,8 @@ import { BlockGrid, GridItem } from '../BlockGrid/BlockGrid';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import './BlockPageOverview.scss';
+
+moment.locale('nl-be');
 
 export type ContentWidthSchema = 'REGULAR' | 'LARGE' | 'MEDIUM';
 export type ContentTabStyle = 'ROUNDED_BADGES' | 'MENU_BAR';
@@ -161,7 +163,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	const formatDateString = (dateString: string, page: PageInfo): string => {
 		return dateString
 			.replace('%label%', renderLabels(page))
-			.replace('%date%', format(new Date(page.created_at), 'd MMMM yyyy'));
+			.replace('%date%', moment(page.created_at).format('d MMMM YYYY'));
 	};
 
 	const getDescription = (page: PageInfo) => {
