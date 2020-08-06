@@ -34,4 +34,9 @@ storiesOf('components/Thumbnail', module)
 		<div className="o-grid-col-bp3-4">
 			<Thumbnail src="/images/thumbnail.jpg" category="audio" label="audio" />
 		</div>
+	))
+	.add('Thumbnail with overrideShowCategory', () => (
+		<div className="o-grid-col-bp3-4">
+			<Thumbnail src="/images/thumbnail.jpg" category="audio" overrideShowCategory={true} />
+		</div>
 	));
