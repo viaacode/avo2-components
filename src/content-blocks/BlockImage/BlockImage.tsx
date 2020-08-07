@@ -54,7 +54,7 @@ export const BlockImage: FunctionComponent<BlockImageProps> = ({
 			)}
 			{(!!title || !!text) && (
 				<div className="a-block-image__annotation">
-					{title && <h3>{title}</h3>}
+					{title && <h3>&#169; {title}</h3>}
 					{text && <p className="a-block-image__text">{text}</p>}
 				</div>
 			)}
