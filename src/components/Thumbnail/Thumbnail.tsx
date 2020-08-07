@@ -22,7 +22,7 @@ export interface ThumbnailPropsSchema extends DefaultProps {
 	label?: string;
 	meta?: string;
 	onClick?: () => void;
-	overrideShowCategory?: boolean;
+	showCategoryIcon?: boolean;
 }
 
 export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
@@ -34,7 +34,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 	meta,
 	onClick = () => {},
 	style,
-	overrideShowCategory = false,
+	showCategoryIcon = false,
 }) => {
 	const [loaded, setLoaded] = useState(false);
 	const iconName = CATEGORY_TO_ICON[category];
@@ -74,7 +74,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 					title={alt}
 				/>
 			)}
-			{(label || meta || overrideShowCategory) && (
+			{(label || meta || showCategoryIcon) && (
 				<div
 					className={classnames('c-thumbnail-meta', {
 						'c-thumbnail-meta--img-is-loaded': loaded,
