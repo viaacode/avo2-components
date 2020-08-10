@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { every, without } from 'lodash-es';
+import { every } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
