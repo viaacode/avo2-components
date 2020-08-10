@@ -169,7 +169,11 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 
 	const toggleItemSelection = (item: any) => {
 		if (isItemSelected(item)) {
-			onSelectionChanged(without(selectedItems, item));
+			onSelectionChanged(
+				selectedItems.filter(
+					selectedItem => selectedItem[rowKey || 'id'] !== item[rowKey || 'id']
+				)
+			);
 		} else {
 			onSelectionChanged([...selectedItems, item]);
 		}
