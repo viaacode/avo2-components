@@ -185,8 +185,36 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		}
 	}
 
-	&.use-drag-handle .fp-controls:hover .fp-timeline {
-		height: 6px;
+	@keyframes delayedFadeIn {
+		0%   {opacity: 0}
+		75%  {opacity: 0}
+		100% {opacity: 1}
+	}
+
+	.fp-timeline {
+		opacity: 0;
+		animation: delayedFadeIn 1s linear;
+		animation-fill-mode: both;
+		animation-play-state: paused;
+	}
+
+	&.is-waiting,
+	&.is-playing,
+	&.is-paused,
+	&.is-ended {
+		.fp-timeline {
+			animation-play-state: running;
+		}
+	}
+
+	&.use-drag-handle .fp-controls:hover {
+		.fp-timeline {
+			height: 6px;
+		}
+
+		.dragger {
+			transform: scale(1.3);
+		}
 	}
 
 	.fp-progress,
