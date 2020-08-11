@@ -19,7 +19,7 @@ import {
 } from '../../components';
 import { convertToHtml } from '../../helpers';
 import { ButtonAction, DefaultProps } from '../../types';
-import { BlockGrid, GridItem } from '../BlockGrid/BlockGrid';
+import { BlockImageGrid, GridItem } from '../BlockImageGrid/BlockImageGrid';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import './BlockPageOverview.scss';
@@ -293,7 +293,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 								<BlockHeading type={'h2'}>{labelObj.label}</BlockHeading>
 							</Spacer>
 						)}
-						<BlockGrid
+						<BlockImageGrid
 							elements={(pagesByLabel[labelObj.id] || []).map(
 								(page: PageInfo): GridItem => ({
 									title: showTitle ? page.title : undefined,

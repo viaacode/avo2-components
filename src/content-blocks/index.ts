@@ -2,7 +2,7 @@
 export { BlockAccordions, BlockAccordionsProps } from './BlockAccordions/BlockAccordions';
 export { BlockButtons, BlockButtonsProps } from './BlockButtons/BlockButtons';
 export { BlockCTAs, BlockCTAsProps } from './BlockCTAs/BlockCTAs';
-export { BlockGrid, BlockGridProps, GridItem } from './BlockGrid/BlockGrid';
+export { BlockImageGrid, BlockImageGridProps, GridItem } from './BlockImageGrid/BlockImageGrid';
 export { BlockHeading, BlockHeadingProps } from './BlockHeading/BlockHeading';
 export { BlockIFrame, BlockIFrameProps } from './BlockIFrame/BlockIFrame';
 export { BlockIntro, BlockIntroProps } from './BlockIntro/BlockIntro';
