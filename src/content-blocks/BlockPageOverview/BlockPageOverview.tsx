@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { findIndex, flatten, get, uniqBy } from 'lodash-es';
 import moment from 'moment';
-import React, { FunctionComponent, ReactNode, MouseEvent } from 'react';
+import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
 import {
 	Accordion,
@@ -11,7 +11,6 @@ import {
 	Container,
 	Flex,
 	Grid,
-	Image,
 	Pagination,
 	Spacer,
 	Tabs,
@@ -209,16 +208,12 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 						<Container mode="horizontal">
 							<Grid>
 								<Column size={itemStyle === 'NEWS_LIST' ? '2-5' : '2-4'}>
-									{itemStyle === 'NEWS_LIST' ? (
-										<Image src={page.thumbnail_path} />
-									) : (
-										<AspectRatioWrapper
-											style={{
-												backgroundImage: `url(${page.thumbnail_path})`,
-											}}
-											aspect={2.5}
-										/>
-									)}
+									<AspectRatioWrapper
+										style={{
+											backgroundImage: `url(${page.thumbnail_path})`,
+										}}
+										aspect={2.5}
+									/>
 								</Column>
 								<Column size="2-7">
 									<div className="c-content">
