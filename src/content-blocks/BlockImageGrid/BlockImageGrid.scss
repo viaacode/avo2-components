@@ -32,13 +32,16 @@
 
 	.c-block-grid__button-spacer {
 		display: flex;
-		justify-content: center;
 	}
 
 	&.text-align-left {
 		h3,
 		p {
 			text-align: left;
+		}
+
+		.c-block-grid__button-spacer {
+			justify-content: flex-start;
 		}
 	}
 
@@ -47,6 +50,10 @@
 		p {
 			text-align: center;
 		}
+
+		.c-block-grid__button-spacer {
+			justify-content: center;
+		}
 	}
 
 	&.text-align-right {
@@ -54,21 +61,25 @@
 		p {
 			text-align: right;
 		}
+
+		.c-block-grid__button-spacer {
+			justify-content: flex-end;
+		}
 	}
 
 	&.item-align-left {
 		justify-content: flex-start;
 
-		.c-block-grid__button-spacer {
-			justify-content: flex-start;
+		.c-block-grid__item {
+			margin: 1rem 2rem 0 0;
 		}
 	}
 
 	&.item-align-right {
 		justify-content: flex-end;
 
-		.c-block-grid__button-spacer {
-			justify-content: flex-end;
+		.c-block-grid__item {
+			margin: 1rem 0 0 2rem;
 		}
 	}
 }

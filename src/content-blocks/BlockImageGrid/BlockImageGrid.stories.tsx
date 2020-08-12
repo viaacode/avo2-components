@@ -4,7 +4,7 @@ import React from 'react';
 import { action } from '../../helpers';
 import { ButtonAction } from '../../types';
 
-import { BlockGrid, GridItem } from './BlockGrid';
+import { BlockImageGrid, GridItem } from './BlockImageGrid';
 
 const elements: GridItem[] = [
 	{ source: '/images/200x200.svg?id=0' },
@@ -36,6 +36,9 @@ const elements2: GridItem[] = [
 		text:
 			'Knip zelf relevante fragmenten uit het beschikbare beeldmateriaal en bewaar ze in een eigen collectie.',
 		action: { type: 'EXTERNAL_LINK', value: 'http://google.com' },
+		buttonLabel: 'a button',
+		buttonTitle: 'the button tooltip',
+		buttonType: 'inline-link',
 	},
 	{
 		source: '/images/500x200.svg?id=2',
@@ -94,14 +97,19 @@ const navigate = (buttonAction: ButtonAction) => {
 	window.location.href = buttonAction.value as string;
 };
 
-storiesOf('blocks/BlockGrid', module)
+storiesOf('blocks/BlockImageGrid', module)
 	.addParameters({ jest: ['Image'] })
-	.add('BlockGrid 200x200', () => <BlockGrid elements={elements} />)
-	.add('BlockGrid 500x200', () => (
-		<BlockGrid elements={elements2} imageWidth={500} imageHeight={200} navigate={navigate} />
+	.add('BlockImageGrid 200x200', () => <BlockImageGrid elements={elements} />)
+	.add('BlockImageGrid 500x200', () => (
+		<BlockImageGrid
+			elements={elements2}
+			imageWidth={500}
+			imageHeight={200}
+			navigate={navigate}
+		/>
 	))
-	.add('BlockGrid wider item then image', () => (
-		<BlockGrid
+	.add('BlockImageGrid wider item then image', () => (
+		<BlockImageGrid
 			elements={elements2}
 			imageWidth={200}
 			imageHeight={150}
@@ -109,9 +117,9 @@ storiesOf('blocks/BlockGrid', module)
 			navigate={navigate}
 		/>
 	))
-	.add('BlockGrid action', () => <BlockGrid elements={elements2} navigate={navigate} />)
-	.add('BlockGrid 150x150 fill contain', () => (
-		<BlockGrid
+	.add('BlockImageGrid action', () => <BlockImageGrid elements={elements2} navigate={navigate} />)
+	.add('BlockImageGrid 150x150 fill contain', () => (
+		<BlockImageGrid
 			elements={elements2}
 			imageWidth={150}
 			imageHeight={150}
@@ -119,8 +127,8 @@ storiesOf('blocks/BlockGrid', module)
 			navigate={navigate}
 		/>
 	))
-	.add('BlockGrid 150x150 fill cover', () => (
-		<BlockGrid
+	.add('BlockImageGrid 150x150 fill cover', () => (
+		<BlockImageGrid
 			elements={elements2}
 			imageWidth={150}
 			imageHeight={150}
@@ -128,8 +136,8 @@ storiesOf('blocks/BlockGrid', module)
 			navigate={navigate}
 		/>
 	))
-	.add('BlockGrid 150x150 fill auto', () => (
-		<BlockGrid
+	.add('BlockImageGrid 150x150 fill auto', () => (
+		<BlockImageGrid
 			elements={elements2}
 			imageWidth={150}
 			imageHeight={150}
@@ -137,6 +145,15 @@ storiesOf('blocks/BlockGrid', module)
 			navigate={navigate}
 		/>
 	))
-	.add('BlockGrid text right', () => (
-		<BlockGrid elements={elements2} textAlign="right" navigate={navigate} />
+	.add('BlockImageGrid align left', () => (
+		<BlockImageGrid elements={elements2} align="left" navigate={navigate} />
+	))
+	.add('BlockImageGrid align right', () => (
+		<BlockImageGrid elements={elements2} align="right" navigate={navigate} />
+	))
+	.add('BlockImageGrid align left align text right', () => (
+		<BlockImageGrid elements={elements2} align="left" textAlign="right" navigate={navigate} />
+	))
+	.add('BlockImageGrid align right align text left', () => (
+		<BlockImageGrid elements={elements2} align="right" textAlign="left" navigate={navigate} />
 	));
