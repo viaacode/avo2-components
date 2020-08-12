@@ -8,24 +8,24 @@ storiesOf('blocks/BlockIFrame', module)
 	.add('BlockIFrame', () => (
 		<BlockIFrame
 			title="Video about VIAA"
-			src="https://player.vimeo.com/video/152135660?color=ffffff&title=0&byline=0&portrait=0"
-			width={800}
-			height={450}
+			src="http://player.vimeo.com/video/55073825"
+			width={755}
+			height={321}
 		/>
 	))
 	.add('BlockIFrame without http prefix', () => (
 		<BlockIFrame
 			title="Video about VIAA"
-			src="player.vimeo.com/video/152135660?color=ffffff&title=0&byline=0&portrait=0"
-			width={800}
-			height={450}
+			src="player.vimeo.com/video/55073825"
+			width={755}
+			height={321}
 		/>
 	))
 	.add('BlockIFrame with // prefix', () => (
 		<BlockIFrame
 			title="Video about VIAA"
-			src="//player.vimeo.com/video/152135660?color=ffffff&title=0&byline=0&portrait=0"
-			width={800}
-			height={450}
+			src="//player.vimeo.com/video/55073825"
+			width={755}
+			height={321}
 		/>
 	));

@@ -47,14 +47,19 @@
 	}
 }
 
-.c-home-hero__image img {
-	display: block;
-	width: 100%;
+.c-home-hero__image {
 	border-radius: 0.4rem;
-	position: relative;
-	z-index: 10;
-	@media (max-width: $g-bp2) {
-		margin-bottom: 1.6rem;
+	overflow: hidden;
+
+	img {
+		display: block;
+		width: 100%;
+		border-radius: 0.4rem;
+		position: relative;
+		z-index: 10;
+		@media (max-width: $g-bp2) {
+			margin-bottom: 1.6rem;
+		}
 	}
 }
 
