@@ -1,7 +1,7 @@
 import classnames from 'classnames';
-import { format } from 'date-fns';
 import { findIndex, flatten, get, uniqBy } from 'lodash-es';
-import React, { FunctionComponent, ReactNode, MouseEvent } from 'react';
+import moment from 'moment';
+import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
 import {
 	Accordion,
@@ -11,7 +11,6 @@ import {
 	Container,
 	Flex,
 	Grid,
-	Image,
 	Pagination,
 	Spacer,
 	Tabs,
@@ -19,10 +18,12 @@ import {
 } from '../../components';
 import { convertToHtml } from '../../helpers';
 import { ButtonAction, DefaultProps } from '../../types';
-import { BlockGrid, GridItem } from '../BlockGrid/BlockGrid';
+import { BlockImageGrid, GridItem } from '../BlockImageGrid/BlockImageGrid';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import './BlockPageOverview.scss';
+
+moment.locale('nl-be');
 
 export type ContentWidthSchema = 'REGULAR' | 'LARGE' | 'MEDIUM';
 export type ContentTabStyle = 'ROUNDED_BADGES' | 'MENU_BAR';
@@ -161,7 +162,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	const formatDateString = (dateString: string, page: PageInfo): string => {
 		return dateString
 			.replace('%label%', renderLabels(page))
-			.replace('%date%', format(new Date(page.created_at), 'd MMMM yyyy'));
+			.replace('%date%', moment(page.created_at).format('d MMMM YYYY'));
 	};
 
 	const getDescription = (page: PageInfo) => {
@@ -207,16 +208,12 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 						<Container mode="horizontal">
 							<Grid>
 								<Column size={itemStyle === 'NEWS_LIST' ? '2-5' : '2-4'}>
-									{itemStyle === 'NEWS_LIST' ? (
-										<Image src={page.thumbnail_path} />
-									) : (
-										<AspectRatioWrapper
-											style={{
-												backgroundImage: `url(${page.thumbnail_path})`,
-											}}
-											aspect={2.5}
-										/>
-									)}
+									<AspectRatioWrapper
+										style={{
+											backgroundImage: `url(${page.thumbnail_path})`,
+										}}
+										aspect={2.5}
+									/>
 								</Column>
 								<Column size="2-7">
 									<div className="c-content">
@@ -291,7 +288,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 								<BlockHeading type={'h2'}>{labelObj.label}</BlockHeading>
 							</Spacer>
 						)}
-						<BlockGrid
+						<BlockImageGrid
 							elements={(pagesByLabel[labelObj.id] || []).map(
 								(page: PageInfo): GridItem => ({
 									title: showTitle ? page.title : undefined,

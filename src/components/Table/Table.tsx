@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { every, without } from 'lodash-es';
+import { every } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -169,7 +169,11 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 
 	const toggleItemSelection = (item: any) => {
 		if (isItemSelected(item)) {
-			onSelectionChanged(without(selectedItems, item));
+			onSelectionChanged(
+				selectedItems.filter(
+					selectedItem => selectedItem[rowKey || 'id'] !== item[rowKey || 'id']
+				)
+			);
 		} else {
 			onSelectionChanged([...selectedItems, item]);
 		}

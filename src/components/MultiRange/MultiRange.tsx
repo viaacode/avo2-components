@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { getTrackBackground, Range } from 'react-range';
 
 import { TextInput } from '../../components/TextInput/TextInput';
@@ -31,10 +31,27 @@ export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 	showNumber = false,
 	onChange = () => {},
 }) => {
+	const [inputText, setInputText] = useState<string>(values[0] ? String(values[0]) : '0');
+	const [tempValues, setTempValues] = useState<number[]>(values);
+
+	useEffect(() => {
+		setTempValues(values);
+	}, [values]);
+
+	const handleChange = (values: number[]) => {
+		setInputText(String(values[0]));
+		setTempValues(values);
+	};
+
 	const handleInputChanged = (value: string) => {
 		try {
+			setInputText(value);
 			const val = parseInt(value, 10);
-			onChange([Math.min(Math.max(val, min), max)]);
+			if (Number.isFinite(val)) {
+				const newValue = Math.min(Math.max(val, min), max);
+				onChange([newValue]);
+				setInputText(String(newValue));
+			}
 		} catch (err) {
 			console.error('Multirange value must be number');
 		}
@@ -44,6 +61,7 @@ export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 
 	const sortedValues = [...values];
 	sortedValues.sort((a: number, b: number) => a - b);
+
 	return (
 		<div id={id} className={classes}>
 			<Range
@@ -51,8 +69,11 @@ export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 				min={min}
 				max={max}
 				allowOverlap={allowOverlap}
-				values={values}
-				onChange={onChange}
+				values={tempValues || values}
+				onChange={handleChange}
+				onFinalChange={() => {
+					onChange(tempValues || values);
+				}}
 				renderTrack={({ props, children }) => (
 					<div
 						onMouseDown={props.onMouseDown}
@@ -77,7 +98,11 @@ export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 									colors:
 										values.length === 1
 											? ['hsl(190, 80%, 40%)', 'rgb(196, 196, 196)']
-											: ['rgb(196, 196, 196)', 'hsl(190, 80%, 40%)', 'rgb(196, 196, 196)'],
+											: [
+													'rgb(196, 196, 196)',
+													'hsl(190, 80%, 40%)',
+													'rgb(196, 196, 196)',
+											  ],
 								}),
 								alignSelf: 'center',
 							}}
@@ -97,7 +122,7 @@ export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 					/>
 				)}
 			/>
-			{showNumber && <TextInput value={values[0].toString()} onChange={handleInputChanged} />}
+			{showNumber && <TextInput value={inputText} onChange={handleInputChanged} />}
 		</div>
 	);
 };

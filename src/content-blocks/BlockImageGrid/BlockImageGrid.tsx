@@ -1,11 +1,11 @@
 import classnames from 'classnames';
+import { get } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { Button, ButtonType, Spacer } from '../../components';
 import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
 
-import './BlockGrid.scss';
-import { get } from 'lodash-es';
+import './BlockImageGrid.scss';
 
 export interface GridItem {
 	source: string;
@@ -17,23 +17,25 @@ export interface GridItem {
 	action?: ButtonAction;
 }
 
-export interface BlockGridProps extends DefaultProps {
+export interface BlockImageGridProps extends DefaultProps {
 	elements: GridItem[];
 	imageWidth?: number;
 	imageHeight?: number;
 	itemWidth?: number;
 	fill?: 'cover' | 'contain' | 'auto';
+	align?: AlignOptions;
 	textAlign?: AlignOptions;
 	className?: string;
 	navigate?: (action: ButtonAction) => void;
 }
 
-export const BlockGrid: FunctionComponent<BlockGridProps> = ({
+export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 	elements = [],
 	imageWidth = 200,
 	imageHeight = 200,
 	itemWidth = 200,
 	fill = 'cover',
+	align = 'center',
 	textAlign = 'center',
 	className,
 	navigate,
@@ -43,7 +45,7 @@ export const BlockGrid: FunctionComponent<BlockGridProps> = ({
 			className={classnames(
 				'c-block-grid',
 				`text-align-${textAlign}`,
-				`item-align-${textAlign}`,
+				`item-align-${align}`,
 				className
 			)}
 		>
