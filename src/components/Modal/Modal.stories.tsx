@@ -27,8 +27,8 @@ storiesOf('components/Modal', module)
 			<Modal title="Modal title" isOpen={false}>
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React automatically moves
-						it to the root.
+						It doesn't matter where this modal occurs in the source code, React
+						automatically moves it to the root.
 					</p>
 				</ModalBody>
 				<ModalFooterLeft>
@@ -45,8 +45,8 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="small">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React automatically moves
-						it to the root.
+						It doesn't matter where this modal occurs in the source code, React
+						automatically moves it to the root.
 					</p>
 				</ModalBody>
 				<ModalFooterRight>
@@ -60,8 +60,8 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="medium">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React automatically moves
-						it to the root.
+						It doesn't matter where this modal occurs in the source code, React
+						automatically moves it to the root.
 					</p>
 				</ModalBody>
 				<ModalFooterRight>
@@ -75,8 +75,8 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="large">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React automatically moves
-						it to the root.
+						It doesn't matter where this modal occurs in the source code, React
+						automatically moves it to the root.
 					</p>
 				</ModalBody>
 				<ModalFooterRight>
@@ -90,8 +90,8 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="extra-large">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React automatically moves
-						it to the root.
+						It doesn't matter where this modal occurs in the source code, React
+						automatically moves it to the root.
 					</p>
 				</ModalBody>
 				<ModalFooterRight>
@@ -115,8 +115,8 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="fullscreen">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React automatically moves
-						it to the root.
+						It doesn't matter where this modal occurs in the source code, React
+						automatically moves it to the root.
 					</p>
 				</ModalBody>
 				<ModalFooterRight>
@@ -130,8 +130,8 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="auto">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React automatically moves
-						it to the root.
+						It doesn't matter where this modal occurs in the source code, React
+						automatically moves it to the root.
 					</p>
 				</ModalBody>
 				<ModalFooterRight>
@@ -141,22 +141,31 @@ storiesOf('components/Modal', module)
 		</ModalStoryComponent>
 	))
 	.add('Scrollable modal', () => (
-		<Modal isOpen title="Modal title" size="small" scrollable>
-			<ModalBody>
-				<p>{loremIpsum({ count: 20 })}</p>
-			</ModalBody>
-			<ModalFooterRight>
-				<Button type="primary" label="Ok" ariaLabel="Ok" />
-			</ModalFooterRight>
-		</Modal>
+		<>
+			<ModalStoryComponent>
+				<Modal isOpen title="Modal title" size="small" scrollable>
+					<ModalBody>
+						<p>{loremIpsum({ count: 40 })}</p>
+					</ModalBody>
+					<ModalFooterRight>
+						<Button type="primary" label="Ok" ariaLabel="Ok" />
+					</ModalFooterRight>
+				</Modal>
+			</ModalStoryComponent>
+			<br />
+			<br />
+			<div style={{ maxWidth: '200px' }}>{loremIpsum({ count: 40 })}</div>
+		</>
 	))
 	.add('Headless modal', () => (
-		<Modal isOpen size="small" scrollable>
-			<ModalBody>
-				<p>{loremIpsum({ count: 20 })}</p>
-			</ModalBody>
-			<ModalFooterRight>
-				<Button type="primary" label="Ok" ariaLabel="Ok" />
-			</ModalFooterRight>
-		</Modal>
+		<ModalStoryComponent>
+			<Modal isOpen size="small" scrollable>
+				<ModalBody>
+					<p>{loremIpsum({ count: 40 })}</p>
+				</ModalBody>
+				<ModalFooterRight>
+					<Button type="primary" label="Ok" ariaLabel="Ok" />
+				</ModalFooterRight>
+			</Modal>
+		</ModalStoryComponent>
 	));
