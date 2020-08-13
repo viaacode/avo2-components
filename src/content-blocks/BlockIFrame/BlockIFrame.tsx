@@ -21,8 +21,17 @@ export const BlockIFrame: FunctionComponent<BlockIFrameProps> = ({
 		iframeProps.src = `//${iframeProps.src}`;
 	}
 
+	let aspectRatio: VideoAspectRatio | number | undefined;
+	try {
+		aspectRatio =
+			ratio ||
+			parseInt(String(iframeProps.width), 10) / parseInt(String(iframeProps.height), 10);
+	} catch (err) {
+		aspectRatio = ratio;
+	}
+
 	return (
-		<AspectRatioWrapper aspect={ratio}>
+		<AspectRatioWrapper aspect={aspectRatio} className="c-block-iframe">
 			<iframe
 				title={title}
 				allowFullScreen={allowFullScreen}
