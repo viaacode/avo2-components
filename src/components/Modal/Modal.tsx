@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Fragment, FunctionComponent, MouseEvent, ReactNode } from 'react';
+import React, { Fragment, FunctionComponent, MouseEvent, ReactNode, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -43,6 +43,14 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 	const footerLeft = useSlot(ModalFooterLeft, children);
 
 	useKeyPress('Escape', close);
+
+	useEffect(() => {
+		if (isOpen) {
+			document.body.classList.add('modal-open');
+		} else {
+			document.body.classList.remove('modal-open');
+		}
+	});
 
 	function close() {
 		onClose && onClose();
