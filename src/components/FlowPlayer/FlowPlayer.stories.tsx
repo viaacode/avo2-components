@@ -29,17 +29,17 @@ const FlowPlayerStoryComponent = ({ children }: { children: ReactElement }) => {
 storiesOf('components/FlowPlayer', module)
 	.addParameters({ jest: ['FlowPlayer'] })
 	.add('FlowPlayer Video', () => (
-		<div className="o-grid-col-bp3-4">
+		<div className="o-grid-col-bp3-7">
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} />
 		</div>
 	))
 	.add('FlowPlayer Thumbnail', () => (
-		<div className="o-grid-col-bp3-4">
+		<div className="o-grid-col-bp3-7">
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} />
 		</div>
 	))
 	.add('FlowPlayer Thumbnail 4:3', () => (
-		<div className="o-grid-col-bp3-4">
+		<div className="o-grid-col-bp3-7">
 			<FlowPlayer
 				{...MOCK_FLOW_PLAYER_PROPS_FULL}
 				poster={
@@ -49,29 +49,29 @@ storiesOf('components/FlowPlayer', module)
 		</div>
 	))
 	.add('FlowPlayer without thumbnail', () => (
-		<div className="o-grid-col-bp3-4">
+		<div className="o-grid-col-bp3-7">
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} poster={undefined} />
 		</div>
 	))
 	.add('FlowPlayer Thumbnail met Geknipt', () => (
-		<div className="o-grid-col-bp3-4">
+		<div className="o-grid-col-bp3-7">
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} start={60} end={70} />
 		</div>
 	))
 	.add('FlowPlayer logo', () => (
-		<div className="o-grid-col-bp3-4">
+		<div className="o-grid-col-bp3-7">
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} logo="images/100x100.svg" />
 		</div>
 	))
 	.add('FlowPlayer set time', () => (
-		<div className="o-grid-col-bp3-4">
+		<div className="o-grid-col-bp3-7">
 			<FlowPlayerStoryComponent>
 				<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} />
 			</FlowPlayerStoryComponent>
 		</div>
 	))
 	.add('FlowPlayer events', () => (
-		<div className="o-grid-col-bp3-4">
+		<div className="o-grid-col-bp3-7">
 			<FlowPlayer
 				{...MOCK_FLOW_PLAYER_PROPS_FULL}
 				onPlay={action('play')}
