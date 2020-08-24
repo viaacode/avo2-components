@@ -18,8 +18,8 @@ import {
 } from '../../components';
 import { convertToHtml } from '../../helpers';
 import { ButtonAction, DefaultProps } from '../../types';
-import { BlockImageGrid, GridItem } from '../BlockImageGrid/BlockImageGrid';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
+import { BlockImageGrid, GridItem } from '../BlockImageGrid/BlockImageGrid';
 
 import './BlockPageOverview.scss';
 
@@ -212,7 +212,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 										style={{
 											backgroundImage: `url(${page.thumbnail_path})`,
 										}}
-										aspect={2.5}
+										aspect={itemStyle === 'NEWS_LIST' ? 1.78 : 2.5} // 500 x 280 or 528 x 211
 									/>
 								</Column>
 								<Column size="2-7">
