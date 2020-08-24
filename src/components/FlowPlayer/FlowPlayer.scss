@@ -154,7 +154,7 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		bottom: 0;
 		left: auto;
 
-		width: 60px;
+		width: 75px;
 
 		padding: 0;
 
@@ -185,28 +185,6 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		}
 	}
 
-	@keyframes delayedFadeIn {
-		0%   {opacity: 0}
-		75%  {opacity: 0}
-		100% {opacity: 1}
-	}
-
-	.fp-timeline {
-		opacity: 0;
-		animation: delayedFadeIn 1s linear;
-		animation-fill-mode: both;
-		animation-play-state: paused;
-	}
-
-	&.is-waiting,
-	&.is-playing,
-	&.is-paused,
-	&.is-ended {
-		.fp-timeline {
-			animation-play-state: running;
-		}
-	}
-
 	&.use-drag-handle .fp-controls:hover {
 		.fp-timeline {
 			height: 6px;
@@ -221,7 +199,6 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 	.fp-bar,
 	.fp-buffer,
 	.fp-hover {
-		width: 40%;
 		height: 6px;
 	}
 
@@ -256,11 +233,11 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		.fp-cast-button,
 		.fp-fullscreen,
 		.fp-fullscreen-exit {
-			width: 50px;
-			height: 60%;
+			width: 40%;
+			height: 56%;
 
-			margin: 0;
 			padding: 0;
+			margin: 2px;
 		}
 	}
 
