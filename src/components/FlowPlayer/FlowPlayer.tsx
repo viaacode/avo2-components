@@ -38,7 +38,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	onPause?: () => void;
 	onEnded?: () => void;
 	onTimeUpdate?: (time: number) => void;
-	preload?: 'none' | 'auto' | 'metdata';
+	preload?: 'none' | 'auto' | 'metadata';
 	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
 	className?: string;
 }
