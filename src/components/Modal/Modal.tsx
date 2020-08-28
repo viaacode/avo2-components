@@ -1,5 +1,12 @@
 import classnames from 'classnames';
-import React, { Fragment, FunctionComponent, MouseEvent, ReactNode, useEffect } from 'react';
+import React, {
+	Fragment,
+	FunctionComponent,
+	MouseEvent,
+	ReactNode,
+	useEffect,
+	useState,
+} from 'react';
 import ReactDOM from 'react-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -41,6 +48,9 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 	const headerRight = useSlot(ModalHeaderRight, children);
 	const footerRight = useSlot(ModalFooterRight, children);
 	const footerLeft = useSlot(ModalFooterLeft, children);
+	const [mouseDownLocation, setMouseDownLocation] = useState<{ x: number; y: number } | null>(
+		null
+	);
 
 	useKeyPress('Escape', close);
 
@@ -56,11 +66,23 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 		onClose && onClose();
 	}
 
-	function onContextClick(event: MouseEvent<HTMLElement>) {
-		// close the modal when clicking outside the modal
-		if (!disableContextClick && event.target === event.currentTarget) {
-			close();
-		}
+	function onContextMouseDown(event: MouseEvent<HTMLElement>) {
+		setMouseDownLocation({ x: event.clientX, y: event.clientY });
+	}
+
+	function onContextMouseUp(event: MouseEvent<HTMLElement>) {
+		if (
+			mouseDownLocation &&
+			Math.abs(event.clientX - mouseDownLocation.x) < 5 &&
+			Math.abs(event.clientY - mouseDownLocation.y) < 5
+		) {
+			// user performed a click
+			// close the modal when clicking outside the modal
+			if (!disableContextClick && event.target === event.currentTarget) {
+				close();
+			}
+		} // else: User performed a drag
+		setMouseDownLocation(null);
 	}
 
 	const renderModalContent = () => {
@@ -147,7 +169,8 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 				className={classnames(className, 'c-modal-context', {
 					'c-modal-context--visible': isOpen,
 				})}
-				onClick={onContextClick}
+				onMouseDown={onContextMouseDown}
+				onMouseUp={onContextMouseUp}
 			>
 				<div className={classNames}>{renderModalContent()}</div>
 			</div>
