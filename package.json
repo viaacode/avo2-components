@@ -1,10 +1,9 @@
 {
 	"name": "@viaa/avo2-components",
 	"version": "1.56.0",
-	"main": "dist/bundle.cjs.js",
-	"module": "dist/bundle.esm.js",
-	"style": "dist/styles/main.css",
-	"types": "dist/index.d.ts",
+	"main": "dist/cjs/index.js",
+	"module": "dist/esm/index.js",
+	"types": "dist/esm/index.d.ts",
 	"scripts": {
 		"analyze": "source-map-explorer 'build/*.js'",
 		"prebuild": "rimraf dist",
@@ -65,6 +64,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^8.1.0",
 		"@commitlint/config-conventional": "^7.6.0",
+		"@rollup/plugin-multi-entry": "^4.0.0",
 		"@sambego/storybook-styles": "^1.0.0",
 		"@storybook/addon-actions": "^5.3.18",
 		"@storybook/addon-jest": "^5.3.18",

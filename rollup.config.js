@@ -6,14 +6,14 @@ import { terser } from 'rollup-plugin-terser';
 import autoprefixer from 'autoprefixer';
 
 export default {
-	input: 'src/index.ts',
+	input: ['src/index.ts', 'src/wysiwyg.ts'],
 	output: [
 		{
-			file: 'dist/bundle.esm.js',
+			dir: 'dist/esm',
 			format: 'esm',
 		},
 		{
-			file: 'dist/bundle.cjs.js',
+			dir: 'dist/cjs',
 			format: 'cjs',
 		},
 	],
