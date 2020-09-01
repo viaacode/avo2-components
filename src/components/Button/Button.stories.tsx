@@ -1,15 +1,12 @@
 import { Meta, storiesOf, Story } from '@storybook/react';
-import { keys } from 'lodash-es';
-import React, { Fragment, MouseEvent, ReactNode } from 'react';
+import React, { Fragment } from 'react';
 
 import { COLORS } from '../../colors';
 import { action } from '../../helpers';
 import { IconNameList, IconNameSchema } from '../Icon/Icon.types';
-import { IconName } from '../index';
 import { Spacer } from '../Spacer/Spacer';
 
 import { Button, ButtonPropsSchema } from './Button';
-import { ButtonTypeSchema } from './Button.types';
 
 const buttonProps: Partial<ButtonPropsSchema>[] = [
 	{ label: 'Primary', type: 'primary' },

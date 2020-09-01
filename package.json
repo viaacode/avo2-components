@@ -7,6 +7,7 @@
 	"types": "dist/index.d.ts",
 	"homepage": "./",
 	"scripts": {
+		"preinstall": "npx npm-force-resolutions",
 		"analyze": "source-map-explorer 'build/*.js'",
 		"prebuild": "rimraf dist",
 		"build": "rollup -c",
@@ -68,16 +69,16 @@
 		"@commitlint/cli": "^9.1.2",
 		"@commitlint/config-conventional": "^9.1.2",
 		"@sambego/storybook-styles": "^1.0.0",
-		"@storybook/addon-actions": "^6.0.20",
-		"@storybook/addon-essentials": "^6.0.20",
-		"@storybook/addon-jest": "^6.0.20",
-		"@storybook/addon-knobs": "^6.0.20",
+		"@storybook/addon-actions": "^6.0.21",
+		"@storybook/addon-essentials": "^6.0.21",
+		"@storybook/addon-jest": "^6.0.21",
+		"@storybook/addon-knobs": "^6.0.21",
 		"@storybook/addon-options": "^5.3.21",
-		"@storybook/addon-viewport": "^6.0.20",
-		"@storybook/addons": "^6.0.20",
+		"@storybook/addon-viewport": "^6.0.21",
+		"@storybook/addons": "^6.0.21",
 		"@storybook/preset-create-react-app": "^3.1.4",
 		"@storybook/preset-scss": "^1.0.2",
-		"@storybook/react": "^6.0.20",
+		"@storybook/react": "^6.0.21",
 		"@svgr/cli": "^5.4.0",
 		"@tom-odb/named-exports": "^1.4.6",
 		"@types/enzyme": "^3.10.5",
@@ -100,7 +101,7 @@
 		"lorem-ipsum": "^2.0.3",
 		"node-sass": "^4.14.1",
 		"prettier": "^2.1.1",
-		"react-scripts": "^3.4.3",
+		"react-scripts": "3.4.1",
 		"react-test-renderer": "^16.13.1",
 		"renamer": "^2.0.1",
 		"rimraf": "^3.0.2",
@@ -120,6 +121,9 @@
 	},
 	"publishConfig": {
 		"@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-viaa/"
+	},
+	"resolutions": {
+		"eslint-loader": "4.0.2"
 	},
 	"snyk": true
 }

@@ -1,9 +1,8 @@
 import classnames from 'classnames';
 import PopperJS, { Data, ModifierFn, Placement } from 'popper.js';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { createRef, FunctionComponent, ReactNode } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
-import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
@@ -53,8 +52,8 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	triggerClassName,
 	triggerWidth = 'fit-content',
 }) => {
-	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef();
-	const [dropdownButton, dropdownButtonRef] = useCallbackRef();
+	const dropdownFlyoutRef = createRef<HTMLElement>();
+	const dropdownButtonRef = createRef<HTMLElement>();
 
 	const dropdownButtonSlot = useSlot(DropdownButton, children);
 	const dropdownContentSlot = useSlot(DropdownContent, children);
@@ -90,7 +89,9 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	};
 
 	useKeyPress('Escape', toggleClosed);
-	useClickOutside(dropdownFlyout, toggleClosed, [dropdownButton]);
+	useClickOutside(dropdownFlyoutRef.current as HTMLElement, toggleClosed, [
+		dropdownButtonRef.current as HTMLElement,
+	]);
 
 	return (
 		<Manager>
@@ -109,7 +110,11 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 									{icon && <Icon name={icon} />}
 									{label && <div className="c-button__label">{label}</div>}
 									{!icon && (
-										<Icon name={isOpen ? 'caret-up' : 'caret-down'} size="small" type="arrows" />
+										<Icon
+											name={isOpen ? 'caret-up' : 'caret-down'}
+											size="small"
+											type="arrows"
+										/>
 									)}
 								</div>
 							</Button>
