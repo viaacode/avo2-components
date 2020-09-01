@@ -1,8 +1,7 @@
 import autosize from 'autosize';
 import classnames from 'classnames';
-import React, { ChangeEvent, FunctionComponent, useEffect } from 'react';
+import React, { ChangeEvent, createRef, FunctionComponent, useEffect } from 'react';
 
-import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { DefaultProps } from '../../types';
 
 export interface TextAreaPropsSchema extends DefaultProps {
@@ -31,13 +30,13 @@ export const TextArea: FunctionComponent<TextAreaPropsSchema> = ({
 	onChange = () => {},
 	onBlur = () => {},
 }) => {
-	const [textArea, textAreaRef] = useCallbackRef();
+	const textAreaRef = createRef<HTMLTextAreaElement>();
 
 	useEffect(() => {
-		if (height === 'auto') {
-			autosize(textArea);
+		if (height === 'auto' && textAreaRef.current) {
+			autosize(textAreaRef.current as HTMLElement);
 		}
-	}, [height, textArea, textAreaRef]);
+	}, [height, textAreaRef]);
 
 	function onValueChange(event: ChangeEvent<HTMLTextAreaElement>) {
 		onChange(event.target.value);

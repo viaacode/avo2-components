@@ -1,41 +1,46 @@
 // Content Blocks
-export { BlockAccordions, BlockAccordionsProps } from './BlockAccordions/BlockAccordions';
-export { BlockButtons, BlockButtonsProps } from './BlockButtons/BlockButtons';
-export { BlockCTAs, BlockCTAsProps } from './BlockCTAs/BlockCTAs';
-export { BlockImageGrid, BlockImageGridProps, GridItem } from './BlockImageGrid/BlockImageGrid';
-export { BlockHeading, BlockHeadingProps } from './BlockHeading/BlockHeading';
-export { BlockIFrame, BlockIFrameProps } from './BlockIFrame/BlockIFrame';
-export { BlockIntro, BlockIntroProps } from './BlockIntro/BlockIntro';
-export { BlockHero, BlockHeroProps } from './BlockHero/BlockHero';
-export { BlockKlaar, BlockKlaarProps } from './BlockKlaar/BlockKlaar';
-export { BlockLinks, BlockLinksProps } from './BlockLinks/BlockLinks';
-export {
-	BlockMediaList,
-	BlockMediaListProps,
-	MediaListItem,
-} from './BlockMediaList/BlockMediaList';
+export { BlockAccordions } from './BlockAccordions/BlockAccordions';
+export type { BlockAccordionsProps } from './BlockAccordions/BlockAccordions';
+export { BlockButtons } from './BlockButtons/BlockButtons';
+export type { BlockButtonsProps } from './BlockButtons/BlockButtons';
+export { BlockCTAs } from './BlockCTAs/BlockCTAs';
+export type { BlockCTAsProps } from './BlockCTAs/BlockCTAs';
+export { BlockImageGrid } from './BlockImageGrid/BlockImageGrid';
+export type { BlockImageGridProps, GridItem } from './BlockImageGrid/BlockImageGrid';
+export { BlockHeading } from './BlockHeading/BlockHeading';
+export type { BlockHeadingProps } from './BlockHeading/BlockHeading';
+export { BlockIFrame } from './BlockIFrame/BlockIFrame';
+export type { BlockIFrameProps } from './BlockIFrame/BlockIFrame';
+export { BlockIntro } from './BlockIntro/BlockIntro';
+export type { BlockIntroProps } from './BlockIntro/BlockIntro';
+export { BlockHero } from './BlockHero/BlockHero';
+export type { BlockHeroProps } from './BlockHero/BlockHero';
+export { BlockKlaar } from './BlockKlaar/BlockKlaar';
+export type { BlockKlaarProps } from './BlockKlaar/BlockKlaar';
+export { BlockLinks } from './BlockLinks/BlockLinks';
+export type { BlockLinksProps } from './BlockLinks/BlockLinks';
+export { BlockMediaList } from './BlockMediaList/BlockMediaList';
+export type { BlockMediaListProps, MediaListItem } from './BlockMediaList/BlockMediaList';
 export { BlockRichText, BlockRichTextProps } from './BlockRichText/BlockRichText';
-export { BlockImage, BlockImageProps } from './BlockImage/BlockImage';
-export {
-	BlockImageTitleTextButton,
-	BlockImageTitleTextButtonProps,
-} from './BlockImageTitleTextButton/BlockImageTitleTextButton';
-export {
-	BlockPageOverview,
+export { BlockImage } from './BlockImage/BlockImage';
+export type { BlockImageProps } from './BlockImage/BlockImage';
+export { BlockImageTitleTextButton } from './BlockImageTitleTextButton/BlockImageTitleTextButton';
+export type { BlockImageTitleTextButtonProps } from './BlockImageTitleTextButton/BlockImageTitleTextButton';
+export { BlockPageOverview } from './BlockPageOverview/BlockPageOverview';
+export type {
 	BlockPageOverviewProps,
 	PageInfo,
 	ContentTabStyle,
 	ContentItemStyle,
 	LabelObj,
 } from './BlockPageOverview/BlockPageOverview';
-export { BlockSpotlight, BlockSpotlightProps, ImageInfo } from './BlockSpotlight/BlockSpotlight';
-export { BlockQuote, BlockQuoteProps } from './BlockQuote/BlockQuote';
-export {
-	BlockTitleImageText,
-	BlockTitleImageTextProps,
-} from './BlockTitleImageText/BlockTitleImageText';
-export { BlockVideo, BlockVideoProps } from './BlockVideo/BlockVideo';
-export {
-	BlockVideoTitleTextButton,
-	BlockVideoTitleTextButtonProps,
-} from './BlockVideoTitleTextButton/BlockVideoTitleTextButton';
+export { BlockSpotlight } from './BlockSpotlight/BlockSpotlight';
+export type { BlockSpotlightProps, ImageInfo } from './BlockSpotlight/BlockSpotlight';
+export { BlockQuote } from './BlockQuote/BlockQuote';
+export type { BlockQuoteProps } from './BlockQuote/BlockQuote';
+export { BlockTitleImageText } from './BlockTitleImageText/BlockTitleImageText';
+export type { BlockTitleImageTextProps } from './BlockTitleImageText/BlockTitleImageText';
+export { BlockVideo } from './BlockVideo/BlockVideo';
+export type { BlockVideoProps } from './BlockVideo/BlockVideo';
+export { BlockVideoTitleTextButton } from './BlockVideoTitleTextButton/BlockVideoTitleTextButton';
+export type { BlockVideoTitleTextButtonProps } from './BlockVideoTitleTextButton/BlockVideoTitleTextButton';

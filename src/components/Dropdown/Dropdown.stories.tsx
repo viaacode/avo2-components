@@ -114,7 +114,12 @@ storiesOf('components/Dropdown', module)
 	.add('Dropdown top-end', () => (
 		<div style={{ paddingTop: '200px' }}>
 			<DropdownStoryComponent>
-				<Dropdown label="Show options" menuWidth="fit-content" isOpen={false} placement={'top-end'}>
+				<Dropdown
+					label="Show options"
+					menuWidth="fit-content"
+					isOpen={false}
+					placement={'top-end'}
+				>
 					<MenuContent menuItems={menuItems} />
 				</Dropdown>
 			</DropdownStoryComponent>
