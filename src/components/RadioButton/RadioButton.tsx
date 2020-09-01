@@ -1,7 +1,6 @@
 import classnames from 'classnames';
-import React, { ChangeEvent, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
-import { useDeselectEvent } from '../../hooks/useDeselectEvent';
 import { DefaultProps } from '../../types';
 
 export interface RadioButtonPropsSchema extends DefaultProps {
@@ -11,11 +10,10 @@ export interface RadioButtonPropsSchema extends DefaultProps {
 	id?: string;
 	disabled?: boolean;
 	checked?: boolean;
-	onChange?: (checked: boolean) => void;
+	onChange?: (value: string) => void;
 }
 
 export const RadioButton: FunctionComponent<RadioButtonPropsSchema> = ({
-	className,
 	label,
 	name,
 	value,
@@ -23,25 +21,8 @@ export const RadioButton: FunctionComponent<RadioButtonPropsSchema> = ({
 	disabled = false,
 	checked = false,
 	onChange = () => {},
+	className,
 }) => {
-	const [dispatchDeselectEvent] = useDeselectEvent(name, value, onDeselect);
-
-	function onDeselect() {
-		if (checked) {
-			onChange(false);
-		}
-	}
-
-	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
-		const checkedValue = event.target.checked;
-
-		dispatchDeselectEvent();
-
-		if (checkedValue !== checked) {
-			onChange(checkedValue);
-		}
-	}
-
 	return (
 		<div className={classnames(className, 'c-radio')}>
 			<label>
@@ -52,7 +33,7 @@ export const RadioButton: FunctionComponent<RadioButtonPropsSchema> = ({
 					id={id}
 					checked={checked}
 					disabled={disabled}
-					onChange={onValueChange}
+					onChange={evt => onChange(evt.target.value)}
 				/>
 				{label}
 			</label>
