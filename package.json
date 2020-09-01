@@ -89,6 +89,8 @@
 		"@types/react-select": "^3.0.19",
 		"@types/storybook__addon-actions": "^5.2.1",
 		"@types/storybook__react": "^5.2.1",
+		"@typescript-eslint/eslint-plugin": "^4.0.1",
+		"@typescript-eslint/parser": "^4.0.1",
 		"autoprefixer": "^9.8.6",
 		"core-js": "^3.0.1",
 		"cross-env": "^7.0.2",
