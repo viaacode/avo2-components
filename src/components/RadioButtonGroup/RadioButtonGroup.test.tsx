@@ -1,30 +1,24 @@
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 
-import { RadioButton } from '../RadioButton/RadioButton';
-
 import { RadioButtonGroup } from './RadioButtonGroup';
+import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock';
 
 describe('<RadioButtonGroup />', () => {
 	it('Should be able to render', () => {
-		shallow(
-			<RadioButtonGroup>
-				<RadioButton name="List1" label="Fish" value="fish" />
-				<RadioButton name="List1" label="Steak" value="steak" />
-				<RadioButton name="List1" label="Bacon" value="bacon" />
-			</RadioButtonGroup>
-		);
+		shallow(<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={() => {}} />);
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-column-custom';
 
 		const radioButtonGroupComponent = shallow(
-			<RadioButtonGroup className={customClass}>
-				<RadioButton name="List2" label="Fish" value="fish" />
-				<RadioButton name="List2" label="Steak" value="steak" />
-				<RadioButton name="List2" label="Bacon" value="bacon" />
-			</RadioButtonGroup>
+			<RadioButtonGroup
+				className={customClass}
+				options={RADIO_BUTTON_OPTIONS}
+				value={''}
+				onChange={() => {}}
+			/>
 		);
 
 		expect(radioButtonGroupComponent.hasClass(customClass)).toEqual(true);
@@ -33,27 +27,14 @@ describe('<RadioButtonGroup />', () => {
 
 	it('Should set the correct inline className', () => {
 		const radioButtonGroupComponent = shallow(
-			<RadioButtonGroup inline>
-				<RadioButton name="List2" label="Fish" value="fish" />
-				<RadioButton name="List2" label="Steak" value="steak" />
-				<RadioButton name="List2" label="Bacon" value="bacon" />
-			</RadioButtonGroup>
+			<RadioButtonGroup
+				options={RADIO_BUTTON_OPTIONS}
+				value={''}
+				onChange={() => {}}
+				inline
+			/>
 		);
 
 		expect(radioButtonGroupComponent.hasClass('c-radio-group--inline')).toEqual(true);
-	});
-
-	it('Should correctly pass children', () => {
-		const radioButtonGroupComponent = mount(
-			<RadioButtonGroup>
-				<RadioButton name="List3" label="Fish" value="fish" />
-				<RadioButton name="List3" label="Steak" value="steak" />
-				<RadioButton name="List3" label="Bacon" value="bacon" />
-			</RadioButtonGroup>
-		);
-
-		const radioButtons = radioButtonGroupComponent.find('[type="radio"]');
-
-		expect(radioButtons).toHaveLength(3);
 	});
 });
