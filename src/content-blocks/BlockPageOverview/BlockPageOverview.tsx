@@ -29,6 +29,11 @@ export type ContentWidthSchema = 'REGULAR' | 'LARGE' | 'MEDIUM';
 export type ContentTabStyle = 'ROUNDED_BADGES' | 'MENU_BAR';
 export type ContentItemStyle = 'GRID' | 'NEWS_LIST' | 'PROJECT_LIST' | 'ACCORDION';
 
+export type LabelObj = {
+	label: string;
+	id: number;
+};
+
 export interface PageInfo {
 	id: number;
 	title: string;
@@ -42,11 +47,6 @@ export interface PageInfo {
 	blocks?: ReactNode; // Client knows how to convert ContentBlockSchema[] into a ReactNode
 	path: string;
 }
-
-export type LabelObj = {
-	label: string;
-	id: number;
-};
 
 export interface BlockPageOverviewProps extends DefaultProps {
 	tabs?: { label: string; id: number }[];

@@ -18,7 +18,9 @@ export interface MenuSearchResultContentPropsSchema extends DefaultProps {
 	onClick?: (menuItemId: string | number) => void;
 }
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export const CONTENT_TYPE_TO_LABEL: { [contentType in EnglishContentType]?: string } = {
+	/* eslint-enable @typescript-eslint/no-unused-vars */
 	collection: 'Collectie',
 	video: 'Video',
 	audio: 'Audio',
