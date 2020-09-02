@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
+import React, { FunctionComponent } from 'react';
 
 import { Button, ButtonPropsSchema } from '../../components/Button/Button';
 import { Column, GridSizeSchema } from '../../components/Grid/Column/Column';
@@ -14,10 +14,6 @@ interface BlockRichTextElement {
 	content: string;
 	buttons?: (ButtonPropsSchema & { buttonAction: ButtonAction })[];
 	color?: string;
-}
-
-export interface BlockRichTextProps extends DefaultProps {
-	elements: BlockRichTextElement | BlockRichTextElement[];
 }
 
 export interface BlockRichTextProps extends DefaultProps {
