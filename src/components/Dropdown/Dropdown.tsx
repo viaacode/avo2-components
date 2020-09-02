@@ -1,8 +1,9 @@
 import classnames from 'classnames';
 import PopperJS, { Data, ModifierFn, Placement } from 'popper.js';
-import React, { createRef, FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
+import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
@@ -52,8 +53,8 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	triggerClassName,
 	triggerWidth = 'fit-content',
 }) => {
-	const dropdownFlyoutRef = createRef<HTMLElement>();
-	const dropdownButtonRef = createRef<HTMLElement>();
+	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef<Element>();
+	const [dropdownButton, dropdownButtonRef] = useCallbackRef<Element>();
 
 	const dropdownButtonSlot = useSlot(DropdownButton, children);
 	const dropdownContentSlot = useSlot(DropdownContent, children);
@@ -89,9 +90,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	};
 
 	useKeyPress('Escape', toggleClosed);
-	useClickOutside(dropdownFlyoutRef.current as HTMLElement, toggleClosed, [
-		dropdownButtonRef.current as HTMLElement,
-	]);
+	useClickOutside(dropdownFlyout as Element, toggleClosed, [dropdownButton as Element]);
 
 	return (
 		<Manager>
