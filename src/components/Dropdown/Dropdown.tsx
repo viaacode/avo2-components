@@ -53,8 +53,8 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	triggerClassName,
 	triggerWidth = 'fit-content',
 }) => {
-	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef();
-	const [dropdownButton, dropdownButtonRef] = useCallbackRef();
+	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef<Element>();
+	const [dropdownButton, dropdownButtonRef] = useCallbackRef<Element>();
 
 	const dropdownButtonSlot = useSlot(DropdownButton, children);
 	const dropdownContentSlot = useSlot(DropdownContent, children);
@@ -90,7 +90,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	};
 
 	useKeyPress('Escape', toggleClosed);
-	useClickOutside(dropdownFlyout, toggleClosed, [dropdownButton]);
+	useClickOutside(dropdownFlyout as Element, toggleClosed, [dropdownButton as Element]);
 
 	return (
 		<Manager>
@@ -109,7 +109,11 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 									{icon && <Icon name={icon} />}
 									{label && <div className="c-button__label">{label}</div>}
 									{!icon && (
-										<Icon name={isOpen ? 'caret-up' : 'caret-down'} size="small" type="arrows" />
+										<Icon
+											name={isOpen ? 'caret-up' : 'caret-down'}
+											size="small"
+											type="arrows"
+										/>
 									)}
 								</div>
 							</Button>
