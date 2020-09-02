@@ -30,19 +30,19 @@ $g-c-modal-z: 50 !default;
 .c-modal-context {
 	display: flex;
 	height: 100%;
-	left: 0;
+	left: 50%;
 	opacity: 0;
 	position: fixed;
 	top: 0;
-	transform: translateY(-4rem);
+	transform: translate(-50%, -4rem);
 	transition: visibility 0s linear 0.2s, opacity 0.2s linear, transform 0.2s ease-in-out;
 	visibility: hidden;
-	width: 100%;
+	max-width: 100vw;
 	z-index: $g-c-modal-context-z;
 
 	&.c-modal-context--visible {
 		opacity: 1;
-		transform: translateY(0);
+		transform: translate(-50%, 0);
 		transition-delay: 0s;
 		visibility: visible;
 	}
@@ -52,7 +52,8 @@ $g-c-modal-z: 50 !default;
 	background-color: #FFF;
 	display: flex;
 	flex-direction: column;
-	width: calc(100% - 8rem);
+	width: calc(100vw - 4rem);
+	max-width: calc(100vw - 4rem);
 	z-index: $g-c-modal-z;
 
 	@media (min-width: $g-bp2) {
@@ -61,7 +62,7 @@ $g-c-modal-z: 50 !default;
 			0 0 2.4rem rgba($c-modal-shadow-color,0.15),
 			0 0 3.2rem rgba($c-modal-shadow-color,0.05);
 		border-radius: $c-modal-border-radius;
-		margin: auto;
+		width: calc(100vw - 8rem);
 	}
 }
 
