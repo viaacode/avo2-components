@@ -33,6 +33,14 @@ storiesOf('components/FlowPlayer', module)
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} />
 		</div>
 	))
+	.add('FlowPlayer Video with m3u8 playlist src', () => (
+		<div className="o-grid-col-bp3-7">
+			<FlowPlayer
+				{...MOCK_FLOW_PLAYER_PROPS_FULL}
+				src="https://cdn.flowplayer.com/demo_videos/jumping_waves/hls/playlist.m3u8"
+			/>
+		</div>
+	))
 	.add('FlowPlayer Thumbnail', () => (
 		<div className="o-grid-col-bp3-7">
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} />
