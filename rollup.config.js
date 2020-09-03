@@ -54,5 +54,7 @@ export default {
 		'react-select/creatable',
 		'lodash-es',
 		'@storybook/addon-actions',
+		'react-perfect-scrollbar',
+		'react-perfect-scrollbar/dist/css/styles.css',
 	],
 };

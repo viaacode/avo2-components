@@ -40,10 +40,13 @@ export const TagsInput: FunctionComponent<TagsInputPropsSchema> = ({
 	onChange = () => {},
 	onCreate = () => {},
 }) => {
-	function onValueChange(changedValues: ValueType<TagInfoSchema>, actionMeta: ActionMeta) {
+	function onValueChange(
+		changedValues: ValueType<TagInfoSchema>,
+		actionMeta: ActionMeta<TagInfoSchema>
+	) {
 		if (actionMeta.action === 'create-option') {
 			const tagsToCreate: TagInfoSchema[] = ((changedValues as TagInfoSchema[]) || []).filter(
-				tag => (tag as any).__isNew__
+				(tag) => (tag as any).__isNew__
 			);
 			if (tagsToCreate[0]) {
 				onCreate({

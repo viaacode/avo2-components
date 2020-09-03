@@ -27,7 +27,7 @@ storiesOf('blocks/BlockMediaList', module)
 		<BlockMediaList
 			elements={MEDIA_LIST_ITEMS_MOCK}
 			openMediaInModal
-			renderPlayerModalBody={item => (
+			renderPlayerModalBody={(item) => (
 				<FlowPlayer src={item.src as string} poster={get(item, 'thumbnail.src')} />
 			)}
 		/>
