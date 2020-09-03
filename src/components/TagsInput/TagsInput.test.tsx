@@ -77,6 +77,6 @@ describe('<TextInput />', () => {
 
 		expect(onChangeHandler).toHaveBeenCalledTimes(2);
 		// Selected items are not shown in dropdown
-		expect(onChangeHandler).toHaveBeenCalledWith([tags[0], tags[2]]);
+		expect(onChangeHandler).toHaveBeenCalledWith([tags[0], tags[3]]);
 	});
 });
