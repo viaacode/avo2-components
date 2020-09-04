@@ -158,6 +158,9 @@ a.c-button {
 .c-button--auto {
 	max-height: none;
 	min-height: $c-button-height;
+	.c-button__label {
+		white-space: normal;
+	}
 }
 
 /* Button action
