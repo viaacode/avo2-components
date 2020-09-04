@@ -30,8 +30,8 @@ storiesOf('components/ButtonToolbar', module)
 	))
 	.add('ButtonToolbar wrapping', () => (
 		<ButtonToolbar>
-			{times(20).map(() => (
-				<Button type="secondary" label="Test Button" />
+			{times(20).map((index) => (
+				<Button type="secondary" label="Test Button" key={`button-${index}`} />
 			))}
 		</ButtonToolbar>
 	));
