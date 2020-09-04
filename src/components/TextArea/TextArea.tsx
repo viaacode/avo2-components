@@ -18,6 +18,7 @@ export interface TextAreaPropsSchema extends DefaultProps {
 	onBlur?: () => void;
 }
 
+
 export const TextArea: FunctionComponent<TextAreaPropsSchema> = ({
 	className,
 	id,
@@ -31,10 +32,10 @@ export const TextArea: FunctionComponent<TextAreaPropsSchema> = ({
 	onChange = () => {},
 	onBlur = () => {},
 }) => {
-	const [textArea, textAreaRef] = useCallbackRef();
+	const [textArea, textAreaRef] = useCallbackRef<HTMLTextAreaElement>();
 
 	useEffect(() => {
-		if (height === 'auto') {
+		if (height === 'auto' && textArea) {
 			autosize(textArea);
 		}
 	}, [height, textArea, textAreaRef]);

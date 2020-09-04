@@ -156,7 +156,7 @@ const WYSIWYGInternal: FunctionComponent<WYSIWYGPropsSchema> = ({
 	};
 
 	return (
-		<div className={classnames('c-rich-text-editor c-content', { disabled })}>
+		<div className={classnames('c-rich-text-editor c-content', { disabled })} id={id}>
 			<BraftEditor
 				id={id}
 				value={state || BraftEditor.createEditorState(initialHtml || '')}

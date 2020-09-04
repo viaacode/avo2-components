@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import flowplayer from 'flowplayer-files';
 import chromecast from 'flowplayer-files/lib/plugins/chromecast.min';
 import cuepoints from 'flowplayer-files/lib/plugins/cuepoints.min';
+import hls from 'flowplayer-files/lib/plugins/hls.min';
 import subtitles from 'flowplayer-files/lib/plugins/subtitles.min';
 import { get } from 'lodash-es';
 import React, { createRef } from 'react';
@@ -13,6 +14,7 @@ import './FlowPlayer.scss';
 flowplayer.extensions.push(chromecast);
 flowplayer.extensions.push(cuepoints);
 flowplayer.extensions.push(subtitles);
+flowplayer.extensions.push(hls);
 
 interface FlowplayerInstance extends HTMLVideoElement {
 	destroy: Function;
@@ -36,7 +38,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	onPause?: () => void;
 	onEnded?: () => void;
 	onTimeUpdate?: (time: number) => void;
-	preload?: 'none' | 'auto' | 'metdata';
+	preload?: 'none' | 'auto' | 'metadata';
 	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
 	className?: string;
 }
@@ -209,7 +211,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			// CONFIGURATION
 			autoplay: this.props.autoplay,
 			ui: flowplayer.ui.LOGO_ON_RIGHT | flowplayer.ui.USE_DRAG_HANDLE,
-			plugins: ['subtitles', 'chromecast', 'cuepoints'],
+			plugins: ['subtitles', 'chromecast', 'cuepoints', 'hls'],
 			preload: props.preload || (!props.poster ? 'metadata' : 'none'),
 
 			// CUEPOINTS

@@ -37,6 +37,7 @@ $g-c-modal-z: 50 !default;
 	transform: translateY(-4rem);
 	transition: visibility 0s linear 0.2s, opacity 0.2s linear, transform 0.2s ease-in-out;
 	visibility: hidden;
+	pointer-events: none;
 	width: 100%;
 	z-index: $g-c-modal-context-z;
 
@@ -45,6 +46,7 @@ $g-c-modal-z: 50 !default;
 		transform: translateY(0);
 		transition-delay: 0s;
 		visibility: visible;
+		pointer-events: auto;
 	}
 }
 
@@ -195,12 +197,14 @@ $g-c-modal-z: 50 !default;
 	transition: visibility 0s linear 0.2s, opacity 0.2s linear;
 	left: 0;
 	visibility: hidden;
+	pointer-events: none;
 	z-index: $g-c-modal-backdrop-z;
 
 	&.c-modal-backdrop--visible {
 		opacity: 1;
 		transition-delay: 0s;
 		visibility: visible;
+		pointer-events: auto;
 	}
 }
 

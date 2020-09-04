@@ -9,7 +9,9 @@ import { Spinner } from '../Spinner/Spinner';
 import './Alert.scss';
 import { AlertPropsSchema, AlertTypeWithIcon } from './Alert.types';
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const ALERT_TYPE_TO_ICON_MAPPING: { [type in AlertTypeWithIcon]: IconNameSchema } = {
+	/* eslint-enable @typescript-eslint/no-unused-vars */
 	info: 'circle-info',
 	success: 'circle-check',
 	danger: 'circle-warning',

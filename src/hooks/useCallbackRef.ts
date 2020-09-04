@@ -5,7 +5,7 @@ export function useCallbackRef<HTMLElement>(
 ): [HTMLElement | null, (ref: HTMLElement | null) => void] {
 	const [node, setNode] = useState(element || null);
 
-	const ref = useCallback(node => {
+	const ref = useCallback((node) => {
 		if (node !== null) {
 			setNode(node);
 		}

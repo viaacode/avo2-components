@@ -27,7 +27,7 @@ describe('<Tab />', () => {
 		const tabComponent = shallow(<Tab {...mockTab} />);
 
 		expect(tabComponent.hasClass(mockTab.className)).toEqual(true);
-		expect(tabComponent.hasClass('c-tabs__item')).toEqual(true);
+		expect(tabComponent.hasClass('c-tab-item')).toEqual(true);
 	});
 
 	it('Should set the correct className when icon is passed', () => {
