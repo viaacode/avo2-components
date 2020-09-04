@@ -1,17 +1,17 @@
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
-import { Spacer } from '../Spacer/Spacer';
+import { action } from '../../helpers';
 import { Select } from '../Select/Select';
 import { SELECT_MOCK_OPTIONS } from '../Select/Select.mock';
-import { action } from '../../helpers';
+import { Spacer } from '../Spacer/Spacer';
+import { WYSIWYGControlSchema } from '../WYSIWYG/WYSIWYG.types';
 
 import { WYSIWYG } from './WYSIWYG';
-import { WYSIWYGControl } from '../index';
 
 const withContent = (story: Function) => <div className="c-content">{story()}</div>;
 
-export const WYSIWYG_OPTIONS: WYSIWYGControl[] = [
+export const WYSIWYG_OPTIONS: WYSIWYGControlSchema[] = [
 	'undo',
 	'redo',
 	'separator',
