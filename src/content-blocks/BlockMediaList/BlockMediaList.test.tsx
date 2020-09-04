@@ -29,11 +29,7 @@ describe('<BlockMediaList />', () => {
 
 	it('Should correctly render a CTA when given', () => {
 		const blockMediaList = mount(
-			<BlockMediaList
-				elements={MEDIA_LIST_MOCK}
-				navigate={() => {}}
-				{...MEDIA_LIST_CTA_MOCK}
-			/>
+			<BlockMediaList navigate={() => {}} {...MEDIA_LIST_CTA_MOCK} />
 		);
 
 		const ctaItem = blockMediaList.find('.c-cta-item');

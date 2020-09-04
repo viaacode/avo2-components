@@ -72,13 +72,6 @@ import { ToolbarPropsSchema } from './Toolbar/Toolbar';
 import { ToolbarItemPropsSchema } from './Toolbar/ToolbarItem/ToolbarItem';
 import { ToolbarTitlePropsSchema } from './Toolbar/ToolbarTitle/ToolbarTitle';
 import { TooltipPropsSchema } from './Tooltip/Tooltip';
-import {
-	RichEditorStateSchema,
-	WYSIWYGMediaSchema,
-	WYSIWYGPropsSchema,
-	WYSIWYGControlSchema,
-	WYSIWYGUploadInfoSchema,
-} from './WYSIWYG/WYSIWYG';
 
 export { Accordion } from './Accordion/Accordion';
 export type AccordionProps = AccordionPropsSchema;
@@ -306,10 +299,3 @@ export type ToolbarTitleProps = ToolbarTitlePropsSchema;
 export { Tooltip } from './Tooltip/Tooltip';
 export type TooltipProps = TooltipPropsSchema;
 export { TooltipContent, TooltipTrigger } from './Tooltip/Tooltip.slots';
-
-export { WYSIWYG } from './WYSIWYG/WYSIWYG';
-export type WYSIWYGProps = WYSIWYGPropsSchema;
-export type WYSIWYGControl = WYSIWYGControlSchema;
-export type RichEditorState = RichEditorStateSchema;
-export type WYSIWYGMedia = WYSIWYGMediaSchema;
-export type WYSIWYGUploadInfo = WYSIWYGUploadInfoSchema;

@@ -38,7 +38,7 @@ describe('<BlockImage />', () => {
 
 		expect(component.hasClass(customClass)).toEqual(true);
 		expect(verticalContainerElement.hasClass('o-container-vertical')).toEqual(true);
-		expect(imgWrapperElement.hasClass('c-image c-image--full')).toEqual(true);
+		expect(imgWrapperElement.hasClass('c-image--full')).toEqual(true);
 	});
 
 	it('Should set the correct width', () => {
@@ -55,7 +55,7 @@ describe('<BlockImage />', () => {
 		const titleElement = component.find('h3').at(0);
 		const textElement = component.find('p').at(0);
 
-		expect(titleElement.text()).toEqual('example title');
+		expect(titleElement.text()).toEqual('© example title');
 		expect(textElement.text()).toEqual('example text');
 	});
 });

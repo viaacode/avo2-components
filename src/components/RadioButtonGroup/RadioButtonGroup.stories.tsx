@@ -1,31 +1,29 @@
 import { storiesOf } from '@storybook/react';
-import React, { Children, Fragment, ReactElement, useState } from 'react';
+import React, { Fragment, ReactElement, useState } from 'react';
 
 import { action } from '../../helpers';
-import { RadioButton, RadioButtonPropsSchema } from '../RadioButton/RadioButton';
 
 import { RadioButtonGroup } from './RadioButtonGroup';
+import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock';
 
 const RadioButtonGroupStoryComponent = ({
 	children,
 	defaultValue,
 }: {
-	children: ReactElement[];
+	children: ReactElement;
 	defaultValue?: string;
 }) => {
 	const [value, setValue] = useState(defaultValue);
 
 	return (
 		<Fragment>
-			{Children.map(children, (checkbox: ReactElement<RadioButtonPropsSchema>) =>
-				React.cloneElement(checkbox, {
-					checked: checkbox.props.value === value,
-					onChange: (checked: boolean) => {
-						action('RadioButton toggled')(checkbox.props.value, checked);
-						setValue(checkbox.props.value);
-					},
-				})
-			)}
+			{React.cloneElement(children, {
+				value,
+				onChange: (value: string) => {
+					action('RadioButtonGroup value changed')(value);
+					setValue(value);
+				},
+			})}
 		</Fragment>
 	);
 };
@@ -33,20 +31,22 @@ const RadioButtonGroupStoryComponent = ({
 storiesOf('components/RadioButtonGroup', module)
 	.addParameters({ jest: ['RadioButtonGroup'] })
 	.add('RadioButtonGroup', () => (
-		<RadioButtonGroup>
-			<RadioButtonGroupStoryComponent defaultValue="fish">
-				<RadioButton name="List1" label="Fish" value="fish" onChange={action('onChange fish')} />
-				<RadioButton name="List1" label="Steak" value="steak" onChange={action('onChange steak')} />
-				<RadioButton name="List1" label="Bacon" value="bacon" onChange={action('onChange bacon')} />
-			</RadioButtonGroupStoryComponent>
-		</RadioButtonGroup>
+		<RadioButtonGroupStoryComponent>
+			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={() => {}} />
+		</RadioButtonGroupStoryComponent>
+	))
+	.add('RadioButtonGroup default option', () => (
+		<RadioButtonGroupStoryComponent defaultValue="steak">
+			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={() => {}} />
+		</RadioButtonGroupStoryComponent>
 	))
 	.add('RadioButtonGroup inline', () => (
-		<RadioButtonGroup inline>
-			<RadioButtonGroupStoryComponent defaultValue="fish">
-				<RadioButton name="List1" label="Fish" value="fish" />
-				<RadioButton name="List1" label="Steak" value="steak" />
-				<RadioButton name="List1" label="Bacon" value="bacon" />
-			</RadioButtonGroupStoryComponent>
-		</RadioButtonGroup>
+		<RadioButtonGroupStoryComponent>
+			<RadioButtonGroup
+				options={RADIO_BUTTON_OPTIONS}
+				value={''}
+				onChange={() => {}}
+				inline
+			/>
+		</RadioButtonGroupStoryComponent>
 	));
