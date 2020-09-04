@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/react';
-import { intersectionBy } from 'lodash-es';
+import { intersectionBy, times } from 'lodash-es';
 import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
 
 import { action } from '../../helpers';
 
-import { BlockPageOverview, PageInfo, LabelObj } from './BlockPageOverview';
+import { BlockPageOverview, LabelObj, PageInfo } from './BlockPageOverview';
 import { CONTENT_PAGES_MOCK } from './BlockPageOverview.mock';
 
 const tabs = [
@@ -13,7 +13,7 @@ const tabs = [
 ];
 
 const itemsPerPage = 2;
-const mockPages = CONTENT_PAGES_MOCK.map(page => ({
+const mockPages = CONTENT_PAGES_MOCK.map((page) => ({
 	...page,
 	blocks: <p>Test content page blocks</p>,
 }));
@@ -35,7 +35,7 @@ const BlockPageOverviewStoryComponent = ({
 	useEffect(() => {
 		let filteredPages: PageInfo[];
 		if (selectedTabs.length) {
-			filteredPages = mockPages.filter(page => {
+			filteredPages = mockPages.filter((page) => {
 				return !!intersectionBy(
 					page.labels,
 					selectedTabs,
@@ -166,6 +166,16 @@ storiesOf('blocks/BlockPageOverview', module)
 	.add('BlockPageOverview badges allow multiple', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
 			<BlockPageOverview {...baseProps} tabStyle={'ROUNDED_BADGES'} allowMultiple />
+		</BlockPageOverviewStoryComponent>
+	))
+	.add('BlockPageOverview badges wrapping and center', () => (
+		<BlockPageOverviewStoryComponent initialPageIndex={0}>
+			<BlockPageOverview
+				{...baseProps}
+				tabStyle={'ROUNDED_BADGES'}
+				tabs={times(20, (i) => ({ label: `label-${i}`, id: i }))}
+				centerHeader
+			/>
 		</BlockPageOverviewStoryComponent>
 	))
 	.add('BlockPageOverview show date', () => (
