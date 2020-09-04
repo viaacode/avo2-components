@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/react';
+import { times } from 'lodash-es';
 import React from 'react';
 
 import { Button } from '../Button/Button';
@@ -25,5 +26,12 @@ storiesOf('components/ButtonToolbar', module)
 	.add('ButtonToolbar 1 buttons', () => (
 		<ButtonToolbar>
 			<Button type="secondary" label="Test Button One" />
+		</ButtonToolbar>
+	))
+	.add('ButtonToolbar wrapping', () => (
+		<ButtonToolbar>
+			{times(20).map((index) => (
+				<Button type="secondary" label="Test Button" key={`button-${index}`} />
+			))}
 		</ButtonToolbar>
 	));
