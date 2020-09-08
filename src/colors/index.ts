@@ -1,12 +1,12 @@
+export interface ColorCategory {
+	[key: string]: string;
+}
+
 export interface Colors {
 	GRAYSCALE: ColorCategory;
 	PRIMARY: ColorCategory;
 	SECONDARY: ColorCategory;
 	TERTIARY: ColorCategory;
-}
-
-export interface ColorCategory {
-	[key: string]: string;
 }
 
 export const COLORS: Colors = {

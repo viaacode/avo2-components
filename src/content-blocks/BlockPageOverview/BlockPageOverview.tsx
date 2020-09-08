@@ -29,6 +29,11 @@ export type ContentWidthSchema = 'REGULAR' | 'LARGE' | 'MEDIUM';
 export type ContentTabStyle = 'ROUNDED_BADGES' | 'MENU_BAR';
 export type ContentItemStyle = 'GRID' | 'NEWS_LIST' | 'PROJECT_LIST' | 'ACCORDION';
 
+export type LabelObj = {
+	label: string;
+	id: number;
+};
+
 export interface PageInfo {
 	id: number;
 	title: string;
@@ -42,11 +47,6 @@ export interface PageInfo {
 	blocks?: ReactNode; // Client knows how to convert ContentBlockSchema[] into a ReactNode
 	path: string;
 }
-
-export type LabelObj = {
-	label: string;
-	id: number;
-};
 
 export interface BlockPageOverviewProps extends DefaultProps {
 	tabs?: { label: string; id: number }[];
@@ -126,7 +126,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		}
 
 		// Empty selected tabs signifies to the outsides: show all items / do not apply any label filters
-		onSelectedTabsChanged(newSelectedTabs.filter(tab => tab.id !== allLabelObj.id));
+		onSelectedTabsChanged(newSelectedTabs.filter((tab) => tab.id !== allLabelObj.id));
 	};
 
 	const handlePageClick = (page: PageInfo) => {
@@ -194,7 +194,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 
 	const renderPages = () => {
 		if (itemStyle === 'NEWS_LIST' || itemStyle === 'PROJECT_LIST') {
-			return pages.map(page => {
+			return pages.map((page) => {
 				return (
 					<Container
 						className={classnames(
@@ -266,18 +266,20 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 				uniqueLabels.map((labelObj: LabelObj): [number, PageInfo[]] => {
 					return [
 						labelObj.id,
-						pages.filter(page =>
-							page.labels.map(pageLabelObj => pageLabelObj.id).includes(labelObj.id)
+						pages.filter((page) =>
+							page.labels.map((pageLabelObj) => pageLabelObj.id).includes(labelObj.id)
 						),
 					];
 				})
 			);
 			// Put the pages that do not have a label under their own category
-			pagesByLabel[noLabelObj.id] = pages.filter(page => !page.labels || !page.labels.length);
+			pagesByLabel[noLabelObj.id] = pages.filter(
+				(page) => !page.labels || !page.labels.length
+			);
 			const showAllLabels = !selectedTabs.length || selectedTabs[0].id === allLabelObj.id;
 			const labelsToShow: LabelObj[] = showAllLabels ? [...tabs, noLabelObj] : selectedTabs;
 
-			return labelsToShow.map(labelObj => {
+			return labelsToShow.map((labelObj) => {
 				if (!(pagesByLabel[labelObj.id] || []).length) {
 					return null;
 				}
@@ -311,7 +313,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		if (itemStyle === 'ACCORDION') {
 			return (
 				<Spacer margin="top-large">
-					{pages.map(page => {
+					{pages.map((page) => {
 						return (
 							<Accordion
 								title={page.title}
@@ -342,17 +344,17 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 					<Flex center={centerHeader} className="c-content-page-overview-block__header">
 						<Spacer margin={['left', 'bottom', 'right']}>
 							<TagList
-								tags={extendedTabs.map(tab => ({
+								tags={extendedTabs.map((tab) => ({
 									id: tab.id,
 									label: tab.label,
 									active: !!extendedSelectedTabs.find(
-										extendedTab => extendedTab.id === tab.id
+										(extendedTab) => extendedTab.id === tab.id
 									),
 								}))}
 								swatches={false}
 								selectable
 								onTagClicked={(tagId: string | number) =>
-									handleTabClick(tabs.find(tab => tab.id === tagId))
+									handleTabClick(tabs.find((tab) => tab.id === tagId))
 								}
 							/>
 						</Spacer>
@@ -364,16 +366,16 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 					<Flex center={centerHeader} className="c-content-page-overview-block__header">
 						<Spacer margin={['left', 'bottom', 'right']}>
 							<Tabs
-								tabs={extendedTabs.map(tab => ({
+								tabs={extendedTabs.map((tab) => ({
 									id: tab.id,
 									label: tab.label,
 									active: !!extendedSelectedTabs.find(
-										extendedTab => extendedTab.id === tab.id
+										(extendedTab) => extendedTab.id === tab.id
 									),
 								}))}
 								dark={darkTabs}
-								onClick={tabId =>
-									handleTabClick(tabs.find(tab => tab.id === tabId))
+								onClick={(tabId) =>
+									handleTabClick(tabs.find((tab) => tab.id === tabId))
 								}
 							/>
 						</Spacer>

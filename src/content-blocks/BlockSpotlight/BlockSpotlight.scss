@@ -5,6 +5,10 @@
   c-project-grid
    ========================================================================== */
 
+.c-spotlight {
+	height: 500px;
+}
+
 @media (min-width: $g-bp2) {
 	.c-spotlight {
 		display: grid;
@@ -20,6 +24,7 @@
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	height: 200px;
 
 	p {
 		position: absolute;
@@ -42,6 +47,7 @@
 @media (min-width: $g-bp2) {
 	.c-spotlight__item {
 		margin: 0;
+		height: auto;
 	}
 
 	.c-spotlight__item:first-child {

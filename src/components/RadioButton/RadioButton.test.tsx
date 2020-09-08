@@ -72,10 +72,10 @@ describe('<RadioButton />', () => {
 
 		const radioButtonElement = radioButtonComponent.find('[type="radio"]');
 
-		radioButtonElement.simulate('change', { target: { checked: true } });
+		radioButtonElement.simulate('change', { target: { value: 'one' } });
 
 		expect(onChangeHandler).toHaveBeenCalled();
 		expect(onChangeHandler).toHaveBeenCalledTimes(1);
-		expect(onChangeHandler).toHaveBeenCalledWith(true);
+		expect(onChangeHandler).toHaveBeenCalledWith('one');
 	});
 });

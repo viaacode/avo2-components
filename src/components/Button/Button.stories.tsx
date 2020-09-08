@@ -1,8 +1,9 @@
-import { storiesOf } from '@storybook/react';
+import { Meta, storiesOf, Story } from '@storybook/react';
 import React, { Fragment } from 'react';
 
 import { COLORS } from '../../colors';
 import { action } from '../../helpers';
+import { IconNameList, IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
 
 import { Button, ButtonPropsSchema } from './Button';
@@ -86,6 +87,51 @@ const renderButtonStories = (
 	</Fragment>
 );
 
+export default {
+	title: 'components/Button',
+	component: Button,
+	argTypes: {
+		icon: {
+			control: {
+				type: 'select',
+				options: IconNameList,
+			},
+		},
+	},
+} as Meta;
+
+const Template: Story<Partial<ButtonPropsSchema>> = ({
+	label,
+	ariaLabel,
+	title,
+	children = null,
+	...rest
+}) => {
+	return (
+		<Spacer margin="bottom">
+			<Button
+				ariaLabel={ariaLabel}
+				onClick={action('Button clicked')}
+				title={title}
+				label={label}
+				{...rest}
+			>
+				{children}
+			</Button>
+		</Spacer>
+	);
+};
+
+export const Buttons = Template.bind({});
+
+Buttons.args = {
+	label: 'Label',
+	ariaLabel: 'Button description for screen readers',
+	title: 'Tooltip title',
+	type: 'primary',
+	icon: 'book' as IconNameSchema,
+};
+
 storiesOf('components/Button', module)
 	.addParameters({ jest: ['Button'] })
 	.add('Buttons', () => renderButtonStories(buttonProps))
@@ -96,7 +142,9 @@ storiesOf('components/Button', module)
 	.add('Large buttons', () => renderButtonStories(buttonIconProps, true, { size: 'large' }))
 	.add('Block buttons', () => renderButtonStories(buttonIconProps, true, { block: true }))
 	.add('Inverse buttons', () => (
-		<div style={{ display: 'inline-block', padding: '20px', background: COLORS.GRAYSCALE.G800 }}>
+		<div
+			style={{ display: 'inline-block', padding: '20px', background: COLORS.GRAYSCALE.G800 }}
+		>
 			{renderButtonStories(buttonInverseProps)}
 		</div>
 	))

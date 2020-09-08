@@ -35,7 +35,10 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 	value = null,
 	onChange = () => {},
 }) => {
-	function onValueChange(changedValue: ValueType<SelectOptionSchema>, actionMeta: ActionMeta) {
+	function onValueChange(
+		changedValue: ValueType<SelectOptionSchema>,
+		actionMeta: ActionMeta<SelectOptionSchema>
+	) {
 		if (actionMeta.action !== 'create-option') {
 			onChange((changedValue as SelectOptionSchema).value);
 		}
@@ -47,12 +50,12 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 			classNamePrefix="c-select"
 			id={id}
 			options={options}
-			value={options.find(option => option.value === value) || null}
+			value={options.find((option) => option.value === value) || null}
 			isMulti={false}
 			isDisabled={disabled}
 			isLoading={loading}
 			isClearable={clearable}
-			isOptionDisabled={option => !!option.disabled}
+			isOptionDisabled={(option) => !!option.disabled}
 			placeholder={placeholder}
 			onChange={onValueChange}
 			noOptionsMessage={() => 'Geen opties'}

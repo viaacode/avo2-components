@@ -87,18 +87,6 @@ a.c-button {
 	margin-left: $c-button-icon-spacing;
 }
 
-.c-button:not(.c-button--icon) {
-	.c-button__icon {
-		&:first-child {
-			margin-left: -0.4rem;
-		}
-
-		&:last-child {
-			margin-right: -0.4rem;
-		}
-	}
-}
-
 /* Small size
    ========================================================================== */
 
@@ -158,6 +146,9 @@ a.c-button {
 .c-button--auto {
 	max-height: none;
 	min-height: $c-button-height;
+	.c-button__label {
+		white-space: normal;
+	}
 }
 
 /* Button action

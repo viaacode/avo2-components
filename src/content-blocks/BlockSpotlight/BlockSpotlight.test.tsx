@@ -37,6 +37,6 @@ describe('<BlockSpotlight />', () => {
 
 		const titleElement = component.find('p').at(0);
 
-		expect(titleElement.text()).toEqual('My project');
+		expect(titleElement.text()).toEqual('Big item');
 	});
 });
