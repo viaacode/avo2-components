@@ -8,10 +8,6 @@ Group multiple buttons together
 	align-items: center;
 	display: flex;
 
-	&.c-button-toolbar__wrap {
-		flex-wrap: wrap;
-	}
-
 	> * + * {
 		margin-left: 0.8rem;
 	}
