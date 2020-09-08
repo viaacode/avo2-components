@@ -224,11 +224,6 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			return;
 		}
 
-		// Start video at start cuepoint
-		if (props.start) {
-			flowplayerInstance.currentTime = props.start;
-		}
-
 		// Pause video at end cuepoint
 		if (props.end) {
 			flowplayerInstance.on(flowplayer.events.CUEPOINT_END, () =>
@@ -238,7 +233,22 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 
 		this.drawCustomElements(flowplayerInstance);
 
-		flowplayerInstance.on('playing', this.props.onPlay || (() => {}));
+		flowplayerInstance.on('playing', () => {
+			if (this.props.onPlay) {
+				this.props.onPlay();
+			}
+			if (!this.state.startedPlaying) {
+				// First time playing the video
+				// Jump to first cue point if exists:
+				if (props.start) {
+					flowplayerInstance.currentTime = props.start;
+				}
+				this.setState({
+					...this.state,
+					startedPlaying: true,
+				});
+			}
+		});
 		flowplayerInstance.on('pause', this.props.onPause || (() => {}));
 		flowplayerInstance.on('ended', this.props.onEnded || (() => {}));
 		flowplayerInstance.on('timeupdate', () => {
