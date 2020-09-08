@@ -7,7 +7,10 @@ Group multiple buttons together
 .c-button-toolbar {
 	align-items: center;
 	display: flex;
-	flex-wrap: wrap;
+
+	&.c-button-toolbar__wrap {
+		flex-wrap: wrap;
+	}
 
 	> * + * {
 		margin-left: 0.8rem;
