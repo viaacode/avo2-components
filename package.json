@@ -1,12 +1,12 @@
 {
 	"name": "@viaa/avo2-components",
-	"version": "1.56.0",
+	"version": "1.56.1",
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",
 	"types": "dist/esm/index.d.ts",
 	"homepage": "./",
 	"scripts": {
-		"preinstall": "npx npm-force-resolutions",
+		"force-resolutions": "npx npm-force-resolutions",
 		"analyze": "source-map-explorer 'build/*.js'",
 		"prebuild": "rimraf dist",
 		"build": "rollup -c",
