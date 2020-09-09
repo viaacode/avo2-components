@@ -17,8 +17,6 @@ export { BlockHero } from './BlockHero/BlockHero';
 export type { BlockHeroProps } from './BlockHero/BlockHero';
 export { BlockKlaar } from './BlockKlaar/BlockKlaar';
 export type { BlockKlaarProps } from './BlockKlaar/BlockKlaar';
-export { BlockLinks } from './BlockLinks/BlockLinks';
-export type { BlockLinksProps } from './BlockLinks/BlockLinks';
 export { BlockMediaList } from './BlockMediaList/BlockMediaList';
 export type { BlockMediaListProps, MediaListItem } from './BlockMediaList/BlockMediaList';
 export { BlockRichText } from './BlockRichText/BlockRichText';
