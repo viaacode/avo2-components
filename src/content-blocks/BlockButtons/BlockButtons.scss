@@ -8,6 +8,8 @@
 }
 
 .c-block-buttons {
+	flex-wrap: wrap;
+
 	> .c-block-buttons__divider + * {
 		margin-left: 0;
 	}
