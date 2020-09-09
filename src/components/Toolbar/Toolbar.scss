@@ -23,6 +23,14 @@ $c-toolbar-main-border-color: $color-gray-200 !default;
 	align-items: center;
 	justify-content: space-between;
 	height: $g-bar-size-regular;
+
+	&.c-toolbar--wrap {
+		.c-toolbar__left,
+		.c-toolbar__right,
+		.c-toolbar__center {
+			flex-wrap: wrap;
+		}
+	}
 }
 
 .c-toolbar--medium {
