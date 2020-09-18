@@ -16,6 +16,16 @@ flowplayer.extensions.push(cuepoints);
 flowplayer.extensions.push(subtitles);
 flowplayer.extensions.push(hls);
 
+interface FlowplayerTrack {
+	crossorigin?: 'use-credentials' | 'anonymous';
+	default: boolean;
+	id?: string;
+	kind?: 'captions' | 'subtitles' | 'descriptions';
+	label: string;
+	lang?: string;
+	src: string;
+}
+
 interface FlowplayerInstance extends HTMLVideoElement {
 	destroy: Function;
 	on: Function;
@@ -27,7 +37,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	poster?: string;
 	logo?: string;
 	title?: string;
-	subtitles?: string[];
+	metadata?: string[];
 	start?: number | null;
 	end?: number | null;
 	token?: string;
@@ -39,6 +49,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	onEnded?: () => void;
 	onTimeUpdate?: (time: number) => void;
 	preload?: 'none' | 'auto' | 'metadata';
+	subtitles?: FlowplayerTrack[];
 	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
 	className?: string;
 }
@@ -146,10 +157,10 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		titleOverlay.classList.add('a-flowplayer__title');
 		titleOverlay.appendChild(publishDiv);
 
-		if (this.props.subtitles && this.props.subtitles.length) {
-			this.props.subtitles.forEach((subtitle: string) => {
+		if (this.props.metadata && this.props.metadata.length) {
+			this.props.metadata.forEach((metadata: string) => {
 				const substitleDiv = document.createElement('div');
-				substitleDiv.innerText = subtitle;
+				substitleDiv.innerText = metadata;
 				substitleDiv.classList.add('c-title-overlay__meta');
 				publishDiv.appendChild(substitleDiv);
 			});
@@ -217,6 +228,11 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			// CUEPOINTS
 			...(props.end ? { cuepoints: [{ start: props.start, end: props.end }] } : {}), // Only set cuepoints if end is passed
 			draw_cuepoints: true,
+
+			// SUBTITLES
+			subtitles: {
+				tracks: this.props.subtitles,
+			},
 		});
 
 		if (!flowplayerInstance) {
