@@ -16,7 +16,7 @@ flowplayer.extensions.push(cuepoints);
 flowplayer.extensions.push(subtitles);
 flowplayer.extensions.push(hls);
 
-interface FlowplayerTrack {
+export interface FlowplayerTrackSchema {
 	crossorigin?: 'use-credentials' | 'anonymous';
 	default: boolean;
 	id?: string;
@@ -49,7 +49,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	onEnded?: () => void;
 	onTimeUpdate?: (time: number) => void;
 	preload?: 'none' | 'auto' | 'metadata';
-	subtitles?: FlowplayerTrack[];
+	subtitles?: FlowplayerTrackSchema[];
 	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
 	className?: string;
 }

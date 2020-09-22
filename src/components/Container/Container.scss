@@ -41,14 +41,17 @@ $o-container-max-width: 130rem;
 
 .o-container--small {
 	max-width: $o-container-max-width-small;
+	padding: 0 5px; // Avoid cropping in focus effect because of overflow-x: hidden
 }
 
 .o-container--medium {
 	max-width: $o-container-max-width-medium;
+	padding: 0 5px; // Avoid cropping in focus effect because of overflow-x: hidden
 }
 
 .o-container--large {
 	max-width: $o-container-max-width-large;
+	padding: 0 5px; // Avoid cropping in focus effect because of overflow-x: hidden
 }
 
 .o-container--full-width {
