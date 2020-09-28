@@ -71,13 +71,15 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 	}
 
 	private destroyPlayer() {
-		const flowPlayerInstance = this.state.flowPlayerInstance;
-		if (flowPlayerInstance) {
-			flowPlayerInstance.destroy();
-			if (flowPlayerInstance.parentElement) {
-				flowPlayerInstance.parentElement.innerHTML = '';
+		this.setState((state) => {
+			const flowPlayerInstance = state.flowPlayerInstance;
+			if (flowPlayerInstance) {
+				flowPlayerInstance.destroy();
+				if (flowPlayerInstance.parentElement) {
+					flowPlayerInstance.parentElement.innerHTML = '';
+				}
 			}
-		}
+		});
 	}
 
 	componentWillUnmount() {
@@ -257,6 +259,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 				// First time playing the video
 				// Jump to first cue point if exists:
 				if (props.start) {
+					//  deepcode ignore React-propsUsedInStateUpdateMethod: Flowplayer is not aware of react
 					flowplayerInstance.currentTime = props.start;
 				}
 				this.setState({

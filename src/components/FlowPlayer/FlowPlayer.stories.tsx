@@ -19,7 +19,11 @@ const FlowPlayerStoryComponent = ({ children }: { children: ReactElement }) => {
 			<br />
 			<ButtonToolbar>
 				{[0, 0.001, 10, 20, 30].map((s) => (
-					<Button label={`${s} seconds`} onClick={() => setSeekTime(s)} />
+					<Button
+						label={`${s} seconds`}
+						onClick={() => setSeekTime(s)}
+						key={`button-jump-${s}`}
+					/>
 				))}
 			</ButtonToolbar>
 		</>
