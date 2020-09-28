@@ -18,8 +18,12 @@ const FlowPlayerStoryComponent = ({ children }: { children: ReactElement }) => {
 			})}
 			<br />
 			<ButtonToolbar>
-				{[0, 0.001, 10, 20, 30].map(s => (
-					<Button label={`${s} seconds`} onClick={() => setSeekTime(s)} />
+				{[0, 0.001, 10, 20, 30].map((s) => (
+					<Button
+						label={`${s} seconds`}
+						onClick={() => setSeekTime(s)}
+						key={`button-jump-${s}`}
+					/>
 				))}
 			</ButtonToolbar>
 		</>
@@ -86,6 +90,26 @@ storiesOf('components/FlowPlayer', module)
 				onPause={action('pause')}
 				onEnded={action('ended')}
 				onTimeUpdate={action('timeupdate')}
+			/>
+		</div>
+	))
+	.add('FlowPlayer Subtitles', () => (
+		<div className="o-grid-col-bp3-7">
+			<FlowPlayer
+				{...MOCK_FLOW_PLAYER_PROPS_FULL}
+				src="https://archief-media.viaa.be/viaa/TESTBEELD/885ba5b76a8144aaaf7f18f4c6d89bb2c73a938d261f4f918d0d13fa8ebef11b/browse.mp4"
+				subtitles={[
+					{
+						crossorigin: 'anonymous',
+						default: true,
+						kind: 'subtitles',
+						lang: 'nl',
+						id: '123',
+						label: 'Nederlands',
+						src:
+							'http://localhost:3000/subtitles/convert-srt-to-vtt/viaa/MOB/TESTBEELD/a103953270334d40bafd67f95168fdb3a0710db889cd44a2bdbe9694ace80fec/a103953270334d40bafd67f95168fdb3a0710db889cd44a2bdbe9694ace80fec.srt',
+					},
+				]}
 			/>
 		</div>
 	));
