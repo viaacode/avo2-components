@@ -97,7 +97,7 @@ storiesOf('components/FlowPlayer', module)
 		<div className="o-grid-col-bp3-7">
 			<FlowPlayer
 				{...MOCK_FLOW_PLAYER_PROPS_FULL}
-				src="https://archief-media.viaa.be/viaa/TESTBEELD/885ba5b76a8144aaaf7f18f4c6d89bb2c73a938d261f4f918d0d13fa8ebef11b/browse.mp4"
+				src="https://archief-media.viaa.be/viaa/TESTBEELD/d97b24406291480aac11d0728335afe011f3d283abde48649a4c4e9079428b8a/browse.mp4"
 				subtitles={[
 					{
 						crossorigin: 'anonymous',
@@ -107,7 +107,7 @@ storiesOf('components/FlowPlayer', module)
 						id: '123',
 						label: 'Nederlands',
 						src:
-							'http://localhost:3000/subtitles/convert-srt-to-vtt/viaa/MOB/TESTBEELD/a103953270334d40bafd67f95168fdb3a0710db889cd44a2bdbe9694ace80fec/a103953270334d40bafd67f95168fdb3a0710db889cd44a2bdbe9694ace80fec.srt',
+							'http://localhost:3000/subtitles/convert-srt-to-vtt/viaa/MOB/TESTBEELD/3b61046461be4b1e9f0fad19b42baa192487807cfefa4c289c0fa65d5c78195b/3b61046461be4b1e9f0fad19b42baa192487807cfefa4c289c0fa65d5c78195b.srt',
 					},
 				]}
 			/>
