@@ -31,7 +31,7 @@ import {
 } from '../../types';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
-import './BlockMediaList.scss';
+import './BlockMediaGrid.scss';
 
 export type MediaListItem = {
 	category: EnglishContentType;
@@ -46,7 +46,7 @@ export type MediaListItem = {
 	buttonAction?: ButtonAction;
 };
 
-export interface BlockMediaListProps extends DefaultProps {
+export interface BlockMediaGridProps extends DefaultProps {
 	title?: string;
 	buttonLabel?: string;
 	buttonAction?: ButtonAction;
@@ -70,7 +70,7 @@ export interface BlockMediaListProps extends DefaultProps {
 	renderPlayerModalBody?: (item: MediaListItem) => ReactNode;
 }
 
-export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
+export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 	title,
 	buttonLabel,
 	buttonAction,
@@ -138,27 +138,19 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 
 					return (
 						<Column key={`block-media-list-${i}`} size={fullWidth ? '3-12' : '3-3'}>
-							<MediaCard category={category} orientation={orientation} title={title}>
+							<MediaCard
+								category={category}
+								orientation={orientation}
+								title={title}
+								onClick={() => onClickMediaCard(mediaListItem)}
+							>
 								{thumbnail && (
 									<MediaCardThumbnail>
-										<Thumbnail
-											alt={title}
-											category={category}
-											{...thumbnail}
-											onClick={() => onClickMediaCard(mediaListItem)}
-										/>
+										<Thumbnail alt={title} category={category} {...thumbnail} />
 									</MediaCardThumbnail>
 								)}
 								<MediaCardMetaData>
-									<div
-										onClick={() =>
-											!!mediaListItem.buttonAction &&
-											navigate(
-												mediaListItem.buttonAction ||
-													mediaListItem.itemAction
-											)
-										}
-									>
+									<div>
 										{metadata && metadata.length > 0 && (
 											<MetaData category={category}>
 												{metadata.map((props, i) => (
@@ -175,6 +167,14 @@ export const BlockMediaList: FunctionComponent<BlockMediaListProps> = ({
 													label={buttonLabel}
 													type={buttonType}
 													icon={buttonIcon}
+													onClick={(evt) => {
+														if (mediaListItem.buttonAction) {
+															navigate(mediaListItem.buttonAction);
+														} else {
+															navigate(mediaListItem.itemAction);
+														}
+														evt.stopPropagation(); // Avoid triggering the click on the media card
+													}}
 												/>
 											</Spacer>
 										)}

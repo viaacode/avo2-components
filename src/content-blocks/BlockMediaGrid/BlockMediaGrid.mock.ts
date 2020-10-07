@@ -1,7 +1,7 @@
 import { ButtonTypeSchema } from '../../components/Button/Button.types';
 import { action } from '../../helpers';
 
-import { BlockMediaListProps, MediaListItem } from './BlockMediaList';
+import { BlockMediaGridProps, MediaListItem } from './BlockMediaGrid';
 
 export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 	{
@@ -136,19 +136,19 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 	},
 ];
 
-export const MEDIA_LIST_MOCK: BlockMediaListProps = {
+export const MEDIA_LIST_MOCK: BlockMediaGridProps = {
 	title: 'Collecties secundair onderwijs',
 	elements: MEDIA_LIST_ITEMS_MOCK,
 	navigate: action('navigate to: '),
 };
 
-export const MEDIA_LIST_TITLE_MOCK: BlockMediaListProps = {
+export const MEDIA_LIST_TITLE_MOCK: BlockMediaGridProps = {
 	title: 'Collecties secundair onderwijs',
 	elements: MEDIA_LIST_ITEMS_MOCK,
 	navigate: action('navigate to: '),
 };
 
-export const MEDIA_LIST_TITLE_BUTTON_MOCK: BlockMediaListProps = {
+export const MEDIA_LIST_TITLE_BUTTON_MOCK: BlockMediaGridProps = {
 	...MEDIA_LIST_TITLE_MOCK,
 	buttonLabel: 'Bekijk het volledige aanbod',
 	buttonAction: {
@@ -157,7 +157,7 @@ export const MEDIA_LIST_TITLE_BUTTON_MOCK: BlockMediaListProps = {
 	},
 };
 
-export const MEDIA_LIST_CTA_MOCK: BlockMediaListProps = {
+export const MEDIA_LIST_CTA_MOCK: BlockMediaGridProps = {
 	ctaTitle: 'Call to action',
 	ctaContent: 'Wil je meer weten?',
 	ctaButtonLabel: 'Ontdek meer',
@@ -170,7 +170,7 @@ export const MEDIA_LIST_CTA_MOCK: BlockMediaListProps = {
 	navigate: action('navigate to: '),
 };
 
-export const MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS: BlockMediaListProps = {
+export const MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS: BlockMediaGridProps = {
 	ctaTitle: 'Call to action',
 	ctaContent: 'Wil je meer weten?',
 	ctaButtonLabel: 'Ontdek meer',
@@ -186,7 +186,7 @@ export const MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS: BlockMediaListProps = {
 	navigate: action('navigate to: '),
 };
 
-export const MEDIA_LIST_COLORED_CTA_MOCK: BlockMediaListProps = {
+export const MEDIA_LIST_COLORED_CTA_MOCK: BlockMediaGridProps = {
 	...MEDIA_LIST_CTA_MOCK,
 	ctaTitleColor: '#FF0000',
 	ctaContentColor: '#00FF00',
@@ -194,7 +194,7 @@ export const MEDIA_LIST_COLORED_CTA_MOCK: BlockMediaListProps = {
 	ctaBackgroundColor: '#0000FF',
 };
 
-export const MEDIA_LIST_IMAGE_CTA_MOCK: BlockMediaListProps = {
+export const MEDIA_LIST_IMAGE_CTA_MOCK: BlockMediaGridProps = {
 	...MEDIA_LIST_COLORED_CTA_MOCK,
 	ctaBackgroundImage: '/images/thumbnail.jpg',
 };
