@@ -1,26 +1,26 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { BlockMediaList } from './BlockMediaList';
-import { MEDIA_LIST_CTA_MOCK, MEDIA_LIST_MOCK } from './BlockMediaList.mock';
+import { BlockMediaGrid } from './BlockMediaGrid';
+import { MEDIA_LIST_CTA_MOCK, MEDIA_LIST_MOCK } from './BlockMediaGrid.mock';
 
-describe('<BlockMediaList />', () => {
+describe('<BlockMediaGrid />', () => {
 	const customClass = 'c-custom-block';
-	const BlockMediaListComponent = <BlockMediaList className={customClass} {...MEDIA_LIST_MOCK} />;
+	const BlockMediaGridComponent = <BlockMediaGrid className={customClass} {...MEDIA_LIST_MOCK} />;
 
 	it('Should be able to render', () => {
-		shallow(BlockMediaListComponent);
+		shallow(BlockMediaGridComponent);
 	});
 
 	it('Should pass a custom className', () => {
-		const blockMediaList = shallow(BlockMediaListComponent);
+		const blockMediaGrid = shallow(BlockMediaGridComponent);
 
-		expect(blockMediaList.hasClass(customClass)).toBeTruthy();
+		expect(blockMediaGrid.hasClass(customClass)).toBeTruthy();
 	});
 
 	it('Should correctly pass on `elements` prop', () => {
-		const blockMediaList = mount(BlockMediaListComponent);
-		const mediaCardItems = blockMediaList.find('.c-media-card');
+		const blockMediaGrid = mount(BlockMediaGridComponent);
+		const mediaCardItems = blockMediaGrid.find('.c-media-card');
 		const mediaCardTitle = mediaCardItems.at(3).find('.c-media-card__title');
 
 		expect(mediaCardItems).toHaveLength(MEDIA_LIST_MOCK.elements.length);
@@ -28,11 +28,11 @@ describe('<BlockMediaList />', () => {
 	});
 
 	it('Should correctly render a CTA when given', () => {
-		const blockMediaList = mount(
-			<BlockMediaList navigate={() => {}} {...MEDIA_LIST_CTA_MOCK} />
+		const blockMediaGrid = mount(
+			<BlockMediaGrid navigate={() => {}} {...MEDIA_LIST_CTA_MOCK} />
 		);
 
-		const ctaItem = blockMediaList.find('.c-cta-item');
+		const ctaItem = blockMediaGrid.find('.c-cta-item');
 		const ctaButtonLabel = ctaItem.find('.c-cta__content .c-button__label');
 
 		expect(ctaItem).toHaveLength(1);
