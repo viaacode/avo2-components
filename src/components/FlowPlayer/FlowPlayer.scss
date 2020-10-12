@@ -265,6 +265,14 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 				display: block;
 			}
 		}
+
+		.fp-engine {
+			position: relative;
+			left: 0;
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+		}
 	}
 
 	&__thumbnail {
