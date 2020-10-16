@@ -208,12 +208,14 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 						<Container mode="horizontal">
 							<Grid>
 								<Column size={itemStyle === 'NEWS_LIST' ? '2-5' : '2-4'}>
-									<AspectRatioWrapper
-										style={{
-											backgroundImage: `url(${page.thumbnail_path})`,
-										}}
-										aspect={itemStyle === 'NEWS_LIST' ? 1.78 : 2.5} // 500 x 280 or 528 x 211
-									/>
+									<Spacer margin="bottom-large">
+										<AspectRatioWrapper
+											style={{
+												backgroundImage: `url(${page.thumbnail_path})`,
+											}}
+											aspect={itemStyle === 'NEWS_LIST' ? 1.78 : 2.5} // 500 x 280 or 528 x 211
+										/>
+									</Spacer>
 								</Column>
 								<Column size="2-7">
 									<div className="c-content">
