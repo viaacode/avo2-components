@@ -17,7 +17,8 @@ import {
 	TagList,
 } from '../../components';
 import { convertToHtml } from '../../helpers';
-import { ButtonAction, DefaultProps } from '../../types';
+import { defaultRenderLinkFunction } from '../../helpers/render-link';
+import { ButtonAction, DefaultProps, RenderLinkFunction } from '../../types';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 import { BlockImageGrid, GridItem } from '../BlockImageGrid/BlockImageGrid';
 
@@ -70,7 +71,7 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	pages: PageInfo[];
 	activePageId?: number; // Used to expand the active accordion
 	onLabelClicked?: (label: string) => void;
-	navigate?: (action: ButtonAction) => void;
+	renderLink?: RenderLinkFunction;
 }
 
 export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
@@ -95,7 +96,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	pages = [],
 	activePageId,
 	onLabelClicked,
-	navigate,
+	renderLink = defaultRenderLinkFunction,
 }) => {
 	const allLabelObj = { label: allLabel, id: -2 };
 	const noLabelObj = { label: noLabel, id: -2 };
@@ -127,15 +128,6 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 
 		// Empty selected tabs signifies to the outsides: show all items / do not apply any label filters
 		onSelectedTabsChanged(newSelectedTabs.filter((tab) => tab.id !== allLabelObj.id));
-	};
-
-	const handlePageClick = (page: PageInfo) => {
-		if (navigate) {
-			navigate({
-				type: 'CONTENT_PAGE',
-				value: page.path,
-			} as ButtonAction);
-		}
 	};
 
 	const renderLabel = (labelObj: any) => {
@@ -218,15 +210,17 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 								<Column size="2-7">
 									<div className="c-content">
 										{showTitle &&
-											(itemStyle === 'NEWS_LIST' ? (
-												<h3 onClick={() => handlePageClick(page)}>
-													{page.title}
-												</h3>
-											) : (
-												<h2 onClick={() => handlePageClick(page)}>
-													{page.title}
-												</h2>
-											))}
+											renderLink(
+												{
+													type: 'CONTENT_PAGE',
+													value: page.path,
+												} as ButtonAction,
+												itemStyle === 'NEWS_LIST' ? (
+													<h3>{page.title}</h3>
+												) : (
+													<h2>{page.title}</h2>
+												)
+											)}
 										{showDate && (
 											<div onClick={handleLabelClicked}>
 												{renderText(
@@ -242,11 +236,13 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 										}
 										{buttonLabel && (
 											<Spacer margin="top">
-												<Button
-													label={buttonLabel}
-													type="tertiary"
-													onClick={() => handlePageClick(page)}
-												/>
+												{renderLink(
+													{
+														type: 'CONTENT_PAGE',
+														value: page.path,
+													} as ButtonAction,
+													<Button label={buttonLabel} type="tertiary" />
+												)}
 											</Spacer>
 										)}
 									</div>
@@ -302,7 +298,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 							itemWidth={307}
 							imageHeight={172}
 							imageWidth={307}
-							navigate={navigate}
+							renderLink={renderLink}
 							fill="cover"
 							textAlign="left"
 						/>

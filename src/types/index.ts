@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, ReactElement, ReactNode } from 'react';
 
 export * from './content-type';
 
@@ -38,3 +38,8 @@ export interface ButtonAction {
 }
 
 export type Orientation = 'horizontal' | 'vertical';
+
+export type RenderLinkFunction = (
+	buttonAction: ButtonAction | null | undefined,
+	children: ReactNode
+) => ReactElement<any, any> | null;

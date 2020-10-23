@@ -4,6 +4,7 @@ import React from 'react';
 
 import { ButtonTypeSchema } from '../../components/Button/Button.types';
 import { action } from '../../helpers';
+import { testRenderLink } from '../../helpers/render-link';
 import { AlignOptions } from '../../types';
 
 import { BlockButtons } from './BlockButtons';
@@ -18,7 +19,7 @@ const renderBlockButtons = (
 		elements={BUTTONS_MOCK.map((button) => ({ ...button, type }))}
 		align={align}
 		hasDividers={dividers}
-		navigate={action('button clicked')}
+		renderLink={testRenderLink(action('button clicked'))}
 	/>
 );
 
@@ -36,6 +37,6 @@ storiesOf('blocks/BlockButtons', module)
 			}))}
 			align="center"
 			hasDividers
-			navigate={action('button clicked')}
+			renderLink={testRenderLink(action('button clicked'))}
 		/>
 	));

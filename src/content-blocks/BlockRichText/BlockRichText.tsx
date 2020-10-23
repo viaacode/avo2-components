@@ -6,7 +6,8 @@ import { Column, GridSizeSchema } from '../../components/Grid/Column/Column';
 import { Grid } from '../../components/Grid/Grid';
 import { Spacer } from '../../components/Spacer/Spacer';
 import { convertToHtml } from '../../helpers';
-import { ButtonAction, DefaultProps } from '../../types';
+import { defaultRenderLinkFunction } from '../../helpers/render-link';
+import { ButtonAction, DefaultProps, RenderLinkFunction } from '../../types';
 
 import './BlockRichText.scss';
 
@@ -19,7 +20,7 @@ interface BlockRichTextElement {
 export interface BlockRichTextProps extends DefaultProps {
 	elements: BlockRichTextElement | BlockRichTextElement[];
 	maxTextWidth?: string;
-	navigate?: (buttonAction: any) => void;
+	renderLink?: RenderLinkFunction;
 }
 
 export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
@@ -30,15 +31,12 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 		},
 	],
 	maxTextWidth,
-	navigate,
+	renderLink = defaultRenderLinkFunction,
 }) => {
 	const renderButtons = (columnIndex: number, buttons: any[]) =>
 		buttons.map((buttonProps: any, buttonIndex: number) => (
 			<Spacer key={`rich-text-column-${columnIndex}-button-${buttonIndex}`} margin="top">
-				<Button
-					{...buttonProps}
-					onClick={navigate ? () => navigate(buttonProps.buttonAction) : () => null}
-				/>
+				{renderLink(buttonProps.buttonAction, <Button {...buttonProps} />)}
 			</Spacer>
 		));
 

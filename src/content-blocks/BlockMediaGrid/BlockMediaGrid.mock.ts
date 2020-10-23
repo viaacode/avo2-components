@@ -1,5 +1,6 @@
 import { ButtonTypeSchema } from '../../components/Button/Button.types';
 import { action } from '../../helpers';
+import { testRenderLink } from '../../helpers/render-link';
 
 import { BlockMediaGridProps, MediaListItem } from './BlockMediaGrid';
 
@@ -139,13 +140,13 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 export const MEDIA_LIST_MOCK: BlockMediaGridProps = {
 	title: 'Collecties secundair onderwijs',
 	elements: MEDIA_LIST_ITEMS_MOCK,
-	navigate: action('navigate to: '),
+	renderLink: testRenderLink(action('navigate to: ')),
 };
 
 export const MEDIA_LIST_TITLE_MOCK: BlockMediaGridProps = {
 	title: 'Collecties secundair onderwijs',
 	elements: MEDIA_LIST_ITEMS_MOCK,
-	navigate: action('navigate to: '),
+	renderLink: testRenderLink(action('navigate to')),
 };
 
 export const MEDIA_LIST_TITLE_BUTTON_MOCK: BlockMediaGridProps = {
@@ -167,7 +168,7 @@ export const MEDIA_LIST_CTA_MOCK: BlockMediaGridProps = {
 		type: 'EXTERNAL_LINK',
 		value: 'http://google.com',
 	},
-	navigate: action('navigate to: '),
+	renderLink: testRenderLink(action('navigate to')),
 };
 
 export const MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS: BlockMediaGridProps = {
@@ -175,7 +176,7 @@ export const MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS: BlockMediaGridProps = {
 	ctaContent: 'Wil je meer weten?',
 	ctaButtonLabel: 'Ontdek meer',
 	ctaButtonIcon: 'delete',
-	elements: MEDIA_LIST_ITEMS_MOCK.slice(0, -1).map(mock => {
+	elements: MEDIA_LIST_ITEMS_MOCK.slice(0, -1).map((mock) => {
 		const { buttonLabel, buttonIcon, buttonType, ...rest } = mock;
 		return rest;
 	}),
@@ -183,7 +184,7 @@ export const MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS: BlockMediaGridProps = {
 		type: 'EXTERNAL_LINK',
 		value: 'http://google.com',
 	},
-	navigate: action('navigate to: '),
+	renderLink: testRenderLink(action('navigate to')),
 };
 
 export const MEDIA_LIST_COLORED_CTA_MOCK: BlockMediaGridProps = {
