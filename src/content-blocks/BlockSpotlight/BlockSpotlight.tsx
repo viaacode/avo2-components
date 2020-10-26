@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { get } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
+import { Icon } from '../../components/Icon/Icon';
 import { defaultRenderLinkFunction } from '../../helpers/render-link';
 import { ButtonAction, DefaultProps, RenderLinkFunction } from '../../types';
 
@@ -36,7 +37,12 @@ export const BlockSpotlight: FunctionComponent<BlockSpotlightProps> = ({
 				})}
 				style={{ backgroundImage: `url(${get(elements, [index, 'image'])})` }}
 			>
-				{renderLink(buttonAction, <p>{get(elements, [index, 'title'])}</p>)}
+				{renderLink(
+					buttonAction,
+					<p>
+						{get(elements, [index, 'title'])} <Icon name="chevron-right" />
+					</p>
+				)}
 			</div>
 		);
 	}
