@@ -24,7 +24,8 @@ export type ContentPickerType =
 	| 'SEARCH_QUERY'
 	| 'PROJECTS'
 	| 'ANCHOR_LINK'
-	| 'PROFILE'; // TODO move to typings and make typings repo a dependency of the components repo
+	| 'PROFILE'
+	| 'FILE'; // TODO move to typings and make typings repo a dependency of the components repo
 
 export enum LinkTarget {
 	Self = '_self',
