@@ -25,7 +25,6 @@ $o-grid-column-gap: 2.4rem !default;
    ========================================================================== */
 
 [class*='o-grid-col'] {
-	flex: 1 0 calc(100% - #{$o-grid-column-gap});
 	min-width: 0;
 	margin-left: $o-grid-column-gap / 2;
 	margin-right: $o-grid-column-gap / 2;
@@ -78,10 +77,6 @@ $i: 0;
 
 // Activate columns only from breakpoint 3
 @media (min-width: $o-grid-bp3) {
-	[class*='o-grid-col-bp3-'] {
-		flex: 1 1 auto;
-	}
-
 	@while($i < $o-grid-columns) {
 		.o-grid-col-bp3-#{$i + 1} {
 			width: calc(#{( ( $i + 1 ) / $o-grid-columns ) * 100}% - #{$o-grid-column-gap});
