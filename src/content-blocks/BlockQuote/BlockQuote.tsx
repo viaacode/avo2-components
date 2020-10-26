@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
 import { Quote } from '../../components/Quote/Quote';
@@ -18,7 +19,7 @@ export const BlockQuote: FunctionComponent<BlockQuoteProps> = ({
 	authorInitials,
 }) => (
 	<Quote
-		className={className}
+		className={classnames('c-block-quote', className)}
 		quote={quote}
 		authorImage={authorImage}
 		authorName={authorName}

@@ -49,6 +49,10 @@
 	font-style: normal;
 	line-height: 2.4rem;
 	text-transform: uppercase;
+
+	> span {
+		width: calc(100% - 50px);
+	}
 }
 
 @media (max-width: 400px) {

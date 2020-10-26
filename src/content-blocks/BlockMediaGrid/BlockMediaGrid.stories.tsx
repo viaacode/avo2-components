@@ -5,6 +5,7 @@ import React from 'react';
 import { FlowPlayer } from '../../components';
 import { action } from '../../helpers';
 import { testRenderLink } from '../../helpers/render-link';
+import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import { BlockMediaGrid } from './BlockMediaGrid';
 import {
@@ -45,4 +46,38 @@ storiesOf('blocks/BlockMediaGrid', module)
 	.add('BlockMediaGrid with image CTA', () => <BlockMediaGrid {...MEDIA_LIST_IMAGE_CTA_MOCK} />)
 	.add('BlockMediaGrid with CTA full width', () => (
 		<BlockMediaGrid {...MEDIA_LIST_CTA_MOCK} fullWidth />
+	))
+	.add('BlockMediaGrid few items', () => (
+		<>
+			<BlockHeading type="h1">one item:</BlockHeading>
+			<BlockMediaGrid
+				{...MEDIA_LIST_MOCK}
+				elements={MEDIA_LIST_MOCK.elements.slice(0, 1)}
+				title={undefined}
+			/>
+			<BlockHeading type="h1">two item:</BlockHeading>
+			<BlockMediaGrid
+				{...MEDIA_LIST_MOCK}
+				elements={MEDIA_LIST_MOCK.elements.slice(0, 2)}
+				title={undefined}
+			/>
+			<BlockHeading type="h1">three item:</BlockHeading>
+			<BlockMediaGrid
+				{...MEDIA_LIST_MOCK}
+				elements={MEDIA_LIST_MOCK.elements.slice(0, 3)}
+				title={undefined}
+			/>
+			<BlockHeading type="h1">four item:</BlockHeading>
+			<BlockMediaGrid
+				{...MEDIA_LIST_MOCK}
+				elements={MEDIA_LIST_MOCK.elements.slice(0, 4)}
+				title={undefined}
+			/>
+			<BlockHeading type="h1">five item:</BlockHeading>
+			<BlockMediaGrid
+				{...MEDIA_LIST_MOCK}
+				elements={MEDIA_LIST_MOCK.elements.slice(0, 5)}
+				title={undefined}
+			/>
+		</>
 	));
