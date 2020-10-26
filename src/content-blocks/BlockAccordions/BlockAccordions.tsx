@@ -33,7 +33,9 @@ export const BlockAccordions: FunctionComponent<BlockAccordionsProps> = ({
 						key={key}
 						isOpen={accordionsOpen[key]}
 						title={title}
-						onToggle={() => setAccordionsOpen({ ...accordionsOpen, [key]: !accordionsOpen[key] })}
+						onToggle={() =>
+							setAccordionsOpen({ ...accordionsOpen, [key]: !accordionsOpen[key] })
+						}
 					>
 						<BlockRichText elements={{ content }} />
 					</Accordion>

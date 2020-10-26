@@ -22,12 +22,14 @@ import {
 } from '../../components';
 import { ButtonTypeSchema } from '../../components/Button/Button.types';
 import { MetaDataItemPropsSchema } from '../../components/MetaData/MetaDataItem/MetaDataItem';
+import { defaultRenderLinkFunction } from '../../helpers/render-link';
 import {
 	ButtonAction,
 	DefaultProps,
 	EnglishContentType,
 	HeadingType,
 	Orientation,
+	RenderLinkFunction,
 } from '../../types';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
@@ -66,7 +68,7 @@ export interface BlockMediaGridProps extends DefaultProps {
 	openMediaInModal?: boolean;
 	elements: MediaListItem[];
 	orientation?: Orientation;
-	navigate?: (buttonAction?: ButtonAction) => void;
+	renderLink?: RenderLinkFunction;
 	renderPlayerModalBody?: (item: MediaListItem) => ReactNode;
 }
 
@@ -90,20 +92,108 @@ export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 	className,
 	elements = [],
 	orientation,
-	navigate = () => {},
+	renderLink = defaultRenderLinkFunction,
 	renderPlayerModalBody = () => null,
 }) => {
 	const hasCTA = ctaTitle || ctaButtonLabel || ctaContent;
 
 	const [activeItem, setActiveItem] = useState<MediaListItem | null>(null);
 
-	const onClickMediaCard = (mediaListItem: MediaListItem) => {
-		if (openMediaInModal && get(mediaListItem, 'itemAction.type') === 'ITEM') {
-			// Open modal
-			setActiveItem(mediaListItem);
-		} else {
-			navigate(mediaListItem.itemAction || (() => {}));
-		}
+	const openInModal = (mediaListItem: MediaListItem): boolean => {
+		return openMediaInModal && get(mediaListItem, 'itemAction.type') === 'ITEM';
+	};
+
+	const renderCTA = () => {
+		return (
+			<>
+				<div className="c-media-card-thumb">
+					<div
+						className="c-thumbnail"
+						style={{
+							backgroundImage: ctaBackgroundImage
+								? `url('${ctaBackgroundImage}')`
+								: 'none',
+							backgroundColor: ctaBackgroundColor,
+						}}
+					>
+						<div className="c-thumbnail__content">
+							{ctaTitle && (
+								<BlockHeading type={ctaTitleSize} color={ctaTitleColor}>
+									{ctaTitle}
+								</BlockHeading>
+							)}
+							{ctaContent && (
+								<div style={{ color: ctaContentColor }}>{ctaContent}</div>
+							)}
+						</div>
+					</div>
+				</div>
+				<div className="c-media-card-content">
+					{!!get(last(elements), 'buttonLabel') && !fullWidth && (
+						<div>
+							<h4 className="c-media-card__title">titel</h4>
+							<MetaData category="item">
+								<MetaDataItem key={`block-media-list-meta-cta`} label="meta" />
+							</MetaData>
+						</div>
+					)}
+					<Spacer margin="top-small">
+						<Button label={ctaButtonLabel} type={ctaButtonType} icon={ctaButtonIcon} />
+					</Spacer>
+				</div>
+			</>
+		);
+	};
+
+	const renderMediaCard = (mediaListItem: MediaListItem) => {
+		const {
+			category,
+			metadata,
+			thumbnail,
+			title,
+			buttonLabel,
+			buttonIcon,
+			buttonType,
+		} = mediaListItem;
+
+		return (
+			<MediaCard category={category} orientation={orientation} title={title}>
+				{thumbnail && (
+					<MediaCardThumbnail>
+						<Thumbnail alt={title} category={category} {...thumbnail} />
+					</MediaCardThumbnail>
+				)}
+				<MediaCardMetaData>
+					<div>
+						{metadata && metadata.length > 0 && (
+							<MetaData category={category}>
+								{metadata.map((props, i) => (
+									<MetaDataItem key={`block-media-list-meta-${i}`} {...props} />
+								))}
+							</MetaData>
+						)}
+						{(!!buttonIcon || !!buttonLabel) && (
+							<Spacer margin="top-small">
+								<div
+									onClick={(evt) => {
+										evt.stopPropagation(); // Avoid triggering the click on the media card
+									}}
+								>
+									{renderLink(
+										mediaListItem.buttonAction || mediaListItem.itemAction,
+										<Button
+											label={buttonLabel}
+											type={buttonType}
+											icon={buttonIcon}
+										/>
+									)}
+								</div>
+							</Spacer>
+						)}
+					</div>
+				</MediaCardMetaData>
+			</MediaCard>
+		);
 	};
 
 	return (
@@ -114,128 +204,32 @@ export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 						{title && <BlockHeading type="h2">{title}</BlockHeading>}
 					</ToolbarLeft>
 					<ToolbarRight>
-						{buttonLabel && (
-							<Button
-								label={buttonLabel}
-								type="secondary"
-								onClick={() => navigate(buttonAction)}
-							/>
-						)}
+						{buttonLabel &&
+							renderLink(
+								buttonAction,
+								<Button label={buttonLabel} type="secondary" />
+							)}
 					</ToolbarRight>
 				</Toolbar>
 			)}
 			<Grid>
 				{elements.map((mediaListItem, i) => {
-					const {
-						category,
-						metadata,
-						thumbnail,
-						title,
-						buttonLabel,
-						buttonIcon,
-						buttonType,
-					} = mediaListItem;
-
 					return (
 						<Column key={`block-media-list-${i}`} size={fullWidth ? '3-12' : '3-3'}>
-							<MediaCard
-								category={category}
-								orientation={orientation}
-								title={title}
-								onClick={() => onClickMediaCard(mediaListItem)}
-							>
-								{thumbnail && (
-									<MediaCardThumbnail>
-										<Thumbnail alt={title} category={category} {...thumbnail} />
-									</MediaCardThumbnail>
-								)}
-								<MediaCardMetaData>
-									<div>
-										{metadata && metadata.length > 0 && (
-											<MetaData category={category}>
-												{metadata.map((props, i) => (
-													<MetaDataItem
-														key={`block-media-list-meta-${i}`}
-														{...props}
-													/>
-												))}
-											</MetaData>
-										)}
-										{(!!buttonIcon || !!buttonLabel) && (
-											<Spacer margin="top-small">
-												<Button
-													label={buttonLabel}
-													type={buttonType}
-													icon={buttonIcon}
-													onClick={(evt) => {
-														if (mediaListItem.buttonAction) {
-															navigate(mediaListItem.buttonAction);
-														} else {
-															navigate(mediaListItem.itemAction);
-														}
-														evt.stopPropagation(); // Avoid triggering the click on the media card
-													}}
-												/>
-											</Spacer>
-										)}
-									</div>
-								</MediaCardMetaData>
-							</MediaCard>
+							{openInModal(mediaListItem) ? (
+								<div onClick={() => setActiveItem(mediaListItem)}>
+									{renderMediaCard(mediaListItem)}
+								</div>
+							) : (
+								renderLink(mediaListItem.itemAction, renderMediaCard(mediaListItem))
+							)}
 						</Column>
 					);
 				})}
 				{hasCTA && (
 					<Column size={fullWidth ? '3-12' : '3-3'}>
-						<div
-							className={classnames(className, 'c-media-card', 'c-media-card__cta', {
-								'u-clickable': !!ctaButtonAction,
-							})}
-							onClick={() => navigate(ctaButtonAction)}
-						>
-							<div className="c-media-card-thumb">
-								<div
-									className="c-thumbnail"
-									style={{
-										backgroundImage: ctaBackgroundImage
-											? `url('${ctaBackgroundImage}')`
-											: 'none',
-										backgroundColor: ctaBackgroundColor,
-									}}
-								>
-									<div className="c-thumbnail__content">
-										{ctaTitle && (
-											<BlockHeading type={ctaTitleSize} color={ctaTitleColor}>
-												{ctaTitle}
-											</BlockHeading>
-										)}
-										{ctaContent && (
-											<div style={{ color: ctaContentColor }}>
-												{ctaContent}
-											</div>
-										)}
-									</div>
-								</div>
-							</div>
-							<div className="c-media-card-content">
-								{!!get(last(elements), 'buttonLabel') && !fullWidth && (
-									<div>
-										<h4 className="c-media-card__title">titel</h4>
-										<MetaData category="item">
-											<MetaDataItem
-												key={`block-media-list-meta-cta`}
-												label="meta"
-											/>
-										</MetaData>
-									</div>
-								)}
-								<Spacer margin="top-small">
-									<Button
-										label={ctaButtonLabel}
-										type={ctaButtonType}
-										icon={ctaButtonIcon}
-									/>
-								</Spacer>
-							</div>
+						<div className={classnames(className, 'c-media-card', 'c-media-card__cta')}>
+							{renderLink(ctaButtonAction, renderCTA())}
 						</div>
 					</Column>
 				)}

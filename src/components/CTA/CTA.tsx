@@ -3,7 +3,8 @@ import React, { FunctionComponent } from 'react';
 
 import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
 import { BlockRichText } from '../../content-blocks/BlockRichText/BlockRichText';
-import { ButtonAction, DefaultProps, HeadingType } from '../../types';
+import { defaultRenderLinkFunction } from '../../helpers/render-link';
+import { ButtonAction, DefaultProps, HeadingType, RenderLinkFunction } from '../../types';
 import { Button, ButtonPropsSchema } from '../Button/Button';
 import { ButtonTypeSchema } from '../Button/Button.types';
 import { IconNameSchema } from '../Icon/Icon.types';
@@ -22,7 +23,7 @@ export interface CTAPropsSchema extends DefaultProps {
 	buttonAction?: ButtonAction;
 	width?: string;
 	backgroundColor?: string;
-	navigate: (buttonAction: ButtonAction) => void;
+	renderLink?: RenderLinkFunction;
 }
 
 export const CTA: FunctionComponent<CTAPropsSchema> = ({
@@ -38,13 +39,12 @@ export const CTA: FunctionComponent<CTAPropsSchema> = ({
 	buttonAction,
 	width = '50%',
 	backgroundColor = '#EDEFF2',
-	navigate,
+	renderLink = defaultRenderLinkFunction,
 }) => {
 	const buttonProps: ButtonPropsSchema = {
 		label: buttonLabel,
 		title: buttonLabel,
 		ariaLabel: buttonLabel,
-		onClick: () => buttonAction && navigate(buttonAction),
 		icon: buttonIcon,
 		type: buttonType,
 	};
@@ -56,8 +56,11 @@ export const CTA: FunctionComponent<CTAPropsSchema> = ({
 					<BlockHeading type={headingType} color={headingColor}>
 						{heading}
 					</BlockHeading>
-					<BlockRichText elements={{ content, color: contentColor }} />
-					<Button {...buttonProps} />
+					<BlockRichText
+						elements={{ content, color: contentColor }}
+						renderLink={renderLink}
+					/>
+					{renderLink(buttonAction, <Button {...buttonProps} />)}
 				</div>
 			</div>
 		</div>

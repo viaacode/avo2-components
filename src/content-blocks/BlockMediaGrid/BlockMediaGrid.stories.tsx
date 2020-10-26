@@ -3,6 +3,8 @@ import { get } from 'lodash-es';
 import React from 'react';
 
 import { FlowPlayer } from '../../components';
+import { action } from '../../helpers';
+import { testRenderLink } from '../../helpers/render-link';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import { BlockMediaGrid } from './BlockMediaGrid';
@@ -31,6 +33,7 @@ storiesOf('blocks/BlockMediaGrid', module)
 			renderPlayerModalBody={(item) => (
 				<FlowPlayer src={item.src as string} poster={get(item, 'thumbnail.src')} />
 			)}
+			renderLink={testRenderLink(action('BlockMediaGrid with modal player'))}
 		/>
 	))
 	.add('BlockMediaGrid with CTA', () => <BlockMediaGrid {...MEDIA_LIST_CTA_MOCK} />)

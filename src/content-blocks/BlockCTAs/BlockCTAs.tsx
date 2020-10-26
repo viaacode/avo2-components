@@ -2,26 +2,27 @@ import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
 import { CTA, CTAProps } from '../../components';
-import { ButtonAction, DefaultProps } from '../../types';
+import { defaultRenderLinkFunction } from '../../helpers/render-link';
+import { DefaultProps, RenderLinkFunction } from '../../types';
 
 export interface BlockCTAsProps extends DefaultProps {
 	elements: CTAProps[];
 	width?: string;
-	navigate: (buttonAction: ButtonAction) => void;
+	renderLink?: RenderLinkFunction;
 }
 
 export const BlockCTAs: FunctionComponent<BlockCTAsProps> = ({
 	className,
 	elements,
 	width,
-	navigate,
+	renderLink = defaultRenderLinkFunction,
 }) => (
 	<div className={classnames(className, 'c-cta')}>
 		{elements.map((cta, index) => (
 			<CTA
 				key={`cta-${index}`}
 				{...cta}
-				navigate={navigate}
+				renderLink={renderLink}
 				width={width || (elements.length === 1 ? '100%' : '50%')}
 			/>
 		))}
