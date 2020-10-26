@@ -64,7 +64,7 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 		<Grid>
 			{elements.map((column, columnIndex) => (
 				<Column
-					size={(12 / elements.length).toString() as GridSizeSchema}
+					size={`2-${12 / elements.length}` as GridSizeSchema}
 					key={`rich-text-column-${columnIndex}`}
 				>
 					{renderContent(column, columnIndex)}
