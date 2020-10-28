@@ -3,13 +3,16 @@ import { get } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { Button, ButtonType, Spacer } from '../../components';
-import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
+import { defaultRenderLinkFunction } from '../../helpers/render-link';
+import { AlignOptions, ButtonAction, DefaultProps, RenderLinkFunction } from '../../types';
 
 import './BlockImageGrid.scss';
 
 export interface GridItem {
 	source: string;
+	titleAbove?: string;
 	title?: string;
+	textAbove?: string | ReactNode;
 	text?: string | ReactNode;
 	buttonLabel?: string;
 	buttonType?: ButtonType;
@@ -26,7 +29,7 @@ export interface BlockImageGridProps extends DefaultProps {
 	align?: AlignOptions;
 	textAlign?: AlignOptions;
 	className?: string;
-	navigate?: (action: ButtonAction) => void;
+	renderLink?: RenderLinkFunction;
 }
 
 export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
@@ -38,8 +41,55 @@ export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 	align = 'center',
 	textAlign = 'center',
 	className,
-	navigate,
+	renderLink = defaultRenderLinkFunction,
 }) => {
+	const renderGridImage = (element: GridItem) => {
+		return (
+			<>
+				{element.textAbove && (
+					<div className="c-block-grid__text-wrapper">
+						<Spacer margin="bottom-small">
+							<p>{element.textAbove}</p>
+						</Spacer>
+					</div>
+				)}
+				<div
+					className="c-block-grid__image"
+					style={{
+						width: `${imageWidth}px`,
+						height: `${imageHeight}px`,
+						backgroundImage: `url(${element.source})`,
+						backgroundSize: fill,
+					}}
+				/>
+				<div className="c-block-grid__text-wrapper">
+					{!!element.title && (
+						<Spacer margin="top-small">
+							<h3>
+								<strong>{element.title}</strong>
+							</h3>
+						</Spacer>
+					)}
+					{!!element.text && (
+						<Spacer margin="top-small">
+							<p>{element.text}</p>
+						</Spacer>
+					)}
+					{!!element.buttonLabel && (
+						<Spacer margin="top-small" className="c-block-grid__button-spacer">
+							<Button
+								label={element.buttonLabel}
+								type={element.buttonType}
+								title={element.buttonTitle}
+								ariaLabel={element.buttonLabel || element.buttonTitle}
+							/>
+						</Spacer>
+					)}
+				</div>
+			</>
+		);
+	};
+
 	return (
 		<div
 			className={classnames(
@@ -49,52 +99,13 @@ export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 				className
 			)}
 		>
-			{elements.map(element => (
+			{elements.map((element) => (
 				<div
 					key={`block-grid-${get(element, 'action.value')}`}
-					className={classnames('c-block-grid__item', {
-						'u-clickable': !!navigate && !!element.action,
-					})}
+					className={classnames('c-block-grid__item')}
 					style={{ width: `${itemWidth}px` }}
-					onClick={() => {
-						if (element.action && navigate) {
-							navigate(element.action);
-						}
-					}}
 				>
-					<div
-						className="c-block-grid__image"
-						style={{
-							width: `${imageWidth}px`,
-							height: `${imageHeight}px`,
-							backgroundImage: `url(${element.source})`,
-							backgroundSize: fill,
-						}}
-					/>
-					<div className="c-block-grid__text-wrapper">
-						{!!element.title && (
-							<Spacer margin="top-small">
-								<h3>
-									<strong>{element.title}</strong>
-								</h3>
-							</Spacer>
-						)}
-						{!!element.text && (
-							<Spacer margin="top-small">
-								<p>{element.text}</p>
-							</Spacer>
-						)}
-						{!!element.buttonLabel && (
-							<Spacer margin="top-small" className="c-block-grid__button-spacer">
-								<Button
-									label={element.buttonLabel}
-									type={element.buttonType}
-									title={element.buttonTitle}
-									ariaLabel={element.buttonLabel || element.buttonTitle}
-								/>
-							</Spacer>
-						)}
-					</div>
+					{renderLink(element.action, renderGridImage(element))}
 				</div>
 			))}
 		</div>

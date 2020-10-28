@@ -45,7 +45,8 @@ const comparators: any = {
 
 		return 0;
 	},
-	age: (order: 'asc' | 'desc') => (a: any, b: any) => (a.age - b.age) * (order === 'asc' ? 1 : -1),
+	age: (order: 'asc' | 'desc') => (a: any, b: any) =>
+		(a.age - b.age) * (order === 'asc' ? 1 : -1),
 };
 
 const TableStoryComponent = ({ children }: { children: ReactElement }) => {
@@ -59,7 +60,9 @@ const TableStoryComponent = ({ children }: { children: ReactElement }) => {
 		[sortColumn, sortOrder]
 	);
 
-	const [selectedItems, setSelectedItems] = useState<any[]>(sort(children.props.data).slice(2, 4));
+	const [selectedItems, setSelectedItems] = useState<any[]>(
+		sort(children.props.data).slice(2, 4)
+	);
 	const [data, setData] = useState(sort(children.props.data));
 
 	useEffect(() => {

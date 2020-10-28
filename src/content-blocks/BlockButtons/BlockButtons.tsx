@@ -3,7 +3,8 @@ import { flatten } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { Button, ButtonToolbar, ButtonType, IconName } from '../../components';
-import { AlignOptions, ButtonAction, DefaultProps } from '../../types';
+import { defaultRenderLinkFunction } from '../../helpers/render-link';
+import { AlignOptions, ButtonAction, DefaultProps, RenderLinkFunction } from '../../types';
 
 import './BlockButtons.scss';
 
@@ -26,7 +27,7 @@ export interface BlockButtonsProps extends DefaultProps {
 	elements: ButtonProps[];
 	align?: AlignOptions;
 	hasDividers?: boolean;
-	navigate: (buttonAction: ButtonAction) => void;
+	renderLink?: RenderLinkFunction;
 }
 
 export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
@@ -34,7 +35,7 @@ export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
 	elements,
 	align = 'left',
 	hasDividers = false,
-	navigate,
+	renderLink = defaultRenderLinkFunction,
 }) => (
 	<ButtonToolbar
 		className={classnames(className, 'c-block-buttons', `u-content-flex--${align}`, {
@@ -45,12 +46,10 @@ export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
 			elements.map((button, index) => {
 				const nodes = [
 					<div key={`buttons_block_${button.label}`}>
-						<Button
-							key={`button-${index}`}
-							type="secondary"
-							{...button}
-							onClick={() => navigate(button.buttonAction)}
-						/>
+						{renderLink(
+							button.buttonAction,
+							<Button key={`button-${index}`} type="secondary" {...button} />
+						)}
 					</div>,
 				];
 				if (hasDividers && index !== elements.length - 1) {

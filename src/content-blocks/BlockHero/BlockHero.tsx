@@ -1,16 +1,17 @@
 import { isString } from 'lodash-es';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactElement, ReactNode } from 'react';
 
-import { ButtonAction, DefaultProps } from '../../types';
-import { BlockHeading } from '../BlockHeading/BlockHeading';
 import {
-	ButtonToolbar,
-	FlowPlayer,
-	Spacer,
-	Container,
 	Button,
 	ButtonProps,
+	ButtonToolbar,
+	Container,
+	FlowPlayer,
+	Spacer,
 } from '../../components';
+import { defaultRenderLinkFunction } from "../../helpers/render-link";
+import { ButtonAction, DefaultProps } from '../../types';
+import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import './BlockHero.scss';
 
@@ -26,7 +27,7 @@ export interface BlockHeroProps extends DefaultProps {
 	dataPlayerId?: string;
 	buttons?: (ButtonProps & { buttonAction: ButtonAction })[];
 	textBelowButtons?: string | ReactNode;
-	navigate?: (buttonAction: ButtonAction) => void;
+	renderLink?: (buttonAction: ButtonAction, children: ReactNode) => ReactElement<any, any> | null;
 }
 
 export const BlockHero: FunctionComponent<BlockHeroProps> = ({
@@ -41,7 +42,7 @@ export const BlockHero: FunctionComponent<BlockHeroProps> = ({
 	dataPlayerId,
 	buttons = [],
 	textBelowButtons,
-	navigate,
+	renderLink = defaultRenderLinkFunction,
 }) => (
 	<Container mode="vertical" size="large">
 		<div className="c-tri__half-split" />
@@ -58,16 +59,13 @@ export const BlockHero: FunctionComponent<BlockHeroProps> = ({
 						{content}
 					</p>
 				</div>
-				{!!buttons && navigate && (
+				{!!buttons && (
 					<Spacer margin="top-large">
 						<ButtonToolbar>
 							{buttons.map(({ buttonAction, ...rest }, index: number) => {
-								return (
-									<Button
-										{...rest}
-										key={`hero-button-${index}`}
-										onClick={() => navigate(buttonAction)}
-									/>
+								return renderLink(
+									buttonAction,
+									<Button {...rest} key={`hero-button-${index}`} />
 								);
 							})}
 						</ButtonToolbar>

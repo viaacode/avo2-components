@@ -2,7 +2,9 @@ import classnames from 'classnames';
 import { get } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
-import { ButtonAction, DefaultProps } from '../../types';
+import { Icon } from '../../components/Icon/Icon';
+import { defaultRenderLinkFunction } from '../../helpers/render-link';
+import { ButtonAction, DefaultProps, RenderLinkFunction } from '../../types';
 
 import './BlockSpotlight.scss';
 
@@ -15,12 +17,12 @@ export interface ImageInfo {
 
 export interface BlockSpotlightProps extends DefaultProps {
 	elements: ImageInfo[];
-	navigate: (buttonAction: ButtonAction) => void;
+	renderLink?: RenderLinkFunction;
 }
 
 export const BlockSpotlight: FunctionComponent<BlockSpotlightProps> = ({
 	elements,
-	navigate = () => {},
+	renderLink = defaultRenderLinkFunction,
 	className,
 }) => {
 	function renderItem(index: number) {
@@ -28,16 +30,19 @@ export const BlockSpotlight: FunctionComponent<BlockSpotlightProps> = ({
 			return null;
 		}
 		const buttonAction = get(elements, [index, 'buttonAction']);
-		const navigateOnClick: Function = buttonAction ? () => navigate(buttonAction) : () => {};
 		return (
 			<div
 				className={classnames('c-spotlight__item', {
 					'u-clickable': !!buttonAction,
 				})}
 				style={{ backgroundImage: `url(${get(elements, [index, 'image'])})` }}
-				onClick={() => navigateOnClick()}
 			>
-				<p>{get(elements, [index, 'title'])}</p>
+				{renderLink(
+					buttonAction,
+					<p>
+						{get(elements, [index, 'title'])} <Icon name="chevron-right" />
+					</p>
+				)}
 			</div>
 		);
 	}

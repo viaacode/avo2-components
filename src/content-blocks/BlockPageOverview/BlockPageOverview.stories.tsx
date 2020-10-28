@@ -3,6 +3,7 @@ import { intersectionBy, times } from 'lodash-es';
 import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
 
 import { action } from '../../helpers';
+import { testRenderLink } from "../../helpers/render-link";
 
 import { BlockPageOverview, LabelObj, PageInfo } from './BlockPageOverview';
 import { CONTENT_PAGES_MOCK } from './BlockPageOverview.mock';
@@ -76,7 +77,7 @@ const baseProps = {
 	selectedTabs: [],
 	itemStyle: 'NEWS_LIST' as any,
 	tabStyle: 'MENU_BAR' as any,
-	navigate: action('navigate'),
+	renderLink: testRenderLink(action('navigate')),
 };
 
 storiesOf('blocks/BlockPageOverview', module)

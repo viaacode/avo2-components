@@ -1,3 +1,7 @@
+import { action } from '../../helpers';
+import { testRenderLink } from '../../helpers/render-link';
+import { LinkTarget } from '../../types';
+
 import { CTAPropsSchema } from './CTA';
 
 export const CTA_MOCK: CTAPropsSchema = {
@@ -6,5 +10,10 @@ export const CTA_MOCK: CTAPropsSchema = {
 	content: 'Text',
 	buttonLabel: 'Read more',
 	buttonIcon: 'chevron-down',
-	navigate: () => {},
+	buttonAction: {
+		target: LinkTarget.Blank,
+		type: 'EXTERNAL_LINK',
+		value: 'http://google.com',
+	},
+	renderLink: testRenderLink(action('navigate to')),
 };

@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import React from 'react';
 import { action } from '../../helpers';
+import { testRenderLink } from "../../helpers/render-link";
 
 import { BlockHero } from './BlockHero';
 import { ButtonProps } from '../../components';
@@ -30,6 +31,8 @@ const mockButtons: (ButtonProps & { buttonAction: ButtonAction })[] = [
 	},
 ];
 
+const renderLink = testRenderLink(action('navigate to'));
+
 storiesOf('blocks/BlockHero', module)
 	.addParameters({ jest: ['BlockHero'] })
 	.add('BlockHero video with poster', () => (
@@ -44,7 +47,7 @@ storiesOf('blocks/BlockHero', module)
 				textBelowButtons={
 					'<p>Lesgever en nog geen account?<br/><a href="/stamboek">Maak gratis een account aan.</a></p>'
 				}
-				navigate={action('navigate to')}
+				renderLink={renderLink}
 			/>
 		</div>
 	))
@@ -55,7 +58,7 @@ storiesOf('blocks/BlockHero', module)
 				content={loremIpsum({ count: 3 })}
 				src={mockVideo}
 				buttons={mockButtons}
-				navigate={action('navigate to')}
+				renderLink={renderLink}
 			/>
 		</div>
 	))
@@ -66,7 +69,7 @@ storiesOf('blocks/BlockHero', module)
 				content={loremIpsum({ count: 3 })}
 				poster={mockPoster}
 				buttons={mockButtons}
-				navigate={action('navigate to')}
+				renderLink={renderLink}
 			/>
 		</div>
 	))
@@ -77,7 +80,7 @@ storiesOf('blocks/BlockHero', module)
 				content={loremIpsum({ count: 3 })}
 				poster={mockPoster}
 				buttons={mockButtons}
-				navigate={action('navigate to')}
+				renderLink={renderLink}
 			/>
 		</div>
 	))
@@ -90,7 +93,7 @@ storiesOf('blocks/BlockHero', module)
 				contentColor="red"
 				poster={mockPoster}
 				buttons={mockButtons}
-				navigate={action('navigate to')}
+				renderLink={renderLink}
 			/>
 		</div>
 	));

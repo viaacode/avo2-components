@@ -28,9 +28,7 @@ describe('<BlockMediaGrid />', () => {
 	});
 
 	it('Should correctly render a CTA when given', () => {
-		const blockMediaGrid = mount(
-			<BlockMediaGrid navigate={() => {}} {...MEDIA_LIST_CTA_MOCK} />
-		);
+		const blockMediaGrid = mount(<BlockMediaGrid {...MEDIA_LIST_CTA_MOCK} />);
 
 		const ctaItem = blockMediaGrid.find('.c-cta-item');
 		const ctaButtonLabel = ctaItem.find('.c-cta__content .c-button__label');

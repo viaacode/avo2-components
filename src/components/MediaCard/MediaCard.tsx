@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps, EnglishContentType, Orientation } from '../../types';
@@ -12,7 +12,7 @@ export interface MediaCardPropsSchema extends DefaultProps {
 	category: EnglishContentType;
 	children?: ReactNode;
 	orientation?: Orientation;
-	onClick?: () => void;
+	onClick?: (evt: MouseEvent<HTMLElement>) => void;
 }
 
 export const MediaCard: FunctionComponent<MediaCardPropsSchema> = ({
@@ -32,7 +32,7 @@ export const MediaCard: FunctionComponent<MediaCardPropsSchema> = ({
 				'c-media-card--horizontal': orientation === 'horizontal',
 				'u-clickable': !!onClick,
 			})}
-			onClick={() => onClick && onClick()}
+			onClick={(evt) => onClick && onClick(evt)}
 		>
 			{thumbnail && <div className="c-media-card-thumb">{thumbnail}</div>}
 			<div className="c-media-card-content">
