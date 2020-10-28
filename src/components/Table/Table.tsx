@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import { every } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -61,8 +60,9 @@ export interface TablePropsSchema extends DefaultProps {
 	variant?: 'bordered' | 'invisible' | 'styled';
 	showCheckboxes?: boolean;
 	useCards?: boolean;
-	selectedItems?: any[];
-	onSelectionChanged?: (selectedItems: any[]) => void;
+	selectedItemIds?: (string | number)[];
+	onSelectionChanged?: (selectedItemIds: (string | number)[]) => void;
+	onSelectAll?: () => void;
 }
 
 export const Table: FunctionComponent<TablePropsSchema> = ({
@@ -85,14 +85,42 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	variant,
 	showCheckboxes = false,
 	useCards = false,
-	selectedItems = [],
+	selectedItemIds = [],
 	onSelectionChanged = () => {},
+	onSelectAll = () => {},
 }) => {
+	const defaultRowKey = rowKey || 'id';
+
 	const handleRowClick = (rowData: any) => {
 		if (onRowClick) {
 			onRowClick(rowData);
 		} else if (showCheckboxes) {
 			toggleItemSelection(rowData);
+		}
+	};
+
+	const areAllItemsSelected = () => {
+		return selectedItemIds.length >= (data || []).length;
+	};
+
+	const isItemSelected = (dataItem: any) =>
+		selectedItemIds.find((selectedItemId) => selectedItemId === dataItem[defaultRowKey]);
+
+	const toggleAllItemSelection = () => {
+		if (areAllItemsSelected()) {
+			onSelectionChanged([]);
+		} else {
+			onSelectAll();
+		}
+	};
+
+	const toggleItemSelection = (item: any) => {
+		if (isItemSelected(item)) {
+			onSelectionChanged(
+				selectedItemIds.filter((selectedItemId) => selectedItemId !== item[defaultRowKey])
+			);
+		} else {
+			onSelectionChanged([...selectedItemIds, item[defaultRowKey]]);
 		}
 	};
 
@@ -145,40 +173,6 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 		);
 	};
 
-	const areAllItemsSelected = () =>
-		every(
-			data,
-			dataItem =>
-				!!selectedItems.find(
-					selectedItem => selectedItem[rowKey || 'id'] === dataItem[rowKey || 'id']
-				)
-		);
-
-	const isItemSelected = (dataItem: any) =>
-		selectedItems.find(
-			selectedItem => selectedItem[rowKey || 'id'] === dataItem[rowKey || 'id']
-		);
-
-	const toggleAllItemSelection = () => {
-		if (areAllItemsSelected()) {
-			onSelectionChanged([]);
-		} else {
-			onSelectionChanged(data);
-		}
-	};
-
-	const toggleItemSelection = (item: any) => {
-		if (isItemSelected(item)) {
-			onSelectionChanged(
-				selectedItems.filter(
-					selectedItem => selectedItem[rowKey || 'id'] !== item[rowKey || 'id']
-				)
-			);
-		} else {
-			onSelectionChanged([...selectedItems, item]);
-		}
-	};
-
 	const renderTable = () => (
 		<>
 			<table
@@ -228,10 +222,10 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 												<Checkbox
 													label=""
 													checked={
-														!!selectedItems.find(
-															selectedItem =>
-																selectedItem[rowKey || 'id'] ===
-																rowData[rowKey || 'id']
+														!!selectedItemIds.find(
+															(selectedItemId) =>
+																selectedItemId ===
+																rowData[defaultRowKey]
 														)
 													}
 													onChange={() => toggleItemSelection(rowData)}
@@ -239,7 +233,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 											</td>
 										)}
 										{columns
-											.map(col => col.id)
+											.map((col) => col.id)
 											.map((columnId, columnIndex) => (
 												<td key={columnIndex}>
 													{renderCell(
@@ -279,7 +273,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 							<Panel>
 								<PanelBody>
 									{columns
-										.map(col => col.id)
+										.map((col) => col.id)
 										.map((columnId, columnIndex) => (
 											<div key={columnIndex}>
 												{renderCell(
