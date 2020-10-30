@@ -69,7 +69,7 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	onCurrentPageChanged: (newPage: number) => void;
 	pageCount: number;
 	pages: PageInfo[];
-	activePageId?: number; // Used to expand the active accordion
+	focusedPage: PageInfo | null; // Shown at the top with an expanded accordion
 	onLabelClicked?: (label: string) => void;
 	renderLink?: RenderLinkFunction;
 }
@@ -94,7 +94,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	onCurrentPageChanged,
 	pageCount,
 	pages = [],
-	activePageId,
+	focusedPage,
 	onLabelClicked,
 	renderLink = defaultRenderLinkFunction,
 }) => {
@@ -185,8 +185,9 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	};
 
 	const renderPages = () => {
+		const allPages = [...(focusedPage ? [focusedPage] : []), ...pages] as PageInfo[];
 		if (itemStyle === 'NEWS_LIST' || itemStyle === 'PROJECT_LIST') {
-			return pages.map((page) => {
+			return allPages.map((page) => {
 				return (
 					<Container
 						className={classnames(
@@ -257,21 +258,21 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		}
 		if (itemStyle === 'GRID') {
 			const uniqueLabels: LabelObj[] = uniqBy(
-				flatten(pages.map((page): LabelObj[] => page.labels)),
+				flatten(allPages.map((page): LabelObj[] => page.labels)),
 				'id'
 			);
 			const pagesByLabel: { [labelId: number]: PageInfo[] } = Object.fromEntries(
 				uniqueLabels.map((labelObj: LabelObj): [number, PageInfo[]] => {
 					return [
 						labelObj.id,
-						pages.filter((page) =>
+						allPages.filter((page) =>
 							page.labels.map((pageLabelObj) => pageLabelObj.id).includes(labelObj.id)
 						),
 					];
 				})
 			);
 			// Put the pages that do not have a label under their own category
-			pagesByLabel[noLabelObj.id] = pages.filter(
+			pagesByLabel[noLabelObj.id] = allPages.filter(
 				(page) => !page.labels || !page.labels.length
 			);
 			const showAllLabels = !selectedTabs.length || selectedTabs[0].id === allLabelObj.id;
@@ -311,11 +312,11 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		if (itemStyle === 'ACCORDION') {
 			return (
 				<Spacer margin="top-large">
-					{pages.map((page) => {
+					{allPages.map((page) => {
 						return (
 							<Accordion
 								title={page.title}
-								isOpen={page.id === activePageId}
+								isOpen={page.id === get(focusedPage, 'id')}
 								key={`block-page-${page.id}`}
 							>
 								{page.blocks}
@@ -390,12 +391,14 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 			{renderHeader()}
 			{renderPages()}
 			{pageCount > 1 && (
-				<Pagination
-					pageCount={pageCount}
-					currentPage={currentPage}
-					displayCount={5}
-					onPageChange={onCurrentPageChanged}
-				/>
+				<Spacer margin="top">
+					<Pagination
+						pageCount={pageCount}
+						currentPage={currentPage}
+						displayCount={5}
+						onPageChange={onCurrentPageChanged}
+					/>
+				</Spacer>
 			)}
 		</div>
 	);
