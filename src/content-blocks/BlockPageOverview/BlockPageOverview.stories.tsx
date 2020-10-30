@@ -3,7 +3,7 @@ import { intersectionBy, times } from 'lodash-es';
 import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
 
 import { action } from '../../helpers';
-import { testRenderLink } from "../../helpers/render-link";
+import { testRenderLink } from '../../helpers/render-link';
 
 import { BlockPageOverview, LabelObj, PageInfo } from './BlockPageOverview';
 import { CONTENT_PAGES_MOCK } from './BlockPageOverview.mock';
@@ -78,6 +78,7 @@ const baseProps = {
 	itemStyle: 'NEWS_LIST' as any,
 	tabStyle: 'MENU_BAR' as any,
 	renderLink: testRenderLink(action('navigate')),
+	focusedPage: null,
 };
 
 storiesOf('blocks/BlockPageOverview', module)
@@ -146,7 +147,11 @@ storiesOf('blocks/BlockPageOverview', module)
 	))
 	.add('BlockPageOverview accordions with focus', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0} itemsOnPage={20}>
-			<BlockPageOverview {...baseProps} itemStyle="ACCORDION" activePageId={31} />
+			<BlockPageOverview
+				{...baseProps}
+				itemStyle="ACCORDION"
+				focusedPage={mockPages.find((page) => page.id === 31) || null}
+			/>
 		</BlockPageOverviewStoryComponent>
 	))
 	.add('BlockPageOverview menu grid', () => (
