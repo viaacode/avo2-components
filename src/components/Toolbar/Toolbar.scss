@@ -22,7 +22,7 @@ $c-toolbar-main-border-color: $color-gray-200 !default;
 	flex-shrink: 0;
 	align-items: center;
 	justify-content: space-between;
-	height: $g-bar-size-regular;
+	min-height: $g-bar-size-regular;
 
 	&.c-toolbar--wrap {
 		.c-toolbar__left,
