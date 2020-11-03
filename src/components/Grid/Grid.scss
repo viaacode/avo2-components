@@ -26,6 +26,7 @@ $o-grid-column-gap: 2.4rem !default;
 
 [class*='o-grid-col'] {
 	min-width: 0;
+	width: 100%;
 	margin-left: $o-grid-column-gap / 2;
 	margin-right: $o-grid-column-gap / 2;
 }
@@ -34,7 +35,7 @@ $o-grid-column-gap: 2.4rem !default;
 $i: 0;
 
 @while($i < $o-grid-columns) {
-	.o-grid-col-#{$i + 1} {
+	.o-grid-col-#{$i + 1}{
 		width: calc(#{( ( $i + 1 ) / $o-grid-columns ) * 100}% - #{$o-grid-column-gap});
 		flex: 1 1 auto;
 	}
