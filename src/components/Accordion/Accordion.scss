@@ -49,6 +49,11 @@ $c-accordion-border: $color-gray-100 !default;
 
 .c-accordion__header {
 	padding: 1rem 1.6rem;
+
+	> .c-toolbar {
+		height: inherit;
+		min-height: inherit;
+	}
 }
 
 .c-accordion__header-title {
