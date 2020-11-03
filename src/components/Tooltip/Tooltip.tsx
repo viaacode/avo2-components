@@ -1,13 +1,8 @@
 import classnames from 'classnames';
-import React, {
-	createRef,
-	FunctionComponent,
-	ReactNode,
-	useEffect,
-	useState,
-} from 'react';
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
+import { generateRandomId } from '../../helpers/uuid';
 import { useSlot } from '../../hooks/useSlot';
 
 import './Tooltip.scss';
@@ -25,37 +20,37 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 	contentClassName,
 }) => {
 	const [show, setShow] = useState(false);
-
-	const triggerNodeRef = createRef<HTMLElement>();
+	const [id] = useState(generateRandomId());
 
 	const tooltipSlot = useSlot(TooltipContent, children);
 	const triggerSlot = useSlot(TooltipTrigger, children);
 
 	const handleMouseMove = (evt: Event) => {
 		const elem = evt.target as HTMLElement;
-		setShow(
-			elem.classList.contains('c-tooltip-trigger') || !!elem.closest('.c-tooltip-trigger')
-		);
+		let tooltipElem: HTMLElement | null = null;
+		if (elem.classList.contains('c-tooltip-trigger')) {
+			tooltipElem = elem;
+		} else if (elem.closest('.c-tooltip-trigger')) {
+			tooltipElem = elem.closest('.c-tooltip-trigger');
+		}
+		setShow(!!tooltipElem && tooltipElem.getAttribute('data-id') === id);
 	};
 
 	useEffect(() => {
-		if (triggerNodeRef.current) {
-			const triggerNode = triggerNodeRef.current;
-			document.body.addEventListener('mousemove', handleMouseMove);
+		document.body.addEventListener('mousemove', handleMouseMove);
+		document.body.addEventListener('touch', handleMouseMove);
 
-			return () => {
-				if (triggerNode) {
-					triggerNode.removeEventListener('mousemove', handleMouseMove);
-				}
-			};
-		}
-	}, [triggerNodeRef]);
+		return () => {
+			document.body.removeEventListener('mousemove', handleMouseMove);
+			document.body.removeEventListener('touch', handleMouseMove);
+		};
+	}, []);
 
 	return tooltipSlot && triggerSlot ? (
 		<Manager>
-			<Reference innerRef={triggerNodeRef}>
+			<Reference>
 				{({ ref }) => (
-					<span className="c-tooltip-trigger" ref={ref}>
+					<span className="c-tooltip-trigger" ref={ref} data-id={id}>
 						{triggerSlot}
 					</span>
 				)}
