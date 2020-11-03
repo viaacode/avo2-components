@@ -1,5 +1,11 @@
 import classnames from 'classnames';
-import React, { createRef, FunctionComponent, ReactNode, useEffect, useState } from 'react';
+import React, {
+	createRef,
+	FunctionComponent,
+	ReactNode,
+	useEffect,
+	useState,
+} from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
 import { useSlot } from '../../hooks/useSlot';
@@ -25,23 +31,21 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 	const tooltipSlot = useSlot(TooltipContent, children);
 	const triggerSlot = useSlot(TooltipTrigger, children);
 
-	const showHandler = () => setShow(true);
-	const hideHandler = () => setShow(false);
+	const handleMouseMove = (evt: Event) => {
+		const elem = evt.target as HTMLElement;
+		setShow(
+			elem.classList.contains('c-tooltip-trigger') || !!elem.closest('.c-tooltip-trigger')
+		);
+	};
 
 	useEffect(() => {
 		if (triggerNodeRef.current) {
 			const triggerNode = triggerNodeRef.current;
-			triggerNode.addEventListener('mouseover', showHandler);
-			triggerNode.addEventListener('touchstart', showHandler);
-			triggerNode.addEventListener('mouseout', hideHandler);
-			triggerNode.addEventListener('touchend', hideHandler);
+			document.body.addEventListener('mousemove', handleMouseMove);
 
 			return () => {
 				if (triggerNode) {
-					triggerNode.removeEventListener('mouseover', showHandler);
-					triggerNode.removeEventListener('touchstart', showHandler);
-					triggerNode.removeEventListener('mouseout', hideHandler);
-					triggerNode.removeEventListener('touchend', hideHandler);
+					triggerNode.removeEventListener('mousemove', handleMouseMove);
 				}
 			};
 		}
