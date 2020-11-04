@@ -53,4 +53,28 @@ storiesOf('components/Tooltip', module)
 				</TooltipContent>
 			</Tooltip>
 		</div>
+	))
+	.add('Tooltip multiple', () => (
+		<>
+			<div className="u-text-center">
+				<Tooltip position="right" contentClassName="u-spacer-right-s">
+					<TooltipTrigger>
+						<span>Foo</span>
+					</TooltipTrigger>
+					<TooltipContent>
+						<span>Bar</span>
+					</TooltipContent>
+				</Tooltip>
+			</div>
+			<div className="u-text-center">
+				<Tooltip position="right" contentClassName="u-spacer-right-s">
+					<TooltipTrigger>
+						<span>Marco</span>
+					</TooltipTrigger>
+					<TooltipContent>
+						<span>Polo</span>
+					</TooltipContent>
+				</Tooltip>
+			</div>
+		</>
 	));
