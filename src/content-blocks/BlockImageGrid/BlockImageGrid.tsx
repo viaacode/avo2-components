@@ -28,7 +28,12 @@ export interface BlockImageGridProps extends DefaultProps {
 	fill?: 'cover' | 'contain' | 'auto';
 	align?: AlignOptions;
 	textAlign?: AlignOptions;
+	textSize?: number;
+	textMargin?: number;
+	textWeight?: number;
 	className?: string;
+	horizontalMargin?: number;
+	verticalMargin?: number;
 	renderLink?: RenderLinkFunction;
 }
 
@@ -40,6 +45,11 @@ export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 	fill = 'cover',
 	align = 'center',
 	textAlign = 'center',
+	textSize = 15,
+	textMargin = 0,
+	textWeight = 500,
+	horizontalMargin = 10,
+	verticalMargin = 10,
 	className,
 	renderLink = defaultRenderLinkFunction,
 }) => {
@@ -65,7 +75,13 @@ export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 				<div className="c-block-grid__text-wrapper">
 					{!!element.title && (
 						<Spacer margin="top-small">
-							<h3>
+							<h3
+								style={{
+									fontSize: `${textSize}px`,
+									margin: `${textMargin}px 0`,
+									fontWeight: textWeight,
+								}}
+							>
 								<strong>{element.title}</strong>
 							</h3>
 						</Spacer>
@@ -103,7 +119,12 @@ export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 				<div
 					key={`block-grid-${get(element, 'action.value')}`}
 					className={classnames('c-block-grid__item')}
-					style={{ width: `${itemWidth}px` }}
+					style={{
+						width: `${itemWidth}px`,
+						margin: `${Math.round(verticalMargin / 2)}px ${Math.round(
+							horizontalMargin / 2
+						)}px`,
+					}}
 				>
 					{renderLink(element.action, renderGridImage(element))}
 				</div>
