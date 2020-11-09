@@ -26,12 +26,14 @@ $g-c-menu-z: 60 !default;
 	padding: 0.4rem 0;
 	position: absolute;
 	visibility: hidden;
+	pointer-events: none;
 	z-index: $g-c-menu-z;
 }
 
 .c-menu--visible {
 	opacity: 1;
 	visibility: visible;
+	pointer-events: auto;
 }
 
 .c-menu--search-result {
