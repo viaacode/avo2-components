@@ -46,9 +46,11 @@ export const ImageGrid: FunctionComponent<ImageGridPropsSchema> = ({
 
 	return (
 		<div
-			className={classnames('c-image-grid', className, { 'c-image-grid-selectable': allowSelect })}
+			className={classnames('c-image-grid', className, {
+				'c-image-grid-selectable': allowSelect,
+			})}
 		>
-			{images.map(imgSource => (
+			{images.map((imgSource) => (
 				<div
 					key={imgSource}
 					className={classnames('c-image-grid__item', {
