@@ -130,6 +130,7 @@ storiesOf('blocks/BlockImageGrid', module)
 			elements={elements2}
 			imageWidth={500}
 			imageHeight={200}
+			itemWidth={500}
 			renderLink={renderLink}
 		/>
 	))
@@ -196,4 +197,40 @@ storiesOf('blocks/BlockImageGrid', module)
 	))
 	.add('BlockImageGrid text above logo', () => (
 		<BlockImageGrid elements={elements3} renderLink={renderLink} itemWidth={300} />
+	))
+	.add('BlockImageGrid horizontal margin', () => (
+		<BlockImageGrid
+			elements={elements}
+			renderLink={renderLink}
+			horizontalMargin={50}
+			verticalMargin={1}
+		/>
+	))
+	.add('BlockImageGrid vertical margin', () => (
+		<BlockImageGrid
+			elements={elements}
+			renderLink={renderLink}
+			horizontalMargin={1}
+			verticalMargin={50}
+		/>
+	))
+	.add('BlockImageGrid text size and margin', () => (
+		<BlockImageGrid
+			elements={elements.map((elem) => ({
+				...elem,
+				title: 'This is a title',
+				text: 'This is some text below it',
+			}))}
+			itemWidth={200}
+			imageWidth={100}
+			imageHeight={100}
+			renderLink={renderLink}
+			fill="contain"
+			align="center"
+			textSize={21}
+			textMargin={16}
+			textWeight={500}
+			verticalMargin={50}
+			horizontalMargin={50}
+		/>
 	));
