@@ -122,8 +122,10 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			return true;
 		}
 
-		if (nextProps.src !== this.props.src) {
-			if (nextProps.src) {
+		const nextUrl: string | undefined = nextProps.src && nextProps.src.split('?')[0];
+		const currentUrl: string | undefined = this.props.src && this.props.src.split('?')[0];
+		if (nextUrl !== currentUrl) {
+			if (nextUrl) {
 				// User clicked the post to play the video
 				this.reInitFlowPlayer(nextProps);
 			} else {
