@@ -22,6 +22,7 @@ export interface ButtonPropsSchema extends DefaultProps {
 	size?: 'small' | 'large';
 	title?: string;
 	type?: ButtonTypeSchema;
+	id?: string;
 }
 
 const Button: FunctionComponent<ButtonPropsSchema> = ({
@@ -39,6 +40,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 	size,
 	title,
 	type = 'primary',
+	id,
 }) => {
 	const handleButtonClick = (evt: MouseEvent<HTMLElement>) => {
 		if (!disabled && onClick) {
@@ -61,6 +63,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 			disabled={disabled}
 			aria-label={ariaLabel}
 			title={title}
+			id={id}
 		>
 			{children ? (
 				children
