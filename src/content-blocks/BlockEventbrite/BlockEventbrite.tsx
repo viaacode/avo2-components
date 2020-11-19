@@ -2,10 +2,13 @@ import classnames from 'classnames';
 import React, { FunctionComponent, useEffect } from 'react';
 
 import { Button, ButtonPropsSchema } from '../../components/Button/Button';
-import { DefaultProps } from '../../types';
+import { AlignOptions, DefaultProps } from '../../types';
+
+import './BlockEventbrite.scss';
 
 export interface BlockEventbriteProps extends DefaultProps, ButtonPropsSchema {
 	eventId: string;
+	align?: AlignOptions;
 	className?: string;
 }
 
@@ -13,6 +16,7 @@ const EVENTBRITE_SCRIPT_ID = 'eventbriteWidgetsScript';
 
 export const BlockEventbrite: FunctionComponent<BlockEventbriteProps> = ({
 	eventId,
+	align = 'center',
 	className,
 	...rest
 }) => {
@@ -38,7 +42,13 @@ export const BlockEventbrite: FunctionComponent<BlockEventbriteProps> = ({
 	}, [elementId, eventId]);
 
 	return (
-		<div className={classnames(className, 'c-block-eventbrite')}>
+		<div
+			className={classnames(
+				className,
+				'c-block-eventbrite',
+				`c-block-eventbrite__align-${align}`
+			)}
+		>
 			<Button {...rest} id={elementId} />
 		</div>
 	);
