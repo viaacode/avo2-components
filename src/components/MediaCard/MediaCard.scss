@@ -25,6 +25,10 @@
 		color: $color-gray-800;
 		font-weight: $g-headings-font-weight;
 		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }
 
