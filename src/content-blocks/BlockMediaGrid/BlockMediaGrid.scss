@@ -6,6 +6,10 @@
 	}
 }
 .c-block-media-list {
+	.c-media-card {
+		cursor: pointer;
+	}
+
 	.c-media-card__cta {
 		display: flex;
 		flex-direction: column;

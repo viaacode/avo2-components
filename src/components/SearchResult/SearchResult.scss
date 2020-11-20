@@ -26,10 +26,6 @@
 		padding: 0.8rem 0;
 		font-size: 1.4rem;
 	}
-
-	a {
-		text-decoration: none;
-	}
 }
 
 .c-search-result__title {
@@ -40,6 +36,10 @@
 	a {
 		color: $color-teal-bright;
 		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }
 
