@@ -19,6 +19,7 @@ export interface ButtonProps extends DefaultProps {
 	label?: string;
 	size?: 'small';
 	title?: string;
+	tooltip?: string;
 	type?: ButtonType;
 	buttonAction: ButtonAction;
 }

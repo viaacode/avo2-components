@@ -8,6 +8,7 @@
 
 .c-tooltip-trigger {
 	cursor: default;
+	display: inline-block;
 }
 
 .c-tooltip {
@@ -26,6 +27,44 @@
 	visibility: hidden;
 
 	z-index: 75;
+
+	.c-tooltip__arrow,
+	.c-tooltip__arrow::before {
+		position: absolute;
+		width: 8px;
+		height: 8px;
+		z-index: -1;
+	}
+
+	.c-tooltip__arrow::before {
+		content: '';
+		transform: rotate(45deg);
+		background: #0f171d;
+	}
+
+	&[data-popper-placement^='top'] > .c-tooltip__arrow {
+		bottom: -4px;
+		left: 50%;
+		transform: translate(-8px, 0);
+	}
+
+	&[data-popper-placement^='bottom'] > .c-tooltip__arrow {
+		top: -4px;
+		left: 50%;
+		transform: translate(-8px, 0);
+	}
+
+	&[data-popper-placement^='left'] > .c-tooltip__arrow {
+		right: 0;
+		top: 50%;
+		transform: translate(0, -4px);
+	}
+
+	&[data-popper-placement^='right'] > .c-tooltip__arrow {
+		left: -8px;
+		top: 50%;
+		transform: translate(0, -4px);
+	}
 }
 
 .c-tooltip--show {
