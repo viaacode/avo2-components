@@ -1,5 +1,4 @@
-import * as PopperJS from '@popperjs/core';
-import { Placement } from '@popperjs/core';
+import { Placement, State } from '@popperjs/core';
 import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { Modifier, usePopper } from 'react-popper';
@@ -65,10 +64,10 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 		enabled: true,
 		phase: 'beforeWrite',
 		requires: ['computeStyles'],
-		fn: ({ state }: { state: PopperJS.State }) => {
+		fn: ({ state }: { state: State }) => {
 			state.styles.popper.width = `${state.rects.reference.width}px`;
 		},
-		effect: ({ state }: { state: PopperJS.State }) => {
+		effect: ({ state }: { state: State }) => {
 			state.elements.popper.style.width = `${
 				(state.elements.reference as HTMLElement).offsetWidth
 			}px`;
