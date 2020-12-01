@@ -36,6 +36,14 @@
    ========================================================================== */
 
 .c-media-card-list {
+	a {
+		text-decoration: none;
+
+		&:hover .c-media-card__title {
+			text-decoration: underline;
+		}
+	}
+
 	.c-media-card {
 		margin-bottom: 2.4rem;
 	}
@@ -62,13 +70,9 @@
 /* Specific colors for each media type
    ========================================================================== */
 
-.c-media-card:hover {
+.c-media-card {
 	.c-media-card__title {
 		color: $color-teal-bright;
-
-		a {
-			color: inherit;
-		}
 	}
 
 	&.c-media-card--collection {
