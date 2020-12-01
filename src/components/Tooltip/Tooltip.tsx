@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode, useCallback, useEffect, useState } from 'react';
-import { Manager, Popper, Reference } from 'react-popper';
+import { usePopper } from 'react-popper';
 
 import { generateRandomId } from '../../helpers/uuid';
 import { useSlot } from '../../hooks/useSlot';
@@ -11,19 +11,36 @@ import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 export interface TooltipPropsSchema {
 	children: ReactNode;
 	position: 'top' | 'right' | 'bottom' | 'left';
+	offset?: number;
 	contentClassName?: string;
 }
 
 export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 	children,
 	position = 'bottom',
+	offset,
 	contentClassName,
 }) => {
+	const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
+	const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
+
 	const [show, setShow] = useState(false);
 	const [id] = useState(generateRandomId());
 
 	const tooltipSlot = useSlot(TooltipContent, children);
 	const triggerSlot = useSlot(TooltipTrigger, children);
+
+	const { styles, attributes } = usePopper(referenceElement, popperElement, {
+		placement: position,
+		modifiers: [
+			{
+				name: 'offset',
+				options: {
+					offset: [0, offset || 10],
+				},
+			},
+		],
+	});
 
 	const handleMouseMove = useCallback(
 		(evt: Event) => {
@@ -50,33 +67,22 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 	}, [handleMouseMove]);
 
 	return tooltipSlot && triggerSlot ? (
-		<Manager>
-			<Reference>
-				{({ ref }) => (
-					<span className="c-tooltip-trigger" ref={ref} data-id={id}>
-						{triggerSlot}
-					</span>
-				)}
-			</Reference>
-			<Popper placement={position}>
-				{({ ref, style, placement }) => (
-					<div
-						className={classnames(
-							contentClassName,
-							'c-tooltip',
-							`c-tooltip--${position}`,
-							{
-								'c-tooltip--show': show,
-							}
-						)}
-						data-placement={placement}
-						ref={ref}
-						style={style}
-					>
-						{tooltipSlot}
-					</div>
-				)}
-			</Popper>
-		</Manager>
+		<>
+			<div className="c-tooltip-trigger" data-id={id} ref={setReferenceElement}>
+				{triggerSlot}
+			</div>
+
+			<div
+				className={classnames(contentClassName, 'c-tooltip', `c-tooltip--${position}`, {
+					'c-tooltip--show': show,
+				})}
+				ref={setPopperElement}
+				style={styles.popper}
+				{...attributes.popper}
+			>
+				{tooltipSlot}
+				<div className="c-tooltip__arrow" data-popper-arrow />
+			</div>
+		</>
 	) : null;
 };
