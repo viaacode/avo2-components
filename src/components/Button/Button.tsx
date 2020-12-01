@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
+import { Tooltip, TooltipContent, TooltipTrigger } from '..';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
@@ -18,9 +19,12 @@ export interface ButtonPropsSchema extends DefaultProps {
 	disabled?: boolean;
 	icon?: IconNameSchema;
 	label?: string;
+
 	onClick?(event: MouseEvent<HTMLElement>): void;
+
 	size?: 'small' | 'large';
 	title?: string;
+	tooltip?: string;
 	type?: ButtonTypeSchema;
 	id?: string;
 }
@@ -39,6 +43,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 	onClick,
 	size,
 	title,
+	tooltip,
 	type = 'primary',
 	id,
 }) => {
@@ -48,34 +53,50 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 		}
 	};
 
-	return (
-		<button
-			className={classnames(className, 'c-button', {
-				'c-button--active': active,
-				'c-button--auto': autoHeight,
-				'c-button--small': size === 'small',
-				'c-button--large': size === 'large',
-				'c-button--block': block,
-				'c-button--icon': icon && !label,
-				[`c-button--${type}`]: type,
-			})}
-			onClick={handleButtonClick}
-			disabled={disabled}
-			aria-label={ariaLabel}
-			title={title}
-			id={id}
-		>
-			{children ? (
-				children
-			) : (
-				<div className="c-button__content">
-					{icon && <Icon className="c-button__icon" name={icon} active={active} />}
-					{label && <div className="c-button__label">{label}</div>}
-					{arrow && <Icon className="c-button__icon" name="caret-down" />}
-				</div>
-			)}
-		</button>
-	);
+	const renderButton = () => {
+		return (
+			<button
+				className={classnames(className, 'c-button', {
+					'c-button--active': active,
+					'c-button--auto': autoHeight,
+					'c-button--small': size === 'small',
+					'c-button--large': size === 'large',
+					'c-button--block': block,
+					'c-button--icon': icon && !label,
+					[`c-button--${type}`]: type,
+				})}
+				onClick={handleButtonClick}
+				disabled={disabled}
+				aria-label={ariaLabel}
+				title={title}
+				id={id}
+			>
+				{children ? (
+					children
+				) : (
+					<div className="c-button__content">
+						{icon && <Icon className="c-button__icon" name={icon} active={active} />}
+						{label && <div className="c-button__label">{label}</div>}
+						{arrow && <Icon className="c-button__icon" name="caret-down" />}
+					</div>
+				)}
+			</button>
+		);
+	};
+
+	if (tooltip && tooltip.trim()) {
+		return (
+			<Tooltip position="top" offset={20}>
+				<TooltipTrigger>
+					<span>{renderButton()}</span>
+				</TooltipTrigger>
+				<TooltipContent>
+					<span>{tooltip}</span>
+				</TooltipContent>
+			</Tooltip>
+		);
+	}
+	return renderButton();
 };
 
 export { Button };

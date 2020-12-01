@@ -108,7 +108,7 @@ const Template: Story<Partial<ButtonPropsSchema>> = ({
 	...rest
 }) => {
 	return (
-		<Spacer margin="bottom">
+		<Spacer margin="extra-large">
 			<Button
 				ariaLabel={ariaLabel}
 				onClick={action('Button clicked')}
@@ -130,6 +130,7 @@ Buttons.args = {
 	title: 'Tooltip title',
 	type: 'primary',
 	icon: 'book' as IconNameSchema,
+	tooltip: 'test',
 };
 
 storiesOf('components/Button', module)
@@ -149,4 +150,7 @@ storiesOf('components/Button', module)
 		</div>
 	))
 	.add('Active buttons', () => renderButtonStories(buttonActiveProps))
-	.add('Auto height buttons', () => renderButtonStories(buttonAutoHeightProps, false));
+	.add('Auto height buttons', () => renderButtonStories(buttonAutoHeightProps, false))
+	.add('Button with tooltip', () =>
+		renderButtonStories(buttonProps, true, { tooltip: 'Dit is een download button' })
+	);

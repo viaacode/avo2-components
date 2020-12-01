@@ -1,13 +1,11 @@
+import { Placement, State } from '@popperjs/core';
 import classnames from 'classnames';
-import PopperJS, { Data, ModifierFn, Placement } from 'popper.js';
-import React, { FunctionComponent, ReactNode } from 'react';
-import { Manager, Popper, Reference } from 'react-popper';
+import React, { FunctionComponent, ReactNode, useState } from 'react';
+import { Modifier, usePopper } from 'react-popper';
 
-import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
-import { get } from '../../utils/get';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
@@ -31,6 +29,8 @@ export interface DropdownPropsSchema {
 	triggerWidth?: 'fit-content' | 'full-width';
 }
 
+type Modifiers = string;
+
 /**
  * This component provides a button that can show a flyout with some children inside of it.
  * The PopperJS library is used to provide the positioning logic for the flyout element.
@@ -53,11 +53,30 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	triggerClassName,
 	triggerWidth = 'fit-content',
 }) => {
-	const [dropdownFlyout, dropdownFlyoutRef] = useCallbackRef<Element>();
-	const [dropdownButton, dropdownButtonRef] = useCallbackRef<Element>();
+	const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
+	const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
 
 	const dropdownButtonSlot = useSlot(DropdownButton, children);
 	const dropdownContentSlot = useSlot(DropdownContent, children);
+
+	const sameWidth: Modifier<Modifiers> = {
+		name: 'sameWidth',
+		enabled: true,
+		phase: 'beforeWrite',
+		requires: ['computeStyles'],
+		fn: ({ state }: { state: State }) => {
+			state.styles.popper.width = `${state.rects.reference.width}px`;
+		},
+		effect: ({ state }: { state: State }) => {
+			state.elements.popper.style.width = `${
+				(state.elements.reference as HTMLElement).offsetWidth
+			}px`;
+		},
+	};
+
+	const { styles, attributes } = usePopper(referenceElement, popperElement, {
+		modifiers: menuWidth === 'fit-trigger' ? [sameWidth] : [],
+	});
 
 	const toggle = (openState: boolean = !isOpen) => {
 		if (openState !== isOpen) {
@@ -67,74 +86,46 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 
 	const toggleClosed = () => toggle(false);
 
-	// We let popper calculate all the required styles, then we modify them a little based on the `menuWidth` prop
-	const computeStyle = (data: Data, options: Object) => {
-		const computeStylesFn: ModifierFn = get(PopperJS, 'Defaults.modifiers.computeStyle.fn');
-
-		const newData = computeStylesFn(data, options);
-
-		if (menuWidth === 'fit-trigger') {
-			// Make the width of the popper the same size as the reference element
-			newData.styles.width = `${newData.offsets.reference.width}px`;
-		}
-
-		newData.styles.overflow = 'hidden';
-
-		return newData;
-	};
-
-	const modifiers = {
-		computeStyle: {
-			fn: computeStyle,
-		},
-	};
-
 	useKeyPress('Escape', toggleClosed);
-	useClickOutside(dropdownFlyout as Element, toggleClosed, [dropdownButton as Element]);
+	useClickOutside(popperElement as Element, toggleClosed, [referenceElement as Element]);
 
 	return (
-		<Manager>
-			<Reference innerRef={dropdownButtonRef}>
-				{({ ref }) => (
-					<div
-						className={classnames(triggerClassName, {
-							'c-dropdown__trigger': triggerWidth === 'fit-content',
-						})}
-						ref={ref}
-						onClick={() => toggle()}
-					>
-						{dropdownButtonSlot || (
-							<Button type="secondary" block={triggerWidth === 'full-width'}>
-								<div className="c-button__content">
-									{icon && <Icon name={icon} />}
-									{label && <div className="c-button__label">{label}</div>}
-									{!icon && (
-										<Icon
-											name={isOpen ? 'caret-up' : 'caret-down'}
-											size="small"
-											type="arrows"
-										/>
-									)}
-								</div>
-							</Button>
-						)}
-					</div>
+		<>
+			<div
+				className={classnames(triggerClassName, {
+					'c-dropdown__trigger': triggerWidth === 'fit-content',
+				})}
+				onClick={() => toggle()}
+				ref={setReferenceElement}
+			>
+				{dropdownButtonSlot || (
+					<Button type="secondary" block={triggerWidth === 'full-width'}>
+						<div className="c-button__content">
+							{icon && <Icon name={icon} />}
+							{label && <div className="c-button__label">{label}</div>}
+							{!icon && (
+								<Icon
+									name={isOpen ? 'caret-up' : 'caret-down'}
+									size="small"
+									type="arrows"
+								/>
+							)}
+						</div>
+					</Button>
 				)}
-			</Reference>
-			<Popper placement={placement} modifiers={modifiers} innerRef={dropdownFlyoutRef}>
-				{({ ref, style, placement }) => (
-					<Menu
-						className={classnames(menuClassName, 'c-dropdown__menu')}
-						innerRef={ref as any}
-						isOpen={isOpen}
-						placement={placement}
-						search={searchMenu}
-						style={style}
-					>
-						{dropdownContentSlot || children}
-					</Menu>
-				)}
-			</Popper>
-		</Manager>
+			</div>
+
+			<div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+				<Menu
+					className={classnames(menuClassName, 'c-dropdown__menu')}
+					innerRef={popperElement as any}
+					isOpen={isOpen}
+					placement={placement}
+					search={searchMenu}
+				>
+					{dropdownContentSlot || children}
+				</Menu>
+			</div>
+		</>
 	);
 };

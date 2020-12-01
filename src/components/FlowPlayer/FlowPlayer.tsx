@@ -1,9 +1,15 @@
+/**
+ * This component assumes these files are loaded in the index.html of your project
+ *   <link rel="stylesheet" href="/flowplayer/style/flowplayer.css">
+ *   <script src="/flowplayer/flowplayer.min.js"></script>
+ *   <script src="/flowplayer/plugins/chromecast.min.js"></script>
+ *   <script src="/flowplayer/plugins/airplay.min.js"></script>
+ *   <script src="/flowplayer/plugins/subtitles.min.js"></script>
+ *   <script src="/flowplayer/plugins/hls.min.js"></script>
+ *   <script src="/flowplayer/plugins/cuepoints.min.js"></script>
+ */
+
 import classnames from 'classnames';
-import flowplayer from 'flowplayer-files';
-import chromecast from 'flowplayer-files/lib/plugins/chromecast.min';
-import cuepoints from 'flowplayer-files/lib/plugins/cuepoints.min';
-import hls from 'flowplayer-files/lib/plugins/hls.min';
-import subtitles from 'flowplayer-files/lib/plugins/subtitles.min';
 import { get } from 'lodash-es';
 import React, { createRef } from 'react';
 
@@ -11,10 +17,7 @@ import { DefaultProps } from '../../types';
 
 import './FlowPlayer.scss';
 
-flowplayer.extensions.push(chromecast);
-flowplayer.extensions.push(cuepoints);
-flowplayer.extensions.push(subtitles);
-flowplayer.extensions.push(hls);
+declare const flowplayer: any;
 
 export interface FlowplayerTrackSchema {
 	crossorigin?: 'use-credentials' | 'anonymous';
@@ -204,7 +207,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		}
 	}
 
-	private cuePointEndListener(flowplayerInstance: FlowplayerInstance | null | undefined) {
+	private static cuePointEndListener(flowplayerInstance: FlowplayerInstance | null | undefined) {
 		if (flowplayerInstance) {
 			flowplayerInstance.pause();
 		}
@@ -237,6 +240,9 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			subtitles: {
 				tracks: this.props.subtitles,
 			},
+
+			// CHROMECAST
+			chromecast: { app: flowplayer.chromecast.apps.STABLE },
 		});
 
 		if (!flowplayerInstance) {
@@ -247,9 +253,13 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		// Pause video at end cuepoint
 		if (props.end) {
 			flowplayerInstance.on(flowplayer.events.CUEPOINT_END, () =>
-				this.cuePointEndListener(flowplayerInstance)
+				FlowPlayer.cuePointEndListener(flowplayerInstance)
 			);
 		}
+
+		flowplayerInstance.on('error', (err: any) => {
+			console.error(err);
+		});
 
 		this.drawCustomElements(flowplayerInstance);
 
