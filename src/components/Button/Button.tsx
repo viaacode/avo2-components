@@ -1,10 +1,11 @@
 import classnames from 'classnames';
 import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
-import { Tooltip, TooltipContent, TooltipTrigger } from '..';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
+import { Tooltip } from '../Tooltip/Tooltip';
+import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 
 import './Button.scss';
 import { ButtonTypeSchema } from './Button.types';

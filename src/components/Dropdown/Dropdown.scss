@@ -11,3 +11,15 @@
 		white-space: nowrap;
 	}
 }
+
+.c-dropdown__content-closed {
+	visibility: hidden;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.c-dropdown__content-open {
+	visibility: visible;
+	opacity: 1;
+	pointer-events: auto;
+}

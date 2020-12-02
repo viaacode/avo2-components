@@ -56,7 +56,10 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 					placement="bottom-start"
 				>
 					<DropdownButton>
-						<button className="c-avatar c-avatar-dropdown" data-dropdown="multipleAvatarsDropdown">
+						<button
+							className="c-avatar c-avatar-dropdown"
+							data-dropdown="multipleAvatarsDropdown"
+						>
 							+{hiddenAvatars.length}
 						</button>
 					</DropdownButton>
@@ -67,15 +70,22 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 								<a
 									key={index}
 									className="c-menu__item"
-									onClick={() => (avatar.onClick ? avatar.onClick(avatar) : undefined)}
+									onClick={() =>
+										avatar.onClick ? avatar.onClick(avatar) : undefined
+									}
 								>
 									<div className="c-menu__label">
 										<Flex orientation="vertical" center>
-											<Avatar initials={avatar.initials} image={avatar.image} />
+											<Avatar
+												initials={avatar.initials}
+												image={avatar.image}
+											/>
 											<Spacer margin="left-small">
 												<h4 className="c-h4 u-m-0">{avatar.name}</h4>
 												{avatar.subtitle && (
-													<span className="c-avatar-meta">{avatar.subtitle}</span>
+													<span className="c-avatar-meta">
+														{avatar.subtitle}
+													</span>
 												)}
 											</Spacer>
 										</Flex>

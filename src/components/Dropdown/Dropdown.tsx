@@ -1,7 +1,7 @@
-import { Placement, State } from '@popperjs/core';
+import { Placement } from '@popperjs/core';
 import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
-import { Modifier, usePopper } from 'react-popper';
+import { usePopper } from 'react-popper';
 
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
@@ -29,8 +29,6 @@ export interface DropdownPropsSchema {
 	triggerWidth?: 'fit-content' | 'full-width';
 }
 
-type Modifiers = string;
-
 /**
  * This component provides a button that can show a flyout with some children inside of it.
  * The PopperJS library is used to provide the positioning logic for the flyout element.
@@ -45,7 +43,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	isOpen,
 	label = '',
 	menuClassName,
-	menuWidth = 'fit-trigger',
+	// menuWidth = 'fit-trigger', // TODO re-enable this without causing an infinite render loop
 	onClose = () => {},
 	onOpen = () => {},
 	placement = 'bottom-start',
@@ -59,23 +57,24 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	const dropdownButtonSlot = useSlot(DropdownButton, children);
 	const dropdownContentSlot = useSlot(DropdownContent, children);
 
-	const sameWidth: Modifier<Modifiers> = {
-		name: 'sameWidth',
-		enabled: true,
-		phase: 'beforeWrite',
-		requires: ['computeStyles'],
-		fn: ({ state }: { state: State }) => {
-			state.styles.popper.width = `${state.rects.reference.width}px`;
-		},
-		effect: ({ state }: { state: State }) => {
-			state.elements.popper.style.width = `${
-				(state.elements.reference as HTMLElement).offsetWidth
-			}px`;
-		},
-	};
-
 	const { styles, attributes } = usePopper(referenceElement, popperElement, {
-		modifiers: menuWidth === 'fit-trigger' ? [sameWidth] : [],
+		placement,
+		// modifiers:
+		// 	menuWidth === 'fit-trigger'
+		// 		? [
+		// 				{
+		// 					name: 'matchReferenceSize',
+		// 					enabled: true,
+		// 					effect({ state }) {
+		// 						state.elements.popper.style.width = `${
+		// 							(state.elements.reference as HTMLElement).offsetWidth
+		// 						}px`;
+		// 					},
+		// 					phase: 'beforeWrite',
+		// 					requires: ['computeStyles'],
+		// 				},
+		// 		  ]
+		// 		: [],
 	});
 
 	const toggle = (openState: boolean = !isOpen) => {
@@ -115,12 +114,10 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 				)}
 			</div>
 
-			<div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+			<div ref={setPopperElement} style={styles.popper} {...attributes.popper} className={isOpen ? 'c-dropdown__content-open' : 'c-dropdown__content-closed'}>
 				<Menu
 					className={classnames(menuClassName, 'c-dropdown__menu')}
-					innerRef={popperElement as any}
 					isOpen={isOpen}
-					placement={placement}
 					search={searchMenu}
 				>
 					{dropdownContentSlot || children}

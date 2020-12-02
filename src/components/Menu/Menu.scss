@@ -24,10 +24,10 @@ $g-c-menu-z: 60 !default;
 	min-width: 10rem;
 	opacity: 0;
 	padding: 0.4rem 0;
-	position: absolute;
 	visibility: hidden;
 	pointer-events: none;
 	z-index: $g-c-menu-z;
+	display: inline-block;
 }
 
 .c-menu--visible {

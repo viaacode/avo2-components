@@ -1,9 +1,8 @@
-import typescript from 'rollup-plugin-typescript2';
-import postcss from 'rollup-plugin-postcss';
-import cjs from 'rollup-plugin-commonjs';
-import { terser } from 'rollup-plugin-terser';
-
 import autoprefixer from 'autoprefixer';
+import cjs from 'rollup-plugin-commonjs';
+import postcss from 'rollup-plugin-postcss';
+import { terser } from 'rollup-plugin-terser';
+import typescript from 'rollup-plugin-typescript2';
 
 export default {
 	input: ['src/index.ts', 'src/wysiwyg.ts'],
@@ -54,5 +53,6 @@ export default {
 		'@storybook/addon-actions',
 		'react-perfect-scrollbar',
 		'react-perfect-scrollbar/dist/css/styles.css',
+		'react-popper',
 	],
 };

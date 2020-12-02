@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import { Placement } from 'popper.js';
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -12,9 +11,7 @@ export interface MenuPropsSchema extends DefaultProps {
 	renderItem?: (menuItem: MenuItemInfoSchema) => ReactNode; // If you want to render your own item
 	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;
-	innerRef?: (ref: HTMLElement | null) => void;
 	isOpen?: boolean;
-	placement?: Placement; // Only used in Dropdown
 	search?: boolean;
 	style?: CSSProperties;
 }
@@ -26,9 +23,7 @@ export const Menu: FunctionComponent<MenuPropsSchema> = ({
 	renderItem,
 	noResultsLabel,
 	onClick = () => {},
-	innerRef,
 	isOpen = true,
-	placement,
 	search,
 	style,
 }) => {
@@ -38,8 +33,6 @@ export const Menu: FunctionComponent<MenuPropsSchema> = ({
 				'c-menu--search-result': search,
 				'c-menu--visible': isOpen,
 			})}
-			data-placement={placement}
-			ref={innerRef}
 			style={style}
 		>
 			{children ? (
