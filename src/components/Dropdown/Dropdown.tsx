@@ -43,7 +43,9 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	isOpen,
 	label = '',
 	menuClassName,
-	// menuWidth = 'fit-trigger', // TODO re-enable this without causing an infinite render loop
+	// TODO re-enable this without causing an infinite render loop
+	// https://github.com/popperjs/popper-core/issues/794#issuecomment-736727000
+	// menuWidth = 'fit-trigger',
 	onClose = () => {},
 	onOpen = () => {},
 	placement = 'bottom-start',
