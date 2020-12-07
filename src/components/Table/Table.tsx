@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { isNil, isString } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -52,7 +53,7 @@ export interface TablePropsSchema extends DefaultProps {
 		rowIndex: number,
 		columnIndex: number
 	) => ReactNode;
-	rowKey?: string;
+	rowKey?: string | ((rowData: any) => string);
 	sortColumn?: string;
 	sortOrder?: 'asc' | 'desc';
 	striped?: boolean;
@@ -89,7 +90,15 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	onSelectionChanged = () => {},
 	onSelectAll = () => {},
 }) => {
-	const defaultRowKey = rowKey || 'id';
+	const getRowKey = (rowData: any): string => {
+		if (isString(rowKey)) {
+			return rowData[rowKey];
+		}
+		if (isNil(rowKey)) {
+			return rowData.id;
+		}
+		return rowKey(rowData);
+	};
 
 	const handleRowClick = (rowData: any) => {
 		if (onRowClick) {
@@ -104,7 +113,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	};
 
 	const isItemSelected = (dataItem: any) =>
-		selectedItemIds.find((selectedItemId) => selectedItemId === dataItem[defaultRowKey]);
+		selectedItemIds.find((selectedItemId) => selectedItemId === getRowKey(dataItem));
 
 	const toggleAllItemSelection = () => {
 		if (areAllItemsSelected()) {
@@ -117,10 +126,10 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	const toggleItemSelection = (item: any) => {
 		if (isItemSelected(item)) {
 			onSelectionChanged(
-				selectedItemIds.filter((selectedItemId) => selectedItemId !== item[defaultRowKey])
+				selectedItemIds.filter((selectedItemId) => selectedItemId !== getRowKey(item))
 			);
 		} else {
-			onSelectionChanged([...selectedItemIds, item[defaultRowKey]]);
+			onSelectionChanged([...selectedItemIds, getRowKey(item)]);
 		}
 	};
 
@@ -211,7 +220,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 							<tbody>
 								{data.map((rowData, rowIndex) => (
 									<tr
-										key={`table-row-${rowData[rowKey]}`}
+										key={`table-row-${getRowKey(rowData)}`}
 										className={
 											onRowClick || showCheckboxes ? 'u-clickable' : ''
 										}
@@ -224,8 +233,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 													checked={
 														!!selectedItemIds.find(
 															(selectedItemId) =>
-																selectedItemId ===
-																rowData[defaultRowKey]
+																selectedItemId === getRowKey(rowData)
 														)
 													}
 													onChange={() => toggleItemSelection(rowData)}
@@ -265,7 +273,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 			<>
 				{(data || []).map((rowData, rowIndex) => (
 					<div
-						key={`table-card-${rowData[rowKey]}`}
+						key={`table-card-${getRowKey(rowData)}`}
 						className={onRowClick || showCheckboxes ? 'u-clickable' : ''}
 						onClick={() => handleRowClick(rowData)}
 					>

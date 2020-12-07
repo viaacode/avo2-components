@@ -31,6 +31,7 @@ export interface BlockImageGridProps extends DefaultProps {
 	textSize?: number;
 	textMargin?: number;
 	textWeight?: number;
+	textColor?: string;
 	className?: string;
 	horizontalMargin?: number;
 	verticalMargin?: number;
@@ -48,6 +49,7 @@ export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 	textSize = 15,
 	textMargin = 0,
 	textWeight = 500,
+	textColor = '#2B414F',
 	horizontalMargin = 10,
 	verticalMargin = 10,
 	className,
@@ -72,7 +74,12 @@ export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 						backgroundSize: fill,
 					}}
 				/>
-				<div className="c-block-grid__text-wrapper">
+				<div
+					className="c-block-grid__text-wrapper"
+					style={{
+						color: textColor,
+					}}
+				>
 					{!!element.title && (
 						<Spacer margin="top-small">
 							<h3
