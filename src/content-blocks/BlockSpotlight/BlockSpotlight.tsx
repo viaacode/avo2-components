@@ -41,7 +41,8 @@ export const BlockSpotlight: FunctionComponent<BlockSpotlightProps> = ({
 					buttonAction,
 					<p>
 						{get(elements, [index, 'title'])} <Icon name="chevron-right" />
-					</p>
+					</p>,
+					get(elements, [index, 'title'])
 				)}
 			</div>
 		);

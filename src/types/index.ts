@@ -42,5 +42,6 @@ export type Orientation = 'horizontal' | 'vertical';
 
 export type RenderLinkFunction = (
 	buttonAction: ButtonAction | null | undefined,
-	children: ReactNode
+	children: ReactNode,
+	label?: string
 ) => ReactElement<any, any> | null;

@@ -133,7 +133,11 @@ export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 						)}px`,
 					}}
 				>
-					{renderLink(element.action, renderGridImage(element))}
+					{renderLink(
+						element.action,
+						renderGridImage(element),
+						element.title || element.buttonTitle || element.titleAbove
+					)}
 				</div>
 			))}
 		</div>

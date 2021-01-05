@@ -36,7 +36,11 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 	const renderButtons = (columnIndex: number, buttons: any[]) =>
 		buttons.map((buttonProps: any, buttonIndex: number) => (
 			<Spacer key={`rich-text-column-${columnIndex}-button-${buttonIndex}`} margin="top">
-				{renderLink(buttonProps.buttonAction, <Button {...buttonProps} />)}
+				{renderLink(
+					buttonProps.buttonAction,
+					<Button {...buttonProps} />,
+					buttonProps.label || buttonProps.ariaLabel || buttonProps.tooltip
+				)}
 			</Spacer>
 		));
 

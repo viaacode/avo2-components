@@ -1,5 +1,5 @@
 import { isString } from 'lodash-es';
-import React, { FunctionComponent, ReactElement, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import {
 	Button,
@@ -9,8 +9,8 @@ import {
 	FlowPlayer,
 	Spacer,
 } from '../../components';
-import { defaultRenderLinkFunction } from "../../helpers/render-link";
-import { ButtonAction, DefaultProps } from '../../types';
+import { defaultRenderLinkFunction } from '../../helpers/render-link';
+import { ButtonAction, DefaultProps, RenderLinkFunction } from '../../types';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
 import './BlockHero.scss';
@@ -27,7 +27,7 @@ export interface BlockHeroProps extends DefaultProps {
 	dataPlayerId?: string;
 	buttons?: (ButtonProps & { buttonAction: ButtonAction })[];
 	textBelowButtons?: string | ReactNode;
-	renderLink?: (buttonAction: ButtonAction, children: ReactNode) => ReactElement<any, any> | null;
+	renderLink?: RenderLinkFunction;
 }
 
 export const BlockHero: FunctionComponent<BlockHeroProps> = ({
@@ -65,7 +65,8 @@ export const BlockHero: FunctionComponent<BlockHeroProps> = ({
 							{buttons.map(({ buttonAction, ...rest }, index: number) => {
 								return renderLink(
 									buttonAction,
-									<Button {...rest} key={`hero-button-${index}`} />
+									<Button {...rest} key={`hero-button-${index}`} />,
+									rest.label || rest.ariaLabel || rest.tooltip
 								);
 							})}
 						</ButtonToolbar>
