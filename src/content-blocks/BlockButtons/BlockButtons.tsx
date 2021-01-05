@@ -49,7 +49,8 @@ export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
 					<div key={`buttons_block_${button.label}`}>
 						{renderLink(
 							button.buttonAction,
-							<Button key={`button-${index}`} type="secondary" {...button} />
+							<Button key={`button-${index}`} type="secondary" {...button} />,
+							button.label || button.ariaLabel || button.tooltip
 						)}
 					</div>,
 				];

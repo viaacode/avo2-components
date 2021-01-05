@@ -60,7 +60,11 @@ export const CTA: FunctionComponent<CTAPropsSchema> = ({
 						elements={{ content, color: contentColor }}
 						renderLink={renderLink}
 					/>
-					{renderLink(buttonAction, <Button {...buttonProps} />)}
+					{renderLink(
+						buttonAction,
+						<Button {...buttonProps} />,
+						buttonProps.label || buttonProps.ariaLabel || buttonProps.tooltip
+					)}
 				</div>
 			</div>
 		</div>

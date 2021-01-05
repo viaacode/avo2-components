@@ -222,7 +222,8 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 													<h3>{page.title}</h3>
 												) : (
 													<h2>{page.title}</h2>
-												)
+												),
+												page.title
 											)}
 										{showDate && (
 											<div onClick={handleLabelClicked}>
@@ -244,7 +245,8 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 														type: 'CONTENT_PAGE',
 														value: page.path,
 													} as ButtonAction,
-													<Button label={buttonLabel} type="tertiary" />
+													<Button label={buttonLabel} type="tertiary" />,
+													buttonLabel
 												)}
 											</Spacer>
 										)}
