@@ -87,7 +87,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 
 	if (tooltip && tooltip.trim()) {
 		return (
-			<Tooltip position="top" offset={20}>
+			<Tooltip contentClassName="c-button__tooltip" position="top" offset={20}>
 				<TooltipTrigger>
 					<span>{renderButton()}</span>
 				</TooltipTrigger>
