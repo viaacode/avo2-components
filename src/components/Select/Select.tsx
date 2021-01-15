@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { get } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import ReactSelect from 'react-select';
 import { ActionMeta, ValueType } from 'react-select/src/types';
@@ -40,7 +41,7 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 		actionMeta: ActionMeta<SelectOptionSchema>
 	) {
 		if (actionMeta.action !== 'create-option') {
-			onChange((changedValue as SelectOptionSchema).value);
+			onChange(get(changedValue, 'value', null));
 		}
 	}
 

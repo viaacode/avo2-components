@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import React, { cloneElement, ReactElement } from 'react';
+import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { action } from '../../helpers';
 
@@ -7,9 +7,12 @@ import { Select } from './Select';
 import { SELECT_MOCK_OPTIONS } from './Select.mock';
 
 const SelectStoryComponent = ({ children }: { children: ReactElement }) => {
+	const [value, setValue] = useState<string | null>('Al');
+
 	return cloneElement(children, {
-		value: null,
-		onChange: (value: string) => {
+		value,
+		onChange: (value: string | null) => {
+			setValue(value);
 			action('selection changed: ')(value);
 		},
 	});
@@ -24,7 +27,14 @@ storiesOf('components/Select', module)
 		<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} disabled />
 	))
 	.add('Select clearable', () => (
-		<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} clearable />
+		<SelectStoryComponent>
+			<Select
+				options={SELECT_MOCK_OPTIONS}
+				value="Db"
+				onChange={action('onChange')}
+				clearable
+			/>
+		</SelectStoryComponent>
 	))
 	.add('Select loading', () => (
 		<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} loading />
