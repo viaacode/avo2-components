@@ -26,6 +26,10 @@ import { ModalBackdrop } from './ModalBackdrop';
 
 export interface ModalPropsSchema extends DefaultProps {
 	children: ReactNode;
+	/**
+	 * false: enables the closing of the modal by clicking the backdrop () grey area around the modal)
+	 * true: modal will not close when clicking the backdrop
+	 */
 	disableContextClick?: boolean;
 	isOpen: boolean;
 	title?: string;
@@ -60,7 +64,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 		} else {
 			document.body.classList.remove('modal-open');
 		}
-	});
+	}, [isOpen]);
 
 	function close() {
 		onClose && onClose();

@@ -4,6 +4,8 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 import { action } from '../../helpers';
 import { Button } from '../Button/Button';
 import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
+import { Modal } from '../Modal/Modal';
+import { ModalBody } from '../Modal/Modal.slots';
 
 import { FlowPlayer } from './FlowPlayer';
 import { MOCK_FLOW_PLAYER_PROPS_FULL } from './FlowPlayer.mock';
@@ -82,6 +84,11 @@ storiesOf('components/FlowPlayer', module)
 			</FlowPlayerStoryComponent>
 		</div>
 	))
+	.add('FlowPlayer cuepoints', () => (
+		<div className="o-grid-col-bp3-7">
+			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} start={30} end={200} />
+		</div>
+	))
 	.add('FlowPlayer events', () => (
 		<div className="o-grid-col-bp3-7">
 			<FlowPlayer
@@ -111,5 +118,17 @@ storiesOf('components/FlowPlayer', module)
 					},
 				]}
 			/>
+		</div>
+	))
+	.add('FlowPlayer in a modal', () => (
+		<div className="o-grid-col-bp3-7">
+			<Modal isOpen size="medium">
+				<ModalBody>
+					<FlowPlayer
+						{...MOCK_FLOW_PLAYER_PROPS_FULL}
+						src="https://archief-media.viaa.be/viaa/TESTBEELD/d97b24406291480aac11d0728335afe011f3d283abde48649a4c4e9079428b8a/browse.mp4"
+					/>
+				</ModalBody>
+			</Modal>
 		</div>
 	));
