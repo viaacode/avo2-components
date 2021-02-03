@@ -31,11 +31,10 @@ $g-c-modal-z: 50 !default;
 .c-modal-context {
 	display: flex;
 	height: 100%;
-	left: 50%;
 	opacity: 0;
 	position: fixed;
+	left: 0;
 	top: 0;
-	transform: translate(-50%, -4rem);
 	transition: visibility 0s linear 0.2s, opacity 0.2s linear, transform 0.2s ease-in-out;
 	visibility: hidden;
 	pointer-events: none;
@@ -44,7 +43,6 @@ $g-c-modal-z: 50 !default;
 
 	&.c-modal-context--visible {
 		opacity: 1;
-		transform: translate(-50%, 0);
 		transition-delay: 0s;
 		visibility: visible;
 		pointer-events: auto;
@@ -54,6 +52,7 @@ $g-c-modal-z: 50 !default;
 .c-modal {
 	background-color: #FFF;
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	width: calc(100% - 8rem);
 	z-index: $g-c-modal-z;
