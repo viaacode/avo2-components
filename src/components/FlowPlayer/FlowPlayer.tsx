@@ -7,6 +7,7 @@
  *   <script src="/flowplayer/plugins/subtitles.min.js"></script>
  *   <script src="/flowplayer/plugins/hls.min.js"></script>
  *   <script src="/flowplayer/plugins/cuepoints.min.js"></script>
+ *   <script src="/flowplayer/plugins/google-analytics.min.js"></script>
  */
 
 import classnames from 'classnames';
@@ -19,6 +20,37 @@ import './FlowPlayer.scss';
 
 declare const flowplayer: any;
 
+export enum GoogleAnalyticsEvent {
+	FullscreenEnter = 'fullscreen_enter',
+	FullscreenExit = 'fullscreen_exit',
+	VideoPlayerLoad = 'video_player_load',
+	VideoStart = 'video_start',
+	videoClickPlay = 'video_click_play',
+	VideoPause = 'video_pause',
+	VideoResume = 'video_resume',
+	VideoMute = 'video_mute',
+	VideoUnmute = 'video_unmute',
+	Video25Percent = 'video_25_percent',
+	Video50Percent = 'video_50_percent',
+	Video75Percent = 'video_75_percent',
+	VideoComplete = 'video_complete',
+	LiveStart = 'live_start',
+	LiveClickPlay = 'live_click_play',
+	LivePause = 'live_pause',
+	LiveResume = 'live_resume',
+	LiveMute = 'live_mute',
+	LiveUnmute = 'live_unmute',
+	LiveComplete = 'live_complete',
+	AdStartPreroll = 'ad_start_preroll',
+	AdStartMidroll = 'ad_start_midroll',
+	AdStartPostroll = 'ad_start_postroll',
+	AdCompletedPreroll = 'ad_completed_preroll',
+	AdCompletedMidroll = 'ad_completed_midroll',
+	AdCompletedPostroll = 'ad_completed_postroll',
+	AdSkippedPreroll = 'ad_skipped_preroll',
+	AdSkippedMidroll = 'ad_skipped_midroll',
+	AdSkippedPostroll = 'ad_skipped_postroll',
+}
 export interface FlowplayerTrackSchema {
 	crossorigin?: 'use-credentials' | 'anonymous';
 	default: boolean;
@@ -55,12 +87,22 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	subtitles?: FlowplayerTrackSchema[];
 	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
 	className?: string;
+	googleAnalyticsId?: string;
+	googleAnalyticsEvents?: GoogleAnalyticsEvent[];
 }
 
 interface FlowPlayerState {
 	flowPlayerInstance: FlowplayerInstance | null;
 	startedPlaying: boolean;
 }
+
+export const convertGAEventsArrayToObject = (googleAnalyticsEvents: GoogleAnalyticsEvent[]) => {
+	return googleAnalyticsEvents.reduce((acc: any, curr: GoogleAnalyticsEvent) => {
+		acc[curr] = curr;
+
+		return acc;
+	}, {});
+};
 
 export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlayerState> {
 	private videoContainerRef = createRef<HTMLDivElement>();
@@ -74,7 +116,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 	}
 
 	private destroyPlayer() {
-		this.setState((state) => {
+		this.setState(state => {
 			const flowPlayerInstance = state.flowPlayerInstance;
 			if (flowPlayerInstance) {
 				flowPlayerInstance.destroy();
@@ -227,22 +269,43 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			poster: props.poster,
 
 			// CONFIGURATION
-			autoplay: this.props.autoplay,
+			autoplay: props.autoplay,
 			ui: flowplayer.ui.LOGO_ON_RIGHT | flowplayer.ui.USE_DRAG_HANDLE,
 			plugins: ['subtitles', 'chromecast', 'cuepoints', 'hls'],
 			preload: props.preload || (!props.poster ? 'metadata' : 'none'),
 
 			// CUEPOINTS
-			...(props.end ? { cuepoints: [{ start: props.start, end: props.end }] } : {}), // Only set cuepoints if end is passed
+			...(props.end
+				? {
+						cuepoints: [
+							{
+								start: props.start,
+								end: props.end,
+							},
+						],
+				  }
+				: {}), // Only set cuepoints if end is passed
 			draw_cuepoints: true,
 
 			// SUBTITLES
 			subtitles: {
-				tracks: this.props.subtitles,
+				tracks: props.subtitles,
 			},
 
 			// CHROMECAST
-			chromecast: { app: flowplayer.chromecast.apps.STABLE },
+			chromecast: {
+				app: flowplayer.chromecast.apps.STABLE,
+			},
+
+			// GOOGLE ANALYTICS
+			ga: props.googleAnalyticsId
+				? {
+						ga_instances: [props.googleAnalyticsId],
+						event_actions: props.googleAnalyticsEvents
+							? convertGAEventsArrayToObject(props.googleAnalyticsEvents)
+							: {},
+				  }
+				: {},
 		});
 
 		if (!flowplayerInstance) {
