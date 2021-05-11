@@ -304,6 +304,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 						event_actions: props.googleAnalyticsEvents
 							? convertGAEventsArrayToObject(props.googleAnalyticsEvents)
 							: {},
+						media_title: props.title,
 				  }
 				: {},
 		});

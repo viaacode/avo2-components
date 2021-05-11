@@ -1,6 +1,6 @@
 {
 	"name": "@viaa/avo2-components",
-	"version": "1.70.2",
+	"version": "1.70.3",
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",
 	"types": "dist/esm/index.d.ts",
