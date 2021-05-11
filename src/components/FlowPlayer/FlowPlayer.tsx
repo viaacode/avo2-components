@@ -89,6 +89,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	className?: string;
 	googleAnalyticsId?: string;
 	googleAnalyticsEvents?: GoogleAnalyticsEvent[];
+	googleAnalyticsTitle?: string;
 }
 
 interface FlowPlayerState {
@@ -304,7 +305,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 						event_actions: props.googleAnalyticsEvents
 							? convertGAEventsArrayToObject(props.googleAnalyticsEvents)
 							: {},
-						media_title: props.title,
+						media_title: props.googleAnalyticsTitle || props.title,
 				  }
 				: {},
 		});
