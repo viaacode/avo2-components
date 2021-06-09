@@ -117,7 +117,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 	}
 
 	private destroyPlayer() {
-		this.setState(state => {
+		this.setState((state) => {
 			const flowPlayerInstance = state.flowPlayerInstance;
 			if (flowPlayerInstance) {
 				flowPlayerInstance.destroy();
@@ -329,9 +329,6 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		this.drawCustomElements(flowplayerInstance);
 
 		flowplayerInstance.on('playing', () => {
-			if (this.props.onPlay) {
-				this.props.onPlay();
-			}
 			if (!this.state.startedPlaying) {
 				// First time playing the video
 				// Jump to first cue point if exists:
@@ -339,6 +336,11 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 					//  deepcode ignore React-propsUsedInStateUpdateMethod: Flowplayer is not aware of react
 					flowplayerInstance.currentTime = props.start;
 				}
+
+				if (this.props.onPlay) {
+					this.props.onPlay();
+				}
+
 				this.setState({
 					...this.state,
 					startedPlaying: true,
