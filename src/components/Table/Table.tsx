@@ -35,7 +35,7 @@ export type TableColumnSchema = {
 	icon?: IconNameSchema;
 	tooltip?: string;
 	sortable?: boolean;
-	dataType?: string;
+	dataType?: 'string' | 'dateTime' | 'boolean' | 'number';
 };
 
 export interface TablePropsSchema extends DefaultProps {
@@ -114,7 +114,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	};
 
 	const isItemSelected = (dataItem: any) =>
-		selectedItemIds.find(selectedItemId => selectedItemId === getRowKey(dataItem));
+		selectedItemIds.find((selectedItemId) => selectedItemId === getRowKey(dataItem));
 
 	const toggleAllItemSelection = () => {
 		if (areAllItemsSelected()) {
@@ -127,7 +127,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	const toggleItemSelection = (item: any) => {
 		if (isItemSelected(item)) {
 			onSelectionChanged(
-				selectedItemIds.filter(selectedItemId => selectedItemId !== getRowKey(item))
+				selectedItemIds.filter((selectedItemId) => selectedItemId !== getRowKey(item))
 			);
 		} else {
 			onSelectionChanged([...selectedItemIds, getRowKey(item)]);
@@ -233,7 +233,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 													label=""
 													checked={
 														!!selectedItemIds.find(
-															selectedItemId =>
+															(selectedItemId) =>
 																selectedItemId ===
 																getRowKey(rowData)
 														)
@@ -243,7 +243,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 											</td>
 										)}
 										{columns
-											.map(col => col.id)
+											.map((col) => col.id)
 											.map((columnId, columnIndex) => (
 												<td key={columnIndex}>
 													{renderCell(
@@ -283,7 +283,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 							<Panel>
 								<PanelBody>
 									{columns
-										.map(col => col.id)
+										.map((col) => col.id)
 										.map((columnId, columnIndex) => (
 											<div key={columnIndex}>
 												{renderCell(
