@@ -1,3 +1,4 @@
+@use 'sass:math';
 /* ==========================================================================
    Component: Spinner
    ---
@@ -60,18 +61,18 @@ $c-spinner-large-bar-height: 1rem;
 	content: ' ';
 	position: absolute;
 	top: 0;
-	left: ($c-spinner-container-width/2 - $c-spinner-bar-width);
+	left: (math.div($c-spinner-container-width, 2) - $c-spinner-bar-width);
 	width: $c-spinner-bar-width;
 	height: $c-spinner-bar-height;
 	border-radius: 4px;
 	background: rgba(#000,0.6);
-	transform-origin: 50% $c-spinner-container-width/2; /* container height / 2 */
+	transform-origin: 50% math.div($c-spinner-container-width, 2); /* container height / 2 */
 
 	.c-spinner--large & {
-		left: ($c-spinner-large-container-width/2 - $c-spinner-large-bar-width);
+		left: (math.div($c-spinner-large-container-width, 2) - $c-spinner-large-bar-width);
 		width: $c-spinner-large-bar-width;
 		height: $c-spinner-large-bar-height;
-		transform-origin: 50% $c-spinner-large-container-width/2; /* container height / 2 */
+		transform-origin: 50% math.div($c-spinner-large-container-width, 2); /* container height / 2 */
 	}
 }
 
@@ -85,7 +86,7 @@ $spinTotal: 12;
 @while $spinCount < $spinTotal {
 	.c-spinner .c-spinner__bar:nth-child(#{$spinCount+1}) {
 		transform: rotate(#{$spinCount*30}deg);
-		animation-delay: $spinCount / $spinTotal * 1s;
+		animation-delay: math.div($spinCount, $spinTotal) * 1s;
 	}
 
 	$spinCount: $spinCount + 1;

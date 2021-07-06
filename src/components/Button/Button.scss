@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../../styles/settings/colors';
 @import '../../styles/settings/variables';
 
@@ -48,7 +49,7 @@ $c-button-icon-spacing-small: 0.2rem !default;
 	cursor: pointer;
 	vertical-align: middle;
 	border-radius: $c-button-border-radius;
-	padding: (($c-button-height - $c-button-line-height) / 2) $c-button-padding-horizontal;
+	padding: math.div(($c-button-height - $c-button-line-height), 2) $c-button-padding-horizontal;
 	max-height: $c-button-height;
 	font-size: $c-button-font-size;
 	text-align: center;
@@ -92,7 +93,7 @@ a.c-button {
 
 .c-button--small {
 	font-size: $c-button-font-size-small;
-	padding: (($c-button-height-small - $c-button-line-height-small) / 2) $c-button-padding-horizontal-small;
+	padding: math.div(($c-button-height-small - $c-button-line-height-small), 2) $c-button-padding-horizontal-small;
 
 	.c-button__label {
 		line-height: $c-button-line-height-small;
@@ -109,7 +110,7 @@ a.c-button {
 	}
 
 	&.c-button--icon {
-		padding: ($c-button-height-small - $c-button-line-height-small) /2;
+		padding: math.div(($c-button-height-small - $c-button-line-height-small), 2);
 	}
 }
 
@@ -125,11 +126,11 @@ a.c-button {
    ========================================================================== */
 
 .c-button.c-button--icon {
-	padding: ($c-button-height - $c-button-line-height)/2;
+	padding: math.div(($c-button-height - $c-button-line-height), 2);
 }
 
 .c-button--small.c-button--icon {
-	padding: ($c-button-height-small - $c-button-line-height-small)/2;;
+	padding: math.div(($c-button-height-small - $c-button-line-height-small), 2);
 }
 
 /* Block button
