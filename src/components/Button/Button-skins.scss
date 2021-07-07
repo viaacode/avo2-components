@@ -232,7 +232,7 @@ $c-button-link-color: $color-primary !default;
    ========================================================================== */
 
 .c-button.c-button--underlined-link {
-	@extend .c-button.c-button--link;
+	@extend .c-button, .c-button--link;
 	text-decoration: underline;
 
 	&:hover,
@@ -307,7 +307,7 @@ $c-button-link-color: $color-primary !default;
    ========================================================================== */
 
 .c-button.c-button--pupil-underlined-link {
-	@extend .c-button.c-button--link;
+	@extend .c-button, .c-button--link;
 	text-decoration: underline;
 	color: $color-yellow;
 
