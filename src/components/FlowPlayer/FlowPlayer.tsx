@@ -75,6 +75,10 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	metadata?: string[];
 	start?: number | null;
 	end?: number | null;
+	speed?: {
+		options: number[];
+		labels: string[];
+	};
 	token?: string;
 	dataPlayerId?: string;
 	autoplay?: boolean;
@@ -274,6 +278,9 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			ui: flowplayer.ui.LOGO_ON_RIGHT | flowplayer.ui.USE_DRAG_HANDLE,
 			plugins: ['subtitles', 'chromecast', 'cuepoints', 'hls', 'ga'],
 			preload: props.preload || (!props.poster ? 'metadata' : 'none'),
+
+			// SPEED
+			speed: props.speed,
 
 			// CUEPOINTS
 			...(props.end

@@ -77,6 +77,17 @@ storiesOf('components/FlowPlayer', module)
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} logo="images/100x100.svg" />
 		</div>
 	))
+	.add('FlowPlayer speeds', () => (
+		<div className="o-grid-col-bp3-7">
+			<FlowPlayer
+				{...MOCK_FLOW_PLAYER_PROPS_FULL}
+				speed={{
+					options: [0.5, 0.75, 1, 1.25, 1.5],
+					labels: ['0.5', '0.75', 'normaal', '1.25', '1.5'],
+				}}
+			/>
+		</div>
+	))
 	.add('FlowPlayer set time', () => (
 		<div className="o-grid-col-bp3-7">
 			<FlowPlayerStoryComponent>
