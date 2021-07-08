@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../../styles/settings/colors';
 @import '../../styles/settings/variables';
 
@@ -167,7 +168,7 @@ $i: 1;
 
 @while $i < $tableColCount {
 	.o-table-col-#{$i} {
-		width: #{$i / $tableColCount * 100%};
+		width: #{math.div($i, $tableColCount) * 100%};
 	}
 
 	$i: $i + 1;

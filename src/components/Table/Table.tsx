@@ -104,8 +104,6 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	const handleRowClick = (rowData: any) => {
 		if (onRowClick) {
 			onRowClick(rowData);
-		} else if (showCheckboxes) {
-			toggleItemSelection(rowData);
 		}
 	};
 
@@ -222,13 +220,14 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 								{data.map((rowData, rowIndex) => (
 									<tr
 										key={`table-row-${getRowKey(rowData)}`}
-										className={
-											onRowClick || showCheckboxes ? 'u-clickable' : ''
-										}
+										className={onRowClick ? 'u-clickable' : ''}
 										onClick={() => handleRowClick(rowData)}
 									>
 										{showCheckboxes && (
-											<td className="c-table__checkbox-column">
+											<td
+												className="c-table__checkbox-column u-clickable"
+												onClick={() => toggleItemSelection(rowData)}
+											>
 												<Checkbox
 													label=""
 													checked={
@@ -238,7 +237,6 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 																getRowKey(rowData)
 														)
 													}
-													onChange={() => toggleItemSelection(rowData)}
 												/>
 											</td>
 										)}
