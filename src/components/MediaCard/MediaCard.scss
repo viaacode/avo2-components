@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../../styles/settings/colors';
 @import '../../styles/settings/variables';
 
@@ -99,6 +100,6 @@
 
 .c-media-card--folder {
 	.c-thumbnail {
-		padding-top: (100% * 1 / 0.70625); // calculate A4 ratio for folder images
+		padding-top: math.div(100% * 1, 0.70625); // calculate A4 ratio for folder images
 	}
 }

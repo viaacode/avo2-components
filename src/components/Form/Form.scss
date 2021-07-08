@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../../styles/settings/colors';
 @import '../../styles/settings/variables';
 
@@ -33,7 +34,7 @@ $o-form-group-label-font-weight: $g-headings-font-weight !default;
 	}
 
 	.o-form-group__label {
-		padding: $o-form-group-spacing/2 0;
+		padding: math.div($o-form-group-spacing, 2) 0;
 
 		color: $c-input-label-color;
 		flex: none;
@@ -51,7 +52,7 @@ $o-form-group-label-font-weight: $g-headings-font-weight !default;
 	.o-form-group {
 		display: flex;
 		align-items: center;
-		margin: $o-form-group-spacing/2 0;
+		margin: math.div($o-form-group-spacing, 2) 0;
 	}
 
 	.o-form-group__label {
