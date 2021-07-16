@@ -87,6 +87,17 @@
 	color: $color-teal-bright;
 }
 
+// hide the type label on narrow screens so it doesn't collide with the label on the right
+.o-container--medium .c-block-media-list .c-thumbnail-media__category {
+	.o-svg-icon:not(:last-child) {
+		margin-right: 0;
+	}
+
+	p {
+		display: none;
+	}
+}
+
 .c-thumbnail-media__category {
 	display: flex;
 	align-items: center;
