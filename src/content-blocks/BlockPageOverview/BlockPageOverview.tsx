@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { findIndex, flatten, get, uniqBy } from 'lodash-es';
 import moment from 'moment';
-import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import {
 	Accordion,
@@ -70,7 +70,7 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	pageCount: number;
 	pages: PageInfo[];
 	focusedPage: PageInfo | null; // Shown at the top with an expanded accordion
-	onLabelClicked?: (label: string) => void;
+	getLabelLink?: (label: string) => string;
 	renderLink?: RenderLinkFunction;
 }
 
@@ -95,7 +95,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	pageCount,
 	pages = [],
 	focusedPage,
-	onLabelClicked,
+	getLabelLink,
 	renderLink = defaultRenderLinkFunction,
 }) => {
 	const allLabelObj = { label: allLabel, id: -2 };
@@ -131,6 +131,10 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	};
 
 	const renderLabel = (labelObj: any) => {
+		const labelLink = getLabelLink && getLabelLink(labelObj.label);
+		if (labelLink) {
+			return `<a href="${labelLink}" class="c-content-page__label">${labelObj.label}</a>`;
+		}
 		return `<span class="c-content-page__label">${labelObj.label}</span>`;
 	};
 
@@ -178,12 +182,6 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 		return null;
 	};
 
-	const handleLabelClicked = (evt: MouseEvent<HTMLDivElement>) => {
-		if (get(evt.target, 'className') === 'c-content-page__label' && onLabelClicked) {
-			onLabelClicked((evt.target as HTMLSpanElement).innerText);
-		}
-	};
-
 	const renderPages = () => {
 		const allPages = [...(focusedPage ? [focusedPage] : []), ...pages] as PageInfo[];
 		if (itemStyle === 'NEWS_LIST' || itemStyle === 'PROJECT_LIST') {
@@ -225,14 +223,11 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 												),
 												page.title
 											)}
-										{showDate && (
-											<div onClick={handleLabelClicked}>
-												{renderText(
-													formatDateString(dateString, page),
-													'a-subtitle'
-												)}
-											</div>
-										)}
+										{showDate &&
+											renderText(
+												formatDateString(dateString, page),
+												'a-subtitle'
+											)}
 										{
 											<div className="a-content-page__description">
 												{renderText(getDescription(page))}

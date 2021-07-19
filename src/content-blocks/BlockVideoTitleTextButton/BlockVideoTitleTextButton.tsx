@@ -40,12 +40,17 @@ export const BlockVideoTitleTextButton: FunctionComponent<BlockVideoTitleTextBut
 							<ExpandableContainer collapsedHeight={collapsedHeight}>
 								{title && (
 									<h2>
-										<a href={titleLink} style={{ color: 'black', textDecoration: 'none' }}>
+										<a
+											href={titleLink}
+											style={{ color: 'black', textDecoration: 'none' }}
+										>
 											{title}
 										</a>
 									</h2>
 								)}
-								{text && <p dangerouslySetInnerHTML={{ __html: convertToHtml(text) }} />}
+								{text && (
+									<p dangerouslySetInnerHTML={{ __html: convertToHtml(text) }} />
+								)}
 							</ExpandableContainer>
 						</div>
 					</Column>
