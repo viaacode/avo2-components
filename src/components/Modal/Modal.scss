@@ -161,7 +161,7 @@ $g-c-modal-z: 50 !default;
 }
 
 .c-modal__header--bg-alt {
-	background: $color-gray-50;
+	background-color: $color-gray-50;
 }
 
 .c-modal__header--bordered {
@@ -188,7 +188,7 @@ $g-c-modal-z: 50 !default;
 }
 
 .c-modal__footer--bg-alt {
-	background: $color-gray-50;
+	background-color: $color-gray-50;
 }
 
 .c-modal__content {
@@ -201,7 +201,7 @@ $g-c-modal-z: 50 !default;
    ========================================================================== */
 
 .c-modal-backdrop {
-	background: rgba($c-modal-shadow-color, 0.4);
+	background-color: rgba($c-modal-shadow-color, 0.4);
 	display: block;
 	width: 100%;
 	height: 100%;

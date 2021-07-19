@@ -10,7 +10,7 @@ storiesOf('components/Spinner', module)
 	.add('Spinner', () => <Spinner />)
 	.add('Large spinner', () => <Spinner size="large" />)
 	.add('Light spinner', () => (
-		<span style={{ padding: '20px', background: COLORS.GRAYSCALE.G800 }}>
+		<span style={{ padding: '20px', backgroundColor: COLORS.GRAYSCALE.G800 }}>
 			<Spinner light />
 		</span>
 	));

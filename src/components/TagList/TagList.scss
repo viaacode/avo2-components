@@ -46,7 +46,7 @@
 
 .c-tag > a { // Close button
 	border-radius: 100%;
-	background: $color-gray-200;
+	background-color: $color-gray-200;
 	color: #FFF;
 	text-align: center;
 	border: none;
@@ -67,7 +67,7 @@
 	&:hover,
 	&:active,
 	&:focus {
-		background: $color-error;
+		background-color: $color-error;
 		text-decoration: none;
 		color: #FFF;
 		box-shadow: 0 0 0 2px #FFF;

@@ -128,7 +128,7 @@ th.c-table__header--sortable {
 
 .c-table--striped {
 	tbody tr:nth-child(even) {
-		background: $c-table-row-odd-color;
+		background-color: $c-table-row-odd-color;
 	}
 }
 
@@ -226,7 +226,7 @@ $i: 1;
    ========================================================================== */
 
 .c-panel .c-table {
-	background: #FFF;
+	background-color: #FFF;
 
 	tr td {
 		padding: 1.6rem;

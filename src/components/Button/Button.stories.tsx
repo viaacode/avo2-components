@@ -144,7 +144,7 @@ storiesOf('components/Button', module)
 	.add('Block buttons', () => renderButtonStories(buttonIconProps, true, { block: true }))
 	.add('Inverse buttons', () => (
 		<div
-			style={{ display: 'inline-block', padding: '20px', background: COLORS.GRAYSCALE.G800 }}
+			style={{ display: 'inline-block', padding: '20px', backgroundColor: COLORS.GRAYSCALE.G800 }}
 		>
 			{renderButtonStories(buttonInverseProps)}
 		</div>

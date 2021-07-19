@@ -46,7 +46,7 @@ $c-spinner-large-bar-height: 1rem;
 
 	&.c-spinner--white {
 		.c-spinner__bar {
-			background: white;
+			background-color: white;
 		}
 	}
 
@@ -65,7 +65,7 @@ $c-spinner-large-bar-height: 1rem;
 	width: $c-spinner-bar-width;
 	height: $c-spinner-bar-height;
 	border-radius: 4px;
-	background: rgba(#000,0.6);
+	background-color: rgba(#000,0.6);
 	transform-origin: 50% math.div($c-spinner-container-width, 2); /* container height / 2 */
 
 	.c-spinner--large & {
@@ -96,6 +96,6 @@ $spinTotal: 12;
 
 .c-button--primary .c-spinner__bar,
 .c-alert--floating .c-spinner__bar {
-	background: #FFF;
+	background-color: #FFF;
 }
 

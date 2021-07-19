@@ -25,7 +25,7 @@ $c-panel-border-radius: 0.3rem !default;
 
 .c-panel__body {
 	border: 0.1rem solid $c-panel-border-color;
-	background: #FFF;
+	background-color: #FFF;
 	padding: $c-panel-padding-vertical $c-panel-padding-horizontal;
 
 	@media (max-width: $g-bp2 - 1) {
