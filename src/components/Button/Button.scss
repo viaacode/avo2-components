@@ -55,6 +55,10 @@ $c-button-icon-spacing-small: 0.2rem !default;
 	text-align: center;
 	align-items: center;
 	font-weight: 400;
+
+	.c-button__icon {
+		pointer-events: none;
+	}
 }
 
 a.c-button {
