@@ -190,6 +190,7 @@ storiesOf('blocks/BlockPageOverview', module)
 				{...baseProps}
 				showDate
 				dateString="Geplaatst in %label% op %date%"
+				getLabelLink={(label) => `https://google.com?q=${encodeURIComponent(label)}`}
 			/>
 		</BlockPageOverviewStoryComponent>
 	))
