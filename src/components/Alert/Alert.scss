@@ -21,7 +21,7 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
    ========================================================================== */
 
 .c-alert {
-	background: #FFF;
+	background-color: #FFF;
 	border-radius: 0.3rem;
 	border: 1px solid $color-gray-100;
 	padding: 1.2rem 1.6rem;
@@ -73,28 +73,28 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
    ========================================================================== */
 
 .c-alert--info {
-	background: $c-alert-info-bg-color;
+	background-color: $c-alert-info-bg-color;
 	border-color: darken($c-alert-info-bg-color, 10%);
 }
 
 .c-alert--danger {
-	background: $c-alert-danger-bg-color;
+	background-color: $c-alert-danger-bg-color;
 	border-color: darken($c-alert-danger-bg-color, 10%);
 	border-color: rgba($color-error-200, 0.33);
 }
 
 .c-alert--success {
-	background: $c-alert-success-bg-color;
+	background-color: $c-alert-success-bg-color;
 	border-color: darken($c-alert-success-bg-color, 10%);
 }
 
 .c-alert--spinner {
-	background: $c-alert-spinner-bg-color;
+	background-color: $c-alert-spinner-bg-color;
 }
 
 .c-alert--dark {
 	border: none;
-	background: $c-dark-alert-bg-color;
+	background-color: $c-dark-alert-bg-color;
 	color: #FFF;
 
 	a {
