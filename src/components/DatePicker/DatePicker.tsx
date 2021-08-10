@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { setHours, setMinutes } from 'date-fns';
+import { isValid, parse, setHours, setMinutes } from 'date-fns';
 // https://github.com/Hacker0x01/react-datepicker/issues/1815#issuecomment-513215416
 import nl from 'date-fns/locale/nl';
 import React, { FunctionComponent } from 'react';
@@ -47,6 +47,14 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 				timeCaption="tijd"
 				showTimeSelect={showTimeInput}
 				injectTimes={[setHours(setMinutes(new Date(), 59), 23)]}
+				strictParsing
+				onChangeRaw={(event) => {
+					const rawInput = (event.target.value || '').trim().replace(/[^0-9]+/g, '/');
+					const newDate = parse(rawInput, 'dd/MM/yyyy', new Date(), { locale: nl });
+					if (isValid(newDate)) {
+						onChange(newDate);
+					}
+				}}
 			/>
 			<Icon name="calendar" />
 		</div>

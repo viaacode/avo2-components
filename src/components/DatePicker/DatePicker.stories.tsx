@@ -28,11 +28,13 @@ storiesOf('components/DatePicker', module)
 	.addParameters({ jest: ['DatePicker'] })
 	.add('DatePicker', () => (
 		<Fragment>
-			<Spacer margin="bottom">
-				<DatePickerStoryComponent>
-					<DatePicker onChange={action('onChange')} />
-				</DatePickerStoryComponent>
-			</Spacer>
+			<DatePickerStoryComponent>
+				<DatePicker onChange={action('onChange')} />
+			</DatePickerStoryComponent>
+		</Fragment>
+	))
+	.add('DatePicker disabled', () => (
+		<Fragment>
 			<DatePickerStoryComponent>
 				<DatePicker disabled />
 			</DatePickerStoryComponent>
