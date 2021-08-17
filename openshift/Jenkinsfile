@@ -26,9 +26,9 @@ pipeline {
             - cat
             tty: true
             imagePullPolicy: Always
-          - name: npm 
+          - name: npm
             image: node:lts
-            command: 
+            command:
             - cat
             tty: true
             imagePullPolicy: Always
@@ -105,18 +105,18 @@ pipeline {
              container('npm') {
 
                 script {
-			echo "Publishing package to registry"
-						configFileProvider([configFile(fileId: "npm-config", variable: 'configFile')]) {
+					echo "Publishing package to registry"
+					configFileProvider([configFile(fileId: "npm-config", variable: 'configFile')]) {
 						sh "cat $configFile > .npmrc"
-						sh "cat .npmrc"
-						}
-						sh '''#/bin/bash
-						npm publish
-						echo "removing .npmrc for installto nexus not seems @viaa:registry=.."
-						rm -f .npmrc
-						'''
+						#sh "cat .npmrc"
+					}
+					sh '''#/bin/bash
+					npm publish
+					echo "removing .npmrc for installto nexus not seems @viaa:registry=.."
+					rm -f .npmrc
+					'''
                 } // script
-              }/ end container
+              }// end container
             } // steps
         } // stage
         stage('Deploy INT') {
