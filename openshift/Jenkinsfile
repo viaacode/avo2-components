@@ -35,7 +35,7 @@ pipeline {
     }
     environment {
         OC_PROJECT = 'avo'
-        BASE_IMG = 'openjdk:8u191-jre-alpine3.9'
+        BASE_IMG = 'node:12-alpine'
         OC_URL = 'https://c113-e.private.eu-de.containers.cloud.ibm.com:30227'
         JIRA_URL = 'meemoo.atlassian.net'
         APP_NAME = 'avo-components'
