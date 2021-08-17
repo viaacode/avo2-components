@@ -55,7 +55,7 @@ pipeline {
         }
         stage('Bootstrap') {
             steps {
-                sh 'make -f ./openshift/Makefile bootstrap'
+                sh 'echo disabled #make -f ./openshift/Makefile bootstrap'
             }
         }
         stage('Build code') {
@@ -77,16 +77,9 @@ pipeline {
                         '''
                     }
 					script {
-						openshift.withCluster() {
-							openshift.withProject("avo") {
-
-
 								sh'''#!/bin/bash
-
 								npm --registry=https://registry.npmjs.org install && npm run build || exit 1
 								'''
-								}
-							}
 					} // script
                 }
             }
@@ -98,24 +91,18 @@ pipeline {
             steps {
 
                 script {
-                    openshift.withCluster() {
-                        openshift.withProject("avo") {
+                     	echo "Publishing package to registry"
+						configFileProvider([configFile(fileId: "npm-config", variable: 'configFile')]) {
+							sh "cat $configFile > .npmrc"
+							sh "cat .npmrc"
 
-                             	echo "Publishing package to registry"
-								configFileProvider([configFile(fileId: "npm-config", variable: 'configFile')]) {
-									sh "cat $configFile > .npmrc"
-									sh "cat .npmrc"
+						}
 
-								}
-
-								sh '''#/bin/bash
-								npm publish
-								echo "removing .npmrc for installto nexus not seems @viaa:registry=.."
-								rm -f .npmrc
-								'''
-
-                        }
-                    }
+						sh '''#/bin/bash
+						npm publish
+						echo "removing .npmrc for installto nexus not seems @viaa:registry=.."
+						rm -f .npmrc
+						'''
                 } // script
             } // steps
         } // stage
@@ -207,7 +194,7 @@ pipeline {
 }
 
 void getImageFromDockerfile() {
-    return 'openjdk:8u191-jre-alpine3.9'
+    return 'node:12-alpine'
 }
 
 void setGitHubBuildStatus(String message, String state) {
