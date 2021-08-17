@@ -16,7 +16,7 @@ pipeline {
         metadata:
           labels:
             component: builder
-            lang: python
+            lang: nodejs
             app: avo-components
         spec:
           containers:
@@ -232,7 +232,7 @@ void tagNewImage(String environment) {
     oc project $OC_PROJECT
     oc tag $APP_NAME:$GIT_SHORT_COMMIT $APP_NAME:${environment}
     # Check the status of the rollout
-    oc rollout status statefulset/es-cluster-${environment} --watch=true
+    #oc rollout status statefulset/es-cluster-${environment} --watch=true
     """
 }
 
