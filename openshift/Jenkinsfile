@@ -100,23 +100,23 @@ pipeline {
 
 
 
-  	stage('Publish') {
+	stage('Publish') {
             steps {
+             container('npm') {
 
                 script {
-                     	echo "Publishing package to registry"
+			echo "Publishing package to registry"
 						configFileProvider([configFile(fileId: "npm-config", variable: 'configFile')]) {
-							sh "cat $configFile > .npmrc"
-							sh "cat .npmrc"
-
+						sh "cat $configFile > .npmrc"
+						sh "cat .npmrc"
 						}
-
 						sh '''#/bin/bash
 						npm publish
 						echo "removing .npmrc for installto nexus not seems @viaa:registry=.."
 						rm -f .npmrc
 						'''
                 } // script
+              }/ end container
             } // steps
         } // stage
         stage('Deploy INT') {
