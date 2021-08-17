@@ -108,7 +108,6 @@ pipeline {
 					echo "Publishing package to registry"
 					configFileProvider([configFile(fileId: "npm-config", variable: 'configFile')]) {
 						sh "cat $configFile > .npmrc"
-						#sh "cat .npmrc"
 					}
 					sh '''#/bin/bash
 					npm publish
