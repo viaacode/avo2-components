@@ -27,7 +27,7 @@ pipeline {
             tty: true
             imagePullPolicy: Always
           - name: npm 
-            image: node:12-alpine
+            image: node:lts
             command: 
             - cat
             tty: true
