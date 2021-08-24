@@ -17,6 +17,7 @@ export interface ButtonProps extends DefaultProps {
 	disabled?: boolean;
 	icon?: IconName;
 	label?: string;
+	altTitle?: string;
 	size?: 'small';
 	title?: string;
 	tooltip?: string;
@@ -50,7 +51,8 @@ export const BlockButtons: FunctionComponent<BlockButtonsProps> = ({
 						{renderLink(
 							button.buttonAction,
 							<Button key={`button-${index}`} type="secondary" {...button} />,
-							button.label || button.ariaLabel || button.tooltip
+							button.label || button.ariaLabel || button.tooltip,
+							button.altTitle || button.label || button.ariaLabel || button.tooltip
 						)}
 					</div>,
 				];

@@ -17,6 +17,7 @@ export interface GridItem {
 	buttonLabel?: string;
 	buttonType?: ButtonType;
 	buttonTitle?: string;
+	buttonAltTitle?: string;
 	action?: ButtonAction;
 }
 
@@ -100,12 +101,17 @@ export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 					)}
 					{!!element.buttonLabel && (
 						<Spacer margin="top-small" className="c-block-grid__button-spacer">
-							<Button
-								label={element.buttonLabel}
-								type={element.buttonType}
-								title={element.buttonTitle}
-								ariaLabel={element.buttonLabel || element.buttonTitle}
-							/>
+							{renderLink(
+								element.action,
+								<Button
+									label={element.buttonLabel}
+									type={element.buttonType}
+									title={element.buttonTitle}
+									ariaLabel={element.buttonLabel || element.buttonTitle}
+								/>,
+								element.buttonLabel,
+								element.buttonAltTitle || element.buttonLabel,
+							)}
 						</Spacer>
 					)}
 				</div>

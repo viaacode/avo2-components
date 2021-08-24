@@ -27,7 +27,9 @@ export function defaultRenderLinkFunction(
 	buttonAction: ButtonAction | undefined | null,
 	children: ReactNode,
 	// @ts-ignore
-	label?: string
+	label?: string,
+	// @ts-ignore
+	title?: string
 ): ReactElement<any, any> | null {
 	return <>{children}</>;
 }
