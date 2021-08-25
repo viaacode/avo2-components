@@ -18,6 +18,7 @@ export interface CTAPropsSchema extends DefaultProps {
 	content: string;
 	contentColor?: string;
 	buttonLabel: string;
+	buttonAltTitle?: string;
 	buttonIcon?: IconNameSchema;
 	buttonType?: ButtonTypeSchema;
 	buttonAction?: ButtonAction;
@@ -34,6 +35,7 @@ export const CTA: FunctionComponent<CTAPropsSchema> = ({
 	content,
 	contentColor,
 	buttonLabel,
+	buttonAltTitle,
 	buttonIcon,
 	buttonType = 'secondary',
 	buttonAction,
@@ -63,7 +65,8 @@ export const CTA: FunctionComponent<CTAPropsSchema> = ({
 					{renderLink(
 						buttonAction,
 						<Button {...buttonProps} />,
-						buttonProps.label || buttonProps.ariaLabel || buttonProps.tooltip
+						buttonProps.label || buttonProps.ariaLabel || buttonProps.tooltip,
+						buttonAltTitle || buttonProps.label || buttonProps.ariaLabel || buttonProps.tooltip
 					)}
 				</div>
 			</div>

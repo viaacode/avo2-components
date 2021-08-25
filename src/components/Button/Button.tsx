@@ -25,6 +25,7 @@ export interface ButtonPropsSchema extends DefaultProps {
 
 	size?: 'small' | 'large';
 	title?: string;
+	altTitle?: string;
 	tooltip?: string;
 	type?: ButtonTypeSchema;
 	id?: string;

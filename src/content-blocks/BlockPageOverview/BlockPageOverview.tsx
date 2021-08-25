@@ -61,6 +61,7 @@ export interface BlockPageOverviewProps extends DefaultProps {
 	showDate?: boolean;
 	dateString?: string;
 	buttonLabel?: string;
+	buttonAltTitle?: string;
 	allLabel?: string;
 	noLabel?: string;
 	selectedTabs: LabelObj[];
@@ -86,6 +87,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 	showDate = false,
 	dateString = 'Geplaatst %label% op %date%',
 	buttonLabel = 'Lees meer',
+	buttonAltTitle = '',
 	allLabel = 'alle',
 	noLabel = 'Overige',
 	selectedTabs,
@@ -241,7 +243,8 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 														value: page.path,
 													} as ButtonAction,
 													<Button label={buttonLabel} type="tertiary" />,
-													buttonLabel
+													buttonLabel,
+													buttonAltTitle || buttonLabel,
 												)}
 											</Spacer>
 										)}

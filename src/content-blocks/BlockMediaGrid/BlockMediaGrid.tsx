@@ -43,6 +43,7 @@ export type MediaListItem = {
 	title: string;
 	itemAction: ButtonAction;
 	buttonLabel?: string;
+	buttonAltTitle?: string;
 	buttonIcon?: IconName;
 	buttonType?: ButtonTypeSchema;
 	buttonAction?: ButtonAction;
@@ -51,6 +52,7 @@ export type MediaListItem = {
 export interface BlockMediaGridProps extends DefaultProps {
 	title?: string;
 	buttonLabel?: string;
+	buttonAltTitle?: string;
 	buttonAction?: ButtonAction;
 	ctaTitle?: string;
 	ctaTitleColor?: string;
@@ -58,6 +60,7 @@ export interface BlockMediaGridProps extends DefaultProps {
 	ctaContent?: string;
 	ctaContentColor?: string;
 	ctaButtonLabel?: string;
+	ctaButtonAltTitle?: string;
 	ctaButtonType?: ButtonTypeSchema;
 	ctaButtonIcon?: IconName;
 	ctaBackgroundColor?: string;
@@ -75,6 +78,7 @@ export interface BlockMediaGridProps extends DefaultProps {
 export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 	title,
 	buttonLabel,
+	buttonAltTitle,
 	buttonAction,
 	ctaTitle = '',
 	ctaTitleColor,
@@ -82,6 +86,7 @@ export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 	ctaContent = '',
 	ctaContentColor,
 	ctaButtonLabel = '',
+	ctaButtonAltTitle = '',
 	ctaBackgroundColor,
 	ctaBackgroundImage,
 	ctaButtonType = 'secondary',
@@ -186,7 +191,10 @@ export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 											type={buttonType}
 											icon={buttonIcon}
 										/>,
-										mediaListItem.buttonLabel || mediaListItem.title
+										mediaListItem.buttonLabel || mediaListItem.title,
+										mediaListItem.buttonAltTitle ||
+											mediaListItem.buttonLabel ||
+											mediaListItem.title
 									)}
 								</div>
 							</Spacer>
@@ -209,7 +217,8 @@ export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 							renderLink(
 								buttonAction,
 								<Button label={buttonLabel} type="secondary" />,
-								buttonLabel
+								buttonLabel,
+								buttonAltTitle || buttonLabel
 							)}
 					</ToolbarRight>
 				</Toolbar>
@@ -226,7 +235,8 @@ export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 								renderLink(
 									mediaListItem.itemAction,
 									renderMediaCard(mediaListItem),
-									mediaListItem.title
+									mediaListItem.title,
+									mediaListItem.buttonAltTitle || mediaListItem.title
 								)
 							)}
 						</Column>
@@ -235,7 +245,12 @@ export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 				{hasCTA && (
 					<Column size={fullWidth ? '3-12' : '3-3'}>
 						<div className={classnames(className, 'c-media-card', 'c-media-card__cta')}>
-							{renderLink(ctaButtonAction, renderCTA(), ctaButtonLabel || ctaTitle)}
+							{renderLink(
+								ctaButtonAction,
+								renderCTA(),
+								ctaButtonLabel || ctaTitle,
+								ctaButtonAltTitle || ctaButtonLabel || ctaTitle
+							)}
 						</div>
 					</Column>
 				)}
