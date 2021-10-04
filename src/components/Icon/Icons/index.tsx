@@ -270,6 +270,16 @@ export { Crop } from './Crop';
 export { Crosshair } from './Crosshair';
 
 /**
+ * EID
+ */
+export { EId } from './custom/EId';
+
+/**
+ * ITSME
+ */
+export { Itsme } from './custom/Itsme';
+
+/**
  * KLASCEMENT
  */
 export { Klascement } from './custom/Klascement';
