@@ -52,6 +52,8 @@ export type IconNameSchema =
 	| 'credit-card'
 	| 'crop'
 	| 'crosshair'
+	| 'eid'
+	| 'itsme'
 	| 'klascement'
 	| 'smartschool'
 	| 'database'
