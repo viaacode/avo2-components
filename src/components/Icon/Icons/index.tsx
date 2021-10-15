@@ -272,7 +272,7 @@ export { Crosshair } from './Crosshair';
 /**
  * EID
  */
-export { EId } from './custom/EId';
+export { Eid } from './custom/Eid';
 
 /**
  * ITSME
@@ -323,7 +323,6 @@ export { Edit2 } from './Edit2';
  * EDIT3
  */
 export { Edit3 } from './Edit3';
-
 /**
  * EXTERNALLINK
  */
