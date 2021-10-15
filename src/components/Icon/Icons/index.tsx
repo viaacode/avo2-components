@@ -272,7 +272,7 @@ export { Crosshair } from './Crosshair';
 /**
  * EID
  */
-export { Eid } from './custom/Eid';
+export { Eid } from './multicolor/Eid';
 
 /**
  * ITSME
