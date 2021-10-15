@@ -3,7 +3,7 @@ import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
-import { IconNameSchema } from '../Icon/Icon.types';
+import { IconNameSchema, IconTypeSchema } from '../Icon/Icon.types';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 
@@ -19,6 +19,7 @@ export interface ButtonPropsSchema extends DefaultProps {
 	children?: ReactNode;
 	disabled?: boolean;
 	icon?: IconNameSchema;
+	iconType?: IconTypeSchema;
 	label?: string;
 
 	onClick?(event: MouseEvent<HTMLElement>): void;
@@ -46,6 +47,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 	size,
 	title,
 	tooltip,
+	iconType,
 	type = 'primary',
 	id,
 }) => {
@@ -77,7 +79,14 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 					children
 				) : (
 					<div className="c-button__content">
-						{icon && <Icon className="c-button__icon" name={icon} active={active} />}
+						{icon && (
+							<Icon
+								className="c-button__icon"
+								name={icon}
+								active={active}
+								type={iconType}
+							/>
+						)}
 						{label && <div className="c-button__label">{label}</div>}
 						{arrow && <Icon className="c-button__icon" name="caret-down" />}
 					</div>

@@ -142,9 +142,16 @@ storiesOf('components/Button', module)
 	.add('Small buttons', () => renderButtonStories(buttonIconProps, true, { size: 'small' }))
 	.add('Large buttons', () => renderButtonStories(buttonIconProps, true, { size: 'large' }))
 	.add('Block buttons', () => renderButtonStories(buttonIconProps, true, { block: true }))
+	.add('Multicolor icon buttons', () =>
+		renderButtonStories(buttonIconProps, true, { icon: 'itsme', iconType: 'multicolor' })
+	)
 	.add('Inverse buttons', () => (
 		<div
-			style={{ display: 'inline-block', padding: '20px', backgroundColor: COLORS.GRAYSCALE.G800 }}
+			style={{
+				display: 'inline-block',
+				padding: '20px',
+				backgroundColor: COLORS.GRAYSCALE.G800,
+			}}
 		>
 			{renderButtonStories(buttonInverseProps)}
 		</div>
