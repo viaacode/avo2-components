@@ -35,7 +35,7 @@ export type TableColumnSchema = {
 	icon?: IconNameSchema;
 	tooltip?: string;
 	sortable?: boolean;
-	dataType?: 'string' | 'dateTime' | 'boolean' | 'number';
+	dataType?: 'string' | 'dateTime' | 'boolean' | 'number' | 'booleanNullsLast';
 };
 
 export interface TablePropsSchema extends DefaultProps {
