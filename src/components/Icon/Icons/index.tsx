@@ -7,137 +7,137 @@
 /**
  * ACTIVITY
  */
-export { Activity } from './Activity';
+export { default as Activity } from './Activity';
 
 /**
  * ADD
  */
-export { Add } from './Add';
+export { default as Add } from './Add';
 
 /**
  * ALERTCIRCLE
  */
-export { AlertCircle } from './AlertCircle';
+export { default as AlertCircle } from './AlertCircle';
 
 /**
  * ALERTOCTAGON
  */
-export { AlertOctagon } from './AlertOctagon';
+export { default as AlertOctagon } from './AlertOctagon';
 
 /**
  * ALERTTRIANGLE
  */
-export { AlertTriangle } from './AlertTriangle';
+export { default as AlertTriangle } from './AlertTriangle';
 
 /**
  * ARCHIVE
  */
-export { Archive } from './Archive';
+export { default as Archive } from './Archive';
 
 /**
  * ARROWDOWN
  */
-export { ArrowDown } from './arrows/ArrowDown';
+export { default as ArrowDown } from './arrows/ArrowDown';
 
 /**
  * ARROWDOWNCIRCLE
  */
-export { ArrowDownCircle } from './arrows/ArrowDownCircle';
+export { default as ArrowDownCircle } from './arrows/ArrowDownCircle';
 
 /**
  * ARROWDOWNLEFT
  */
-export { ArrowDownLeft } from './arrows/ArrowDownLeft';
+export { default as ArrowDownLeft } from './arrows/ArrowDownLeft';
 
 /**
  * ARROWDOWNRIGHT
  */
-export { ArrowDownRight } from './arrows/ArrowDownRight';
+export { default as ArrowDownRight } from './arrows/ArrowDownRight';
 
 /**
  * ARROWLEFT
  */
-export { ArrowLeft } from './arrows/ArrowLeft';
+export { default as ArrowLeft } from './arrows/ArrowLeft';
 
 /**
  * ARROWRIGHT
  */
-export { ArrowRight } from './arrows/ArrowRight';
+export { default as ArrowRight } from './arrows/ArrowRight';
 
 /**
  * ARROWUP
  */
-export { ArrowUp } from './arrows/ArrowUp';
+export { default as ArrowUp } from './arrows/ArrowUp';
 
 /**
  * CARETDOWN
  */
-export { CaretDown } from './arrows/CaretDown';
+export { default as CaretDown } from './arrows/CaretDown';
 
 /**
  * CARETLEFT
  */
-export { CaretLeft } from './arrows/CaretLeft';
+export { default as CaretLeft } from './arrows/CaretLeft';
 
 /**
  * CARETRIGHT
  */
-export { CaretRight } from './arrows/CaretRight';
+export { default as CaretRight } from './arrows/CaretRight';
 
 /**
  * CARETUP
  */
-export { CaretUp } from './arrows/CaretUp';
+export { default as CaretUp } from './arrows/CaretUp';
 
 /**
  * CHEVRONDOWN
  */
-export { ChevronDown } from './arrows/ChevronDown';
+export { default as ChevronDown } from './arrows/ChevronDown';
 
 /**
  * CHEVRONLEFT
  */
-export { ChevronLeft } from './arrows/ChevronLeft';
+export { default as ChevronLeft } from './arrows/ChevronLeft';
 
 /**
  * CHEVRONRIGHT
  */
-export { ChevronRight } from './arrows/ChevronRight';
+export { default as ChevronRight } from './arrows/ChevronRight';
 
 /**
  * CHEVRONSDOWN
  */
-export { ChevronsDown } from './arrows/ChevronsDown';
+export { default as ChevronsDown } from './arrows/ChevronsDown';
 
 /**
  * CHEVRONSLEFT
  */
-export { ChevronsLeft } from './arrows/ChevronsLeft';
+export { default as ChevronsLeft } from './arrows/ChevronsLeft';
 
 /**
  * CHEVRONSLEFTANDRIGHT
  */
-export { ChevronsLeftAndRight } from './arrows/ChevronsLeftAndRight';
+export { default as ChevronsLeftAndRight } from './arrows/ChevronsLeftAndRight';
 
 /**
  * CHEVRONSRIGHT
  */
-export { ChevronsRight } from './arrows/ChevronsRight';
+export { default as ChevronsRight } from './arrows/ChevronsRight';
 
 /**
  * CHEVRONSUP
  */
-export { ChevronsUp } from './arrows/ChevronsUp';
+export { default as ChevronsUp } from './arrows/ChevronsUp';
 
 /**
  * CHEVRONSUPANDDOWN
  */
-export { ChevronsUpAndDown } from './arrows/ChevronsUpAndDown';
+export { default as ChevronsUpAndDown } from './arrows/ChevronsUpAndDown';
 
 /**
  * CHEVRONUP
  */
-export { ChevronUp } from './arrows/ChevronUp';
+export { default as ChevronUp } from './arrows/ChevronUp';
 
 /**
  * INDEX
@@ -147,137 +147,137 @@ export {} from './arrows/index';
 /**
  * BARCHART
  */
-export { BarChart } from './BarChart';
+export { default as BarChart } from './BarChart';
 
 /**
  * BELL
  */
-export { Bell } from './Bell';
+export { default as Bell } from './Bell';
 
 /**
  * BELLOFF
  */
-export { BellOff } from './BellOff';
+export { default as BellOff } from './BellOff';
 
 /**
  * BOOK
  */
-export { Book } from './Book';
+export { default as Book } from './Book';
 
 /**
  * BOOKMARK
  */
-export { Bookmark } from './Bookmark';
+export { default as Bookmark } from './Bookmark';
 
 /**
  * BOOKMARKFILLED
  */
-export { BookmarkFilled } from './BookmarkFilled';
+export { default as BookmarkFilled } from './BookmarkFilled';
 
 /**
  * BOOKOPEN
  */
-export { BookOpen } from './BookOpen';
+export { default as BookOpen } from './BookOpen';
 
 /**
  * BOX
  */
-export { Box } from './Box';
+export { default as Box } from './Box';
 
 /**
  * BRIEFCASE
  */
-export { Briefcase } from './Briefcase';
+export { default as Briefcase } from './Briefcase';
 
 /**
  * CALENDAR
  */
-export { Calendar } from './Calendar';
+export { default as Calendar } from './Calendar';
 
 /**
  * CAMERA
  */
-export { Camera } from './Camera';
+export { default as Camera } from './Camera';
 
 /**
  * CAMERAOFF
  */
-export { CameraOff } from './CameraOff';
+export { default as CameraOff } from './CameraOff';
 
 /**
  * CHECK
  */
-export { Check } from './Check';
+export { default as Check } from './Check';
 
 /**
  * CHECKCIRCLE
  */
-export { CheckCircle } from './CheckCircle';
+export { default as CheckCircle } from './CheckCircle';
 
 /**
  * CHECKSQUARE
  */
-export { CheckSquare } from './CheckSquare';
+export { default as CheckSquare } from './CheckSquare';
 
 /**
  * CIRCLE
  */
-export { Circle } from './Circle';
+export { default as Circle } from './Circle';
 
 /**
  * CLIPBOARD
  */
-export { Clipboard } from './Clipboard';
+export { default as Clipboard } from './Clipboard';
 
 /**
  * CLOCK
  */
-export { Clock } from './Clock';
+export { default as Clock } from './Clock';
 
 /**
  * CLOSE
  */
-export { Close } from './Close';
+export { default as Close } from './Close';
 
 /**
  * CODE
  */
-export { Code } from './Code';
+export { default as Code } from './Code';
 
 /**
  * COLLECTION
  */
-export { Collection } from './Collection';
+export { default as Collection } from './Collection';
 
 /**
  * CONTRACT
  */
-export { Contract } from './Contract';
+export { default as Contract } from './Contract';
 
 /**
  * COPY
  */
-export { Copy } from './Copy';
+export { default as Copy } from './Copy';
 
 /**
  * CREDITCARD
  */
-export { CreditCard } from './CreditCard';
+export { default as CreditCard } from './CreditCard';
 
 /**
  * CROP
  */
-export { Crop } from './Crop';
+export { default as Crop } from './Crop';
 
 /**
  * CROSSHAIR
  */
-export { Crosshair } from './Crosshair';
+export { default as Crosshair } from './Crosshair';
 
 /**
  * EID
  */
-export { Eid } from './custom/Eid';
+export { default as Eid } from './custom/Eid';
 
 /**
  * INDEX
@@ -287,287 +287,287 @@ export {} from './custom/index';
 /**
  * ITSME
  */
-export { Itsme } from './custom/Itsme';
+export { default as Itsme } from './custom/Itsme';
 
 /**
  * KLASCEMENT
  */
-export { Klascement } from './custom/Klascement';
+export { default as Klascement } from './custom/Klascement';
 
 /**
  * SMARTSCHOOL
  */
-export { Smartschool } from './custom/Smartschool';
+export { default as Smartschool } from './custom/Smartschool';
 
 /**
  * DATABASE
  */
-export { Database } from './Database';
+export { default as Database } from './Database';
 
 /**
  * DELETE
  */
-export { Delete } from './Delete';
+export { default as Delete } from './Delete';
 
 /**
  * DOWNLOAD
  */
-export { Download } from './Download';
+export { default as Download } from './Download';
 
 /**
  * DOWNLOADCLOUD
  */
-export { DownloadCloud } from './DownloadCloud';
+export { default as DownloadCloud } from './DownloadCloud';
 
 /**
  * EDIT
  */
-export { Edit } from './Edit';
+export { default as Edit } from './Edit';
 
 /**
  * EDIT2
  */
-export { Edit2 } from './Edit2';
+export { default as Edit2 } from './Edit2';
 
 /**
  * EDIT3
  */
-export { Edit3 } from './Edit3';
+export { default as Edit3 } from './Edit3';
 
 /**
  * EXTERNALLINK
  */
-export { ExternalLink } from './ExternalLink';
+export { default as ExternalLink } from './ExternalLink';
 
 /**
  * EYE
  */
-export { Eye } from './Eye';
+export { default as Eye } from './Eye';
 
 /**
  * EYEOFF
  */
-export { EyeOff } from './EyeOff';
+export { default as EyeOff } from './EyeOff';
 
 /**
  * FASTFORWARD
  */
-export { FastForward } from './FastForward';
+export { default as FastForward } from './FastForward';
 
 /**
  * FILE
  */
-export { File } from './File';
+export { default as File } from './File';
 
 /**
  * FILEMINUS
  */
-export { FileMinus } from './FileMinus';
+export { default as FileMinus } from './FileMinus';
 
 /**
  * FILEPLUS
  */
-export { FilePlus } from './FilePlus';
+export { default as FilePlus } from './FilePlus';
 
 /**
  * FILETEXT
  */
-export { FileText } from './FileText';
+export { default as FileText } from './FileText';
 
 /**
  * FILTER
  */
-export { Filter } from './Filter';
+export { default as Filter } from './Filter';
 
 /**
  * FLAG
  */
-export { Flag } from './Flag';
+export { default as Flag } from './Flag';
 
 /**
  * FOLDER
  */
-export { Folder } from './Folder';
+export { default as Folder } from './Folder';
 
 /**
  * FOLDERMINUS
  */
-export { FolderMinus } from './FolderMinus';
+export { default as FolderMinus } from './FolderMinus';
 
 /**
  * FOLDERPLUS
  */
-export { FolderPlus } from './FolderPlus';
+export { default as FolderPlus } from './FolderPlus';
 
 /**
  * FULLSCREEN
  */
-export { Fullscreen } from './Fullscreen';
+export { default as Fullscreen } from './Fullscreen';
 
 /**
  * GIFT
  */
-export { Gift } from './Gift';
+export { default as Gift } from './Gift';
 
 /**
  * GLOBE
  */
-export { Globe } from './Globe';
+export { default as Globe } from './Globe';
 
 /**
  * HASH
  */
-export { Hash } from './Hash';
+export { default as Hash } from './Hash';
 
 /**
  * HEADPHONE
  */
-export { Headphone } from './Headphone';
+export { default as Headphone } from './Headphone';
 
 /**
  * HEART
  */
-export { Heart } from './Heart';
+export { default as Heart } from './Heart';
 
 /**
  * HEARTFILLED
  */
-export { HeartFilled } from './HeartFilled';
+export { default as HeartFilled } from './HeartFilled';
 
 /**
  * HELPCIRCLE
  */
-export { HelpCircle } from './HelpCircle';
+export { default as HelpCircle } from './HelpCircle';
 
 /**
  * HOME
  */
-export { Home } from './Home';
+export { default as Home } from './Home';
 
 /**
  * IMAGE
  */
-export { Image } from './Image';
+export { default as Image } from './Image';
 
 /**
  * INBOX
  */
-export { Inbox } from './Inbox';
+export { default as Inbox } from './Inbox';
 
 /**
  * INFO
  */
-export { Info } from './Info';
+export { default as Info } from './Info';
 
 /**
  * LAYOUT
  */
-export { Layout } from './Layout';
+export { default as Layout } from './Layout';
 
 /**
  * LINK
  */
-export { Link } from './Link';
+export { default as Link } from './Link';
 
 /**
  * LINK2
  */
-export { Link2 } from './Link2';
+export { default as Link2 } from './Link2';
 
 /**
  * LIST
  */
-export { List } from './List';
+export { default as List } from './List';
 
 /**
  * LOCK
  */
-export { Lock } from './Lock';
+export { default as Lock } from './Lock';
 
 /**
  * LOGIN
  */
-export { LogIn } from './LogIn';
+export { default as LogIn } from './LogIn';
 
 /**
  * LOGOUT
  */
-export { LogOut } from './LogOut';
+export { default as LogOut } from './LogOut';
 
 /**
  * MAIL
  */
-export { Mail } from './Mail';
+export { default as Mail } from './Mail';
 
 /**
  * MAXIMIZE
  */
-export { Maximize } from './Maximize';
+export { default as Maximize } from './Maximize';
 
 /**
  * MAXIMIZE2
  */
-export { Maximize2 } from './Maximize2';
+export { default as Maximize2 } from './Maximize2';
 
 /**
  * MENU
  */
-export { Menu } from './Menu';
+export { default as Menu } from './Menu';
 
 /**
  * MESSAGECIRCLE
  */
-export { MessageCircle } from './MessageCircle';
+export { default as MessageCircle } from './MessageCircle';
 
 /**
  * MESSAGESQUARE
  */
-export { MessageSquare } from './MessageSquare';
+export { default as MessageSquare } from './MessageSquare';
 
 /**
  * MIC
  */
-export { Mic } from './Mic';
+export { default as Mic } from './Mic';
 
 /**
  * MINIMIZE
  */
-export { Minimize } from './Minimize';
+export { default as Minimize } from './Minimize';
 
 /**
  * MINIMIZE2
  */
-export { Minimize2 } from './Minimize2';
+export { default as Minimize2 } from './Minimize2';
 
 /**
  * MINUSCIRCLE
  */
-export { MinusCircle } from './MinusCircle';
+export { default as MinusCircle } from './MinusCircle';
 
 /**
  * MOREHORIZONTAL
  */
-export { MoreHorizontal } from './MoreHorizontal';
+export { default as MoreHorizontal } from './MoreHorizontal';
 
 /**
  * MOVE
  */
-export { Move } from './Move';
+export { default as Move } from './Move';
 
 /**
  * CIRCLECHECK
  */
-export { CircleCheck } from './multicolor/CircleCheck';
+export { default as CircleCheck } from './multicolor/CircleCheck';
 
 /**
  * CIRCLEINFO
  */
-export { CircleInfo } from './multicolor/CircleInfo';
+export { default as CircleInfo } from './multicolor/CircleInfo';
 
 /**
  * CIRCLEWARNING
  */
-export { CircleWarning } from './multicolor/CircleWarning';
+export { default as CircleWarning } from './multicolor/CircleWarning';
 
 /**
  * INDEX
@@ -577,192 +577,192 @@ export {} from './multicolor/index';
 /**
  * MUSIC
  */
-export { Music } from './Music';
+export { default as Music } from './Music';
 
 /**
  * NOTIFICATION
  */
-export { Notification } from './Notification';
+export { default as Notification } from './Notification';
 
 /**
  * NOTIFICATIONS
  */
-export { Notifications } from './Notifications';
+export { default as Notifications } from './Notifications';
 
 /**
  * OCTAGON
  */
-export { Octagon } from './Octagon';
+export { default as Octagon } from './Octagon';
 
 /**
  * PACKAGE
  */
-export { Package } from './Package';
+export { default as Package } from './Package';
 
 /**
  * PAPERCLIP
  */
-export { Paperclip } from './Paperclip';
+export { default as Paperclip } from './Paperclip';
 
 /**
  * PAUSE
  */
-export { Pause } from './Pause';
+export { default as Pause } from './Pause';
 
 /**
  * PAUSEADD
  */
-export { PauseAdd } from './PauseAdd';
+export { default as PauseAdd } from './PauseAdd';
 
 /**
  * PAUSECIRCLE
  */
-export { PauseCircle } from './PauseCircle';
+export { default as PauseCircle } from './PauseCircle';
 
 /**
  * PERCENT
  */
-export { Percent } from './Percent';
+export { default as Percent } from './Percent';
 
 /**
  * PIECHART
  */
-export { PieChart } from './PieChart';
+export { default as PieChart } from './PieChart';
 
 /**
  * PLAY
  */
-export { Play } from './Play';
+export { default as Play } from './Play';
 
 /**
  * PLAYCIRCLE
  */
-export { PlayCircle } from './PlayCircle';
+export { default as PlayCircle } from './PlayCircle';
 
 /**
  * PLAYSMALL
  */
-export { PlaySmall } from './PlaySmall';
+export { default as PlaySmall } from './PlaySmall';
 
 /**
  * PLUS
  */
-export { Plus } from './Plus';
+export { default as Plus } from './Plus';
 
 /**
  * PLUSCIRCLE
  */
-export { PlusCircle } from './PlusCircle';
+export { default as PlusCircle } from './PlusCircle';
 
 /**
  * POWER
  */
-export { Power } from './Power';
+export { default as Power } from './Power';
 
 /**
  * PRINTER
  */
-export { Printer } from './Printer';
+export { default as Printer } from './Printer';
 
 /**
  * RADIO
  */
-export { Radio } from './Radio';
+export { default as Radio } from './Radio';
 
 /**
  * REFRESHCCW
  */
-export { RefreshCcw } from './RefreshCcw';
+export { default as RefreshCcw } from './RefreshCcw';
 
 /**
  * REFRESHCW
  */
-export { RefreshCw } from './RefreshCw';
+export { default as RefreshCw } from './RefreshCw';
 
 /**
  * REPEAT
  */
-export { Repeat } from './Repeat';
+export { default as Repeat } from './Repeat';
 
 /**
  * REWIND
  */
-export { Rewind } from './Rewind';
+export { default as Rewind } from './Rewind';
 
 /**
  * ROTATECCW
  */
-export { RotateCcw } from './RotateCcw';
+export { default as RotateCcw } from './RotateCcw';
 
 /**
  * ROTATECW
  */
-export { RotateCw } from './RotateCw';
+export { default as RotateCw } from './RotateCw';
 
 /**
  * RSS
  */
-export { Rss } from './Rss';
+export { default as Rss } from './Rss';
 
 /**
  * SCISSORS
  */
-export { Scissors } from './Scissors';
+export { default as Scissors } from './Scissors';
 
 /**
  * SEARCH
  */
-export { Search } from './Search';
+export { default as Search } from './Search';
 
 /**
  * SEND
  */
-export { Send } from './Send';
+export { default as Send } from './Send';
 
 /**
  * SETTINGS
  */
-export { Settings } from './Settings';
+export { default as Settings } from './Settings';
 
 /**
  * SHARE
  */
-export { Share } from './Share';
+export { default as Share } from './Share';
 
 /**
  * SHARE2
  */
-export { Share2 } from './Share2';
+export { default as Share2 } from './Share2';
 
 /**
  * SHUFFLE
  */
-export { Shuffle } from './Shuffle';
+export { default as Shuffle } from './Shuffle';
 
 /**
  * SIDEBAR
  */
-export { Sidebar } from './Sidebar';
+export { default as Sidebar } from './Sidebar';
 
 /**
  * SKIPBACK
  */
-export { SkipBack } from './SkipBack';
+export { default as SkipBack } from './SkipBack';
 
 /**
  * SKIPFORWARD
  */
-export { SkipForward } from './SkipForward';
+export { default as SkipForward } from './SkipForward';
 
 /**
  * SLASH
  */
-export { Slash } from './Slash';
+export { default as Slash } from './Slash';
 
 /**
  * SLIDERS
  */
-export { Sliders } from './Sliders';
+export { default as Sliders } from './Sliders';
 
 /**
  * INDEX
@@ -772,207 +772,207 @@ export {} from './social/index';
 /**
  * INSTAGRAM
  */
-export { Instagram } from './social/Instagram';
+export { default as Instagram } from './social/Instagram';
 
 /**
  * TWITTER
  */
-export { Twitter } from './social/Twitter';
+export { default as Twitter } from './social/Twitter';
 
 /**
  * SQUARE
  */
-export { Square } from './Square';
+export { default as Square } from './Square';
 
 /**
  * STAR
  */
-export { Star } from './Star';
+export { default as Star } from './Star';
 
 /**
  * STOPCIRCLE
  */
-export { StopCircle } from './StopCircle';
+export { default as StopCircle } from './StopCircle';
 
 /**
  * SUBTITLES
  */
-export { Subtitles } from './Subtitles';
+export { default as Subtitles } from './Subtitles';
 
 /**
  * TAG
  */
-export { Tag } from './Tag';
+export { default as Tag } from './Tag';
 
 /**
  * TARGET
  */
-export { Target } from './Target';
+export { default as Target } from './Target';
 
 /**
  * TERMINAL
  */
-export { Terminal } from './Terminal';
+export { default as Terminal } from './Terminal';
 
 /**
  * THUMBSDOWN
  */
-export { ThumbsDown } from './ThumbsDown';
+export { default as ThumbsDown } from './ThumbsDown';
 
 /**
  * THUMBSUP
  */
-export { ThumbsUp } from './ThumbsUp';
+export { default as ThumbsUp } from './ThumbsUp';
 
 /**
  * TRASH2
  */
-export { Trash2 } from './Trash2';
+export { default as Trash2 } from './Trash2';
 
 /**
  * TRENDINGDOWN
  */
-export { TrendingDown } from './TrendingDown';
+export { default as TrendingDown } from './TrendingDown';
 
 /**
  * TRENDINGUP
  */
-export { TrendingUp } from './TrendingUp';
+export { default as TrendingUp } from './TrendingUp';
 
 /**
  * TRIANGLE
  */
-export { Triangle } from './Triangle';
+export { default as Triangle } from './Triangle';
 
 /**
  * TV
  */
-export { Tv } from './Tv';
+export { default as Tv } from './Tv';
 
 /**
  * TYPE
  */
-export { Type } from './Type';
+export { default as Type } from './Type';
 
 /**
  * UNDERLINE
  */
-export { Underline } from './Underline';
+export { default as Underline } from './Underline';
 
 /**
  * UNLOCK
  */
-export { Unlock } from './Unlock';
+export { default as Unlock } from './Unlock';
 
 /**
  * UNLOCK2
  */
-export { Unlock2 } from './Unlock2';
+export { default as Unlock2 } from './Unlock2';
 
 /**
  * UNLOCK3
  */
-export { Unlock3 } from './Unlock3';
+export { default as Unlock3 } from './Unlock3';
 
 /**
  * UPLOAD
  */
-export { Upload } from './Upload';
+export { default as Upload } from './Upload';
 
 /**
  * USER
  */
-export { User } from './User';
+export { default as User } from './User';
 
 /**
  * USERCHECK
  */
-export { UserCheck } from './UserCheck';
+export { default as UserCheck } from './UserCheck';
 
 /**
  * USERPLUS
  */
-export { UserPlus } from './UserPlus';
+export { default as UserPlus } from './UserPlus';
 
 /**
  * USERS
  */
-export { Users } from './Users';
+export { default as Users } from './Users';
 
 /**
  * USERSTUDENT
  */
-export { UserStudent } from './UserStudent';
+export { default as UserStudent } from './UserStudent';
 
 /**
  * USERTEACHER
  */
-export { UserTeacher } from './UserTeacher';
+export { default as UserTeacher } from './UserTeacher';
 
 /**
  * USERX
  */
-export { UserX } from './UserX';
+export { default as UserX } from './UserX';
 
 /**
  * VIDEO
  */
-export { Video } from './Video';
+export { default as Video } from './Video';
 
 /**
  * VIDEOOFF
  */
-export { VideoOff } from './VideoOff';
+export { default as VideoOff } from './VideoOff';
 
 /**
  * VOLUME
  */
-export { Volume } from './Volume';
+export { default as Volume } from './Volume';
 
 /**
  * VOLUME1
  */
-export { Volume1 } from './Volume1';
+export { default as Volume1 } from './Volume1';
 
 /**
  * VOLUME2
  */
-export { Volume2 } from './Volume2';
+export { default as Volume2 } from './Volume2';
 
 /**
  * VOLUMEMUTE
  */
-export { VolumeMute } from './VolumeMute';
+export { default as VolumeMute } from './VolumeMute';
 
 /**
  * VOLUMEX
  */
-export { VolumeX } from './VolumeX';
+export { default as VolumeX } from './VolumeX';
 
 /**
  * ALIGNCENTER
  */
-export { AlignCenter } from './wysiwyg/AlignCenter';
+export { default as AlignCenter } from './wysiwyg/AlignCenter';
 
 /**
  * ALIGNJUSTIFY
  */
-export { AlignJustify } from './wysiwyg/AlignJustify';
+export { default as AlignJustify } from './wysiwyg/AlignJustify';
 
 /**
  * ALIGNLEFT
  */
-export { AlignLeft } from './wysiwyg/AlignLeft';
+export { default as AlignLeft } from './wysiwyg/AlignLeft';
 
 /**
  * ALIGNRIGHT
  */
-export { AlignRight } from './wysiwyg/AlignRight';
+export { default as AlignRight } from './wysiwyg/AlignRight';
 
 /**
  * BOLD
  */
-export { Bold } from './wysiwyg/Bold';
+export { default as Bold } from './wysiwyg/Bold';
 
 /**
  * INDEX
@@ -982,34 +982,34 @@ export {} from './wysiwyg/index';
 /**
  * ITALIC
  */
-export { Italic } from './wysiwyg/Italic';
+export { default as Italic } from './wysiwyg/Italic';
 
 /**
  * X
  */
-export { X } from './X';
+export { default as X } from './X';
 
 /**
  * XCIRCLE
  */
-export { XCircle } from './XCircle';
+export { default as XCircle } from './XCircle';
 
 /**
  * XSQUARE
  */
-export { XSquare } from './XSquare';
+export { default as XSquare } from './XSquare';
 
 /**
  * YOUTUBE
  */
-export { Youtube } from './Youtube';
+export { default as Youtube } from './Youtube';
 
 /**
  * ZOOMIN
  */
-export { ZoomIn } from './ZoomIn';
+export { default as ZoomIn } from './ZoomIn';
 
 /**
  * ZOOMOUT
  */
-export { ZoomOut } from './ZoomOut';
+export { default as ZoomOut } from './ZoomOut';

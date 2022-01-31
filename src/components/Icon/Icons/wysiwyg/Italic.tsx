@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Italic = (props: SVGProps<SVGSVGElement>) => (
+
+const Italic = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M19 5h-9a1 1 0 010-2h9a1 1 0 110 2zM14 21H5a1 1 0 110-2h9a1 1 0 110 2z"
@@ -11,3 +12,5 @@ export const Italic = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default Italic;

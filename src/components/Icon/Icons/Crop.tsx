@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Crop = (props: SVGProps<SVGSVGElement>) => (
+
+const Crop = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<g clipPath="url(#crop_svg__clip0)" fill="#000">
 			<path d="M23 19H8c-1.654 0-3-1.346-3-3L5.13.991a1 1 0 011-.991h.009a1 1 0 01.991 1.009l-.13 15A1 1 0 008 17h15a1 1 0 110 2z" />
@@ -12,3 +13,5 @@ export const Crop = (props: SVGProps<SVGSVGElement>) => (
 		</defs>
 	</svg>
 );
+
+export default Crop;

@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Close = (props: SVGProps<SVGSVGElement>) => (
+
+const Close = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" {...props}>
 		<path
 			fill="#000"
@@ -8,3 +9,5 @@ export const Close = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default Close;

@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const DownloadCloud = (props: SVGProps<SVGSVGElement>) => (
+
+const DownloadCloud = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<g clipPath="url(#download-cloud_svg__clip0)" fill="#000">
 			<path d="M12 22a.997.997 0 01-.707-.293l-4-4a.999.999 0 111.414-1.414L12 19.586l3.293-3.293a.999.999 0 111.414 1.414l-4 4A.997.997 0 0112 22z" />
@@ -13,3 +14,5 @@ export const DownloadCloud = (props: SVGProps<SVGSVGElement>) => (
 		</defs>
 	</svg>
 );
+
+export default DownloadCloud;

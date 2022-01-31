@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const UserStudent = (props: SVGProps<SVGSVGElement>) => (
+
+const UserStudent = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={17} height={21} viewBox="0 0 17 21" fill="none" {...props}>
 		<path
 			d="M11.534 8.07c0 1.658-1.377 3.036-3.12 3.036-1.742 0-3.119-1.378-3.119-3.035 0-1.657 1.377-3.036 3.12-3.036 1.742 0 3.119 1.379 3.119 3.036z"
@@ -21,3 +22,5 @@ export const UserStudent = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default UserStudent;

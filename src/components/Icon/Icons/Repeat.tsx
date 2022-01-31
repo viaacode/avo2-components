@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Repeat = (props: SVGProps<SVGSVGElement>) => (
+
+const Repeat = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<g clipPath="url(#repeat_svg__clip0)" fill="#000">
 			<path d="M17 10a.999.999 0 01-.707-1.707L19.586 5l-3.293-3.293A.999.999 0 1117.707.293l4 4a.999.999 0 010 1.414l-4 4A.997.997 0 0117 10z" />
@@ -13,3 +14,5 @@ export const Repeat = (props: SVGProps<SVGSVGElement>) => (
 		</defs>
 	</svg>
 );
+
+export default Repeat;

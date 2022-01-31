@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Subtitles = (props: SVGProps<SVGSVGElement>) => (
+
+const Subtitles = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			fillRule="evenodd"
@@ -9,3 +10,5 @@ export const Subtitles = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default Subtitles;

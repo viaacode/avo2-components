@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Itsme = (props: SVGProps<SVGSVGElement>) => (
+
+const Itsme = (props: SVGProps<SVGSVGElement>) => (
 	<svg viewBox="0 0 24 24" {...props}>
 		<path
 			fill="#FFF"
@@ -11,3 +12,5 @@ export const Itsme = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default Itsme;

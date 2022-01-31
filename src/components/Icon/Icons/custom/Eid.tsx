@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Eid = (props: SVGProps<SVGSVGElement>) => (
+
+const Eid = (props: SVGProps<SVGSVGElement>) => (
 	<svg viewBox="500 500 24 24" {...props}>
 		<path d="M516.1 513.1H508c-.6 0-1.1-.5-1.1-1.1v-10.9c0-.6.5-1.1 1.1-1.1h8.1c.6 0 1.1.5 1.1 1.1V512c0 .6-.5 1.1-1.1 1.1zm-8.2-12.7c-.4 0-.7.3-.7.7V512c0 .4.3.7.7.7h8.1c.4 0 .7-.3.7-.7v-10.9c0-.4-.3-.7-.7-.7h-8.1zM510.8 517.1h2.5c.2 0 .4.2.4.4v1.3c0 .2-.2.4-.4.4h-2.5c-.2 0-.4-.2-.4-.4v-1.3c-.1-.2.1-.4.4-.4z" />
 		<path d="M513.2 519.5h-2.5c-.4 0-.7-.3-.7-.7v-1.3c0-.4.3-.7.7-.7h2.5c.4 0 .7.3.7.7v1.3c0 .4-.3.7-.7.7zm-2.4-2.2c-.1 0-.2.1-.2.2v1.3c0 .1.1.2.2.2h2.5c.1 0 .2-.1.2-.2v-1.3c0-.1-.1-.2-.2-.2h-2.5z" />
@@ -19,3 +20,5 @@ export const Eid = (props: SVGProps<SVGSVGElement>) => (
 		<circle cx={516.9} cy={516} r={0.7} />
 	</svg>
 );
+
+export default Eid;

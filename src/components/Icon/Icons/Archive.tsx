@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Archive = (props: SVGProps<SVGSVGElement>) => (
+
+const Archive = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M21 22H3a1 1 0 01-1-1V8a1 1 0 012 0v12h16V8a1 1 0 112 0v13a1 1 0 01-1 1z"
@@ -11,3 +12,5 @@ export const Archive = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default Archive;

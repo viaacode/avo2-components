@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const FastForward = (props: SVGProps<SVGSVGElement>) => (
+
+const FastForward = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M13 20a1 1 0 01-1-1V5a1 1 0 011.615-.789l9 7a1.002 1.002 0 01-.001 1.58l-9 7A1 1 0 0113 20zm1-12.956v9.911L20.371 12 14 7.044z"
@@ -11,3 +12,5 @@ export const FastForward = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default FastForward;

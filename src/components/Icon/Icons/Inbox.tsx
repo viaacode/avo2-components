@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Inbox = (props: SVGProps<SVGSVGElement>) => (
+
+const Inbox = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M14 16h-4c-.334 0-.646-.167-.832-.445L7.465 13H2a1 1 0 010-2h6c.334 0 .646.167.832.445L10.535 14h2.93l1.703-2.555c.186-.278.498-.445.832-.445h6a1 1 0 110 2h-5.465l-1.703 2.555A1.001 1.001 0 0114 16z"
@@ -11,3 +12,5 @@ export const Inbox = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default Inbox;

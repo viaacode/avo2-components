@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Headphone = (props: SVGProps<SVGSVGElement>) => (
+
+const Headphone = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={12} height={12} viewBox="0 0 12 12" fill="none" {...props}>
 		<path
 			fillRule="evenodd"
@@ -9,3 +10,5 @@ export const Headphone = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default Headphone;

@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Delete = (props: SVGProps<SVGSVGElement>) => (
+
+const Delete = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path d="M21 7H3a1 1 0 010-2h18a1 1 0 110 2z" fill="#000" />
 		<path
@@ -12,3 +13,5 @@ export const Delete = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default Delete;

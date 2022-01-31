@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const BookOpen = (props: SVGProps<SVGSVGElement>) => (
+
+const BookOpen = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M12 22a1 1 0 01-1-1c0-1.103-.897-2-2-2H2a1 1 0 01-1-1V3a1 1 0 011-1h6c2.757 0 5 2.243 5 5v14a1 1 0 01-1 1zm-9-5h6a3.97 3.97 0 012 .537V7c0-1.654-1.346-3-3-3H3v13z"
@@ -11,3 +12,5 @@ export const BookOpen = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default BookOpen;

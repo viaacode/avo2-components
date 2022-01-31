@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const CircleWarning = (props: SVGProps<SVGSVGElement>) => (
+
+const CircleWarning = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path fill="none" d="M0 0h24v24H0z" />
 		<path
@@ -9,3 +10,5 @@ export const CircleWarning = (props: SVGProps<SVGSVGElement>) => (
 		<path d="M13 17h-2v-2h2v2zm0-4h-2V7h2v6z" fill="#fff" />
 	</svg>
 );
+
+export default CircleWarning;

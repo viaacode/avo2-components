@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Twitter = (props: SVGProps<SVGSVGElement>) => (
+
+const Twitter = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<g clipPath="url(#twitter_svg__clip0)">
 			<path
@@ -14,3 +15,5 @@ export const Twitter = (props: SVGProps<SVGSVGElement>) => (
 		</defs>
 	</svg>
 );
+
+export default Twitter;

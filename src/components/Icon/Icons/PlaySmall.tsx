@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const PlaySmall = (props: SVGProps<SVGSVGElement>) => (
+
+const PlaySmall = (props: SVGProps<SVGSVGElement>) => (
 	<svg viewBox="0 0 20 20" {...props}>
 		<path
 			fill="#FFF"
@@ -8,3 +9,5 @@ export const PlaySmall = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default PlaySmall;

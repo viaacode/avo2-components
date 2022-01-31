@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Hash = (props: SVGProps<SVGSVGElement>) => (
+
+const Hash = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M20 10H4a1 1 0 010-2h16a1 1 0 110 2zM20 16H4a1 1 0 110-2h16a1 1 0 110 2z"
@@ -11,3 +12,5 @@ export const Hash = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default Hash;

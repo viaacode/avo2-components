@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Printer = (props: SVGProps<SVGSVGElement>) => (
+
+const Printer = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M18 10a1 1 0 01-1-1V3H7v6a1 1 0 01-2 0V2a1 1 0 011-1h12a1 1 0 011 1v7a1 1 0 01-1 1z"
@@ -15,3 +16,5 @@ export const Printer = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default Printer;

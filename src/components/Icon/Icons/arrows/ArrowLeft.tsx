@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const ArrowLeft = (props: SVGProps<SVGSVGElement>) => (
+
+const ArrowLeft = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path d="M19 13H5a1 1 0 010-2h14a1 1 0 110 2z" fill="#000" />
 		<path
@@ -8,3 +9,5 @@ export const ArrowLeft = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default ArrowLeft;

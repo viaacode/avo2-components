@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const CircleCheck = (props: SVGProps<SVGSVGElement>) => (
+
+const CircleCheck = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path fill="none" d="M0 0h24v24H0z" />
 		<path
@@ -9,3 +10,5 @@ export const CircleCheck = (props: SVGProps<SVGSVGElement>) => (
 		<path d="M5 12l5 5 9-9-1.41-1.42L10 14.17l-3.59-3.58L5 12z" fill="#fff" />
 	</svg>
 );
+
+export default CircleCheck;

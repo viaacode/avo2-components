@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const CameraOff = (props: SVGProps<SVGSVGElement>) => (
+
+const CameraOff = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<g clipPath="url(#camera-off_svg__clip0)" fill="#000">
 			<path d="M23 24a.997.997 0 01-.707-.293l-22-22A.999.999 0 111.707.293l22 22A.999.999 0 0123 24z" />
@@ -12,3 +13,5 @@ export const CameraOff = (props: SVGProps<SVGSVGElement>) => (
 		</defs>
 	</svg>
 );
+
+export default CameraOff;

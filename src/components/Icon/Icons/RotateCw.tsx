@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const RotateCw = (props: SVGProps<SVGSVGElement>) => (
+
+const RotateCw = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path d="M23 11h-6a1 1 0 110-2h5V4a1 1 0 112 0v6a1 1 0 01-1 1z" fill="#000" />
 		<path
@@ -8,3 +9,5 @@ export const RotateCw = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default RotateCw;

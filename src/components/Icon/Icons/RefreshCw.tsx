@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const RefreshCw = (props: SVGProps<SVGSVGElement>) => (
+
+const RefreshCw = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<g clipPath="url(#refresh-cw_svg__clip0)" fill="#000">
 			<path d="M23 11h-6a1 1 0 110-2h5V4a1 1 0 112 0v6a1 1 0 01-1 1zM1 21a1 1 0 01-1-1v-6a1 1 0 011-1h6a1 1 0 110 2H2v5a1 1 0 01-1 1z" />
@@ -12,3 +13,5 @@ export const RefreshCw = (props: SVGProps<SVGSVGElement>) => (
 		</defs>
 	</svg>
 );
+
+export default RefreshCw;

@@ -1,5 +1,6 @@
 import React, { SVGProps } from 'react';
-export const Scissors = (props: SVGProps<SVGSVGElement>) => (
+
+const Scissors = (props: SVGProps<SVGSVGElement>) => (
 	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M6 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2zM6 22c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z"
@@ -15,3 +16,5 @@ export const Scissors = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
+export default Scissors;
