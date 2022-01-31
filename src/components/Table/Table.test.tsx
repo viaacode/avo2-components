@@ -70,7 +70,13 @@ describe('<Table />', () => {
 
 	it('Should render a chevron based on `sortColumn` & `sortOrder` when a column is sortable', () => {
 		const ascTableComponent = shallow(
-			<Table columns={COLUMNS} data={DATA} rowKey="id" sortOrder="asc" sortColumn={COLUMNS[0].id} />
+			<Table
+				columns={COLUMNS}
+				data={DATA}
+				rowKey="id"
+				sortOrder="asc"
+				sortColumn={COLUMNS[0].id}
+			/>
 		);
 
 		const descTableComponent = shallow(
@@ -203,7 +209,12 @@ describe('<Table />', () => {
 
 		const tableComponent = mount(
 			<Fragment>
-				<Table columns={COLUMNS} data={[]} rowKey="id" emptyStateMessage={emptyStateMessage} />
+				<Table
+					columns={COLUMNS}
+					data={[]}
+					rowKey="id"
+					emptyStateMessage={emptyStateMessage}
+				/>
 			</Fragment>
 		);
 
@@ -216,7 +227,12 @@ describe('<Table />', () => {
 		const emptyStateMessage = 'No data test test no data...';
 
 		const tableComponent = shallow(
-			<Table columns={COLUMNS} data={DATA} rowKey="id" emptyStateMessage={emptyStateMessage} />
+			<Table
+				columns={COLUMNS}
+				data={DATA}
+				rowKey="id"
+				emptyStateMessage={emptyStateMessage}
+			/>
 		);
 
 		const emptyStateParagraph = tableComponent.find('p.u-spacer-top');

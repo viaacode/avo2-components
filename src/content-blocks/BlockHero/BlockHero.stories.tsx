@@ -1,12 +1,13 @@
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import React from 'react';
+
+import { ButtonProps } from '../../components';
 import { action } from '../../helpers';
-import { testRenderLink } from "../../helpers/render-link";
+import { testRenderLink } from '../../helpers/render-link';
+import { ButtonAction } from '../../types';
 
 import { BlockHero } from './BlockHero';
-import { ButtonProps } from '../../components';
-import { ButtonAction } from '../../types';
 
 const mockVideo =
 	'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';

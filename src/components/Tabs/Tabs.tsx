@@ -25,7 +25,7 @@ export const Tabs: FunctionComponent<TabsPropsSchema> = ({
 			'c-tabs__bottom-border': border,
 		})}
 	>
-		{tabs.map(tab => (
+		{tabs.map((tab) => (
 			<Tab key={tab.label} {...tab} dark={dark} onClick={() => onClick(tab.id)} />
 		))}
 	</nav>

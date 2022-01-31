@@ -16,7 +16,9 @@ export const ToolbarItem: FunctionComponent<ToolbarItemPropsSchema> = ({
 	className,
 }) => {
 	return (
-		<div className={classnames(className, 'c-toolbar__item', { 'c-toolbar__item--grow': grow })}>
+		<div
+			className={classnames(className, 'c-toolbar__item', { 'c-toolbar__item--grow': grow })}
+		>
 			{children}
 		</div>
 	);

@@ -35,10 +35,7 @@ export interface SpacerPropsSchema extends DefaultProps {
 }
 
 const abbreviateSizes = (input: string): string => {
-	return input
-		.replace('large', 'l')
-		.replace('extra-', 'x')
-		.replace('small', 's');
+	return input.replace('large', 'l').replace('extra-', 'x').replace('small', 's');
 };
 
 const spacersToClasses = (
@@ -50,7 +47,7 @@ const spacersToClasses = (
 	}
 	const spacerArray = Array.isArray(spacer) ? spacer : [spacer];
 
-	return spacerArray.map(option =>
+	return spacerArray.map((option) =>
 		option !== 'medium' ? `${classPrefix}-${abbreviateSizes(option)}` : classPrefix
 	);
 };

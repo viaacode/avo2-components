@@ -72,7 +72,9 @@ const renderSearchResult = (result: any) => {
 				<a href={`detail/${result.pid}`}>{result.dc_title}</a>
 			</SearchResultTitle>
 			<SearchResultSubtitle>
-				<a href={`search?filters={'provider':['${result.original_cp}']}`}>{result.original_cp}</a>
+				<a href={`search?filters={'provider':['${result.original_cp}']}`}>
+					{result.original_cp}
+				</a>
 			</SearchResultSubtitle>
 			<SearchResultThumbnail>
 				<a href={`detail/${result.pid}`}>
@@ -81,7 +83,8 @@ const renderSearchResult = (result: any) => {
 						src={result.thumbnail_path}
 						label={result.administrative_type}
 						meta={
-							result.administrative_type === 'video' || result.administrative_type === 'audio'
+							result.administrative_type === 'video' ||
+							result.administrative_type === 'audio'
 								? result.fragment_duration_time
 								: '25 items'
 						}

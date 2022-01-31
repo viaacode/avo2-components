@@ -43,13 +43,8 @@ describe('<TagList />', () => {
 			tagListClosableComponent,
 			tagListSwatchesComponent,
 			tagListClickableComponent,
-		].forEach(component => {
-			expect(
-				component
-					.find('.c-label-text')
-					.at(0)
-					.text()
-			).toEqual(tags[0].label);
+		].forEach((component) => {
+			expect(component.find('.c-label-text').at(0).text()).toEqual(tags[0].label);
 		});
 	});
 

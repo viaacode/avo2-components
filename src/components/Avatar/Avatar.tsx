@@ -31,5 +31,11 @@ export const Avatar: FunctionComponent<AvatarPropsSchema> = ({
 			</div>
 		</div>
 	) : (
-		<AvatarIcon className={className} initials={initials} size={size} image={image} icon={icon} />
+		<AvatarIcon
+			className={className}
+			initials={initials}
+			size={size}
+			image={image}
+			icon={icon}
+		/>
 	);

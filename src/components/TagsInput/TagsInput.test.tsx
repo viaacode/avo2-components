@@ -24,7 +24,9 @@ describe('<TextInput />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const tagstagsInputComponent = shallow(<TagsInput options={tags} className={customClass} />);
+		const tagstagsInputComponent = shallow(
+			<TagsInput options={tags} className={customClass} />
+		);
 
 		expect(tagstagsInputComponent.hasClass(customClass)).toEqual(true);
 	});

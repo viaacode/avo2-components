@@ -48,7 +48,10 @@ export const BlockImageTitleTextButton: FunctionComponent<BlockImageTitleTextBut
 	};
 
 	return (
-		<Container className={classnames('c-block-image-title-text-button', className)} mode="vertical">
+		<Container
+			className={classnames('c-block-image-title-text-button', className)}
+			mode="vertical"
+		>
 			<Container mode="horizontal">
 				<Grid>
 					<Column size="2-4">

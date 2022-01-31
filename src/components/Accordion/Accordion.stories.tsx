@@ -37,9 +37,17 @@ const AccordionWithSlots = () => {
 							type="tertiary"
 							onClick={action('move down button clicked')}
 						/>
-						<Button icon="chevron-up" type="tertiary" onClick={action('move up button clicked')} />
+						<Button
+							icon="chevron-up"
+							type="tertiary"
+							onClick={action('move up button clicked')}
+						/>
 					</ButtonGroup>
-					<Button icon="delete" type="tertiary" onClick={action('delete button clicked')} />
+					<Button
+						icon="delete"
+						type="tertiary"
+						onClick={action('delete button clicked')}
+					/>
 				</ButtonToolbar>
 			</AccordionActions>
 			<AccordionBody>

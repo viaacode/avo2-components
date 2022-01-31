@@ -18,7 +18,6 @@ export interface TextAreaPropsSchema extends DefaultProps {
 	onBlur?: () => void;
 }
 
-
 export const TextArea: FunctionComponent<TextAreaPropsSchema> = ({
 	className,
 	id,

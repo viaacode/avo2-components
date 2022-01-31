@@ -20,7 +20,9 @@ describe('<Pagination />', () => {
 	it('Should render pages equal to the `displayCount`', () => {
 		const displayCount = 8;
 
-		const paginationComponent = shallow(<Pagination pageCount={100} displayCount={displayCount} />);
+		const paginationComponent = shallow(
+			<Pagination pageCount={100} displayCount={displayCount} />
+		);
 
 		const paginationButtonElements = paginationComponent.find(
 			'.c-pagination__pages .c-pagination__btn'
@@ -57,7 +59,9 @@ describe('<Pagination />', () => {
 	it('Should correctly set the `currentPage`', () => {
 		const currentPage = 40;
 
-		const paginationComponent = shallow(<Pagination pageCount={100} currentPage={currentPage} />);
+		const paginationComponent = shallow(
+			<Pagination pageCount={100} currentPage={currentPage} />
+		);
 
 		const currentPageButtonElement = paginationComponent.find('.c-pagination__btn--active');
 
@@ -69,7 +73,11 @@ describe('<Pagination />', () => {
 		const pagesToRender = [49, 50, 51, 52, 53];
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} currentPage={currentPage} displayCount={pagesToRender.length} />
+			<Pagination
+				pageCount={100}
+				currentPage={currentPage}
+				displayCount={pagesToRender.length}
+			/>
 		);
 
 		const paginationPagesElement = paginationComponent.find('.c-pagination__pages');
@@ -82,7 +90,11 @@ describe('<Pagination />', () => {
 		const pagesToRender = [1, 2, 3, 4, 5];
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} currentPage={currentPage} displayCount={pagesToRender.length} />
+			<Pagination
+				pageCount={100}
+				currentPage={currentPage}
+				displayCount={pagesToRender.length}
+			/>
 		);
 
 		const paginationPagesElement = paginationComponent.find('.c-pagination__pages');
@@ -95,7 +107,11 @@ describe('<Pagination />', () => {
 		const pagesToRender = [1, 2, 3, 4];
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} currentPage={currentPage} displayCount={pagesToRender.length} />
+			<Pagination
+				pageCount={100}
+				currentPage={currentPage}
+				displayCount={pagesToRender.length}
+			/>
 		);
 
 		const paginationPagesElement = paginationComponent.find('.c-pagination__pages');
@@ -108,7 +124,11 @@ describe('<Pagination />', () => {
 		const pagesToRender = [96, 97, 98, 99, 100];
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} currentPage={currentPage} displayCount={pagesToRender.length} />
+			<Pagination
+				pageCount={100}
+				currentPage={currentPage}
+				displayCount={pagesToRender.length}
+			/>
 		);
 
 		const paginationPagesElement = paginationComponent.find('.c-pagination__pages');
@@ -121,7 +141,11 @@ describe('<Pagination />', () => {
 		const pagesToRender = [97, 98, 99, 100];
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} currentPage={currentPage} displayCount={pagesToRender.length} />
+			<Pagination
+				pageCount={100}
+				currentPage={currentPage}
+				displayCount={pagesToRender.length}
+			/>
 		);
 
 		const paginationPagesElement = paginationComponent.find('.c-pagination__pages');
@@ -155,7 +179,11 @@ describe('<Pagination />', () => {
 		const activeIndex = 2;
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} onPageChange={onPageChangeHandler} currentPage={activeIndex} />
+			<Pagination
+				pageCount={100}
+				onPageChange={onPageChangeHandler}
+				currentPage={activeIndex}
+			/>
 		);
 
 		const pageButtonElement = paginationComponent
@@ -173,7 +201,11 @@ describe('<Pagination />', () => {
 		const activeIndex = 2;
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} onPageChange={onPageChangeHandler} currentPage={activeIndex} />
+			<Pagination
+				pageCount={100}
+				onPageChange={onPageChangeHandler}
+				currentPage={activeIndex}
+			/>
 		);
 
 		const previousButtonElement = paginationComponent.find('.c-pagination__btn').at(1);
@@ -214,7 +246,11 @@ describe('<Pagination />', () => {
 		const activeIndex = 2;
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} onPageChange={onPageChangeHandler} currentPage={activeIndex} />
+			<Pagination
+				pageCount={100}
+				onPageChange={onPageChangeHandler}
+				currentPage={activeIndex}
+			/>
 		);
 
 		const firstButtonElement = paginationComponent.find('.c-pagination__btn').first();
@@ -233,7 +269,11 @@ describe('<Pagination />', () => {
 		const activeIndex = 2;
 
 		const paginationComponent = shallow(
-			<Pagination pageCount={100} onPageChange={onPageChangeHandler} currentPage={activeIndex} />
+			<Pagination
+				pageCount={100}
+				onPageChange={onPageChangeHandler}
+				currentPage={activeIndex}
+			/>
 		);
 
 		const lastButtonElement = paginationComponent.find('.c-pagination__btn').last();

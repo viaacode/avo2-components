@@ -45,7 +45,12 @@ storiesOf('components/TagsInput', module)
 	.add('TagsInput', () => (
 		<Fragment>
 			<TagsInputStoryComponent>
-				<TagsInput options={tags} placeholder="Select elements" className="test" id="elements" />
+				<TagsInput
+					options={tags}
+					placeholder="Select elements"
+					className="test"
+					id="elements"
+				/>
 			</TagsInputStoryComponent>
 		</Fragment>
 	))

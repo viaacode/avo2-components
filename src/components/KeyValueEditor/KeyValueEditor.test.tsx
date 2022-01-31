@@ -46,7 +46,11 @@ describe('<KeyValueEditor />', () => {
 		const newValue = 'my new value';
 
 		const keyValueEditorComponent = mount(
-			<KeyValueEditor data={DATA_ARRAY_MOCK} initialData={DATA_ARRAY_MOCK} onChange={onChange} />
+			<KeyValueEditor
+				data={DATA_ARRAY_MOCK}
+				initialData={DATA_ARRAY_MOCK}
+				onChange={onChange}
+			/>
 		);
 
 		expect(onChange).toBeCalledTimes(0);

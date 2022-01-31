@@ -67,7 +67,7 @@ export const BlockHero: FunctionComponent<BlockHeroProps> = ({
 									buttonAction,
 									<Button {...rest} key={`hero-button-${index}`} />,
 									rest.label || rest.ariaLabel || rest.tooltip,
-									rest.altTitle || rest.label || rest.ariaLabel || rest.tooltip,
+									rest.altTitle || rest.label || rest.ariaLabel || rest.tooltip
 								);
 							})}
 						</ButtonToolbar>

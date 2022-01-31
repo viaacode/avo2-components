@@ -36,10 +36,7 @@ describe('<DatePicker />', () => {
 		const datePickerElement = datePickerComponent.find('input');
 
 		expect(datePickerElement.prop('value')).toEqual(
-			defaultDateString
-				.split('/')
-				.reverse()
-				.join('/')
+			defaultDateString.split('/').reverse().join('/')
 		);
 	});
 
@@ -68,12 +65,16 @@ describe('<DatePicker />', () => {
 		expect(onChangeHandler).toHaveBeenCalled();
 		expect(onChangeHandler).toHaveBeenCalledTimes(1);
 		const firstCall = onChangeHandler.mock.calls[0];
-		expect(firstCall[firstCall.length - 1].target.value.getTime()).toEqual(dateObject1.getTime());
+		expect(firstCall[firstCall.length - 1].target.value.getTime()).toEqual(
+			dateObject1.getTime()
+		);
 
 		datePickerElement.simulate('change', { target: { value: dateObject2 } });
 
 		expect(onChangeHandler).toHaveBeenCalledTimes(2);
 		const secondCall = onChangeHandler.mock.calls[1];
-		expect(secondCall[secondCall.length - 1].target.value.getTime()).toEqual(dateObject2.getTime());
+		expect(secondCall[secondCall.length - 1].target.value.getTime()).toEqual(
+			dateObject2.getTime()
+		);
 	});
 });

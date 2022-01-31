@@ -7,7 +7,7 @@ import { WYSIWYGPropsSchema } from './WYSIWYG.types';
 
 const WYSIWYGInternal = React.lazy(() => import('./WYSIWYGInternal'));
 
-export const WYSIWYG: FunctionComponent<WYSIWYGPropsSchema> = props => {
+export const WYSIWYG: FunctionComponent<WYSIWYGPropsSchema> = (props) => {
 	return (
 		<Suspense
 			fallback={

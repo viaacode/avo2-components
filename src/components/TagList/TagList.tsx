@@ -62,7 +62,10 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 					{/* output label text element */}
 					{swatches || closable ? (
 						<p
-							className={classnames({ 'c-tag__label': !swatches, 'c-label-text': swatches })}
+							className={classnames({
+								'c-tag__label': !swatches,
+								'c-label-text': swatches,
+							})}
 							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
 							style={onTagClicked ? { cursor: 'pointer' } : {}}
 						>

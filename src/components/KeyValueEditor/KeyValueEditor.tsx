@@ -65,10 +65,12 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 }) => {
 	const [filterString, setFilterString] = useState<string>('');
 	const [page, setPage] = useState<number>(0);
-	const [sortColumn, sortOrder, handleSortClick] = useTableSort<KeyValueEditorTableColsSchema>('0');
+	const [sortColumn, sortOrder, handleSortClick] = useTableSort<KeyValueEditorTableColsSchema>(
+		'0'
+	);
 
 	const getPaginatedData = (): [KeyValuePairs, number] => {
-		const filteredItems = data.filter(row => {
+		const filteredItems = data.filter((row) => {
 			const query = filterString.toLowerCase();
 
 			// If key or value contains the searched value, show the row
@@ -77,7 +79,7 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 			}
 
 			// If the initial row value contains the searched value, show the row
-			const initialRow = initialData.find(initialRow => initialRow[0] === row[0]);
+			const initialRow = initialData.find((initialRow) => initialRow[0] === row[0]);
 			if (initialRow && initialRow[1].toLowerCase().includes(query)) {
 				return true;
 			}
@@ -102,7 +104,9 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 
 	const onValueChanged = (value: string, key: string) => {
 		const modifiedData: KeyValuePairs = cloneDeep(data);
-		const row: [string, string] | undefined = modifiedData.find(dataItem => dataItem[0] === key);
+		const row: [string, string] | undefined = modifiedData.find(
+			(dataItem) => dataItem[0] === key
+		);
 		if (row) {
 			row[1] = value;
 			onChange(modifiedData);
@@ -120,7 +124,9 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 					<div>
 						<div className="c-keyvalue-label c-keyvalue-path">{keyParts[0]}</div>
 						{!!keyParts[1] && (
-							<div className="c-keyvalue-label c-keyvalue-translaton">{keyParts[1]}</div>
+							<div className="c-keyvalue-label c-keyvalue-translaton">
+								{keyParts[1]}
+							</div>
 						)}
 					</div>
 				);
@@ -134,7 +140,7 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 					<TextArea
 						height="auto"
 						value={rowData[1]}
-						onChange={value => onValueChanged(value, rowData[0])}
+						onChange={(value) => onValueChanged(value, rowData[0])}
 					/>
 				);
 
@@ -151,7 +157,11 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 					<ToolbarItem>
 						<Form type="inline">
 							<FormGroup>
-								<TextInput icon="filter" value={filterString} onChange={setFilterString} />
+								<TextInput
+									icon="filter"
+									value={filterString}
+									onChange={setFilterString}
+								/>
 							</FormGroup>
 						</Form>
 					</ToolbarItem>
@@ -165,7 +175,9 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 					]}
 					data={paginatedData}
 					emptyStateMessage={filterString ? noDataMessage : noDataForFilterMessage}
-					onColumnClick={columnId => handleSortClick(columnId as KeyValueEditorTableColsSchema)}
+					onColumnClick={(columnId) =>
+						handleSortClick(columnId as KeyValueEditorTableColsSchema)
+					}
 					renderCell={(rowData: KeyValuePairSchema, columnId: string) =>
 						renderCell(rowData, columnId as KeyValueEditorTableColsSchema)
 					}

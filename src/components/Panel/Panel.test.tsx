@@ -53,12 +53,9 @@ describe('<Panel />', () => {
 
 		const children = panelComponent.find('#test');
 
-		expect(
-			panelComponent
-				.find('.c-panel__header')
-				.children()
-				.html()
-		).toContain(children.html());
+		expect(panelComponent.find('.c-panel__header').children().html()).toContain(
+			children.html()
+		);
 
 		const headerElement = panelComponent.find('.c-panel__header');
 		const bodyElement = panelComponent.find('.c-panel__body');
@@ -78,12 +75,7 @@ describe('<Panel />', () => {
 
 		const children = panelComponent.find('#test');
 
-		expect(
-			panelComponent
-				.find('.c-panel__body')
-				.children()
-				.html()
-		).toContain(children.html());
+		expect(panelComponent.find('.c-panel__body').children().html()).toContain(children.html());
 
 		const headerElement = panelComponent.find('.c-panel__header');
 		const bodyElement = panelComponent.find('.c-panel__body');

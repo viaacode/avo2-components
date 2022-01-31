@@ -116,7 +116,12 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 				)}
 			</div>
 
-			<div ref={setPopperElement} style={styles.popper} {...attributes.popper} className={isOpen ? 'c-dropdown__content-open' : 'c-dropdown__content-closed'}>
+			<div
+				ref={setPopperElement}
+				style={styles.popper}
+				{...attributes.popper}
+				className={isOpen ? 'c-dropdown__content-open' : 'c-dropdown__content-closed'}
+			>
 				<Menu
 					className={classnames(menuClassName, 'c-dropdown__menu')}
 					isOpen={isOpen}

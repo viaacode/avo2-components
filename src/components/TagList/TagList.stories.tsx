@@ -42,7 +42,7 @@ const TagListStoryComponent = ({
 	const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
 	return cloneElement(children, {
-		tags: tags.map(tag => ({ ...tag, active: selectedTags.includes(tag.id) })),
+		tags: tags.map((tag) => ({ ...tag, active: selectedTags.includes(tag.id) })),
 		onTagClicked: (tagId: string) => {
 			action('tag toggled')(tagId);
 			const indexOf = selectedTags.indexOf(tagId);
@@ -73,7 +73,11 @@ storiesOf('components/TagList', module)
 	))
 	.add('TagList with multiline tags', () => (
 		<div style={{ width: '300px' }}>
-			<TagList tags={[{ label: loremIpsum({ count: 1 }), id: 'test' }]} closable swatches={false} />
+			<TagList
+				tags={[{ label: loremIpsum({ count: 1 }), id: 'test' }]}
+				closable
+				swatches={false}
+			/>
 		</div>
 	))
 	.add('TagList with selectable tags', () => (

@@ -17,7 +17,11 @@ describe('<MediaCard />', () => {
 		const customClass = 'c-media-card-custom';
 
 		const mediaCardComponent = shallow(
-			<MediaCard className={customClass} title="What an amazing title!" category="collection" />
+			<MediaCard
+				className={customClass}
+				title="What an amazing title!"
+				category="collection"
+			/>
 		);
 
 		expect(mediaCardComponent.hasClass(customClass)).toEqual(true);
@@ -44,11 +48,19 @@ describe('<MediaCard />', () => {
 
 	it('Should set the correct className for each orientation', () => {
 		const horizontalMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="collection" orientation="horizontal" />
+			<MediaCard
+				title="What an amazing title!"
+				category="collection"
+				orientation="horizontal"
+			/>
 		);
 
 		const verticalMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="collection" orientation="vertical" />
+			<MediaCard
+				title="What an amazing title!"
+				category="collection"
+				orientation="vertical"
+			/>
 		);
 
 		expect(horizontalMediaCardComponent.hasClass('c-media-card--horizontal')).toEqual(true);
@@ -57,7 +69,11 @@ describe('<MediaCard />', () => {
 
 	it('Should render thumbnail when slot is passed', () => {
 		const mediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="collection" orientation="horizontal">
+			<MediaCard
+				title="What an amazing title!"
+				category="collection"
+				orientation="horizontal"
+			>
 				<MediaCardThumbnail>
 					<Thumbnail category="collection" />
 				</MediaCardThumbnail>
@@ -69,7 +85,11 @@ describe('<MediaCard />', () => {
 
 	it('Should render metaData when slot is passed', () => {
 		const mediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="collection" orientation="horizontal">
+			<MediaCard
+				title="What an amazing title!"
+				category="collection"
+				orientation="horizontal"
+			>
 				<MediaCardMetaData>
 					<MetaData category="collection">
 						<MetaDataItem label="vrt" />

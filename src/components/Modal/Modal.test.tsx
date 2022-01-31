@@ -228,12 +228,7 @@ describe('<Modal />', () => {
 
 		const children = modalComponent.find('#test');
 
-		expect(
-			modalComponent
-				.find('.c-modal__body')
-				.children()
-				.html()
-		).toEqual(children.html());
+		expect(modalComponent.find('.c-modal__body').children().html()).toEqual(children.html());
 	});
 
 	it('Should be able to render items in the header (right)', () => {
@@ -249,12 +244,7 @@ describe('<Modal />', () => {
 			'.c-modal__header .c-toolbar__right .c-toolbar__item'
 		);
 
-		expect(
-			headerRightElement
-				.at(0)
-				.children()
-				.html()
-		).toEqual('<p>Test (right)</p>');
+		expect(headerRightElement.at(0).children().html()).toEqual('<p>Test (right)</p>');
 	});
 
 	it('Should be able to render items in the footer (left)', () => {

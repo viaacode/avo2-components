@@ -47,7 +47,10 @@ export const FormGroup: FunctionComponent<FormGroupPropsSchema> = ({
 				{!!errorArray &&
 					!!errorArray.length &&
 					errorArray.map((err: string, index: number) => (
-						<div key={`${err}-${index}`} className="c-form-help-text c-form-help-text--error">
+						<div
+							key={`${err}-${index}`}
+							className="c-form-help-text c-form-help-text--error"
+						>
 							{err}
 						</div>
 					))}

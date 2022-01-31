@@ -41,7 +41,9 @@ describe('<ImageGrid />', () => {
 	it('Should set the correct styles for width and height', () => {
 		const width = 123;
 		const height = 321;
-		const ImageGridComponent = shallow(<ImageGrid images={images} width={width} height={height} />);
+		const ImageGridComponent = shallow(
+			<ImageGrid images={images} width={width} height={height} />
+		);
 
 		const item = ImageGridComponent.find('.c-image-grid__item').at(0);
 
@@ -76,7 +78,12 @@ describe('<ImageGrid />', () => {
 		const onChangeHandler = jest.fn();
 
 		const ImageGridComponent = shallow(
-			<ImageGrid images={images} allowSelect={true} allowMulti={true} onChange={onChangeHandler} />
+			<ImageGrid
+				images={images}
+				allowSelect={true}
+				allowMulti={true}
+				onChange={onChangeHandler}
+			/>
 		);
 
 		const item5 = ImageGridComponent.find('.c-image-grid__item').at(5);

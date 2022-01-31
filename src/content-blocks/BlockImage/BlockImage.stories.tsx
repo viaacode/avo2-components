@@ -13,7 +13,9 @@ storiesOf('blocks/BlockImage', module)
 			imageDescription="image showing the default dimensions on a grey background"
 		/>
 	))
-	.add('BlockImage full-width', () => <BlockImage imageSource={imageSource} width={'full-width'} />)
+	.add('BlockImage full-width', () => (
+		<BlockImage imageSource={imageSource} width={'full-width'} />
+	))
 	.add('BlockImage full-width with annotation', () => (
 		<BlockImage
 			imageSource={imageSource}

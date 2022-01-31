@@ -14,7 +14,12 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 		const customClass = 'c-toggle-button-custom';
 
 		const toggleButtonComponent = shallow(
-			<ToggleButton ariaLabel="test button" className={customClass} icon="heart" active={false} />
+			<ToggleButton
+				ariaLabel="test button"
+				className={customClass}
+				icon="heart"
+				active={false}
+			/>
 		);
 
 		expect(toggleButtonComponent.hasClass(customClass)).toBeTruthy();

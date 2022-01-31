@@ -110,7 +110,7 @@ export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 									ariaLabel={element.buttonLabel || element.buttonTitle}
 								/>,
 								element.buttonLabel,
-								element.buttonAltTitle || element.buttonLabel,
+								element.buttonAltTitle || element.buttonLabel
 							)}
 						</Spacer>
 					)}

@@ -76,6 +76,8 @@ export const Column: FunctionComponent<ColumnPropsSchema> = ({
 	const sizes = typeof size === 'string' ? [size] : size;
 
 	return (
-		<Tag className={classnames(className, sizes.map(getGridSizeColumn).join(' '))}>{children}</Tag>
+		<Tag className={classnames(className, sizes.map(getGridSizeColumn).join(' '))}>
+			{children}
+		</Tag>
 	);
 };

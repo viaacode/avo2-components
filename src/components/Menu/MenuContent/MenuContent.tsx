@@ -49,7 +49,9 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 		return menuItems.map(renderMenuItem);
 	};
 
-	const renderMenuItemArrays = (menuItemArrays: MenuItemInfoSchema[] | MenuItemInfoSchema[][]) => {
+	const renderMenuItemArrays = (
+		menuItemArrays: MenuItemInfoSchema[] | MenuItemInfoSchema[][]
+	) => {
 		if (menuItems.length) {
 			if (Array.isArray(menuItemArrays[0])) {
 				// Array of arrays with dividers in between
@@ -58,14 +60,22 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 						{(menuItemArrays as MenuItemInfoSchema[][]).map((menuItems, index) => {
 							if (index < menuItemArrays.length - 1) {
 								return (
-									<Fragment key={`menu-item-group-${menuItems.map(mi => mi.id).join('-')}`}>
+									<Fragment
+										key={`menu-item-group-${menuItems
+											.map((mi) => mi.id)
+											.join('-')}`}
+									>
 										{renderMenuItems(menuItems)}
 										<div className="c-menu__divider" />
 									</Fragment>
 								);
 							}
 							return (
-								<Fragment key={`menu-item-group-${menuItems.map(mi => mi.id).join('-')}`}>
+								<Fragment
+									key={`menu-item-group-${menuItems
+										.map((mi) => mi.id)
+										.join('-')}`}
+								>
 									{renderMenuItems(menuItems)}
 								</Fragment>
 							);
@@ -75,7 +85,9 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 			}
 			// Regular list of menuItems
 			return (
-				<Fragment key={(menuItemArrays as MenuItemInfoSchema[]).map(mi => mi.id).join('-')}>
+				<Fragment
+					key={(menuItemArrays as MenuItemInfoSchema[]).map((mi) => mi.id).join('-')}
+				>
 					{renderMenuItems(menuItems as MenuItemInfoSchema[])}
 				</Fragment>
 			);

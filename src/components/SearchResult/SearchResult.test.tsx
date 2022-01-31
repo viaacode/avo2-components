@@ -161,7 +161,9 @@ describe('<SearchResult />', () => {
 
 		const descriptionElement = SearchResultComponent.find('.c-search-result__description');
 
-		expect(descriptionElement.html()).toContain(fakeSearchResult.dcterms_abstract.substring(0, 20));
+		expect(descriptionElement.html()).toContain(
+			fakeSearchResult.dcterms_abstract.substring(0, 20)
+		);
 	});
 
 	it('Should render `duration` correctly', () => {

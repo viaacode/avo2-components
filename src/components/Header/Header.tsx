@@ -64,7 +64,9 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 											/>
 										</MetaDataItem>
 										{views && <MetaDataItem icon="eye" label={views} />}
-										{bookmarks && <MetaDataItem icon="bookmark" label={bookmarks} />}
+										{bookmarks && (
+											<MetaDataItem icon="bookmark" label={bookmarks} />
+										)}
 									</MetaData>
 								</Spacer>
 							)}

@@ -43,7 +43,7 @@ storiesOf('components/Header', module)
 		>
 			<HeaderButtons>
 				<ButtonToolbar>
-					{times(4).map(index => (
+					{times(4).map((index) => (
 						<Button
 							type="secondary"
 							label="Bekijk"

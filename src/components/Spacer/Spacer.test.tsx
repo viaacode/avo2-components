@@ -31,7 +31,9 @@ describe('<Spacer />', () => {
 	});
 
 	it('Should set the correct className when margin/padding is passed (array)', () => {
-		const spacerComponent = shallow(<Spacer margin={['left-small']} padding={['left-small']} />);
+		const spacerComponent = shallow(
+			<Spacer margin={['left-small']} padding={['left-small']} />
+		);
 
 		expect(spacerComponent.hasClass('u-spacer-left-s')).toBeTruthy();
 		expect(spacerComponent.hasClass('u-padding-left-s')).toBeTruthy();

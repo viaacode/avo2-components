@@ -61,10 +61,7 @@ describe('<Dropdown />', () => {
 			</Dropdown>
 		);
 
-		dropdownComponent
-			.find('button')
-			.first()
-			.simulate('click');
+		dropdownComponent.find('button').first().simulate('click');
 
 		expect(onOpenHandler).toHaveBeenCalled();
 		expect(onOpenHandler).toHaveBeenCalledTimes(1);
@@ -83,10 +80,7 @@ describe('<Dropdown />', () => {
 			</Dropdown>
 		);
 
-		dropdownComponent
-			.find('button')
-			.first()
-			.simulate('click');
+		dropdownComponent.find('button').first().simulate('click');
 
 		expect(onCloseHandler).toHaveBeenCalled();
 		expect(onCloseHandler).toHaveBeenCalledTimes(1);
@@ -103,12 +97,7 @@ describe('<Dropdown />', () => {
 			</Dropdown>
 		);
 
-		expect(
-			dropdownComponent
-				.find('button')
-				.first()
-				.hasClass('c-button')
-		).toEqual(true);
+		expect(dropdownComponent.find('button').first().hasClass('c-button')).toEqual(true);
 	});
 
 	it('Should correctly pass `label`', () => {
@@ -166,7 +155,9 @@ describe('<Dropdown />', () => {
 			</Dropdown>
 		);
 
-		expect(dropdownFullWidthComponent.find('.c-button').hasClass('c-button--block')).toBeTruthy();
+		expect(
+			dropdownFullWidthComponent.find('.c-button').hasClass('c-button--block')
+		).toBeTruthy();
 		expect(dropdownFitContentComponent.find('.c-dropdown__trigger')).toHaveLength(1);
 	});
 

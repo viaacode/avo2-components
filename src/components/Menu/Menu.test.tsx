@@ -70,7 +70,9 @@ describe('<MenuItem />', () => {
 		const menuComponent = mount(<Menu menuItems={menuItemsWithDivider} />);
 
 		expect(menuComponent.find('.c-menu__item')).toHaveLength(menuItems.length);
-		expect(menuComponent.find('.c-menu__divider')).toHaveLength(menuItemsWithDivider.length - 1);
+		expect(menuComponent.find('.c-menu__divider')).toHaveLength(
+			menuItemsWithDivider.length - 1
+		);
 	});
 
 	it('Should render using custom render function', () => {
@@ -87,12 +89,7 @@ describe('<MenuItem />', () => {
 		);
 
 		expect(menuComponent.find('.custom-item')).toHaveLength(menuItems.length);
-		expect(
-			menuComponent
-				.find('.custom-item')
-				.at(1)
-				.text()
-		).toEqual(menuItems[1].label);
+		expect(menuComponent.find('.custom-item').at(1).text()).toEqual(menuItems[1].label);
 	});
 
 	it('Should call onClick when item is clicked', () => {

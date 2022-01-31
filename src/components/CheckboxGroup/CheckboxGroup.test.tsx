@@ -56,7 +56,9 @@ describe('<CheckboxGroup />', () => {
 
 		expect(checkboxGroupDefaultComponent.hasClass('c-checkbox-group--inline')).toEqual(false);
 		expect(checkboxGroupInlineTrueComponent.hasClass('c-checkbox-group--inline')).toEqual(true);
-		expect(checkboxGroupInlineFalseComponent.hasClass('c-checkbox-group--inline')).toEqual(false);
+		expect(checkboxGroupInlineFalseComponent.hasClass('c-checkbox-group--inline')).toEqual(
+			false
+		);
 	});
 
 	it('Should correctly pass children', () => {

@@ -40,7 +40,10 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 					buttonProps.buttonAction,
 					<Button {...buttonProps} />,
 					buttonProps.label || buttonProps.ariaLabel || buttonProps.tooltip,
-					buttonProps.altTitle || buttonProps.label || buttonProps.ariaLabel || buttonProps.tooltip,
+					buttonProps.altTitle ||
+						buttonProps.label ||
+						buttonProps.ariaLabel ||
+						buttonProps.tooltip
 				)}
 			</Spacer>
 		));

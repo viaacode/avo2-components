@@ -244,7 +244,7 @@ export const BlockPageOverview: FunctionComponent<BlockPageOverviewProps> = ({
 													} as ButtonAction,
 													<Button label={buttonLabel} type="tertiary" />,
 													buttonLabel,
-													buttonAltTitle || buttonLabel,
+													buttonAltTitle || buttonLabel
 												)}
 											</Spacer>
 										)}

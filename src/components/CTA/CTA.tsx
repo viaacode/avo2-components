@@ -66,7 +66,10 @@ export const CTA: FunctionComponent<CTAPropsSchema> = ({
 						buttonAction,
 						<Button {...buttonProps} />,
 						buttonProps.label || buttonProps.ariaLabel || buttonProps.tooltip,
-						buttonAltTitle || buttonProps.label || buttonProps.ariaLabel || buttonProps.tooltip
+						buttonAltTitle ||
+							buttonProps.label ||
+							buttonProps.ariaLabel ||
+							buttonProps.tooltip
 					)}
 				</div>
 			</div>

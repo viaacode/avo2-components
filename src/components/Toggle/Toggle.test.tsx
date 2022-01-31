@@ -48,7 +48,9 @@ describe('<Toggle />', () => {
 	it('Should call `onChange` when toggling toggle', () => {
 		const onChangeHandler = jest.fn();
 
-		const toggleComponent = shallow(<Toggle checked={false} id="one" onChange={onChangeHandler} />);
+		const toggleComponent = shallow(
+			<Toggle checked={false} id="one" onChange={onChangeHandler} />
+		);
 
 		const toggleElement = toggleComponent.find('[type="checkbox"]');
 
