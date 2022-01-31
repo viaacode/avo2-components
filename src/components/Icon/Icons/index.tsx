@@ -140,6 +140,11 @@ export { ChevronsUpAndDown } from './arrows/ChevronsUpAndDown';
 export { ChevronUp } from './arrows/ChevronUp';
 
 /**
+ * INDEX
+ */
+export {} from './arrows/index';
+
+/**
  * BARCHART
  */
 export { BarChart } from './BarChart';
@@ -272,7 +277,12 @@ export { Crosshair } from './Crosshair';
 /**
  * EID
  */
-export { Eid } from './multicolor/Eid';
+export { Eid } from './custom/Eid';
+
+/**
+ * INDEX
+ */
+export {} from './custom/index';
 
 /**
  * ITSME
@@ -323,6 +333,7 @@ export { Edit2 } from './Edit2';
  * EDIT3
  */
 export { Edit3 } from './Edit3';
+
 /**
  * EXTERNALLINK
  */
@@ -559,6 +570,11 @@ export { CircleInfo } from './multicolor/CircleInfo';
 export { CircleWarning } from './multicolor/CircleWarning';
 
 /**
+ * INDEX
+ */
+export {} from './multicolor/index';
+
+/**
  * MUSIC
  */
 export { Music } from './Music';
@@ -749,6 +765,11 @@ export { Slash } from './Slash';
 export { Sliders } from './Sliders';
 
 /**
+ * INDEX
+ */
+export {} from './social/index';
+
+/**
  * INSTAGRAM
  */
 export { Instagram } from './social/Instagram';
@@ -879,6 +900,16 @@ export { UserPlus } from './UserPlus';
 export { Users } from './Users';
 
 /**
+ * USERSTUDENT
+ */
+export { UserStudent } from './UserStudent';
+
+/**
+ * USERTEACHER
+ */
+export { UserTeacher } from './UserTeacher';
+
+/**
  * USERX
  */
 export { UserX } from './UserX';
@@ -942,6 +973,11 @@ export { AlignRight } from './wysiwyg/AlignRight';
  * BOLD
  */
 export { Bold } from './wysiwyg/Bold';
+
+/**
+ * INDEX
+ */
+export {} from './wysiwyg/index';
 
 /**
  * ITALIC
