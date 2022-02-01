@@ -26,6 +26,7 @@ export type IconNameSchema =
 	| 'chevrons-right'
 	| 'chevrons-up-and-down'
 	| 'chevrons-up'
+	| 'at'
 	| 'bar-chart'
 	| 'bell-off'
 	| 'bell'
