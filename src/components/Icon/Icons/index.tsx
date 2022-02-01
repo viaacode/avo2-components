@@ -470,6 +470,11 @@ export { default as Info } from './Info';
 export { default as Layout } from './Layout';
 
 /**
+ * LEERID
+ */
+export { default as Leerid } from './Leerid';
+
+/**
  * LINK
  */
 export { default as Link } from './Link';

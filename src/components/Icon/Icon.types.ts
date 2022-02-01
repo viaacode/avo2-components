@@ -90,6 +90,7 @@ export type IconNameSchema =
 	| 'inbox'
 	| 'info'
 	| 'layout'
+	| 'leerid'
 	| 'link-2'
 	| 'link'
 	| 'list'
