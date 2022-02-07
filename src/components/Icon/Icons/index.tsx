@@ -470,11 +470,6 @@ export { default as Info } from './Info';
 export { default as Layout } from './Layout';
 
 /**
- * LEERID
- */
-export { default as Leerid } from './Leerid';
-
-/**
  * LINK
  */
 export { default as Link } from './Link';
@@ -583,6 +578,11 @@ export { default as CircleWarning } from './multicolor/CircleWarning';
  * INDEX
  */
 export {} from './multicolor/index';
+
+/**
+ * LEERID
+ */
+export { default as Leerid } from './multicolor/Leerid';
 
 /**
  * MUSIC

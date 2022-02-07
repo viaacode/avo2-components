@@ -455,11 +455,6 @@
     "type": ""
   },
   {
-    "fileName": "leerid.svg",
-    "name": "leerid",
-    "type": ""
-  },
-  {
     "fileName": "link-2.svg",
     "name": "link-2",
     "type": ""
@@ -562,6 +557,11 @@
   {
     "fileName": "circle-warning.svg",
     "name": "circle-warning",
+    "type": "multicolor"
+  },
+  {
+    "fileName": "leerid.svg",
+    "name": "leerid",
     "type": "multicolor"
   },
   {
