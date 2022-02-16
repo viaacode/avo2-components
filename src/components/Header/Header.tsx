@@ -15,7 +15,7 @@ import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import './Header.scss';
-import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
+import { HeaderAvatar, HeaderButtons, HeaderRow, HeaderTags } from './Header.slots';
 
 export interface HeaderPropsSchema extends DefaultProps {
 	bookmarks?: string;
@@ -42,6 +42,7 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 	const buttonSlot = useSlot(HeaderButtons, children);
 	const avatarSlot = useSlot(HeaderAvatar, children);
 	const tagSlot = useSlot(HeaderTags, children);
+	const rowSlot = useSlot(HeaderRow, children);
 
 	return (
 		<Container
@@ -94,6 +95,13 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 					)}
 				</Toolbar>
 			</Container>
+			{rowSlot && (
+				<Container mode="horizontal">
+					<Toolbar autoHeight>
+						<ToolbarLeft>{rowSlot}</ToolbarLeft>
+					</Toolbar>
+				</Container>
+			)}
 		</Container>
 	);
 };
