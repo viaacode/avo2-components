@@ -257,6 +257,8 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 	private static cuePointEndListener(flowplayerInstance: FlowplayerInstance | null | undefined) {
 		if (flowplayerInstance) {
 			flowplayerInstance.pause();
+			// Trigger the ended event, so in autoplay mode the next video can be started
+			flowplayerInstance.emit(flowplayer.events.ENDED);
 		}
 	}
 
