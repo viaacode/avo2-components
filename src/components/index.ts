@@ -161,7 +161,7 @@ export type GridProps = GridPropsSchema;
 
 export { Header } from './Header/Header';
 export type HeaderProps = HeaderPropsSchema;
-export { HeaderAvatar, HeaderButtons, HeaderTags } from './Header/Header.slots';
+export { HeaderAvatar, HeaderButtons, HeaderTags, HeaderRow } from './Header/Header.slots';
 
 export { HeaderContentType } from './HeaderContentType/HeaderContentType';
 export type HeaderContentTypeProps = HeaderContentTypePropsSchema;
