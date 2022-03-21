@@ -278,7 +278,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			// CONFIGURATION
 			autoplay: props.autoplay,
 			ui: flowplayer.ui.LOGO_ON_RIGHT | flowplayer.ui.USE_DRAG_HANDLE,
-			plugins: ['subtitles', 'chromecast', 'cuepoints', 'hls', 'ga'],
+			plugins: ['subtitles', 'chromecast', 'airplay', 'cuepoints', 'hls', 'ga'],
 			preload: props.preload || (!props.poster ? 'metadata' : 'none'),
 
 			// SPEED
