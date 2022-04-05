@@ -1,5 +1,6 @@
+import { action } from '@storybook/addon-actions';
+
 import { ButtonTypeSchema } from '../../components/Button/Button.types';
-import { action } from '../../helpers';
 import { testRenderLink } from '../../helpers/render-link';
 
 import { BlockMediaGridProps, MediaListItem } from './BlockMediaGrid';

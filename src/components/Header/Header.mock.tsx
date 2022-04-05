@@ -1,4 +1,5 @@
-import { action } from '../../helpers';
+import { action } from '@storybook/addon-actions';
+
 import { EnglishContentType } from '../../types';
 
 export const MOCK_HEADER_PROPS = {

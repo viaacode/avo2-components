@@ -1,9 +1,9 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import { flatten, times } from 'lodash-es';
 import React from 'react';
 
 import { ButtonTypeSchema } from '../../components/Button/Button.types';
-import { action } from '../../helpers';
 import { testRenderLink } from '../../helpers/render-link';
 import { AlignOptions } from '../../types';
 

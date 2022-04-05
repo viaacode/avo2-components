@@ -1,8 +1,8 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import { intersectionBy, times } from 'lodash-es';
 import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
 
-import { action } from '../../helpers';
 import { testRenderLink } from '../../helpers/render-link';
 
 import { BlockPageOverview, LabelObj, PageInfo } from './BlockPageOverview';
@@ -95,12 +95,7 @@ storiesOf('blocks/BlockPageOverview', module)
 	))
 	.add('BlockPageOverview menu NEWS_LIST', () => (
 		<BlockPageOverviewStoryComponent initialPageIndex={0}>
-			<BlockPageOverview
-				{...baseProps}
-				itemStyle="NEWS_LIST"
-				showDate
-				onLabelClicked={action('label clicked')}
-			/>
+			<BlockPageOverview {...baseProps} itemStyle="NEWS_LIST" showDate />
 		</BlockPageOverviewStoryComponent>
 	))
 	.add('BlockPageOverview menu PROJECT_LIST', () => (
@@ -125,13 +120,7 @@ storiesOf('blocks/BlockPageOverview', module)
 				}}
 			/>
 			<BlockPageOverviewStoryComponent initialPageIndex={0}>
-				<BlockPageOverview
-					{...baseProps}
-					darkTabs
-					itemStyle="NEWS_LIST"
-					showDate
-					onLabelClicked={action('label clicked')}
-				/>
+				<BlockPageOverview {...baseProps} darkTabs itemStyle="NEWS_LIST" showDate />
 			</BlockPageOverviewStoryComponent>
 		</div>
 	))

@@ -1,7 +1,7 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { ReactNode } from 'react';
 
-import { action } from '../../helpers';
 import { ButtonAction } from '../../types';
 
 import { BlockImageGrid, GridItem } from './BlockImageGrid';

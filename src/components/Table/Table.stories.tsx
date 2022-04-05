@@ -1,7 +1,7 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 
-import { action } from '../../helpers';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 
