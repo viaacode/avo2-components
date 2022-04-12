@@ -1,9 +1,9 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import { get } from 'lodash-es';
 import React from 'react';
 
 import { FlowPlayer } from '../../components';
-import { action } from '../../helpers';
 import { testRenderLink } from '../../helpers/render-link';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 

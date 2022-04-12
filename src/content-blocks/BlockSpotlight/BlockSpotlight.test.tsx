@@ -1,7 +1,7 @@
+import { action } from '@storybook/addon-actions';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { action } from '../../helpers';
 import { testRenderLink } from '../../helpers/render-link';
 
 import { BlockSpotlight } from './BlockSpotlight';

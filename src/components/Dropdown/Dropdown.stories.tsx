@@ -1,7 +1,7 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
-import { action } from '../../helpers';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { MenuContent } from '../Menu/MenuContent/MenuContent';
 

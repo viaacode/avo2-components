@@ -1,4 +1,5 @@
-import { action } from '../../helpers';
+import { action } from '@storybook/addon-actions';
+
 import { testRenderLink } from '../../helpers/render-link';
 import { LinkTarget } from '../../types';
 

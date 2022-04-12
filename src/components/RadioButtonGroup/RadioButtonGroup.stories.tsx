@@ -1,7 +1,6 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { Fragment, ReactElement, useState } from 'react';
-
-import { action } from '../../helpers';
 
 import { RadioButtonGroup } from './RadioButtonGroup';
 import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock';

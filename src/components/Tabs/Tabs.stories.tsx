@@ -1,7 +1,7 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { action } from '../../helpers';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Tabs } from '../Tabs/Tabs';
 

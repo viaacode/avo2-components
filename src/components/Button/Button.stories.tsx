@@ -1,9 +1,9 @@
+import { action } from '@storybook/addon-actions';
 import { Meta, storiesOf, Story } from '@storybook/react';
 import React, { Fragment } from 'react';
 
 import { COLORS } from '../../colors';
-import { action } from '../../helpers';
-import { IconNameList, IconNameSchema } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
 
 import { Button, ButtonPropsSchema } from './Button';
@@ -90,14 +90,6 @@ const renderButtonStories = (
 export default {
 	title: 'components/Button',
 	component: Button,
-	argTypes: {
-		icon: {
-			control: {
-				type: 'select',
-				options: IconNameList,
-			},
-		},
-	},
 } as Meta;
 
 const Template: Story<Partial<ButtonPropsSchema>> = ({

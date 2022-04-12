@@ -1,9 +1,9 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import React from 'react';
 
 import { ButtonProps } from '../../components';
-import { action } from '../../helpers';
 import { testRenderLink } from '../../helpers/render-link';
 import { ButtonAction } from '../../types';
 

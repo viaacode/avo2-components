@@ -1,7 +1,7 @@
+import { action } from '@storybook/addon-actions';
 import { loremIpsum } from 'lorem-ipsum';
 
 import { CTAProps } from '../../components';
-import { action } from '../../helpers';
 import { testRenderLink } from '../../helpers/render-link';
 import { LinkTarget } from '../../types';
 
