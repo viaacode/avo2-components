@@ -121,62 +121,7 @@ pipeline {
               }// end container
             } // steps
         } // stage
-        stage('Deploy INT') {
-            when {
-                anyOf {
-                    changeRequest target: 'master'
-                    changeRequest target: 'main'
-                }
-            }
-            steps {
-                container('oc') {
-                    tagNewImage('int')
-                }
-            }
-            post {
-                always {
-                    script {
-                        env.BRANCH_NAME = env.CHANGE_BRANCH
-                    }
-                    jiraSendDeploymentInfo site: "${JIRA_URL}", environmentId: 'int', environmentName: 'int', environmentType: 'testing'
-                }
-            }
-        }
-        stage('Deploy QAS') {
-            when {
-                anyOf { branch 'master'; branch 'main' }
-            }
-            steps {
-                container('oc') {
-                    tagNewImage('qas')
-                }
-            }
-            post {
-                always {
-                    jiraSendDeploymentInfo site: "${JIRA_URL}", environmentId: 'qas', environmentName: 'qas', environmentType: 'staging'
-                }
-            }
-        }
-        stage('Deploy PRD') {
-            when {
-                buildingTag()
-            }
-            steps {
-                container('oc') {
-                    tagNewImage('prd')
-                }
-            }
-            post {
-                always {
-                    script {
-                        previous_tag = sh(script: 'git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1`', returnStdout: true).trim()
-                        echo getAllCommitsBetweenTags(previous_tag, env.TAG_NAME)
-                    }
-                    jiraSendDeploymentInfo site: "${JIRA_URL}", environmentId: 'prd', environmentName: 'prd', environmentType: 'production'
-                }
-            }
-        }
-    }
+    } //end stages
     post {
         success {
             script {
