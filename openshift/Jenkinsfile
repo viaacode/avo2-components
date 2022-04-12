@@ -32,7 +32,8 @@ pipeline {
             - cat
             tty: true
             imagePullPolicy: Always
-
+            securityContext:
+              runAsUser: 1000
 
 
 
