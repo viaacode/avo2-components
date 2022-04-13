@@ -42,7 +42,7 @@
     "braft-extensions": "^0.1.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.0",
-    "lodash-es": "^4.17.15",
+    "lodash-es": "^4.17.21",
     "marked": "^1.1.1",
     "moment": "^2.27.0",
     "react-datepicker": "^3.1.3",
