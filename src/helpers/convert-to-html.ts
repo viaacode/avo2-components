@@ -1,3 +1,3 @@
-import marked from 'marked';
+import { marked } from 'marked';
 
-export const convertToHtml = (text: string | undefined | null) => marked(text || '');
+export const convertToHtml = (text: string | undefined | null) => marked.parse(text || '');
