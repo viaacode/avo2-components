@@ -31,4 +31,12 @@ storiesOf('blocks/BlockVideoTitleTextButton', module)
 			titleLink="http://google.com?q=title"
 			text={loremIpsum({ count: 5 })}
 		/>
+	))
+	.add('BlockVideoTitleTextButton markdown text', () => (
+		<BlockVideoTitleTextButton
+			flowPlayerProps={MOCK_FLOW_PLAYER_PROPS_FULL}
+			title="Title"
+			titleLink="http://google.com?q=title"
+			text={'# title\ntest with **bold text**'}
+		/>
 	));
