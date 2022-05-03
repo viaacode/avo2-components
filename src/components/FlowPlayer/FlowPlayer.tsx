@@ -7,6 +7,7 @@
  *   <script src="/flowplayer/plugins/subtitles.min.js"></script>
  *   <script src="/flowplayer/plugins/hls.min.js"></script>
  *   <script src="/flowplayer/plugins/cuepoints.min.js"></script>
+ *   <script src="/flowplayer/plugins/keyboard.min.js"></script>
  *   <script src="/flowplayer/plugins/google-analytics.min.js"></script>
  */
 
@@ -51,6 +52,7 @@ export enum GoogleAnalyticsEvent {
 	AdSkippedMidroll = 'ad_skipped_midroll',
 	AdSkippedPostroll = 'ad_skipped_postroll',
 }
+
 export interface FlowplayerTrackSchema {
 	crossorigin?: 'use-credentials' | 'anonymous';
 	default: boolean;
@@ -278,8 +280,11 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			// CONFIGURATION
 			autoplay: props.autoplay,
 			ui: flowplayer.ui.LOGO_ON_RIGHT | flowplayer.ui.USE_DRAG_HANDLE,
-			plugins: ['subtitles', 'chromecast', 'airplay', 'cuepoints', 'hls', 'ga'],
+			plugins: ['subtitles', 'chromecast', 'airplay', 'cuepoints', 'hls', 'ga', 'keyboard'],
 			preload: props.preload || (!props.poster ? 'metadata' : 'none'),
+
+			// KEYBOARD
+			keyboard: { seek_step: '15' },
 
 			// SPEED
 			speed: props.speed,
