@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
 
-import './Badge.scss';
+import styles from './Badge.module.scss';
 
 export interface BadgePropsSchema extends DefaultProps {
 	text: string;
@@ -15,5 +15,9 @@ export const Badge: FunctionComponent<BadgePropsSchema> = ({
 	text,
 	type = 'default',
 }) => (
-	<div className={classnames(className, 'c-badge', { [`c-badge--${type}`]: type })}>{text}</div>
+	<div
+		className={classnames(className, styles['c-badge'], { [styles[`c-badge--${type}`]]: type })}
+	>
+		{text}
+	</div>
 );

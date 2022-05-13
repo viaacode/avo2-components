@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react';
 import { DefaultProps } from '../../types';
 
 import { Tab, TabPropsSchema } from './Tab/Tab';
-import './Tabs.scss';
+import styles from './Tabs.module.scss';
 
 export interface TabsPropsSchema extends DefaultProps {
 	tabs: TabPropsSchema[];
@@ -21,8 +21,8 @@ export const Tabs: FunctionComponent<TabsPropsSchema> = ({
 	onClick = () => {},
 }) => (
 	<nav
-		className={classnames(className, 'c-tabs', {
-			'c-tabs__bottom-border': border,
+		className={classnames(className, styles['c-tabs'], {
+			[styles['c-tabs__bottom-border']]: border,
 		})}
 	>
 		{tabs.map((tab) => (

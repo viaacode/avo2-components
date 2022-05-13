@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
 
-import './Avatar.scss';
+import styles from './Avatar.module.scss';
 import { AvatarIcon, AvatarIconPropsSchema } from './AvatarIcon/AvatarIcon';
 
 export interface AvatarPropsSchema extends DefaultProps, AvatarIconPropsSchema {
@@ -23,10 +23,10 @@ export const Avatar: FunctionComponent<AvatarPropsSchema> = ({
 	dark = false,
 }) =>
 	name || title ? (
-		<div className={classnames(className, 'c-avatar-and-text')}>
+		<div className={classnames(className, styles['c-avatar-and-text'])}>
 			<AvatarIcon initials={initials} size={size} image={image} />
-			<div className="c-avatar-and-text__text">
-				{name && <p className={classnames({ 'u-color-white': !dark })}>{name}</p>}
+			<div className={styles['c-avatar-and-text__text']}>
+				{name && <p className={classnames({ ['u-color-white']: !dark })}>{name}</p>}
 				{title && <p className={dark ? 'u-text-muted' : 'u-color-gray-150'}>{title}</p>}
 			</div>
 		</div>

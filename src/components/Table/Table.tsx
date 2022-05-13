@@ -11,7 +11,7 @@ import { Panel } from '../Panel/Panel';
 import { PanelBody } from '../Panel/PanelBody/PanelBody';
 import { Spacer } from '../Spacer/Spacer';
 
-import './Table.scss';
+import styles from './Table.module.scss';
 
 export type TableColumnSchema = {
 	col?:
@@ -184,7 +184,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	const renderTable = () => (
 		<>
 			<table
-				className={classnames(className, 'c-table', {
+				className={classnames(className, styles['c-table'], {
 					'c-table--align-middle': align,
 					'c-table--bordered': variant === 'bordered',
 					'c-table--invisible': variant === 'invisible',
