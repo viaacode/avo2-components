@@ -7,10 +7,10 @@ def templatePath = 'https://raw.githubusercontent.comviaacode/avo2-components/ma
 // will not be fully engaged.
 
 pipeline {
-    agent {
-        kubernetes {
-            defaultContainer 'oc'
-            yaml """\
+	agent {
+		kubernetes {
+			defaultContainer 'oc'
+			yaml """\
         apiVersion: v1
         kind: Pod
         metadata:
@@ -38,48 +38,48 @@ pipeline {
 
 
         """.stripIndent()
-        }
-    }
-    options {
-        timeout(time: 45, unit: 'MINUTES')
-        disableConcurrentBuilds()
-    }
-    environment {
-        OC_PROJECT = 'avo'
-        BASE_IMG = 'node:12-alpine'
-        OC_URL = 'https://c113-e.private.eu-de.containers.cloud.ibm.com:30227'
-        JIRA_URL = 'meemoo.atlassian.net'
-        APP_NAME = 'avo-components'
-        BRANCH_NAME= 'master'
-    }
+		}
+	}
+	options {
+		timeout(time: 45, unit: 'MINUTES')
+		disableConcurrentBuilds()
+	}
+	environment {
+		OC_PROJECT = 'avo'
+		BASE_IMG = 'node:12-alpine'
+		OC_URL = 'https://c113-e.private.eu-de.containers.cloud.ibm.com:30227'
+		JIRA_URL = 'meemoo.atlassian.net'
+		APP_NAME = 'avo-components'
+		BRANCH_NAME = 'master'
+	}
 
-    stages {
-        stage('Calculate extra ENV vars') {
-            steps {
-                script {
-                    env.GIT_SHORT_COMMIT = sh(script: "printf \$(git rev-parse --short ${GIT_COMMIT})", returnStdout: true)
-                    env.IMAGE_TAG = sh(script: 'git describe --tags || echo latest', returnStdout: true)
-                    // The name used for the build config based on the image tag
-                    // Replace '.' with '_' as '.' is not allowed.
-                    env.BUILD_CONFIG_NAME = sh(script: 'echo "${IMAGE_TAG}" | sed -r "s/\\./\\-/g"', returnStdout: true)
-                }
-            }
-        }
-        stage('Bootstrap') {
-            steps {
-                sh 'echo disabled #make -f ./openshift/Makefile bootstrap'
-            }
-        }
-        stage('Build code') {
-            when {
-                not {
-                    buildingTag()
-                }
-            }
-            steps {
-                container('oc') {
-                    script {
-                        sh '''#!/bin/bash
+	stages {
+		stage('Calculate extra ENV vars') {
+			steps {
+				script {
+					env.GIT_SHORT_COMMIT = sh(script: "printf \$(git rev-parse --short ${GIT_COMMIT})", returnStdout: true)
+					env.IMAGE_TAG = sh(script: 'git describe --tags || echo latest', returnStdout: true)
+					// The name used for the build config based on the image tag
+					// Replace '.' with '_' as '.' is not allowed.
+					env.BUILD_CONFIG_NAME = sh(script: 'echo "${IMAGE_TAG}" | sed -r "s/\\./\\-/g"', returnStdout: true)
+				}
+			}
+		}
+		stage('Bootstrap') {
+			steps {
+				sh 'echo disabled #make -f ./openshift/Makefile bootstrap'
+			}
+		}
+		stage('Build code') {
+			when {
+				not {
+					buildingTag()
+				}
+			}
+			steps {
+				container('oc') {
+					script {
+						sh '''#!/bin/bash
                         echo 'disabled no deployment that works atm (storybook)'
                         #oc project $OC_PROJECT
                         #oc import-image $BASE_IMG --confirm
@@ -88,94 +88,93 @@ pipeline {
                         #oc annotate --overwrite buildconfig/$APP_NAME-$GIT_SHORT_COMMIT ref=$BRANCH_NAME shortcommit=$GIT_SHORT_COMMIT
                         #oc start-build $APP_NAME-$GIT_SHORT_COMMIT --from-dir=. --wait=true
                         '''
-                    }
-                   }
-                  container('npm') {
+					}
+				}
+				container('npm') {
 
 					script {
-								sh'''#!/bin/bash
-								npm --registry=https://registry.npmjs.org install && npm run build || exit 1
+						sh '''#!/bin/bash
+								npm --registry=https://registry.npmjs.org install --force && npm run build || exit 1
 								'''
 					} // script
-                }
-            }
-        }// end stage build
+				}
+			}
+		}// end stage build
 
 
+		stage('Publish') {
+			steps {
+				container('npm') {
 
-	stage('Publish') {
-            steps {
-             container('npm') {
-
-                script {
-					echo "Publishing package to registry"
-					configFileProvider([configFile(fileId: "npm-config", variable: 'configFile')]) {
-						sh "cat $configFile > .npmrc"
-					}
-					sh '''#/bin/bash
+					script {
+						echo "Publishing package to registry"
+						configFileProvider([configFile(fileId: "npm-config", variable: 'configFile')]) {
+							sh "cat $configFile > .npmrc"
+						}
+						sh '''#/bin/bash
 					npm publish
-					echo "removing .npmrc for installto nexus not seems @viaa:registry=.."
+					echo "removing .npmrc for install to nexus not seems @viaa:registry=.."
 					rm -f .npmrc
 					'''
-                } // script
-              }// end container
-            } // steps
-        } // stage
-    } //end stages
-    post {
-        success {
-            script {
-                if (env.BRANCH_NAME.startsWith('PR')) {
-                    setGitHubBuildStatus('Build', 'SUCCESS')
-                }
-            }
-        }
-        failure {
-            script {
-                if (env.BRANCH_NAME.startsWith('PR')) {
-                    setGitHubBuildStatus('Build', 'FAILURE')
-                }
-            }
-        }
-        always {
-            jiraSendBuildInfo site: "${JIRA_URL}"
-            container('default') {
-                // Archive tets results
-                script {
-                    if (fileExists('./tests/test_results.xml')) {
-                        junit 'tests/test_results.xml'
-                    } else {
-                        echo 'No test results found'
-                    }
-                }
-            }
-        }
-    }
+					} // script
+				}// end container
+			} // steps
+		} // stage
+	} //end stages
+	post {
+		success {
+			script {
+				if (env.BRANCH_NAME.startsWith('PR')) {
+					setGitHubBuildStatus('Build', 'SUCCESS')
+				}
+			}
+		}
+		failure {
+			script {
+				if (env.BRANCH_NAME.startsWith('PR')) {
+					setGitHubBuildStatus('Build', 'FAILURE')
+				}
+			}
+		}
+		always {
+			jiraSendBuildInfo site: "${JIRA_URL}"
+			container('default') {
+				// Archive tets results
+				script {
+					if (fileExists('./tests/test_results.xml')) {
+						junit 'tests/test_results.xml'
+					} else {
+						echo 'No test results found'
+					}
+				}
+			}
+		}
+	}
 }
 
 void getImageFromDockerfile() {
-    return 'node:12-alpine'
+	return 'node:12-alpine'
 }
 
 void setGitHubBuildStatus(String message, String state) {
-    step([
-        $class: 'GitHubCommitStatusSetter',
-        reposSource: [$class: 'ManuallyEnteredRepositorySource', url: "${GIT_URL}"],
-        commitShaSource: [$class: 'ManuallyEnteredShaSource', sha: "${GIT_COMMIT}"],
-        errorHandlers: [[$class: 'ChangingBuildStatusErrorHandler', result: 'UNSTABLE']],
-        statusResultSource: [ $class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: message, state: state]] ]
-    ])
+	step([
+			$class            : 'GitHubCommitStatusSetter',
+			reposSource       : [$class: 'ManuallyEnteredRepositorySource', url: "${GIT_URL}"],
+			commitShaSource   : [$class: 'ManuallyEnteredShaSource', sha: "${GIT_COMMIT}"],
+			errorHandlers     : [[$class: 'ChangingBuildStatusErrorHandler', result: 'UNSTABLE']],
+			statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: message, state: state]]]
+	])
 }
 
 void getAllCommitsBetweenTags(String from, String to) {
-    commit_messages = sh(script: "git log ${from}...${to} --merges --format=%b", returnStdout: true)
+	commit_messages = sh(script: "git log ${from}...${to} --merges --format=%b", returnStdout: true)
 
-    return commit_messages
+	return commit_messages
 }
 
 void tagNewImage(String environment) {
-    echo "Deploying to ${environment}"
-    sh """#!/bin/bash
+	echo "Deploying to ${environment}"
+	sh """#!/bin/bash
     oc project $OC_PROJECT
     oc tag $APP_NAME:$GIT_SHORT_COMMIT $APP_NAME:${environment}
     # Check the status of the rollout
