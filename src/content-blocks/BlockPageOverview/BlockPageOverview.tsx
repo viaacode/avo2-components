@@ -36,7 +36,7 @@ export type LabelObj = {
 };
 
 export interface PageInfo {
-	id: number;
+	id: number | string; // Numeric ids in avo, uuid's in hetarchief. We would like to switch to uuids for avo as well at some point
 	title: string;
 	description: string | null;
 	created_at: string;
