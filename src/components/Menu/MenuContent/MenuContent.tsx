@@ -4,6 +4,7 @@ import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
 import { IconNameSchema } from '../../Icon/Icon.types';
+import menuStyles from '../Menu.module.scss';
 
 import './MenuContent.scss';
 
@@ -33,11 +34,11 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 		}
 		return (
 			<div
-				className={classnames(className, 'c-menu__item')}
+				className={classnames(className, menuStyles['c-menu__item'])}
 				onClick={() => onClick(menuItemInfo.id)}
 				key={`menu-item-${menuItemInfo.id}`}
 			>
-				<div className="c-menu__label">
+				<div className={menuStyles['c-menu__label']}>
 					{menuItemInfo.icon && <Icon name={menuItemInfo.icon} />}
 					{menuItemInfo.label}
 				</div>
@@ -94,8 +95,8 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 		}
 		if (noResultsLabel) {
 			return (
-				<div className="c-menu__item" key={`menu-item-no-results`}>
-					<div className="c-menu__label">{noResultsLabel}</div>
+				<div className={menuStyles['c-menu__item']} key={`menu-item-no-results`}>
+					<div className={menuStyles['c-menu__label']}>{noResultsLabel}</div>
 				</div>
 			);
 		}
