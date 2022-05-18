@@ -7,6 +7,8 @@ import { IconNameSchema, IconTypeSchema } from '../Icon/Icon.types';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 
+import skins from './Button-skins.module.scss';
+import styles from './Button.module.scss';
 import './Button.scss';
 import { ButtonTypeSchema } from './Button.types';
 
@@ -51,6 +53,18 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 	type = 'primary',
 	id,
 }) => {
+	const rootCls = classnames(className, styles['c-button'], skins['c-button'], {
+		[styles['c-button--active']]: active,
+		[styles['c-button--auto']]: autoHeight,
+		[styles['c-button--small']]: size === 'small',
+		[styles['c-button--large']]: size === 'large',
+		[styles['c-button--block']]: block,
+		[styles['c-button--icon']]: icon && !label,
+		[styles[`c-button--${type}`]]: type,
+		[skins['c-button--active']]: active,
+		[skins[`c-button--${type}`]]: type,
+	});
+
 	const handleButtonClick = (evt: MouseEvent<HTMLElement>) => {
 		if (!disabled && onClick) {
 			onClick(evt);
@@ -60,15 +74,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 	const renderButton = () => {
 		return (
 			<button
-				className={classnames(className, 'c-button', {
-					'c-button--active': active,
-					'c-button--auto': autoHeight,
-					'c-button--small': size === 'small',
-					'c-button--large': size === 'large',
-					'c-button--block': block,
-					'c-button--icon': icon && !label,
-					[`c-button--${type}`]: type,
-				})}
+				className={rootCls}
 				onClick={handleButtonClick}
 				disabled={disabled}
 				aria-label={ariaLabel}
@@ -78,17 +84,17 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 				{children ? (
 					children
 				) : (
-					<div className="c-button__content">
+					<div className={classnames(styles['c-button__content'])}>
 						{icon && (
 							<Icon
-								className="c-button__icon"
+								className={styles['c-button__icon']}
 								name={icon}
 								active={active}
 								type={iconType}
 							/>
 						)}
-						{label && <div className="c-button__label">{label}</div>}
-						{arrow && <Icon className="c-button__icon" name="caret-down" />}
+						{label && <div className={styles['c-button__label']}>{label}</div>}
+						{arrow && <Icon className={styles['c-button__icon']} name="caret-down" />}
 					</div>
 				)}
 			</button>
