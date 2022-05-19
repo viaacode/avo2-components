@@ -41,7 +41,7 @@ export const MenuSearchResultContent: FunctionComponent<MenuSearchResultContentP
 				onClick={() => onClick(menuItemInfo.id)}
 				key={`menu-search-item-${menuItemInfo.id}`}
 			>
-				<div className="c-menu__label">
+				<div className={'c-menu__label'}>
 					<div className={`c-content-type c-content-type--${menuItemInfo.type}`}>
 						<Icon name={CATEGORY_TO_ICON[menuItemInfo.type]} />
 						{menuItemInfo.label}

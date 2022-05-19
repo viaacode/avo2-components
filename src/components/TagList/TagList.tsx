@@ -4,7 +4,7 @@ import React, { FunctionComponent, MouseEvent } from 'react';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
-import './TagList.scss';
+import styles from './TagList.module.scss';
 
 export interface TagOptionSchema {
 	label: string;
@@ -36,13 +36,13 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 	const safeOnTagClicked = onTagClicked || (() => {});
 
 	return !!tags && !!tags.length ? (
-		<ul className={classnames(className, 'c-tag-list')}>
+		<ul className={classnames(className, styles['c-tag-list'])}>
 			{tags.map((tag: TagOptionSchema, index) => (
 				<li
 					className={classnames({
-						'c-tag': bordered,
+						[styles['c-tag']]: bordered,
 						'c-label': !bordered,
-						'c-tag__active': selectable && tag.active,
+						[styles['c-tag__active']]: selectable && tag.active,
 					})}
 					key={tag.id}
 				>
@@ -63,7 +63,7 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 					{swatches || closable ? (
 						<p
 							className={classnames({
-								'c-tag__label': !swatches,
+								[styles['c-tag__label']]: !swatches,
 								'c-label-text': swatches,
 							})}
 							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}

@@ -69,12 +69,12 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 								// eslint-disable-next-line jsx-a11y/anchor-is-valid
 								<a
 									key={index}
-									className="c-menu__item"
+									className={'c-menu__item'}
 									onClick={() =>
 										avatar.onClick ? avatar.onClick(avatar) : undefined
 									}
 								>
-									<div className="c-menu__label">
+									<div className={'c-menu__label'}>
 										<Flex orientation="vertical" center>
 											<Avatar
 												initials={avatar.initials}
