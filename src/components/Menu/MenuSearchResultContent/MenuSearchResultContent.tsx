@@ -4,7 +4,6 @@ import React, { FunctionComponent } from 'react';
 import { DefaultProps, EnglishContentType } from '../../../types';
 import { Icon } from '../../Icon/Icon';
 import { CATEGORY_TO_ICON } from '../../Thumbnail/Thumbnail';
-import menuStyles from '../Menu.module.scss';
 import { MenuContent } from '../MenuContent/MenuContent';
 
 export interface MenuSearchResultItemInfoSchema {
@@ -38,11 +37,11 @@ export const MenuSearchResultContent: FunctionComponent<MenuSearchResultContentP
 	const renderMenuItem = (menuItemInfo: MenuSearchResultItemInfoSchema) => {
 		return (
 			<div
-				className={classnames(className, menuStyles['c-menu__item'])}
+				className={classnames(className, 'c-menu__item')}
 				onClick={() => onClick(menuItemInfo.id)}
 				key={`menu-search-item-${menuItemInfo.id}`}
 			>
-				<div className={menuStyles['c-menu__label']}>
+				<div className={'c-menu__label'}>
 					<div className={`c-content-type c-content-type--${menuItemInfo.type}`}>
 						<Icon name={CATEGORY_TO_ICON[menuItemInfo.type]} />
 						{menuItemInfo.label}

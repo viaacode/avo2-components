@@ -6,7 +6,6 @@ import { Avatar, AvatarPropsSchema } from '../Avatar/Avatar';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots';
 import { Flex } from '../Flex/Flex';
-import menuStyles from '../Menu/Menu.module.scss';
 import { Spacer } from '../Spacer/Spacer';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
@@ -70,12 +69,12 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 								// eslint-disable-next-line jsx-a11y/anchor-is-valid
 								<a
 									key={index}
-									className={menuStyles['c-menu__item']}
+									className={'c-menu__item'}
 									onClick={() =>
 										avatar.onClick ? avatar.onClick(avatar) : undefined
 									}
 								>
-									<div className={menuStyles['c-menu__label']}>
+									<div className={'c-menu__label'}>
 										<Flex orientation="vertical" center>
 											<Avatar
 												initials={avatar.initials}
