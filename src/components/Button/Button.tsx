@@ -9,7 +9,6 @@ import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 
 import skins from './Button-skins.module.scss';
 import styles from './Button.module.scss';
-import './Button.scss';
 import { ButtonTypeSchema } from './Button.types';
 
 export interface ButtonPropsSchema extends DefaultProps {
