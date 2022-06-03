@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { cloneDeep } from 'lodash-es';
-import React, { FunctionComponent, ReactNode, useState } from 'react';
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 
 import { useTableSort } from '../../hooks/useTableSort';
 import { DefaultProps } from '../../types';
@@ -68,6 +68,10 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 	const [sortColumn, sortOrder, handleSortClick] = useTableSort<KeyValueEditorTableColsSchema>(
 		'0'
 	);
+
+	useEffect(() => {
+		setPage(0);
+	}, [filterString]);
 
 	const getPaginatedData = (): [KeyValuePairs, number] => {
 		const filteredItems = data.filter((row) => {
