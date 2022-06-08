@@ -26,7 +26,7 @@ export const Tabs: FunctionComponent<TabsPropsSchema> = ({
 		})}
 	>
 		{tabs.map((tab) => (
-			<Tab key={tab.label} {...tab} dark={dark} onClick={() => onClick(tab.id)} />
+			<Tab key={tab.id} {...tab} dark={dark} onClick={() => onClick(tab.id)} />
 		))}
 	</nav>
 );
