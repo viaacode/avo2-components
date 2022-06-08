@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
@@ -8,7 +8,7 @@ import { IconNameSchema } from '../../Icon/Icon.types';
 import './Tab.scss';
 
 export interface TabPropsSchema extends DefaultProps {
-	label: ReactNode;
+	label: string;
 	id: string | number;
 	icon?: IconNameSchema;
 	active?: boolean;
