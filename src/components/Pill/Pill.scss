@@ -1,0 +1,25 @@
+
+@import '../../styles/settings/colors';
+@import '../../styles/settings/variables';
+
+$component: 'c-pill';
+
+$pill-border-radius: 8px;
+
+.#{$component} {
+	display: inline-block;
+	line-height: $pill-border-radius * 2;
+	padding: 0 $pill-border-radius;
+    border-radius: $pill-border-radius;
+    border: 1px solid $color-gray-200;
+    color: $color-gray-200;
+    font-size: 11px;
+    font-weight: 700;
+    overflow: hidden;
+
+    &--active {
+        background-color: $color-teal-bright;
+        border-color: $color-teal-bright;
+        color: $color-white;
+    }
+}
