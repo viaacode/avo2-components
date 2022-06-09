@@ -25,7 +25,7 @@ $c-tabs-item-dark-hover-border-color: $color-gray-25 !default;
 	color: $c-tabs-item-color;
 	padding: 1.2rem;
 	font-weight: 500;
-	transition: color 0.1s linear;
+	transition: color 0.3s ease-in-out;
 
 	&.c-tab-item__dark {
 		color: $c-tabs-item-dark-color;
@@ -42,11 +42,32 @@ $c-tabs-item-dark-hover-border-color: $color-gray-25 !default;
 		height: 1.8rem;
 	}
 
+	// label wrapper
+	& > span {
+		display: grid;
+		gap: $g-spacer-unit;
+		grid-template-columns: auto auto;
+
+		.c-pill {
+			align-self: center;
+		}
+	}
+
 	&:hover {
 		color: $c-tabs-item-active-color;
 
+		.c-pill:not(.c-pill--active) {
+			color: $c-tabs-item-active-color;
+			border-color: $c-tabs-item-active-color;
+		}
+
 		&.c-tab-item__dark {
 			color: $c-tabs-item-dark-active-color;
+
+			.c-pill:not(.c-pill--active) {
+				color: $c-tabs-item-dark-active-color;
+				border-color: $c-tabs-item-dark-active-color;
+			}
 		}
 	}
 

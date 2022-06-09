@@ -3,16 +3,27 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import { IconNameSchema } from '../Icon/Icon.types';
+import { Pill, PillVariants } from '../Pill/Pill';
 import { Tabs } from '../Tabs/Tabs';
 
 const mockTabs = [
 	{
-		label: 'Videos',
+		label: (
+			<>
+				Videos
+				<Pill variants={[PillVariants.active]}>active</Pill>
+			</>
+		),
 		id: 'video',
 		active: true,
 	},
 	{
-		label: 'Audio',
+		label: (
+			<>
+				Audio
+				<Pill>inactive</Pill>
+			</>
+		),
 		id: 'audio',
 	},
 	{
