@@ -17,6 +17,11 @@ $pill-border-radius: 8px;
     font-weight: 700;
     overflow: hidden;
 
+    &:hover {
+        border-color: $color-teal-bright;
+        color: $color-teal-bright;
+    }
+
     &--active {
         background-color: $color-teal-bright;
         border-color: $color-teal-bright;
