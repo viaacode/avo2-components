@@ -51,6 +51,7 @@ import { MultiRangePropsSchema } from './MultiRange/MultiRange';
 import { NavbarPropsSchema } from './Navbar/Navbar';
 import { PaginationPropsSchema } from './Pagination/Pagination';
 import { PanelPropsSchema } from './Panel/Panel';
+import { PillPropsSchema } from './Pill/Pill';
 import { QuotePropsSchema } from './Quote/Quote';
 import { RadioButtonPropsSchema } from './RadioButton/RadioButton';
 import { RadioButtonGroupPropsSchema } from './RadioButtonGroup/RadioButtonGroup';
@@ -300,3 +301,6 @@ export type ToolbarTitleProps = ToolbarTitlePropsSchema;
 export { Tooltip } from './Tooltip/Tooltip';
 export type TooltipProps = TooltipPropsSchema;
 export { TooltipContent, TooltipTrigger } from './Tooltip/Tooltip.slots';
+
+export { Pill, PillVariants } from './Pill/Pill';
+export type PillProps = PillPropsSchema;
