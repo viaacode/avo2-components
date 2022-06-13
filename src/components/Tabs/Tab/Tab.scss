@@ -44,12 +44,13 @@ $c-tabs-item-dark-hover-border-color: $color-gray-25 !default;
 
 	// label wrapper
 	& > span {
-		display: grid;
-		gap: $g-spacer-unit;
-		grid-template-columns: auto auto;
+		display: flex;
+		flex-wrap: nowrap;
+		flex-direction: row;
 
 		.c-pill {
 			align-self: center;
+			margin-left: 0.8rem;
 		}
 	}
 
