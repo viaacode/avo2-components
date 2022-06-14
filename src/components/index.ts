@@ -15,6 +15,7 @@ import { ButtonToolbarPropsSchema } from './ButtonToolbar/ButtonToolbar';
 import { CheckboxPropsSchema } from './Checkbox/Checkbox';
 import { CheckboxGroupPropsSchema } from './CheckboxGroup/CheckboxGroup';
 import { ContainerPropsSchema } from './Container/Container';
+import { ContentInputPropsSchema } from './ContentInput';
 import { CTAPropsSchema } from './CTA/CTA';
 import { DatePickerPropsSchema } from './DatePicker/DatePicker';
 import { DropdownPropsSchema } from './Dropdown/Dropdown';
@@ -304,3 +305,6 @@ export { TooltipContent, TooltipTrigger } from './Tooltip/Tooltip.slots';
 
 export { Pill, PillVariants } from './Pill/Pill';
 export type PillProps = PillPropsSchema;
+
+export { ContentInput } from './ContentInput';
+export type ContentInputProps = ContentInputPropsSchema;
