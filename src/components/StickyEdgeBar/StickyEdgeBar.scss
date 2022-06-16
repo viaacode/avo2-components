@@ -1,0 +1,27 @@
+@use 'sass:math';
+@import '../../styles/settings/colors';
+@import '../../styles/settings/variables';
+
+$c-sticky-edge-bar-border-radius: 4px;
+
+.c-sticky-edge-bar {
+    position: sticky;
+    padding: ($g-spacer-unit * 2) ($g-spacer-unit * 3);
+
+    &--position--bottom {
+        bottom: 0;
+        border-top-left-radius: $c-sticky-edge-bar-border-radius;
+        border-top-right-radius: $c-sticky-edge-bar-border-radius;
+    }
+
+    &--position--top {
+        top: 0;
+        border-bottom-left-radius: $c-sticky-edge-bar-border-radius;
+        border-bottom-right-radius: $c-sticky-edge-bar-border-radius;
+    }
+
+    &--color--teal-bright {
+        color: #fff;
+        background-color: $color-teal-bright;
+    }
+}

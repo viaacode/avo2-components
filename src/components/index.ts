@@ -60,6 +60,7 @@ import { SearchResultPropsSchema } from './SearchResult/SearchResult';
 import { SelectOptionSchema, SelectPropsSchema } from './Select/Select';
 import { SpacerOptionSchema, SpacerPropsSchema } from './Spacer/Spacer';
 import { SpinnerPropsSchema } from './Spinner/Spinner';
+import { StickyEdgeBarPropsSchema } from './StickyEdgeBar/StickyEdgeBar';
 import { TableColumnSchema, TablePropsSchema } from './Table/Table';
 import { TabPropsSchema } from './Tabs/Tab/Tab';
 import { TabsPropsSchema } from './Tabs/Tabs';
@@ -308,3 +309,6 @@ export type PillProps = PillPropsSchema;
 
 export { ContentInput } from './ContentInput';
 export type ContentInputProps = ContentInputPropsSchema;
+
+export { StickyEdgeBar } from './StickyEdgeBar/StickyEdgeBar';
+export type StickyEdgeBarProps = StickyEdgeBarPropsSchema;
