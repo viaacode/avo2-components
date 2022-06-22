@@ -9,6 +9,7 @@ import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Panel } from '../Panel/Panel';
 import { PanelBody } from '../Panel/PanelBody/PanelBody';
+import { RadioButton } from '../RadioButton/RadioButton';
 import { Spacer } from '../Spacer/Spacer';
 
 import './Table.scss';
@@ -61,6 +62,7 @@ export interface TablePropsSchema extends DefaultProps {
 	untable?: boolean;
 	variant?: 'bordered' | 'invisible' | 'styled';
 	showCheckboxes?: boolean;
+	showRadioButtons?: boolean;
 	useCards?: boolean;
 	selectedItemIds?: (string | number)[];
 	onSelectionChanged?: (selectedItemIds: (string | number)[]) => void;
@@ -86,6 +88,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	untable,
 	variant,
 	showCheckboxes = false,
+	showRadioButtons = false,
 	useCards = false,
 	selectedItemIds = [],
 	onSelectionChanged = () => {},
@@ -129,6 +132,14 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 			);
 		} else {
 			onSelectionChanged([...selectedItemIds, getRowKey(item)]);
+		}
+	};
+
+	const toggleRadioItemSelection = (item: any) => {
+		if (isItemSelected(item)) {
+			onSelectionChanged([]);
+		} else {
+			onSelectionChanged([getRowKey(item)]);
 		}
 	};
 
@@ -211,6 +222,9 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 											/>
 										</th>
 									)}
+									{showRadioButtons && (
+										<th className="c-table__checkbox-column" />
+									)}
 									{columns.map(renderHeading)}
 								</tr>
 							</thead>
@@ -230,6 +244,25 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 											>
 												<Checkbox
 													label=""
+													checked={
+														!!selectedItemIds.find(
+															(selectedItemId) =>
+																selectedItemId ===
+																getRowKey(rowData)
+														)
+													}
+												/>
+											</td>
+										)}
+										{showRadioButtons && (
+											<td
+												className="c-table__checkbox-column u-clickable"
+												onClick={() => toggleRadioItemSelection(rowData)}
+											>
+												<RadioButton
+													label=""
+													name={getRowKey(rowData)}
+													value={getRowKey(rowData)}
 													checked={
 														!!selectedItemIds.find(
 															(selectedItemId) =>

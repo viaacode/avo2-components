@@ -37,7 +37,7 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 	onChange = () => {},
 }) => {
 	function onValueChange(
-		changedValue: ValueType<SelectOptionSchema, boolean>,
+		changedValue: ValueType<SelectOptionSchema>,
 		actionMeta: ActionMeta<SelectOptionSchema>
 	) {
 		if (actionMeta.action !== 'create-option') {

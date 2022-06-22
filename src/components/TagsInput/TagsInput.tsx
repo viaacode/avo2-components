@@ -41,7 +41,7 @@ export const TagsInput: FunctionComponent<TagsInputPropsSchema> = ({
 	onCreate = () => {},
 }) => {
 	function onValueChange(
-		changedValues: ValueType<TagInfoSchema, boolean>,
+		changedValues: ValueType<TagInfoSchema>,
 		actionMeta: ActionMeta<TagInfoSchema>
 	) {
 		if (actionMeta.action === 'create-option') {
