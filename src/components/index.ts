@@ -18,7 +18,11 @@ import { ContainerPropsSchema } from './Container/Container';
 import { ContentInputPropsSchema } from './ContentInput';
 import { CTAPropsSchema } from './CTA/CTA';
 import { DatePickerPropsSchema } from './DatePicker/DatePicker';
-import { DeadlineIndicatorPropsSchema } from './DeadlineIndicator/DeadlineIndicator';
+import {
+	DeadlineIndicatorColorsSchema,
+	DeadlineIndicatorPropsSchema,
+	DeadlineIndicatorShapesSchema,
+} from './DeadlineIndicator/DeadlineIndicator';
 import { DropdownPropsSchema } from './Dropdown/Dropdown';
 import { ExpandableContainerPropsSchema } from './ExpandableContainer/ExpandableContainer';
 import { FlexPropsSchema } from './Flex/Flex';
@@ -316,3 +320,5 @@ export type StickyEdgeBarProps = StickyEdgeBarPropsSchema;
 
 export { DeadlineIndicator } from './DeadlineIndicator/DeadlineIndicator';
 export type DeadlineIndicatorProps = DeadlineIndicatorPropsSchema;
+export type DeadlineIndicatorColors = DeadlineIndicatorColorsSchema;
+export type DeadlineIndicatorShapes = DeadlineIndicatorShapesSchema;

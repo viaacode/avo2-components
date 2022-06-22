@@ -5,9 +5,12 @@ import { DefaultProps } from '../../types';
 
 import './DeadlineIndicator.scss';
 
+export type DeadlineIndicatorColorsSchema = 'error' | 'yellow' | 'success';
+export type DeadlineIndicatorShapesSchema = 'square' | 'diamond' | 'circle';
+
 export interface DeadlineIndicatorPropsSchema extends DefaultProps {
-	color?: 'error' | 'yellow' | 'success';
-	shape?: 'square' | 'diamond' | 'circle';
+	color?: DeadlineIndicatorColorsSchema;
+	shape?: DeadlineIndicatorShapesSchema;
 }
 
 export const DeadlineIndicator: FunctionComponent<DeadlineIndicatorPropsSchema> = ({
