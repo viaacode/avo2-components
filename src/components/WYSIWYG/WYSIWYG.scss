@@ -1,4 +1,6 @@
 @import '../../styles/settings/colors';
+@import '../../styles/settings/variables';
+@import '../../styles/mixins/textfield';
 
 .c-content table td {
 	border: 0.1rem solid $color-gray-100;
@@ -8,6 +10,7 @@
 	border: 0.1rem solid $color-gray-150;
 	border-radius: 0.3rem;
 	background-color: #fff;
+	@include textfield-transition;
 
 	&.disabled {
 		.bf-controlbar {
@@ -17,7 +20,8 @@
 		background-color: $color-gray-100;
 	}
 
-	ul, ol {
+	ul,
+	ol {
 		margin: 0;
 		padding: 0.5rem;
 	}
