@@ -10,18 +10,17 @@ import { AlignOptions } from '../../types';
 import { BlockButtons } from './BlockButtons';
 import { BUTTONS_MOCK } from './BlockButtons.mock';
 
-const renderBlockButtons = (
-	align?: AlignOptions,
-	dividers = false,
-	type: ButtonTypeSchema = 'secondary'
-) => () => (
-	<BlockButtons
-		elements={BUTTONS_MOCK.map((button) => ({ ...button, type }))}
-		align={align}
-		hasDividers={dividers}
-		renderLink={testRenderLink(action('button clicked'))}
-	/>
-);
+const renderBlockButtons =
+	(align?: AlignOptions, dividers = false, type: ButtonTypeSchema = 'secondary') =>
+	() =>
+		(
+			<BlockButtons
+				elements={BUTTONS_MOCK.map((button) => ({ ...button, type }))}
+				align={align}
+				hasDividers={dividers}
+				renderLink={testRenderLink(action('button clicked'))}
+			/>
+		);
 
 storiesOf('blocks/BlockButtons', module)
 	.addParameters({ jest: ['BlockButtons'] })

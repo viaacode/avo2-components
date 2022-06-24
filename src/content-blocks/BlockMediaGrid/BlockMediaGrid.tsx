@@ -151,15 +151,8 @@ export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 	};
 
 	const renderMediaCard = (mediaListItem: MediaListItem) => {
-		const {
-			category,
-			metadata,
-			thumbnail,
-			title,
-			buttonLabel,
-			buttonIcon,
-			buttonType,
-		} = mediaListItem;
+		const { category, metadata, thumbnail, title, buttonLabel, buttonIcon, buttonType } =
+			mediaListItem;
 
 		return (
 			<MediaCard category={category} orientation={orientation} title={title}>

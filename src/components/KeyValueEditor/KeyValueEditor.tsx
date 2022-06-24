@@ -65,9 +65,8 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 }) => {
 	const [filterString, setFilterString] = useState<string>('');
 	const [page, setPage] = useState<number>(0);
-	const [sortColumn, sortOrder, handleSortClick] = useTableSort<KeyValueEditorTableColsSchema>(
-		'0'
-	);
+	const [sortColumn, sortOrder, handleSortClick] =
+		useTableSort<KeyValueEditorTableColsSchema>('0');
 
 	const getPaginatedData = (): [KeyValuePairs, number] => {
 		const filteredItems = data.filter((row) => {
