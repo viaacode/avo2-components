@@ -6,7 +6,7 @@ $c-sticky-edge-bar-border-radius: 4px;
 
 .c-sticky-edge-bar {
 	position: sticky;
-	padding: (math.div($g-spacer-unit, 1rem) * 2) (math.div($g-spacer-unit, 1rem) * 3);
+	padding: (math.div($g-spacer-unit, 1rem) * 2px) (math.div($g-spacer-unit, 1rem) * 3px);
 
 	&--position--bottom {
 		bottom: 0;
