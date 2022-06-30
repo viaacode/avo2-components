@@ -27,7 +27,7 @@ export interface SearchResultPropsSchema extends DefaultProps {
 	maxDescriptionLength?: number;
 	isBookmarked: boolean | null;
 	date: string;
-	bookmarkCount: number;
+	bookmarkCount: number | null; // null hides the counter
 	viewCount: number;
 	tags?: TagOptionSchema[];
 	onToggleBookmark?: (active: boolean) => void;
@@ -82,7 +82,9 @@ export const SearchResult: FunctionComponent<SearchResultPropsSchema> = ({
 						<MetaData category={type}>
 							<MetaDataItem label={date} />
 							<MetaDataItem label={String(viewCount)} icon="eye" />
-							<MetaDataItem label={String(bookmarkCount)} icon="bookmark" />
+							{!isNil(bookmarkCount) && (
+								<MetaDataItem label={String(bookmarkCount)} icon="bookmark" />
+							)}
 						</MetaData>
 						<TagList
 							tags={tags}
