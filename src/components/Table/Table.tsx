@@ -234,7 +234,9 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 								{data.map((rowData, rowIndex) => (
 									<tr
 										key={`table-row-${getRowKey(rowData)}`}
-										className={onRowClick ? 'u-clickable' : ''}
+										className={classnames(className, {
+											'u-clickable': !!onRowClick,
+										})}
 										onClick={() => handleRowClick(rowData)}
 									>
 										{showCheckboxes && (
