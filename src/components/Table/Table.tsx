@@ -309,7 +309,9 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 				{(data || []).map((rowData, rowIndex) => (
 					<div
 						key={`table-card-${getRowKey(rowData)}`}
-						className={onRowClick || showCheckboxes ? 'u-clickable' : ''}
+						className={classnames(className, 'c-table__card', {
+							'u-clickable': !!onRowClick || showCheckboxes,
+						})}
 						onClick={() => handleRowClick(rowData)}
 					>
 						<Spacer margin="bottom">
