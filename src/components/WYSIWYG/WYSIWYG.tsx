@@ -1,5 +1,8 @@
 import React, { FunctionComponent, Suspense } from 'react';
 
+import { Flex } from '../Flex/Flex';
+import { Spinner } from '../Spinner/Spinner';
+
 import { WYSIWYGPropsSchema } from './WYSIWYG.types';
 
 const WYSIWYGInternal = React.lazy(() => import('./WYSIWYGInternal'));
@@ -7,7 +10,11 @@ const WYSIWYGInternal = React.lazy(() => import('./WYSIWYGInternal'));
 export const WYSIWYG: FunctionComponent<WYSIWYGPropsSchema> = (props) => {
 	return (
 		<Suspense
-			fallback={<span>loading</span>} // TODO Used components are not included in main build and not loaded
+			fallback={
+				<Flex orientation="horizontal" center>
+					<Spinner size="large" />
+				</Flex>
+			}
 		>
 			<WYSIWYGInternal {...props} />
 		</Suspense>
