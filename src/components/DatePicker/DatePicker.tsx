@@ -3,7 +3,11 @@ import { isValid, parse, setHours, setMinutes } from 'date-fns';
 // https://github.com/Hacker0x01/react-datepicker/issues/1815#issuecomment-513215416
 import nl from 'date-fns/locale/nl';
 import React, { FunctionComponent } from 'react';
-import ReactDatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
+import ReactDatePicker, {
+	ReactDatePickerProps,
+	registerLocale,
+	setDefaultLocale,
+} from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { DefaultProps } from '../../types';
@@ -14,7 +18,9 @@ import './DatePicker.scss';
 registerLocale('nl', nl);
 setDefaultLocale('nl');
 
-export interface DatePickerPropsSchema extends DefaultProps {
+export interface DatePickerPropsSchema
+	extends DefaultProps,
+		Omit<ReactDatePickerProps, 'onChange' | 'value'> {
 	disabled?: boolean;
 	required?: boolean;
 	showTimeInput?: boolean;
@@ -31,10 +37,12 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	placeholder,
 	value,
 	onChange = () => {},
+	...rest
 }) => {
 	return (
 		<div className={classnames(className, 'c-input-with-icon')}>
 			<ReactDatePicker
+				{...rest}
 				className="c-input"
 				selected={value}
 				disabled={disabled}
