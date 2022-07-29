@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { get } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
-import ReactSelect from 'react-select';
+import ReactSelect, { NamedProps } from 'react-select';
 import { ActionMeta, ValueType } from 'react-select/src/types';
 
 import { DefaultProps } from '../../types';
@@ -14,7 +14,9 @@ export interface SelectOptionSchema<T = string> {
 	disabled?: boolean;
 }
 
-export interface SelectPropsSchema extends DefaultProps {
+export interface SelectPropsSchema
+	extends DefaultProps,
+		Omit<NamedProps, 'onChange' | 'value' | 'options'> {
 	options: SelectOptionSchema[];
 	id?: string;
 	disabled?: boolean;
@@ -35,6 +37,7 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 	placeholder,
 	value = null,
 	onChange = () => {},
+	...props
 }) => {
 	function onValueChange(
 		changedValue: ValueType<SelectOptionSchema, boolean>,
@@ -56,12 +59,13 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 			isDisabled={disabled}
 			isLoading={loading}
 			isClearable={clearable}
-			isOptionDisabled={(option) => !!option.disabled}
+			isOptionDisabled={(option) => !!(option as SelectOptionSchema).disabled}
 			placeholder={placeholder}
 			onChange={onValueChange}
 			noOptionsMessage={() => 'Geen opties'}
 			loadingMessage={() => 'Bezig met laden'}
 			formatCreateLabel={(value: string) => `"${value}" aanmaken`}
+			{...props}
 		/>
 	);
 };
