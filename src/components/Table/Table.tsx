@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { isNil, isString } from 'lodash-es';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Checkbox } from '../Checkbox/Checkbox';
@@ -320,14 +320,14 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 									{columns
 										.map((col) => col.id)
 										.map((columnId, columnIndex) => (
-											<div key={columnIndex}>
+											<Fragment key={columnIndex}>
 												{renderCell(
 													rowData,
 													columnId,
 													rowIndex,
 													columnIndex
 												)}
-											</div>
+											</Fragment>
 										))}
 								</PanelBody>
 							</Panel>
