@@ -58,9 +58,29 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 				strictParsing
 				onChangeRaw={(event) => {
 					const rawInput = (event.target.value || '').trim().replace(/[^0-9]+/g, '/');
-					const newDate = parse(rawInput, 'dd/MM/yyyy', new Date(), { locale: nl });
-					if (isValid(newDate)) {
-						onChange(newDate);
+					try {
+						const newDate = parse(rawInput, 'dd/MM/yyyy HH:mm', new Date(), {
+							locale: nl,
+						});
+						if (isValid(newDate)) {
+							onChange(newDate);
+							return;
+						}
+					} catch (err) {
+						console.error(err);
+						// Ignore parsing errors for incomplete typed dates
+					}
+					try {
+						const newDate = parse(rawInput, 'dd/MM/yyyy', new Date(), {
+							locale: nl,
+						});
+						if (isValid(newDate)) {
+							onChange(newDate);
+							return;
+						}
+					} catch (err) {
+						console.error(err);
+						// Ignore parsing errors for incomplete typed dates
 					}
 				}}
 			/>
