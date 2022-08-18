@@ -56,6 +56,15 @@ storiesOf('components/DatePicker', module)
 			</Spacer>
 		</Fragment>
 	))
+	.add('DateTimePicker disabled', () => (
+		<Fragment>
+			<Spacer margin="bottom">
+				<DatePickerStoryComponent>
+					<DatePicker showTimeInput onChange={action('onChange')} disabled />
+				</DatePickerStoryComponent>
+			</Spacer>
+		</Fragment>
+	))
 	.add('DateTimePicker default value', () => (
 		<Fragment>
 			<Spacer margin="bottom">

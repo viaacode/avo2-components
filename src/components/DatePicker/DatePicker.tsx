@@ -85,6 +85,8 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 						value={value ? format(value, 'HH:mm') : undefined}
 						onChange={(evt) => handleChangedTime(evt.target.value)}
 						className="c-input"
+						placeholder="uu:mm"
+						disabled={disabled}
 					>
 						{[
 							...times(24).map((hour) => `${padStart(String(hour), 2, '0')}:00`),
