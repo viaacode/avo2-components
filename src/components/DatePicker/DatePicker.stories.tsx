@@ -55,4 +55,13 @@ storiesOf('components/DatePicker', module)
 				</DatePickerStoryComponent>
 			</Spacer>
 		</Fragment>
+	))
+	.add('DateTimePicker default value', () => (
+		<Fragment>
+			<Spacer margin="bottom">
+				<DatePickerStoryComponent defaultValue={new Date(2022, 7, 12, 23, 59)}>
+					<DatePicker showTimeInput onChange={action('onChange')} />
+				</DatePickerStoryComponent>
+			</Spacer>
+		</Fragment>
 	));

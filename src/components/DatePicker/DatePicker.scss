@@ -4,19 +4,21 @@
 }
 
 .react-datepicker__day,
-.react-datepicker__day-name,
-.react-datepicker__time-name {
+.react-datepicker__day-name {
 	margin: 2.3px;
 	width: 23px;
 	line-height: 23.8px
 }
 
-// Issues with datetime picker on windows: https://github.com/Hacker0x01/react-datepicker/issues/1973
-.react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
-	left: 180px;
-}
+.c-datepicker {
+	display: flex;
 
-.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
-	height: calc(195px + (1.7rem / 2)) !important;
-	width: calc(100% - 1px);
+	&--date .c-input {
+		border-radius: 4px 0 0 4px;
+	}
+
+	&--time .c-input {
+		border-left: 0;
+		border-radius: 0 4px 4px 0;
+	}
 }
