@@ -4,9 +4,14 @@ import { format } from 'date-fns';
 import nl from 'date-fns/locale/nl';
 import { padStart, times } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
-import ReactDatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
+import ReactDatePicker, {
+	ReactDatePickerProps,
+	registerLocale,
+	setDefaultLocale,
+} from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
 import './DatePicker.scss';
@@ -14,7 +19,9 @@ import './DatePicker.scss';
 registerLocale('nl', nl);
 setDefaultLocale('nl');
 
-export interface DatePickerPropsSchema {
+export interface DatePickerPropsSchema
+	extends DefaultProps,
+		Omit<ReactDatePickerProps, 'onChange' | 'value'> {
 	disabled?: boolean;
 	required?: boolean;
 	showTimeInput?: boolean;
@@ -23,7 +30,6 @@ export interface DatePickerPropsSchema {
 	defaultHours?: number;
 	defaultMinutes?: number;
 	onChange?: (date: Date | null) => void;
-	className?: string;
 }
 
 export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
