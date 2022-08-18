@@ -12,13 +12,28 @@
 
 .c-datepicker {
 	display: flex;
+	width: 100%;
 
-	&--date .c-input {
-		border-radius: 4px 0 0 4px;
+	.react-datepicker-wrapper {
+		width: 100%;
 	}
 
-	&--time .c-input {
-		border-left: 0;
-		border-radius: 0 4px 4px 0;
+	&--date {
+		flex-grow: 1;
+		min-width: 14rem;
+
+		.c-input {
+			border-radius: 4px 0 0 4px;
+		}
+	}
+
+	&--time {
+		flex-grow: 1;
+
+		.c-input {
+			border-left: 0;
+			border-radius: 0 4px 4px 0;
+			min-width: 7rem;
+		}
 	}
 }
