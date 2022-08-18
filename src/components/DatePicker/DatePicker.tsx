@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 // https://github.com/Hacker0x01/react-datepicker/issues/1815#issuecomment-513215416
 import nl from 'date-fns/locale/nl';
 import { padStart, times } from 'lodash-es';
@@ -27,8 +27,7 @@ export interface DatePickerPropsSchema
 	showTimeInput?: boolean;
 	placeholder?: string;
 	value?: Date | null;
-	defaultHours?: number;
-	defaultMinutes?: number;
+	defaultTime?: string;
 	onChange?: (date: Date | null) => void;
 }
 
@@ -37,6 +36,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	disabled = false,
 	required = false,
 	showTimeInput = false,
+	defaultTime = '00:00',
 	placeholder,
 	value,
 	onChange = () => {
@@ -44,25 +44,37 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	},
 }) => {
 	const handleChangedDate = (newDate: Date) => {
-		const newOutput = new Date(
-			newDate.getFullYear(),
-			newDate.getMonth(),
-			newDate.getDate(),
-			value?.getHours(),
-			value?.getMinutes()
-		);
-		onChange(newOutput);
+		try {
+			const newOutput = new Date(
+				newDate.getFullYear(),
+				newDate.getMonth(),
+				newDate.getDate(),
+				value?.getHours() ?? parseInt(defaultTime?.split(':')?.[0] || '0', 10),
+				value?.getMinutes() ?? parseInt(defaultTime?.split(':')?.[1] || '0', 10)
+			);
+			if (isValid(newOutput)) {
+				onChange(newOutput);
+			}
+		} catch (err) {
+			// ignore invalid dates
+		}
 	};
 
 	const handleChangedTime = (newTime: string) => {
-		const newOutput = new Date(
-			value?.getFullYear() ?? new Date().getFullYear(),
-			value?.getMonth() ?? new Date().getMonth(),
-			value?.getDate() ?? new Date().getDate(),
-			parseInt(newTime?.split(':')?.[0] || '0', 10) ?? value?.getHours(),
-			parseInt(newTime?.split(':')?.[1] || '0', 10) ?? value?.getMinutes()
-		);
-		onChange(newOutput);
+		try {
+			const newOutput = new Date(
+				value?.getFullYear() ?? new Date().getFullYear(),
+				value?.getMonth() ?? new Date().getMonth(),
+				value?.getDate() ?? new Date().getDate(),
+				parseInt(newTime?.split(':')?.[0] || '0', 10) ?? value?.getHours(),
+				parseInt(newTime?.split(':')?.[1] || '0', 10) ?? value?.getMinutes()
+			);
+			if (isValid(newOutput)) {
+				onChange(newOutput);
+			}
+		} catch (err) {
+			// ignore invalid dates
+		}
 	};
 
 	return (
@@ -92,7 +104,9 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 							...times(24).map((hour) => `${padStart(String(hour), 2, '0')}:00`),
 							'23:59',
 						].map((time) => (
-							<option value={time}>{time}</option>
+							<option key={time} value={time}>
+								{time}
+							</option>
 						))}
 					</select>
 					<Icon name="clock" />
