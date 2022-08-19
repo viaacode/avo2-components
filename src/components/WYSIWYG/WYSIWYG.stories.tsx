@@ -89,4 +89,14 @@ storiesOf('components/WYSIWYG', module)
 				<WYSIWYG controls={[...WYSIWYG_OPTIONS, 'separator', 'table']} />
 			</WYSIWYGStoryComponent>
 		</>
+	))
+	.add('WYSIWYG disable some headings', () => (
+		<WYSIWYGStoryComponent>
+			<WYSIWYG
+				initialHtml={
+					'<h2>Welcome!</h2><p>This prefilled content is all <strong>editable</strong>.</p>'
+				}
+				enabledHeadings={['h3', 'h4', 'normal']}
+			/>
+		</WYSIWYGStoryComponent>
 	));
