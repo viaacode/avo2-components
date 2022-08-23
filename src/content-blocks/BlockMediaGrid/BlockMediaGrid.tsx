@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { get, last } from 'lodash-es';
-import React, { FunctionComponent, ReactNode, useState } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import {
 	Button,
@@ -12,8 +12,6 @@ import {
 	MediaCardThumbnail,
 	MetaData,
 	MetaDataItem,
-	Modal,
-	ModalBody,
 	Spacer,
 	Thumbnail,
 	Toolbar,
@@ -68,11 +66,10 @@ export interface BlockMediaGridProps extends DefaultProps {
 	ctaWidth?: string;
 	ctaButtonAction?: ButtonAction;
 	fullWidth?: boolean;
-	openMediaInModal?: boolean;
 	elements: MediaListItem[];
 	orientation?: Orientation;
 	renderLink?: RenderLinkFunction;
-	renderPlayerModalBody?: (item: MediaListItem) => ReactNode;
+	renderMediaCardWrapper: (mediaCard: ReactNode, item: MediaListItem) => ReactNode;
 }
 
 export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
@@ -93,20 +90,13 @@ export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 	ctaButtonIcon,
 	ctaButtonAction,
 	fullWidth = false,
-	openMediaInModal = false,
 	className,
 	elements = [],
 	orientation,
 	renderLink = defaultRenderLinkFunction,
-	renderPlayerModalBody = () => null,
+	renderMediaCardWrapper,
 }) => {
 	const hasCTA = ctaTitle || ctaButtonLabel || ctaContent;
-
-	const [activeItem, setActiveItem] = useState<MediaListItem | null>(null);
-
-	const openInModal = (mediaListItem: MediaListItem): boolean => {
-		return openMediaInModal && get(mediaListItem, 'itemAction.type') === 'ITEM';
-	};
 
 	const renderCTA = () => {
 		return (
@@ -220,18 +210,7 @@ export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 				{elements.map((mediaListItem, i) => {
 					return (
 						<Column key={`block-media-list-${i}`} size={fullWidth ? '3-12' : '3-3'}>
-							{openInModal(mediaListItem) ? (
-								<div onClick={() => setActiveItem(mediaListItem)}>
-									{renderMediaCard(mediaListItem)}
-								</div>
-							) : (
-								renderLink(
-									mediaListItem.itemAction,
-									renderMediaCard(mediaListItem),
-									mediaListItem.title,
-									mediaListItem.buttonAltTitle || mediaListItem.title
-								)
-							)}
+							{renderMediaCardWrapper(renderMediaCard(mediaListItem), mediaListItem)}
 						</Column>
 					);
 				})}
@@ -248,14 +227,6 @@ export const BlockMediaGrid: FunctionComponent<BlockMediaGridProps> = ({
 					</Column>
 				)}
 			</Grid>
-			<Modal
-				isOpen={!!activeItem && !!activeItem.src}
-				onClose={() => setActiveItem(null)}
-				scrollable
-				size="medium"
-			>
-				<ModalBody>{!!activeItem && renderPlayerModalBody(activeItem)}</ModalBody>
-			</Modal>
 		</div>
 	);
 };
