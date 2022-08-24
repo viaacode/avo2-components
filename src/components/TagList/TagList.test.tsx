@@ -1,4 +1,5 @@
 import { shallow } from 'enzyme';
+import { noop } from 'lodash-es';
 import React from 'react';
 
 import { Icon } from '../Icon/Icon';
@@ -36,7 +37,7 @@ describe('<TagList />', () => {
 		const tagListComponent = shallow(<TagList tags={tags} />);
 		const tagListClosableComponent = shallow(<TagList tags={tags} closable={true} />);
 		const tagListSwatchesComponent = shallow(<TagList tags={tags} swatches={true} />);
-		const tagListClickableComponent = shallow(<TagList tags={tags} onTagClicked={() => {}} />);
+		const tagListClickableComponent = shallow(<TagList tags={tags} onTagClicked={noop} />);
 
 		[
 			tagListComponent,

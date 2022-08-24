@@ -1,7 +1,8 @@
 import classnames from 'classnames';
-import { get } from 'lodash-es';
+import { get, noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import ReactSelect, { NamedProps } from 'react-select';
+// eslint-disable-next-line import/namespace
 import { ActionMeta, ValueType } from 'react-select/src/types';
 
 import { DefaultProps } from '../../types';
@@ -36,7 +37,7 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 	clearable = false,
 	placeholder,
 	value = null,
-	onChange = () => {},
+	onChange = noop,
 	...props
 }) => {
 	function onValueChange(

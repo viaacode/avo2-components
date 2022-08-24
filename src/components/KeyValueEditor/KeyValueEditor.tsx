@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { cloneDeep } from 'lodash-es';
+import { cloneDeep, noop } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 
 import { useTableSort } from '../../hooks/useTableSort';
@@ -58,7 +58,7 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 	valueLabel = 'Waarde',
 	keySeparator = '___',
 	readonly = false,
-	onChange = () => {},
+	onChange = noop,
 	className,
 	noDataMessage = 'Geen data',
 	noDataForFilterMessage = 'Geen data die voldoet aan de filter',
@@ -117,7 +117,7 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 		columnId: KeyValueEditorTableColsSchema
 	): ReactNode | null => {
 		switch (columnId) {
-			case '0':
+			case '0': {
 				const keyParts = rowData[0].split(keySeparator);
 				return (
 					<div>
@@ -129,6 +129,7 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 						)}
 					</div>
 				);
+			}
 
 			case '1':
 				if (readonly) {

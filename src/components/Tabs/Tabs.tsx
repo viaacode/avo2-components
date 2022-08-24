@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -18,7 +19,7 @@ export const Tabs: FunctionComponent<TabsPropsSchema> = ({
 	tabs,
 	border,
 	dark = false,
-	onClick = () => {},
+	onClick = noop,
 }) => (
 	<nav
 		className={classnames(className, 'c-tabs', {

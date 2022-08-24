@@ -23,6 +23,7 @@ const TextInputDefaults = {
 	onChange: () => null,
 };
 
+// eslint-disable-next-line react/display-name
 const ContentInput: FC<ContentInputPropsSchema> = forwardRef<
 	HTMLInputElement,
 	ContentInputPropsSchema

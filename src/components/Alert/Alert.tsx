@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { Button } from '../Button/Button';
@@ -44,12 +45,7 @@ export const Alert: FunctionComponent<AlertPropsSchema> = ({
 				<Button
 					icon="close"
 					type={dark ? 'borderless-i' : 'borderless'}
-					onClick={
-						onClose ||
-						(() => {
-							// noop
-						})
-					}
+					onClick={onClose || noop}
 				/>
 			)}
 		</div>

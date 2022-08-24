@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 
 import { DefaultProps, EnglishContentType } from '../../types';
@@ -32,7 +33,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 	alt,
 	label,
 	meta,
-	onClick = () => {},
+	onClick = noop,
 	style,
 	showCategoryIcon = false,
 }) => {
@@ -50,7 +51,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 
 		return () => {
 			if (img) {
-				img.onload = () => {};
+				img.onload = noop;
 			}
 		};
 	}, [src]);

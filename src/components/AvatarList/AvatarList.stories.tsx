@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/react';
+import { noop } from 'lodash-es';
 import React from 'react';
 
 import { Spacer } from '../Spacer/Spacer';
@@ -10,57 +11,43 @@ export const mockAvatars = [
 		initials: 'ES',
 		name: 'Ethan Sanders',
 		subtitle: 'Mag Bewerken',
-		onClick: (): void => {
-			// noop
-		},
+		onClick: noop,
 	},
 	{
 		initials: 'JC',
 		name: 'Jerry Cooper',
 		subtitle: 'Mag Bewerken',
-		onClick: (): void => {
-			// noop
-		},
+		onClick: noop,
 	},
 	{
 		initials: 'JD',
 		name: 'John Doe',
 		subtitle: 'Mag Bewerken',
-		onClick: (): void => {
-			// noop
-		},
+		onClick: noop,
 	},
 	{
 		initials: 'EW',
 		name: 'Edward Wilson',
 		subtitle: 'Mag Bewerken',
-		onClick: (): void => {
-			// noop
-		},
+		onClick: noop,
 	},
 	{
 		initials: 'LH',
 		name: 'Lauren Hoffman',
 		subtitle: 'Mag Bewerken',
-		onClick: (): void => {
-			// noop
-		},
+		onClick: noop,
 	},
 	{
 		initials: 'JD',
 		name: 'Jane Doe',
 		subtitle: 'Mag Bewerken',
-		onClick: (): void => {
-			// noop
-		},
+		onClick: noop,
 	},
 	{
 		initials: 'PJ',
 		name: 'Phillip Johnston',
 		subtitle: 'Mag Bewerken',
-		onClick: (): void => {
-			// noop
-		},
+		onClick: noop,
 	},
 ];
 

@@ -1,4 +1,5 @@
 import { shallow } from 'enzyme';
+import { noop } from 'lodash-es';
 import React from 'react';
 
 import { RadioButtonGroup } from './RadioButtonGroup';
@@ -6,7 +7,7 @@ import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock';
 
 describe('<RadioButtonGroup />', () => {
 	it('Should be able to render', () => {
-		shallow(<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={() => {}} />);
+		shallow(<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={noop} />);
 	});
 
 	it('Should set the correct className', () => {
@@ -17,7 +18,7 @@ describe('<RadioButtonGroup />', () => {
 				className={customClass}
 				options={RADIO_BUTTON_OPTIONS}
 				value={''}
-				onChange={() => {}}
+				onChange={noop}
 			/>
 		);
 
@@ -27,12 +28,7 @@ describe('<RadioButtonGroup />', () => {
 
 	it('Should set the correct inline className', () => {
 		const radioButtonGroupComponent = shallow(
-			<RadioButtonGroup
-				options={RADIO_BUTTON_OPTIONS}
-				value={''}
-				onChange={() => {}}
-				inline
-			/>
+			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={noop} inline />
 		);
 
 		expect(radioButtonGroupComponent.hasClass('c-radio-group--inline')).toEqual(true);
