@@ -10,43 +10,57 @@ export const mockAvatars = [
 		initials: 'ES',
 		name: 'Ethan Sanders',
 		subtitle: 'Mag Bewerken',
-		onClick: () => {},
+		onClick: (): void => {
+			// noop
+		},
 	},
 	{
 		initials: 'JC',
 		name: 'Jerry Cooper',
 		subtitle: 'Mag Bewerken',
-		onClick: () => {},
+		onClick: (): void => {
+			// noop
+		},
 	},
 	{
 		initials: 'JD',
 		name: 'John Doe',
 		subtitle: 'Mag Bewerken',
-		onClick: () => {},
+		onClick: (): void => {
+			// noop
+		},
 	},
 	{
 		initials: 'EW',
 		name: 'Edward Wilson',
 		subtitle: 'Mag Bewerken',
-		onClick: () => {},
+		onClick: (): void => {
+			// noop
+		},
 	},
 	{
 		initials: 'LH',
 		name: 'Lauren Hoffman',
 		subtitle: 'Mag Bewerken',
-		onClick: () => {},
+		onClick: (): void => {
+			// noop
+		},
 	},
 	{
 		initials: 'JD',
 		name: 'Jane Doe',
 		subtitle: 'Mag Bewerken',
-		onClick: () => {},
+		onClick: (): void => {
+			// noop
+		},
 	},
 	{
 		initials: 'PJ',
 		name: 'Phillip Johnston',
 		subtitle: 'Mag Bewerken',
-		onClick: () => {},
+		onClick: (): void => {
+			// noop
+		},
 	},
 ];
 

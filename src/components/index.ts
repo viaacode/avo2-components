@@ -12,11 +12,11 @@ import { ButtonPropsSchema } from './Button/Button';
 import { ButtonTypeSchema } from './Button/Button.types';
 import { ButtonGroupPropsSchema } from './ButtonGroup/ButtonGroup';
 import { ButtonToolbarPropsSchema } from './ButtonToolbar/ButtonToolbar';
+import { CTAPropsSchema } from './CTA/CTA';
 import { CheckboxPropsSchema } from './Checkbox/Checkbox';
 import { CheckboxGroupPropsSchema } from './CheckboxGroup/CheckboxGroup';
 import { ContainerPropsSchema } from './Container/Container';
 import { ContentInputPropsSchema } from './ContentInput';
-import { CTAPropsSchema } from './CTA/CTA';
 import { DatePickerPropsSchema } from './DatePicker/DatePicker';
 import {
 	DeadlineIndicatorColorsSchema,

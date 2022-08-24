@@ -27,13 +27,19 @@ function renderAlertStories(props?: AlertPropsSchema, message?: (type: string) =
 	return (
 		<>
 			{types.map((type, i) => (
-				<Spacer margin="bottom">
+				<Spacer key={type + '--' + i} margin="bottom">
 					<Alert
 						key={`${type}-${i}`}
 						{...props}
 						message={message ? message(type) : `${type} alert message`}
 						type={type}
-						onClose={type === 'info' ? action('alert closed') : () => {}}
+						onClose={
+							type === 'info'
+								? action('alert closed')
+								: () => {
+										// Ignore empty function
+								  }
+						}
 					/>
 				</Spacer>
 			))}

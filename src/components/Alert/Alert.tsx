@@ -44,7 +44,12 @@ export const Alert: FunctionComponent<AlertPropsSchema> = ({
 				<Button
 					icon="close"
 					type={dark ? 'borderless-i' : 'borderless'}
-					onClick={onClose || (() => {})}
+					onClick={
+						onClose ||
+						(() => {
+							// noop
+						})
+					}
 				/>
 			)}
 		</div>
