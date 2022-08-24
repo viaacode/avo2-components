@@ -1,6 +1,4 @@
-import React, { createRef } from 'react';
-
-import flowplayer, { Flowplayer } from '@flowplayer/player';
+import flowplayer, { Config, Player } from '@flowplayer/player';
 import '@flowplayer/player/flowplayer.css';
 import airplayPlugin from '@flowplayer/player/plugins/airplay';
 import chromecastPlugin from '@flowplayer/player/plugins/chromecast';
@@ -10,12 +8,12 @@ import hlsPlugin from '@flowplayer/player/plugins/hls';
 import keyboardPlugin from '@flowplayer/player/plugins/keyboard';
 import subtitlesPlugin from '@flowplayer/player/plugins/subtitles';
 import classnames from 'classnames';
-import { get } from 'lodash-es';
+import { get, noop } from 'lodash-es';
+import React, { createRef, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 
 import './FlowPlayer.scss';
-import Config = Flowplayer.Config;
 
 flowplayer(
 	chromecastPlugin,
@@ -27,37 +25,41 @@ flowplayer(
 	googleAnalyticsPlugin
 );
 
-export enum GoogleAnalyticsEvent {
-	FullscreenEnter = 'fullscreen_enter',
-	FullscreenExit = 'fullscreen_exit',
-	VideoPlayerLoad = 'video_player_load',
-	VideoStart = 'video_start',
-	videoClickPlay = 'video_click_play',
-	VideoPause = 'video_pause',
-	VideoResume = 'video_resume',
-	VideoMute = 'video_mute',
-	VideoUnmute = 'video_unmute',
-	Video25Percent = 'video_25_percent',
-	Video50Percent = 'video_50_percent',
-	Video75Percent = 'video_75_percent',
-	VideoComplete = 'video_complete',
-	LiveStart = 'live_start',
-	LiveClickPlay = 'live_click_play',
-	LivePause = 'live_pause',
-	LiveResume = 'live_resume',
-	LiveMute = 'live_mute',
-	LiveUnmute = 'live_unmute',
-	LiveComplete = 'live_complete',
-	AdStartPreroll = 'ad_start_preroll',
-	AdStartMidroll = 'ad_start_midroll',
-	AdStartPostroll = 'ad_start_postroll',
-	AdCompletedPreroll = 'ad_completed_preroll',
-	AdCompletedMidroll = 'ad_completed_midroll',
-	AdCompletedPostroll = 'ad_completed_postroll',
-	AdSkippedPreroll = 'ad_skipped_preroll',
-	AdSkippedMidroll = 'ad_skipped_midroll',
-	AdSkippedPostroll = 'ad_skipped_postroll',
-}
+export type GoogleAnalyticsEvent =
+	| 'fullscreen_enter'
+	| 'fullscreen_exit'
+	| 'video_player_load'
+	| 'video_start'
+	| 'video_click_play'
+	| 'video_pause'
+	| 'video_resume'
+	| 'video_mute'
+	| 'video_unmute'
+	| 'video_25_percent'
+	| 'video_50_percent'
+	| 'video_75_percent'
+	| 'video_complete'
+	| 'live_start'
+	| 'live_click_play'
+	| 'live_pause'
+	| 'live_resume'
+	| 'live_mute'
+	| 'live_unmute'
+	| 'live_complete'
+	| 'ad_start_preroll'
+	| 'ad_start_midroll'
+	| 'ad_start_postroll'
+	| 'ad_completed_preroll'
+	| 'ad_completed_midroll'
+	| 'ad_completed_postroll'
+	| 'ad_skipped_preroll'
+	| 'ad_skipped_midroll'
+	| 'ad_skipped_postroll';
+
+type Cuepoints = {
+	start: number | null | undefined;
+	end: number;
+}[];
 
 export interface FlowplayerTrackSchema {
 	crossorigin?: 'use-credentials' | 'anonymous';
@@ -69,11 +71,11 @@ export interface FlowplayerTrackSchema {
 	src: string;
 }
 
-interface FlowplayerInstance extends HTMLVideoElement {
-	destroy: Function;
-	on: Function;
-	emit: Function;
-}
+// interface FlowplayerInstance extends HTMLVideoElement {
+// 	destroy: () => void;
+// 	on: () => void;
+// 	emit: (event: string, args?: any) => void;
+// }
 
 export interface FlowPlayerPropsSchema extends DefaultProps {
 	src: string;
@@ -105,11 +107,13 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 }
 
 interface FlowPlayerState {
-	flowPlayerInstance: FlowplayerInstance | null;
+	flowPlayerInstance: Player | null;
 	startedPlaying: boolean;
 }
 
-export const convertGAEventsArrayToObject = (googleAnalyticsEvents: GoogleAnalyticsEvent[]) => {
+export const convertGAEventsArrayToObject = (
+	googleAnalyticsEvents: GoogleAnalyticsEvent[]
+): any => {
 	return googleAnalyticsEvents.reduce((acc: any, curr: GoogleAnalyticsEvent) => {
 		acc[curr] = curr;
 
@@ -140,11 +144,11 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		});
 	}
 
-	componentWillUnmount() {
+	componentWillUnmount(): void {
 		this.destroyPlayer();
 	}
 
-	shouldComponentUpdate(nextProps: FlowPlayerPropsSchema) {
+	shouldComponentUpdate(nextProps: FlowPlayerPropsSchema): boolean {
 		if (!this.videoContainerRef.current) {
 			return true;
 		}
@@ -196,7 +200,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		return false;
 	}
 
-	componentDidMount() {
+	componentDidMount(): void {
 		if (this.props.src) {
 			this.reInitFlowPlayer(this.props);
 		}
@@ -247,7 +251,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		}
 	}
 
-	private drawCustomElements(flowplayerInstance: FlowplayerInstance) {
+	private drawCustomElements(flowplayerInstance: Player) {
 		if (!flowplayerInstance.parentElement) {
 			return;
 		}
@@ -262,7 +266,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		}
 	}
 
-	private static cuePointEndListener(flowplayerInstance: FlowplayerInstance | null | undefined) {
+	private static cuePointEndListener(flowplayerInstance: Player | null | undefined) {
 		if (flowplayerInstance) {
 			flowplayerInstance.pause();
 			// Trigger the ended event, so in autoplay mode the next video can be started
@@ -278,7 +282,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		}
 
 		const flowPlayerConfig: Config & {
-			cuepoints?: any;
+			cuepoints?: Cuepoints;
 			draw_cuepoints?: boolean;
 			subtitles?: { tracks: FlowplayerTrackSchema[] };
 			chromecast?: any;
@@ -344,7 +348,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 				: {}),
 		};
 
-		const flowplayerInstance: FlowplayerInstance = flowplayer(
+		const flowplayerInstance: Player = flowplayer(
 			this.videoContainerRef.current as HTMLElement,
 			flowPlayerConfig
 		);
@@ -386,10 +390,10 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 				});
 			}
 		});
-		flowplayerInstance.on('pause', this.props.onPause || (() => {}));
-		flowplayerInstance.on('ended', this.props.onEnded || (() => {}));
+		flowplayerInstance.on('pause', this.props.onPause || noop);
+		flowplayerInstance.on('ended', this.props.onEnded || noop);
 		flowplayerInstance.on('timeupdate', () => {
-			(this.props.onTimeUpdate || (() => {}))(
+			(this.props.onTimeUpdate || noop)(
 				get(this.videoContainerRef, 'current.currentTime', 0)
 			);
 		});
@@ -399,7 +403,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		});
 	}
 
-	render() {
+	render(): ReactNode {
 		return (
 			<div className={classnames(this.props.className, 'c-video-player')}>
 				<div
