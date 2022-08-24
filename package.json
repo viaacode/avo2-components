@@ -38,6 +38,9 @@
       "last 1 safari version"
     ]
   },
+  "peerDependencies": {
+    "react-scrollbars-custom": "^4.1.1"
+  },
   "dependencies": {
     "@popperjs/core": "^2.5.4",
     "autosize": "^4.0.2",

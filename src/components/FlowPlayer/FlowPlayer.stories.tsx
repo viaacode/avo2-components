@@ -100,6 +100,85 @@ storiesOf('components/FlowPlayer', module)
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} start={30} end={200} />
 		</div>
 	))
+	.add('FlowPlayer playlist', () => (
+		<div className="o-grid-col-bp3-7">
+			<FlowPlayer
+				{...MOCK_FLOW_PLAYER_PROPS_FULL}
+				plugins={['cuepoints', 'hls', 'keyboard', 'playlist']}
+				src={{
+					type: 'flowplayer/playlist',
+					items: [
+						{
+							src: '//edge.flowplayer.org/bauhaus.mp4',
+							title: 'Bauhaus',
+							category: 'video',
+							provider: 'VRT',
+							thumbnailAlt: 'Bauhaus cover image',
+							thumbnail: 'http://localhost:3020/images/flowplayer-bauhaus.jpg',
+						},
+						{
+							src: '//edge.flowplayer.org/functional.mp4',
+							title: 'Functional',
+							category: 'video',
+							provider: 'VRT',
+							thumbnailAlt: 'Functional cover image',
+							thumbnail: 'http://localhost:3020/images/flowplayer-functional.jpg',
+						},
+						{
+							src: 'https://archief-media.viaa.be/viaa/TESTBEELD/c44b877a9a7d4b1a99c5b8b676c3aef4ca370f2fe15d42d49b438e71eea6b99d/browse.mp4',
+							title: 'Journaal',
+							category: 'video',
+							provider: 'VRT',
+							thumbnailAlt: 'Journaal cover image',
+							thumbnail: 'http://localhost:3020/images/flowplayer-journaal.jpg',
+						},
+						{
+							src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+							title: 'Elephant dream',
+							category: 'video',
+							provider: 'VRT',
+							thumbnailAlt: 'Elephant dream cover image',
+							thumbnail:
+								'http://localhost:3020/images/flowplayer-elephants-dream.jpg',
+						},
+						{
+							src: '//edge.flowplayer.org/bauhaus.mp4',
+							title: 'Bauhaus 2',
+							category: 'video',
+							provider: 'VRT',
+							thumbnailAlt: 'Bauhaus 2 cover image',
+							thumbnail: 'http://localhost:3020/images/flowplayer-bauhaus.jpg',
+						},
+						{
+							src: '//edge.flowplayer.org/functional.mp4',
+							title: 'Functional 2',
+							category: 'video',
+							provider: 'VRT',
+							thumbnailAlt: 'Functional 2 cover image',
+							thumbnail: 'http://localhost:3020/images/flowplayer-functional.jpg',
+						},
+						{
+							src: 'https://archief-media.viaa.be/viaa/TESTBEELD/c44b877a9a7d4b1a99c5b8b676c3aef4ca370f2fe15d42d49b438e71eea6b99d/browse.mp4',
+							title: 'Journaal 2',
+							category: 'video',
+							provider: 'VRT',
+							thumbnailAlt: 'Journaal 2 cover image',
+							thumbnail: 'http://localhost:3020/images/flowplayer-journaal.jpg',
+						},
+						{
+							src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+							title: 'Elephant dream 2',
+							category: 'video',
+							provider: 'VRT',
+							thumbnailAlt: 'Elephant dream 2 cover image',
+							thumbnail:
+								'http://localhost:3020/images/flowplayer-elephants-dream.jpg',
+						},
+					],
+				}}
+			/>
+		</div>
+	))
 	.add('FlowPlayer events', () => (
 		<div className="o-grid-col-bp3-7">
 			<FlowPlayer

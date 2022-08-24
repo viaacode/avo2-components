@@ -1,29 +1,41 @@
 import flowplayer, { Config, Player } from '@flowplayer/player';
 import '@flowplayer/player/flowplayer.css';
-import airplayPlugin from '@flowplayer/player/plugins/airplay';
-import chromecastPlugin from '@flowplayer/player/plugins/chromecast';
 import cuepointsPlugin from '@flowplayer/player/plugins/cuepoints';
 import googleAnalyticsPlugin from '@flowplayer/player/plugins/google-analytics';
 import hlsPlugin from '@flowplayer/player/plugins/hls';
 import keyboardPlugin from '@flowplayer/player/plugins/keyboard';
+import playlistPlugin from '@flowplayer/player/plugins/playlist';
 import subtitlesPlugin from '@flowplayer/player/plugins/subtitles';
 import classnames from 'classnames';
 import { get, noop } from 'lodash-es';
 import React, { createRef, ReactNode } from 'react';
+import { default as Scrollbar } from 'react-scrollbars-custom';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps, EnglishContentType } from '../../types';
+import { MediaCard } from '../MediaCard/MediaCard';
+import { MediaCardThumbnail } from '../MediaCard/MediaCard.slots';
+import { Thumbnail } from '../Thumbnail/Thumbnail';
 
 import './FlowPlayer.scss';
 
 flowplayer(
-	chromecastPlugin,
-	airplayPlugin,
 	subtitlesPlugin,
 	hlsPlugin,
 	cuepointsPlugin,
 	keyboardPlugin,
+	playlistPlugin,
 	googleAnalyticsPlugin
 );
+
+export type FlowplayerPlugin =
+	| 'subtitles'
+	| 'hls'
+	| 'cuepoints'
+	| 'keyboard'
+	| 'playlist'
+	| 'ga'
+	| 'chromecast'
+	| 'airplay';
 
 export type GoogleAnalyticsEvent =
 	| 'fullscreen_enter'
@@ -71,14 +83,21 @@ export interface FlowplayerTrackSchema {
 	src: string;
 }
 
-// interface FlowplayerInstance extends HTMLVideoElement {
-// 	destroy: () => void;
-// 	on: () => void;
-// 	emit: (event: string, args?: any) => void;
-// }
+export type FlowplayerSourceList = {
+	type: 'flowplayer/playlist';
+	items: {
+		src: string;
+		title: string;
+		cover?: string;
+		category: EnglishContentType;
+		thumbnail: string;
+		provider: string;
+		thumbnailAlt?: string;
+	}[];
+};
 
 export interface FlowPlayerPropsSchema extends DefaultProps {
-	src: string;
+	src: string | FlowplayerSourceList;
 	poster?: string;
 	logo?: string;
 	title?: string;
@@ -98,6 +117,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	onEnded?: () => void;
 	onTimeUpdate?: (time: number) => void;
 	preload?: 'none' | 'auto' | 'metadata';
+	plugins?: FlowplayerPlugin[];
 	subtitles?: FlowplayerTrackSchema[];
 	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
 	className?: string;
@@ -142,6 +162,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 				}
 			}
 		});
+		document.querySelectorAll('.fp-skip-prev,.fp-skip-next').forEach((elem) => elem.remove());
 	}
 
 	componentWillUnmount(): void {
@@ -184,8 +205,19 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			return true;
 		}
 
-		const nextUrl: string | undefined = nextProps.src && nextProps.src.split('?')[0];
-		const currentUrl: string | undefined = this.props.src && this.props.src.split('?')[0];
+		// Get the first part of the first video src, to see if the video url changed
+		const nextUrl: string | undefined =
+			nextProps.src &&
+			(
+				(nextProps.src as FlowplayerSourceList)?.items?.[0]?.src ||
+				(nextProps.src as string)
+			)?.split('?')[0];
+		const currentUrl: string | undefined =
+			this.props.src &&
+			(
+				(this.props.src as FlowplayerSourceList)?.items?.[0]?.src ||
+				(this.props.src as string)
+			)?.split('?')[0];
 		if (nextUrl !== currentUrl) {
 			if (nextUrl) {
 				// User clicked the post to play the video
@@ -281,6 +313,16 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			return;
 		}
 
+		const plugins = props.plugins || [
+			'subtitles',
+			'cuepoints',
+			'hls',
+			'ga',
+			'keyboard',
+			'playlist',
+			// 'chromecast', 'airplay', // Disabled for now for video security: https://meemoo.atlassian.net/browse/AVO-1859
+		];
+
 		const flowPlayerConfig: Config & {
 			cuepoints?: Cuepoints;
 			draw_cuepoints?: boolean;
@@ -288,7 +330,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			chromecast?: any;
 			keyboard?: any;
 			speed: any;
-			plugins: string[];
+			plugins: FlowplayerPlugin[];
 		} = {
 			// DATA
 			src: props.src,
@@ -298,17 +340,17 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			// CONFIGURATION
 			autoplay: props.autoplay ? flowplayer.autoplay.ON : flowplayer.autoplay.OFF,
 			ui: (flowplayer as any).ui.LOGO_ON_RIGHT | (flowplayer as any).ui.USE_DRAG_HANDLE,
-			plugins: ['subtitles', 'chromecast', 'airplay', 'cuepoints', 'hls', 'ga', 'keyboard'],
+			plugins,
 			preload: props.preload || (!props.poster ? 'metadata' : 'none'),
 
 			// KEYBOARD
-			keyboard: { seek_step: '15' },
+			...(plugins.includes('keyboard') ? { keyboard: { seek_step: '15' } } : {}),
 
 			// SPEED
 			speed: props.speed,
 
 			// CUEPOINTS
-			...(props.end
+			...(plugins.includes('cuepoints') && props.end // Only set cuepoints if an end point was passed in the props
 				? {
 						cuepoints: [
 							{
@@ -318,10 +360,20 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 						],
 						draw_cuepoints: true,
 				  }
-				: {}), // Only set cuepoints if end is passed
+				: {}),
+
+			// PLAYLIST
+			...(plugins.includes('playlist')
+				? {
+						playlist: {
+							advance: true,
+							skip_controls: true,
+						},
+				  }
+				: {}),
 
 			// SUBTITLES
-			...(props.subtitles
+			...(plugins.includes('subtitles') && props.subtitles
 				? {
 						subtitles: {
 							tracks: props.subtitles,
@@ -330,12 +382,16 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 				: {}),
 
 			// CHROMECAST
-			chromecast: {
-				app: (flowplayer as any).chromecast.apps.STABLE,
-			},
+			...(plugins.includes('chromecast')
+				? {
+						chromecast: {
+							app: (flowplayer as any).chromecast.apps.STABLE,
+						},
+				  }
+				: {}),
 
 			// GOOGLE ANALYTICS
-			...(props.googleAnalyticsId
+			...(plugins.includes('ga') && props.googleAnalyticsId
 				? {
 						ga: {
 							ga_instances: [props.googleAnalyticsId],
@@ -369,6 +425,24 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			console.error(err);
 		});
 
+		if (plugins.includes('playlist')) {
+			flowplayerInstance.on('playlist:ready', () => {
+				console.log('playlist is ready');
+				// Update cover images on the playlist
+				document
+					.querySelectorAll('.fp-playlist li .video-info')
+					.forEach((elem, elemIndex) => {
+						const image = document.createElement('img');
+						image.src = (this.props.src as FlowplayerSourceList).items[elemIndex]
+							.cover as string;
+						const div = document.createElement('div');
+						div.classList.add('image');
+						div.appendChild(image);
+						elem.append(div);
+					});
+			});
+		}
+
 		this.drawCustomElements(flowplayerInstance);
 
 		flowplayerInstance.on('playing', () => {
@@ -376,7 +450,6 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 				// First time playing the video
 				// Jump to first cue point if exists:
 				if (props.start) {
-					//  deepcode ignore React-propsUsedInStateUpdateMethod: Flowplayer is not aware of react
 					flowplayerInstance.currentTime = props.start;
 				}
 
@@ -404,6 +477,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 	}
 
 	render(): ReactNode {
+		const playlistItems = (this.props.src as FlowplayerSourceList)?.items;
 		return (
 			<div className={classnames(this.props.className, 'c-video-player')}>
 				<div
@@ -411,6 +485,44 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 					data-player-id={this.props.dataPlayerId}
 					ref={this.videoContainerRef}
 				/>
+				{playlistItems && (
+					<Scrollbar
+						className="c-video-player__playlist"
+						style={{
+							width: '30%',
+							height: '500px',
+						}}
+					>
+						<ul>
+							{playlistItems.map((item, itemIndex) => {
+								return (
+									<li key={item.src + '--' + itemIndex}>
+										<MediaCard
+											title={item.title}
+											onClick={() =>
+												(
+													this.state.flowPlayerInstance as any
+												)?.playlist?.play(itemIndex)
+											}
+											orientation="vertical"
+											category="search" // Clearest color on white background
+										>
+											<MediaCardThumbnail>
+												<Thumbnail
+													category={item.category}
+													src={item.thumbnail}
+													meta={item.provider}
+													label={item.category}
+													alt={item.thumbnailAlt}
+												/>
+											</MediaCardThumbnail>
+										</MediaCard>
+									</li>
+								);
+							})}
+						</ul>
+					</Scrollbar>
+				)}
 			</div>
 		);
 	}
