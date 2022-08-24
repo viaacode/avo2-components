@@ -23,12 +23,9 @@ export function testRenderLink(testActionHandler: (info: any) => void): RenderLi
 }
 
 export function defaultRenderLinkFunction(
-	// @ts-ignore
 	buttonAction: ButtonAction | undefined | null,
 	children: ReactNode,
-	// @ts-ignore
 	label?: string,
-	// @ts-ignore
 	title?: string
 ): ReactElement<any, any> | null {
 	return <>{children}</>;

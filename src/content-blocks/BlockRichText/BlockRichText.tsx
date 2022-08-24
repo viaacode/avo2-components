@@ -48,7 +48,7 @@ export const BlockRichText: FunctionComponent<BlockRichTextProps> = ({
 			</Spacer>
 		));
 
-	const renderContent = (contentElem: BlockRichTextElement, columnIndex: number = 0) => {
+	const renderContent = (contentElem: BlockRichTextElement, columnIndex = 0) => {
 		const { content, color, buttons } = contentElem;
 
 		return (

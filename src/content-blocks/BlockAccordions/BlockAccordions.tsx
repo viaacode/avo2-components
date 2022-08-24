@@ -18,7 +18,6 @@ export const BlockAccordions: FunctionComponent<BlockAccordionsProps> = ({
 
 	// Hooks
 	const [accordionsOpen, setAccordionsOpen] = useState<{ [key: string]: boolean }>(
-		// @ts-ignore
 		elements.reduce((acc, curr, i) => ({ ...acc, [generateKey(i)]: false }), {})
 	);
 

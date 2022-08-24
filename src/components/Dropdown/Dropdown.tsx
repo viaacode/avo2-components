@@ -82,7 +82,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 		// 		: [],
 	});
 
-	const toggle = (openState: boolean = !isOpen) => {
+	const toggle = (openState = !isOpen) => {
 		if (openState !== isOpen) {
 			openState ? onOpen() : onClose();
 		}

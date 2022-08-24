@@ -178,6 +178,7 @@ export const MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS: BlockMediaGridProps = {
 	ctaButtonLabel: 'Ontdek meer',
 	ctaButtonIcon: 'delete',
 	elements: MEDIA_LIST_ITEMS_MOCK.slice(0, -1).map((mock) => {
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const { buttonLabel, buttonIcon, buttonType, ...rest } = mock;
 		return rest;
 	}),
