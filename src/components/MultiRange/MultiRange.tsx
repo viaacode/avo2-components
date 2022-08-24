@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { getTrackBackground, Range } from 'react-range';
 
@@ -29,7 +30,7 @@ export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 	max = 100,
 	allowOverlap = false,
 	showNumber = false,
-	onChange = () => {},
+	onChange = noop,
 }) => {
 	const [inputText, setInputText] = useState<string>(values[0] ? String(values[0]) : '0');
 	const [tempValues, setTempValues] = useState<number[]>(values);

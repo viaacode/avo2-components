@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -20,7 +21,7 @@ export const FileInput: FunctionComponent<FileInputProps> = ({
 	disabled,
 	placeholder = 'Upload',
 	ariaLabel = '',
-	onChange = () => {},
+	onChange = noop,
 }) => {
 	return (
 		<Button

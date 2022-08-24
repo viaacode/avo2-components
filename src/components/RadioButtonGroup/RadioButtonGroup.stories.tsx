@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
+import { noop } from 'lodash-es';
 import React, { Fragment, ReactElement, useState } from 'react';
 
 import { RadioButtonGroup } from './RadioButtonGroup';
@@ -31,21 +32,16 @@ storiesOf('components/RadioButtonGroup', module)
 	.addParameters({ jest: ['RadioButtonGroup'] })
 	.add('RadioButtonGroup', () => (
 		<RadioButtonGroupStoryComponent>
-			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={() => {}} />
+			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={noop} />
 		</RadioButtonGroupStoryComponent>
 	))
 	.add('RadioButtonGroup default option', () => (
 		<RadioButtonGroupStoryComponent defaultValue="steak">
-			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={() => {}} />
+			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={noop} />
 		</RadioButtonGroupStoryComponent>
 	))
 	.add('RadioButtonGroup inline', () => (
 		<RadioButtonGroupStoryComponent>
-			<RadioButtonGroup
-				options={RADIO_BUTTON_OPTIONS}
-				value={''}
-				onChange={() => {}}
-				inline
-			/>
+			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={noop} inline />
 		</RadioButtonGroupStoryComponent>
 	));

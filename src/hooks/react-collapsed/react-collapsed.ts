@@ -1,10 +1,10 @@
 /* tslint:disable */
+import { noop } from 'lodash-es';
 /* eslint-disable */
 import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
 import raf from 'raf';
 import {
 	callAll,
-	noop,
 	getElementHeight,
 	makeTransitionStyles,
 	joinTransitionProperties,

@@ -1,10 +1,6 @@
 /* tslint:disable */
 import React, { RefObject } from 'react';
 
-export const noop = (): void => {
-	// Ignore empty function
-};
-
 export function getElementHeight(el: RefObject<HTMLElement | null>): number | 'auto' {
 	if (!el || !el.current) {
 		return 'auto';

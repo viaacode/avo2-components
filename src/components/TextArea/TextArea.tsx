@@ -1,5 +1,6 @@
 import autosize from 'autosize';
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent, useEffect } from 'react';
 
 import { useCallbackRef } from '../../hooks/useCallbackRef';
@@ -28,8 +29,8 @@ export const TextArea: FunctionComponent<TextAreaPropsSchema> = ({
 	value = '',
 	height,
 	width,
-	onChange = () => {},
-	onBlur = () => {},
+	onChange = noop,
+	onBlur = noop,
 }) => {
 	const [textArea, textAreaRef] = useCallbackRef<HTMLTextAreaElement>();
 

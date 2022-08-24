@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import { flatten, times } from 'lodash-es';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { ButtonTypeSchema } from '../../components/Button/Button.types';
 import { testRenderLink } from '../../helpers/render-link';
@@ -12,7 +12,8 @@ import { BUTTONS_MOCK } from './BlockButtons.mock';
 
 const renderBlockButtons =
 	(align?: AlignOptions, dividers = false, type: ButtonTypeSchema = 'secondary') =>
-	() =>
+	// eslint-disable-next-line react/display-name
+	(): ReactNode =>
 		(
 			<BlockButtons
 				elements={BUTTONS_MOCK.map((button) => ({ ...button, type }))}
