@@ -1,25 +1,31 @@
-/**
- * This component assumes these files are loaded in the index.html of your project
- *   <link rel="stylesheet" href="/flowplayer/style/flowplayer.css">
- *   <script src="/flowplayer/flowplayer.min.js"></script>
- *   <script src="/flowplayer/plugins/chromecast.min.js"></script>
- *   <script src="/flowplayer/plugins/airplay.min.js"></script>
- *   <script src="/flowplayer/plugins/subtitles.min.js"></script>
- *   <script src="/flowplayer/plugins/hls.min.js"></script>
- *   <script src="/flowplayer/plugins/cuepoints.min.js"></script>
- *   <script src="/flowplayer/plugins/keyboard.min.js"></script>
- *   <script src="/flowplayer/plugins/google-analytics.min.js"></script>
- */
+import React, { createRef } from 'react';
 
+import flowplayer, { Flowplayer } from '@flowplayer/player';
+import '@flowplayer/player/flowplayer.css';
+import airplayPlugin from '@flowplayer/player/plugins/airplay';
+import chromecastPlugin from '@flowplayer/player/plugins/chromecast';
+import cuepointsPlugin from '@flowplayer/player/plugins/cuepoints';
+import googleAnalyticsPlugin from '@flowplayer/player/plugins/google-analytics';
+import hlsPlugin from '@flowplayer/player/plugins/hls';
+import keyboardPlugin from '@flowplayer/player/plugins/keyboard';
+import subtitlesPlugin from '@flowplayer/player/plugins/subtitles';
 import classnames from 'classnames';
 import { get } from 'lodash-es';
-import React, { createRef } from 'react';
 
 import { DefaultProps } from '../../types';
 
 import './FlowPlayer.scss';
+import Config = Flowplayer.Config;
 
-declare const flowplayer: any;
+flowplayer(
+	chromecastPlugin,
+	airplayPlugin,
+	subtitlesPlugin,
+	hlsPlugin,
+	cuepointsPlugin,
+	keyboardPlugin,
+	googleAnalyticsPlugin
+);
 
 export enum GoogleAnalyticsEvent {
 	FullscreenEnter = 'fullscreen_enter',
@@ -271,15 +277,23 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			return;
 		}
 
-		const flowplayerInstance: FlowplayerInstance = flowplayer(this.videoContainerRef.current, {
+		const flowPlayerConfig: Config & {
+			cuepoints?: any;
+			draw_cuepoints?: boolean;
+			subtitles?: { tracks: FlowplayerTrackSchema[] };
+			chromecast?: any;
+			keyboard?: any;
+			speed: any;
+			plugins: string[];
+		} = {
 			// DATA
 			src: props.src,
 			token: props.token,
 			poster: props.poster,
 
 			// CONFIGURATION
-			autoplay: props.autoplay,
-			ui: flowplayer.ui.LOGO_ON_RIGHT | flowplayer.ui.USE_DRAG_HANDLE,
+			autoplay: props.autoplay ? flowplayer.autoplay.ON : flowplayer.autoplay.OFF,
+			ui: (flowplayer as any).ui.LOGO_ON_RIGHT | (flowplayer as any).ui.USE_DRAG_HANDLE,
 			plugins: ['subtitles', 'chromecast', 'airplay', 'cuepoints', 'hls', 'ga', 'keyboard'],
 			preload: props.preload || (!props.poster ? 'metadata' : 'none'),
 
@@ -298,31 +312,42 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 								end: props.end,
 							},
 						],
+						draw_cuepoints: true,
 				  }
 				: {}), // Only set cuepoints if end is passed
-			draw_cuepoints: true,
 
 			// SUBTITLES
-			subtitles: {
-				tracks: props.subtitles,
-			},
+			...(props.subtitles
+				? {
+						subtitles: {
+							tracks: props.subtitles,
+						},
+				  }
+				: {}),
 
 			// CHROMECAST
 			chromecast: {
-				app: flowplayer.chromecast.apps.STABLE,
+				app: (flowplayer as any).chromecast.apps.STABLE,
 			},
 
 			// GOOGLE ANALYTICS
-			ga: props.googleAnalyticsId
+			...(props.googleAnalyticsId
 				? {
-						ga_instances: [props.googleAnalyticsId],
-						event_actions: props.googleAnalyticsEvents
-							? convertGAEventsArrayToObject(props.googleAnalyticsEvents)
-							: {},
-						media_title: props.googleAnalyticsTitle || props.title,
+						ga: {
+							ga_instances: [props.googleAnalyticsId],
+							event_actions: props.googleAnalyticsEvents
+								? convertGAEventsArrayToObject(props.googleAnalyticsEvents)
+								: {},
+							media_title: props.googleAnalyticsTitle || props.title,
+						},
 				  }
-				: {},
-		});
+				: {}),
+		};
+
+		const flowplayerInstance: FlowplayerInstance = flowplayer(
+			this.videoContainerRef.current as HTMLElement,
+			flowPlayerConfig
+		);
 
 		if (!flowplayerInstance) {
 			console.error('Failed to init flow player');
