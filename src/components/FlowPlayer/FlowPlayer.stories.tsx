@@ -130,7 +130,7 @@ storiesOf('components/FlowPlayer', module)
 							category: 'video',
 							provider: 'VRT',
 							poster: 'http://localhost:3020/images/flowplayer-journaal.jpg',
-							cuepoints: [{ startTime: 15, endTime: 20 }],
+							cuepoints: [{ startTime: 15, endTime: 17 }],
 						},
 						{
 							src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
