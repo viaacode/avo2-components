@@ -7,7 +7,7 @@ import keyboardPlugin from '@flowplayer/player/plugins/keyboard';
 import playlistPlugin from '@flowplayer/player/plugins/playlist';
 import subtitlesPlugin from '@flowplayer/player/plugins/subtitles';
 import classnames from 'classnames';
-import { get, noop } from 'lodash-es';
+import { get, isString, noop } from 'lodash-es';
 import React, { createRef, ReactNode } from 'react';
 import { default as Scrollbar } from 'react-scrollbars-custom';
 
@@ -69,9 +69,18 @@ export type GoogleAnalyticsEvent =
 	| 'ad_skipped_postroll';
 
 type Cuepoints = {
-	start: number | null | undefined;
-	end: number;
+	startTime: number | null | undefined;
+	endTime: number | null | undefined;
 }[];
+
+type FlowplayerConfigWithPlugins = Config & {
+	cuepoints?: Cuepoints;
+	subtitles?: { tracks: FlowplayerTrackSchema[] };
+	chromecast?: any;
+	keyboard?: any;
+	speed: any;
+	plugins: FlowplayerPlugin[];
+};
 
 export interface FlowplayerTrackSchema {
 	crossorigin?: 'use-credentials' | 'anonymous';
@@ -88,11 +97,10 @@ export type FlowplayerSourceList = {
 	items: {
 		src: string;
 		title: string;
-		cover?: string;
 		category: EnglishContentType;
-		thumbnail: string;
 		provider: string;
-		thumbnailAlt?: string;
+		poster: string;
+		cuepoints?: Cuepoints;
 	}[];
 };
 
@@ -112,7 +120,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	dataPlayerId?: string;
 	autoplay?: boolean;
 	seekTime?: number;
-	onPlay?: () => void;
+	onPlay?: (src: string) => void;
 	onPause?: () => void;
 	onEnded?: () => void;
 	onTimeUpdate?: (time: number) => void;
@@ -296,13 +304,28 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 				flowPlayerUi.prepend(logoElem);
 			}
 		}
+
+		const timeline = flowplayerInstance.parentElement.querySelector('.fp-timeline');
+		if (timeline) {
+			const cuePointIndicator = document.createElement('div');
+			cuePointIndicator.classList.add('fp-cuepoint');
+			timeline.appendChild(cuePointIndicator);
+		}
 	}
 
-	private static cuePointEndListener(flowplayerInstance: Player | null | undefined) {
-		if (flowplayerInstance) {
-			flowplayerInstance.pause();
-			// Trigger the ended event, so in autoplay mode the next video can be started
-			flowplayerInstance.emit(flowplayer.events.ENDED);
+	/**
+	 * Jump to first cuepoint if it exists
+	 * @private
+	 */
+	private jumpToFirstCuepoint() {
+		const player = this.state.flowPlayerInstance;
+		if (!player) {
+			return;
+		}
+		const startTime =
+			(player.opts as FlowplayerConfigWithPlugins).cuepoints?.[0].startTime || 0;
+		if (startTime) {
+			player.currentTime = startTime;
 		}
 	}
 
@@ -323,22 +346,15 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			// 'chromecast', 'airplay', // Disabled for now for video security: https://meemoo.atlassian.net/browse/AVO-1859
 		];
 
-		const flowPlayerConfig: Config & {
-			cuepoints?: Cuepoints;
-			draw_cuepoints?: boolean;
-			subtitles?: { tracks: FlowplayerTrackSchema[] };
-			chromecast?: any;
-			keyboard?: any;
-			speed: any;
-			plugins: FlowplayerPlugin[];
-		} = {
+		const flowPlayerConfig: FlowplayerConfigWithPlugins = {
 			// DATA
 			src: props.src,
 			token: props.token,
-			poster: props.poster,
+			poster: (props.src as FlowplayerSourceList)?.items?.[0]?.poster || props.poster,
 
 			// CONFIGURATION
 			autoplay: props.autoplay ? flowplayer.autoplay.ON : flowplayer.autoplay.OFF,
+			multiplay: false,
 			ui: (flowplayer as any).ui.LOGO_ON_RIGHT | (flowplayer as any).ui.USE_DRAG_HANDLE,
 			plugins,
 			preload: props.preload || (!props.poster ? 'metadata' : 'none'),
@@ -350,24 +366,27 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			speed: props.speed,
 
 			// CUEPOINTS
-			...(plugins.includes('cuepoints') && props.end // Only set cuepoints if an end point was passed in the props
+			// Only set cuepoints if an end point was passed in the props or one of the playlist items has cuepoints configured
+			...(plugins.includes('cuepoints') &&
+			(props.end ||
+				(this.props.src as FlowplayerSourceList).items.some((item) => !!item.cuepoints))
 				? {
 						cuepoints: [
 							{
-								start: props.start,
-								end: props.end,
+								startTime: props.start,
+								endTime: props.end,
 							},
 						],
-						draw_cuepoints: true,
 				  }
 				: {}),
 
 			// PLAYLIST
-			...(plugins.includes('playlist')
+			...(plugins.includes('playlist') && !isString(props.src)
 				? {
 						playlist: {
 							advance: true,
 							skip_controls: true,
+							delay: 200000,
 						},
 				  }
 				: {}),
@@ -414,12 +433,13 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			return;
 		}
 
-		// Pause video at end cuepoint
-		if (props.end) {
-			flowplayerInstance.on(flowplayer.events.CUEPOINT_END, () =>
-				FlowPlayer.cuePointEndListener(flowplayerInstance)
-			);
-		}
+		// Jump to the end of the video when a cuepoint end event is encountered
+		// The video end event can then be handled however the user sees fit
+		flowplayerInstance.on(flowplayer.events.CUEPOINT_END, () => {
+			if (flowplayerInstance) {
+				flowplayerInstance.currentTime = flowplayerInstance.duration;
+			}
+		});
 
 		flowplayerInstance.on('error', (err: any) => {
 			console.error(err);
@@ -427,14 +447,13 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 
 		if (plugins.includes('playlist')) {
 			flowplayerInstance.on('playlist:ready', () => {
-				console.log('playlist is ready');
 				// Update cover images on the playlist
 				document
 					.querySelectorAll('.fp-playlist li .video-info')
 					.forEach((elem, elemIndex) => {
 						const image = document.createElement('img');
 						image.src = (this.props.src as FlowplayerSourceList).items[elemIndex]
-							.cover as string;
+							.poster as string;
 						const div = document.createElement('div');
 						div.classList.add('image');
 						div.appendChild(image);
@@ -448,13 +467,11 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		flowplayerInstance.on('playing', () => {
 			if (!this.state.startedPlaying) {
 				// First time playing the video
-				// Jump to first cue point if exists:
-				if (props.start) {
-					flowplayerInstance.currentTime = props.start;
-				}
 
-				if (this.props.onPlay) {
-					this.props.onPlay();
+				this.jumpToFirstCuepoint();
+
+				if (this.props.onPlay && this.state.flowPlayerInstance) {
+					this.props.onPlay(this.state.flowPlayerInstance.src);
 				}
 
 				this.setState({
@@ -465,6 +482,16 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		});
 		flowplayerInstance.on('pause', this.props.onPause || noop);
 		flowplayerInstance.on('ended', this.props.onEnded || noop);
+		flowplayerInstance.on(
+			playlistPlugin.events.PLAYLIST_NEXT,
+			(evt: Event & { detail: { next_index: number } }) => {
+				this.updateActivePlaylistItem(evt.detail.next_index);
+				this.jumpToFirstCuepoint();
+			}
+		);
+		flowplayerInstance.on('loadeddata', () => {
+			this.updateCuepointPosition();
+		});
 		flowplayerInstance.on('timeupdate', () => {
 			(this.props.onTimeUpdate || noop)(
 				get(this.videoContainerRef, 'current.currentTime', 0)
@@ -474,6 +501,52 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		this.setState({
 			flowPlayerInstance: flowplayerInstance,
 		});
+	}
+
+	/**
+	 * Sets the cuepoint config from the active item in the playlist as the cuepoint on the flowplayer
+	 * @param itemIndex
+	 * @private
+	 */
+	private updateActivePlaylistItem(itemIndex: number): void {
+		const player = this.state.flowPlayerInstance;
+		if (!player || isNaN(player.duration)) {
+			return;
+		}
+
+		const playlistItem = (this.props.src as FlowplayerSourceList)?.items?.[itemIndex];
+
+		if (playlistItem) {
+			// Update cuepoint
+			player.emit(flowplayer.events.CUEPOINTS, {
+				cuepoints: playlistItem.cuepoints,
+			});
+			this.updateCuepointPosition();
+
+			// Update poster
+			player.poster = playlistItem.poster;
+			player.opts.poster = playlistItem.poster;
+		}
+	}
+
+	/**
+	 * Updates the styles of the timeline cuepoint indicator according to the active cuepoint
+	 */
+	private updateCuepointPosition() {
+		const player = this.state.flowPlayerInstance;
+		if (!player || isNaN(player.duration)) {
+			return;
+		}
+		const start = (player.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]?.startTime || 0;
+		const end =
+			(player.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]?.endTime || player.duration;
+		const cuePointIndicator: HTMLDivElement | null = player.root.querySelector(
+			'.fp-cuepoint'
+		) as HTMLDivElement | null;
+		if (cuePointIndicator) {
+			cuePointIndicator.style.left = Math.round((start / player.duration) * 100) + '%';
+			cuePointIndicator.style.width = ((end - start) / player.duration) * 100 + '%';
+		}
 	}
 
 	render(): ReactNode {
@@ -499,21 +572,25 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 									<li key={item.src + '--' + itemIndex}>
 										<MediaCard
 											title={item.title}
-											onClick={() =>
-												(
-													this.state.flowPlayerInstance as any
-												)?.playlist?.play(itemIndex)
-											}
+											onClick={() => {
+												const player = this.state.flowPlayerInstance as any;
+												player?.playlist?.play(itemIndex);
+												player.emit(flowplayer.events.CUEPOINTS, {
+													cuepoints: (
+														this.props.src as FlowplayerSourceList
+													).items[itemIndex].cuepoints,
+												});
+												this.updateCuepointPosition();
+											}}
 											orientation="vertical"
 											category="search" // Clearest color on white background
 										>
 											<MediaCardThumbnail>
 												<Thumbnail
 													category={item.category}
-													src={item.thumbnail}
+													src={item.poster}
 													meta={item.provider}
 													label={item.category}
-													alt={item.thumbnailAlt}
 												/>
 											</MediaCardThumbnail>
 										</MediaCard>

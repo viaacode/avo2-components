@@ -336,6 +336,12 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		}
 	}
 
+	&.is-error {
+		.fp-header {
+			display: none !important;
+		}
+	}
+
 	&__thumbnail {
 		cursor: pointer;
 	}
@@ -403,6 +409,14 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 
 			border-radius: 50%;
 		}
+	}
+
+	// Playlist plugin
+	.up-next .poster .fp-play {
+		left: 50%;
+		top: 50%;
+		margin-left: 0;
+		margin-top: 0;
 	}
 }
 
