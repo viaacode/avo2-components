@@ -37,7 +37,7 @@ export const ExpandableContainer: FunctionComponent<ExpandableContainerPropsSche
 			</div>
 
 			<Spacer
-				className={hasCustomControlNodes ? 'u-text-cent' : undefined}
+				className={!hasCustomControlNodes ? 'u-text-center' : undefined}
 				margin="top-small"
 			>
 				<div {...(getToggleProps() as any)}>
