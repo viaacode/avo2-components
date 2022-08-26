@@ -7,7 +7,7 @@ import keyboardPlugin from '@flowplayer/player/plugins/keyboard';
 import playlistPlugin from '@flowplayer/player/plugins/playlist';
 import subtitlesPlugin from '@flowplayer/player/plugins/subtitles';
 import classnames from 'classnames';
-import { get, isString, noop } from 'lodash-es';
+import { get, isNil, isString, noop } from 'lodash-es';
 import React, { createRef, ReactNode } from 'react';
 import { default as Scrollbar } from 'react-scrollbars-custom';
 
@@ -117,7 +117,7 @@ export interface FlowplayerTrackSchema {
 	src: string;
 }
 
-export type FlowplayerSourceList = {
+export type FlowplayerSourceListSchema = {
 	type: 'flowplayer/playlist';
 	items: {
 		src: string;
@@ -130,7 +130,7 @@ export type FlowplayerSourceList = {
 };
 
 export interface FlowPlayerPropsSchema extends DefaultProps {
-	src: string | FlowplayerSourceList;
+	src: string | FlowplayerSourceListSchema;
 	poster?: string;
 	logo?: string;
 	title?: string;
@@ -242,13 +242,13 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		const nextUrl: string | undefined =
 			nextProps.src &&
 			(
-				(nextProps.src as FlowplayerSourceList)?.items?.[0]?.src ||
+				(nextProps.src as FlowplayerSourceListSchema)?.items?.[0]?.src ||
 				(nextProps.src as string)
 			)?.split('?')[0];
 		const currentUrl: string | undefined =
 			this.props.src &&
 			(
-				(this.props.src as FlowplayerSourceList)?.items?.[0]?.src ||
+				(this.props.src as FlowplayerSourceListSchema)?.items?.[0]?.src ||
 				(this.props.src as string)
 			)?.split('?')[0];
 		if (nextUrl !== currentUrl) {
@@ -378,7 +378,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			// DATA
 			src: props.src,
 			token: props.token,
-			poster: (props.src as FlowplayerSourceList)?.items?.[0]?.poster || props.poster,
+			poster: (props.src as FlowplayerSourceListSchema)?.items?.[0]?.poster || props.poster,
 
 			// CONFIGURATION
 			autoplay: props.autoplay ? flowplayer.autoplay.ON : flowplayer.autoplay.OFF,
@@ -398,7 +398,9 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			// Only set cuepoints if an end point was passed in the props or one of the playlist items has cuepoints configured
 			...(plugins.includes('cuepoints') &&
 			(props.end ||
-				(this.props.src as FlowplayerSourceList).items.some((item) => !!item.cuepoints))
+				(this.props.src as FlowplayerSourceListSchema)?.items?.some(
+					(item) => !!item.cuepoints
+				))
 				? {
 						cuepoints: [
 							{
@@ -481,7 +483,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 					.querySelectorAll('.fp-playlist li .video-info')
 					.forEach((elem, elemIndex) => {
 						const image = document.createElement('img');
-						image.src = (this.props.src as FlowplayerSourceList).items[elemIndex]
+						image.src = (this.props.src as FlowplayerSourceListSchema).items[elemIndex]
 							.poster as string;
 						const div = document.createElement('div');
 						div.classList.add('image');
@@ -543,7 +545,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 			return;
 		}
 
-		const playlistItem = (this.props.src as FlowplayerSourceList)?.items?.[itemIndex];
+		const playlistItem = (this.props.src as FlowplayerSourceListSchema)?.items?.[itemIndex];
 
 		if (playlistItem) {
 			// Update cuepoint
@@ -566,20 +568,27 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 		if (!player || isNaN(player.duration)) {
 			return;
 		}
-		const start = (player.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]?.startTime || 0;
-		const end =
-			(player.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]?.endTime || player.duration;
+
 		const cuePointIndicator: HTMLDivElement | null = player.root.querySelector(
 			'.fp-cuepoint'
 		) as HTMLDivElement | null;
 		if (cuePointIndicator) {
+			let start = (player.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]?.startTime;
+			let end = (player.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]?.endTime;
+			if (isNil(start) && isNil(end)) {
+				cuePointIndicator.style.display = 'none';
+				return;
+			}
+			start = start || 0;
+			end = end || player.duration;
 			cuePointIndicator.style.left = Math.round((start / player.duration) * 100) + '%';
 			cuePointIndicator.style.width = ((end - start) / player.duration) * 100 + '%';
+			cuePointIndicator.style.display = 'block';
 		}
 	}
 
 	render(): ReactNode {
-		const playlistItems = (this.props.src as FlowplayerSourceList)?.items;
+		const playlistItems = (this.props.src as FlowplayerSourceListSchema)?.items;
 		return (
 			<div className={classnames(this.props.className, 'c-video-player')}>
 				<div
@@ -606,7 +615,7 @@ export class FlowPlayer extends React.Component<FlowPlayerPropsSchema, FlowPlaye
 												player?.playlist?.play(itemIndex);
 												player.emit(flowplayer.events.CUEPOINTS, {
 													cuepoints: (
-														this.props.src as FlowplayerSourceList
+														this.props.src as FlowplayerSourceListSchema
 													).items[itemIndex].cuepoints,
 												});
 												this.updateCuepointPosition();
