@@ -1,13 +1,12 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import { get } from 'lodash-es';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-import { FlowPlayer } from '../../components';
 import { testRenderLink } from '../../helpers/render-link';
 import { BlockHeading } from '../BlockHeading/BlockHeading';
 
-import { BlockMediaGrid } from './BlockMediaGrid';
+import { BlockMediaGrid, MediaListItem } from './BlockMediaGrid';
 import {
 	MEDIA_LIST_COLORED_CTA_MOCK,
 	MEDIA_LIST_CTA_MOCK,
@@ -19,6 +18,17 @@ import {
 	MEDIA_LIST_TITLE_MOCK,
 } from './BlockMediaGrid.mock';
 
+const openInModal = (mediaListItem: MediaListItem): boolean => {
+	return get(mediaListItem, 'itemAction.type') === 'ITEM';
+};
+
+const renderMediaCardWrapper = (mediaCard: ReactNode, item: MediaListItem) => {
+	if (openInModal(item)) {
+		return <div onClick={() => action('open modal for item')(item)}>{mediaCard}</div>;
+	}
+	return testRenderLink(action('navigate to item'))(item.buttonAction, mediaCard);
+};
+
 storiesOf('blocks/BlockMediaGrid', module)
 	.addParameters({ jest: ['BlockMediaGrid'] })
 	.add('BlockMediaGrid', () => <BlockMediaGrid {...MEDIA_LIST_MOCK} />)
@@ -29,11 +39,8 @@ storiesOf('blocks/BlockMediaGrid', module)
 	.add('BlockMediaGrid with modal player', () => (
 		<BlockMediaGrid
 			elements={MEDIA_LIST_ITEMS_MOCK}
-			openMediaInModal
-			renderPlayerModalBody={(item) => (
-				<FlowPlayer src={item.src as string} poster={get(item, 'thumbnail.src')} />
-			)}
 			renderLink={testRenderLink(action('BlockMediaGrid with modal player'))}
+			renderMediaCardWrapper={renderMediaCardWrapper}
 		/>
 	))
 	.add('BlockMediaGrid with CTA', () => <BlockMediaGrid {...MEDIA_LIST_CTA_MOCK} />)

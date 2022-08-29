@@ -142,12 +142,14 @@ export const MEDIA_LIST_MOCK: BlockMediaGridProps = {
 	title: 'Collecties secundair onderwijs',
 	elements: MEDIA_LIST_ITEMS_MOCK,
 	renderLink: testRenderLink(action('navigate to: ')),
+	renderMediaCardWrapper: (mediaCard) => mediaCard,
 };
 
 export const MEDIA_LIST_TITLE_MOCK: BlockMediaGridProps = {
 	title: 'Collecties secundair onderwijs',
 	elements: MEDIA_LIST_ITEMS_MOCK,
 	renderLink: testRenderLink(action('navigate to')),
+	renderMediaCardWrapper: (mediaCard) => mediaCard,
 };
 
 export const MEDIA_LIST_TITLE_BUTTON_MOCK: BlockMediaGridProps = {
@@ -170,6 +172,7 @@ export const MEDIA_LIST_CTA_MOCK: BlockMediaGridProps = {
 		value: 'http://google.com',
 	},
 	renderLink: testRenderLink(action('navigate to')),
+	renderMediaCardWrapper: (mediaCard) => mediaCard,
 };
 
 export const MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS: BlockMediaGridProps = {
@@ -186,6 +189,7 @@ export const MEDIA_LIST_CTA_MOCK_WITHOUT_BUTTONS: BlockMediaGridProps = {
 		value: 'http://google.com',
 	},
 	renderLink: testRenderLink(action('navigate to')),
+	renderMediaCardWrapper: (mediaCard) => mediaCard,
 };
 
 export const MEDIA_LIST_COLORED_CTA_MOCK: BlockMediaGridProps = {
