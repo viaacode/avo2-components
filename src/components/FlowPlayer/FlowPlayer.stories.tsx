@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import React, { cloneElement, ReactElement, useState } from 'react';
+import React, { cloneElement, ReactElement } from 'react';
 
 import { Button } from '../Button/Button';
 import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
@@ -11,19 +11,22 @@ import { FlowPlayer } from './FlowPlayer';
 import { MOCK_FLOW_PLAYER_PROPS_FULL } from './FlowPlayer.mock';
 
 const FlowPlayerStoryComponent = ({ children }: { children: ReactElement }) => {
-	const [seekTime, setSeekTime] = useState(0);
-
 	return (
 		<>
-			{cloneElement(children, {
-				seekTime,
-			})}
+			{cloneElement(children)}
 			<br />
 			<ButtonToolbar>
 				{[0, 0.001, 10, 20, 30].map((s) => (
 					<Button
 						label={`${s} seconds`}
-						onClick={() => setSeekTime(s)}
+						onClick={() => {
+							const playingVideo: HTMLVideoElement | null = document.querySelector(
+								'.c-video-player .is-playing video'
+							) as HTMLVideoElement | null;
+							if (playingVideo) {
+								playingVideo.currentTime = s;
+							}
+						}}
 						key={`button-jump-${s}`}
 					/>
 				))}
