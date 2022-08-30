@@ -163,7 +163,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	preload?: 'none' | 'auto' | 'metadata';
 	plugins?: FlowplayerPlugin[];
 	subtitles?: FlowplayerTrackSchema[];
-	playlistScrollable: boolean;
+	playlistScrollable?: boolean;
 	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
 	className?: string;
 	googleAnalyticsId?: string;
@@ -212,7 +212,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	onEnded,
 	onTimeUpdate,
 	className,
-	playlistScrollable,
+	playlistScrollable = false,
 	subtitles,
 	googleAnalyticsId,
 	googleAnalyticsEvents,
