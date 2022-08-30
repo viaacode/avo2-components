@@ -9,14 +9,7 @@ import speedPlugin from '@flowplayer/player/plugins/speed';
 import subtitlesPlugin from '@flowplayer/player/plugins/subtitles';
 import classnames from 'classnames';
 import { get, isNil, isString, noop } from 'lodash-es';
-import React, {
-	createRef,
-	FunctionComponent,
-	useCallback,
-	useEffect,
-	useMemo,
-	useState,
-} from 'react';
+import React, { createRef, FunctionComponent, useCallback, useEffect, useState } from 'react';
 import { default as Scrollbar } from 'react-scrollbars-custom';
 
 import './FlowPlayer.scss';
@@ -193,6 +186,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	preload,
 	speed,
 	dataPlayerId,
+	autoplay,
 	plugins = [
 		'subtitles',
 		'cuepoints',
@@ -202,10 +196,9 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 		'keyboard',
 		'playlist',
 		// 'chromecast', 'airplay', // Disabled for now for video security: https://meemoo.atlassian.net/browse/AVO-1859
-	],
+	] as FlowplayerPlugin[],
 	start,
 	end,
-	canPlay,
 	logo,
 	onPlay,
 	onPause,
@@ -221,6 +214,8 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	const videoContainerRef = createRef<HTMLDivElement>();
 	const [player, setPlayer] = useState<any | null>(null);
 	const [startedPlaying, setStartedPlaying] = useState<boolean>(false);
+
+	const isPlaylist = !isString(src) && !isNil(src);
 
 	const onResizeHandler = useCallback(() => {
 		const tempVideoHeight =
@@ -390,7 +385,6 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 			return;
 		}
 
-		// player?.destroy();
 		const flowPlayerConfig: FlowplayerConfigWithPlugins = {
 			// DATA
 			src: src,
@@ -398,8 +392,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 			poster: (src as FlowplayerSourceListSchema)?.items?.[0]?.poster || poster,
 
 			// CONFIGURATION
-			// autoplay breaks the wait time between videos of a playlist => when autoplay and playlist, we'll start the first video from code manually
-			autoplay: isString(src) ? flowplayer.autoplay.ON : flowplayer.autoplay.OFF,
+			autoplay: autoplay && !isPlaylist ? flowplayer.autoplay.ON : flowplayer.autoplay.OFF,
 			multiplay: false,
 			ui: (flowplayer as any).ui.LOGO_ON_RIGHT | (flowplayer as any).ui.USE_DRAG_HANDLE,
 			plugins,
@@ -566,10 +559,10 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	]);
 
 	useEffect(() => {
-		if (src) {
-			reInitFlowPlayer();
-		}
+		reInitFlowPlayer();
+	}, [reInitFlowPlayer]);
 
+	useEffect(() => {
 		// Listen to video size changes
 		if (videoContainerRef.current) {
 			const resizeObserver = new ResizeObserver(onResizeHandler);
@@ -589,7 +582,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 				.querySelectorAll('.fp-skip-prev,.fp-skip-next')
 				.forEach((elem) => elem.remove());
 		};
-	}, [player, videoContainerRef, onResizeHandler, reInitFlowPlayer, src]);
+	}, [player, videoContainerRef, onResizeHandler]);
 
 	const handleMediaCardClicked = (itemIndex: number): void => {
 		player.playlist?.play(itemIndex);
@@ -627,21 +620,15 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 		);
 	};
 
-	const renderedVideoContainer = useMemo(() => {
-		return (
+	const playlistItems = (src as FlowplayerSourceListSchema)?.items;
+
+	return (
+		<div className={classnames(className, 'c-video-player')}>
 			<div
 				className={classnames('c-video-player-inner')}
 				data-player-id={dataPlayerId}
 				ref={videoContainerRef}
 			/>
-		);
-	}, [videoContainerRef, dataPlayerId, start, end, canPlay, poster, src]);
-
-	const playlistItems = (src as FlowplayerSourceListSchema)?.items;
-
-	return (
-		<div className={classnames(className, 'c-video-player')}>
-			{renderedVideoContainer}
 			{playlistItems && playlistScrollable && (
 				<Scrollbar
 					className="c-video-player__playlist__scrollable"
