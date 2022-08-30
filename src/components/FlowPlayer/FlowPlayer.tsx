@@ -25,6 +25,8 @@ import { MediaCard } from '../MediaCard/MediaCard';
 import { MediaCardThumbnail } from '../MediaCard/MediaCard.slots';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
 
+import { getPlayingVideoSeekTime, setPlayingVideoSeekTime } from './FlowPlayer.helpers';
+
 flowplayer(
 	subtitlesPlugin,
 	hlsPlugin,
@@ -307,7 +309,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	 * @private
 	 */
 	const jumpToFirstCuepoint = useCallback(
-		(tempPlayer: Player) => {
+		(tempPlayer?: Player) => {
 			if (!player && !tempPlayer) {
 				return;
 			}
@@ -316,7 +318,14 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 				(flowplayerInstance.opts as FlowplayerConfigWithPlugins).cuepoints?.[0].startTime ||
 				0;
 			if (startTime) {
-				flowplayerInstance.currentTime = startTime;
+				setPlayingVideoSeekTime(startTime);
+
+				// Try setting the time until the video accepts the new time
+				setTimeout(() => {
+					if ((getPlayingVideoSeekTime() || 0) < startTime) {
+						jumpToFirstCuepoint(tempPlayer);
+					}
+				}, 100);
 			}
 		},
 		[player]
@@ -501,7 +510,6 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 		tempPlayer.on('playing', () => {
 			if (!startedPlaying) {
 				// First time playing the video
-
 				jumpToFirstCuepoint(tempPlayer);
 
 				if (onPlay && player) {
@@ -510,6 +518,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 				setStartedPlaying(true);
 			}
 		});
+
 		tempPlayer.on('pause', onPause || noop);
 		tempPlayer.on('ended', onEnded || noop);
 		tempPlayer.on(

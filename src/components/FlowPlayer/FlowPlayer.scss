@@ -484,10 +484,9 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 					position: absolute;
 					bottom: 0;
 					height: 2rem;
-					border: 1px solid white;
-					background-color: white;
+					border: 0;
+					background-color: $color-teal-bright;
 					margin: 0;
-					opacity: 0.3;
 					z-index: 0;
 				}
 			}
