@@ -2,12 +2,9 @@ import classnames from 'classnames';
 import { format, isValid } from 'date-fns';
 // https://github.com/Hacker0x01/react-datepicker/issues/1815#issuecomment-513215416
 import nl from 'date-fns/locale/nl';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
-import ReactDatePicker, {
-	ReactDatePickerProps,
-	registerLocale,
-	setDefaultLocale,
-} from 'react-datepicker';
+import ReactDatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { DefaultProps } from '../../types';
@@ -18,9 +15,7 @@ import './DatePicker.scss';
 registerLocale('nl', nl);
 setDefaultLocale('nl');
 
-export interface DatePickerPropsSchema
-	extends DefaultProps,
-		Omit<ReactDatePickerProps, 'onChange' | 'value'> {
+export interface DatePickerPropsSchema extends DefaultProps {
 	disabled?: boolean;
 	required?: boolean;
 	showTimeInput?: boolean;
@@ -28,6 +23,8 @@ export interface DatePickerPropsSchema
 	value?: Date | null;
 	defaultTime?: string;
 	onChange?: (date: Date | null) => void;
+	minDate?: Date;
+	maxDate?: Date;
 }
 
 export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
@@ -38,9 +35,9 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	defaultTime = '00:00',
 	placeholder,
 	value,
-	onChange = () => {
-		// noop
-	},
+	minDate,
+	maxDate,
+	onChange = noop,
 }) => {
 	const handleChangedDate = (newDate: Date) => {
 		try {
@@ -87,6 +84,8 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 					placeholderText={placeholder || 'dd/mm/yyyy'}
 					onChange={handleChangedDate}
 					dateFormat={'dd/MM/yyyy'}
+					minDate={minDate}
+					maxDate={maxDate}
 				/>
 				<Icon name="calendar" />
 			</div>
