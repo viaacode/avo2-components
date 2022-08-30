@@ -155,6 +155,7 @@ export { FlexItem } from './Flex/FlexItem/FlexItem';
 export type FlexItemProps = FlexItemPropsSchema;
 
 export { FlowPlayer } from './FlowPlayer/FlowPlayer';
+export { setPlayingVideoSeekTime, getPlayingVideoSeekTime } from './FlowPlayer/FlowPlayer.helpers';
 export type FlowPlayerProps = FlowPlayerPropsSchema;
 export type FlowplayerTrack = FlowplayerTrackSchema;
 export type FlowplayerSourceList = FlowplayerSourceListSchema;
