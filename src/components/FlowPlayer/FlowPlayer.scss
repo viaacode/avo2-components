@@ -248,14 +248,15 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 	}
 
 	.fp-cuepoint {
-		background-color: #25a4cf !important;
-		height: 100%;
+		background-color: $color-teal !important;
+		margin-top: -4px;
+		height: calc(100% + 7px);
 		cursor: pointer;
 		width: 5px;
 	}
 
 	.fp-color {
-		background-color: #25a4cf;
+		background-color: $color-teal-bright;
 	}
 
 	.fp-color-text {

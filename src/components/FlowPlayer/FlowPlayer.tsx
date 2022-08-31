@@ -302,7 +302,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 		if (timeline) {
 			const cuePointIndicator = document.createElement('div');
 			cuePointIndicator.classList.add('fp-cuepoint');
-			timeline.appendChild(cuePointIndicator);
+			timeline.prepend(cuePointIndicator);
 		}
 	}, [createLogoOverlay, createTitleOverlay, videoContainerRef]);
 
@@ -330,32 +330,40 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	/**
 	 * Updates the styles of the timeline cuepoint indicator according to the active cuepoint
 	 */
-	const updateCuepointPosition = useCallback(() => {
-		if (!player || isNaN(player.duration)) {
-			return;
-		}
-
-		const cuePointIndicator: HTMLDivElement | null = player.root.querySelector(
-			'.fp-cuepoint'
-		) as HTMLDivElement | null;
-
-		if (cuePointIndicator) {
-			let start = (player.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]?.startTime;
-			let end = (player.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]?.endTime;
-
-			if (isNil(start) && isNil(end)) {
-				cuePointIndicator.style.display = 'none';
+	const updateCuepointPosition = useCallback(
+		(tempPlayer: any) => {
+			const flowplayerInstance = tempPlayer || player;
+			if (!flowplayerInstance || isNaN(flowplayerInstance.duration)) {
 				return;
 			}
 
-			start = start || 0;
-			end = (end || player.duration || 0) as number;
+			const cuePointIndicator: HTMLDivElement | null = flowplayerInstance.root.querySelector(
+				'.fp-cuepoint'
+			) as HTMLDivElement | null;
 
-			cuePointIndicator.style.left = Math.round((start / player.duration) * 100) + '%';
-			cuePointIndicator.style.width = ((end - start) / player.duration) * 100 + '%';
-			cuePointIndicator.style.display = 'block';
-		}
-	}, [player]);
+			if (cuePointIndicator) {
+				let start = (flowplayerInstance.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]
+					?.startTime;
+				let end = (flowplayerInstance.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]
+					?.endTime;
+
+				if (isNil(start) && isNil(end)) {
+					cuePointIndicator.style.display = 'none';
+					return;
+				}
+
+				start = start || 0;
+				end = (end || flowplayerInstance.duration || 0) as number;
+
+				cuePointIndicator.style.left =
+					Math.round((start / flowplayerInstance.duration) * 100) + '%';
+				cuePointIndicator.style.width =
+					((end - start) / flowplayerInstance.duration) * 100 + '%';
+				cuePointIndicator.style.display = 'block';
+			}
+		},
+		[player]
+	);
 
 	/**
 	 * Sets the cuepoint config from the active item in the playlist as the cuepoint on the flowplayer
@@ -375,7 +383,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 				player.emit(flowplayer.events.CUEPOINTS, {
 					cuepoints: playlistItem.cuepoints,
 				});
-				updateCuepointPosition();
+				updateCuepointPosition(player);
 
 				// Update poster
 				player.poster = playlistItem.poster;
@@ -529,7 +537,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 		);
 		tempPlayer.on('loadeddata', () => {
 			onResizeHandler();
-			updateCuepointPosition();
+			updateCuepointPosition(tempPlayer);
 		});
 		tempPlayer.on('timeupdate', () => {
 			(onTimeUpdate || noop)(get(videoContainerRef, 'current.currentTime', 0));
@@ -589,7 +597,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 				cuepoints: (src as FlowplayerSourceListSchema).items[itemIndex].cuepoints,
 			});
 
-			updateCuepointPosition();
+			updateCuepointPosition(player);
 		},
 		[player, updateCuepointPosition]
 	);
