@@ -405,7 +405,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 			poster: (src as FlowplayerSourceListSchema)?.items?.[0]?.poster || poster,
 
 			// CONFIGURATION
-			autoplay: autoplay && !isPlaylist ? flowplayer.autoplay.ON : flowplayer.autoplay.OFF,
+			autoplay: autoplay ? flowplayer.autoplay.ON : flowplayer.autoplay.OFF,
 			multiplay: false,
 			ui: (flowplayer as any).ui.LOGO_ON_RIGHT | (flowplayer as any).ui.USE_DRAG_HANDLE,
 			plugins,
