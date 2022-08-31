@@ -9,7 +9,14 @@ import speedPlugin from '@flowplayer/player/plugins/speed';
 import subtitlesPlugin from '@flowplayer/player/plugins/subtitles';
 import classnames from 'classnames';
 import { get, isNil, isString, noop } from 'lodash-es';
-import React, { createRef, FunctionComponent, useCallback, useEffect, useState } from 'react';
+import React, {
+	createRef,
+	FunctionComponent,
+	useCallback,
+	useEffect,
+	useMemo,
+	useState,
+} from 'react';
 import { default as Scrollbar } from 'react-scrollbars-custom';
 
 import './FlowPlayer.scss';
@@ -312,15 +319,9 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 			const startTime =
 				(flowplayerInstance.opts as FlowplayerConfigWithPlugins).cuepoints?.[0].startTime ||
 				0;
-			if (startTime) {
-				setPlayingVideoSeekTime(startTime);
 
-				// Try setting the time until the video accepts the new time
-				setTimeout(() => {
-					if ((getPlayingVideoSeekTime() || 0) < startTime) {
-						jumpToFirstCuepoint(tempPlayer);
-					}
-				}, 100);
+			if (startTime && (getPlayingVideoSeekTime() || 0) < startTime) {
+				setPlayingVideoSeekTime(startTime);
 			}
 		},
 		[player]
@@ -337,15 +338,19 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 		const cuePointIndicator: HTMLDivElement | null = player.root.querySelector(
 			'.fp-cuepoint'
 		) as HTMLDivElement | null;
+
 		if (cuePointIndicator) {
 			let start = (player.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]?.startTime;
 			let end = (player.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]?.endTime;
+
 			if (isNil(start) && isNil(end)) {
 				cuePointIndicator.style.display = 'none';
 				return;
 			}
+
 			start = start || 0;
 			end = (end || player.duration || 0) as number;
+
 			cuePointIndicator.style.left = Math.round((start / player.duration) * 100) + '%';
 			cuePointIndicator.style.width = ((end - start) / player.duration) * 100 + '%';
 			cuePointIndicator.style.display = 'block';
@@ -508,6 +513,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 				if (onPlay && player) {
 					onPlay(player.src);
 				}
+
 				setStartedPlaying(true);
 			}
 		});
@@ -549,7 +555,6 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 		speed,
 		src,
 		start,
-		startedPlaying,
 		subtitles,
 		title,
 		token,
@@ -559,8 +564,8 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	]);
 
 	useEffect(() => {
-		reInitFlowPlayer();
-	}, [reInitFlowPlayer]);
+		videoContainerRef.current && !player && reInitFlowPlayer();
+	}, [videoContainerRef.current]); // Only redo effect when ref changes
 
 	useEffect(() => {
 		// Listen to video size changes
@@ -571,77 +576,87 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 		}
 
 		return () => {
-			// const flowPlayerInstance = flowPlayerInstance;
-			if (player) {
-				// player.destroy();
-				if (player.parentElement) {
-					player.parentElement.innerHTML = '';
-				}
-			}
 			document
 				.querySelectorAll('.fp-skip-prev,.fp-skip-next')
 				.forEach((elem) => elem.remove());
 		};
 	}, [player, videoContainerRef, onResizeHandler]);
 
-	const handleMediaCardClicked = (itemIndex: number): void => {
-		player.playlist?.play(itemIndex);
-		player.emit(flowplayer.events.CUEPOINTS, {
-			cuepoints: (src as FlowplayerSourceListSchema).items[itemIndex].cuepoints,
-		});
-		updateCuepointPosition();
-	};
+	const handleMediaCardClicked = useCallback(
+		(itemIndex: number): void => {
+			player.playlist?.play(itemIndex);
+			player.emit(flowplayer.events.CUEPOINTS, {
+				cuepoints: (src as FlowplayerSourceListSchema).items[itemIndex].cuepoints,
+			});
 
-	const renderPlaylistItems = (playlistItems: FlowplayerSourceList['items']) => {
-		return (
-			<ul className="c-video-player__playlist">
-				{playlistItems.map((item, itemIndex) => {
-					return (
-						<li key={item.src + '--' + itemIndex}>
-							<MediaCard
-								title={item.title}
-								onClick={() => handleMediaCardClicked(itemIndex)}
-								orientation="vertical"
-								category="search" // Clearest color on white background
-							>
-								<MediaCardThumbnail>
-									<Thumbnail
-										category={item.category}
-										src={item.poster}
-										meta={item.provider}
-										label={item.category}
-									/>
-								</MediaCardThumbnail>
-							</MediaCard>
-						</li>
-					);
-				})}
-			</ul>
-		);
-	};
+			updateCuepointPosition();
+		},
+		[player, updateCuepointPosition]
+	);
 
-	const playlistItems = (src as FlowplayerSourceListSchema)?.items;
+	const renderPlaylistItems = useCallback(
+		(playlistItems: FlowplayerSourceList['items']) => {
+			return (
+				<ul className="c-video-player__playlist">
+					{playlistItems.map((item, itemIndex) => {
+						return (
+							<li key={item.src + '--' + itemIndex}>
+								<MediaCard
+									title={item.title}
+									onClick={() => handleMediaCardClicked(itemIndex)}
+									orientation="vertical"
+									category="search" // Clearest color on white background
+								>
+									<MediaCardThumbnail>
+										<Thumbnail
+											category={item.category}
+											src={item.poster}
+											meta={item.provider}
+											label={item.category}
+										/>
+									</MediaCardThumbnail>
+								</MediaCard>
+							</li>
+						);
+					})}
+				</ul>
+			);
+		},
+		[handleMediaCardClicked]
+	);
 
-	return (
-		<div className={classnames(className, 'c-video-player')}>
+	const playlistItems = useMemo(() => (src as FlowplayerSourceListSchema)?.items, [src]);
+
+	const playerHtml = useMemo(
+		() => (
 			<div
 				className={classnames('c-video-player-inner')}
 				data-player-id={dataPlayerId}
 				ref={videoContainerRef}
 			/>
-			{playlistItems && playlistScrollable && (
-				<Scrollbar
-					className="c-video-player__playlist__scrollable"
-					noScrollX
-					style={{
-						width: '30%',
-						height: DEFAULT_VIDEO_HEIGHT + 'px',
-					}}
-				>
-					{renderPlaylistItems(playlistItems)}
-				</Scrollbar>
-			)}
-			{playlistItems && !playlistScrollable && renderPlaylistItems(playlistItems)}
-		</div>
+		),
+		[dataPlayerId]
+	);
+
+	return useMemo(
+		() => (
+			<div className={classnames(className, 'c-video-player')}>
+				{playerHtml}
+				{playlistItems && playlistScrollable && (
+					<Scrollbar
+						className="c-video-player__playlist__scrollable"
+						noScrollX
+						style={{
+							width: '30%',
+							height: DEFAULT_VIDEO_HEIGHT + 'px',
+						}}
+					>
+						{renderPlaylistItems(playlistItems)}
+					</Scrollbar>
+				)}
+				{playlistItems && !playlistScrollable && renderPlaylistItems(playlistItems)}
+			</div>
+		),
+		[playlistItems, playlistScrollable, className, renderPlaylistItems, playerHtml]
 	);
 };
