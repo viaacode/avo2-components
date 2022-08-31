@@ -225,6 +225,9 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	const isPlaylist = !isString(src) && !isNil(src);
 
 	const onResizeHandler = useCallback(() => {
+		if (videoContainerRef.current?.classList.contains('is-fullscreen')) {
+			return; // Do not take fullscreen video height into account
+		}
 		const tempVideoHeight =
 			videoContainerRef.current?.getBoundingClientRect().height || DEFAULT_VIDEO_HEIGHT;
 		const playlistContainer: HTMLDivElement | null | undefined =

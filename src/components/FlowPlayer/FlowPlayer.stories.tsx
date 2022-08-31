@@ -120,6 +120,23 @@ storiesOf('components/FlowPlayer', module)
 			</div>
 		);
 	})
+	.add('FlowPlayer playlist scrollable', () => {
+		const srcWithoutCuepoints = cloneDeep(MOCK_PLAYLIST_SOURCE);
+		srcWithoutCuepoints.items = srcWithoutCuepoints.items.map((item) => {
+			delete item.cuepoints;
+			return item;
+		});
+		return (
+			<div className="o-grid-col-bp3-7">
+				<FlowPlayer
+					{...MOCK_FLOW_PLAYER_PROPS_FULL}
+					plugins={['cuepoints', 'hls', 'keyboard', 'playlist']}
+					src={srcWithoutCuepoints}
+					playlistScrollable={true}
+				/>
+			</div>
+		);
+	})
 	.add('FlowPlayer playlist with cuepoints', () => (
 		<div className="o-grid-col-bp3-7">
 			<FlowPlayer
