@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
+import { cloneDeep } from 'lodash-es';
 import React, { cloneElement, ReactElement } from 'react';
 
 import { Button } from '../Button/Button';
@@ -103,7 +104,23 @@ storiesOf('components/FlowPlayer', module)
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} start={30} end={200} />
 		</div>
 	))
-	.add('FlowPlayer playlist', () => (
+	.add('FlowPlayer playlist', () => {
+		const srcWithoutCuepoints = cloneDeep(MOCK_PLAYLIST_SOURCE);
+		srcWithoutCuepoints.items = srcWithoutCuepoints.items.map((item) => {
+			delete item.cuepoints;
+			return item;
+		});
+		return (
+			<div className="o-grid-col-bp3-7">
+				<FlowPlayer
+					{...MOCK_FLOW_PLAYER_PROPS_FULL}
+					plugins={['cuepoints', 'hls', 'keyboard', 'playlist']}
+					src={srcWithoutCuepoints}
+				/>
+			</div>
+		);
+	})
+	.add('FlowPlayer playlist with cuepoints', () => (
 		<div className="o-grid-col-bp3-7">
 			<FlowPlayer
 				{...MOCK_FLOW_PLAYER_PROPS_FULL}
