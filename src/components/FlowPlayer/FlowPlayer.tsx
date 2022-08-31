@@ -25,7 +25,7 @@ import { MediaCard } from '../MediaCard/MediaCard';
 import { MediaCardThumbnail } from '../MediaCard/MediaCard.slots';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
 
-import { getPlayingVideoSeekTime, setPlayingVideoSeekTime } from './FlowPlayer.helpers';
+import { setPlayingVideoSeekTime } from './FlowPlayer.helpers';
 
 flowplayer(
 	subtitlesPlugin,
@@ -320,7 +320,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 				(flowplayerInstance.opts as FlowplayerConfigWithPlugins).cuepoints?.[0].startTime ||
 				0;
 
-			if (startTime && (getPlayingVideoSeekTime() || 0) < startTime) {
+			if (startTime) {
 				setPlayingVideoSeekTime(startTime);
 			}
 		},
@@ -433,7 +433,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 				: {}),
 
 			// PLAYLIST
-			...(plugins.includes('playlist') && !isString(src)
+			...(plugins.includes('playlist') && isPlaylist
 				? {
 						playlist: {
 							advance: true,
@@ -513,11 +513,13 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 
 		drawCustomElements();
 
+		tempPlayer.once('playing', () => {
+			jumpToFirstCuepoint(tempPlayer);
+		});
+
 		tempPlayer.on('playing', () => {
 			if (!startedPlaying) {
 				// First time playing the video
-				jumpToFirstCuepoint(tempPlayer);
-
 				if (onPlay && player) {
 					onPlay(player.src);
 				}
@@ -532,7 +534,10 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 			playlistPlugin.events.PLAYLIST_NEXT,
 			(evt: Event & { detail: { next_index: number } }) => {
 				updateActivePlaylistItem(evt.detail.next_index);
-				jumpToFirstCuepoint();
+
+				tempPlayer.once('playing', () => {
+					jumpToFirstCuepoint(tempPlayer);
+				});
 			}
 		);
 		tempPlayer.on('loadeddata', () => {
@@ -582,12 +587,6 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 			resizeObserver.observe(videoContainerRef.current);
 			onResizeHandler();
 		}
-
-		return () => {
-			document
-				.querySelectorAll('.fp-skip-prev,.fp-skip-next')
-				.forEach((elem) => elem.remove());
-		};
 	}, [player, videoContainerRef, onResizeHandler]);
 
 	const handleMediaCardClicked = useCallback(
