@@ -10,6 +10,8 @@ $c-video-player-progress-handle-size: $c-video-player-progress-height * 2.5 !def
 $c-play-overlay-inner-bg: $color-gray-900;
 $c-spinner-fullscreen-holder-bg: rgba(#000, 0.5);
 $c-video-player-progress-inner-bg: $color-teal-bright;
+$fp-controls-header-width-desktop: 60px;
+$fp-controls-header-width-mobile: 50px;
 
 .c-video-player {
 	display: flex;
@@ -19,12 +21,21 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		flex-direction: row;
 	}
 
-	.c-video-player__playlist__scrollable {
-		overflow-y: auto;
+	.c-video-player__playlist__wrapper {
+		position: relative;
+		min-width: 30%;
+
+		.c-video-player__playlist__scrollable {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			overflow-y: auto;
+		}
 	}
 
 	.c-video-player__playlist {
 		margin-top: 3rem;
+		padding-right: 1rem;
 
 		@media (min-width: $g-bp2) {
 			margin-left: 1rem;
@@ -34,8 +45,7 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		> li {
 			margin-right: 0;
 			margin-bottom: 2rem;
-			width: calc(100% - 2rem);
-			max-width: calc(100% - 2rem);
+			width: 100%;
 		}
 
 		.c-media-card {
@@ -187,10 +197,10 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		bottom: 0;
 		left: auto;
 
-		width: 50px;
+		width: $fp-controls-header-width-mobile;
 
 		@media (min-width: $g-bp2) {
-			width: 60px;
+			width: $fp-controls-header-width-desktop;
 		}
 
 		padding: 0;
@@ -201,17 +211,11 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		z-index: 1;
 	}
 
-	//&.is-cast-available {
-	//	.fp-header {
-	//		width: 110px;
-	//	}
-	//}
-
 	.fp-controls {
-		width: calc(100% - 50px);
+		width: calc(100% - $fp-controls-header-width-mobile);
 
 		@media (min-width: $g-bp2) {
-			width: calc(100% - 60px);
+			width: calc(100% - $fp-controls-header-width-desktop);
 		}
 
 		color: rgba(255, 255, 255, 0.67);
@@ -219,12 +223,6 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 
 		z-index: 0;
 	}
-
-	//&.is-cast-available {
-	//	.fp-controls {
-	//		width: calc(100% - 110px);
-	//	}
-	//}
 
 	&.use-drag-handle .fp-controls:hover {
 		.fp-timeline {

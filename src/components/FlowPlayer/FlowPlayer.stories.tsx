@@ -106,7 +106,7 @@ storiesOf('components/FlowPlayer', module)
 	))
 	.add('FlowPlayer playlist', () => {
 		const srcWithoutCuepoints = cloneDeep(MOCK_PLAYLIST_SOURCE);
-		srcWithoutCuepoints.items = srcWithoutCuepoints.items.map((item) => {
+		srcWithoutCuepoints.items = srcWithoutCuepoints.items.map((item: any) => {
 			delete item.cuepoints;
 			return item;
 		});
@@ -122,7 +122,7 @@ storiesOf('components/FlowPlayer', module)
 	})
 	.add('FlowPlayer playlist scrollable', () => {
 		const srcWithoutCuepoints = cloneDeep(MOCK_PLAYLIST_SOURCE);
-		srcWithoutCuepoints.items = srcWithoutCuepoints.items.map((item) => {
+		srcWithoutCuepoints.items = srcWithoutCuepoints.items.map((item: any) => {
 			delete item.cuepoints;
 			return item;
 		});

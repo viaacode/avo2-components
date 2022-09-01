@@ -1,4 +1,4 @@
-import flowplayer, { Config, Player } from '@flowplayer/player';
+import flowplayer, { Player } from '@flowplayer/player';
 import '@flowplayer/player/flowplayer.css';
 import cuepointsPlugin from '@flowplayer/player/plugins/cuepoints';
 import googleAnalyticsPlugin from '@flowplayer/player/plugins/google-analytics';
@@ -20,169 +20,23 @@ import React, {
 import { default as Scrollbar } from 'react-scrollbars-custom';
 
 import './FlowPlayer.scss';
-import { DefaultProps, EnglishContentType } from '../../types';
 import { MediaCard } from '../MediaCard/MediaCard';
 import { MediaCardThumbnail } from '../MediaCard/MediaCard.slots';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
 
+import {
+	ALL_FLOWPLAYER_PLUGINS,
+	DELAY_BETWEEN_PLAYLIST_VIDEOS,
+	dutchFlowplayerTranslations,
+} from './FlowPlayer.consts';
 import { setPlayingVideoSeekTime } from './FlowPlayer.helpers';
-
-flowplayer(
-	subtitlesPlugin,
-	hlsPlugin,
-	cuepointsPlugin,
-	keyboardPlugin,
-	speedPlugin,
-	playlistPlugin,
-	googleAnalyticsPlugin
-);
-
-(flowplayer as any).i18n.nl = {
-	ads: { ad: 'Ad', ads: 'Ads', advertisement: 'Advertentie', indicator: 'Ads' },
-	audio: { button_txt: 'Audio', menu_title: 'Audio' },
-	core: {
-		exit_fullscreen: 'Sluit fullscreen',
-		fullscreen: 'Fullscreen',
-		mute: 'Dempen',
-		pause: 'Pause',
-		play: 'Play',
-		unmute: 'Dempen opheffen',
-		volume: 'Volume',
-	},
-	ovp: { starting_in: 'Start over' },
-	playlist: { cancel: 'Annuleren', up_next: 'Volgende' },
-	qsel: { menu_title: 'Kwaliteit' },
-	share: {
-		clipboard_failure: 'Toegang tot klembord mislukt',
-		clipboard_success: 'De tekst staat nu op je klembord',
-		embed: 'Embed',
-		link: 'Link',
-		menu_title: 'Deel',
-	},
-	speed: { menu_title: 'Snelheid' },
-};
-
-export type FlowplayerPlugin =
-	| 'subtitles'
-	| 'hls'
-	| 'cuepoints'
-	| 'keyboard'
-	| 'playlist'
-	| 'speed'
-	| 'ga'
-	| 'chromecast'
-	| 'airplay';
-
-export type GoogleAnalyticsEvent =
-	| 'fullscreen_enter'
-	| 'fullscreen_exit'
-	| 'video_player_load'
-	| 'video_start'
-	| 'video_click_play'
-	| 'video_pause'
-	| 'video_resume'
-	| 'video_mute'
-	| 'video_unmute'
-	| 'video_25_percent'
-	| 'video_50_percent'
-	| 'video_75_percent'
-	| 'video_complete'
-	| 'live_start'
-	| 'live_click_play'
-	| 'live_pause'
-	| 'live_resume'
-	| 'live_mute'
-	| 'live_unmute'
-	| 'live_complete'
-	| 'ad_start_preroll'
-	| 'ad_start_midroll'
-	| 'ad_start_postroll'
-	| 'ad_completed_preroll'
-	| 'ad_completed_midroll'
-	| 'ad_completed_postroll'
-	| 'ad_skipped_preroll'
-	| 'ad_skipped_midroll'
-	| 'ad_skipped_postroll';
-
-type Cuepoints = {
-	startTime: number | null | undefined;
-	endTime: number | null | undefined;
-}[];
-
-type FlowplayerConfigWithPlugins = Config & {
-	cuepoints?: Cuepoints;
-	subtitles?: { tracks: FlowplayerTrackSchema[] };
-	chromecast?: any;
-	keyboard?: any;
-	speed?: any;
-	plugins: FlowplayerPlugin[];
-};
-
-export interface FlowplayerTrackSchema {
-	crossorigin?: 'use-credentials' | 'anonymous';
-	default: boolean;
-	id?: string;
-	kind?: 'captions' | 'subtitles' | 'descriptions';
-	label: string;
-	lang?: string;
-	src: string;
-}
-
-export type FlowplayerSourceListSchema = {
-	type: 'flowplayer/playlist';
-	items: {
-		src: string;
-		title: string;
-		category: EnglishContentType;
-		provider: string;
-		poster: string;
-		cuepoints?: Cuepoints;
-	}[];
-};
-export type FlowplayerSourceList = FlowplayerSourceListSchema;
-
-export interface FlowPlayerPropsSchema extends DefaultProps {
-	src: string | FlowplayerSourceListSchema;
-	poster?: string;
-	logo?: string;
-	title?: string;
-	metadata?: string[];
-	start?: number | null;
-	end?: number | null;
-	speed?: {
-		options: number[];
-		labels: string[];
-	};
-	token?: string;
-	dataPlayerId?: string;
-	autoplay?: boolean;
-	onPlay?: (src: string) => void;
-	onPause?: () => void;
-	onEnded?: () => void;
-	onTimeUpdate?: (time: number) => void;
-	preload?: 'none' | 'auto' | 'metadata';
-	plugins?: FlowplayerPlugin[];
-	subtitles?: FlowplayerTrackSchema[];
-	playlistScrollable?: boolean;
-	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
-	className?: string;
-	googleAnalyticsId?: string;
-	googleAnalyticsEvents?: GoogleAnalyticsEvent[];
-	googleAnalyticsTitle?: string;
-}
-
-export const convertGAEventsArrayToObject = (
-	googleAnalyticsEvents: GoogleAnalyticsEvent[]
-): any => {
-	return googleAnalyticsEvents.reduce((acc: any, curr: GoogleAnalyticsEvent) => {
-		acc[curr] = curr;
-
-		return acc;
-	}, {});
-};
-
-const DEFAULT_VIDEO_HEIGHT = 500;
-const DELAY_BETWEEN_PLAYLIST_VIDEOS = 7;
+import {
+	convertGAEventsArrayToObject,
+	FlowplayerConfigWithPlugins,
+	FlowPlayerPropsSchema,
+	FlowplayerSourceList,
+	FlowplayerSourceListSchema,
+} from './FlowPlayer.types';
 
 export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	src,
@@ -194,16 +48,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	speed,
 	dataPlayerId,
 	autoplay,
-	plugins = [
-		'subtitles',
-		'cuepoints',
-		'hls',
-		'ga',
-		'speed',
-		'keyboard',
-		'playlist',
-		// 'chromecast', 'airplay', // Disabled for now for video security: https://meemoo.atlassian.net/browse/AVO-1859
-	] as FlowplayerPlugin[],
+	plugins = ALL_FLOWPLAYER_PLUGINS,
 	start,
 	end,
 	logo,
@@ -223,21 +68,6 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	const [startedPlaying, setStartedPlaying] = useState<boolean>(false);
 
 	const isPlaylist = !isString(src) && !isNil(src);
-
-	const onResizeHandler = useCallback(() => {
-		if (videoContainerRef.current?.classList.contains('is-fullscreen')) {
-			return; // Do not take fullscreen video height into account
-		}
-		const tempVideoHeight =
-			videoContainerRef.current?.getBoundingClientRect().height || DEFAULT_VIDEO_HEIGHT;
-		const playlistContainer: HTMLDivElement | null | undefined =
-			videoContainerRef.current?.parentNode?.querySelector(
-				'.c-video-player__playlist__scrollable'
-			);
-		if (playlistContainer) {
-			playlistContainer.style.height = tempVideoHeight + 'px';
-		}
-	}, [videoContainerRef]);
 
 	const createTitleOverlay = useCallback(() => {
 		const titleOverlay = document.createElement('div');
@@ -401,6 +231,18 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 			return;
 		}
 
+		flowplayer(
+			subtitlesPlugin,
+			hlsPlugin,
+			cuepointsPlugin,
+			keyboardPlugin,
+			speedPlugin,
+			playlistPlugin,
+			googleAnalyticsPlugin
+		);
+
+		(flowplayer as any).i18n.nl = dutchFlowplayerTranslations;
+
 		const flowPlayerConfig: FlowplayerConfigWithPlugins = {
 			// DATA
 			src: src,
@@ -544,7 +386,6 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 			}
 		);
 		tempPlayer.on('loadeddata', () => {
-			onResizeHandler();
 			updateCuepointPosition(tempPlayer);
 		});
 		tempPlayer.on('timeupdate', () => {
@@ -562,7 +403,6 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 		onEnded,
 		onPause,
 		onPlay,
-		onResizeHandler,
 		onTimeUpdate,
 		player,
 		plugins,
@@ -582,15 +422,6 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	useEffect(() => {
 		videoContainerRef.current && !player && reInitFlowPlayer();
 	}, [videoContainerRef.current]); // Only redo effect when ref changes
-
-	useEffect(() => {
-		// Listen to video size changes
-		if (videoContainerRef.current) {
-			const resizeObserver = new ResizeObserver(onResizeHandler);
-			resizeObserver.observe(videoContainerRef.current);
-			onResizeHandler();
-		}
-	}, [player, videoContainerRef, onResizeHandler]);
 
 	const handleMediaCardClicked = useCallback(
 		(itemIndex: number): void => {
@@ -652,19 +483,14 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 		() => (
 			<div className={classnames(className, 'c-video-player')}>
 				{playerHtml}
-				{playlistItems && playlistScrollable && (
-					<Scrollbar
-						className="c-video-player__playlist__scrollable"
-						noScrollX
-						style={{
-							width: '30%',
-							height: DEFAULT_VIDEO_HEIGHT + 'px',
-						}}
-					>
-						{renderPlaylistItems(playlistItems)}
-					</Scrollbar>
-				)}
-				{playlistItems && !playlistScrollable && renderPlaylistItems(playlistItems)}
+				<div className="c-video-player__playlist__wrapper">
+					{playlistItems && playlistScrollable && (
+						<Scrollbar className="c-video-player__playlist__scrollable" noScrollX>
+							{renderPlaylistItems(playlistItems)}
+						</Scrollbar>
+					)}
+					{playlistItems && !playlistScrollable && renderPlaylistItems(playlistItems)}
+				</div>
 			</div>
 		),
 		[playlistItems, playlistScrollable, className, renderPlaylistItems, playerHtml]
