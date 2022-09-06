@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { isNil, truncate } from 'lodash-es';
+import { isNil, noop, truncate } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, ReactText } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
@@ -45,8 +45,8 @@ export const SearchResult: FunctionComponent<SearchResultPropsSchema> = ({
 	bookmarkCount,
 	viewCount,
 	tags = [],
-	onToggleBookmark = () => {},
-	onTagClicked = () => {},
+	onToggleBookmark = noop,
+	onTagClicked = noop,
 }) => {
 	const title = useSlot(SearchResultTitle, children);
 	const subTitle = useSlot(SearchResultSubtitle, children);

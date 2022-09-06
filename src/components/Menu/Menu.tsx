@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -22,7 +23,7 @@ export const Menu: FunctionComponent<MenuPropsSchema> = ({
 	menuItems = [],
 	renderItem,
 	noResultsLabel,
-	onClick = () => {},
+	onClick = noop,
 	isOpen = true,
 	search,
 	style,

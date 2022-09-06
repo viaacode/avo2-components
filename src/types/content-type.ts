@@ -54,7 +54,7 @@ export const contentTypes: ContentType[] = [
 	},
 ];
 
-export const translateContentType = (value: string, from: Language, toEnglish: boolean) => {
+export const translateContentType = (value: string, from: Language, toEnglish: boolean): string => {
 	const type = contentTypes.find((contentType) => contentType[from] === value);
 	const to: Language = toEnglish ? 'en' : 'nl';
 

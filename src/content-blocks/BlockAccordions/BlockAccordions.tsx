@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React, { FunctionComponent, useState } from 'react';
 
-import { Accordion } from '../../components/Accordion/Accordion';
+import { Accordion } from '../../components';
 import { DefaultProps } from '../../types';
 import { BlockRichText } from '../BlockRichText/BlockRichText';
 
@@ -18,8 +18,7 @@ export const BlockAccordions: FunctionComponent<BlockAccordionsProps> = ({
 
 	// Hooks
 	const [accordionsOpen, setAccordionsOpen] = useState<{ [key: string]: boolean }>(
-		// @ts-ignore
-		elements.reduce((acc, curr, i) => ({ ...acc, [generateKey(i)]: false }), {})
+		elements.reduce((acc, _curr, i) => ({ ...acc, [generateKey(i)]: false }), {})
 	);
 
 	// Render

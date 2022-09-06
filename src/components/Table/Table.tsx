@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { isNil, isString } from 'lodash-es';
+import { isNil, isString, noop } from 'lodash-es';
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -78,7 +78,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	emptyStateMessage,
 	horizontal,
 	nowrap,
-	onColumnClick = () => {},
+	onColumnClick = noop,
 	onRowClick,
 	renderCell = () => null,
 	rowKey,
@@ -91,8 +91,8 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	showRadioButtons = false,
 	useCards = false,
 	selectedItemIds = [],
-	onSelectionChanged = () => {},
-	onSelectAll = () => {},
+	onSelectionChanged = noop,
+	onSelectAll = noop,
 }) => {
 	const getRowKey = (rowData: any): string => {
 		if (isString(rowKey)) {

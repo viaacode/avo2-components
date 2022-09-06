@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { format, isValid } from 'date-fns';
 // https://github.com/Hacker0x01/react-datepicker/issues/1815#issuecomment-513215416
 import nl from 'date-fns/locale/nl';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import ReactDatePicker, {
 	ReactDatePickerProps,
@@ -38,9 +39,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	defaultTime = '00:00',
 	placeholder,
 	value,
-	onChange = () => {
-		// noop
-	},
+	onChange = noop,
 }) => {
 	const handleChangedDate = (newDate: Date) => {
 		try {
