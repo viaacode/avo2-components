@@ -1,7 +1,8 @@
 import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
-import { BlockHeading, BlockRichText } from '../../content-blocks';
+import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
+import { BlockRichText } from '../../content-blocks/BlockRichText/BlockRichText';
 import { defaultRenderLinkFunction } from '../../helpers/render-link';
 import { ButtonAction, DefaultProps, HeadingType, RenderLinkFunction } from '../../types';
 import { Button, ButtonPropsSchema } from '../Button/Button';

@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React, { FunctionComponent, useState } from 'react';
 
-import { Accordion } from '../../components';
+import { Accordion } from '../../components/Accordion/Accordion';
 import { DefaultProps } from '../../types';
 import { BlockRichText } from '../BlockRichText/BlockRichText';
 

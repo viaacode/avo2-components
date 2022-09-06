@@ -10,17 +10,60 @@ $c-video-player-progress-handle-size: $c-video-player-progress-height * 2.5 !def
 $c-play-overlay-inner-bg: $color-gray-900;
 $c-spinner-fullscreen-holder-bg: rgba(#000, 0.5);
 $c-video-player-progress-inner-bg: $color-teal-bright;
+$fp-controls-header-width-desktop: 60px;
+$fp-controls-header-width-mobile: 50px;
+
+.c-video-player {
+	display: flex;
+	flex-direction: column;
+
+	@media (min-width: $g-bp2) {
+		flex-direction: row;
+	}
+
+	.c-video-player__playlist__wrapper {
+		position: relative;
+		min-width: 30%;
+
+		.c-video-player__playlist__scrollable {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			overflow-y: auto;
+		}
+	}
+
+	.c-video-player__playlist {
+		margin-top: 3rem;
+		padding-right: 1rem;
+
+		@media (min-width: $g-bp2) {
+			margin-left: 1rem;
+			margin-top: 0;
+		}
+
+		> li {
+			margin-right: 0;
+			margin-bottom: 2rem;
+			width: 100%;
+		}
+
+		.c-media-card {
+			max-width: none;
+		}
+	}
+}
 
 .c-video-player-inner {
 	overflow: hidden;
 	vertical-align: bottom;
 	position: relative;
+	background-color: black;
 
 	width: 100%;
 	height: 100%;
 
 	color: rgba(#fff, 0.67);
-	background-color: transparent;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -31,8 +74,8 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		top: 50%;
 		left: 50%;
 		transform: translate(
-			-(math.div($player-play-button-dimensions, 2)),
-			-(math.div($player-play-button-dimensions, 2))
+				-(math.div($player-play-button-dimensions, 2)),
+				-(math.div($player-play-button-dimensions, 2))
 		);
 
 		background-image: url("data:image/svg+xml,%3Csvg fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 21.9999C4.835 21.9999 4.67 21.9589 4.521 21.8779C4.2 21.7019 4 21.3659 4 20.9999V2.99989C4 2.63389 4.2 2.29689 4.521 2.12189C4.841 1.94689 5.232 1.95989 5.541 2.15889L19.541 11.1589C19.827 11.3429 20 11.6599 20 11.9999C20 12.3399 19.827 12.6569 19.541 12.8409L5.541 21.8409C5.376 21.9459 5.188 21.9999 5 21.9999ZM6 4.83189V19.1679L17.15 11.9999L6 4.83189Z' fill='white' fill-opacity='0.67'/%3E%3C/svg%3E%0A");
@@ -154,7 +197,11 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		bottom: 0;
 		left: auto;
 
-		width: 75px;
+		width: $fp-controls-header-width-mobile;
+
+		@media (min-width: $g-bp2) {
+			width: $fp-controls-header-width-desktop;
+		}
 
 		padding: 0;
 
@@ -164,25 +211,17 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		z-index: 1;
 	}
 
-	&.is-cast-available {
-		.fp-header {
-			width: 110px;
-		}
-	}
-
 	.fp-controls {
-		width: calc(100% - 60px);
+		width: calc(100% - $fp-controls-header-width-mobile);
+
+		@media (min-width: $g-bp2) {
+			width: calc(100% - $fp-controls-header-width-desktop);
+		}
 
 		color: rgba(255, 255, 255, 0.67);
 		background-color: rgba(15, 23, 29, 0.8);
 
 		z-index: 0;
-	}
-
-	&.is-cast-available {
-		.fp-controls {
-			width: calc(100% - 110px);
-		}
 	}
 
 	&.use-drag-handle .fp-controls:hover {
@@ -207,14 +246,19 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 	}
 
 	.fp-cuepoint {
-		background-color: #25a4cf !important;
-		height: 100%;
+		background-color: $color-teal !important;
+		margin-top: -4px;
+		height: calc(100% + 7px);
 		cursor: pointer;
 		width: 5px;
 	}
 
 	.fp-color {
-		background-color: #25a4cf;
+		background-color: $color-teal-bright;
+	}
+
+	.fp-color-text {
+		color: $color-teal-bright;
 	}
 
 	.fp-secondary {
@@ -258,10 +302,38 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 		display: none;
 	}
 
+	&.is-playing.is-touched {
+		.fp-header {
+			display: block;
+
+			.fp-fullscreen {
+				display: block;
+			}
+
+			.fp-fullscreen-exit {
+				display: none;
+			}
+		}
+
+		&.is-fullscreen {
+			.fp-fullscreen {
+				display: none;
+			}
+
+			.fp-fullscreen-exit {
+				display: block;
+			}
+		}
+	}
+
 	&.is-fullscreen {
 		&.is-hovered,
 		&.is-paused {
 			.c-title-overlay {
+				display: block;
+			}
+
+			.fp-fullscreen-exit {
 				display: block;
 			}
 		}
@@ -272,6 +344,12 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 			top: 0;
 			width: 100vw;
 			height: 100vh;
+		}
+	}
+
+	&.is-error {
+		.fp-header {
+			display: none !important;
 		}
 	}
 
@@ -332,7 +410,8 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 
 		&__handle {
 			position: absolute;
-			top: math.div($c-video-player-progress-height, 2) - math.div($c-video-player-progress-handle-size, 2);
+			top: math.div($c-video-player-progress-height, 2) -
+				math.div($c-video-player-progress-handle-size, 2);
 			right: -(math.div($c-video-player-progress-handle-size, 2));
 
 			width: $c-video-player-progress-handle-size;
@@ -341,6 +420,80 @@ $c-video-player-progress-inner-bg: $color-teal-bright;
 			background-color: $c-video-player-progress-inner-bg;
 
 			border-radius: 50%;
+		}
+	}
+
+	// Playlist plugin
+	.up-next {
+		.poster .fp-play {
+			left: 50%;
+			top: 50%;
+			margin-left: 0;
+			margin-top: 0;
+		}
+
+		.pane {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			padding: 0;
+			margin: 0;
+
+			.poster {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				padding: 0;
+				margin: 0;
+			}
+
+			&.right {
+				pointer-events: none;
+
+				.title {
+					position: absolute;
+					top: calc(50% - 14rem);
+					text-shadow: 0 0 4px #000000;
+					width: 100%;
+					text-align: center;
+					font-size: 2.4rem;
+					z-index: 1;
+
+					&::before {
+						content: 'Volgende in de afspeellijst...';
+						display: block;
+						font-size: 1.6rem;
+						margin-bottom: 1rem;
+					}
+				}
+
+				.cancel {
+					position: absolute;
+					top: calc(50% + 6rem);
+					width: 100%;
+					text-align: center;
+					margin: 0;
+					text-shadow: 0 0 4px #000000;
+					font-size: 1.6rem;
+					z-index: 1;
+					pointer-events: auto;
+				}
+
+				.countdown {
+					position: absolute;
+					bottom: 0;
+					height: 2rem;
+					width: 1.005%;
+					border: 0;
+					background-color: $color-teal-bright;
+					margin: 0;
+					z-index: 0;
+				}
+			}
 		}
 	}
 }
