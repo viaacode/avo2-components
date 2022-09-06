@@ -483,14 +483,16 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 		() => (
 			<div className={classnames(className, 'c-video-player')}>
 				{playerHtml}
-				<div className="c-video-player__playlist__wrapper">
-					{playlistItems && playlistScrollable && (
-						<Scrollbar className="c-video-player__playlist__scrollable" noScrollX>
-							{renderPlaylistItems(playlistItems)}
-						</Scrollbar>
-					)}
-					{playlistItems && !playlistScrollable && renderPlaylistItems(playlistItems)}
-				</div>
+				{playlistItems && (
+					<div className="c-video-player__playlist__wrapper">
+						{playlistScrollable && (
+							<Scrollbar className="c-video-player__playlist__scrollable" noScrollX>
+								{renderPlaylistItems(playlistItems)}
+							</Scrollbar>
+						)}
+						{!playlistScrollable && renderPlaylistItems(playlistItems)}
+					</div>
+				)}
 			</div>
 		),
 		[playlistItems, playlistScrollable, className, renderPlaylistItems, playerHtml]
