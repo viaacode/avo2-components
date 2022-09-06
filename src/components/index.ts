@@ -31,7 +31,7 @@ import {
 	FlowPlayerPropsSchema,
 	FlowplayerSourceListSchema,
 	FlowplayerTrackSchema,
-} from './FlowPlayer/FlowPlayer';
+} from './FlowPlayer/FlowPlayer.types';
 import { FormPropsSchema } from './Form/Form';
 import { FormGroupPropsSchema } from './Form/FormGroup/FormGroup';
 import { ColumnPropsSchema, GridSizeSchema } from './Grid/Column/Column';
