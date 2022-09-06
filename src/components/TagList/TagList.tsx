@@ -82,7 +82,6 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 					)}
 					{/* output close button element */}
 					{closable && (
-						// eslint-disable-next-line jsx-a11y/anchor-is-valid
 						<a onClick={(evt: MouseEvent) => onTagClosed(tag.id, evt)}>
 							<Icon name="close" />
 						</a>

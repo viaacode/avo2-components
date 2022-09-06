@@ -2,13 +2,14 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { useState } from 'react';
 
 import ContentInput from './ContentInput';
+import { ContentInputPropsSchema } from './ContentInput.types';
 
 export default {
 	title: 'Components/ContentInput',
 	component: ContentInput,
 } as ComponentMeta<typeof ContentInput>;
 
-const Template: ComponentStory<typeof ContentInput> = (props) => {
+const Template: ComponentStory<typeof ContentInput> = (props: ContentInputPropsSchema) => {
 	const [value, setValue] = useState(props.value || '');
 
 	return (

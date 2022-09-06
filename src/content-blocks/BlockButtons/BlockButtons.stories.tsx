@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { StoryFn } from '@storybook/addons';
 import { storiesOf } from '@storybook/react';
-import { StoryFnReactReturnType } from '@storybook/react/dist/ts3.9/client/preview/types';
 import { flatten, times } from 'lodash-es';
 import React, { ReactNode } from 'react';
 
@@ -27,10 +26,10 @@ const renderBlockButtons =
 
 storiesOf('blocks/BlockButtons', module)
 	.addParameters({ jest: ['BlockButtons'] })
-	.add('BlockButtons', renderBlockButtons() as StoryFn<StoryFnReactReturnType>)
-	.add('BlockButtons (left)', renderBlockButtons('left') as StoryFn<StoryFnReactReturnType>)
-	.add('BlockButtons (center)', renderBlockButtons('center') as StoryFn<StoryFnReactReturnType>)
-	.add('BlockButtons (right)', renderBlockButtons('right') as StoryFn<StoryFnReactReturnType>)
+	.add('BlockButtons', renderBlockButtons() as StoryFn<any>)
+	.add('BlockButtons (left)', renderBlockButtons('left') as StoryFn<any>)
+	.add('BlockButtons (center)', renderBlockButtons('center') as StoryFn<any>)
+	.add('BlockButtons (right)', renderBlockButtons('right') as StoryFn<any>)
 	.add('BlockButtons (dividers)', () => (
 		<BlockButtons
 			elements={flatten(times(20).map(() => BUTTONS_MOCK)).map((button) => ({
