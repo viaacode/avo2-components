@@ -1,7 +1,7 @@
 /* tslint:disable */
-export const noop = () => {};
+import React, { RefObject } from 'react';
 
-export function getElementHeight(el: any) {
+export function getElementHeight(el: RefObject<HTMLElement | null>): number | 'auto' {
 	if (!el || !el.current) {
 		return 'auto';
 	}
@@ -9,15 +9,17 @@ export function getElementHeight(el: any) {
 }
 
 // Helper function for render props. Sets a function to be called, plus any additional functions passed in
-export const callAll = (...fns: any) => (...args: any) =>
-	fns.forEach((fn: any) => fn && fn(...args));
+export const callAll =
+	(...fns: ((...args: any[]) => void)[]) =>
+	(...args: any[]): void =>
+		fns.forEach((fn: (...args: any[]) => void) => fn && fn(...args));
 
-export const defaultTransitionStyles = {
+export const defaultTransitionStyles: React.CSSProperties = {
 	transitionDuration: '500ms',
 	transitionTimingFunction: 'cubic-bezier(0.250, 0.460, 0.450, 0.940)',
 };
 
-export function joinTransitionProperties(string: string) {
+export function joinTransitionProperties(string: string | undefined): string {
 	if (string) {
 		const styles = ['height'];
 		styles.push(...string.split(', '));
@@ -29,7 +31,10 @@ export function joinTransitionProperties(string: string) {
 export function makeTransitionStyles({
 	expandStyles = defaultTransitionStyles,
 	collapseStyles = defaultTransitionStyles,
-}: any) {
+}: {
+	expandStyles: React.CSSProperties;
+	collapseStyles: React.CSSProperties;
+}): { expandStyles: React.CSSProperties; collapseStyles: React.CSSProperties } {
 	return {
 		expandStyles: {
 			...expandStyles,

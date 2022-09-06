@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import React, { cloneElement, ReactElement, useState } from 'react';
+import React, { cloneElement, ReactElement, ReactNode, useState } from 'react';
 
 import { Select } from '../Select/Select';
 import { SELECT_MOCK_OPTIONS } from '../Select/Select.mock';
@@ -9,7 +9,7 @@ import { WYSIWYGControlSchema } from '../WYSIWYG/WYSIWYG.types';
 
 import { WYSIWYG } from './WYSIWYG';
 
-const withContent = (story: Function) => <div className="c-content">{story()}</div>;
+const withContent = (story: () => ReactNode) => <div className="c-content">{story()}</div>;
 
 export const WYSIWYG_OPTIONS: WYSIWYGControlSchema[] = [
 	'undo',

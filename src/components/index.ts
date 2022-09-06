@@ -12,11 +12,11 @@ import { ButtonPropsSchema } from './Button/Button';
 import { ButtonTypeSchema } from './Button/Button.types';
 import { ButtonGroupPropsSchema } from './ButtonGroup/ButtonGroup';
 import { ButtonToolbarPropsSchema } from './ButtonToolbar/ButtonToolbar';
+import { CTAPropsSchema } from './CTA/CTA';
 import { CheckboxPropsSchema } from './Checkbox/Checkbox';
 import { CheckboxGroupPropsSchema } from './CheckboxGroup/CheckboxGroup';
 import { ContainerPropsSchema } from './Container/Container';
 import { ContentInputPropsSchema } from './ContentInput';
-import { CTAPropsSchema } from './CTA/CTA';
 import { DatePickerPropsSchema } from './DatePicker/DatePicker';
 import {
 	DeadlineIndicatorColorsSchema,
@@ -27,7 +27,11 @@ import { DropdownPropsSchema } from './Dropdown/Dropdown';
 import { ExpandableContainerPropsSchema } from './ExpandableContainer/ExpandableContainer';
 import { FlexPropsSchema } from './Flex/Flex';
 import { FlexItemPropsSchema } from './Flex/FlexItem/FlexItem';
-import { FlowPlayerPropsSchema, FlowplayerTrackSchema } from './FlowPlayer/FlowPlayer';
+import {
+	FlowPlayerPropsSchema,
+	FlowplayerSourceListSchema,
+	FlowplayerTrackSchema,
+} from './FlowPlayer/FlowPlayer';
 import { FormPropsSchema } from './Form/Form';
 import { FormGroupPropsSchema } from './Form/FormGroup/FormGroup';
 import { ColumnPropsSchema, GridSizeSchema } from './Grid/Column/Column';
@@ -151,8 +155,10 @@ export { FlexItem } from './Flex/FlexItem/FlexItem';
 export type FlexItemProps = FlexItemPropsSchema;
 
 export { FlowPlayer } from './FlowPlayer/FlowPlayer';
+export { setPlayingVideoSeekTime, getPlayingVideoSeekTime } from './FlowPlayer/FlowPlayer.helpers';
 export type FlowPlayerProps = FlowPlayerPropsSchema;
 export type FlowplayerTrack = FlowplayerTrackSchema;
+export type FlowplayerSourceList = FlowplayerSourceListSchema;
 
 export { Form } from './Form/Form';
 export type FormProps = FormPropsSchema;

@@ -21,7 +21,12 @@ describe('<Accordion />', () => {
 	});
 
 	it('Should render correctly with `isOpen = false`', () => {
-		wrapper.setProps({ isOpen: false, onToggle: () => {} });
+		wrapper.setProps({
+			isOpen: false,
+			onToggle: () => {
+				// ignore empty
+			},
+		});
 
 		expect(wrapper.hasClass('c-accordion--closed')).toBeTruthy();
 	});

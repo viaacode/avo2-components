@@ -1,13 +1,19 @@
 /* tslint:disable */
-import { useState, useRef, useEffect, useLayoutEffect, useMemo } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
-export function useStateOrProps({ isOpen, defaultOpen }: any) {
-	const [open, setOpen] = useState(defaultOpen || false);
+export function useStateOrProps({
+	isOpen,
+	defaultOpen,
+}: {
+	isOpen?: boolean;
+	defaultOpen?: boolean;
+}): [boolean, React.Dispatch<React.SetStateAction<boolean>>] {
+	const [open, setOpen] = useState<boolean>(defaultOpen || false);
 	const definedOpen = typeof isOpen !== 'undefined' ? isOpen : open;
 	return [definedOpen, setOpen];
 }
 
-export function useLayoutEffectAfterMount(cb: any, dependencies: any) {
+export function useLayoutEffectAfterMount(cb: () => void, dependencies: any[]): void {
 	const justMounted = useRef(true);
 	useLayoutEffect(() => {
 		if (!justMounted.current) {
@@ -18,7 +24,7 @@ export function useLayoutEffectAfterMount(cb: any, dependencies: any) {
 	}, dependencies);
 }
 
-function useEffectOnMount(cb: any) {
+function useEffectOnMount(cb: () => void): void {
 	const justMounted = useRef(true);
 	useEffect(() => {
 		if (justMounted.current) {
@@ -34,7 +40,7 @@ let idCounter = 0;
  * This generates a unique ID for an instance of Collapse
  * @return {String} the unique ID
  */
-export function useUniqueId() {
+export function useUniqueId(): number {
 	let counter = useMemo(() => idCounter++, []);
 	useEffectOnMount(() => {
 		counter++;

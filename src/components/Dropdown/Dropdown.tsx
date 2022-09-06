@@ -1,5 +1,6 @@
 import { Placement } from '@popperjs/core';
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { usePopper } from 'react-popper';
 
@@ -48,8 +49,8 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	// TODO re-enable this without causing an infinite render loop
 	// https://github.com/popperjs/popper-core/issues/794#issuecomment-736727000
 	// menuWidth = 'fit-trigger',
-	onClose = () => {},
-	onOpen = () => {},
+	onClose = noop,
+	onOpen = noop,
 	placement = 'bottom-start',
 	searchMenu = false,
 	triggerClassName,
@@ -82,7 +83,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 		// 		: [],
 	});
 
-	const toggle = (openState: boolean = !isOpen) => {
+	const toggle = (openState = !isOpen) => {
 		if (openState !== isOpen) {
 			openState ? onOpen() : onClose();
 		}

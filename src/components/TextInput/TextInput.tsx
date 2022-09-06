@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent, KeyboardEvent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -29,9 +30,9 @@ export const TextInput: FunctionComponent<TextInputPropsSchema> = ({
 	icon,
 	type = 'text',
 	ariaLabel = '',
-	onChange = () => {},
-	onBlur = () => {},
-	onKeyUp = () => {},
+	onChange = noop,
+	onBlur = noop,
+	onKeyUp = noop,
 }) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
 		onChange(event.target.value);

@@ -1,7 +1,9 @@
 import { action } from '@storybook/addon-actions';
+import { StoryFn } from '@storybook/addons';
 import { storiesOf } from '@storybook/react';
+import { StoryFnReactReturnType } from '@storybook/react/dist/ts3.9/client/preview/types';
 import { flatten, times } from 'lodash-es';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { ButtonTypeSchema } from '../../components/Button/Button.types';
 import { testRenderLink } from '../../helpers/render-link';
@@ -12,7 +14,8 @@ import { BUTTONS_MOCK } from './BlockButtons.mock';
 
 const renderBlockButtons =
 	(align?: AlignOptions, dividers = false, type: ButtonTypeSchema = 'secondary') =>
-	() =>
+	// eslint-disable-next-line react/display-name
+	(): ReactNode =>
 		(
 			<BlockButtons
 				elements={BUTTONS_MOCK.map((button) => ({ ...button, type }))}
@@ -24,10 +27,10 @@ const renderBlockButtons =
 
 storiesOf('blocks/BlockButtons', module)
 	.addParameters({ jest: ['BlockButtons'] })
-	.add('BlockButtons', renderBlockButtons())
-	.add('BlockButtons (left)', renderBlockButtons('left'))
-	.add('BlockButtons (center)', renderBlockButtons('center'))
-	.add('BlockButtons (right)', renderBlockButtons('right'))
+	.add('BlockButtons', renderBlockButtons() as StoryFn<StoryFnReactReturnType>)
+	.add('BlockButtons (left)', renderBlockButtons('left') as StoryFn<StoryFnReactReturnType>)
+	.add('BlockButtons (center)', renderBlockButtons('center') as StoryFn<StoryFnReactReturnType>)
+	.add('BlockButtons (right)', renderBlockButtons('right') as StoryFn<StoryFnReactReturnType>)
 	.add('BlockButtons (dividers)', () => (
 		<BlockButtons
 			elements={flatten(times(20).map(() => BUTTONS_MOCK)).map((button) => ({
