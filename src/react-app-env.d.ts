@@ -11,3 +11,4 @@ declare module '@flowplayer/player/plugins/cuepoints';
 declare module '@flowplayer/player/plugins/keyboard';
 declare module '@flowplayer/player/plugins/playlist';
 declare module '@flowplayer/player/plugins/google-analytics';
+declare module 'react-scrollbars-custom';
