@@ -73,4 +73,11 @@ storiesOf('components/DatePicker', module)
 				</DatePickerStoryComponent>
 			</Spacer>
 		</Fragment>
+	))
+	.add('DatePicker min value', () => (
+		<Fragment>
+			<DatePickerStoryComponent>
+				<DatePicker showTimeInput onChange={action('onChange')} minDate={new Date()} />
+			</DatePickerStoryComponent>
+		</Fragment>
 	));
