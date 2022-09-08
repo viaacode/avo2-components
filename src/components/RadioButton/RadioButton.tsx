@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -20,7 +21,7 @@ export const RadioButton: FunctionComponent<RadioButtonPropsSchema> = ({
 	id,
 	disabled = false,
 	checked = false,
-	onChange = () => {},
+	onChange = noop,
 	className,
 }) => {
 	return (

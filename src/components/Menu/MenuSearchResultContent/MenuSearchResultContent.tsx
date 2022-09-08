@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps, EnglishContentType } from '../../../types';
@@ -32,7 +33,7 @@ export const MenuSearchResultContent: FunctionComponent<MenuSearchResultContentP
 	className,
 	menuItems,
 	noResultsLabel,
-	onClick = () => {},
+	onClick = noop,
 }) => {
 	const renderMenuItem = (menuItemInfo: MenuSearchResultItemInfoSchema) => {
 		return (

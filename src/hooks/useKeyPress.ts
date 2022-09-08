@@ -4,7 +4,7 @@ export function useKeyPress(
 	targetKey: string,
 	onPressDown?: (() => void) | null,
 	onPressUp?: (() => void) | null
-) {
+): void {
 	useEffect(() => {
 		// If pressed key is our target key then call onPressDown-handler
 		function downHandler({ key }: KeyboardEvent) {

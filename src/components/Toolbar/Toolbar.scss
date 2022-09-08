@@ -34,6 +34,10 @@ $c-toolbar-main-border-color: $color-gray-200 !default;
 	}
 }
 
+.c-toolbar--no-height {
+	min-height: 0;
+}
+
 .c-toolbar--medium {
 	height: $g-bar-size-medium;
 }

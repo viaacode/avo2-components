@@ -2,8 +2,14 @@
    Component: Dropdown
    ========================================================================== */
 
+$c-button-icon-spacing-small: 0.2rem !default;
+
 .c-dropdown__trigger {
 	display: inline-block;
+
+	.o-svg-icon + .c-button__label {
+		margin-left: $c-button-icon-spacing-small;
+	}
 }
 
 .c-dropdown__menu {

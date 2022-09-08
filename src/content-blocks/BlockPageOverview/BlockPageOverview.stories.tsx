@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import { intersectionBy, times } from 'lodash-es';
+import { intersectionBy, noop, times } from 'lodash-es';
 import React, { cloneElement, ReactElement, useEffect, useState } from 'react';
 
 import { testRenderLink } from '../../helpers/render-link';
@@ -70,8 +70,8 @@ const BlockPageOverviewStoryComponent = ({
 const baseProps = {
 	tabs,
 	currentPage: 0,
-	onCurrentPageChanged: () => {},
-	onSelectedTabsChanged: () => {},
+	onCurrentPageChanged: noop,
+	onSelectedTabsChanged: noop,
 	pageCount: 1,
 	pages: [],
 	selectedTabs: [],

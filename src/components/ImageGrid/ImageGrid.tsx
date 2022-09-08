@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -28,7 +29,7 @@ export const ImageGrid: FunctionComponent<ImageGridPropsSchema> = ({
 	backgroundColor = 'transparent',
 	allowSelect = false,
 	allowMulti = false,
-	onChange = () => {},
+	onChange = noop,
 }) => {
 	const handleImageClick = (imgSource: string) => {
 		if (allowMulti) {

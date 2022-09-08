@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -18,7 +19,7 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 	pageCount,
 	displayCount = 5,
 	currentPage = 0,
-	onPageChange = () => {},
+	onPageChange = noop,
 }) => {
 	function changePage(page: number) {
 		if (page >= 0 && page <= pageCount - 1) {
@@ -29,30 +30,28 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 	function generatePages() {
 		// generate all pages if pageCount is less than the displayCount
 		if (pageCount < displayCount) {
-			// @ts-ignore
-			return Array.from({ length: pageCount }, (value: number, index: number) => index);
+			return Array.from({ length: pageCount }, (_value: number, index: number) => index);
 		}
 
 		// generate first x pages if currentPage is less than the displayCount
 		if (currentPage < displayCount / 2) {
-			// @ts-ignore
-			return Array.from({ length: displayCount }, (value: number, index: number) => index);
+			return Array.from({ length: displayCount }, (_value: number, index: number) => index);
 		}
 
 		// generate last x pages if currentPage is less than the pageCount - displayCount
 		if (currentPage >= Math.floor(pageCount - displayCount / 2)) {
 			return Array.from(
 				{ length: displayCount },
-				// @ts-ignore
-				(value: number, index: number) => pageCount - (displayCount - index)
+
+				(_value: number, index: number) => pageCount - (displayCount - index)
 			);
 		}
 
 		// generate x pages padding the current page
 		return Array.from(
 			{ length: displayCount },
-			// @ts-ignore
-			(value: number, index: number) => index + currentPage - Math.ceil(displayCount / 2) + 1
+
+			(_value: number, index: number) => index + currentPage - Math.ceil(displayCount / 2) + 1
 		);
 	}
 
@@ -73,7 +72,7 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 						className={classnames(styles['c-pagination__btn'], {
 							[styles['c-pagination__btn--active']]: pageIndex === currentPage,
 						})}
-						onClick={pageIndex !== currentPage ? () => changePage(pageIndex) : () => {}}
+						onClick={pageIndex !== currentPage ? () => changePage(pageIndex) : noop}
 					>
 						{pageIndex + 1}
 					</div>

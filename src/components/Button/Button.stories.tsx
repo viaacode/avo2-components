@@ -98,7 +98,7 @@ const Template: Story<Partial<ButtonPropsSchema>> = ({
 	title,
 	children = null,
 	...rest
-}) => {
+}: ButtonPropsSchema) => {
 	return (
 		<Spacer margin="extra-large">
 			<Button

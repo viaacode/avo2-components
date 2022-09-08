@@ -1,6 +1,6 @@
 import classnames from 'classnames';
-import { isNil, isString } from 'lodash-es';
-import React, { FunctionComponent, ReactNode } from 'react';
+import { isNil, isString, noop } from 'lodash-es';
+import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Checkbox } from '../Checkbox/Checkbox';
@@ -9,6 +9,7 @@ import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Panel } from '../Panel/Panel';
 import { PanelBody } from '../Panel/PanelBody/PanelBody';
+import { RadioButton } from '../RadioButton/RadioButton';
 import { Spacer } from '../Spacer/Spacer';
 
 import styles from './Table.module.scss';
@@ -61,6 +62,7 @@ export interface TablePropsSchema extends DefaultProps {
 	untable?: boolean;
 	variant?: 'bordered' | 'invisible' | 'styled';
 	showCheckboxes?: boolean;
+	showRadioButtons?: boolean;
 	useCards?: boolean;
 	selectedItemIds?: (string | number)[];
 	onSelectionChanged?: (selectedItemIds: (string | number)[]) => void;
@@ -76,7 +78,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	emptyStateMessage,
 	horizontal,
 	nowrap,
-	onColumnClick = () => {},
+	onColumnClick = noop,
 	onRowClick,
 	renderCell = () => null,
 	rowKey,
@@ -86,10 +88,11 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	untable,
 	variant,
 	showCheckboxes = false,
+	showRadioButtons = false,
 	useCards = false,
 	selectedItemIds = [],
-	onSelectionChanged = () => {},
-	onSelectAll = () => {},
+	onSelectionChanged = noop,
+	onSelectAll = noop,
 }) => {
 	const getRowKey = (rowData: any): string => {
 		if (isString(rowKey)) {
@@ -129,6 +132,14 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 			);
 		} else {
 			onSelectionChanged([...selectedItemIds, getRowKey(item)]);
+		}
+	};
+
+	const toggleRadioItemSelection = (item: any) => {
+		if (isItemSelected(item)) {
+			onSelectionChanged([]);
+		} else {
+			onSelectionChanged([getRowKey(item)]);
 		}
 	};
 
@@ -211,6 +222,9 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 											/>
 										</th>
 									)}
+									{showRadioButtons && (
+										<th className="c-table__checkbox-column" />
+									)}
 									{columns.map(renderHeading)}
 								</tr>
 							</thead>
@@ -220,7 +234,9 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 								{data.map((rowData, rowIndex) => (
 									<tr
 										key={`table-row-${getRowKey(rowData)}`}
-										className={onRowClick ? 'u-clickable' : ''}
+										className={classnames(className, {
+											'u-clickable': !!onRowClick,
+										})}
 										onClick={() => handleRowClick(rowData)}
 									>
 										{showCheckboxes && (
@@ -230,6 +246,25 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 											>
 												<Checkbox
 													label=""
+													checked={
+														!!selectedItemIds.find(
+															(selectedItemId) =>
+																selectedItemId ===
+																getRowKey(rowData)
+														)
+													}
+												/>
+											</td>
+										)}
+										{showRadioButtons && (
+											<td
+												className="c-table__checkbox-column u-clickable"
+												onClick={() => toggleRadioItemSelection(rowData)}
+											>
+												<RadioButton
+													label=""
+													name={getRowKey(rowData)}
+													value={getRowKey(rowData)}
 													checked={
 														!!selectedItemIds.find(
 															(selectedItemId) =>
@@ -274,7 +309,9 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 				{(data || []).map((rowData, rowIndex) => (
 					<div
 						key={`table-card-${getRowKey(rowData)}`}
-						className={onRowClick || showCheckboxes ? 'u-clickable' : ''}
+						className={classnames(className, 'c-table__card', {
+							'u-clickable': !!onRowClick || showCheckboxes,
+						})}
 						onClick={() => handleRowClick(rowData)}
 					>
 						<Spacer margin="bottom">
@@ -283,14 +320,14 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 									{columns
 										.map((col) => col.id)
 										.map((columnId, columnIndex) => (
-											<div key={columnIndex}>
+											<Fragment key={columnIndex}>
 												{renderCell(
 													rowData,
 													columnId,
 													rowIndex,
 													columnIndex
 												)}
-											</div>
+											</Fragment>
 										))}
 								</PanelBody>
 							</Panel>

@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -17,7 +18,7 @@ export const Toggle: FunctionComponent<TogglePropsSchema> = ({
 	id,
 	checked,
 	disabled = false,
-	onChange = () => {},
+	onChange = noop,
 }) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
 		const currentCheckedValue = event.target.checked;
