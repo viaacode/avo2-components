@@ -29,6 +29,10 @@ export type WYSIWYGControlSchema =
 	| 'fullscreen' // Make editor fullscreen
 	| 'separator'; // Split line, continuous multiple separators will only be displayed as 1
 
+export type Heading = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'normal';
+
+export const ALL_RICH_TEXT_HEADINGS: Heading[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'normal'];
+
 export interface WYSIWYGPropsSchema {
 	id?: string;
 	initialHtml?: string;
@@ -43,6 +47,8 @@ export interface WYSIWYGPropsSchema {
 	onTab?: () => void;
 	onDelete?: () => void;
 	onSave?: () => void;
+	enabledHeadings?: Heading[];
+	className?: string;
 }
 
 export interface RichEditorStateSchema {

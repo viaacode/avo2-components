@@ -5,33 +5,51 @@ import { Button } from '../Button/Button';
 import { Spacer } from '../Spacer/Spacer';
 
 export interface ExpandableContainerPropsSchema {
-	expandLabel?: string;
-	collapseLabel?: string;
-	collapsedHeight?: number;
-	defaultExpanded?: boolean;
 	children: ReactNode;
+	collapsedHeight?: number;
+	collapseLabel?: string;
+	collapseNode?: ReactNode;
+	defaultExpanded?: boolean;
+	expandLabel?: string;
+	expandNode?: ReactNode;
 }
 
 export const ExpandableContainer: FunctionComponent<ExpandableContainerPropsSchema> = ({
-	expandLabel = 'Meer lezen',
-	collapseLabel = 'Minder lezen',
-	collapsedHeight = 44,
-	defaultExpanded = false,
 	children,
+	collapsedHeight = 44,
+	collapseLabel = 'Minder lezen',
+	collapseNode,
+	defaultExpanded = false,
+	expandLabel = 'Meer lezen',
+	expandNode,
 }) => {
 	const { getCollapseProps, getToggleProps, isOpen } = useCollapsed({
 		collapsedHeight,
 		defaultOpen: defaultExpanded,
 	});
 
+	const hasCustomControlNodes = collapseNode && expandNode;
+
 	return (
 		<Fragment>
 			<div {...getCollapseProps()}>
 				<div>{children}</div>
 			</div>
-			<Spacer margin="top-small">
-				<div className="u-text-center" {...(getToggleProps() as any)}>
-					<Button type="secondary" label={isOpen ? collapseLabel : expandLabel} />
+
+			<Spacer
+				className={!hasCustomControlNodes ? 'u-text-center' : undefined}
+				margin="top-small"
+			>
+				<div {...(getToggleProps() as any)}>
+					{hasCustomControlNodes ? (
+						isOpen ? (
+							collapseNode
+						) : (
+							expandNode
+						)
+					) : (
+						<Button type="secondary" label={isOpen ? collapseLabel : expandLabel} />
+					)}
 				</div>
 			</Spacer>
 		</Fragment>

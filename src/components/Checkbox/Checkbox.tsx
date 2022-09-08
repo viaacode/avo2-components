@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -17,7 +18,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsSchema> = ({
 	id,
 	disabled = false,
 	checked = false,
-	onChange = () => {},
+	onChange = noop,
 }) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
 		const currentCheckedValue = event.target.checked;

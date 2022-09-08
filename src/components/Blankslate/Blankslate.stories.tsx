@@ -43,5 +43,5 @@ storiesOf('components/Blankslate', module)
 			title="Oeps. Pagina niet gevonden"
 			body="Sorry, we hebben overal gekeken, maar de pagina die je zoekt bestaat niet (meer) of je hebt geen rechten om deze te bekijken.<br /> Vermoed je een fout? Neem dan contact met ons op via de Feedback-knop."
 			icon="search"
-		></Blankslate>
+		/>
 	));

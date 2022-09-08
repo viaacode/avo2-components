@@ -4,7 +4,7 @@ export function useClickOutside(
 	ref: Element,
 	onClickOutside: (event: MouseEvent | TouchEvent) => void,
 	exemptions: Element[] = []
-) {
+): void {
 	useEffect(() => {
 		function clickOutsideHandler(event: MouseEvent | TouchEvent) {
 			if (

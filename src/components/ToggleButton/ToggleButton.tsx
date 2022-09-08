@@ -1,3 +1,4 @@
+import { noop } from 'lodash-es';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -21,7 +22,7 @@ export const ToggleButton: FunctionComponent<ToggleButtonPropsSchema> = ({
 	ariaLabel,
 	title,
 	type = 'borderless',
-	onClick = () => {},
+	onClick = noop,
 }) => {
 	const [filled, setFilled] = useState(active);
 

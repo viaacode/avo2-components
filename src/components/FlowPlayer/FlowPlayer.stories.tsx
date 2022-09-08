@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import React, { cloneElement, ReactElement, useState } from 'react';
+import { cloneDeep } from 'lodash-es';
+import React, { cloneElement, ReactElement } from 'react';
 
 import { Button } from '../Button/Button';
 import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
@@ -8,22 +9,25 @@ import { Modal } from '../Modal/Modal';
 import { ModalBody } from '../Modal/Modal.slots';
 
 import { FlowPlayer } from './FlowPlayer';
-import { MOCK_FLOW_PLAYER_PROPS_FULL } from './FlowPlayer.mock';
+import { MOCK_FLOW_PLAYER_PROPS_FULL, MOCK_PLAYLIST_SOURCE } from './FlowPlayer.mock';
 
 const FlowPlayerStoryComponent = ({ children }: { children: ReactElement }) => {
-	const [seekTime, setSeekTime] = useState(0);
-
 	return (
 		<>
-			{cloneElement(children, {
-				seekTime,
-			})}
+			{cloneElement(children)}
 			<br />
 			<ButtonToolbar>
 				{[0, 0.001, 10, 20, 30].map((s) => (
 					<Button
 						label={`${s} seconds`}
-						onClick={() => setSeekTime(s)}
+						onClick={() => {
+							const playingVideo: HTMLVideoElement | null = document.querySelector(
+								'.c-video-player .is-playing video'
+							) as HTMLVideoElement | null;
+							if (playingVideo) {
+								playingVideo.currentTime = s;
+							}
+						}}
 						key={`button-jump-${s}`}
 					/>
 				))}
@@ -39,7 +43,7 @@ storiesOf('components/FlowPlayer', module)
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} />
 		</div>
 	))
-	.add('FlowPlayer Video with m3u8 playlist src', () => (
+	.add('FlowPlayer Video with m3u8 src', () => (
 		<div className="o-grid-col-bp3-7">
 			<FlowPlayer
 				{...MOCK_FLOW_PLAYER_PROPS_FULL}
@@ -100,6 +104,48 @@ storiesOf('components/FlowPlayer', module)
 			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} start={30} end={200} />
 		</div>
 	))
+	.add('FlowPlayer playlist', () => {
+		const srcWithoutCuepoints = cloneDeep(MOCK_PLAYLIST_SOURCE);
+		srcWithoutCuepoints.items = srcWithoutCuepoints.items.map((item: any) => {
+			delete item.cuepoints;
+			return item;
+		});
+		return (
+			<div className="o-grid-col-bp3-7">
+				<FlowPlayer
+					{...MOCK_FLOW_PLAYER_PROPS_FULL}
+					plugins={['cuepoints', 'hls', 'keyboard', 'playlist']}
+					src={srcWithoutCuepoints}
+				/>
+			</div>
+		);
+	})
+	.add('FlowPlayer playlist scrollable', () => {
+		const srcWithoutCuepoints = cloneDeep(MOCK_PLAYLIST_SOURCE);
+		srcWithoutCuepoints.items = srcWithoutCuepoints.items.map((item: any) => {
+			delete item.cuepoints;
+			return item;
+		});
+		return (
+			<div className="o-grid-col-bp3-7">
+				<FlowPlayer
+					{...MOCK_FLOW_PLAYER_PROPS_FULL}
+					plugins={['cuepoints', 'hls', 'keyboard', 'playlist']}
+					src={srcWithoutCuepoints}
+					playlistScrollable={true}
+				/>
+			</div>
+		);
+	})
+	.add('FlowPlayer playlist with cuepoints', () => (
+		<div className="o-grid-col-bp3-7">
+			<FlowPlayer
+				{...MOCK_FLOW_PLAYER_PROPS_FULL}
+				plugins={['cuepoints', 'hls', 'keyboard', 'playlist']}
+				src={MOCK_PLAYLIST_SOURCE}
+			/>
+		</div>
+	))
 	.add('FlowPlayer events', () => (
 		<div className="o-grid-col-bp3-7">
 			<FlowPlayer
@@ -124,8 +170,7 @@ storiesOf('components/FlowPlayer', module)
 						lang: 'nl',
 						id: '123',
 						label: 'Nederlands',
-						src:
-							'http://localhost:3000/subtitles/convert-srt-to-vtt/viaa/MOB/TESTBEELD/3b61046461be4b1e9f0fad19b42baa192487807cfefa4c289c0fa65d5c78195b/3b61046461be4b1e9f0fad19b42baa192487807cfefa4c289c0fa65d5c78195b.srt',
+						src: 'http://localhost:3000/subtitles/convert-srt-to-vtt/viaa/MOB/TESTBEELD/3b61046461be4b1e9f0fad19b42baa192487807cfefa4c289c0fa65d5c78195b/3b61046461be4b1e9f0fad19b42baa192487807cfefa4c289c0fa65d5c78195b.srt',
 					},
 				]}
 			/>

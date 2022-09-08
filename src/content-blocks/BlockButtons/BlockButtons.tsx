@@ -2,7 +2,10 @@ import classnames from 'classnames';
 import { flatten } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
-import { Button, ButtonToolbar, ButtonType, IconName } from '../../components';
+import { Button } from '../../components/Button/Button';
+import { ButtonTypeSchema } from '../../components/Button/Button.types';
+import { ButtonToolbar } from '../../components/ButtonToolbar/ButtonToolbar';
+import { IconNameSchema } from '../../components/Icon/Icon.types';
 import { defaultRenderLinkFunction } from '../../helpers/render-link';
 import { AlignOptions, ButtonAction, DefaultProps, RenderLinkFunction } from '../../types';
 
@@ -15,13 +18,13 @@ export interface ButtonProps extends DefaultProps {
 	autoHeight?: boolean;
 	block?: boolean;
 	disabled?: boolean;
-	icon?: IconName;
+	icon?: IconNameSchema;
 	label?: string;
 	altTitle?: string;
 	size?: 'small';
 	title?: string;
 	tooltip?: string;
-	type?: ButtonType;
+	type?: ButtonTypeSchema;
 	buttonAction: ButtonAction;
 }
 

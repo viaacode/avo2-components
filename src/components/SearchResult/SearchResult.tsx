@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { isNil, truncate } from 'lodash-es';
+import { isNil, noop, truncate } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, ReactText } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
@@ -27,7 +27,7 @@ export interface SearchResultPropsSchema extends DefaultProps {
 	maxDescriptionLength?: number;
 	isBookmarked: boolean | null;
 	date: string;
-	bookmarkCount: number;
+	bookmarkCount: number | null; // null hides the counter
 	viewCount: number;
 	tags?: TagOptionSchema[];
 	onToggleBookmark?: (active: boolean) => void;
@@ -45,8 +45,8 @@ export const SearchResult: FunctionComponent<SearchResultPropsSchema> = ({
 	bookmarkCount,
 	viewCount,
 	tags = [],
-	onToggleBookmark = () => {},
-	onTagClicked = () => {},
+	onToggleBookmark = noop,
+	onTagClicked = noop,
 }) => {
 	const title = useSlot(SearchResultTitle, children);
 	const subTitle = useSlot(SearchResultSubtitle, children);
@@ -82,7 +82,9 @@ export const SearchResult: FunctionComponent<SearchResultPropsSchema> = ({
 						<MetaData category={type}>
 							<MetaDataItem label={date} />
 							<MetaDataItem label={String(viewCount)} icon="eye" />
-							<MetaDataItem label={String(bookmarkCount)} icon="bookmark" />
+							{!isNil(bookmarkCount) && (
+								<MetaDataItem label={String(bookmarkCount)} icon="bookmark" />
+							)}
 						</MetaData>
 						<TagList
 							tags={tags}

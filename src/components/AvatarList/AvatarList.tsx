@@ -66,7 +66,6 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 					<DropdownContent>
 						<Fragment>
 							{hiddenAvatars.map((avatar, index) => (
-								// eslint-disable-next-line jsx-a11y/anchor-is-valid
 								<a
 									key={index}
 									className={'c-menu__item'}

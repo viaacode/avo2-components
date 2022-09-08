@@ -27,7 +27,7 @@ storiesOf('components/Modal', module)
 			<Modal title="Modal title" isOpen={false}>
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React
+						It does not matter where this modal occurs in the source code, React
 						automatically moves it to the root.
 					</p>
 				</ModalBody>
@@ -45,7 +45,7 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="small">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React
+						It does not matter where this modal occurs in the source code, React
 						automatically moves it to the root.
 					</p>
 				</ModalBody>
@@ -60,7 +60,7 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="medium">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React
+						It does not matter where this modal occurs in the source code, React
 						automatically moves it to the root.
 					</p>
 				</ModalBody>
@@ -75,7 +75,7 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="large">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React
+						It does not matter where this modal occurs in the source code, React
 						automatically moves it to the root.
 					</p>
 				</ModalBody>
@@ -90,7 +90,7 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="extra-large">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React
+						It does not matter where this modal occurs in the source code, React
 						automatically moves it to the root.
 					</p>
 				</ModalBody>
@@ -115,7 +115,7 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="fullscreen">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React
+						It does not matter where this modal occurs in the source code, React
 						automatically moves it to the root.
 					</p>
 				</ModalBody>
@@ -130,7 +130,7 @@ storiesOf('components/Modal', module)
 			<Modal isOpen title="Modal title" size="auto">
 				<ModalBody>
 					<p>
-						It doesn't matter where this modal occurs in the source code, React
+						It does not matter where this modal occurs in the source code, React
 						automatically moves it to the root.
 					</p>
 				</ModalBody>

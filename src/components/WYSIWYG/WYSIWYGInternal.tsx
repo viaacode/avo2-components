@@ -3,10 +3,11 @@ import 'braft-editor/dist/index.css';
 import Table from 'braft-extensions/dist/table';
 import 'braft-extensions/dist/table.css';
 import classnames from 'classnames';
+import { without } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
 import './WYSIWYG.scss';
-import { RichEditorStateSchema, WYSIWYGPropsSchema } from './WYSIWYG.types';
+import { ALL_RICH_TEXT_HEADINGS, RichEditorStateSchema, WYSIWYGPropsSchema } from './WYSIWYG.types';
 
 const WYSIWYGInternal: FunctionComponent<WYSIWYGPropsSchema> = ({
 	id,
@@ -22,6 +23,8 @@ const WYSIWYGInternal: FunctionComponent<WYSIWYGPropsSchema> = ({
 	onTab,
 	onDelete,
 	onSave,
+	enabledHeadings = ALL_RICH_TEXT_HEADINGS,
+	className,
 }) => {
 	const options = {
 		defaultColumns: 3, //  default number of columns
@@ -155,8 +158,21 @@ const WYSIWYGInternal: FunctionComponent<WYSIWYGPropsSchema> = ({
 		return languages['nl'] || languages['en'];
 	};
 
+	const getHiddenHeadingClasses = (): string => {
+		const hiddenHeadings = without(ALL_RICH_TEXT_HEADINGS, ...enabledHeadings);
+		return hiddenHeadings.map((heading) => `c-rich-text-editor--hide-${heading}`).join(' ');
+	};
+
 	return (
-		<div className={classnames('c-rich-text-editor c-content', { disabled })} id={id}>
+		<div
+			className={classnames(
+				'c-rich-text-editor c-content',
+				className,
+				getHiddenHeadingClasses(),
+				{ disabled }
+			)}
+			id={id}
+		>
 			<BraftEditor
 				id={id}
 				value={state || BraftEditor.createEditorState(initialHtml || '')}

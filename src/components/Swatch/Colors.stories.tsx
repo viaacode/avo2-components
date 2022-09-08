@@ -26,7 +26,11 @@ stories.forEach(([title, colors]: any) => story.add(title, () => <SwatchBlock co
 story.add('All colors', () => (
 	<Fragment>
 		{stories.map(([title, colors]: any) => (
-			<SwatchBlock title={title} colors={colors} />
+			<SwatchBlock
+				key={colors.map((color: { name: string; value: string }) => color.value).join('-')}
+				title={title}
+				colors={colors}
+			/>
 		))}
 	</Fragment>
 ));

@@ -1,7 +1,9 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
+// eslint-disable-next-line import/namespace
 import { ActionMeta, ValueType } from 'react-select/src/types';
 
 import { DefaultProps } from '../../types';
@@ -37,11 +39,11 @@ export const TagsInput: FunctionComponent<TagsInputPropsSchema> = ({
 	placeholder = '',
 	allowCreate = false,
 	isLoading = false,
-	onChange = () => {},
-	onCreate = () => {},
+	onChange = noop,
+	onCreate = noop,
 }) => {
 	function onValueChange(
-		changedValues: ValueType<TagInfoSchema>,
+		changedValues: ValueType<TagInfoSchema, boolean>,
 		actionMeta: ActionMeta<TagInfoSchema>
 	) {
 		if (actionMeta.action === 'create-option') {

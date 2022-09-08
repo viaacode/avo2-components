@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent, MouseEvent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -30,10 +31,10 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 	bordered = true,
 	closable = false,
 	selectable = false,
-	onTagClosed = () => {},
+	onTagClosed = noop,
 	onTagClicked,
 }) => {
-	const safeOnTagClicked = onTagClicked || (() => {});
+	const safeOnTagClicked = onTagClicked || noop;
 
 	return !!tags && !!tags.length ? (
 		<ul className={classnames(className, styles['c-tag-list'])}>
@@ -81,7 +82,6 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 					)}
 					{/* output close button element */}
 					{closable && (
-						// eslint-disable-next-line jsx-a11y/anchor-is-valid
 						<a onClick={(evt: MouseEvent) => onTagClosed(tag.id, evt)}>
 							<Icon name="close" />
 						</a>
