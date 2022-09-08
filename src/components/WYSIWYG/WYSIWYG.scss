@@ -5,8 +5,9 @@
 }
 
 .c-rich-text-editor {
-	border: 1px solid #bac7d1;
+	border: 1px solid $color-gray-150;
 	border-radius: 0.3rem;
+	background-color: #fff;
 
 	&.disabled {
 		.bf-controlbar {
@@ -18,7 +19,7 @@
 
 	ul, ol {
 		margin: 0;
-		padding: 5px;
+		padding: 0.5rem;
 	}
 
 	.bf-table-dropdown-control .button {
@@ -26,20 +27,20 @@
 	}
 
 	.bf-controlbar {
-		background-color: #ecf0f1;
+		background-color: $color-gray-50;
 	}
 
 	.bf-content {
-		font-size: 15px;
+		font-size: 1.5rem;
 	}
 
 	.bf-controlbar .separator-line {
-		margin: 0 5px;
-		height: 35px;
+		margin: 0 0.5rem;
+		height: 3.5rem;
 	}
 
 	.bf-controlbar .control-item {
-		margin: 0 0 0 3px;
+		margin: 0 0 0 0.3rem;
 	}
 
 	.public-DraftEditor-content {
