@@ -38,6 +38,16 @@ import {
 	FlowplayerSourceListSchema,
 } from './FlowPlayer.types';
 
+flowplayer(
+	subtitlesPlugin,
+	hlsPlugin,
+	cuepointsPlugin,
+	keyboardPlugin,
+	speedPlugin,
+	playlistPlugin,
+	googleAnalyticsPlugin
+);
+
 export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	src,
 	poster,
@@ -56,6 +66,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	onPause,
 	onEnded,
 	onTimeUpdate,
+	canPlay,
 	className,
 	playlistScrollable = false,
 	subtitles,
@@ -231,15 +242,10 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 			return;
 		}
 
-		flowplayer(
-			subtitlesPlugin,
-			hlsPlugin,
-			cuepointsPlugin,
-			keyboardPlugin,
-			speedPlugin,
-			playlistPlugin,
-			googleAnalyticsPlugin
-		);
+		if (player) {
+			player.destroy();
+			setStartedPlaying(false);
+		}
 
 		(flowplayer as any).i18n.nl = dutchFlowplayerTranslations;
 
@@ -422,6 +428,19 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = ({
 	useEffect(() => {
 		videoContainerRef.current && !player && reInitFlowPlayer();
 	}, [videoContainerRef.current]); // Only redo effect when ref changes
+
+	useEffect(() => {
+		if (!canPlay) {
+			player?.pause();
+		}
+	}, [canPlay]);
+
+	useEffect(() => {
+		return () => {
+			//  cleanup on unload component
+			player?.destroy();
+		};
+	}, []);
 
 	const handleMediaCardClicked = useCallback(
 		(itemIndex: number): void => {

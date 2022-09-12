@@ -104,7 +104,7 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	plugins?: FlowplayerPlugin[];
 	subtitles?: FlowplayerTrackSchema[];
 	playlistScrollable?: boolean;
-	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
+	canPlay?: boolean; // Indicates if the video can play at this time. Eg: will be set to false if a modal is open in front of the video player
 	className?: string;
 	googleAnalyticsId?: string;
 	googleAnalyticsEvents?: GoogleAnalyticsEvent[];
