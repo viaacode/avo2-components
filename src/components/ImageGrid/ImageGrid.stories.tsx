@@ -2,32 +2,35 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
+import image200x200 from '../../../static/images/200x200.jpg';
+import image500x200 from '../../../static/images/500x200.jpg';
+
 import { ImageGrid } from './ImageGrid';
 
 const images = [
-	'/images/200x200.svg?id=0',
-	'/images/200x200.svg?id=1',
-	'/images/200x200.svg?id=2',
-	'/images/200x200.svg?id=3',
-	'/images/200x200.svg?id=4',
-	'/images/200x200.svg?id=5',
-	'/images/200x200.svg?id=6',
-	'/images/200x200.svg?id=7',
-	'/images/200x200.svg?id=8',
-	'/images/200x200.svg?id=9',
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
 ];
 
 const images2 = [
-	'/images/500x200.svg?id=0',
-	'/images/500x200.svg?id=1',
-	'/images/500x200.svg?id=2',
-	'/images/500x200.svg?id=3',
-	'/images/500x200.svg?id=4',
-	'/images/500x200.svg?id=5',
-	'/images/500x200.svg?id=6',
-	'/images/500x200.svg?id=7',
-	'/images/500x200.svg?id=8',
-	'/images/500x200.svg?id=9',
+	image500x200,
+	image500x200,
+	image500x200,
+	image500x200,
+	image500x200,
+	image500x200,
+	image500x200,
+	image500x200,
+	image500x200,
+	image500x200,
 ];
 
 const ImageGroupStoryComponent = ({

@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { cloneDeep } from 'lodash-es';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
+import image100x100 from '../../../static/images/100x100.jpg';
 import { Button } from '../Button/Button';
 import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
 import { Modal } from '../Modal/Modal';
@@ -96,7 +97,7 @@ storiesOf('components/FlowPlayer', module)
 	))
 	.add('FlowPlayer logo', () => (
 		<div className="o-grid-col-bp3-7">
-			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} logo="images/100x100.svg" />
+			<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} logo={image100x100} />
 		</div>
 	))
 	.add('FlowPlayer speeds', () => (

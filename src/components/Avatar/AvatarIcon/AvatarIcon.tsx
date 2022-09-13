@@ -4,6 +4,7 @@ import React, { FunctionComponent } from 'react';
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
 import { IconNameSchema } from '../../Icon/Icon.types';
+import styles from '../Avatar.module.scss';
 
 export interface AvatarIconPropsSchema extends DefaultProps {
 	initials?: string;
@@ -20,10 +21,10 @@ export const AvatarIcon: FunctionComponent<AvatarIconPropsSchema> = ({
 	size,
 }) => (
 	<div
-		className={classnames(className, 'c-avatar', {
-			'c-avatar--img': image,
-			'c-avatar--small': size === 'small',
-			'c-avatar--large': size === 'large',
+		className={classnames(className, styles['c-avatar'], {
+			[styles['c-avatar--img']]: image,
+			[styles['c-avatar--small']]: size === 'small',
+			[styles['c-avatar--large']]: size === 'large',
 		})}
 	>
 		{image ? (

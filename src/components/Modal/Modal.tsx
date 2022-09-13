@@ -27,7 +27,7 @@ import { ModalBackdrop } from './ModalBackdrop';
 export interface ModalPropsSchema extends DefaultProps {
 	children: ReactNode;
 	/**
-	 * false: enables the closing of the modal by clicking the backdrop () grey area around the modal)
+	 * false: enables the closing of the modal by clicking the backdrop (grey area around the modal)
 	 * true: modal will not close when clicking the backdrop
 	 */
 	disableContextClick?: boolean;
@@ -52,6 +52,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 	const headerRight = useSlot(ModalHeaderRight, children);
 	const footerRight = useSlot(ModalFooterRight, children);
 	const footerLeft = useSlot(ModalFooterLeft, children);
+	// eslint-disable-next-line prettier/prettier
 	const [mouseDownLocation, setMouseDownLocation] = useState<{ x: number; y: number } | null>(
 		null
 	);
