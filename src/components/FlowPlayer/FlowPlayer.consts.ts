@@ -1,6 +1,5 @@
 import { FlowplayerPlugin } from './FlowPlayer.types';
 
-export const DEFAULT_VIDEO_HEIGHT = 500;
 export const DELAY_BETWEEN_PLAYLIST_VIDEOS = 7;
 
 export const dutchFlowplayerTranslations = {

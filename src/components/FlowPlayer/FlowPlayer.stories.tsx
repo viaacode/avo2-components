@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import { cloneDeep } from 'lodash-es';
-import React, { cloneElement, ReactElement } from 'react';
+import React, { cloneElement, ReactElement, useState } from 'react';
 
 import { Button } from '../Button/Button';
 import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
@@ -11,7 +11,7 @@ import { ModalBody } from '../Modal/Modal.slots';
 import { FlowPlayer } from './FlowPlayer';
 import { MOCK_FLOW_PLAYER_PROPS_FULL, MOCK_PLAYLIST_SOURCE } from './FlowPlayer.mock';
 
-const FlowPlayerStoryComponent = ({ children }: { children: ReactElement }) => {
+const FlowPlayerSetTimesStoryComponent = ({ children }: { children: ReactElement }) => {
 	return (
 		<>
 			{cloneElement(children)}
@@ -32,6 +32,24 @@ const FlowPlayerStoryComponent = ({ children }: { children: ReactElement }) => {
 					/>
 				))}
 			</ButtonToolbar>
+		</>
+	);
+};
+
+const FlowPlayerOpenInModalStoryComponent = ({ children }: { children: ReactElement }) => {
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+
+	return (
+		<>
+			<Modal isOpen={isOpen} onClose={() => setIsOpen(false)} size="large">
+				<ModalBody>{cloneElement(children, { canPlay: isOpen })}</ModalBody>
+			</Modal>
+			<Button
+				label="Open playlist flowplayer in modal"
+				onClick={() => {
+					setIsOpen(true);
+				}}
+			/>
 		</>
 	);
 };
@@ -94,9 +112,9 @@ storiesOf('components/FlowPlayer', module)
 	))
 	.add('FlowPlayer set time', () => (
 		<div className="o-grid-col-bp3-7">
-			<FlowPlayerStoryComponent>
+			<FlowPlayerSetTimesStoryComponent>
 				<FlowPlayer {...MOCK_FLOW_PLAYER_PROPS_FULL} />
-			</FlowPlayerStoryComponent>
+			</FlowPlayerSetTimesStoryComponent>
 		</div>
 	))
 	.add('FlowPlayer cuepoints', () => (
@@ -145,6 +163,15 @@ storiesOf('components/FlowPlayer', module)
 				src={MOCK_PLAYLIST_SOURCE}
 			/>
 		</div>
+	))
+	.add('FlowPlayer playlist with cuepoints in modal', () => (
+		<FlowPlayerOpenInModalStoryComponent>
+			<FlowPlayer
+				{...MOCK_FLOW_PLAYER_PROPS_FULL}
+				plugins={['cuepoints', 'hls', 'keyboard', 'playlist']}
+				src={MOCK_PLAYLIST_SOURCE}
+			/>
+		</FlowPlayerOpenInModalStoryComponent>
 	))
 	.add('FlowPlayer events', () => (
 		<div className="o-grid-col-bp3-7">
