@@ -1,4 +1,4 @@
-import { CSSProperties, ReactElement, ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 export * from './content-type';
 
@@ -44,4 +44,4 @@ export type RenderLinkFunction = (
 	buttonAction: ButtonAction | null | undefined,
 	children: ReactNode,
 	label?: string
-) => ReactElement<any, any> | null;
+) => ReactNode | null;

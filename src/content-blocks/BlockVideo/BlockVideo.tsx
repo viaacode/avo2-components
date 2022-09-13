@@ -2,7 +2,8 @@ import React, { FunctionComponent } from 'react';
 
 import { AspectRatioWrapper } from '../../components/AspectRatioWrapper/AspectRatioWrapper';
 import { Container } from '../../components/Container/Container';
-import { FlowPlayer, FlowPlayerPropsSchema } from '../../components/FlowPlayer/FlowPlayer';
+import { FlowPlayer } from '../../components/FlowPlayer/FlowPlayer';
+import { FlowPlayerPropsSchema } from '../../components/FlowPlayer/FlowPlayer.types';
 import { DefaultProps } from '../../types';
 
 export interface BlockVideoProps extends DefaultProps {

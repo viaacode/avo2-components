@@ -23,8 +23,7 @@ const elements2: GridItem[] = [
 	{
 		source: '/images/500x200.svg?id=0',
 		title: 'Vind inspiratie op jouw maat',
-		text:
-			'Zoek materiaal op jouw onderwijsniveau, domein, vak en methode of laat je inspireren door een voorselectie.',
+		text: 'Zoek materiaal op jouw onderwijsniveau, domein, vak en methode of laat je inspireren door een voorselectie.',
 		action: { type: 'EXTERNAL_LINK', value: 'http://google.com' },
 		buttonLabel: 'a button',
 		buttonTitle: 'the button tooltip',
@@ -33,8 +32,7 @@ const elements2: GridItem[] = [
 	{
 		source: '/images/500x200.svg?id=1',
 		title: 'Bouw collecties, knip fragmenten',
-		text:
-			'Knip zelf relevante fragmenten uit het beschikbare beeldmateriaal en bewaar ze in een eigen collectie.',
+		text: 'Knip zelf relevante fragmenten uit het beschikbare beeldmateriaal en bewaar ze in een eigen collectie.',
 		action: { type: 'EXTERNAL_LINK', value: 'http://google.com' },
 		buttonLabel: 'a button',
 		buttonTitle: 'the button tooltip',
@@ -43,8 +41,7 @@ const elements2: GridItem[] = [
 	{
 		source: '/images/500x200.svg?id=2',
 		title: 'Doorzoek actueel en Vlaams materiaal',
-		text:
-			'Vind beeld en geluid van Vlaamse televisieomroepen, musea, archieven en podiumkunstenorganisaties.',
+		text: 'Vind beeld en geluid van Vlaamse televisieomroepen, musea, archieven en podiumkunstenorganisaties.',
 		action: { type: 'EXTERNAL_LINK', value: 'http://google.com' },
 	},
 	{
@@ -56,15 +53,13 @@ const elements2: GridItem[] = [
 	{
 		source: '/images/500x200.svg?id=4',
 		title: 'Geselecteerd door leerkrachten',
-		text:
-			'Laat je inspireren! Blader door tientallen domeinen boordevol relevant beeldmateriaal voor jouw vak.',
+		text: 'Laat je inspireren! Blader door tientallen domeinen boordevol relevant beeldmateriaal voor jouw vak.',
 		action: { type: 'EXTERNAL_LINK', value: 'http://google.com' },
 	},
 	{
 		source: '/images/500x200.svg?id=5',
 		title: 'Links verdwijnen niet',
-		text:
-			'Topfragment gespot? Bookmark je favoriete elements en vind ze met gemak terug in je persoonlijke werkruimte.',
+		text: 'Topfragment gespot? Bookmark je favoriete elements en vind ze met gemak terug in je persoonlijke werkruimte.',
 		action: { type: 'EXTERNAL_LINK', value: 'http://google.com' },
 	},
 	{

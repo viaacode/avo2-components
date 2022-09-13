@@ -1,0 +1,26 @@
+@import '../../styles/settings/colors';
+@import '../../styles/settings/variables';
+
+$component: 'c-pill';
+
+$pill-border-radius: 8px;
+$pill-transition: 0.3s ease-in-out;
+
+.#{$component} {
+	border-radius: $pill-border-radius;
+	border: 1px solid $color-gray-200;
+	color: $color-gray-200;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: $pill-border-radius * 2;
+	overflow: hidden;
+	padding: 0 $pill-border-radius;
+	transition: color $pill-transition, border-color $pill-transition, background-color $pill-transition;
+
+	&--active {
+		background-color: $color-teal-bright;
+		border-color: $color-teal-bright;
+		color: $color-white;
+	}
+}

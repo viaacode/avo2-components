@@ -20,11 +20,11 @@ export const BlockHeading: FunctionComponent<BlockHeadingProps> = ({
 	className,
 }) => (
 	<Type
-		className={classnames(className, `c-${Type}`, {
+		className={classnames(className, `c-heading c-${Type}`, {
 			[`u-text-${align}`]: align !== 'left',
 		})}
 		onClick={onClick}
-		style={color ? { color, margin: 0 } : { margin: 0 }}
+		style={color ? { color } : {}}
 	>
 		{children}
 	</Type>

@@ -93,8 +93,8 @@ pipeline {
 				container('npm') {
 
 					script {
-						sh '''#!/bin/bash
-								npm --registry=https://registry.npmjs.org install --force && npm run build || exit 1
+								sh'''#!/bin/bash
+								npm install react-scrollbars-custom@4.1.1 --force && npm --registry=https://registry.npmjs.org install --legacy-peer-deps && npm run build || exit 1
 								'''
 					} // script
 				}

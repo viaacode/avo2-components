@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../../types';
@@ -25,7 +26,7 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 	menuItems,
 	renderItem,
 	noResultsLabel,
-	onClick = () => {},
+	onClick = noop,
 }) => {
 	const renderMenuItem = (menuItemInfo: MenuItemInfoSchema) => {
 		if (renderItem) {

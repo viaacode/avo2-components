@@ -7,7 +7,9 @@ import { AlertPropsSchema } from './Alert.types';
 describe('<Alert />', () => {
 	const alertProps: AlertPropsSchema = {
 		className: 'c-alert-custom',
-		onClose: () => {},
+		onClose: () => {
+			// Ignore empty function
+		},
 		dark: false,
 		message: 'Alert message',
 		type: 'info',

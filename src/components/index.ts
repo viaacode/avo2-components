@@ -12,16 +12,26 @@ import { ButtonPropsSchema } from './Button/Button';
 import { ButtonTypeSchema } from './Button/Button.types';
 import { ButtonGroupPropsSchema } from './ButtonGroup/ButtonGroup';
 import { ButtonToolbarPropsSchema } from './ButtonToolbar/ButtonToolbar';
+import { CTAPropsSchema } from './CTA/CTA';
 import { CheckboxPropsSchema } from './Checkbox/Checkbox';
 import { CheckboxGroupPropsSchema } from './CheckboxGroup/CheckboxGroup';
 import { ContainerPropsSchema } from './Container/Container';
-import { CTAPropsSchema } from './CTA/CTA';
+import { ContentInputPropsSchema } from './ContentInput';
 import { DatePickerPropsSchema } from './DatePicker/DatePicker';
+import {
+	DeadlineIndicatorColorsSchema,
+	DeadlineIndicatorPropsSchema,
+	DeadlineIndicatorShapesSchema,
+} from './DeadlineIndicator/DeadlineIndicator';
 import { DropdownPropsSchema } from './Dropdown/Dropdown';
 import { ExpandableContainerPropsSchema } from './ExpandableContainer/ExpandableContainer';
 import { FlexPropsSchema } from './Flex/Flex';
 import { FlexItemPropsSchema } from './Flex/FlexItem/FlexItem';
-import { FlowPlayerPropsSchema, FlowplayerTrackSchema } from './FlowPlayer/FlowPlayer';
+import {
+	FlowPlayerPropsSchema,
+	FlowplayerSourceListSchema,
+	FlowplayerTrackSchema,
+} from './FlowPlayer/FlowPlayer.types';
 import { FormPropsSchema } from './Form/Form';
 import { FormGroupPropsSchema } from './Form/FormGroup/FormGroup';
 import { ColumnPropsSchema, GridSizeSchema } from './Grid/Column/Column';
@@ -51,6 +61,7 @@ import { MultiRangePropsSchema } from './MultiRange/MultiRange';
 import { NavbarPropsSchema } from './Navbar/Navbar';
 import { PaginationPropsSchema } from './Pagination/Pagination';
 import { PanelPropsSchema } from './Panel/Panel';
+import { PillPropsSchema } from './Pill/Pill';
 import { QuotePropsSchema } from './Quote/Quote';
 import { RadioButtonPropsSchema } from './RadioButton/RadioButton';
 import { RadioButtonGroupPropsSchema } from './RadioButtonGroup/RadioButtonGroup';
@@ -58,6 +69,7 @@ import { SearchResultPropsSchema } from './SearchResult/SearchResult';
 import { SelectOptionSchema, SelectPropsSchema } from './Select/Select';
 import { SpacerOptionSchema, SpacerPropsSchema } from './Spacer/Spacer';
 import { SpinnerPropsSchema } from './Spinner/Spinner';
+import { StickyEdgeBarPropsSchema } from './StickyEdgeBar/StickyEdgeBar';
 import { TableColumnSchema, TablePropsSchema } from './Table/Table';
 import { TabPropsSchema } from './Tabs/Tab/Tab';
 import { TabsPropsSchema } from './Tabs/Tabs';
@@ -143,8 +155,10 @@ export { FlexItem } from './Flex/FlexItem/FlexItem';
 export type FlexItemProps = FlexItemPropsSchema;
 
 export { FlowPlayer } from './FlowPlayer/FlowPlayer';
+export { setPlayingVideoSeekTime, getPlayingVideoSeekTime } from './FlowPlayer/FlowPlayer.helpers';
 export type FlowPlayerProps = FlowPlayerPropsSchema;
 export type FlowplayerTrack = FlowplayerTrackSchema;
+export type FlowplayerSourceList = FlowplayerSourceListSchema;
 
 export { Form } from './Form/Form';
 export type FormProps = FormPropsSchema;
@@ -300,3 +314,17 @@ export type ToolbarTitleProps = ToolbarTitlePropsSchema;
 export { Tooltip } from './Tooltip/Tooltip';
 export type TooltipProps = TooltipPropsSchema;
 export { TooltipContent, TooltipTrigger } from './Tooltip/Tooltip.slots';
+
+export { Pill, PillVariants } from './Pill/Pill';
+export type PillProps = PillPropsSchema;
+
+export { ContentInput } from './ContentInput';
+export type ContentInputProps = ContentInputPropsSchema;
+
+export { StickyEdgeBar } from './StickyEdgeBar/StickyEdgeBar';
+export type StickyEdgeBarProps = StickyEdgeBarPropsSchema;
+
+export { DeadlineIndicator } from './DeadlineIndicator/DeadlineIndicator';
+export type DeadlineIndicatorProps = DeadlineIndicatorPropsSchema;
+export type DeadlineIndicatorColors = DeadlineIndicatorColorsSchema;
+export type DeadlineIndicatorShapes = DeadlineIndicatorShapesSchema;

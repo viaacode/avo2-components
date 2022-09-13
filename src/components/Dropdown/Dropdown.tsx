@@ -1,5 +1,6 @@
 import { Placement } from '@popperjs/core';
 import classnames from 'classnames';
+import { noop } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { usePopper } from 'react-popper';
 
@@ -7,6 +8,7 @@ import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
 import { Button } from '../Button/Button';
+import { ButtonTypeSchema } from '../Button/Button.types';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Menu } from '../Menu/Menu';
@@ -27,6 +29,7 @@ export interface DropdownPropsSchema {
 	searchMenu?: boolean;
 	triggerClassName?: string;
 	triggerWidth?: 'fit-content' | 'full-width';
+	buttonType?: ButtonTypeSchema;
 }
 
 /**
@@ -46,12 +49,13 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	// TODO re-enable this without causing an infinite render loop
 	// https://github.com/popperjs/popper-core/issues/794#issuecomment-736727000
 	// menuWidth = 'fit-trigger',
-	onClose = () => {},
-	onOpen = () => {},
+	onClose = noop,
+	onOpen = noop,
 	placement = 'bottom-start',
 	searchMenu = false,
 	triggerClassName,
 	triggerWidth = 'fit-content',
+	buttonType = 'secondary',
 }) => {
 	const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
 	const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
@@ -79,7 +83,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 		// 		: [],
 	});
 
-	const toggle = (openState: boolean = !isOpen) => {
+	const toggle = (openState = !isOpen) => {
 		if (openState !== isOpen) {
 			openState ? onOpen() : onClose();
 		}
@@ -100,7 +104,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 				ref={setReferenceElement}
 			>
 				{dropdownButtonSlot || (
-					<Button type="secondary" block={triggerWidth === 'full-width'}>
+					<Button type={buttonType} block={triggerWidth === 'full-width'}>
 						<div className="c-button__content">
 							{icon && <Icon name={icon} />}
 							{label && <div className="c-button__label">{label}</div>}

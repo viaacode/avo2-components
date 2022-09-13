@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { Column } from './Column/Column';
 import { Grid } from './Grid';
 
-const GridDecorator = (story: Function) => (
+const GridDecorator = (story: () => ReactNode) => (
 	<div className="br-styleguide">
 		<div id="component-01-o-grid">{story()}</div>
 	</div>
@@ -64,7 +64,7 @@ storiesOf('components/Grid', module)
 			<Column size="1">1</Column>
 			<Column size="1">1</Column>
 
-			<Column size="static">This column will adapt to it's content</Column>
+			<Column size="static">This column will adapt to its content</Column>
 			<Column size="flex">This column will fill the remaining space</Column>
 		</Grid>
 	));
