@@ -212,10 +212,10 @@ $fp-controls-header-width-mobile: 50px;
 	}
 
 	.fp-controls {
-		width: calc(100% - $fp-controls-header-width-mobile);
+		width: calc(100% - #{$fp-controls-header-width-mobile});
 
 		@media (min-width: $g-bp2) {
-			width: calc(100% - $fp-controls-header-width-desktop);
+			width: calc(100% - #{$fp-controls-header-width-desktop});
 		}
 
 		color: rgba(255, 255, 255, 0.67);

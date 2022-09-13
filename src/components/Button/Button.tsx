@@ -29,7 +29,7 @@ export interface ButtonPropsSchema extends DefaultProps {
 	title?: string;
 	altTitle?: string;
 	tooltip?: string;
-	type?: ButtonTypeSchema;
+	type?: ButtonTypeSchema | string; // for string values, the prefix c-button is prepended => 'c-button' + value
 	id?: string;
 }
 
