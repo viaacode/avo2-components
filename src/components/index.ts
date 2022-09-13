@@ -57,6 +57,7 @@ import {
 import { MetaDataPropsSchema } from './MetaData/MetaData';
 import { MetaDataItemPropsSchema } from './MetaData/MetaDataItem/MetaDataItem';
 import { ModalPropsSchema } from './Modal/Modal';
+import { MoreOptionsDropdownPropsSchema } from './MoreOptionsDropdown/MoreOptionsDropdown';
 import { MultiRangePropsSchema } from './MultiRange/MultiRange';
 import { NavbarPropsSchema } from './Navbar/Navbar';
 import { PaginationPropsSchema } from './Pagination/Pagination';
@@ -211,6 +212,9 @@ export type MenuItemInfo = MenuItemInfoSchema;
 export { MenuSearchResultContent } from './Menu/MenuSearchResultContent/MenuSearchResultContent';
 export type MenuSearchResultContentProps = MenuSearchResultContentPropsSchema;
 export type MenuSearchResultItemInfo = MenuSearchResultItemInfoSchema;
+
+export { MoreOptionsDropdown } from './MoreOptionsDropdown/MoreOptionsDropdown';
+export type MoreOptionsDropdownProps = MoreOptionsDropdownPropsSchema;
 
 export { MetaData } from './MetaData/MetaData';
 export type MetaDataProps = MetaDataPropsSchema;
