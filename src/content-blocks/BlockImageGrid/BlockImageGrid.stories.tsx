@@ -47,7 +47,7 @@ const elements2: GridItem[] = [
 		action: { type: 'EXTERNAL_LINK', value: 'http://google.com?q=2' },
 		buttonLabel: 'a button',
 		buttonTitle: 'the button tooltip',
-		buttonType: '--admin-core-button--silver',
+		buttonType: 'admin-core-button--silver',
 	},
 	{
 		source: image500x200,

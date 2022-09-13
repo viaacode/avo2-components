@@ -62,6 +62,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 		[styles[`c-button--${type}`]]: type,
 		[skins['c-button--active']]: active,
 		[skins[`c-button--${type}`]]: type,
+		[`c-button--${type}`]: type, // Also include the type as a normal class, so we can style ir in the admin core/clients
 	});
 
 	const handleButtonClick = (evt: MouseEvent<HTMLElement>) => {
