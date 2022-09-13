@@ -1,8 +1,5 @@
 {
 	"*.{ts,tsx}": [
-		"git add"
+		"eslint --fix",
 	],
-	"*.{does not exists}": [
-		"eslint --fix", // TODO re-enable when eslint errors and warnings are fixed
-	]
 }

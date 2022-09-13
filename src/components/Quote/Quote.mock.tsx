@@ -1,5 +1,7 @@
 import { loremIpsum } from 'lorem-ipsum';
 
+import image50x50 from '../../../static/images/50x50.jpg';
+
 export const MOCK_QUOTE = {
 	quote: loremIpsum({ count: 1 }),
 	authorName: 'Albert Einstein',
@@ -8,5 +10,5 @@ export const MOCK_QUOTE = {
 
 export const MOCK_QUOTE_WITH_IMG = {
 	...MOCK_QUOTE,
-	authorImage: '/images/50x50.svg',
+	authorImage: image50x50,
 };

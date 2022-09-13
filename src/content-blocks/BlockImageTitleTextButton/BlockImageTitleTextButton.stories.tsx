@@ -2,9 +2,10 @@ import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import React from 'react';
 
+import imageSource from '../../../static/images/1280x720.jpg';
+
 import { BlockImageTitleTextButton } from './BlockImageTitleTextButton';
 
-const imageSource = '/images/1280x720.svg';
 const loremIpsumText = loremIpsum({ count: 10 });
 
 export const blockImageTitleTextButtonExample = (
