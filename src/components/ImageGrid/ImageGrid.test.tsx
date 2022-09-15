@@ -1,19 +1,21 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
+import image200x200 from '../../../static/images/200x200.jpg';
+
 import { ImageGrid } from './ImageGrid';
 
 const images = [
-	'/images/200x200.svg?id=0',
-	'/images/200x200.svg?id=1',
-	'/images/200x200.svg?id=2',
-	'/images/200x200.svg?id=3',
-	'/images/200x200.svg?id=4',
-	'/images/200x200.svg?id=5',
-	'/images/200x200.svg?id=6',
-	'/images/200x200.svg?id=7',
-	'/images/200x200.svg?id=8',
-	'/images/200x200.svg?id=9',
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
+	image200x200,
 ];
 
 describe('<ImageGrid />', () => {

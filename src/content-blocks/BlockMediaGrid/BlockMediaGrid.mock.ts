@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions';
 
+import image500x200 from '../../../static/images/500x200.jpg';
 import { ButtonTypeSchema } from '../../components/Button/Button.types';
 import { testRenderLink } from '../../helpers/render-link';
 
@@ -38,7 +39,7 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 			type: 'INTERNAL_LINK',
 			value: '/items/1',
 		},
-		thumbnail: { label: 'audio', meta: '5 items', src: '/images/500x200.svg' },
+		thumbnail: { label: 'audio', meta: '5 items', src: image500x200 },
 		src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
 	},
 	{
@@ -56,7 +57,7 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 			type: 'INTERNAL_LINK',
 			value: '/items/1',
 		},
-		thumbnail: { label: 'Collectie', meta: '7 items', src: '/images/500x200.svg' },
+		thumbnail: { label: 'Collectie', meta: '7 items', src: image500x200 },
 	},
 	{
 		category: 'collection',
@@ -70,7 +71,7 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 			type: 'INTERNAL_LINK',
 			value: '/items/1',
 		},
-		thumbnail: { label: 'Collectie', meta: '5 items', src: '/images/500x200.svg' },
+		thumbnail: { label: 'Collectie', meta: '5 items', src: image500x200 },
 	},
 	{
 		category: 'video',
@@ -98,7 +99,7 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 			type: 'INTERNAL_LINK',
 			value: '/items/1',
 		},
-		thumbnail: { label: 'Video', src: '/images/500x200.svg' },
+		thumbnail: { label: 'Video', src: image500x200 },
 		src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
 	},
 	{
@@ -134,7 +135,7 @@ export const MEDIA_LIST_ITEMS_MOCK: MediaListItem[] = [
 			type: 'INTERNAL_LINK',
 			value: '/collecties/4',
 		},
-		thumbnail: { label: 'Collectie', meta: '2 items', src: '/images/500x200.svg' },
+		thumbnail: { label: 'Collectie', meta: '2 items', src: image500x200 },
 	},
 ];
 

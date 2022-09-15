@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
+import thumbnail from '../../../static/images/thumbnail.jpg';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
 
@@ -12,8 +13,7 @@ storiesOf('components/Avatar', module)
 	.add('Small avatar', () => <Avatar initials="JD" size="small" />)
 	.add('Avatar with image', () => (
 		<>
-			<Avatar initials="JD" image="https://api.adorable.io/avatars/128/john" />
-			<Avatar initials="JD" image="/images/400x300.svg" />
+			<Avatar initials="JD" image={thumbnail} />
 		</>
 	))
 	.add('Avatar with name', () => (

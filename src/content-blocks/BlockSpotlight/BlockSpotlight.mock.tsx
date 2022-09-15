@@ -1,3 +1,4 @@
+import image500x200 from '../../../static/images/500x200.jpg';
 import { ButtonAction } from '../../types';
 
 import { ImageInfo } from './BlockSpotlight';
@@ -9,17 +10,17 @@ const MOCK_BUTTON_ACTION: ButtonAction = {
 
 export const MOCK_SPOTLIGHT_PROJECTS: ImageInfo[] = [
 	{
-		image: '/images/500x200.svg',
+		image: image500x200,
 		title: 'Big item',
 		buttonAction: MOCK_BUTTON_ACTION,
 	},
 	{
-		image: '/images/500x200.svg',
+		image: image500x200,
 		title: 'Small item',
 		buttonAction: MOCK_BUTTON_ACTION,
 	},
 	{
-		image: '/images/500x200.svg',
+		image: image500x200,
 		title: 'Small item bis',
 		buttonAction: undefined,
 	},

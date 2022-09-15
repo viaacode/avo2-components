@@ -2,10 +2,12 @@ import { mount, shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
 import React, { cloneElement } from 'react';
 
+import imageSource from '../../../static/images/1280x720.jpg';
+
 import { BlockImageTitleTextButton } from './BlockImageTitleTextButton';
 
 const customClass = 'c-block-custom';
-const imageSource = '/images/1280x720.svg';
+
 const loremIpsumText = loremIpsum({ count: 10 });
 
 export const blockImageTitleTextButtonExample = (
