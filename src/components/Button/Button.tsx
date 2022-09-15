@@ -29,7 +29,7 @@ export interface ButtonPropsSchema extends DefaultProps {
 	title?: string;
 	altTitle?: string;
 	tooltip?: string;
-	type?: ButtonTypeSchema;
+	type?: ButtonTypeSchema | string; // for string values, the prefix c-button is prepended => 'c-button' + value
 	id?: string;
 }
 
@@ -62,6 +62,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 		[styles[`c-button--${type}`]]: type,
 		[skins['c-button--active']]: active,
 		[skins[`c-button--${type}`]]: type,
+		[`c-button--${type}`]: type, // Also include the type as a normal class, so we can style ir in the admin core/clients
 	});
 
 	const handleButtonClick = (evt: MouseEvent<HTMLElement>) => {

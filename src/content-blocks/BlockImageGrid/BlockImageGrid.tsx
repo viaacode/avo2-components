@@ -15,7 +15,7 @@ export interface GridItem {
 	textAbove?: string | ReactNode;
 	text?: string | ReactNode;
 	buttonLabel?: string;
-	buttonType?: ButtonType;
+	buttonType?: ButtonType | string;
 	buttonTitle?: string;
 	buttonAltTitle?: string;
 	action?: ButtonAction;
