@@ -41,6 +41,41 @@ const DropdownStoryComponent = ({ children }: { children: ReactElement }) => {
 	});
 };
 
+const DropdownMoveTriggerStoryComponent = ({ children }: { children: ReactElement }) => {
+	const [isOpen, setOpen] = useState(false);
+	const [closeCount, setCloseCount] = useState(0);
+
+	const open = () => {
+		action('onOpen')();
+		setOpen(true);
+	};
+
+	const close = () => {
+		action('onClose')();
+		setCloseCount((closeCount) => closeCount + 1);
+		setOpen(false);
+	};
+
+	const clone = cloneElement(children, {
+		isOpen,
+		onOpen: open,
+		onClose: close,
+	});
+	return (
+		<>
+			<span
+				style={{
+					width: closeCount * 20 + 'px',
+					display: 'inline-block',
+					height: '40px',
+					backgroundColor: 'grey',
+				}}
+			></span>
+			{clone}
+		</>
+	);
+};
+
 storiesOf('components/Dropdown', module)
 	.addParameters({ jest: ['Dropdown'] })
 	.add('Dropdown', () => (
@@ -124,4 +159,11 @@ storiesOf('components/Dropdown', module)
 				</Dropdown>
 			</DropdownStoryComponent>
 		</div>
+	))
+	.add('Dropdown with trigger moving', () => (
+		<DropdownMoveTriggerStoryComponent>
+			<Dropdown label="Show options" isOpen={false}>
+				<MenuContent menuItems={menuItems} />
+			</Dropdown>
+		</DropdownMoveTriggerStoryComponent>
 	));

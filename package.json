@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -43,11 +43,12 @@
   "peerDependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-scrollbars-custom": "^4.1.1"
+    "react-scrollbars-custom": "^4.1.1",
+    "@popperjs/core": "^2.11.6",
+    "react-popper": "^2.3.0"
   },
   "dependencies": {
     "@flowplayer/player": "3.2.8",
-    "@popperjs/core": "^2.5.4",
     "autosize": "^4.0.2",
     "braft-editor": "^2.3.9",
     "braft-extensions": "^0.1.0",
@@ -60,8 +61,6 @@
     "npm-force-resolutions": "^0.0.10",
     "raf": "^3.4.1",
     "react-datepicker": "^4.8.0",
-    "react-perfect-scrollbar": "^1.5.8",
-    "react-popper": "^2.3.0",
     "react-range": "^1.6.0",
     "react-select": "^3.1.0"
   },
@@ -96,7 +95,7 @@
     "@types/node": "14.6.1",
     "@types/raf": "^3.4.0",
     "@types/react": "16.9.48",
-    "@types/react-datepicker": "^3.1.1",
+    "@types/react-datepicker": "^4.4.2",
     "@types/react-dom": "16.9.8",
     "@types/react-select": "^3.1.2",
     "@types/storybook__addon-actions": "^5.2.1",

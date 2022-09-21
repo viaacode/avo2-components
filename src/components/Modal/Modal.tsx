@@ -8,8 +8,7 @@ import React, {
 	useState,
 } from 'react';
 import ReactDOM from 'react-dom';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import 'react-perfect-scrollbar/dist/css/styles.css';
+import { default as Scrollbar } from 'react-scrollbars-custom';
 
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
@@ -53,9 +52,8 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 	const footerRight = useSlot(ModalFooterRight, children);
 	const footerLeft = useSlot(ModalFooterLeft, children);
 	// eslint-disable-next-line prettier/prettier
-	const [mouseDownLocation, setMouseDownLocation] = useState<{ x: number; y: number } | null>(
-		null
-	);
+	const [mouseDownLocation, setMouseDownLocation] =
+		useState<{ x: number; y: number } | null>(null);
 
 	useKeyPress('Escape', close);
 
@@ -123,7 +121,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 					</div>
 				)}
 				{scrollable && (
-					<PerfectScrollbar
+					<Scrollbar
 						className="c-modal__body"
 						options={{
 							wheelPropagation: false,
@@ -131,7 +129,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 						}}
 					>
 						{body}
-					</PerfectScrollbar>
+					</Scrollbar>
 				)}
 				{!scrollable && <div className="c-modal__body">{body}</div>}
 				{(footerLeft || footerRight) && (
