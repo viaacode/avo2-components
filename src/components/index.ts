@@ -29,6 +29,7 @@ import { FlexPropsSchema } from './Flex/Flex';
 import { FlexItemPropsSchema } from './Flex/FlexItem/FlexItem';
 import {
 	FlowPlayerPropsSchema,
+	FlowplayerSourceItemSchema,
 	FlowplayerSourceListSchema,
 	FlowplayerTrackSchema,
 } from './FlowPlayer/FlowPlayer.types';
@@ -160,6 +161,7 @@ export { setPlayingVideoSeekTime, getPlayingVideoSeekTime } from './FlowPlayer/F
 export type FlowPlayerProps = FlowPlayerPropsSchema;
 export type FlowplayerTrack = FlowplayerTrackSchema;
 export type FlowplayerSourceList = FlowplayerSourceListSchema;
+export type FlowplayerSourceItem = FlowplayerSourceItemSchema;
 
 export { Form } from './Form/Form';
 export type FormProps = FormPropsSchema;

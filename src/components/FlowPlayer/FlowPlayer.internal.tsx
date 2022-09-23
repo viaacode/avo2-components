@@ -1,5 +1,6 @@
 import flowplayer, { Player } from '@flowplayer/player';
 import '@flowplayer/player/flowplayer.css';
+import audioPlugin from '@flowplayer/player/plugins/audio';
 import cuepointsPlugin from '@flowplayer/player/plugins/cuepoints';
 import googleAnalyticsPlugin from '@flowplayer/player/plugins/google-analytics';
 import hlsPlugin from '@flowplayer/player/plugins/hls';
@@ -8,35 +9,26 @@ import playlistPlugin from '@flowplayer/player/plugins/playlist';
 import speedPlugin from '@flowplayer/player/plugins/speed';
 import subtitlesPlugin from '@flowplayer/player/plugins/subtitles';
 import classnames from 'classnames';
-import { get, isNil, isString, noop } from 'lodash-es';
-import React, {
-	createRef,
-	FunctionComponent,
-	useCallback,
-	useEffect,
-	useMemo,
-	useState,
-} from 'react';
+import { get, isNil, noop } from 'lodash-es';
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { default as Scrollbar } from 'react-scrollbars-custom';
-
-import './FlowPlayer.scss';
-import { MediaCard } from '../MediaCard/MediaCard';
-import { MediaCardThumbnail } from '../MediaCard/MediaCard.slots';
-import { Thumbnail } from '../Thumbnail/Thumbnail';
 
 import {
 	ALL_FLOWPLAYER_PLUGINS,
 	DELAY_BETWEEN_PLAYLIST_VIDEOS,
 	dutchFlowplayerTranslations,
 } from './FlowPlayer.consts';
-import { setPlayingVideoSeekTime } from './FlowPlayer.helpers';
+import { convertGAEventsArrayToObject, setPlayingVideoSeekTime } from './FlowPlayer.helpers';
 import {
-	convertGAEventsArrayToObject,
 	FlowplayerConfigWithPlugins,
 	FlowPlayerPropsSchema,
+	FlowplayerSourceItemSchema,
 	FlowplayerSourceList,
 	FlowplayerSourceListSchema,
 } from './FlowPlayer.types';
+import { drawPeak } from './Peak/draw-peak';
+
+import './FlowPlayer.scss';
 
 flowplayer(
 	subtitlesPlugin,
@@ -44,6 +36,7 @@ flowplayer(
 	cuepointsPlugin,
 	keyboardPlugin,
 	speedPlugin,
+	audioPlugin,
 	playlistPlugin,
 	googleAnalyticsPlugin
 );
@@ -62,6 +55,8 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 	start,
 	end,
 	logo,
+	pause,
+	fullscreen,
 	onPlay,
 	onPause,
 	onEnded,
@@ -69,16 +64,31 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 	canPlay,
 	className,
 	playlistScrollable = false,
+	renderPlaylistTile,
 	subtitles,
+	customControls = null,
+	waveformData,
 	googleAnalyticsId,
 	googleAnalyticsEvents,
 	googleAnalyticsTitle,
 }) => {
-	const videoContainerRef = createRef<HTMLDivElement>();
-	const [player, setPlayer] = useState<any | null>(null);
-	const [startedPlaying, setStartedPlaying] = useState<boolean>(false);
+	const videoContainerRef = useRef<HTMLDivElement>(null);
+	const peakCanvas = useRef<HTMLCanvasElement>(null);
 
-	const isPlaylist = !isString(src) && !isNil(src);
+	// Trick to avoid stale references in flowplayer event listener handlers: https://medium.com/geographit/accessing-react-state-in-event-listeners-with-usestate-and-useref-hooks-8cceee73c559
+	const [_player, _setPlayer] = useState<any | null>(null);
+	const player = useRef(_player);
+	const setPlayer = (newPlayer: any) => {
+		player.current = newPlayer;
+		_setPlayer(newPlayer);
+	};
+
+	const [startedPlaying, setStartedPlaying] = useState<boolean>(false);
+	const [drawPeaksTimerId, setDrawPeaksTimerId] = useState<number | null>(null);
+	const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
+
+	const isPlaylist = (src as FlowplayerSourceList)?.type === 'flowplayer/playlist';
+	const isAudio = (src as any)?.[0]?.type === 'audio/mp3';
 
 	const createTitleOverlay = useCallback(() => {
 		const titleOverlay = document.createElement('div');
@@ -156,10 +166,10 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 	 */
 	const jumpToFirstCuepoint = useCallback(
 		(tempPlayer?: Player) => {
-			if (!player && !tempPlayer) {
+			if (!player.current && !tempPlayer) {
 				return;
 			}
-			const flowplayerInstance = player || tempPlayer;
+			const flowplayerInstance = player.current || tempPlayer;
 			const startTime =
 				(flowplayerInstance.opts as FlowplayerConfigWithPlugins).cuepoints?.[0].startTime ||
 				0;
@@ -176,7 +186,7 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 	 */
 	const updateCuepointPosition = useCallback(
 		(tempPlayer: any) => {
-			const flowplayerInstance = tempPlayer || player;
+			const flowplayerInstance = tempPlayer || player.current;
 			if (!flowplayerInstance || isNaN(flowplayerInstance.duration)) {
 				return;
 			}
@@ -216,7 +226,9 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 	 */
 	const updateActivePlaylistItem = useCallback(
 		(itemIndex: number): void => {
-			if (!player || isNaN(player.duration)) {
+			setActiveItemIndex(itemIndex);
+
+			if (!player.current) {
 				return;
 			}
 
@@ -224,36 +236,94 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 
 			if (playlistItem) {
 				// Update cuepoint
-				player.emit(flowplayer.events.CUEPOINTS, {
+				player.current.emit(flowplayer.events.CUEPOINTS, {
 					cuepoints: playlistItem.cuepoints,
 				});
-				updateCuepointPosition(player);
+				updateCuepointPosition(player.current);
 
 				// Update poster
-				player.poster = playlistItem.poster;
-				player.opts.poster = playlistItem.poster;
+				player.current.poster = playlistItem.poster;
+				player.current.opts.poster = playlistItem.poster;
 			}
 		},
 		[player, src, updateCuepointPosition]
 	);
+
+	const handleLoadedMetadata = () => {
+		updateCuepointPosition(player.current);
+	};
+
+	const handlePlaylistNext = (evt: Event & { detail: { next_index: number } }) => {
+		updateActivePlaylistItem(evt.detail.next_index);
+
+		player.current.once('playing', jumpToFirstCuepoint);
+	};
+
+	const handlePlaylistReady = () => {
+		// Update cover images on the playlist
+		document.querySelectorAll('.fp-playlist li .video-info').forEach((elem, elemIndex) => {
+			const image = document.createElement('img');
+			image.src = (src as FlowplayerSourceListSchema).items[elemIndex].poster as string;
+			const div = document.createElement('div');
+			div.classList.add('image');
+			div.appendChild(image);
+			elem.append(div);
+		});
+	};
+
+	const handlePlayingOnce = () => {
+		jumpToFirstCuepoint(player.current);
+	};
+
+	const handlePlaying = () => {
+		if (!startedPlaying) {
+			// First time playing the video
+			if (onPlay && player.current) {
+				onPlay(player.current.src);
+			}
+
+			setStartedPlaying(true);
+		}
+	};
+
+	const handleCuepointEnd = () => {
+		if (player.current) {
+			player.current.pause();
+			if (!isPlaylist) {
+				player.current.currentTime = player.current.opts.cuepoints[0].startTime;
+			}
+			player.current.emit(flowplayer.events.ENDED);
+		}
+	};
+
+	const handleTimeUpdate = () => {
+		(onTimeUpdate || noop)(get(videoContainerRef, 'current.currentTime', 0));
+	};
 
 	const reInitFlowPlayer = useCallback(() => {
 		if (!videoContainerRef.current) {
 			return;
 		}
 
-		if (player) {
-			player.destroy();
+		if (player.current) {
+			player.current.destroy();
 			setStartedPlaying(false);
 		}
 
 		(flowplayer as any).i18n.nl = dutchFlowplayerTranslations;
 
+		let resolvedPoster = (src as FlowplayerSourceListSchema)?.items?.[0]?.poster || poster;
+		if (!resolvedPoster && isAudio) {
+			// Transparent 1920 x 1080 poster
+			resolvedPoster =
+				'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4AQMAAADSHVMAAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAANQTFRFAAAAp3o92gAAAAF0Uk5TAEDm2GYAAAETSURBVHic7cEBDQAAAMKg909tDwcUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADApwH45QABmSWJDwAAAABJRU5ErkJggg==';
+		}
+
 		const flowPlayerConfig: FlowplayerConfigWithPlugins = {
 			// DATA
 			src: src,
 			token: token,
-			poster: (src as FlowplayerSourceListSchema)?.items?.[0]?.poster || poster,
+			poster: resolvedPoster,
 
 			// CONFIGURATION
 			autoplay: autoplay ? flowplayer.autoplay.ON : flowplayer.autoplay.OFF,
@@ -335,68 +405,25 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 
 		// Jump to the end of the video when a cuepoint end event is encountered
 		// The video end event can then be handled however the user sees fit
-		tempPlayer.on(flowplayer.events.CUEPOINT_END, () => {
-			if (tempPlayer) {
-				tempPlayer.currentTime = tempPlayer.duration;
-			}
-		});
+		tempPlayer.on(flowplayer.events.CUEPOINT_END, handleCuepointEnd);
 
 		tempPlayer.on('error', (err: any) => {
 			console.error(err);
 		});
 
 		if (plugins.includes('playlist')) {
-			tempPlayer.on('playlist:ready', () => {
-				// Update cover images on the playlist
-				document
-					.querySelectorAll('.fp-playlist li .video-info')
-					.forEach((elem, elemIndex) => {
-						const image = document.createElement('img');
-						image.src = (src as FlowplayerSourceListSchema).items[elemIndex]
-							.poster as string;
-						const div = document.createElement('div');
-						div.classList.add('image');
-						div.appendChild(image);
-						elem.append(div);
-					});
-			});
+			tempPlayer.on('playlist:ready', handlePlaylistReady);
 		}
 
 		drawCustomElements();
 
-		tempPlayer.once('playing', () => {
-			jumpToFirstCuepoint(tempPlayer);
-		});
-
-		tempPlayer.on('playing', () => {
-			if (!startedPlaying) {
-				// First time playing the video
-				if (onPlay && player) {
-					onPlay(player.src);
-				}
-
-				setStartedPlaying(true);
-			}
-		});
-
+		tempPlayer.once('playing', handlePlayingOnce);
+		tempPlayer.on('playing', handlePlaying);
 		tempPlayer.on('pause', onPause || noop);
 		tempPlayer.on('ended', onEnded || noop);
-		tempPlayer.on(
-			playlistPlugin.events.PLAYLIST_NEXT,
-			(evt: Event & { detail: { next_index: number } }) => {
-				updateActivePlaylistItem(evt.detail.next_index);
-
-				tempPlayer.once('playing', () => {
-					jumpToFirstCuepoint(tempPlayer);
-				});
-			}
-		);
-		tempPlayer.on('loadeddata', () => {
-			updateCuepointPosition(tempPlayer);
-		});
-		tempPlayer.on('timeupdate', () => {
-			(onTimeUpdate || noop)(get(videoContainerRef, 'current.currentTime', 0));
-		});
+		tempPlayer.on(playlistPlugin.events.PLAYLIST_NEXT, handlePlaylistNext);
+		tempPlayer.on('loadeddata', handleLoadedMetadata);
+		tempPlayer.on('timeupdate', handleTimeUpdate);
 
 		setPlayer(tempPlayer);
 	}, [
@@ -410,7 +437,7 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 		onPause,
 		onPlay,
 		onTimeUpdate,
-		player,
+		player.current,
 		plugins,
 		poster,
 		preload,
@@ -426,30 +453,74 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 	]);
 
 	useEffect(() => {
-		videoContainerRef.current && !player && reInitFlowPlayer();
-	}, [videoContainerRef.current]); // Only redo effect when ref changes
+		videoContainerRef.current && !player.current && reInitFlowPlayer();
+	}, [videoContainerRef]); // Only redo effect when ref changes
 
 	useEffect(() => {
 		if (!canPlay) {
-			player?.pause();
+			player.current?.pause();
 		}
 	}, [canPlay]);
 
 	useEffect(() => {
 		return () => {
 			//  cleanup on unload component
-			player?.destroy();
+			player.current?.destroy();
 		};
 	}, []);
 
+	useEffect(() => {
+		if (isNil(pause) || !player.current) {
+			return;
+		}
+		if (pause) {
+			player.current.pause();
+		} else {
+			player.current.play();
+		}
+	}, [player, pause]);
+
+	useEffect(() => {
+		if (isNil(fullscreen) || !player.current) {
+			return;
+		}
+		player.current.toggleFullScreen(fullscreen);
+	}, [player, fullscreen]);
+
+	const drawPeaksHandler = useCallback(() => {
+		if (waveformData && peakCanvas.current) {
+			drawPeak(
+				peakCanvas.current,
+				waveformData || [],
+				player.current?.duration ? player.current.currentTime / player.current.duration : 0
+			);
+		}
+	}, [peakCanvas, waveformData]);
+
+	useEffect(() => {
+		if (waveformData && peakCanvas.current) {
+			if (drawPeaksTimerId) {
+				clearInterval(drawPeaksTimerId);
+			}
+			setDrawPeaksTimerId(window.setInterval(drawPeaksHandler, 1000));
+		}
+
+		return () => {
+			if (drawPeaksTimerId) {
+				clearInterval(drawPeaksTimerId);
+			}
+		};
+	}, [waveformData, peakCanvas, setDrawPeaksTimerId]);
+
 	const handleMediaCardClicked = useCallback(
 		(itemIndex: number): void => {
-			player.playlist?.play(itemIndex);
-			player.emit(flowplayer.events.CUEPOINTS, {
+			setActiveItemIndex(itemIndex);
+			player.current.playlist?.play(itemIndex);
+			player.current.emit(flowplayer.events.CUEPOINTS, {
 				cuepoints: (src as FlowplayerSourceListSchema).items[itemIndex].cuepoints,
 			});
 
-			updateCuepointPosition(player);
+			updateCuepointPosition(player.current);
 		},
 		[player, updateCuepointPosition]
 	);
@@ -458,31 +529,27 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 		(playlistItems: FlowplayerSourceList['items']) => {
 			return (
 				<ul className="c-video-player__playlist">
-					{playlistItems.map((item, itemIndex) => {
+					{playlistItems.map((item: FlowplayerSourceItemSchema, itemIndex) => {
 						return (
-							<li key={item.src + '--' + itemIndex}>
-								<MediaCard
-									title={item.title}
-									onClick={() => handleMediaCardClicked(itemIndex)}
-									orientation="vertical"
-									category="search" // Clearest color on white background
-								>
-									<MediaCardThumbnail>
-										<Thumbnail
-											category={item.category}
-											src={item.poster}
-											meta={item.provider}
-											label={item.category}
-										/>
-									</MediaCardThumbnail>
-								</MediaCard>
+							<li
+								key={item.src + '--' + itemIndex}
+								className={
+									'c-video-player__playlist__item' +
+									(activeItemIndex === itemIndex
+										? ' c-video-player__playlist__item--active'
+										: '')
+								}
+							>
+								<button onClick={() => handleMediaCardClicked(itemIndex)}>
+									{renderPlaylistTile?.(item) || item.title}
+								</button>
 							</li>
 						);
 					})}
 				</ul>
 			);
 		},
-		[handleMediaCardClicked]
+		[handleMediaCardClicked, activeItemIndex]
 	);
 
 	const playlistItems = useMemo(() => (src as FlowplayerSourceListSchema)?.items, [src]);
@@ -493,13 +560,18 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 				className={classnames('c-video-player-inner')}
 				data-player-id={dataPlayerId}
 				ref={videoContainerRef}
-			/>
+			>
+				{waveformData && (
+					<canvas ref={peakCanvas} className="c-peak" width="1212" height="779" />
+				)}
+				{customControls}
+			</div>
 		),
 		[dataPlayerId]
 	);
 
-	return useMemo(
-		() => (
+	return useMemo(() => {
+		return (
 			<div className={classnames(className, 'c-video-player')}>
 				{playerHtml}
 				{playlistItems && (
@@ -513,9 +585,8 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 					</div>
 				)}
 			</div>
-		),
-		[playlistItems, playlistScrollable, className, renderPlaylistItems, playerHtml]
-	);
+		);
+	}, [playlistItems, playlistScrollable, className, renderPlaylistItems, playerHtml]);
 };
 
 export default FlowPlayerInternal;

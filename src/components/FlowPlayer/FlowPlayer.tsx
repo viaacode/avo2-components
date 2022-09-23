@@ -1,7 +1,6 @@
 import React, { FunctionComponent, Suspense } from 'react';
 
 import { Flex } from '../Flex/Flex';
-import { Spinner } from '../Spinner/Spinner';
 
 import { FlowPlayerPropsSchema } from './FlowPlayer.types';
 
@@ -12,7 +11,7 @@ export const FlowPlayer: FunctionComponent<FlowPlayerPropsSchema> = (props) => {
 		<Suspense
 			fallback={
 				<Flex orientation="horizontal" center>
-					<Spinner size="large" />
+					Laden ...
 				</Flex>
 			}
 		>
