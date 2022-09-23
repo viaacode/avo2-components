@@ -1,7 +1,12 @@
-@use 'sass:math';
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use "sass:math";
 
+$color-gray-900: #0f171d;
+$color-teal-bright: #25a4cf;
+$color-gray-shadow: #222;
+$color-teal: #1d637a;
+$color-teal-bright: #25a4cf;
+$color-gray-500: #45647b;
+$g-bp2: 700px;
 $player-play-button-dimensions: 7rem;
 $player-play-button-icon-dimensions: 3rem;
 $player-easing-soft: cubic-bezier(0.62, 0.28, 0.23, 0.99);
@@ -16,6 +21,7 @@ $fp-controls-header-width-mobile: 50px;
 .c-video-player {
 	display: flex;
 	flex-direction: column;
+	position: relative;
 
 	@media (min-width: $g-bp2) {
 		flex-direction: row;
@@ -42,14 +48,16 @@ $fp-controls-header-width-mobile: 50px;
 			margin-top: 0;
 		}
 
-		> li {
+		> .c-video-player__playlist__item {
 			margin-right: 0;
 			margin-bottom: 2rem;
 			width: 100%;
-		}
 
-		.c-media-card {
-			max-width: none;
+			button {
+				background: transparent;
+				border: none;
+				width: 100%;
+			}
 		}
 	}
 }
@@ -59,10 +67,8 @@ $fp-controls-header-width-mobile: 50px;
 	vertical-align: bottom;
 	position: relative;
 	background-color: black;
-
 	width: 100%;
 	height: 100%;
-
 	color: rgba(#fff, 0.67);
 	background-size: cover;
 	background-position: center;
@@ -77,15 +83,12 @@ $fp-controls-header-width-mobile: 50px;
 				-(math.div($player-play-button-dimensions, 2)),
 				-(math.div($player-play-button-dimensions, 2))
 		);
-
 		background-image: url("data:image/svg+xml,%3Csvg fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 21.9999C4.835 21.9999 4.67 21.9589 4.521 21.8779C4.2 21.7019 4 21.3659 4 20.9999V2.99989C4 2.63389 4.2 2.29689 4.521 2.12189C4.841 1.94689 5.232 1.95989 5.541 2.15889L19.541 11.1589C19.827 11.3429 20 11.6599 20 11.9999C20 12.3399 19.827 12.6569 19.541 12.8409L5.541 21.8409C5.376 21.9459 5.188 21.9999 5 21.9999ZM6 4.83189V19.1679L17.15 11.9999L6 4.83189Z' fill='white' fill-opacity='0.67'/%3E%3C/svg%3E%0A");
 		background-size: $player-play-button-icon-dimensions;
 		background-position: 55% center;
 		background-repeat: no-repeat;
-
 		width: $player-play-button-dimensions;
 		height: $player-play-button-dimensions;
-
 		background-color: rgba($c-play-overlay-inner-bg, 0.5);
 		border-radius: 50%;
 		box-shadow: 0 0 5px 0 rgba($color-gray-shadow, 0.5);
@@ -93,7 +96,6 @@ $fp-controls-header-width-mobile: 50px;
 		&:hover {
 			background-color: rgba($c-play-overlay-inner-bg, 0.7);
 			box-shadow: 0 0 10px 0 rgba($color-gray-shadow, 0.7);
-
 			transition: 0.14s background $player-easing-soft;
 		}
 
@@ -126,29 +128,24 @@ $fp-controls-header-width-mobile: 50px;
 
 	.c-logo-overlay {
 		display: none;
-
 		position: relative;
-
 		width: 100%;
 
 		&__img {
 			position: absolute;
 			top: 0;
 			right: 0;
-
 			width: 5%;
-
 			margin: 1.2rem;
 		}
 	}
 
 	.c-title-overlay {
 		display: none;
-
 		width: 100%;
 
 		&__title {
-			background-color: rgba(15, 23, 29, 0.75);
+			background-color: rgb(15 23 29 / 75%);
 			font-weight: 500;
 			padding: 0.8rem 1.2rem;
 			font-size: 3rem;
@@ -157,7 +154,7 @@ $fp-controls-header-width-mobile: 50px;
 			text-overflow: ellipsis;
 			display: inline-block;
 			max-width: calc(100% - 3.2rem);
-			margin: 1.2rem 1.2rem 0.6rem 1.2rem;
+			margin: 1.2rem 1.2rem 0.6rem;
 		}
 
 		.u-d-flex {
@@ -166,12 +163,9 @@ $fp-controls-header-width-mobile: 50px;
 
 		&__meta {
 			display: inline-block;
-
 			padding: 0.8rem 1.2rem;
-
 			font-size: 2rem;
-
-			background-color: rgba(15, 23, 29, 0.5);
+			background-color: rgb(15 23 29 / 50%);
 
 			&:not(:first-child) {
 				margin-left: 1.2rem;
@@ -184,7 +178,6 @@ $fp-controls-header-width-mobile: 50px;
 		flex-direction: row;
 		position: relative;
 		right: 0.7em;
-
 		width: 100%;
 	}
 
@@ -196,7 +189,6 @@ $fp-controls-header-width-mobile: 50px;
 		right: 0;
 		bottom: 0;
 		left: auto;
-
 		width: $fp-controls-header-width-mobile;
 
 		@media (min-width: $g-bp2) {
@@ -204,23 +196,20 @@ $fp-controls-header-width-mobile: 50px;
 		}
 
 		padding: 0;
-
-		color: rgba(255, 255, 255, 0.67);
-		background-color: rgba(15, 23, 29, 0.8);
-
+		color: rgb(255 255 255 / 67%);
+		background-color: rgb(15 23 29 / 80%);
 		z-index: 1;
 	}
 
 	.fp-controls {
-		width: calc(100% - $fp-controls-header-width-mobile);
+		width: calc(100% - #{$fp-controls-header-width-mobile});
 
 		@media (min-width: $g-bp2) {
-			width: calc(100% - $fp-controls-header-width-desktop);
+			width: calc(100% - #{$fp-controls-header-width-desktop});
 		}
 
-		color: rgba(255, 255, 255, 0.67);
-		background-color: rgba(15, 23, 29, 0.8);
-
+		color: rgb(255 255 255 / 67%);
+		background-color: rgb(15 23 29 / 80%);
 		z-index: 0;
 	}
 
@@ -243,6 +232,15 @@ $fp-controls-header-width-mobile: 50px;
 
 	.fp-progress {
 		background-color: #25a4cf87;
+	}
+
+	.fp-dragger {
+		top: -0.52rem;
+		transform: translateX(2px);
+	}
+
+	.fp-controls:hover .fp-dragger {
+		transform: scale(1.2);
 	}
 
 	.fp-cuepoint {
@@ -268,9 +266,7 @@ $fp-controls-header-width-mobile: 50px;
 		justify-content: flex-end;
 		top: 0;
 		left: 0;
-
 		padding: 0.72rem 5px;
-
 		height: 100%;
 		width: 100%;
 
@@ -279,7 +275,6 @@ $fp-controls-header-width-mobile: 50px;
 		.fp-fullscreen-exit {
 			width: 40%;
 			height: 56%;
-
 			padding: 0;
 			margin: 2px;
 		}
@@ -326,6 +321,20 @@ $fp-controls-header-width-mobile: 50px;
 		}
 	}
 
+	&.flowplayer.is-audio-player.is-playing {
+		.fp-header {
+			display: block;
+		}
+
+		.fp-fullscreen {
+			display: block;
+		}
+
+		.fp-fullscreen-exit {
+			display: none;
+		}
+	}
+
 	&.is-fullscreen {
 		&.is-hovered,
 		&.is-paused {
@@ -345,6 +354,16 @@ $fp-controls-header-width-mobile: 50px;
 			width: 100vw;
 			height: 100vh;
 		}
+
+		&.flowplayer.is-audio-player {
+			.fp-fullscreen {
+				display: none;
+			}
+
+			.fp-fullscreen-exit {
+				display: block;
+			}
+		}
 	}
 
 	&.is-error {
@@ -360,7 +379,6 @@ $fp-controls-header-width-mobile: 50px;
 	&__item {
 		width: 100%;
 		height: 100%;
-
 		line-height: 0;
 
 		img,
@@ -375,50 +393,41 @@ $fp-controls-header-width-mobile: 50px;
 		right: 0;
 		bottom: 0;
 		left: 0;
-
 		padding: 8px 5px;
 	}
 
 	&__time {
 		width: 80px;
-
 		font-size: 12px;
-
 		white-space: nowrap;
 	}
 
 	&__time-elapsed {
 		display: inline-block;
-
 		width: 34px;
 	}
 
 	&-progress {
 		position: relative;
-
 		min-width: 100px;
 		height: $c-video-player-progress-height;
 
 		&__inner {
 			position: absolute;
 			left: 0;
-
 			height: $c-video-player-progress-height;
-
 			background-color: $c-video-player-progress-inner-bg;
 		}
 
 		&__handle {
 			position: absolute;
-			top: math.div($c-video-player-progress-height, 2) -
-				math.div($c-video-player-progress-handle-size, 2);
-			right: -(math.div($c-video-player-progress-handle-size, 2));
 
+			// prettier-ignore
+			top: math.div($c-video-player-progress-height, 2) - math.div($c-video-player-progress-handle-size, 2);
+			right: -(math.div($c-video-player-progress-handle-size, 2));
 			width: $c-video-player-progress-handle-size;
 			height: $c-video-player-progress-handle-size;
-
 			background-color: $c-video-player-progress-inner-bg;
-
 			border-radius: 50%;
 		}
 	}
@@ -457,14 +466,14 @@ $fp-controls-header-width-mobile: 50px;
 				.title {
 					position: absolute;
 					top: calc(50% - 14rem);
-					text-shadow: 0 0 4px #000000;
+					text-shadow: 0 0 4px #000;
 					width: 100%;
 					text-align: center;
 					font-size: 2.4rem;
 					z-index: 1;
 
 					&::before {
-						content: 'Volgende in de afspeellijst...';
+						content: "Volgende in de afspeellijst...";
 						display: block;
 						font-size: 1.6rem;
 						margin-bottom: 1rem;
@@ -477,7 +486,7 @@ $fp-controls-header-width-mobile: 50px;
 					width: 100%;
 					text-align: center;
 					margin: 0;
-					text-shadow: 0 0 4px #000000;
+					text-shadow: 0 0 4px #000;
 					font-size: 1.6rem;
 					z-index: 1;
 					pointer-events: auto;
@@ -512,10 +521,8 @@ $fp-controls-header-width-mobile: 50px;
 	}
 
 	&:focus {
-		box-shadow: 0 0 0 2px $color-primary;
-
+		box-shadow: 0 0 0 2px $color-teal-bright;
 		outline: 0;
-
 		transition: 0.14s box-shadow $player-easing-soft;
 	}
 
@@ -527,6 +534,16 @@ $fp-controls-header-width-mobile: 50px;
 
 	&:active:focus,
 	&.c-button--active:focus {
-		box-shadow: 0 0 0 2px $color-primary;
+		box-shadow: 0 0 0 2px $color-teal-bright;
 	}
+}
+
+/* Peak file */
+.c-peak {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
 }

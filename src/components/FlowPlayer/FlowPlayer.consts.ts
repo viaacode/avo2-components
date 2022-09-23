@@ -33,6 +33,7 @@ export const ALL_FLOWPLAYER_PLUGINS = [
 	'hls',
 	'ga',
 	'speed',
+	'audio',
 	'keyboard',
 	'playlist',
 	// 'chromecast', 'airplay', // Disabled for now for video security: https://meemoo.atlassian.net/browse/AVO-1859
