@@ -1,6 +1,7 @@
 import { Config } from '@flowplayer/player';
+import { ReactElement, ReactNode } from 'react';
 
-import { DefaultProps, EnglishContentType } from '../../types';
+import { DefaultProps } from '../../types';
 
 export type FlowplayerPlugin =
 	| 'subtitles'
@@ -9,6 +10,7 @@ export type FlowplayerPlugin =
 	| 'keyboard'
 	| 'playlist'
 	| 'speed'
+	| 'audio'
 	| 'ga'
 	| 'chromecast'
 	| 'airplay';
@@ -68,21 +70,32 @@ export interface FlowplayerTrackSchema {
 	src: string;
 }
 
+export type EnglishContentType =
+	| 'collection'
+	| 'item'
+	| 'bundle'
+	| 'video'
+	| 'audio'
+	| 'search'
+	| 'searchquery';
+
+export interface FlowplayerSourceItemSchema {
+	src: string;
+	title: string;
+	category: EnglishContentType;
+	provider: string;
+	poster: string;
+	cuepoints?: Cuepoints;
+}
+
 export type FlowplayerSourceListSchema = {
 	type: 'flowplayer/playlist';
-	items: {
-		src: string;
-		title: string;
-		category: EnglishContentType;
-		provider: string;
-		poster: string;
-		cuepoints?: Cuepoints;
-	}[];
+	items: FlowplayerSourceItemSchema[];
 };
 export type FlowplayerSourceList = FlowplayerSourceListSchema;
 
 export interface FlowPlayerPropsSchema extends DefaultProps {
-	src: string | FlowplayerSourceListSchema;
+	src: string | { type: string; src: string }[] | FlowplayerSourceListSchema;
 	poster?: string;
 	logo?: string;
 	title?: string;
@@ -96,6 +109,8 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	token?: string;
 	dataPlayerId?: string;
 	autoplay?: boolean;
+	pause?: boolean;
+	fullscreen?: boolean;
 	onPlay?: (src: string) => void;
 	onPause?: () => void;
 	onEnded?: () => void;
@@ -104,19 +119,12 @@ export interface FlowPlayerPropsSchema extends DefaultProps {
 	plugins?: FlowplayerPlugin[];
 	subtitles?: FlowplayerTrackSchema[];
 	playlistScrollable?: boolean;
-	canPlay?: boolean; // Indicates if the video can play at this type. Eg: will be set to false if a modal is open in front of the video player
+	renderPlaylistTile?: (item: FlowplayerSourceItemSchema) => ReactNode;
+	canPlay?: boolean; // Indicates if the video can play at this time. Eg: will be set to false if a modal is open in front of the video player
 	className?: string;
+	customControls?: ReactElement;
+	waveformData?: number[];
 	googleAnalyticsId?: string;
 	googleAnalyticsEvents?: GoogleAnalyticsEvent[];
 	googleAnalyticsTitle?: string;
 }
-
-export const convertGAEventsArrayToObject = (
-	googleAnalyticsEvents: GoogleAnalyticsEvent[]
-): any => {
-	return googleAnalyticsEvents.reduce((acc: any, curr: GoogleAnalyticsEvent) => {
-		acc[curr] = curr;
-
-		return acc;
-	}, {});
-};

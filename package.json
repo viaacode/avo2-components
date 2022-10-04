@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "1.97.7",
+  "version": "1.97.10",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -10,7 +10,9 @@
     "analyze": "source-map-explorer 'build/*.js'",
     "prebuild": "rimraf dist",
     "build": "rollup -c",
-    "build-and-copy-to-client": "rimraf ../avo2-client/node_modules/@viaa/avo2-components/dist ../avo2-client/node_modules/@viaa/avo2-components/src ../avo2-client/node_modules/.cache && npm run build && cp -r dist src package.json ../avo2-client/node_modules/@viaa/avo2-components",
+    "build-and-copy-to-avo-client": "rimraf ../avo2-client/node_modules/@viaa/avo2-components/dist ../avo2-client/node_modules/@viaa/avo2-components/src ../avo2-client/node_modules/.cache && npm run build && cp -r dist src package.json ../avo2-client/node_modules/@viaa/avo2-components",
+    "build-and-copy-to-hetarchief-client": "rimraf ../hetarchief-client/node_modules/@viaa/avo2-components/dist ../hetarchief-client/node_modules/@viaa/avo2-components/src ../hetarchief-client/node_modules/.cache && npm run build && cp -r dist src package.json ../hetarchief-client/node_modules/@viaa/avo2-components",
+    "build-and-copy-to-admin-core": "rimraf ../react-admin-core-module/demo/node_modules/@viaa/avo2-components/dist ../react-admin-core-module/demo/node_modules/@viaa/avo2-components/src ../react-admin-core-module/demo/node_modules/.cache && npm run build && cp -r dist src package.json ../react-admin-core-module/demo/node_modules/@viaa/avo2-components",
     "build-storybook": "build-storybook -o build",
     "build-storybook:with-sourcemaps": "cross-env GENERATE_SOURCEMAP=true build-storybook -o build",
     "preicons": "node scripts/icons.js src/icons",

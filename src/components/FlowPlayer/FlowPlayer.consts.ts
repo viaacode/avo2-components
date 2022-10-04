@@ -1,6 +1,5 @@
 import { FlowplayerPlugin } from './FlowPlayer.types';
 
-export const DEFAULT_VIDEO_HEIGHT = 500;
 export const DELAY_BETWEEN_PLAYLIST_VIDEOS = 7;
 
 export const dutchFlowplayerTranslations = {
@@ -34,6 +33,7 @@ export const ALL_FLOWPLAYER_PLUGINS = [
 	'hls',
 	'ga',
 	'speed',
+	'audio',
 	'keyboard',
 	'playlist',
 	// 'chromecast', 'airplay', // Disabled for now for video security: https://meemoo.atlassian.net/browse/AVO-1859

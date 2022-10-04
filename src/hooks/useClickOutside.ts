@@ -15,7 +15,10 @@ export function useClickOutside(
 						element === event.target || element.contains(event.target as Node)
 				)
 			) {
-				onClickOutside(event);
+				// Allow the click handler on the element to trigger before closing the dropdown menu
+				setTimeout(() => {
+					onClickOutside(event);
+				}, 100);
 			}
 		}
 
