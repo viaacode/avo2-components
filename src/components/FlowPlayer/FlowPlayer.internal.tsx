@@ -18,7 +18,7 @@ import {
 	DELAY_BETWEEN_PLAYLIST_VIDEOS,
 	dutchFlowplayerTranslations,
 } from './FlowPlayer.consts';
-import { convertGAEventsArrayToObject, setPlayingVideoSeekTime } from './FlowPlayer.helpers';
+import { convertGAEventsArrayToObject } from './FlowPlayer.helpers';
 import {
 	FlowplayerConfigWithPlugins,
 	FlowPlayerPropsSchema,
@@ -175,7 +175,7 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 				0;
 
 			if (startTime) {
-				setPlayingVideoSeekTime(startTime);
+				flowplayerInstance.currentTime = startTime;
 			}
 		},
 		[player]
@@ -184,16 +184,18 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 	/**
 	 * Updates the styles of the timeline cuepoint indicator according to the active cuepoint
 	 */
-	const updateCuepointPosition = useCallback(
-		(tempPlayer: any) => {
-			const flowplayerInstance = tempPlayer || player.current;
-			if (!flowplayerInstance || isNaN(flowplayerInstance.duration)) {
+	const updateCuepointPosition = useCallback(() => {
+		try {
+			const flowplayerInstance = player.current;
+			const duration = flowplayerInstance.duration;
+			if (!flowplayerInstance || !duration) {
 				return;
 			}
 
-			const cuePointIndicator: HTMLDivElement | null = flowplayerInstance.root.querySelector(
-				'.fp-cuepoint'
-			) as HTMLDivElement | null;
+			const cuePointIndicator: HTMLDivElement | null =
+				flowplayerInstance.parentElement.querySelector(
+					'.fp-cuepoint'
+				) as HTMLDivElement | null;
 
 			if (cuePointIndicator) {
 				let start = (flowplayerInstance.opts as FlowplayerConfigWithPlugins).cuepoints?.[0]
@@ -207,17 +209,19 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 				}
 
 				start = start || 0;
-				end = (end || flowplayerInstance.duration || 0) as number;
+				end = (end || duration || 0) as number;
 
-				cuePointIndicator.style.left =
-					Math.round((start / flowplayerInstance.duration) * 100) + '%';
-				cuePointIndicator.style.width =
-					((end - start) / flowplayerInstance.duration) * 100 + '%';
+				cuePointIndicator.style.left = Math.round((start / duration) * 100) + '%';
+				cuePointIndicator.style.width = ((end - start) / duration) * 100 + '%';
 				cuePointIndicator.style.display = 'block';
 			}
-		},
-		[player]
-	);
+		} catch (err) {
+			console.error(
+				'Failed to update cuepoint location on the flowplayer progress bar: ' +
+					JSON.stringify(err)
+			);
+		}
+	}, [player]);
 
 	/**
 	 * Sets the cuepoint config from the active item in the playlist as the cuepoint on the flowplayer
@@ -239,19 +243,14 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 				player.current.emit(flowplayer.events.CUEPOINTS, {
 					cuepoints: playlistItem.cuepoints,
 				});
-				updateCuepointPosition(player.current);
 
 				// Update poster
 				player.current.poster = playlistItem.poster;
 				player.current.opts.poster = playlistItem.poster;
 			}
 		},
-		[player, src, updateCuepointPosition]
+		[player, src]
 	);
-
-	const handleLoadedMetadata = () => {
-		updateCuepointPosition(player.current);
-	};
 
 	const handlePlaylistNext = (evt: Event & { detail: { next_index: number } }) => {
 		updateActivePlaylistItem(evt.detail.next_index);
@@ -342,7 +341,7 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 			// CUEPOINTS
 			// Only set cuepoints if an end point was passed in the props or one of the playlist items has cuepoints configured
 			...(plugins.includes('cuepoints') &&
-			(end || (src as FlowplayerSourceListSchema)?.items?.some((item) => !!item.cuepoints))
+			(end || !!(src as FlowplayerSourceListSchema)?.items?.[0].cuepoints?.[0]?.endTime)
 				? {
 						cuepoints: [
 							{
@@ -422,7 +421,6 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 		tempPlayer.on('pause', onPause || noop);
 		tempPlayer.on('ended', onEnded || noop);
 		tempPlayer.on(playlistPlugin.events.PLAYLIST_NEXT, handlePlaylistNext);
-		tempPlayer.on('loadeddata', handleLoadedMetadata);
 		tempPlayer.on('timeupdate', handleTimeUpdate);
 
 		setPlayer(tempPlayer);
@@ -512,6 +510,16 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 		};
 	}, [waveformData, peakCanvas, setDrawPeaksTimerId]);
 
+	useEffect(() => {
+		const timerId = setInterval(() => {
+			updateCuepointPosition();
+		}, 1000);
+
+		return () => {
+			clearInterval(timerId);
+		};
+	}, []);
+
 	const handleMediaCardClicked = useCallback(
 		(itemIndex: number): void => {
 			setActiveItemIndex(itemIndex);
@@ -519,10 +527,8 @@ export const FlowPlayerInternal: FunctionComponent<FlowPlayerPropsSchema> = ({
 			player.current.emit(flowplayer.events.CUEPOINTS, {
 				cuepoints: (src as FlowplayerSourceListSchema).items[itemIndex].cuepoints,
 			});
-
-			updateCuepointPosition(player.current);
 		},
-		[player, updateCuepointPosition]
+		[player]
 	);
 
 	const renderPlaylistItems = useCallback(
