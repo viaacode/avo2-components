@@ -66,15 +66,15 @@
 	}
 }
 
-.c-thumbnail-media--collection:hover .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category {
+.c-thumbnail-media--collection .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
 	color: $color-ocean-green;
 }
 
-.c-thumbnail-media--video:hover .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category {
+.c-thumbnail-media--video .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
 	color: $color-yellow;
 }
 
-.c-thumbnail-media--audio:hover .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category {
+.c-thumbnail-media--audio .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
 	color: $color-teal-bright;
 }
 
