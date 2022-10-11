@@ -15,6 +15,8 @@ import './DatePicker.scss';
 registerLocale('nl', nl);
 setDefaultLocale('nl');
 
+export const datepickerMaxDate = new Date(253402297199000); // End of 31 Dec 9999, GMT +1, See https://meemoo.atlassian.net/browse/AVO-1828
+
 export interface DatePickerPropsSchema extends DefaultProps {
 	disabled?: boolean;
 	required?: boolean;
@@ -36,7 +38,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	placeholder,
 	value,
 	minDate,
-	maxDate,
+	maxDate = new Date(datepickerMaxDate),
 	onChange = noop,
 }) => {
 	const handleChangedDate = (newDate: Date) => {
@@ -85,7 +87,12 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 					onChange={handleChangedDate}
 					dateFormat={'dd/MM/yyyy'}
 					minDate={minDate}
-					maxDate={maxDate}
+					maxDate={
+						// https://meemoo.atlassian.net/browse/AVO-1828
+						new Date(datepickerMaxDate).valueOf() <= new Date(maxDate).valueOf()
+							? new Date(datepickerMaxDate)
+							: maxDate
+					}
 				/>
 				<Icon name="calendar" />
 			</div>
