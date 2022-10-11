@@ -3,6 +3,7 @@ import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
+import { Icon } from '../Icon/Icon';
 
 import './Toggle.scss';
 
@@ -38,7 +39,9 @@ export const Toggle: FunctionComponent<TogglePropsSchema> = ({
 				onChange={onValueChange}
 			/>
 			<div className="c-toggle__back" />
-			<div className="c-toggle__knob" />
+			<div className="c-toggle__knob">
+				<Icon className="c-toggle__knob__checkmark" name="check" size='small' />
+			</div>
 		</div>
 	);
 };
