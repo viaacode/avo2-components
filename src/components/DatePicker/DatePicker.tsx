@@ -15,7 +15,7 @@ import './DatePicker.scss';
 registerLocale('nl', nl);
 setDefaultLocale('nl');
 
-export const datepickerMaxDate = new Date(9999, 11, 31, 23, 59, 59); // https://meemoo.atlassian.net/browse/AVO-1828
+export const getMaxDate = () => new Date(9999, 11, 31, 23, 59, 59); // https://meemoo.atlassian.net/browse/AVO-1828
 
 export interface DatePickerPropsSchema extends DefaultProps {
 	disabled?: boolean;
@@ -38,7 +38,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	placeholder,
 	value,
 	minDate,
-	maxDate = new Date(datepickerMaxDate),
+	maxDate = getMaxDate(),
 	onChange = noop,
 }) => {
 	const handleChangedDate = (newDate: Date) => {
@@ -89,8 +89,8 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 					minDate={minDate}
 					maxDate={
 						// https://meemoo.atlassian.net/browse/AVO-1828
-						new Date(datepickerMaxDate).valueOf() <= new Date(maxDate).valueOf()
-							? new Date(datepickerMaxDate)
+						getMaxDate().valueOf() <= new Date(maxDate).valueOf()
+							? getMaxDate()
 							: maxDate
 					}
 				/>
