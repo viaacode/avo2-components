@@ -15,7 +15,7 @@ import './DatePicker.scss';
 registerLocale('nl', nl);
 setDefaultLocale('nl');
 
-export const datepickerMaxDate = new Date(253402297199000); // End of 31 Dec 9999, GMT +1, See https://meemoo.atlassian.net/browse/AVO-1828
+export const datepickerMaxDate = new Date(9999, 11, 31, 23, 59, 59); // https://meemoo.atlassian.net/browse/AVO-1828
 
 export interface DatePickerPropsSchema extends DefaultProps {
 	disabled?: boolean;
