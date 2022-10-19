@@ -1,91 +1,92 @@
 // tslint:disable:@typescript-eslint/no-unused-vars
-import { AccordionPropsSchema } from './Accordion/Accordion';
-import { AlertPropsSchema, AlertTypeSchema } from './Alert/Alert.types';
-import { AspectRatioWrapperPropsSchema } from './AspectRatioWrapper/AspectRatioWrapper';
-import { AvatarPropsSchema } from './Avatar/Avatar';
-import { AvatarIconPropsSchema } from './Avatar/AvatarIcon/AvatarIcon';
-import { AvatarListPropsSchema } from './AvatarList/AvatarList';
-import { BadgePropsSchema } from './Badge/Badge';
-import { BlankslatePropsSchema } from './Blankslate/Blankslate';
-import { BoxPropsSchema } from './Box/Box';
-import { ButtonPropsSchema } from './Button/Button';
-import { ButtonTypeSchema } from './Button/Button.types';
-import { ButtonGroupPropsSchema } from './ButtonGroup/ButtonGroup';
-import { ButtonToolbarPropsSchema } from './ButtonToolbar/ButtonToolbar';
-import { CTAPropsSchema } from './CTA/CTA';
-import { CheckboxPropsSchema } from './Checkbox/Checkbox';
-import { CheckboxGroupPropsSchema } from './CheckboxGroup/CheckboxGroup';
-import { ContainerPropsSchema } from './Container/Container';
-import { ContentInputPropsSchema } from './ContentInput';
-import { DatePickerPropsSchema } from './DatePicker/DatePicker';
-import {
+import type { AccordionPropsSchema } from './Accordion/Accordion';
+import type { AlertPropsSchema, AlertTypeSchema } from './Alert/Alert.types';
+import type { AspectRatioWrapperPropsSchema } from './AspectRatioWrapper/AspectRatioWrapper';
+import type { AvatarPropsSchema } from './Avatar/Avatar';
+import type { AvatarIconPropsSchema } from './Avatar/AvatarIcon/AvatarIcon';
+import type { AvatarListPropsSchema } from './AvatarList/AvatarList';
+import type { BadgePropsSchema } from './Badge/Badge';
+import type { BlankslatePropsSchema } from './Blankslate/Blankslate';
+import type { BoxPropsSchema } from './Box/Box';
+import type { ButtonPropsSchema } from './Button/Button';
+import type { ButtonTypeSchema } from './Button/Button.types';
+import type { ButtonGroupPropsSchema } from './ButtonGroup/ButtonGroup';
+import type { ButtonToolbarPropsSchema } from './ButtonToolbar/ButtonToolbar';
+import type { CTAPropsSchema } from './CTA/CTA';
+import type { CheckboxPropsSchema } from './Checkbox/Checkbox';
+import type { CheckboxGroupPropsSchema } from './CheckboxGroup/CheckboxGroup';
+import type { ContainerPropsSchema } from './Container/Container';
+import type { ContentInputPropsSchema } from './ContentInput';
+import type { DatePickerPropsSchema } from './DatePicker/DatePicker';
+import type {
 	DeadlineIndicatorColorsSchema,
 	DeadlineIndicatorPropsSchema,
 	DeadlineIndicatorShapesSchema,
 } from './DeadlineIndicator/DeadlineIndicator';
-import { DropdownPropsSchema } from './Dropdown/Dropdown';
-import { ExpandableContainerPropsSchema } from './ExpandableContainer/ExpandableContainer';
-import { FlexPropsSchema } from './Flex/Flex';
-import { FlexItemPropsSchema } from './Flex/FlexItem/FlexItem';
-import {
+import type { DropdownPropsSchema } from './Dropdown/Dropdown';
+import type { ExpandableContainerPropsSchema } from './ExpandableContainer/ExpandableContainer';
+import type { FlexPropsSchema } from './Flex/Flex';
+import type { FlexItemPropsSchema } from './Flex/FlexItem/FlexItem';
+import type {
 	FlowPlayerPropsSchema,
 	FlowplayerSourceItemSchema,
 	FlowplayerSourceListSchema,
 	FlowplayerTrackSchema,
-} from './FlowPlayer/FlowPlayer.types';
-import { FormPropsSchema } from './Form/Form';
-import { FormGroupPropsSchema } from './Form/FormGroup/FormGroup';
-import { ColumnPropsSchema, GridSizeSchema } from './Grid/Column/Column';
-import { GridPropsSchema } from './Grid/Grid';
-import { HeaderPropsSchema } from './Header/Header';
-import { HeaderContentTypePropsSchema } from './HeaderContentType/HeaderContentType';
-import { IconPropsSchema } from './Icon/Icon';
-import { IconNameSchema, IconTypeSchema } from './Icon/Icon.types';
-import { ImagePropsSchema } from './Image/Image';
-import { ImageGridPropsSchema } from './ImageGrid/ImageGrid';
-import {
+} from './FlowPlayer';
+import type { FormPropsSchema } from './Form/Form';
+import type { FormGroupPropsSchema } from './Form/FormGroup/FormGroup';
+import type { ColumnPropsSchema, GridSizeSchema } from './Grid/Column/Column';
+import type { GridPropsSchema } from './Grid/Grid';
+import type { HeaderPropsSchema } from './Header/Header';
+import type { HeaderContentTypePropsSchema } from './HeaderContentType/HeaderContentType';
+import type { IconPropsSchema } from './Icon/Icon';
+import type { IconNameSchema, IconTypeSchema } from './Icon/Icon.types';
+import type { ImagePropsSchema } from './Image/Image';
+import type { ImageGridPropsSchema } from './ImageGrid/ImageGrid';
+import type {
 	KeyValueEditorPropsSchema,
 	KeyValueEditorTableColsSchema,
 	KeyValuePairSchema,
 } from './KeyValueEditor/KeyValueEditor';
-import { MediaCardPropsSchema } from './MediaCard/MediaCard';
-import { MenuPropsSchema } from './Menu/Menu';
-import { MenuContentPropsSchema, MenuItemInfoSchema } from './Menu/MenuContent/MenuContent';
-import {
+import type { MediaCardPropsSchema } from './MediaCard/MediaCard';
+import type { MenuPropsSchema } from './Menu/Menu';
+import type { MenuContentPropsSchema, MenuItemInfoSchema } from './Menu/MenuContent/MenuContent';
+import type {
 	MenuSearchResultContentPropsSchema,
 	MenuSearchResultItemInfoSchema,
 } from './Menu/MenuSearchResultContent/MenuSearchResultContent';
-import { MetaDataPropsSchema } from './MetaData/MetaData';
-import { MetaDataItemPropsSchema } from './MetaData/MetaDataItem/MetaDataItem';
-import { ModalPropsSchema } from './Modal/Modal';
-import { MoreOptionsDropdownPropsSchema } from './MoreOptionsDropdown/MoreOptionsDropdown';
-import { MultiRangePropsSchema } from './MultiRange/MultiRange';
-import { NavbarPropsSchema } from './Navbar/Navbar';
-import { PaginationPropsSchema } from './Pagination/Pagination';
-import { PanelPropsSchema } from './Panel/Panel';
-import { PillPropsSchema } from './Pill/Pill';
-import { QuotePropsSchema } from './Quote/Quote';
-import { RadioButtonPropsSchema } from './RadioButton/RadioButton';
-import { RadioButtonGroupPropsSchema } from './RadioButtonGroup/RadioButtonGroup';
-import { SearchResultPropsSchema } from './SearchResult/SearchResult';
-import { SelectOptionSchema, SelectPropsSchema } from './Select/Select';
-import { SpacerOptionSchema, SpacerPropsSchema } from './Spacer/Spacer';
-import { SpinnerPropsSchema } from './Spinner/Spinner';
-import { StickyEdgeBarPropsSchema } from './StickyEdgeBar/StickyEdgeBar';
-import { TableColumnSchema, TablePropsSchema } from './Table/Table';
-import { TabPropsSchema } from './Tabs/Tab/Tab';
-import { TabsPropsSchema } from './Tabs/Tabs';
-import { TagListPropsSchema, TagOptionSchema } from './TagList/TagList';
-import { TagInfoSchema, TagsInputPropsSchema } from './TagsInput/TagsInput';
-import { TextAreaPropsSchema } from './TextArea/TextArea';
-import { TextInputPropsSchema } from './TextInput/TextInput';
-import { ThumbnailPropsSchema } from './Thumbnail/Thumbnail';
-import { TogglePropsSchema } from './Toggle/Toggle';
-import { ToggleButtonPropsSchema } from './ToggleButton/ToggleButton';
-import { ToolbarPropsSchema } from './Toolbar/Toolbar';
-import { ToolbarItemPropsSchema } from './Toolbar/ToolbarItem/ToolbarItem';
-import { ToolbarTitlePropsSchema } from './Toolbar/ToolbarTitle/ToolbarTitle';
-import { TooltipPropsSchema } from './Tooltip/Tooltip';
+import type { MetaDataPropsSchema } from './MetaData/MetaData';
+import type { MetaDataItemPropsSchema } from './MetaData/MetaDataItem/MetaDataItem';
+import type { ModalPropsSchema } from './Modal/Modal';
+import type { MoreOptionsDropdownPropsSchema } from './MoreOptionsDropdown/MoreOptionsDropdown';
+import type { MultiRangePropsSchema } from './MultiRange/MultiRange';
+import type { NavbarPropsSchema } from './Navbar/Navbar';
+import type { PaginationPropsSchema } from './Pagination/Pagination';
+import type { PanelPropsSchema } from './Panel/Panel';
+import type { PillPropsSchema } from './Pill/Pill';
+import type { QuotePropsSchema } from './Quote/Quote';
+import type { RadioButtonPropsSchema } from './RadioButton/RadioButton';
+import type { RadioButtonGroupPropsSchema } from './RadioButtonGroup/RadioButtonGroup';
+import type { SearchResultPropsSchema } from './SearchResult/SearchResult';
+import type { SelectOptionSchema, SelectPropsSchema } from './Select/Select';
+import type { SpacerOptionSchema, SpacerPropsSchema } from './Spacer/Spacer';
+import type { SpinnerPropsSchema } from './Spinner/Spinner';
+import type { StickyEdgeBarPropsSchema } from './StickyEdgeBar/StickyEdgeBar';
+import type { TableColumnSchema, TablePropsSchema } from './Table/Table';
+import type { TabPropsSchema } from './Tabs/Tab/Tab';
+import type { TabsPropsSchema } from './Tabs/Tabs';
+import type { TagListPropsSchema, TagOptionSchema } from './TagList/TagList';
+import type { TagInfoSchema, TagsInputPropsSchema } from './TagsInput/TagsInput';
+import type { TextAreaPropsSchema } from './TextArea/TextArea';
+import type { TextInputPropsSchema } from './TextInput/TextInput';
+import type { ThumbnailPropsSchema } from './Thumbnail/Thumbnail';
+import type { TogglePropsSchema } from './Toggle/Toggle';
+import type { ToggleButtonPropsSchema } from './ToggleButton/ToggleButton';
+import type { ToolbarPropsSchema } from './Toolbar/Toolbar';
+import type { ToolbarItemPropsSchema } from './Toolbar/ToolbarItem/ToolbarItem';
+import type { ToolbarTitlePropsSchema } from './Toolbar/ToolbarTitle/ToolbarTitle';
+import type { TooltipPropsSchema } from './Tooltip/Tooltip';
+import type { WYSIWYGControlSchema } from './WYSIWYG/WYSIWYG.types';
 
 export { Accordion } from './Accordion/Accordion';
 export type AccordionProps = AccordionPropsSchema;
@@ -334,3 +335,5 @@ export { DeadlineIndicator } from './DeadlineIndicator/DeadlineIndicator';
 export type DeadlineIndicatorProps = DeadlineIndicatorPropsSchema;
 export type DeadlineIndicatorColors = DeadlineIndicatorColorsSchema;
 export type DeadlineIndicatorShapes = DeadlineIndicatorShapesSchema;
+
+export type WYSIWYGControl = WYSIWYGControlSchema;
