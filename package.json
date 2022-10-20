@@ -27,8 +27,7 @@
     "test": "jest --verbose",
     "test:output": "cross-env CI=true jest --json --outputFile=.storybook/test-results.json",
     "licenses": "license-checker --csv --out licenses.csv",
-    "snyk-protect": "snyk-protect",
-    "postinstall": "npm i react-scrollbars-custom --force"
+    "snyk-protect": "snyk-protect"
   },
   "browserslist": {
     "production": [
