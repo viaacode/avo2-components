@@ -8,7 +8,7 @@ import React, {
 	useState,
 } from 'react';
 import ReactDOM from 'react-dom';
-import { default as Scrollbar } from 'react-scrollbars-custom';
+import { default as Scrollbar } from 'react-perfect-scrollbar';
 
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
