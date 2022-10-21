@@ -37,7 +37,7 @@ $g-c-menu-z: 60 !default;
 }
 
 .c-menu--search-result {
-	.c-menu__item {
+	:global(.c-menu__item) {
 		justify-content: space-between;
 		padding: 1.2rem 1.6rem;
 
@@ -46,10 +46,10 @@ $g-c-menu-z: 60 !default;
 		}
 	}
 
-	.c-menu__label {
+	:global(.c-menu__label) {
 		max-width: calc(100% - 80px);
 
-		.c-content-type {
+		:global(.c-content-type) {
 			display: block;
 			overflow: hidden;
 			text-overflow: ellipsis;

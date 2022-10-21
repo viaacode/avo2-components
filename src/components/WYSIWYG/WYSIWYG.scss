@@ -7,7 +7,7 @@
 }
 
 .c-rich-text-editor {
-	border: 0.1rem solid $color-gray-150;
+	border: 1px solid $color-gray-150;
 	border-radius: 0.3rem;
 	background-color: #fff;
 	@include textfield-transition;

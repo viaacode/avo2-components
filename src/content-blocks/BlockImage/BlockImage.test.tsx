@@ -1,10 +1,11 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
+import imageSource from '../../../static/images/500x200.jpg';
+
 import { BlockImage } from './BlockImage';
 
 const customClass = 'c-block-custom';
-const imageSource = '/images/500x200.svg';
 
 const blockImageExample = (
 	<BlockImage

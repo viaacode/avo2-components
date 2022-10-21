@@ -8,8 +8,7 @@ import React, {
 	useState,
 } from 'react';
 import ReactDOM from 'react-dom';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import 'react-perfect-scrollbar/dist/css/styles.css';
+import { default as Scrollbar } from 'react-scrollbars-custom';
 
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
@@ -27,7 +26,7 @@ import { ModalBackdrop } from './ModalBackdrop';
 export interface ModalPropsSchema extends DefaultProps {
 	children: ReactNode;
 	/**
-	 * false: enables the closing of the modal by clicking the backdrop () grey area around the modal)
+	 * false: enables the closing of the modal by clicking the backdrop (grey area around the modal)
 	 * true: modal will not close when clicking the backdrop
 	 */
 	disableContextClick?: boolean;
@@ -52,9 +51,9 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 	const headerRight = useSlot(ModalHeaderRight, children);
 	const footerRight = useSlot(ModalFooterRight, children);
 	const footerLeft = useSlot(ModalFooterLeft, children);
-	const [mouseDownLocation, setMouseDownLocation] = useState<{ x: number; y: number } | null>(
-		null
-	);
+	// eslint-disable-next-line prettier/prettier
+	const [mouseDownLocation, setMouseDownLocation] =
+		useState<{ x: number; y: number } | null>(null);
 
 	useKeyPress('Escape', close);
 
@@ -122,7 +121,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 					</div>
 				)}
 				{scrollable && (
-					<PerfectScrollbar
+					<Scrollbar
 						className="c-modal__body"
 						options={{
 							wheelPropagation: false,
@@ -130,7 +129,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 						}}
 					>
 						{body}
-					</PerfectScrollbar>
+					</Scrollbar>
 				)}
 				{!scrollable && <div className="c-modal__body">{body}</div>}
 				{(footerLeft || footerRight) && (

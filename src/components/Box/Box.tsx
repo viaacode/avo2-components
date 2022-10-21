@@ -3,7 +3,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 
-import './Box.scss';
+import styles from './Box.module.scss';
 
 export interface BoxPropsSchema extends DefaultProps {
 	condensed?: boolean;
@@ -18,9 +18,9 @@ export const Box: FunctionComponent<BoxPropsSchema> = ({
 	backgroundColor = 'gray',
 }) => (
 	<div
-		className={classnames(className, 'c-box', {
-			'c-box--padding-small': condensed,
-			[`c-box--${backgroundColor}`]: backgroundColor !== 'gray',
+		className={classnames(className, styles['c-box'], {
+			[styles['c-box--padding-small']]: condensed,
+			[styles[`c-box--${backgroundColor}`]]: backgroundColor !== 'gray',
 		})}
 	>
 		{children}

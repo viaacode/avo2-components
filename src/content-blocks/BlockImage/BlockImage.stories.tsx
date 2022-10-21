@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { BlockImage } from './BlockImage';
+import imageSource from '../../../static/images/500x200.jpg';
 
-const imageSource = '/images/500x200.svg';
+import { BlockImage } from './BlockImage';
 
 storiesOf('blocks/BlockImage', module)
 	.addParameters({ jest: ['BlockImage'] })

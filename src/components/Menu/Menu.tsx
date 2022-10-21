@@ -4,7 +4,7 @@ import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 
-import './Menu.scss';
+import styles from './Menu.module.scss';
 import { MenuContent, MenuItemInfoSchema } from './MenuContent/MenuContent';
 
 export interface MenuPropsSchema extends DefaultProps {
@@ -30,9 +30,9 @@ export const Menu: FunctionComponent<MenuPropsSchema> = ({
 }) => {
 	return (
 		<div
-			className={classnames(className, 'c-menu', {
-				'c-menu--search-result': search,
-				'c-menu--visible': isOpen,
+			className={classnames(className, styles['c-menu'], {
+				[styles['c-menu--search-result']]: search,
+				[styles['c-menu--visible']]: isOpen,
 			})}
 			style={style}
 		>

@@ -10,7 +10,7 @@ import { Spacer } from '../Spacer/Spacer';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 
-import './AvatarList.scss';
+import styles from './AvatarList.module.scss';
 
 interface ExtendedAvatarProps extends AvatarPropsSchema {
 	onClick?: (avatar: ExtendedAvatarProps) => void;
@@ -32,7 +32,7 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 	const hasHiddenAvatars = hiddenAvatars && !!hiddenAvatars.length;
 
 	return (
-		<div className={classnames(className, 'c-avatar--multiple')}>
+		<div className={classnames(className, styles['c-avatar--multiple'])}>
 			{visibleAvatars.map((avatar, index) => (
 				<Fragment key={index}>
 					<Tooltip position="bottom">
@@ -68,12 +68,12 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 							{hiddenAvatars.map((avatar, index) => (
 								<a
 									key={index}
-									className="c-menu__item"
+									className={'c-menu__item'}
 									onClick={() =>
 										avatar.onClick ? avatar.onClick(avatar) : undefined
 									}
 								>
-									<div className="c-menu__label">
+									<div className={'c-menu__label'}>
 										<Flex orientation="vertical" center>
 											<Avatar
 												initials={avatar.initials}
@@ -82,7 +82,7 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 											<Spacer margin="left-small">
 												<h4 className="c-h4 u-m-0">{avatar.name}</h4>
 												{avatar.subtitle && (
-													<span className="c-avatar-meta">
+													<span className={styles['c-avatar-meta']}>
 														{avatar.subtitle}
 													</span>
 												)}

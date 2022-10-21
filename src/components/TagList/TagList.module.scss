@@ -40,7 +40,7 @@
 	display: inline-block;
 }
 
-.c-tag > .c-label-swatch {
+.c-tag > :global(.c-label-swatch) {
 	margin-left: -0.8rem;
 }
 
@@ -56,7 +56,7 @@
 	position: relative;
 	left: 0.8rem;
 
-	.o-svg-icon {
+	:global(.o-svg-icon) {
 		margin: 0 auto;
 		display: block;
 		width: 1.8rem;

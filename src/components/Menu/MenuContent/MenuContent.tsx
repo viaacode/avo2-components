@@ -38,7 +38,7 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 				onClick={() => onClick(menuItemInfo.id)}
 				key={`menu-item-${menuItemInfo.id}`}
 			>
-				<div className="c-menu__label">
+				<div className={'c-menu__label'}>
 					{menuItemInfo.icon && <Icon name={menuItemInfo.icon} />}
 					{menuItemInfo.label}
 				</div>
@@ -95,8 +95,8 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 		}
 		if (noResultsLabel) {
 			return (
-				<div className="c-menu__item" key={`menu-item-no-results`}>
-					<div className="c-menu__label">{noResultsLabel}</div>
+				<div className={'c-menu__item'} key={`menu-item-no-results`}>
+					<div className={'c-menu__label'}>{noResultsLabel}</div>
 				</div>
 			);
 		}

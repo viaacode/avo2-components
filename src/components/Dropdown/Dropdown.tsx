@@ -13,8 +13,9 @@ import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Menu } from '../Menu/Menu';
 
-import './Dropdown.scss';
 import { DropdownButton, DropdownContent } from './Dropdown.slots';
+
+import './Dropdown.scss';
 
 export interface DropdownPropsSchema {
 	children: ReactNode;
@@ -33,7 +34,7 @@ export interface DropdownPropsSchema {
 }
 
 /**
- * This component provides a button that can show a flyout with some children inside of it.
+ * This component provides a button that can show a flyout with some children inside it.
  * The PopperJS library is used to provide the positioning logic for the flyout element.
  *
  * The nomenclature within this library is as follows:
@@ -63,7 +64,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	const dropdownButtonSlot = useSlot(DropdownButton, children);
 	const dropdownContentSlot = useSlot(DropdownContent, children);
 
-	const { styles, attributes } = usePopper(referenceElement, popperElement, {
+	const { update, styles, attributes } = usePopper(referenceElement, popperElement, {
 		placement,
 		// modifiers:
 		// 	menuWidth === 'fit-trigger'
@@ -83,7 +84,8 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 		// 		: [],
 	});
 
-	const toggle = (openState = !isOpen) => {
+	const toggle = async (openState = !isOpen) => {
+		await update?.();
 		if (openState !== isOpen) {
 			openState ? onOpen() : onClose();
 		}

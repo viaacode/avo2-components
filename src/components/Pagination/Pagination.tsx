@@ -5,7 +5,7 @@ import React, { FunctionComponent } from 'react';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 
-import './Pagination.scss';
+import styles from './Pagination.module.scss';
 
 export interface PaginationPropsSchema extends DefaultProps {
 	pageCount: number;
@@ -58,19 +58,19 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 	const pagesToDisplay = generatePages();
 
 	return (
-		<div className={classnames(className, 'c-pagination')}>
+		<div className={classnames(className, styles['c-pagination'])}>
 			<div className="c-pagination__btn" onClick={() => changePage(0)}>
 				<Icon name="chevrons-left" type="arrows" />
 			</div>
 			<div className="c-pagination__btn" onClick={() => changePage(currentPage - 1)}>
 				<Icon name="chevron-left" type="arrows" />
 			</div>
-			<div className="c-pagination__pages">
+			<div className={styles['c-pagination__pages']}>
 				{pagesToDisplay.map((pageIndex: number) => (
 					<div
 						key={pageIndex}
-						className={classnames('c-pagination__btn', {
-							'c-pagination__btn--active': pageIndex === currentPage,
+						className={classnames(styles['c-pagination__btn'], {
+							[styles['c-pagination__btn--active']]: pageIndex === currentPage,
 						})}
 						onClick={pageIndex !== currentPage ? () => changePage(pageIndex) : noop}
 					>
