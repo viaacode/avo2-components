@@ -153,7 +153,12 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 					? 'chevron-up'
 					: 'chevron-down'
 				: 'chevrons-up-and-down') as IconNameSchema,
-			className: isColumnSorted ? undefined : styles['c-table__header--sortable-icon'],
+			className: isColumnSorted
+				? undefined
+				: classnames(
+						'c-table__header--sortable-icon',
+						styles['c-table__header--sortable-icon']
+				  ),
 		};
 
 		if (!children && !rowKey) {
@@ -166,6 +171,11 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 			<th
 				key={`table-head-${id}`}
 				className={classnames({
+					// Normal
+					[`o-table-col-${col}`]: col,
+					['c-table__header--sortable']: sortable,
+
+					// Module
 					[styles[`o-table-col-${col}`]]: col,
 					[styles['c-table__header--sortable']]: sortable,
 				})}
@@ -195,7 +205,20 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	const renderTable = () => (
 		<>
 			<table
-				className={classnames(className, styles['c-table'], {
+				className={classnames(className, {
+					// Normal
+					['c-table']: true,
+					['c-table--align-middle']: align,
+					['c-table--bordered']: variant === 'bordered',
+					['c-table--invisible']: variant === 'invisible',
+					['c-table--horizontal']: horizontal,
+					['c-table--nowrap']: nowrap,
+					['c-table--striped']: striped,
+					['c-table--styled']: variant === 'styled' || variant === 'bordered',
+					['c-table--untable']: untable,
+
+					// Module
+					[styles['c-table']]: true,
 					[styles['c-table--align-middle']]: align,
 					[styles['c-table--bordered']]: variant === 'bordered',
 					[styles['c-table--invisible']]: variant === 'invisible',
@@ -214,7 +237,12 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 							<thead>
 								<tr>
 									{showCheckboxes && (
-										<th className={styles['c-table__checkbox-column']}>
+										<th
+											className={classnames(
+												'c-table__checkbox-column',
+												styles['c-table__checkbox-column']
+											)}
+										>
 											<Checkbox
 												label=""
 												checked={areAllItemsSelected()}
@@ -223,7 +251,12 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 										</th>
 									)}
 									{showRadioButtons && (
-										<th className={styles['c-table__checkbox-column']} />
+										<th
+											className={classnames(
+												'c-table__checkbox-column',
+												styles['c-table__checkbox-column']
+											)}
+										/>
 									)}
 									{columns.map(renderHeading)}
 								</tr>
@@ -242,8 +275,9 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 										{showCheckboxes && (
 											<td
 												className={classnames(
-													styles['c-table__checkbox-column'],
-													'u-clickable'
+													'u-clickable',
+													'c-table__checkbox-column',
+													styles['c-table__checkbox-column']
 												)}
 												onClick={() => toggleItemSelection(rowData)}
 											>
@@ -262,8 +296,9 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 										{showRadioButtons && (
 											<td
 												className={classnames(
-													styles['c-table__checkbox-column'],
-													'u-clickable'
+													'u-clickable',
+													'c-table__checkbox-column',
+													styles['c-table__checkbox-column']
 												)}
 												onClick={() => toggleRadioItemSelection(rowData)}
 											>
@@ -315,7 +350,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 				{(data || []).map((rowData, rowIndex) => (
 					<div
 						key={`table-card-${getRowKey(rowData)}`}
-						className={classnames(className, styles['c-table__card'], {
+						className={classnames(className, 'c-table__card', styles['c-table__card'], {
 							'u-clickable': !!onRowClick || showCheckboxes,
 						})}
 						onClick={() => handleRowClick(rowData)}

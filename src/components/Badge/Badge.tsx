@@ -16,7 +16,15 @@ export const Badge: FunctionComponent<BadgePropsSchema> = ({
 	type = 'default',
 }) => (
 	<div
-		className={classnames(className, styles['c-badge'], { [styles[`c-badge--${type}`]]: type })}
+		className={classnames(className, {
+			// Normal
+			['c-badge']: true,
+			[`c-badge--${type}`]: type,
+
+			// Module
+			[styles['c-badge']]: true,
+			[styles[`c-badge--${type}`]]: type,
+		})}
 	>
 		{text}
 	</div>

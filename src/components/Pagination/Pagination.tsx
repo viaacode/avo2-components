@@ -58,18 +58,32 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 	const pagesToDisplay = generatePages();
 
 	return (
-		<div className={classnames(className, styles['c-pagination'])}>
-			<div className="c-pagination__btn" onClick={() => changePage(0)}>
+		<div className={classnames(className, 'c-pagination', styles['c-pagination'])}>
+			<div
+				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
+				onClick={() => changePage(0)}
+			>
 				<Icon name="chevrons-left" type="arrows" />
 			</div>
-			<div className="c-pagination__btn" onClick={() => changePage(currentPage - 1)}>
+
+			<div
+				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
+				onClick={() => changePage(currentPage - 1)}
+			>
 				<Icon name="chevron-left" type="arrows" />
 			</div>
-			<div className={styles['c-pagination__pages']}>
+
+			<div className={classnames('c-pagination__pages', styles['c-pagination__pages'])}>
 				{pagesToDisplay.map((pageIndex: number) => (
 					<div
 						key={pageIndex}
-						className={classnames(styles['c-pagination__btn'], {
+						className={classnames({
+							// Normal
+							['c-pagination__btn']: true,
+							['c-pagination__btn--active']: pageIndex === currentPage,
+
+							// Module
+							[styles['c-pagination__btn']]: true,
 							[styles['c-pagination__btn--active']]: pageIndex === currentPage,
 						})}
 						onClick={pageIndex !== currentPage ? () => changePage(pageIndex) : noop}
@@ -78,10 +92,18 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 					</div>
 				))}
 			</div>
-			<div className="c-pagination__btn" onClick={() => changePage(currentPage + 1)}>
+
+			<div
+				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
+				onClick={() => changePage(currentPage + 1)}
+			>
 				<Icon name="chevron-right" type="arrows" />
 			</div>
-			<div className="c-pagination__btn" onClick={() => changePage(pageCount - 1)}>
+
+			<div
+				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
+				onClick={() => changePage(pageCount - 1)}
+			>
 				<Icon name="chevrons-right" type="arrows" />
 			</div>
 		</div>

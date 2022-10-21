@@ -18,7 +18,14 @@ export const Box: FunctionComponent<BoxPropsSchema> = ({
 	backgroundColor = 'gray',
 }) => (
 	<div
-		className={classnames(className, styles['c-box'], {
+		className={classnames(className, {
+			// Normal
+			['c-box']: true,
+			['c-box--padding-small']: condensed,
+			[`c-box--${backgroundColor}`]: backgroundColor !== 'gray',
+
+			// Module
+			[styles['c-box']]: true,
 			[styles['c-box--padding-small']]: condensed,
 			[styles[`c-box--${backgroundColor}`]]: backgroundColor !== 'gray',
 		})}

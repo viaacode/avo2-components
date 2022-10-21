@@ -22,7 +22,11 @@ export const Tabs: FunctionComponent<TabsPropsSchema> = ({
 	onClick = noop,
 }) => (
 	<nav
-		className={classnames(className, styles['c-tabs'], {
+		className={classnames(className, 'c-tabs', styles['c-tabs'], {
+			// Normal
+			['c-tabs__bottom-border']: border,
+
+			// Module
 			[styles['c-tabs__bottom-border']]: border,
 		})}
 	>

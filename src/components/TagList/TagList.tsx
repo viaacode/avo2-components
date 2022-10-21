@@ -37,12 +37,18 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 	const safeOnTagClicked = onTagClicked || noop;
 
 	return !!tags && !!tags.length ? (
-		<ul className={classnames(className, styles['c-tag-list'])}>
+		<ul className={classnames(className, 'c-tag-list', styles['c-tag-list'])}>
 			{tags.map((tag: TagOptionSchema, index) => (
 				<li
 					className={classnames({
-						[styles['c-tag']]: bordered,
 						'c-label': !bordered,
+
+						// Normal
+						['c-tag']: bordered,
+						['c-tag__active']: selectable && tag.active,
+
+						// Module
+						[styles['c-tag']]: bordered,
 						[styles['c-tag__active']]: selectable && tag.active,
 					})}
 					key={tag.id}
@@ -51,7 +57,11 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 					{swatches && (
 						<div
 							className={classnames('c-label-swatch', {
+								// Normal
 								[`c-label-swatch--color-${(index % 10) + 1}`]: !tag.color,
+
+								// Module
+								[styles[`c-label-swatch--color-${(index % 10) + 1}`]]: !tag.color,
 							})}
 							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
 							style={{
@@ -64,8 +74,13 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 					{swatches || closable ? (
 						<p
 							className={classnames({
-								[styles['c-tag__label']]: !swatches,
 								'c-label-text': swatches,
+
+								// Normal
+								['c-tag__label']: !swatches,
+
+								// Module
+								[styles['c-tag__label']]: !swatches,
 							})}
 							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
 							style={onTagClicked ? { cursor: 'pointer' } : {}}

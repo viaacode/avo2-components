@@ -32,7 +32,7 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 	const hasHiddenAvatars = hiddenAvatars && !!hiddenAvatars.length;
 
 	return (
-		<div className={classnames(className, styles['c-avatar--multiple'])}>
+		<div className={classnames(className, 'c-avatar--multiple', styles['c-avatar--multiple'])}>
 			{visibleAvatars.map((avatar, index) => (
 				<Fragment key={index}>
 					<Tooltip position="bottom">
@@ -82,7 +82,12 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 											<Spacer margin="left-small">
 												<h4 className="c-h4 u-m-0">{avatar.name}</h4>
 												{avatar.subtitle && (
-													<span className={styles['c-avatar-meta']}>
+													<span
+														className={classnames(
+															'c-avatar-meta',
+															styles['c-avatar-meta']
+														)}
+													>
 														{avatar.subtitle}
 													</span>
 												)}

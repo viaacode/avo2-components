@@ -30,7 +30,14 @@ export const Menu: FunctionComponent<MenuPropsSchema> = ({
 }) => {
 	return (
 		<div
-			className={classnames(className, styles['c-menu'], {
+			className={classnames(className, {
+				// Normal
+				['c-menu']: true,
+				['c-menu--search-result']: search,
+				['c-menu--visible']: isOpen,
+
+				// Module
+				[styles['c-menu']]: true,
 				[styles['c-menu--search-result']]: search,
 				[styles['c-menu--visible']]: isOpen,
 			})}

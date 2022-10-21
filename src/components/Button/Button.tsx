@@ -52,7 +52,19 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 	type = 'primary',
 	id,
 }) => {
-	const rootCls = classnames(className, styles['c-button'], skins['c-button'], {
+	const rootCls = classnames(className, {
+		// Normal
+		['c-button']: true,
+		['c-button--active']: active,
+		['c-button--auto']: autoHeight,
+		['c-button--small']: size === 'small',
+		['c-button--large']: size === 'large',
+		['c-button--block']: block,
+		['c-button--icon']: icon && !label,
+		[`c-button--${type}`]: type,
+
+		// Module
+		[styles['c-button']]: true,
 		[styles['c-button--active']]: active,
 		[styles['c-button--auto']]: autoHeight,
 		[styles['c-button--small']]: size === 'small',
@@ -60,9 +72,16 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 		[styles['c-button--block']]: block,
 		[styles['c-button--icon']]: icon && !label,
 		[styles[`c-button--${type}`]]: type,
+
+		// Skins
+		[skins['c-button']]: true,
 		[skins['c-button--active']]: active,
+		[skins['c-button--auto']]: autoHeight,
+		[skins['c-button--small']]: size === 'small',
+		[skins['c-button--large']]: size === 'large',
+		[skins['c-button--block']]: block,
+		[skins['c-button--icon']]: icon && !label,
 		[skins[`c-button--${type}`]]: type,
-		[`c-button--${type}`]: type, // Also include the type as a normal class, so we can style ir in the admin core/clients
 	});
 
 	const handleButtonClick = (evt: MouseEvent<HTMLElement>) => {
@@ -84,17 +103,48 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 				{children ? (
 					children
 				) : (
-					<div className={classnames(styles['c-button__content'])}>
+					<div
+						className={classnames(
+							'c-button__content',
+							styles['c-button__content'],
+							skins['c-button__content']
+						)}
+					>
 						{icon && (
 							<Icon
-								className={styles['c-button__icon']}
+								className={classnames(
+									'c-button__icon',
+									styles['c-button__icon'],
+									skins['c-button__icon']
+								)}
 								name={icon}
 								active={active}
 								type={iconType}
 							/>
 						)}
-						{label && <div className={styles['c-button__label']}>{label}</div>}
-						{arrow && <Icon className={styles['c-button__icon']} name="caret-down" />}
+
+						{label && (
+							<div
+								className={classnames(
+									'c-button__label',
+									styles['c-button__label'],
+									skins['c-button__label']
+								)}
+							>
+								{label}
+							</div>
+						)}
+
+						{arrow && (
+							<Icon
+								className={classnames(
+									'c-button__icon',
+									styles['c-button__icon'],
+									skins['c-button__icon']
+								)}
+								name="caret-down"
+							/>
+						)}
 					</div>
 				)}
 			</button>
