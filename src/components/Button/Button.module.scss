@@ -8,6 +8,16 @@
    This code is about button layout.
    ========================================================================== */
 
+/* Selectors
+   ========================================================================== */
+
+$c-button-selector-content: '.c-button__content, :global(.c-button__content)';
+$c-button-selector-label: '.c-button__label, :global(.c-button__label)';
+$c-button-selector-icon: '.c-button__icon, :global(.c-button__icon)';
+
+$c-button-selector-icon-before-label: '.c-button__icon + .c-button__label, :global(.c-button__icon + .c-button__label)';
+$c-button-selector-label-before-icon: '.c-button__label + .c-button__icon, :global(.c-button__label + .c-button__icon)';
+
 /* Variables
    ========================================================================== */
 
@@ -38,7 +48,6 @@ $c-button-padding-horizontal-small: 1rem !default;
 
 $c-button-icon-spacing: 0.4rem !default;
 $c-button-icon-spacing-small: 0.2rem !default;
-
 
 /* Default size
    ========================================================================== */
@@ -76,20 +85,22 @@ a.c-button {
 	}
 }
 
-.c-button .c-button__content {
-	align-items: center;
-	display: flex;
-	justify-content: center;
-}
+.c-button {
+	#{$c-button-selector-content} {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}
 
-.c-button__label {
-	line-height: $c-button-line-height;
-	white-space: nowrap;
-}
+	#{$c-button-selector-label} {
+		line-height: $c-button-line-height;
+		white-space: nowrap;
+	}
 
-.c-button__icon + .c-button__label,
-.c-button__label + .c-button__icon {
-	margin-left: $c-button-icon-spacing;
+	#{$c-button-selector-icon-before-label},
+	#{$c-button-selector-label-before-icon} {
+		margin-left: $c-button-icon-spacing;
+	}
 }
 
 /* Small size
@@ -97,24 +108,25 @@ a.c-button {
 
 .c-button--small {
 	font-size: $c-button-font-size-small;
-	padding: math.div(($c-button-height-small - $c-button-line-height-small), 2) $c-button-padding-horizontal-small;
+	padding: math.div(($c-button-height-small - $c-button-line-height-small), 2)
+		$c-button-padding-horizontal-small;
+	
+	&.c-button--icon {
+		padding: math.div(($c-button-height-small - $c-button-line-height-small), 2);
+	}
 
-	.c-button__label {
+	#{$c-button-selector-label} {
 		line-height: $c-button-line-height-small;
 	}
 
-	.c-button__icon {
+	#{$c-button-selector-icon} {
 		height: $c-button-line-height-small;
 		width: $c-button-line-height-small;
 	}
 
-	.c-button__icon + .c-button__label,
-	.c-button__label + .c-button__icon {
+	#{$c-button-selector-icon-before-label},
+	#{$c-button-selector-label-before-icon} {
 		margin-left: $c-button-icon-spacing-small;
-	}
-
-	&.c-button--icon {
-		padding: math.div(($c-button-height-small - $c-button-line-height-small), 2);
 	}
 }
 
@@ -151,7 +163,8 @@ a.c-button {
 .c-button--auto {
 	max-height: none;
 	min-height: $c-button-height;
-	.c-button__label {
+
+	#{$c-button-selector-label} {
 		white-space: normal;
 	}
 }

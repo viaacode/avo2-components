@@ -163,6 +163,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 			</Tooltip>
 		);
 	}
+
 	return renderButton();
 };
 
