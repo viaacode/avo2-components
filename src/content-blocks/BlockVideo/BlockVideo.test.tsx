@@ -1,14 +1,14 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { MOCK_FLOW_PLAYER_PROPS_FULL } from '../../components/FlowPlayer/FlowPlayer.mock';
+import { flowplayerMock } from '../../__mocks__/flowplayer';
 
 import { BlockVideo } from './BlockVideo';
 
 const customClass = 'c-block-custom';
 
 export const blockVideoExampleExample = (
-	<BlockVideo className={customClass} flowPlayerProps={MOCK_FLOW_PLAYER_PROPS_FULL} />
+	<BlockVideo className={customClass} flowPlayerProps={flowplayerMock} />
 );
 
 describe('<BlockVideo />', () => {

@@ -27,12 +27,6 @@ import type { DropdownPropsSchema } from './Dropdown/Dropdown';
 import type { ExpandableContainerPropsSchema } from './ExpandableContainer/ExpandableContainer';
 import type { FlexPropsSchema } from './Flex/Flex';
 import type { FlexItemPropsSchema } from './Flex/FlexItem/FlexItem';
-import type {
-	FlowPlayerPropsSchema,
-	FlowplayerSourceItemSchema,
-	FlowplayerSourceListSchema,
-	FlowplayerTrackSchema,
-} from './FlowPlayer';
 import type { FormPropsSchema } from './Form/Form';
 import type { FormGroupPropsSchema } from './Form/FormGroup/FormGroup';
 import type { ColumnPropsSchema, GridSizeSchema } from './Grid/Column/Column';
@@ -156,13 +150,6 @@ export type FlexProps = FlexPropsSchema;
 
 export { FlexItem } from './Flex/FlexItem/FlexItem';
 export type FlexItemProps = FlexItemPropsSchema;
-
-export { FlowPlayer } from './FlowPlayer/FlowPlayer';
-export { setPlayingVideoSeekTime, getPlayingVideoSeekTime } from './FlowPlayer/FlowPlayer.helpers';
-export type FlowPlayerProps = FlowPlayerPropsSchema;
-export type FlowplayerTrack = FlowplayerTrackSchema;
-export type FlowplayerSourceList = FlowplayerSourceListSchema;
-export type FlowplayerSourceItem = FlowplayerSourceItemSchema;
 
 export { Form } from './Form/Form';
 export type FormProps = FormPropsSchema;

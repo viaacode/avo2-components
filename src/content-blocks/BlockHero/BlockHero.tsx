@@ -1,14 +1,8 @@
+import { FlowPlayer } from '@meemoo/react-components';
 import { isString } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import {
-	Button,
-	ButtonProps,
-	ButtonToolbar,
-	Container,
-	FlowPlayer,
-	Spacer,
-} from '../../components';
+import { Button, ButtonProps, ButtonToolbar, Container, Spacer } from '../../components';
 import { defaultRenderLinkFunction } from '../../helpers/render-link';
 import { ButtonAction, DefaultProps, RenderLinkFunction } from '../../types';
 import { BlockHeading } from '../BlockHeading/BlockHeading';

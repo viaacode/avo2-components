@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { MOCK_FLOW_PLAYER_PROPS_FULL } from '../../components/FlowPlayer/FlowPlayer.mock';
+import { flowplayerMock } from '../../__mocks__/flowplayer';
 
 import { BlockVideo } from './BlockVideo';
 
 storiesOf('blocks/BlockVideo', module)
 	.addParameters({ jest: ['BlockVideo'] })
-	.add('BlockVideo', () => <BlockVideo flowPlayerProps={MOCK_FLOW_PLAYER_PROPS_FULL} />);
+	.add('BlockVideo', () => <BlockVideo flowPlayerProps={flowplayerMock} />);

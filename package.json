@@ -48,7 +48,7 @@
     "react-popper": "^2.3.0"
   },
   "dependencies": {
-    "@flowplayer/player": "3.2.8",
+    "@meemoo/react-components": "^2.21.1",
     "autosize": "^4.0.2",
     "braft-editor": "^2.3.9",
     "braft-extensions": "^0.1.0",
