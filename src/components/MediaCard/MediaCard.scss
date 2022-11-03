@@ -75,24 +75,30 @@
 
 .c-media-card {
 	.c-media-card__title {
-		color: $color-teal-bright;
+		color: $g-text-color;
 	}
 
-	&.c-media-card--collection {
-		.c-media-card__title {
-			color: $color-ocean-green;
-		}
-	}
-
-	&.c-media-card--video {
-		.c-media-card__title {
-			color: $color-yellow;
-		}
-	}
-
-	&.c-media-card--audio {
+	&:hover {
 		.c-media-card__title {
 			color: $color-teal-bright;
+		}
+	
+		&.c-media-card--collection {
+			.c-media-card__title {
+				color: $color-ocean-green;
+			}
+		}
+	
+		&.c-media-card--video {
+			.c-media-card__title {
+				color: $color-yellow;
+			}
+		}
+	
+		&.c-media-card--audio {
+			.c-media-card__title {
+				color: $color-teal-bright;
+			}
 		}
 	}
 }
