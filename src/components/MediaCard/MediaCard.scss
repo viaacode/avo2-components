@@ -100,6 +100,12 @@
 				color: $color-teal-bright;
 			}
 		}
+
+		&.c-media-card--bundle {
+			.c-media-card__title {
+				color: $color-tapestry;
+			}
+		}
 	}
 }
 
