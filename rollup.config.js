@@ -45,6 +45,8 @@ export default {
 		terser(),
 	],
 	external: [
+		'@meemoo/react-components',
+		'@popperjs/core',
 		'autosize',
 		'classnames',
 		'date-fns',
@@ -54,12 +56,12 @@ export default {
 		'moment',
 		'moment/locale/nl-be',
 		'raf',
-		'react',
 		'react-dom',
 		'react-popper',
 		'react-range',
 		'react-scrollbars-custom',
 		'react-select',
 		'react-select/creatable',
+		'react',
 	],
 };
