@@ -1,10 +1,9 @@
+import { FlowPlayer, FlowPlayerProps } from '@meemoo/react-components';
 import React, { FunctionComponent } from 'react';
 
 import { AspectRatioWrapper } from '../../components/AspectRatioWrapper/AspectRatioWrapper';
 import { Container } from '../../components/Container/Container';
 import { ExpandableContainer } from '../../components/ExpandableContainer/ExpandableContainer';
-import { FlowPlayer } from '../../components/FlowPlayer/FlowPlayer';
-import { FlowPlayerPropsSchema } from '../../components/FlowPlayer/FlowPlayer.types';
 import { Column } from '../../components/Grid/Column/Column';
 import { Grid } from '../../components/Grid/Grid';
 import { Spacer } from '../../components/Spacer/Spacer';
@@ -12,7 +11,7 @@ import { convertToHtml } from '../../helpers';
 import { DefaultProps } from '../../types';
 
 export interface BlockVideoTitleTextButtonProps extends DefaultProps {
-	flowPlayerProps: FlowPlayerPropsSchema;
+	flowPlayerProps: FlowPlayerProps;
 	title?: string;
 	titleLink?: string;
 	text?: string;
