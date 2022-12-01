@@ -1,8 +1,9 @@
+import { Avo } from '@viaa/avo2-types';
 import classnames from 'classnames';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
-import { DefaultProps, EnglishContentType } from '../../../types';
+import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
 import { CATEGORY_TO_ICON } from '../../Thumbnail/Thumbnail';
 import { MenuContent } from '../MenuContent/MenuContent';
@@ -10,7 +11,7 @@ import { MenuContent } from '../MenuContent/MenuContent';
 export interface MenuSearchResultItemInfoSchema {
 	label: string;
 	id: string | number;
-	type: EnglishContentType;
+	type: Avo.ContentType.English;
 }
 
 export interface MenuSearchResultContentPropsSchema extends DefaultProps {
@@ -20,7 +21,7 @@ export interface MenuSearchResultContentPropsSchema extends DefaultProps {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-export const CONTENT_TYPE_TO_LABEL: { [contentType in EnglishContentType]?: string } = {
+export const CONTENT_TYPE_TO_LABEL: { [contentType in Avo.ContentType.English]?: string } = {
 	/* eslint-enable @typescript-eslint/no-unused-vars */
 	collection: 'Collectie',
 	video: 'Video',

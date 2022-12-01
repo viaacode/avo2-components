@@ -1,9 +1,10 @@
+import { Avo } from '@viaa/avo2-types';
 import classnames from 'classnames';
 import { isNil, noop, truncate } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, ReactText } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
-import { DefaultProps, EnglishContentType } from '../../types';
+import { DefaultProps } from '../../types';
 import { Flex } from '../Flex/Flex';
 import { FlexItem } from '../Flex/FlexItem/FlexItem';
 import { MetaData } from '../MetaData/MetaData';
@@ -21,7 +22,7 @@ import {
 
 export interface SearchResultPropsSchema extends DefaultProps {
 	children: ReactNode;
-	type: EnglishContentType;
+	type: Avo.ContentType.English;
 	thumbnailPath?: string;
 	description?: string;
 	maxDescriptionLength?: number;

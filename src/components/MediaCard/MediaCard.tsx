@@ -1,15 +1,16 @@
+import { Avo } from '@viaa/avo2-types';
 import classnames from 'classnames';
 import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
-import { DefaultProps, EnglishContentType, Orientation } from '../../types';
+import { DefaultProps, Orientation } from '../../types';
 
 import './MediaCard.scss';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 export interface MediaCardPropsSchema extends DefaultProps {
 	title: string;
-	category: EnglishContentType;
+	category: Avo.ContentType.English;
 	children?: ReactNode;
 	orientation?: Orientation;
 	onClick?: (evt: MouseEvent<HTMLElement>) => void;

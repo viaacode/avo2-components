@@ -16,6 +16,12 @@ module.exports = {
 	},
 	rules: {
 		'@typescript-eslint/no-explicit-any': 'off', // TODO re-enable once all bugs are fixed, so we can add more types
+		'import/no-unresolved': [
+			2,
+			{
+				ignore: ['@viaa', '@meemoo'],
+			},
+		],
 		'@typescript-eslint/naming-convention': [
 			'error',
 			{

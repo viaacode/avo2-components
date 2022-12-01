@@ -1,29 +1,8 @@
+import { Avo } from '@viaa/avo2-types';
+
 export type Language = 'en' | 'nl';
 
-export type EnglishContentType =
-	| 'collection'
-	| 'item'
-	| 'bundle'
-	| 'video'
-	| 'audio'
-	| 'search'
-	| 'searchquery';
-
-export type DutchContentType =
-	| 'collectie'
-	| 'item'
-	| 'bundel'
-	| 'video'
-	| 'audio'
-	| 'zoek'
-	| 'zoekopdracht';
-
-export interface ContentType {
-	en: EnglishContentType;
-	nl: DutchContentType;
-}
-
-export const contentTypes: ContentType[] = [
+export const contentTypes: Avo.ContentType.Dict[] = [
 	{
 		en: 'collection',
 		nl: 'collectie',

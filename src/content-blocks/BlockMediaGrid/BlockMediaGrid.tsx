@@ -1,3 +1,4 @@
+import { Avo } from '@viaa/avo2-types';
 import classnames from 'classnames';
 import { get, last } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
@@ -24,7 +25,6 @@ import { defaultRenderLinkFunction } from '../../helpers/render-link';
 import {
 	ButtonAction,
 	DefaultProps,
-	EnglishContentType,
 	HeadingType,
 	Orientation,
 	RenderLinkFunction,
@@ -34,7 +34,7 @@ import { BlockHeading } from '../BlockHeading/BlockHeading';
 import './BlockMediaGrid.scss';
 
 export type MediaListItem = {
-	category: EnglishContentType;
+	category: Avo.ContentType.English;
 	metadata?: MetaDataItemPropsSchema[];
 	thumbnail?: { label: string; meta?: string; src?: string };
 	src?: string;

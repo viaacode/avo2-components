@@ -1,9 +1,10 @@
+import { Avo } from '@viaa/avo2-types';
 import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
 import { useSlot } from '../../hooks/useSlot';
-import { DefaultProps, EnglishContentType, translateContentType } from '../../types';
+import { DefaultProps, translateContentType } from '../../types';
 import { Container, ContainerPropsSchema } from '../Container/Container';
 import { Flex } from '../Flex/Flex';
 import { HeaderContentType } from '../HeaderContentType/HeaderContentType';
@@ -19,7 +20,7 @@ import { HeaderAvatar, HeaderButtons, HeaderRow, HeaderTags } from './Header.slo
 
 export interface HeaderPropsSchema extends DefaultProps {
 	bookmarks?: string;
-	category?: EnglishContentType;
+	category?: Avo.ContentType.English;
 	children?: ReactNode;
 	containerSize?: ContainerPropsSchema['size'];
 	onClickTitle?: () => void;

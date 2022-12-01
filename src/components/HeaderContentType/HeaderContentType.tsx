@@ -1,12 +1,13 @@
+import { Avo } from '@viaa/avo2-types';
 import classnames from 'classnames';
 import React, { FunctionComponent } from 'react';
 
-import { DefaultProps, EnglishContentType } from '../../types';
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail';
 
 export interface HeaderContentTypePropsSchema extends DefaultProps {
-	category: EnglishContentType;
+	category: Avo.ContentType.English;
 	label: string;
 }
 

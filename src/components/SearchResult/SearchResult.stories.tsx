@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
+import { Avo } from '@viaa/avo2-types';
 import React from 'react';
 
-import { EnglishContentType } from '../../types';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
 
 import { SearchResult } from './SearchResult';
@@ -50,7 +50,7 @@ export const fakeSearchResult = {
 	algemeen_briefing_id: ['9da4cc22-331c-41a6-8c42-781581148f56'],
 	fragment_duration_time: '1:34',
 	fragment_duration_seconds: 94,
-	administrative_type: 'video' as EnglishContentType,
+	administrative_type: 'video' as Avo.ContentType.English,
 	administrative_external_id: 'bg2h71p77x',
 };
 

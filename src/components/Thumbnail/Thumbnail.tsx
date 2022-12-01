@@ -1,8 +1,9 @@
+import { Avo } from '@viaa/avo2-types';
 import classnames from 'classnames';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 
-import { DefaultProps, EnglishContentType } from '../../types';
+import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 
@@ -17,7 +18,7 @@ export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
 };
 
 export interface ThumbnailPropsSchema extends DefaultProps {
-	category: EnglishContentType;
+	category: Avo.ContentType.English;
 	src?: string;
 	alt?: string;
 	label?: string;

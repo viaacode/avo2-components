@@ -1,13 +1,14 @@
+import { Avo } from '@viaa/avo2-types';
 import classnames from 'classnames';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import { DefaultProps, EnglishContentType } from '../../types';
+import { DefaultProps } from '../../types';
 
 import './MetaData.scss';
 
 export interface MetaDataPropsSchema extends DefaultProps {
 	children: ReactNode;
-	category: EnglishContentType;
+	category: Avo.ContentType.English;
 	spaced?: boolean;
 }
 
