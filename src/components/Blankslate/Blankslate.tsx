@@ -9,8 +9,8 @@ import { Spacer } from '../Spacer/Spacer';
 import './Blankslate.scss';
 
 export interface BlankslatePropsSchema extends DefaultProps {
-	title: string;
-	body?: string;
+	title: string | ReactNode;
+	body?: string | ReactNode;
 	spacious?: boolean;
 	icon?: IconNameSchema;
 	children?: ReactNode;
@@ -32,8 +32,8 @@ export const Blankslate: FunctionComponent<BlankslatePropsSchema> = ({
 				</div>
 			</Spacer>
 		)}
-		<h4 className="c-h4" dangerouslySetInnerHTML={{ __html: title }} />
-		{!!body && <p className="c-body-1" dangerouslySetInnerHTML={{ __html: body }} />}
+		<h4 className="c-h4">{title}</h4>
+		{!!body && <p className="c-body-1">{body}</p>}
 		{children}
 	</div>
 );
