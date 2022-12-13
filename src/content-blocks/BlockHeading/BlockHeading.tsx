@@ -3,6 +3,8 @@ import React, { FunctionComponent, ReactNode } from 'react';
 
 import { AlignOptions, DefaultProps, HeadingType } from '../../types';
 
+import './BlockHeading.scss';
+
 export interface BlockHeadingProps extends DefaultProps {
 	type: HeadingType;
 	color?: string;
