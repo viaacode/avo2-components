@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import { get } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { Button, ButtonType, Spacer } from '../../components';
@@ -128,9 +127,9 @@ export const BlockImageGrid: FunctionComponent<BlockImageGridProps> = ({
 				className
 			)}
 		>
-			{elements.map((element) => (
+			{elements.map((element, index) => (
 				<div
-					key={`block-grid-${get(element, 'action.value')}`}
+					key={`block-grid-${element?.action?.value || element.title || index}`}
 					className={classnames('c-block-grid__item')}
 					style={{
 						width: `${itemWidth}px`,
