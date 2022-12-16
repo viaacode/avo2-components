@@ -2,13 +2,13 @@
 @import '../../styles/settings/colors';
 @import '../../styles/settings/variables';
 
-.klaar-header {
-	@include klaar-block(#6a339d, #5dfc71);
+.uitgeklaard-header {
+	@include klaar-block(#B75B99, #F3AA2E);
 
 	&__logo,
 	&__date,
 	&__h1,
 	&__titles {
-		font-family: Arial;
+		font-family: $g-headings-font-family;
 	}
 }
