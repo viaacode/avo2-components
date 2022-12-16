@@ -45,3 +45,5 @@ export { BlockVideoTitleTextButton } from './BlockVideoTitleTextButton/BlockVide
 export type { BlockVideoTitleTextButtonProps } from './BlockVideoTitleTextButton/BlockVideoTitleTextButton';
 export { BlockEventbrite } from './BlockEventbrite/BlockEventbrite';
 export type { BlockEventbriteProps } from './BlockEventbrite/BlockEventbrite';
+export { BlockUitgeklaard } from './BlockUitgeklaard/BlockUitgeklaard';
+export type { BlockUitgeklaardProps } from './BlockUitgeklaard/BlockUitgeklaard';
