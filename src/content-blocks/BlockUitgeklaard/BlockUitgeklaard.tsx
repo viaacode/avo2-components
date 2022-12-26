@@ -22,7 +22,7 @@ export const BlockUitgeklaard: FunctionComponent<BlockUitgeklaardProps> = ({
 }) => (
 	<div className={classnames(className, 'uitgeklaard-header')} role="banner">
 		<div className="uitgeklaard-header__logo">
-			<span>UITGEKLAARD</span>
+			<span>Uitgeklaard</span>
 		</div>
 		{date && <div className="uitgeklaard-header__date">{moment(date).format('LL')}</div>}
 		<div className="uitgeklaard-header__titles">{(titles || []).join(' • ')}</div>

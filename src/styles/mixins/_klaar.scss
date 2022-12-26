@@ -1,4 +1,4 @@
-@mixin klaar-block($background, $foreground) {
+@mixin klaar-block($background, $foreground, $date, $title) {
 	background-color: #ffffff;
 	min-height: 48px;
 	margin-bottom: 0;
@@ -13,14 +13,13 @@
 	}
 
 	&__date {
-		background-color: #7acef3;
-		text-transform: uppercase;
+		background-color: $date;
 		color: white;
 		margin-left: -4px;
 	}
 
 	&__titles {
-		color: #7acef3;
+		color: $title;
 	}
 
 	&__logo,

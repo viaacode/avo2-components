@@ -3,7 +3,11 @@
 @import '../../styles/settings/variables';
 
 .klaar-header {
-	@include klaar-block(#6a339d, #5dfc71);
+	@include klaar-block(#AA3CE9, #3ECF6E, #0081FF, #0081FF);
+
+	&__date {
+		text-transform: uppercase;
+	}
 
 	&__logo,
 	&__date,
