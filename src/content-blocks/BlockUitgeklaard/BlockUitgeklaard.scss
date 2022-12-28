@@ -3,7 +3,7 @@
 @import '../../styles/settings/variables';
 
 .uitgeklaard-header {
-	@include klaar-block(#B75B99, #F3AA2E);
+	@include klaar-block(#f3aa2e, #fff, #b75b99, #b75b99);
 
 	&__logo,
 	&__date,
