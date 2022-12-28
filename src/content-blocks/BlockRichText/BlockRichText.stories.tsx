@@ -13,4 +13,13 @@ storiesOf('blocks/BlockRichText', module)
 	))
 	.add('BlockRichText long text', () => (
 		<BlockRichText elements={[{ content: loremIpsum({ count: 20 }) }]} maxTextWidth="800px" />
+	))
+	.add('BlockRichText with centering', () => (
+		<BlockRichText
+			elements={[
+				{
+					content: `<p style='text-align:center'>Simpel! Drie <a href='/start' target=''>stappen</a> naar een geslaagde opdracht:</p>`,
+				},
+			]}
+		/>
 	));

@@ -4,6 +4,8 @@ import React, { FunctionComponent } from 'react';
 import { Quote } from '../../components/Quote/Quote';
 import { DefaultProps } from '../../types';
 
+import './BlockQuote.scss';
+
 export interface BlockQuoteProps extends DefaultProps {
 	quote: string;
 	authorImage?: string;
