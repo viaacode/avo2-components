@@ -300,6 +300,11 @@ export { default as Itsme } from './custom/Itsme';
 export { default as Klascement } from './custom/Klascement';
 
 /**
+ * LEERIDLOGOTRANSPARENT
+ */
+export { default as LeeridLogoTransparent } from './custom/LeeridLogoTransparent';
+
+/**
  * SMARTSCHOOL
  */
 export { default as Smartschool } from './custom/Smartschool';
