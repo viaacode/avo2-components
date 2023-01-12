@@ -300,9 +300,9 @@ export { default as Itsme } from './custom/Itsme';
 export { default as Klascement } from './custom/Klascement';
 
 /**
- * LEERIDLOGOTRANSPARENT
+ * LEERID
  */
-export { default as LeeridLogoTransparent } from './custom/LeeridLogoTransparent';
+export { default as Leerid } from './custom/Leerid';
 
 /**
  * SMARTSCHOOL
@@ -583,11 +583,6 @@ export { default as CircleWarning } from './multicolor/CircleWarning';
  * INDEX
  */
 export {} from './multicolor/index';
-
-/**
- * LEERID
- */
-export { default as Leerid } from './multicolor/Leerid';
 
 /**
  * MUSIC

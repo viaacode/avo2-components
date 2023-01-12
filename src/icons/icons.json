@@ -285,8 +285,8 @@
     "type": "custom"
   },
   {
-    "fileName": "leerid-logo-transparent.svg",
-    "name": "leerid-logo-transparent",
+    "fileName": "leerid.svg",
+    "name": "leerid",
     "type": "custom"
   },
   {
@@ -562,11 +562,6 @@
   {
     "fileName": "circle-warning.svg",
     "name": "circle-warning",
-    "type": "multicolor"
-  },
-  {
-    "fileName": "leerid.svg",
-    "name": "leerid",
     "type": "multicolor"
   },
   {
