@@ -1,3 +1,4 @@
+import { Avo } from '@viaa/avo2-types';
 import classnames from 'classnames';
 import { isNil, isString, noop } from 'lodash-es';
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';
@@ -57,7 +58,7 @@ export interface TablePropsSchema extends DefaultProps {
 	) => ReactNode;
 	rowKey?: string | ((rowData: any) => string);
 	sortColumn?: string;
-	sortOrder?: 'asc' | 'desc';
+	sortOrder?: Avo.Search.OrderDirection;
 	striped?: boolean;
 	untable?: boolean;
 	variant?: 'bordered' | 'invisible' | 'styled';
