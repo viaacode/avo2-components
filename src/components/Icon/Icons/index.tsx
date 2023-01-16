@@ -280,34 +280,9 @@ export { default as Crop } from './Crop';
 export { default as Crosshair } from './Crosshair';
 
 /**
- * EID
- */
-export { default as Eid } from './custom/Eid';
-
-/**
  * INDEX
  */
-export {} from './custom/index';
-
-/**
- * ITSME
- */
-export { default as Itsme } from './custom/Itsme';
-
-/**
- * KLASCEMENT
- */
-export { default as Klascement } from './custom/Klascement';
-
-/**
- * LEERID
- */
-export { default as Leerid } from './custom/Leerid';
-
-/**
- * SMARTSCHOOL
- */
-export { default as Smartschool } from './custom/Smartschool';
+export * from './custom/index';
 
 /**
  * DATABASE
