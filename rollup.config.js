@@ -1,14 +1,14 @@
-import autoprefixer from 'autoprefixer';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import autoprefixer from 'autoprefixer';
 import cjs from 'rollup-plugin-commonjs';
+import builtins from 'rollup-plugin-node-builtins';
 import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
-import builtins from 'rollup-plugin-node-builtins';
 
 export default {
-	input: ['src/index.ts', 'src/wysiwyg.ts'],
+	input: ['src/index.ts'],
 	output: [
 		{
 			dir: 'dist/esm',
