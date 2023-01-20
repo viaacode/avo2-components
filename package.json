@@ -1,12 +1,11 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "homepage": "./",
   "scripts": {
-    "force-resolutions": "npx npm-force-resolutions",
     "analyze": "source-map-explorer 'build/*.js'",
     "prebuild": "rimraf dist",
     "build": "rollup -c",
@@ -51,8 +50,6 @@
   "dependencies": {
     "@viaa/avo2-types": "^2.45.5",
     "autosize": "^4.0.2",
-    "braft-editor": "^2.3.9",
-    "braft-extensions": "^0.1.0",
     "caniuse-lite": "^1.0.30001340",
     "classnames": "^2.3.2",
     "date-fns": "^2.16.0",
@@ -142,12 +139,6 @@
   },
   "publishConfig": {
     "@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-viaa/"
-  },
-  "resolutions": {
-    "eslint-loader": "4.0.2",
-    "isomorphic-fetch": "3.0.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
   },
   "overrides": {
     "webpack": "^5.74.0"

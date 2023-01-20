@@ -80,7 +80,6 @@ import type { ToolbarPropsSchema } from './Toolbar/Toolbar';
 import type { ToolbarItemPropsSchema } from './Toolbar/ToolbarItem/ToolbarItem';
 import type { ToolbarTitlePropsSchema } from './Toolbar/ToolbarTitle/ToolbarTitle';
 import type { TooltipPropsSchema } from './Tooltip/Tooltip';
-import type { WYSIWYGControlSchema } from './WYSIWYG/WYSIWYG.types';
 
 export { Accordion } from './Accordion/Accordion';
 export type AccordionProps = AccordionPropsSchema;
@@ -322,5 +321,3 @@ export { DeadlineIndicator } from './DeadlineIndicator/DeadlineIndicator';
 export type DeadlineIndicatorProps = DeadlineIndicatorPropsSchema;
 export type DeadlineIndicatorColors = DeadlineIndicatorColorsSchema;
 export type DeadlineIndicatorShapes = DeadlineIndicatorShapesSchema;
-
-export type WYSIWYGControl = WYSIWYGControlSchema;
