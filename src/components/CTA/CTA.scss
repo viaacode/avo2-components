@@ -2,6 +2,15 @@
 @import '../../styles/settings/variables';
 @import '../../styles/utilities/color';
 
+.c-heading {
+	&.c-h1,
+	&.c-h2,
+	&.c-h3,
+	&.c-h4 {
+		margin: 0; // Default to 0, but allow user of the heading block to override margins by using extra css specificity
+	}
+}
+
 .c-cta-item {
 	margin-bottom: 3.2rem;
 	background-color: $color-gray-50;

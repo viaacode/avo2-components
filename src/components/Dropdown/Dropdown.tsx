@@ -1,5 +1,5 @@
 import { Placement } from '@popperjs/core';
-import classnames from 'classnames';
+import classnames from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { usePopper } from 'react-popper';

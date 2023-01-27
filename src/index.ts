@@ -12,8 +12,5 @@ export * from './helpers';
 // Components
 export * from './components';
 
-// Content Blocks
-export * from './content-blocks';
-
 // Types
 export * from './types';

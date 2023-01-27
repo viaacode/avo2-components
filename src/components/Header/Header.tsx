@@ -1,8 +1,7 @@
 import { Avo } from '@viaa/avo2-types';
-import classnames from 'classnames';
+import classnames from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
 import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps, translateContentType } from '../../types';
 import { Container, ContainerPropsSchema } from '../Container/Container';
@@ -72,13 +71,14 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 									</MetaData>
 								</Spacer>
 							)}
-							<BlockHeading
-								className={classnames('u-m-0', { 'u-clickable': onClickTitle })}
-								type="h2"
+							<h2
+								className={classnames(className, `c-heading c-h2`, 'u-m-0', {
+									'u-clickable': onClickTitle,
+								})}
 								onClick={onClickTitle}
 							>
 								{title}
-							</BlockHeading>
+							</h2>
 							{(avatarSlot || tagSlot) && (
 								<Spacer margin="top-small">
 									<Flex spaced="regular">

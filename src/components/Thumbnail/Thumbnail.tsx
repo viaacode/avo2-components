@@ -1,5 +1,5 @@
 import { Avo } from '@viaa/avo2-types';
-import classnames from 'classnames';
+import classnames from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 

@@ -1,9 +1,7 @@
-import classnames from 'classnames';
+import classnames from 'clsx';
 import React, { FunctionComponent } from 'react';
 
-import { BlockHeading } from '../../content-blocks/BlockHeading/BlockHeading';
-import { BlockRichText } from '../../content-blocks/BlockRichText/BlockRichText';
-import { defaultRenderLinkFunction } from '../../helpers/render-link';
+import { convertToHtml, defaultRenderLinkFunction } from '../../helpers';
 import { ButtonAction, DefaultProps, HeadingType, RenderLinkFunction } from '../../types';
 import { Button, ButtonPropsSchema } from '../Button/Button';
 import { ButtonTypeSchema } from '../Button/Button.types';
@@ -29,7 +27,7 @@ export interface CTAPropsSchema extends DefaultProps {
 
 export const CTA: FunctionComponent<CTAPropsSchema> = ({
 	className,
-	headingType = 'h3',
+	headingType: HeadingType = 'h3',
 	headingColor,
 	heading,
 	content,
@@ -55,12 +53,22 @@ export const CTA: FunctionComponent<CTAPropsSchema> = ({
 		<div className={classnames(className, 'c-cta-item')} style={{ width, backgroundColor }}>
 			<div className="c-cta__content">
 				<div className="c-content">
-					<BlockHeading type={headingType} color={headingColor}>
+					<HeadingType
+						className={classnames(
+							className,
+							`c-heading c-${HeadingType}`,
+							`u-text-left`
+						)}
+						style={headingColor ? { color: headingColor } : {}}
+					>
 						{heading}
-					</BlockHeading>
-					<BlockRichText
-						elements={{ content, color: contentColor }}
-						renderLink={renderLink}
+					</HeadingType>
+					<div
+						className="c-content"
+						dangerouslySetInnerHTML={{ __html: convertToHtml(content) }}
+						style={{
+							...(contentColor ? { color: contentColor } : {}),
+						}}
 					/>
 					{renderLink(
 						buttonAction,

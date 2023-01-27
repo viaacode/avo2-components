@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from 'clsx';
 import { camelCase, kebabCase, upperFirst } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 

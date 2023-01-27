@@ -11,8 +11,8 @@
     "build": "rollup -c",
     "copy-to-avo-client": "rimraf ../avo2-client/node_modules/@viaa/avo2-components/dist ../avo2-client/node_modules/@viaa/avo2-components/src ../avo2-client/node_modules/.cache && cp -r dist src package.json ../avo2-client/node_modules/@viaa/avo2-components",
     "copy-to-hetarchief-client": "rimraf ../hetarchief-client/node_modules/@viaa/avo2-components/dist ../hetarchief-client/node_modules/@viaa/avo2-components/src ../hetarchief-client/node_modules/.cache && cp -r dist src package.json ../hetarchief-client/node_modules/@viaa/avo2-components",
-    "copy-to-admin-core": "rimraf ../react-admin-core-module/ui/node_modules/@viaa/avo2-components/dist ../react-admin-core-module/ui/node_modules/@viaa/avo2-components/src ../react-admin-core-module/ui/node_modules/.cache && cp -r dist src package.json ../react-admin-core-module/ui/node_modules/@viaa/avo2-components",
-    "copy": "npm run build && npm run copy-to-avo-client && npm run copy-to-hetarchief-client && npm run copy-to-admin-core",
+    "copy-to-admin-core-ui": "rimraf ../react-admin-core-module/ui/node_modules/@viaa/avo2-components/dist ../react-admin-core-module/ui/node_modules/@viaa/avo2-components/src ../react-admin-core-module/ui/node_modules/.cache && cp -r dist src package.json ../react-admin-core-module/ui/node_modules/@viaa/avo2-components",
+    "copy": "npm run build && npm run copy-to-avo-client && npm run copy-to-hetarchief-client && npm run copy-to-admin-core-ui",
     "build-storybook": "build-storybook -o build",
     "build-storybook:with-sourcemaps": "cross-env GENERATE_SOURCEMAP=true build-storybook -o build",
     "preicons": "node scripts/icons.js src/icons",
@@ -45,15 +45,15 @@
     "@popperjs/core": "^2.11.6",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-popper": "^2.3.0"
-  },
-  "dependencies": {
-    "@viaa/avo2-types": "^2.45.5",
-    "autosize": "^4.0.2",
-    "caniuse-lite": "^1.0.30001340",
-    "classnames": "^2.3.2",
+    "react-popper": "^2.3.0",
+    "clsx": "^1.2.1",
     "date-fns": "^2.16.0",
     "lodash-es": "^4.17.21",
+    "@viaa/avo2-types": "^2.46.8"
+  },
+  "dependencies": {
+    "autosize": "^4.0.2",
+    "caniuse-lite": "^1.0.30001340",
     "marked": "^4.0.15",
     "moment": "^2.29.4",
     "npm-force-resolutions": "^0.0.10",

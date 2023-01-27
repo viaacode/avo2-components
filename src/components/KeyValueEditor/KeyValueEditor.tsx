@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from 'clsx';
 import { cloneDeep, noop } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 

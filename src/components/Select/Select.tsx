@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from 'clsx';
 import { get, noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import ReactSelect, { NamedProps } from 'react-select';

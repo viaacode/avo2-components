@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';

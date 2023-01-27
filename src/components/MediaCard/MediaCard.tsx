@@ -1,5 +1,5 @@
 import { Avo } from '@viaa/avo2-types';
-import classnames from 'classnames';
+import classnames from 'clsx';
 import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';

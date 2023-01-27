@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from 'clsx';
 import { noop } from 'lodash-es';
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
