@@ -76,8 +76,8 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	};
 
 	return (
-		<div className={classnames(className, 'c-datepicker')}>
-			<div className={classnames('c-datepicker--date c-input-with-icon-right')}>
+		<div className={classnames(className, 'avo__c-datepicker')}>
+			<div className={classnames('avo__c-datepicker--date c-input-with-icon-right')}>
 				<ReactDatePicker
 					className="c-input"
 					selected={value}
@@ -97,7 +97,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 				<Icon name="calendar" />
 			</div>
 			{showTimeInput && (
-				<div className="c-datepicker--time">
+				<div className="avo__c-datepicker--time">
 					<input
 						type="time"
 						value={value ? format(value, 'HH:mm') : undefined}

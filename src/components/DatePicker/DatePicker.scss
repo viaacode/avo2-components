@@ -10,9 +10,25 @@
 	line-height: 23.8px
 }
 
-.c-datepicker {
+.avo__c-datepicker {
 	display: flex;
 	width: 100%;
+
+	// Override styles from hetarchief react-components
+	.react-datepicker__current-month {
+		&.react-datepicker__current-month--hasYearDropdown.react-datepicker__current-month--hasMonthDropdown,
+		&.react-datepicker__current-month--hasMonthYearDropdown {
+			display: flex;
+		}
+	}
+
+	// Override styles from hetarchief react-components
+	.react-datepicker__navigation {
+		&--previous,
+		&--next {
+			display: flex;
+		}
+	}
 
 	.react-datepicker-wrapper {
 		width: 100%;
