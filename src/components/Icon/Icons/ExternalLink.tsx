@@ -1,13 +1,7 @@
 import React, { SVGProps } from 'react';
+
 const ExternalLink = (props: SVGProps<SVGSVGElement>) => (
-	<svg
-		width={24}
-		height={24}
-		viewBox="0 0 24 24"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
+	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M16 22H5c-1.654 0-3-1.346-3-3V8c0-1.654 1.346-3 3-3h6a1 1 0 010 2H5c-.551 0-1 .449-1 1v11c0 .552.449 1 1 1h11a1 1 0 001-1v-6a1 1 0 112 0v6c0 1.654-1.346 3-3 3zM21 10a1 1 0 01-1-1V4h-5a1 1 0 110-2h6a1 1 0 011 1v6a1 1 0 01-1 1z"
 			fill="#000"
@@ -18,4 +12,5 @@ const ExternalLink = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
 export default ExternalLink;

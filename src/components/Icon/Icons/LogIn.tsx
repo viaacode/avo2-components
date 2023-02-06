@@ -1,13 +1,7 @@
 import React, { SVGProps } from 'react';
+
 const LogIn = (props: SVGProps<SVGSVGElement>) => (
-	<svg
-		width={24}
-		height={24}
-		viewBox="0 0 24 24"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
+	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M19 22h-4a1 1 0 110-2h4a1 1 0 001-1V5c0-.551-.448-1-1-1h-4a1 1 0 110-2h4c1.654 0 3 1.346 3 3v14c0 1.654-1.346 3-3 3z"
 			fill="#000"
@@ -19,4 +13,5 @@ const LogIn = (props: SVGProps<SVGSVGElement>) => (
 		<path d="M15 13H3a1 1 0 010-2h12a1 1 0 110 2z" fill="#000" />
 	</svg>
 );
+
 export default LogIn;

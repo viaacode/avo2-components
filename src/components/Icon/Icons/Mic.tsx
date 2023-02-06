@@ -1,13 +1,7 @@
 import React, { SVGProps } from 'react';
+
 const Mic = (props: SVGProps<SVGSVGElement>) => (
-	<svg
-		width={24}
-		height={24}
-		viewBox="0 0 24 24"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
+	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M12 16c-2.206 0-4-1.794-4-4V4c0-2.206 1.794-4 4-4s4 1.794 4 4v8c0 2.206-1.794 4-4 4zm0-14c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2s2-.897 2-2V4c0-1.103-.897-2-2-2z"
 			fill="#000"
@@ -20,4 +14,5 @@ const Mic = (props: SVGProps<SVGSVGElement>) => (
 		<path d="M16 24H8a1 1 0 110-2h8a1 1 0 110 2z" fill="#000" />
 	</svg>
 );
+
 export default Mic;

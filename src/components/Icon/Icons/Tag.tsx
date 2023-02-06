@@ -1,13 +1,7 @@
 import React, { SVGProps } from 'react';
+
 const Tag = (props: SVGProps<SVGSVGElement>) => (
-	<svg
-		width={24}
-		height={24}
-		viewBox="0 0 24 24"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
+	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M12.005 22.165a2.994 2.994 0 01-2.12-.875l-8.592-8.583A.996.996 0 011 12V2a1 1 0 011-1h10c.265 0 .52.105.707.293l8.59 8.59a3.008 3.008 0 01.002 4.232l-.002.002-7.17 7.17a2.993 2.993 0 01-2.122.878zM3 11.585l8.296 8.288a1.001 1.001 0 001.416 0l7.168-7.168a1.003 1.003 0 000-1.41L11.586 3H3v8.585zm17.59 1.825h.01-.01z"
 			fill="#000"
@@ -18,4 +12,5 @@ const Tag = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
 export default Tag;

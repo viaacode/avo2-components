@@ -1,13 +1,7 @@
 import React, { SVGProps } from 'react';
+
 const Edit = (props: SVGProps<SVGSVGElement>) => (
-	<svg
-		width={24}
-		height={24}
-		viewBox="0 0 24 24"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
+	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M18 23H4c-1.654 0-3-1.346-3-3V6c0-1.654 1.346-3 3-3h5.34a1 1 0 010 2H4c-.551 0-1 .449-1 1v14c0 .552.449 1 1 1h14a1 1 0 001-1v-5.34a1 1 0 112 0V20c0 1.654-1.346 3-3 3z"
 			fill="#000"
@@ -18,4 +12,5 @@ const Edit = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
 export default Edit;

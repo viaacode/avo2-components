@@ -1,13 +1,7 @@
 import React, { SVGProps } from 'react';
+
 const Shuffle = (props: SVGProps<SVGSVGElement>) => (
-	<svg
-		width={24}
-		height={24}
-		viewBox="0 0 24 24"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
+	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path d="M21 9a1 1 0 01-1-1V4h-4a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 01-1 1z" fill="#000" />
 		<path
 			d="M4 21a.999.999 0 01-.707-1.707l17-17a.999.999 0 111.414 1.414l-17 17A.997.997 0 014 21zM21 22h-5a1 1 0 110-2h4v-4a1 1 0 112 0v5a1 1 0 01-1 1z"
@@ -19,4 +13,5 @@ const Shuffle = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
 export default Shuffle;

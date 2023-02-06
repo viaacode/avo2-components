@@ -1,6 +1,7 @@
 import React, { SVGProps } from 'react';
+
 const Leerid = (props: SVGProps<SVGSVGElement>) => (
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 494.3 493.1" {...props}>
+	<svg viewBox="0 0 494.3 493.1" {...props}>
 		<circle cx={247.2} cy={246.5} r={244.4} fill="#f0d70f" />
 		<path
 			fill="#fff"
@@ -14,4 +15,5 @@ const Leerid = (props: SVGProps<SVGSVGElement>) => (
 		<path d="M254.1 240l-31 31 .7.8L240 288l.9.9c2.5 3 2.4 7.1-.2 10l-.6.6-25.4 25.4c-.9.9-2 1.8-3.3 2.1-2.8.8-5.3.3-7.5-1.6l-.8-.7-16-16-.7-.8-.6.5-3.8 3.7a14.7 14.7 0 01-19.5 1.1 14.9 14.9 0 01-1.7-22l1.2-1.2 69.7-69.7 1.2-1.2c.1-.5-.2-.7-.3-1a48.4 48.4 0 0138.3-69.7 47.2 47.2 0 0132.5 8 47.6 47.6 0 0121.1 45.1 48.8 48.8 0 01-69.5 38.9c-.2-.2-.6-.2-.9-.4zm22.2-24.7c9.7.1 18.6-7.8 18.6-18.6a18.6 18.6 0 10-37.3 0 18.6 18.6 0 0018.7 18.6z" />
 	</svg>
 );
+
 export default Leerid;

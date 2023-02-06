@@ -1,13 +1,7 @@
 import React, { SVGProps } from 'react';
+
 const Copy = (props: SVGProps<SVGSVGElement>) => (
-	<svg
-		width={24}
-		height={24}
-		viewBox="0 0 24 24"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
+	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
 		<path
 			d="M20 23h-9c-1.654 0-3-1.346-3-3v-9c0-1.654 1.346-3 3-3h9c1.654 0 3 1.346 3 3v9c0 1.654-1.346 3-3 3zm-9-13c-.551 0-1 .449-1 1v9c0 .552.449 1 1 1h9a1 1 0 001-1v-9c0-.551-.448-1-1-1h-9z"
 			fill="#000"
@@ -18,4 +12,5 @@ const Copy = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
+
 export default Copy;
