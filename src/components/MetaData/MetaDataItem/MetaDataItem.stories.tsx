@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
+import { IconNameSchema } from '../../Icon/Icon.types';
 import { MetaData } from '../MetaData';
 
 import { MetaDataItem } from './MetaDataItem';
@@ -14,6 +15,6 @@ storiesOf('components/MetaDataItem', module)
 	))
 	.add('Meta data item with icon', () => (
 		<MetaData category="audio">
-			<MetaDataItem icon="headphone" label="768" />
+			<MetaDataItem icon={IconNameSchema.headphone} label="768" />
 		</MetaData>
 	));

@@ -2,13 +2,15 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
+import { IconNameSchema } from '../Icon/Icon.types';
+
 import { ToggleButton } from './ToggleButton';
 
 storiesOf('components/ToggleButton', module)
 	.addParameters({ jest: ['ToggleButton'] })
 	.add('ToggleButton', () => (
 		<ToggleButton
-			icon="heart"
+			icon={IconNameSchema.heart}
 			active={false}
 			onClick={action('onClick')}
 			ariaLabel="toggle favorite"
@@ -17,7 +19,7 @@ storiesOf('components/ToggleButton', module)
 	))
 	.add('ToggleButton active', () => (
 		<ToggleButton
-			icon="bookmark"
+			icon={IconNameSchema.bookmark}
 			active={true}
 			onClick={action('onClick')}
 			ariaLabel="toggle bookmark"

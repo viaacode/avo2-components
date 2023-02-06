@@ -34,7 +34,7 @@ import type { GridPropsSchema } from './Grid/Grid';
 import type { HeaderPropsSchema } from './Header/Header';
 import type { HeaderContentTypePropsSchema } from './HeaderContentType/HeaderContentType';
 import type { IconPropsSchema } from './Icon/Icon';
-import type { IconNameSchema, IconTypeSchema } from './Icon/Icon.types';
+import type { IconTypeSchema } from './Icon/Icon.types';
 import type { ImagePropsSchema } from './Image/Image';
 import type { ImageGridPropsSchema } from './ImageGrid/ImageGrid';
 import type {
@@ -174,7 +174,7 @@ export { Icon } from './Icon/Icon';
 export type IconProps = IconPropsSchema;
 
 export type IconType = IconTypeSchema;
-export type IconName = IconNameSchema;
+export { IconNameSchema as IconName } from './Icon/Icon.types';
 
 export { Image } from './Image/Image';
 export type ImageProps = ImagePropsSchema;

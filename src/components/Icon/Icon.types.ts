@@ -1,202 +1,203 @@
-export type IconNameSchema =
-	| 'activity'
-	| 'add'
-	| 'alert-circle'
-	| 'alert-octagon'
-	| 'alert-triangle'
-	| 'archive'
-	| 'arrow-down-circle'
-	| 'arrow-down-left'
-	| 'arrow-down-right'
-	| 'arrow-down'
-	| 'arrow-left'
-	| 'arrow-right'
-	| 'arrow-up'
-	| 'caret-down'
-	| 'caret-left'
-	| 'caret-right'
-	| 'caret-up'
-	| 'chevron-down'
-	| 'chevron-left'
-	| 'chevron-right'
-	| 'chevron-up'
-	| 'chevrons-down'
-	| 'chevrons-left-and-right'
-	| 'chevrons-left'
-	| 'chevrons-right'
-	| 'chevrons-up-and-down'
-	| 'chevrons-up'
-	| 'at'
-	| 'bar-chart'
-	| 'bell-off'
-	| 'bell'
-	| 'book-open'
-	| 'book'
-	| 'bookmark-filled'
-	| 'bookmark'
-	| 'box'
-	| 'briefcase'
-	| 'calendar'
-	| 'camera-off'
-	| 'camera'
-	| 'check-circle'
-	| 'check-square'
-	| 'check'
-	| 'circle'
-	| 'clipboard'
-	| 'clock'
-	| 'close'
-	| 'code'
-	| 'collection'
-	| 'contract'
-	| 'copy'
-	| 'credit-card'
-	| 'crop'
-	| 'crosshair'
-	| 'eid'
-	| 'itsme'
-	| 'klascement'
-	| 'smartschool'
-	| 'database'
-	| 'delete'
-	| 'download-cloud'
-	| 'download'
-	| 'edit-2'
-	| 'edit-3'
-	| 'edit'
-	| 'external-link'
-	| 'eye-off'
-	| 'eye'
-	| 'fast-forward'
-	| 'file-minus'
-	| 'file-plus'
-	| 'file-text'
-	| 'file'
-	| 'filter'
-	| 'flag'
-	| 'folder-minus'
-	| 'folder-plus'
-	| 'folder'
-	| 'fullscreen'
-	| 'gift'
-	| 'globe'
-	| 'hash'
-	| 'headphone'
-	| 'heart-filled'
-	| 'heart'
-	| 'help-circle'
-	| 'home'
-	| 'image'
-	| 'inbox'
-	| 'info'
-	| 'layout'
-	| 'link-2'
-	| 'link'
-	| 'list'
-	| 'lock'
-	| 'log-in'
-	| 'log-out'
-	| 'mail'
-	| 'maximize-2'
-	| 'maximize'
-	| 'menu'
-	| 'message-circle'
-	| 'message-square'
-	| 'mic'
-	| 'minimize-2'
-	| 'minimize'
-	| 'minus-circle'
-	| 'more-horizontal'
-	| 'move'
-	| 'circle-check'
-	| 'circle-info'
-	| 'circle-warning'
-	| 'leerid'
-	| 'music'
-	| 'notification'
-	| 'notifications'
-	| 'octagon'
-	| 'package'
-	| 'paperclip'
-	| 'pause-add'
-	| 'pause-circle'
-	| 'pause'
-	| 'percent'
-	| 'pie-chart'
-	| 'play-circle'
-	| 'play-small'
-	| 'play'
-	| 'plus-circle'
-	| 'plus'
-	| 'power'
-	| 'printer'
-	| 'radio'
-	| 'refresh-ccw'
-	| 'refresh-cw'
-	| 'repeat'
-	| 'rewind'
-	| 'rotate-ccw'
-	| 'rotate-cw'
-	| 'rss'
-	| 'scissors'
-	| 'search'
-	| 'send'
-	| 'settings'
-	| 'share-2'
-	| 'share'
-	| 'shuffle'
-	| 'sidebar'
-	| 'skip-back'
-	| 'skip-forward'
-	| 'slash'
-	| 'sliders'
-	| 'instagram'
-	| 'twitter'
-	| 'square'
-	| 'star'
-	| 'stop-circle'
-	| 'subtitles'
-	| 'tag'
-	| 'target'
-	| 'terminal'
-	| 'thumbs-down'
-	| 'thumbs-up'
-	| 'trash-2'
-	| 'trending-down'
-	| 'trending-up'
-	| 'triangle'
-	| 'tv'
-	| 'type'
-	| 'underline'
-	| 'unlock-2'
-	| 'unlock-3'
-	| 'unlock'
-	| 'upload'
-	| 'user-check'
-	| 'user-plus'
-	| 'user-student'
-	| 'user-teacher'
-	| 'user-x'
-	| 'user'
-	| 'users'
-	| 'video-off'
-	| 'video'
-	| 'volume-1'
-	| 'volume-2'
-	| 'volume-mute'
-	| 'volume-x'
-	| 'volume'
-	| 'align-center'
-	| 'align-justify'
-	| 'align-left'
-	| 'align-right'
-	| 'bold'
-	| 'italic'
-	| 'x-circle'
-	| 'x-square'
-	| 'x'
-	| 'youtube'
-	| 'zoom-in'
-	| 'zoom-out';
+export enum IconNameSchema {
+	activity = 'activity',
+	add = 'add',
+	alertCircle = 'alert-circle',
+	alertOctagon = 'alert-octagon',
+	alertTriangle = 'alert-triangle',
+	archive = 'archive',
+	arrowDownCircle = 'arrow-down-circle',
+	arrowDownLeft = 'arrow-down-left',
+	arrowDownRight = 'arrow-down-right',
+	arrowDown = 'arrow-down',
+	arrowLeft = 'arrow-left',
+	arrowRight = 'arrow-right',
+	arrowUp = 'arrow-up',
+	caretDown = 'caret-down',
+	caretLeft = 'caret-left',
+	caretRight = 'caret-right',
+	caretUp = 'caret-up',
+	chevronDown = 'chevron-down',
+	chevronLeft = 'chevron-left',
+	chevronRight = 'chevron-right',
+	chevronUp = 'chevron-up',
+	chevronsDown = 'chevrons-down',
+	chevronsLeftAndRight = 'chevrons-left-and-right',
+	chevronsLeft = 'chevrons-left',
+	chevronsRight = 'chevrons-right',
+	chevronsUpAndDown = 'chevrons-up-and-down',
+	chevronsUp = 'chevrons-up',
+	at = 'at',
+	barChart = 'bar-chart',
+	bellOff = 'bell-off',
+	bell = 'bell',
+	bookOpen = 'book-open',
+	book = 'book',
+	bookmarkFilled = 'bookmark-filled',
+	bookmark = 'bookmark',
+	box = 'box',
+	briefcase = 'briefcase',
+	calendar = 'calendar',
+	cameraOff = 'camera-off',
+	camera = 'camera',
+	checkCircle = 'check-circle',
+	checkSquare = 'check-square',
+	check = 'check',
+	circle = 'circle',
+	clipboard = 'clipboard',
+	clock = 'clock',
+	close = 'close',
+	code = 'code',
+	collection = 'collection',
+	contract = 'contract',
+	copy = 'copy',
+	creditCard = 'credit-card',
+	crop = 'crop',
+	crosshair = 'crosshair',
+	eid = 'eid',
+	itsme = 'itsme',
+	klascement = 'klascement',
+	smartschool = 'smartschool',
+	database = 'database',
+	delete = 'delete',
+	downloadCloud = 'download-cloud',
+	download = 'download',
+	edit2 = 'edit-2',
+	edit3 = 'edit-3',
+	edit = 'edit',
+	externalLink = 'external-link',
+	eyeOff = 'eye-off',
+	eye = 'eye',
+	fastForward = 'fast-forward',
+	fileMinus = 'file-minus',
+	filePlus = 'file-plus',
+	fileText = 'file-text',
+	file = 'file',
+	filter = 'filter',
+	flag = 'flag',
+	folderMinus = 'folder-minus',
+	folderPlus = 'folder-plus',
+	folder = 'folder',
+	fullscreen = 'fullscreen',
+	gift = 'gift',
+	globe = 'globe',
+	hash = 'hash',
+	headphone = 'headphone',
+	heartFilled = 'heart-filled',
+	heart = 'heart',
+	helpCircle = 'help-circle',
+	home = 'home',
+	image = 'image',
+	inbox = 'inbox',
+	info = 'info',
+	layout = 'layout',
+	link2 = 'link-2',
+	link = 'link',
+	list = 'list',
+	lock = 'lock',
+	logIn = 'log-in',
+	logOut = 'log-out',
+	mail = 'mail',
+	maximize2 = 'maximize-2',
+	maximize = 'maximize',
+	menu = 'menu',
+	messageCircle = 'message-circle',
+	messageSquare = 'message-square',
+	mic = 'mic',
+	minimize2 = 'minimize-2',
+	minimize = 'minimize',
+	minusCircle = 'minus-circle',
+	moreHorizontal = 'more-horizontal',
+	move = 'move',
+	circleCheck = 'circle-check',
+	circleInfo = 'circle-info',
+	circleWarning = 'circle-warning',
+	leerid = 'leerid',
+	music = 'music',
+	notification = 'notification',
+	notifications = 'notifications',
+	octagon = 'octagon',
+	package = 'package',
+	paperclip = 'paperclip',
+	pauseAdd = 'pause-add',
+	pauseCircle = 'pause-circle',
+	pause = 'pause',
+	percent = 'percent',
+	pieChart = 'pie-chart',
+	playCircle = 'play-circle',
+	playSmall = 'play-small',
+	play = 'play',
+	plusCircle = 'plus-circle',
+	plus = 'plus',
+	power = 'power',
+	printer = 'printer',
+	radio = 'radio',
+	refreshCcw = 'refresh-ccw',
+	refreshCw = 'refresh-cw',
+	repeat = 'repeat',
+	rewind = 'rewind',
+	rotateCcw = 'rotate-ccw',
+	rotateCw = 'rotate-cw',
+	rss = 'rss',
+	scissors = 'scissors',
+	search = 'search',
+	send = 'send',
+	settings = 'settings',
+	share2 = 'share-2',
+	share = 'share',
+	shuffle = 'shuffle',
+	sidebar = 'sidebar',
+	skipBack = 'skip-back',
+	skipForward = 'skip-forward',
+	slash = 'slash',
+	sliders = 'sliders',
+	instagram = 'instagram',
+	twitter = 'twitter',
+	square = 'square',
+	star = 'star',
+	stopCircle = 'stop-circle',
+	subtitles = 'subtitles',
+	tag = 'tag',
+	target = 'target',
+	terminal = 'terminal',
+	thumbsDown = 'thumbs-down',
+	thumbsUp = 'thumbs-up',
+	trash2 = 'trash-2',
+	trendingDown = 'trending-down',
+	trendingUp = 'trending-up',
+	triangle = 'triangle',
+	tv = 'tv',
+	type = 'type',
+	underline = 'underline',
+	unlock2 = 'unlock-2',
+	unlock3 = 'unlock-3',
+	unlock = 'unlock',
+	upload = 'upload',
+	userCheck = 'user-check',
+	userPlus = 'user-plus',
+	userStudent = 'user-student',
+	userTeacher = 'user-teacher',
+	userX = 'user-x',
+	user = 'user',
+	users = 'users',
+	videoOff = 'video-off',
+	video = 'video',
+	volume1 = 'volume-1',
+	volume2 = 'volume-2',
+	volumeMute = 'volume-mute',
+	volumeX = 'volume-x',
+	volume = 'volume',
+	alignCenter = 'align-center',
+	alignJustify = 'align-justify',
+	alignLeft = 'align-left',
+	alignRight = 'align-right',
+	bold = 'bold',
+	italic = 'italic',
+	xCircle = 'x-circle',
+	xSquare = 'x-square',
+	x = 'x',
+	youtube = 'youtube',
+	zoomIn = 'zoom-in',
+	zoomOut = 'zoom-out',
+}
 
 export type IconTypeSchema = 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';

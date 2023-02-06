@@ -4,6 +4,7 @@ import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import { Table, TableColumnSchema } from './Table';
 
@@ -17,10 +18,10 @@ const COLUMNS: TableColumnSchema[] = [
 
 const COLUMNS_WITH_ICONS: TableColumnSchema[] = [
 	{ tooltip: 'Name of the person', id: 'name', label: 'Name', sortable: true },
-	{ tooltip: 'Age', icon: 'clock', id: 'age', sortable: true },
-	{ tooltip: 'Has cats', icon: 'inbox', id: 'cat', label: 'Has cat?', col: '2' },
-	{ tooltip: 'Has dogs', icon: 'home', id: 'dog', label: 'Has dog?', col: '2' },
-	{ tooltip: 'Actions', icon: 'star', id: '' },
+	{ tooltip: 'Age', icon: IconNameSchema.clock, id: 'age', sortable: true },
+	{ tooltip: 'Has cats', icon: IconNameSchema.inbox, id: 'cat', label: 'Has cat?', col: '2' },
+	{ tooltip: 'Has dogs', icon: IconNameSchema.home, id: 'dog', label: 'Has dog?', col: '2' },
+	{ tooltip: 'Actions', icon: IconNameSchema.star, id: '' },
 ];
 
 const DATA = [
@@ -98,9 +99,9 @@ function renderCell(r: any[], c: any) {
 	switch (c) {
 		case 'dog':
 		case 'cat':
-			return r[c] ? <Icon name="check" /> : <Icon name="x" />;
+			return r[c] ? <Icon name={IconNameSchema.check} /> : <Icon name={IconNameSchema.x} />;
 		case 'actions':
-			return <Button icon="more-horizontal" type="secondary" />;
+			return <Button icon={IconNameSchema.moreHorizontal} type="secondary" />;
 		default:
 			return r[c];
 	}

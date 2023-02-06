@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import { Toolbar } from './Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
@@ -16,7 +17,7 @@ storiesOf('components/Toolbar', module)
 			<Toolbar>
 				<ToolbarLeft>
 					<ToolbarItem>
-						<Icon name="chevron-left" />
+						<Icon name={IconNameSchema.chevronLeft} />
 					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
@@ -34,7 +35,7 @@ storiesOf('components/Toolbar', module)
 			<Toolbar size="medium">
 				<ToolbarLeft>
 					<ToolbarItem>
-						<Icon name="chevron-left" />
+						<Icon name={IconNameSchema.chevronLeft} />
 					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
@@ -52,7 +53,7 @@ storiesOf('components/Toolbar', module)
 			<Toolbar spaced>
 				<ToolbarLeft>
 					<ToolbarItem>
-						<Icon name="chevron-left" />
+						<Icon name={IconNameSchema.chevronLeft} />
 					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
@@ -70,7 +71,7 @@ storiesOf('components/Toolbar', module)
 			<Toolbar justify>
 				<ToolbarLeft>
 					<ToolbarItem>
-						<Icon name="chevron-left" />
+						<Icon name={IconNameSchema.chevronLeft} />
 					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
@@ -88,7 +89,7 @@ storiesOf('components/Toolbar', module)
 			<Toolbar autoHeight>
 				<ToolbarLeft>
 					<ToolbarItem>
-						<Icon name="chevron-left" />
+						<Icon name={IconNameSchema.chevronLeft} />
 					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
@@ -106,7 +107,7 @@ storiesOf('components/Toolbar', module)
 			<Toolbar alignTop>
 				<ToolbarLeft>
 					<ToolbarItem>
-						<Icon name="chevron-left" />
+						<Icon name={IconNameSchema.chevronLeft} />
 					</ToolbarItem>
 				</ToolbarLeft>
 				<ToolbarCenter>
@@ -126,7 +127,7 @@ storiesOf('components/Toolbar', module)
 		<Toolbar>
 			<ToolbarLeft>
 				<ToolbarItem>
-					<Icon name="chevron-left" />
+					<Icon name={IconNameSchema.chevronLeft} />
 				</ToolbarItem>
 			</ToolbarLeft>
 		</Toolbar>
@@ -161,7 +162,7 @@ storiesOf('components/Toolbar', module)
 				/>
 			</ToolbarItem>
 			<ToolbarItem>
-				<Button type="secondary" icon="add" ariaLabel="Sectie toevoegen" />
+				<Button type="secondary" icon={IconNameSchema.add} ariaLabel="Sectie toevoegen" />
 			</ToolbarItem>
 			<ToolbarItem grow>
 				<div

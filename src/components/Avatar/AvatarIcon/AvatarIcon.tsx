@@ -17,7 +17,7 @@ export const AvatarIcon: FunctionComponent<AvatarIconPropsSchema> = ({
 	className,
 	initials,
 	image,
-	icon = 'user',
+	icon = IconNameSchema.user,
 	size,
 }) => (
 	<div

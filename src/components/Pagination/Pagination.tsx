@@ -4,6 +4,7 @@ import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import styles from './Pagination.module.scss';
 
@@ -63,14 +64,14 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
 				onClick={() => changePage(0)}
 			>
-				<Icon name="chevrons-left" type="arrows" />
+				<Icon name={IconNameSchema.chevronLeft} type="arrows" />
 			</div>
 
 			<div
 				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
 				onClick={() => changePage(currentPage - 1)}
 			>
-				<Icon name="chevron-left" type="arrows" />
+				<Icon name={IconNameSchema.chevronLeft} type="arrows" />
 			</div>
 
 			<div className={classnames('c-pagination__pages', styles['c-pagination__pages'])}>
@@ -97,14 +98,14 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
 				onClick={() => changePage(currentPage + 1)}
 			>
-				<Icon name="chevron-right" type="arrows" />
+				<Icon name={IconNameSchema.chevronRight} type="arrows" />
 			</div>
 
 			<div
 				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
 				onClick={() => changePage(pageCount - 1)}
 			>
-				<Icon name="chevrons-right" type="arrows" />
+				<Icon name={IconNameSchema.chevronRight} type="arrows" />
 			</div>
 		</div>
 	);

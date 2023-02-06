@@ -1,6 +1,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
+import { IconNameSchema } from '../../Icon/Icon.types';
+
 import { MetaDataItem } from './MetaDataItem';
 
 describe('<MetaDataItem />', () => {
@@ -18,7 +20,9 @@ describe('<MetaDataItem />', () => {
 	});
 
 	it('Should set the correct className when icon is passed', () => {
-		const metaDataItemComponent = shallow(<MetaDataItem icon="headphone" label="768" />);
+		const metaDataItemComponent = shallow(
+			<MetaDataItem icon={IconNameSchema.headphone} label="768" />
+		);
 
 		expect(metaDataItemComponent.hasClass('c-meta-data-item--icon')).toEqual(true);
 	});

@@ -7,6 +7,7 @@ import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps } from '../../types';
 import { Flex } from '../Flex/Flex';
 import { FlexItem } from '../Flex/FlexItem/FlexItem';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Spacer } from '../Spacer/Spacer';
@@ -67,7 +68,7 @@ export const SearchResult: FunctionComponent<SearchResultPropsSchema> = ({
 							<div className="c-button-toolbar">
 								<ToggleButton
 									active={isBookmarked}
-									icon="bookmark"
+									icon={IconNameSchema.bookmark}
 									onClick={(active: boolean) => onToggleBookmark(active)}
 									ariaLabel="toggle bookmark"
 								/>
@@ -82,9 +83,12 @@ export const SearchResult: FunctionComponent<SearchResultPropsSchema> = ({
 					<Flex justify="between" wrap>
 						<MetaData category={type}>
 							<MetaDataItem label={date} />
-							<MetaDataItem label={String(viewCount)} icon="eye" />
+							<MetaDataItem label={String(viewCount)} icon={IconNameSchema.eye} />
 							{!isNil(bookmarkCount) && (
-								<MetaDataItem label={String(bookmarkCount)} icon="bookmark" />
+								<MetaDataItem
+									label={String(bookmarkCount)}
+									icon={IconNameSchema.bookmark}
+								/>
 							)}
 						</MetaData>
 						<TagList

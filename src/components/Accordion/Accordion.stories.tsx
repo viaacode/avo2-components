@@ -8,6 +8,7 @@ import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
 import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
 import { Form } from '../Form/Form';
 import { FormGroup } from '../Form/FormGroup/FormGroup';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { TextArea } from '../TextArea/TextArea';
 import { TextInput } from '../TextInput/TextInput';
 
@@ -33,18 +34,18 @@ const AccordionWithSlots = () => {
 				<ButtonToolbar>
 					<ButtonGroup>
 						<Button
-							icon="chevron-down"
+							icon={IconNameSchema.chevronDown}
 							type="tertiary"
 							onClick={action('move down button clicked')}
 						/>
 						<Button
-							icon="chevron-up"
+							icon={IconNameSchema.chevronUp}
 							type="tertiary"
 							onClick={action('move up button clicked')}
 						/>
 					</ButtonGroup>
 					<Button
-						icon="delete"
+						icon={IconNameSchema.delete}
 						type="tertiary"
 						onClick={action('delete button clicked')}
 					/>

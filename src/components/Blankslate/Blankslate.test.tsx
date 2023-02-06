@@ -2,6 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import { Blankslate } from './Blankslate';
 
@@ -68,7 +69,7 @@ describe('<Blankslate />', () => {
 	});
 
 	it('Should be able to render an icon', () => {
-		const iconName = 'database';
+		const iconName = IconNameSchema.database;
 
 		const blankslateComponent = shallow(
 			<Blankslate

@@ -6,6 +6,7 @@ import { useTableSort } from '../../hooks/useTableSort';
 import { DefaultProps } from '../../types';
 import { Form } from '../Form/Form';
 import { FormGroup } from '../Form/FormGroup/FormGroup';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Pagination } from '../Pagination/Pagination';
 import { Spacer } from '../Spacer/Spacer';
 import { Table } from '../Table/Table';
@@ -162,7 +163,7 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 						<Form type="inline">
 							<FormGroup>
 								<TextInput
-									icon="filter"
+									icon={IconNameSchema.filter}
 									value={filterString}
 									onChange={setFilterString}
 								/>

@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
 
 import { Blankslate } from './Blankslate';
@@ -24,14 +25,14 @@ storiesOf('components/Blankslate', module)
 		<Blankslate
 			title="This is a blank slate"
 			body="Use it to provide information when no dynamic content exists."
-			icon="search"
+			icon={IconNameSchema.search}
 		/>
 	))
 	.add('Blankslate content', () => (
 		<Blankslate
 			title="This is a blank slate"
 			body="Use it to provide information when no dynamic content exists."
-			icon="search"
+			icon={IconNameSchema.search}
 		>
 			<Spacer margin="top-large">
 				Extra content for the blankslate can be passed via <code>children</code>.
@@ -42,6 +43,6 @@ storiesOf('components/Blankslate', module)
 		<Blankslate
 			title="Oeps. Pagina niet gevonden"
 			body="Sorry, we hebben overal gekeken, maar de pagina die je zoekt bestaat niet (meer) of je hebt geen rechten om deze te bekijken.<br /> Vermoed je een fout? Neem dan contact met ons op via de Feedback-knop."
-			icon="search"
+			icon={IconNameSchema.search}
 		/>
 	));

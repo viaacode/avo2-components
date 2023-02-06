@@ -2,6 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import { TextInput } from './TextInput';
 
@@ -70,7 +71,7 @@ describe('<TextInput />', () => {
 	});
 
 	it('Should be able to render with an icon', () => {
-		const icon = 'search';
+		const icon = IconNameSchema.search;
 
 		const inputComponent = shallow(<TextInput className={customClass} icon={icon} />);
 

@@ -2,12 +2,15 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import { Button } from '../Button/Button';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import { ToggleButton } from './ToggleButton';
 
 describe('<ToggleButton ariaLabel="test button" />', () => {
 	it('Should be able to render', () => {
-		shallow(<ToggleButton ariaLabel="test button" icon="heart" active={false} />);
+		shallow(
+			<ToggleButton ariaLabel="test button" icon={IconNameSchema.heart} active={false} />
+		);
 	});
 
 	it('should correctly pass a custom className', () => {
@@ -17,7 +20,7 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 			<ToggleButton
 				ariaLabel="test button"
 				className={customClass}
-				icon="heart"
+				icon={IconNameSchema.heart}
 				active={false}
 			/>
 		);
@@ -27,10 +30,10 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 
 	it('Should set aria label', () => {
 		const inactiveToggleButtonComponent = mount(
-			<ToggleButton ariaLabel="toggle favorite" icon="heart" active={false} />
+			<ToggleButton ariaLabel="toggle favorite" icon={IconNameSchema.heart} active={false} />
 		);
 		const activeToggleButtonComponent = mount(
-			<ToggleButton ariaLabel="toggle favorite" icon="heart" active={true} />
+			<ToggleButton ariaLabel="toggle favorite" icon={IconNameSchema.heart} active={true} />
 		);
 
 		expect(inactiveToggleButtonComponent.find('button').prop('aria-label')).toEqual(
@@ -46,7 +49,7 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 			<ToggleButton
 				title="toggle favorite"
 				ariaLabel="toggle favorite"
-				icon="heart"
+				icon={IconNameSchema.heart}
 				active={false}
 			/>
 		);
@@ -56,7 +59,7 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 
 	it('Should set the normal version of the icon when not `active`', () => {
 		const toggleButtonComponent = shallow(
-			<ToggleButton ariaLabel="test button" icon="bookmark" active={false} />
+			<ToggleButton ariaLabel="test button" icon={IconNameSchema.bookmark} active={false} />
 		);
 
 		const buttonComponent = toggleButtonComponent.find(Button);
@@ -66,7 +69,7 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 
 	it('Should set the filled version of the icon when `active`', () => {
 		const toggleButtonComponent = shallow(
-			<ToggleButton ariaLabel="test button" icon="bookmark" active={true} />
+			<ToggleButton ariaLabel="test button" icon={IconNameSchema.bookmark} active={true} />
 		);
 
 		const buttonComponent = toggleButtonComponent.find(Button);
@@ -82,7 +85,7 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 		const toggleButtonComponent = mount(
 			<ToggleButton
 				ariaLabel="test button"
-				icon="bookmark"
+				icon={IconNameSchema.bookmark}
 				active={active}
 				onClick={onClickHandler}
 			/>

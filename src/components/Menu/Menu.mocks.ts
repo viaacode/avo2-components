@@ -1,3 +1,5 @@
+import { IconNameSchema } from '../Icon/Icon.types';
+
 import { MenuItemInfoSchema } from './MenuContent/MenuContent';
 import { MenuSearchResultItemInfoSchema } from './MenuSearchResultContent/MenuSearchResultContent';
 
@@ -9,10 +11,10 @@ export const menuItems = [
 ];
 
 export const menuItemsWithIcons: MenuItemInfoSchema[] = [
-	{ ...menuItems[0], icon: 'circle' },
-	{ ...menuItems[1], icon: 'box' },
-	{ ...menuItems[2], icon: 'square' },
-	{ ...menuItems[3], icon: 'triangle' },
+	{ ...menuItems[0], icon: IconNameSchema.circle },
+	{ ...menuItems[1], icon: IconNameSchema.box },
+	{ ...menuItems[2], icon: IconNameSchema.square },
+	{ ...menuItems[3], icon: IconNameSchema.triangle },
 ];
 
 export const menuItemsWithDivider = [

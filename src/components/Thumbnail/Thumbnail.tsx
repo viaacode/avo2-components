@@ -10,11 +10,11 @@ import { IconNameSchema } from '../Icon/Icon.types';
 import './Thumbnail.scss';
 
 export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
-	audio: 'headphone',
-	video: 'video',
-	collection: 'collection',
-	bundle: 'folder',
-	search: 'search',
+	audio: IconNameSchema.headphone,
+	video: IconNameSchema.video,
+	collection: IconNameSchema.collection,
+	bundle: IconNameSchema.folder,
+	search: IconNameSchema.search,
 };
 
 export interface ThumbnailPropsSchema extends DefaultProps {

@@ -1,6 +1,8 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
+import { IconNameSchema } from '../Icon/Icon.types';
+
 import { MetaData } from './MetaData';
 import { MetaDataItem } from './MetaDataItem/MetaDataItem';
 
@@ -9,7 +11,7 @@ describe('<MetaDataItem />', () => {
 		shallow(
 			<MetaData category="video">
 				<MetaDataItem label="VRT" />s
-				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
 			</MetaData>
 		);
@@ -21,7 +23,7 @@ describe('<MetaDataItem />', () => {
 		const metaDataComponent = shallow(
 			<MetaData category="video" className={customClass}>
 				<MetaDataItem label="VRT" />
-				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
 			</MetaData>
 		);
@@ -34,7 +36,7 @@ describe('<MetaDataItem />', () => {
 		const metaDataCollectionComponent = shallow(
 			<MetaData category="collection">
 				<MetaDataItem label="VRT" />
-				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
 			</MetaData>
 		);
@@ -42,7 +44,7 @@ describe('<MetaDataItem />', () => {
 		const metaDataVideoComponent = shallow(
 			<MetaData category="video">
 				<MetaDataItem label="VRT" />
-				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
 			</MetaData>
 		);
@@ -50,7 +52,7 @@ describe('<MetaDataItem />', () => {
 		const metaDataAudioComponent = shallow(
 			<MetaData category="audio">
 				<MetaDataItem label="VRT" />
-				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
 			</MetaData>
 		);
@@ -58,7 +60,7 @@ describe('<MetaDataItem />', () => {
 		const metaDataMapComponent = shallow(
 			<MetaData category="bundle">
 				<MetaDataItem label="VRT" />
-				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
 			</MetaData>
 		);
@@ -73,7 +75,7 @@ describe('<MetaDataItem />', () => {
 		const metaDataComponent = shallow(
 			<MetaData category="video" spaced>
 				<MetaDataItem label="VRT" />
-				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
 			</MetaData>
 		);
@@ -85,7 +87,7 @@ describe('<MetaDataItem />', () => {
 		const metaDataComponent = mount(
 			<MetaData category="video">
 				<MetaDataItem label="VRT" />
-				<MetaDataItem icon="headphone" label="738" />
+				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
 			</MetaData>
 		);

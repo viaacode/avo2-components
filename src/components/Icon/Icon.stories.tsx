@@ -53,35 +53,35 @@ story.add('Icon sizes', () => (
 	<Fragment>
 		<Spacer margin="bottom-large">
 			<h2>Huge</h2>
-			<Icon name="thumbs-up" size="huge" />
-			<Icon name="flag" size="huge" />
-			<Icon name="printer" size="huge" />
-			<Icon name="message-circle" size="huge" />
-			<Icon name="clipboard" size="huge" />
+			<Icon name={IconNameSchema.thumbsUp} size="huge" />
+			<Icon name={IconNameSchema.flag} size="huge" />
+			<Icon name={IconNameSchema.printer} size="huge" />
+			<Icon name={IconNameSchema.messageCircle} size="huge" />
+			<Icon name={IconNameSchema.clipboard} size="huge" />
 		</Spacer>
 		<Spacer margin="bottom-large">
 			<h2>Large</h2>
-			<Icon name="thumbs-up" size="large" />
-			<Icon name="flag" size="large" />
-			<Icon name="printer" size="large" />
-			<Icon name="message-circle" size="large" />
-			<Icon name="clipboard" size="large" />
+			<Icon name={IconNameSchema.thumbsUp} size="large" />
+			<Icon name={IconNameSchema.flag} size="large" />
+			<Icon name={IconNameSchema.printer} size="large" />
+			<Icon name={IconNameSchema.messageCircle} size="large" />
+			<Icon name={IconNameSchema.clipboard} size="large" />
 		</Spacer>
 		<Spacer margin="bottom-large">
 			<h2>Default</h2>
-			<Icon name="thumbs-up" />
-			<Icon name="flag" />
-			<Icon name="printer" />
-			<Icon name="message-circle" />
-			<Icon name="clipboard" />
+			<Icon name={IconNameSchema.thumbsUp} />
+			<Icon name={IconNameSchema.flag} />
+			<Icon name={IconNameSchema.printer} />
+			<Icon name={IconNameSchema.messageCircle} />
+			<Icon name={IconNameSchema.clipboard} />
 		</Spacer>
 		<Spacer margin="bottom-large">
 			<h2>Small</h2>
-			<Icon name="thumbs-up" size="small" />
-			<Icon name="flag" size="small" />
-			<Icon name="printer" size="small" />
-			<Icon name="message-circle" size="small" />
-			<Icon name="clipboard" size="small" />
+			<Icon name={IconNameSchema.thumbsUp} size="small" />
+			<Icon name={IconNameSchema.flag} size="small" />
+			<Icon name={IconNameSchema.printer} size="small" />
+			<Icon name={IconNameSchema.messageCircle} size="small" />
+			<Icon name={IconNameSchema.clipboard} size="small" />
 		</Spacer>
 	</Fragment>
 ));
