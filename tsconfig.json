@@ -21,7 +21,7 @@
     "noEmit": true,
     "outDir": "dist",
     "allowJs": true,
-    "isolatedModules": true
+    "isolatedModules": false
   },
   "include": [
     "src"

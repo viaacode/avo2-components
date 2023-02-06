@@ -37,7 +37,7 @@ export const Accordion: FunctionComponent<AccordionPropsSchema> = ({
 		return onToggle ? isOpen : isOpenSelf;
 	};
 
-	const accordionIcon = getIsOpen() ? IconNameSchema.chevronsUp : IconNameSchema.chevronDown;
+	const accordionIcon = getIsOpen() ? IconNameSchema.chevronUp : IconNameSchema.chevronDown;
 
 	const handleToggle = () => {
 		if (onToggle) {

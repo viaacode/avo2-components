@@ -1,7 +1,13 @@
 import React, { SVGProps } from 'react';
-
 const Minimize = (props: SVGProps<SVGSVGElement>) => (
-	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
+	<svg
+		width={24}
+		height={24}
+		viewBox="0 0 24 24"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
 		<path
 			d="M10 21a1 1 0 01-1-1v-5H4a1 1 0 110-2h6a1 1 0 011 1v6a1 1 0 01-1 1zM20 11h-6a1 1 0 01-1-1V4a1 1 0 112 0v5h5a1 1 0 110 2z"
 			fill="#000"
@@ -12,5 +18,4 @@ const Minimize = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
-
 export default Minimize;

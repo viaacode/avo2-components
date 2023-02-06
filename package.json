@@ -16,7 +16,7 @@
     "build-storybook": "build-storybook -o build",
     "build-storybook:with-sourcemaps": "cross-env GENERATE_SOURCEMAP=true build-storybook -o build",
     "preicons": "node scripts/icons.js src/icons",
-    "icons": "rimraf src/components/Icon/Icons && svgr -d src/components/Icon/Icons src/icons --ext ts",
+    "icons": "rimraf src/components/Icon/Icons && svgr -d src/components/Icon/Icons src/icons --ext tsx && rimram src/components/Icon/Icons/index.ts",
     "posticons": "named-exports --dir=src/components/Icon/Icons && renamer --find .ts --replace .tsx \"./src/components/Icon/Icons/**\"",
     "lint": "eslint \"./{src,scripts}/**/*.{ts,tsx}\" --cache",
     "lint:fix": "eslint \"./{src,scripts}/**/*.{ts,tsx}\" --fix",
