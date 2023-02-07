@@ -112,6 +112,7 @@ pipeline {
 							sh "cat $configFile > .npmrc"
 						}
 						sh '''#/bin/bash
+					npm config fix
 					npm publish
 					echo "removing .npmrc for install to nexus not seems @viaa:registry=.."
 					rm -f .npmrc
