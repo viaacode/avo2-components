@@ -2,6 +2,7 @@ import { mount, shallow } from 'enzyme';
 import { noop } from 'lodash-es';
 import React from 'react';
 
+import { IconNameSchema } from '../Icon/Icon.types';
 import { MenuItemInfoSchema } from '../Menu/MenuContent/MenuContent';
 
 import { MoreOptionsDropdown } from './MoreOptionsDropdown';
@@ -10,17 +11,17 @@ const menuItems: MenuItemInfoSchema[] = [
 	{
 		label: 'Add',
 		id: 'add',
-		icon: 'add',
+		icon: IconNameSchema.add,
 	},
 	{
 		label: 'Delete',
 		id: 'delete',
-		icon: 'delete',
+		icon: IconNameSchema.delete,
 	},
 	{
 		label: 'Archive',
 		id: 'archive',
-		icon: 'clock',
+		icon: IconNameSchema.clock,
 	},
 ];
 

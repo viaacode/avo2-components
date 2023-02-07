@@ -4,6 +4,7 @@ import React, { FunctionComponent, MouseEvent } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import styles from './TagList.module.scss';
 
@@ -98,7 +99,7 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 					{/* output close button element */}
 					{closable && (
 						<a onClick={(evt: MouseEvent) => onTagClosed(tag.id, evt)}>
-							<Icon name="close" />
+							<Icon name={IconNameSchema.close} />
 						</a>
 					)}
 				</li>

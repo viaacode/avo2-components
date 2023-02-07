@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions';
 
 import { testRenderLink } from '../../helpers/render-link';
 import { LinkTarget } from '../../types';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import { CTAPropsSchema } from './CTA';
 
@@ -10,7 +11,7 @@ export const CTA_MOCK: CTAPropsSchema = {
 	headingType: 'h3',
 	content: 'Text',
 	buttonLabel: 'Read more',
-	buttonIcon: 'chevron-down',
+	buttonIcon: IconNameSchema.chevronDown,
 	buttonAction: {
 		target: LinkTarget.Blank,
 		type: 'EXTERNAL_LINK',

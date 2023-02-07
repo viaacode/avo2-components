@@ -142,7 +142,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 									styles['c-button__icon'],
 									skins['c-button__icon']
 								)}
-								name="caret-down"
+								name={IconNameSchema.caretDown}
 							/>
 						)}
 					</div>

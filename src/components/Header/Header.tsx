@@ -7,6 +7,7 @@ import { DefaultProps, translateContentType } from '../../types';
 import { Container, ContainerPropsSchema } from '../Container/Container';
 import { Flex } from '../Flex/Flex';
 import { HeaderContentType } from '../HeaderContentType/HeaderContentType';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Spacer } from '../Spacer/Spacer';
@@ -64,9 +65,14 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 												label={translateContentType(category, 'en', false)}
 											/>
 										</MetaDataItem>
-										{views && <MetaDataItem icon="eye" label={views} />}
+										{views && (
+											<MetaDataItem icon={IconNameSchema.eye} label={views} />
+										)}
 										{bookmarks && (
-											<MetaDataItem icon="bookmark" label={bookmarks} />
+											<MetaDataItem
+												icon={IconNameSchema.bookmark}
+												label={bookmarks}
+											/>
 										)}
 									</MetaData>
 								</Spacer>

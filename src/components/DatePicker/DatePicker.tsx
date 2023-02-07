@@ -9,6 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import './DatePicker.scss';
 
@@ -94,7 +95,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 							: maxDate
 					}
 				/>
-				<Icon name="calendar" />
+				<Icon name={IconNameSchema.calendar} />
 			</div>
 			{showTimeInput && (
 				<div className="avo__c-datepicker--time">

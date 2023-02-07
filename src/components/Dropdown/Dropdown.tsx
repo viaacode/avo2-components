@@ -112,7 +112,9 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 							{label && <div className="c-button__label">{label}</div>}
 							{!icon && (
 								<Icon
-									name={isOpen ? 'caret-up' : 'caret-down'}
+									name={
+										isOpen ? IconNameSchema.caretUp : IconNameSchema.caretDown
+									}
 									size="small"
 									type="arrows"
 								/>

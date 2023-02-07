@@ -4,6 +4,7 @@ import React from 'react';
 import thumbnail from '../../../static/images/thumbnail.jpg';
 import { Box } from '../Box/Box';
 import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import { Avatar } from './Avatar';
 
@@ -36,7 +37,7 @@ storiesOf('components/Avatar', module)
 			</Box>
 		</>
 	))
-	.add('Large avatar', () => <Avatar icon="user" size="large" />)
+	.add('Large avatar', () => <Avatar icon={IconNameSchema.user} size="large" />)
 	.add('Aavatar dropdown', () => (
 		<div
 			className="c-navbar-profile-dropdown-button"
@@ -49,6 +50,6 @@ storiesOf('components/Avatar', module)
 			}}
 		>
 			<Avatar initials={'TT'} name={'Test'} />
-			<Icon name="caret-down" size="small" subtle />
+			<Icon name={IconNameSchema.caretDown} size="small" subtle />
 		</div>
 	));

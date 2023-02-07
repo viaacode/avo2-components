@@ -15,6 +15,7 @@ import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
 import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
@@ -110,7 +111,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 									<ToolbarItem>
 										<Button
 											onClick={close}
-											icon="close"
+											icon={IconNameSchema.close}
 											type="borderless"
 											ariaLabel="close modal"
 										/>

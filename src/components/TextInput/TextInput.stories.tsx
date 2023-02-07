@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
 
 import { TextInput } from './TextInput';
@@ -86,14 +87,14 @@ storiesOf('components/TextInput', module)
 			<Spacer margin="bottom">
 				<TextInputStoryComponent>
 					<TextInput
-						icon="search"
+						icon={IconNameSchema.search}
 						placeholder="Type something here..."
 						onChange={action('onChange')}
 					/>
 				</TextInputStoryComponent>
 			</Spacer>
 			<TextInputStoryComponent>
-				<TextInput icon="x" disabled placeholder="No typing here..." />
+				<TextInput icon={IconNameSchema.x} disabled placeholder="No typing here..." />
 			</TextInputStoryComponent>
 		</Fragment>
 	));

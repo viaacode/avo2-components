@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { Button } from '../Button/Button';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { MenuContent, MenuItemInfoSchema } from '../Menu/MenuContent/MenuContent';
 
 export interface MoreOptionsDropdownPropsSchema {
@@ -31,7 +32,12 @@ export const MoreOptionsDropdown: FunctionComponent<MoreOptionsDropdownPropsSche
 			placement="bottom-end"
 		>
 			<DropdownButton>
-				<Button icon="more-horizontal" type="secondary" ariaLabel={label} title={label} />
+				<Button
+					icon={IconNameSchema.moreHorizontal}
+					type="secondary"
+					ariaLabel={label}
+					title={label}
+				/>
 			</DropdownButton>
 			<DropdownContent>
 				<MenuContent menuItems={menuItems} onClick={onOptionClicked} />

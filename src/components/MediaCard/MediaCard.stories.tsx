@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
+import { IconNameSchema } from '../Icon/Icon.types';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
@@ -31,7 +32,7 @@ storiesOf('components/MediaCard', module)
 				<MediaCardMetaData>
 					<MetaData category="collection">
 						<MetaDataItem label="vrt" />
-						<MetaDataItem label="728" icon="eye" />
+						<MetaDataItem label="728" icon={IconNameSchema.eye} />
 						<MetaDataItem label="2d geleden" />
 					</MetaData>
 				</MediaCardMetaData>
@@ -57,7 +58,7 @@ storiesOf('components/MediaCard', module)
 			<MediaCardMetaData>
 				<MetaData category="collection">
 					<MetaDataItem label="vrt" />
-					<MetaDataItem label="728" icon="eye" />
+					<MetaDataItem label="728" icon={IconNameSchema.eye} />
 					<MetaDataItem label="2d geleden" />
 				</MetaData>
 			</MediaCardMetaData>

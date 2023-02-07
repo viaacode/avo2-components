@@ -1,6 +1,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
+import { IconNameSchema } from '../Icon/Icon.types';
+
 import { Button } from './Button';
 
 describe('<Button />', () => {
@@ -80,7 +82,7 @@ describe('<Button />', () => {
 
 	it('Should be able to render a label and an icon', () => {
 		const label = 'Click me!';
-		const icon = 'search';
+		const icon = IconNameSchema.search;
 		const buttonComponent = shallow(
 			<Button label={label} icon={icon} ariaLabel="test button" />
 		);
@@ -95,7 +97,9 @@ describe('<Button />', () => {
 	});
 
 	it('Should get a special className when only an icon is passed', () => {
-		const buttonComponent = shallow(<Button icon="link" ariaLabel="test button" />);
+		const buttonComponent = shallow(
+			<Button icon={IconNameSchema.link} ariaLabel="test button" />
+		);
 
 		expect(buttonComponent.hasClass('c-button--icon')).toEqual(true);
 	});
@@ -155,10 +159,10 @@ describe('<Button />', () => {
 
 	it('Should pass on the `active`-prop to the button icon', () => {
 		const activeButtonComponent = shallow(
-			<Button active={true} icon="heart" ariaLabel="test button" />
+			<Button active={true} icon={IconNameSchema.heart} ariaLabel="test button" />
 		);
 		const inactiveButtonComponent = shallow(
-			<Button active={false} icon="heart" ariaLabel="test button" />
+			<Button active={false} icon={IconNameSchema.heart} ariaLabel="test button" />
 		);
 
 		const activeIconComponent = activeButtonComponent.find('.c-button__icon');

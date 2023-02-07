@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import { Table, TableColumnSchema } from './Table';
 
@@ -138,7 +139,7 @@ describe('<Table />', () => {
 				rowKey="id"
 				renderCell={(row, columnId, rowIndex, columnIndex) => {
 					if (columnId === 'actions') {
-						return <Button icon="more-horizontal" />;
+						return <Button icon={IconNameSchema.moreHorizontal} />;
 					}
 					return <p className={`${rowIndex}-${columnIndex}`}>{row[columnId]}</p>;
 				}}

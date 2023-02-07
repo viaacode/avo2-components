@@ -4,6 +4,7 @@ import React, { FunctionComponent, useState } from 'react';
 import { useSlot } from '../../hooks/useSlot';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
@@ -36,7 +37,7 @@ export const Accordion: FunctionComponent<AccordionPropsSchema> = ({
 		return onToggle ? isOpen : isOpenSelf;
 	};
 
-	const accordionIcon = getIsOpen() ? 'chevron-up' : 'chevron-down';
+	const accordionIcon = getIsOpen() ? IconNameSchema.chevronUp : IconNameSchema.chevronDown;
 
 	const handleToggle = () => {
 		if (onToggle) {

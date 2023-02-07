@@ -25,17 +25,17 @@ const buttonProps: Partial<ButtonPropsSchema>[] = [
 ];
 
 const buttonIconProps: Partial<ButtonPropsSchema>[] = [
-	{ ...buttonProps[0], icon: 'plus' },
-	{ ...buttonProps[1], icon: 'search' },
-	{ ...buttonProps[2], icon: 'database' },
-	{ ...buttonProps[3], icon: 'link' },
-	{ ...buttonProps[4], icon: 'link' },
-	{ ...buttonProps[5], icon: 'x-circle' },
-	{ ...buttonProps[6], icon: 'x-square' },
-	{ ...buttonProps[7], icon: 'tag' },
-	{ ...buttonProps[8], icon: 'delete' },
-	{ ...buttonProps[9], icon: 'circle' },
-	{ ...buttonProps[10], icon: 'check-square' },
+	{ ...buttonProps[0], icon: IconNameSchema.plus },
+	{ ...buttonProps[1], icon: IconNameSchema.search },
+	{ ...buttonProps[2], icon: IconNameSchema.database },
+	{ ...buttonProps[3], icon: IconNameSchema.link },
+	{ ...buttonProps[4], icon: IconNameSchema.link },
+	{ ...buttonProps[5], icon: IconNameSchema.xCircle },
+	{ ...buttonProps[6], icon: IconNameSchema.xSquare },
+	{ ...buttonProps[7], icon: IconNameSchema.tag },
+	{ ...buttonProps[8], icon: IconNameSchema.delete },
+	{ ...buttonProps[9], icon: IconNameSchema.circle },
+	{ ...buttonProps[10], icon: IconNameSchema.checkSquare },
 ];
 
 const buttonInverseProps: Partial<ButtonPropsSchema>[] = [
