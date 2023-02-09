@@ -32,7 +32,7 @@ export interface ModalPropsSchema extends DefaultProps {
 	 */
 	disableContextClick?: boolean;
 	isOpen: boolean;
-	title?: string;
+	title?: string | ReactNode;
 	size?: 'small' | 'medium' | 'large' | 'extra-large' | 'fullscreen' | 'fullwidth' | 'auto';
 	scrollable?: boolean;
 	onClose?: () => void;
@@ -98,10 +98,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 							{title && (
 								<ToolbarLeft>
 									<ToolbarItem>
-										<h2
-											className="c-modal__title"
-											dangerouslySetInnerHTML={{ __html: title }}
-										/>
+										<h2 className="c-modal__title">{title}</h2>
 									</ToolbarItem>
 								</ToolbarLeft>
 							)}
