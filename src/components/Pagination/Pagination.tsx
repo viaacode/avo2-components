@@ -64,7 +64,7 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
 				onClick={() => changePage(0)}
 			>
-				<Icon name={IconNameSchema.chevronLeft} type="arrows" />
+				<Icon name={IconNameSchema.chevronsLeft} type="arrows" />
 			</div>
 
 			<div
@@ -105,7 +105,7 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
 				onClick={() => changePage(pageCount - 1)}
 			>
-				<Icon name={IconNameSchema.chevronRight} type="arrows" />
+				<Icon name={IconNameSchema.chevronsRight} type="arrows" />
 			</div>
 		</div>
 	);
