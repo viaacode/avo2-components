@@ -200,4 +200,9 @@ export enum IconNameSchema {
 	zoomOut = 'zoom-out',
 }
 
-export type IconTypeSchema = 'arrows' | 'custom' | 'multicolor' | 'social' | 'wysiwyg';
+export type IconTypeSchema =
+  | 'arrows'
+  | 'custom'
+  | 'multicolor'
+  | 'social'
+  | 'wysiwyg';
