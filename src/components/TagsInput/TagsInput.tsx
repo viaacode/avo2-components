@@ -1,10 +1,9 @@
 import classnames from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
-import Select from 'react-select';
+import Select, { ActionMeta } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
-// eslint-disable-next-line import/namespace
-import { ActionMeta, ValueType } from 'react-select/src/types';
+import type { ValueType } from 'react-select/src/types';
 
 import { DefaultProps } from '../../types';
 
@@ -95,7 +94,6 @@ export const TagsInput: FunctionComponent<TagsInputPropsSchema> = ({
 			onChange={onValueChange}
 			noOptionsMessage={() => 'Geen opties'}
 			loadingMessage={() => 'Bezig met laden'}
-			formatCreateLabel={(value: string) => `"${value}" aanmaken`}
 		/>
 	);
 };

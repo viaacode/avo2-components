@@ -3,8 +3,8 @@ import { noop } from 'lodash-es';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { getTrackBackground, Range } from 'react-range';
 
-import { TextInput } from '../../components/TextInput/TextInput';
 import { DefaultProps } from '../../types';
+import { TextInput } from '../TextInput/TextInput';
 
 import './MultiRange.scss';
 
