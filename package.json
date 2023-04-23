@@ -55,7 +55,6 @@
     "date-fns": "^2.16.0",
     "lodash-es": "^4.17.21",
     "marked": "^4.0.15",
-    "moment": "^2.29.4",
     "npm-force-resolutions": "^0.0.10",
     "postcss": "8.4.19",
     "raf": "^3.4.1",
