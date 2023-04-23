@@ -2,10 +2,11 @@ import { resolve } from 'path';
 
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import dts from 'vite-plugin-dts';
+import { externalizeDeps } from 'vite-plugin-externalize-deps';
 import svgrPlugin from 'vite-plugin-svgr';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
-import { externalizeDeps } from 'vite-plugin-externalize-deps';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,5 +18,12 @@ export default defineConfig({
 			formats: ['es'],
 		},
 	},
-	plugins: [react(), viteTsconfigPaths(), svgrPlugin(), dts(), externalizeDeps()],
+	plugins: [
+		react(),
+		viteTsconfigPaths(),
+		svgrPlugin(),
+		dts(),
+		externalizeDeps(),
+		cssInjectedByJsPlugin(),
+	],
 });
