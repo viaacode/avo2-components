@@ -5,7 +5,6 @@ import nl from 'date-fns/locale/nl';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import ReactDatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';

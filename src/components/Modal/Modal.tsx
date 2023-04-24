@@ -9,7 +9,6 @@ import React, {
 } from 'react';
 import ReactDOM from 'react-dom';
 import Scrollbar from 'react-perfect-scrollbar';
-import 'react-perfect-scrollbar/dist/css/styles.css';
 
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
