@@ -45,7 +45,6 @@ export default {
 		terser(),
 	],
 	external: [
-		'@meemoo/react-components',
 		'@popperjs/core',
 		'autosize',
 		'classnames',
