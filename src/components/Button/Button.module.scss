@@ -90,6 +90,7 @@ a.c-button {
 		align-items: center;
 		display: flex;
 		justify-content: center;
+		gap: 0.5rem;
 	}
 
 	#{$c-button-selector-label} {
@@ -108,9 +109,8 @@ a.c-button {
 
 .c-button--small {
 	font-size: $c-button-font-size-small;
-	padding: math.div(($c-button-height-small - $c-button-line-height-small), 2)
-		$c-button-padding-horizontal-small;
-	
+	padding: math.div(($c-button-height-small - $c-button-line-height-small), 2) $c-button-padding-horizontal-small;
+
 	&.c-button--icon {
 		padding: math.div(($c-button-height-small - $c-button-line-height-small), 2);
 	}

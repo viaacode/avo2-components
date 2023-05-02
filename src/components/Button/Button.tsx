@@ -14,6 +14,9 @@ import { ButtonTypeSchema } from './Button.types';
 export interface ButtonPropsSchema extends DefaultProps {
 	active?: boolean;
 	ariaLabel?: string;
+	/**
+	 * @deprecated Use iconPosition and renderIcon instead
+	 */
 	arrow?: boolean;
 	autoHeight?: boolean;
 	block?: boolean;
@@ -21,9 +24,11 @@ export interface ButtonPropsSchema extends DefaultProps {
 	disabled?: boolean;
 	icon?: IconNameSchema;
 	iconType?: IconTypeSchema;
+	iconPosition?: 'left' | 'right';
 	label?: string;
 
-	onClick?(event: MouseEvent<HTMLElement>): void;
+	onClick?: (event: MouseEvent<HTMLElement>) => void;
+	renderIcon?: () => ReactNode;
 
 	size?: 'small' | 'large';
 	title?: string;
@@ -51,6 +56,8 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 	iconType,
 	type = 'primary',
 	id,
+	iconPosition = 'left',
+	renderIcon,
 }) => {
 	const rootCls = classnames(className, {
 		// Normal
@@ -90,6 +97,25 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 		}
 	};
 
+	const renderIconElement = (): ReactNode => {
+		if (renderIcon) {
+			return renderIcon();
+		}
+
+		return (
+			<Icon
+				className={classnames(
+					'c-button__icon',
+					styles['c-button__icon'],
+					skins['c-button__icon']
+				)}
+				name={icon}
+				active={active}
+				type={iconType}
+			/>
+		);
+	};
+
 	const renderButton = () => {
 		return (
 			<button
@@ -110,18 +136,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 							skins['c-button__content']
 						)}
 					>
-						{icon && (
-							<Icon
-								className={classnames(
-									'c-button__icon',
-									styles['c-button__icon'],
-									skins['c-button__icon']
-								)}
-								name={icon}
-								active={active}
-								type={iconType}
-							/>
-						)}
+						{icon && iconPosition === 'left' && renderIconElement()}
 
 						{label && (
 							<div
@@ -134,6 +149,8 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 								{label}
 							</div>
 						)}
+
+						{icon && iconPosition === 'right' && renderIconElement()}
 
 						{arrow && (
 							<Icon
