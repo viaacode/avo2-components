@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -26,7 +26,8 @@
     "test": "jest --verbose",
     "test:output": "cross-env CI=true jest --json --outputFile=.storybook/test-results.json",
     "licenses": "license-checker --csv --out licenses.csv",
-    "snyk-protect": "snyk protect"
+    "snyk-protect": "snyk protect",
+    "bump": "bump-package-versions --part=patch --strategy=highest ./package.json"
   },
   "browserslist": {
     "production": [
@@ -100,6 +101,7 @@
     "@typescript-eslint/parser": "5.36.2",
     "autoprefixer": "^9.8.6",
     "babel-plugin-react-docgen": "^4.1.0",
+    "bump-package-versions": "^1.0.2",
     "core-js": "^3.0.1",
     "cross-env": "^7.0.2",
     "css-loader": "^4.2.2",
