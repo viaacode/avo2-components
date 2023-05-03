@@ -62,5 +62,11 @@ export default {
 		'react-select',
 		'react-select/creatable',
 		'react',
+		'caniuse-lite',
+		'npm-force-resolutions',
+		'react-datepicker',
+		'react-perfect-scrollbar',
+		'@viaa/avo2-types',
+		'clsx',
 	],
 };
