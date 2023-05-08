@@ -53,4 +53,8 @@
 			white-space: initial;
 		}
 	}
+
+	[role="alert"] {
+		display: none !important;
+	}
 }
