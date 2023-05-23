@@ -14,7 +14,7 @@
 	}
 
 	.o-svg-icon {
-		margin-right: .4rem;
+		margin-right: 0.4rem;
 		width: 1.8rem;
 		height: 1.8rem;
 	}
@@ -30,4 +30,8 @@
 
 .c-content-type--video .o-svg-icon {
 	color: $color-yellow;
+}
+
+.c-content-type--assignment .o-svg-icon {
+	color: $color-ocean-green;
 }
