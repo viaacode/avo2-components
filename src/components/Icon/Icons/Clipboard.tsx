@@ -1,7 +1,13 @@
 import React, { SVGProps } from 'react';
-
 const Clipboard = (props: SVGProps<SVGSVGElement>) => (
-	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
+	<svg
+		width={24}
+		height={24}
+		viewBox="0 0 24 24"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
 		<path
 			d="M18 23H6c-1.654 0-3-1.346-3-3V6c0-1.654 1.346-3 3-3h2a1 1 0 010 2H6c-.551 0-1 .449-1 1v14c0 .552.449 1 1 1h12a1 1 0 001-1V6c0-.551-.448-1-1-1h-2a1 1 0 110-2h2c1.654 0 3 1.346 3 3v14c0 1.654-1.346 3-3 3z"
 			fill="#000"
@@ -12,5 +18,4 @@ const Clipboard = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
-
 export default Clipboard;

@@ -1,7 +1,13 @@
 import React, { SVGProps } from 'react';
-
 const Instagram = (props: SVGProps<SVGSVGElement>) => (
-	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
+	<svg
+		width={24}
+		height={24}
+		viewBox="0 0 24 24"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
 		<path
 			d="M17 23H7c-3.309 0-6-2.691-6-6V7c0-3.309 2.691-6 6-6h10c3.309 0 6 2.691 6 6v10c0 3.309-2.691 6-6 6zM7 3C4.794 3 3 4.794 3 7v10c0 2.206 1.794 4 4 4h10c2.206 0 4-1.794 4-4V7c0-2.206-1.794-4-4-4H7z"
 			fill="#000"
@@ -12,5 +18,4 @@ const Instagram = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
-
 export default Instagram;

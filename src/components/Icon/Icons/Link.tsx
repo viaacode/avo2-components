@@ -1,7 +1,13 @@
 import React, { SVGProps } from 'react';
-
 const Link = (props: SVGProps<SVGSVGElement>) => (
-	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
+	<svg
+		width={24}
+		height={24}
+		viewBox="0 0 24 24"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
 		<path
 			d="M14.012 16.003A5.993 5.993 0 019.2 13.599a1 1 0 111.602-1.197 4.006 4.006 0 006.033.432l3-3c1.52-1.574 1.476-4.112-.11-5.644a3.987 3.987 0 00-5.559 0l-1.709 1.7a1 1 0 11-1.41-1.418l1.72-1.71a5.98 5.98 0 018.347-.01 6.007 6.007 0 01.148 8.484l-3.013 3.012a5.98 5.98 0 01-4.237 1.755z"
 			fill="#000"
@@ -12,5 +18,4 @@ const Link = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
-
 export default Link;

@@ -1,7 +1,6 @@
 import React, { SVGProps } from 'react';
-
 const UserTeacher = (props: SVGProps<SVGSVGElement>) => (
-	<svg fill="none" viewBox="0 0 16 18" {...props}>
+	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18" {...props}>
 		<path
 			fill="currentColor"
 			fillRule="evenodd"
@@ -10,5 +9,4 @@ const UserTeacher = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
-
 export default UserTeacher;

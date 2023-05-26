@@ -1,7 +1,13 @@
 import React, { SVGProps } from 'react';
-
 const RefreshCcw = (props: SVGProps<SVGSVGElement>) => (
-	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
+	<svg
+		width={24}
+		height={24}
+		viewBox="0 0 24 24"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
 		<path
 			d="M7 11H1a1 1 0 01-1-1V4a1 1 0 012 0v5h5a1 1 0 010 2zM23 21a1 1 0 01-1-1v-5h-5a1 1 0 110-2h6a1 1 0 011 1v6a1 1 0 01-1 1z"
 			fill="#000"
@@ -12,5 +18,4 @@ const RefreshCcw = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
-
 export default RefreshCcw;
