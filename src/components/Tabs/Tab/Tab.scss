@@ -25,13 +25,10 @@ $c-tabs-item-dark-hover-border-color: $color-gray-25 !default;
 	color: $c-tabs-item-color;
 	font-weight: 500;
 	transition: color 0.3s ease-in-out;
+	padding: 1.2rem 1.7rem;
 
 	&:first-child {
 		padding: 1.2rem 1.7rem 1.2rem 1.2rem;
-	}
-
-	&:not(:first-child) {
-		padding: 1.2rem 1.7rem;
 	}
 
 	&.c-tab-item__dark {
