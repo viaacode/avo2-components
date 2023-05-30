@@ -1,7 +1,13 @@
 import React, { SVGProps } from 'react';
-
 const CheckCircle = (props: SVGProps<SVGSVGElement>) => (
-	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
+	<svg
+		width={24}
+		height={24}
+		viewBox="0 0 24 24"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
 		<path
 			d="M12 22.994h-.006C5.929 22.99.997 18.054 1 11.988 1.003 5.925 5.938.994 12 .994h.006c1.55 0 3.055.32 4.471.952a1 1 0 01-.814 1.827 8.953 8.953 0 00-3.658-.78H12c-4.961 0-8.998 4.035-9 8.996-.002 4.963 4.032 9.002 8.995 9.005H12c4.96 0 8.998-4.034 9-8.995v-.92a1 1 0 112 0V12c-.003 6.064-4.938 10.995-11 10.995z"
 			fill="#000"
@@ -12,5 +18,4 @@ const CheckCircle = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
-
 export default CheckCircle;

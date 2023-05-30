@@ -1,7 +1,13 @@
 import React, { SVGProps } from 'react';
-
 const Gift = (props: SVGProps<SVGSVGElement>) => (
-	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
+	<svg
+		width={24}
+		height={24}
+		viewBox="0 0 24 24"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
 		<path
 			d="M20 23H4a1 1 0 01-1-1V12a1 1 0 012 0v9h14v-9a1 1 0 112 0v10a1 1 0 01-1 1z"
 			fill="#000"
@@ -21,5 +27,4 @@ const Gift = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
-
 export default Gift;
