@@ -31,6 +31,10 @@ export const contentTypes: Avo.ContentType.Dict[] = [
 		en: 'searchquery',
 		nl: 'zoekopdracht',
 	},
+	{
+		en: 'assignment',
+		nl: 'opdracht',
+	},
 ];
 
 export const translateContentType = (value: string, from: Language, toEnglish: boolean): string => {
