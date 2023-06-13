@@ -91,7 +91,7 @@
     "@types/react": "^17.0.2",
     "@types/react-datepicker": "^4.4.2",
     "@types/react-dom": "^17.0.2",
-    "@types/react-select": "^3.1.2",
+    "@types/react-select": "^5.0.1",
     "@types/storybook__addon-actions": "^5.2.1",
     "@types/storybook__react": "^5.2.1",
     "@typescript-eslint/eslint-plugin": "5.36.2",

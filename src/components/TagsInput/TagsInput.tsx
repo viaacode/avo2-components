@@ -1,10 +1,8 @@
 import classnames from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
-import Select from 'react-select';
+import Select, { ActionMeta } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
-// eslint-disable-next-line import/namespace
-import { ActionMeta, ValueType } from 'react-select/src/types';
 
 import { DefaultProps } from '../../types';
 
@@ -42,10 +40,7 @@ export const TagsInput: FunctionComponent<TagsInputPropsSchema> = ({
 	onChange = noop,
 	onCreate = noop,
 }) => {
-	function onValueChange(
-		changedValues: ValueType<TagInfoSchema, boolean>,
-		actionMeta: ActionMeta<TagInfoSchema>
-	) {
+	function onValueChange(changedValues: any, actionMeta: ActionMeta<TagInfoSchema>) {
 		if (actionMeta.action === 'create-option') {
 			const tagsToCreate: TagInfoSchema[] = ((changedValues as TagInfoSchema[]) || []).filter(
 				(tag) => (tag as any).__isNew__
@@ -95,7 +90,7 @@ export const TagsInput: FunctionComponent<TagsInputPropsSchema> = ({
 			onChange={onValueChange}
 			noOptionsMessage={() => 'Geen opties'}
 			loadingMessage={() => 'Bezig met laden'}
-			formatCreateLabel={(value: string) => `"${value}" aanmaken`}
+			{...{ formatCreateLabel: ((value: string) => `"${value}" aanmaken`) as any }}
 		/>
 	);
 };
