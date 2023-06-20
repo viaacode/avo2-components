@@ -25,7 +25,7 @@ export interface HeaderPropsSchema extends DefaultProps {
 	containerSize?: ContainerPropsSchema['size'];
 	onClickTitle?: () => void;
 	showMetaData: boolean;
-	title: string;
+	title: string | ReactNode;
 	views?: string;
 }
 
@@ -44,6 +44,23 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 	const avatarSlot = useSlot(HeaderAvatar, children);
 	const tagSlot = useSlot(HeaderTags, children);
 	const rowSlot = useSlot(HeaderRow, children);
+
+	const renderTitle = () => {
+		if (typeof title === 'string') {
+			return (
+				<h2
+					className={classnames(className, `c-heading c-h2`, 'u-m-0', {
+						'u-clickable': onClickTitle,
+					})}
+					onClick={onClickTitle}
+				>
+					{title}
+				</h2>
+			);
+		} else {
+			return title;
+		}
+	};
 
 	return (
 		<Container
@@ -77,14 +94,9 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 									</MetaData>
 								</Spacer>
 							)}
-							<h2
-								className={classnames(className, `c-heading c-h2`, 'u-m-0', {
-									'u-clickable': onClickTitle,
-								})}
-								onClick={onClickTitle}
-							>
-								{title}
-							</h2>
+
+							{renderTitle()}
+
 							{(avatarSlot || tagSlot) && (
 								<Spacer margin="top-small">
 									<Flex spaced="regular">
