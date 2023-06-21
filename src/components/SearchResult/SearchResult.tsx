@@ -13,6 +13,8 @@ import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Spacer } from '../Spacer/Spacer';
 import { TagList, TagOptionSchema } from '../TagList/TagList';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
+import { Tooltip } from '../Tooltip/Tooltip';
+import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 
 import './SearchResult.scss';
 import {
@@ -29,6 +31,7 @@ export interface SearchResultPropsSchema extends DefaultProps {
 	maxDescriptionLength?: number;
 	isBookmarked: boolean | null;
 	date: string;
+	dateTooltip: string;
 	bookmarkCount: number | null; // null hides the counter
 	viewCount: number;
 	tags?: TagOptionSchema[];
@@ -44,6 +47,7 @@ export const SearchResult: FunctionComponent<SearchResultPropsSchema> = ({
 	maxDescriptionLength = 300,
 	isBookmarked,
 	date,
+	dateTooltip,
 	bookmarkCount,
 	viewCount,
 	tags = [],
@@ -82,7 +86,14 @@ export const SearchResult: FunctionComponent<SearchResultPropsSchema> = ({
 				<Spacer margin="bottom-small">
 					<Flex justify="between" wrap>
 						<MetaData category={type}>
-							<MetaDataItem label={date} />
+							<Tooltip position="right">
+								<TooltipTrigger>
+									<MetaDataItem label={date} />
+								</TooltipTrigger>
+								<TooltipContent>
+									<span>{dateTooltip}</span>
+								</TooltipContent>
+							</Tooltip>
 							<MetaDataItem label={String(viewCount)} icon={IconNameSchema.eye} />
 							{!isNil(bookmarkCount) && (
 								<MetaDataItem
