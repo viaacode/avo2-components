@@ -57,6 +57,8 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 			}
 		};
 	}, [src]);
+	console.log(category);
+	console.log(iconName);
 
 	return (
 		<div
