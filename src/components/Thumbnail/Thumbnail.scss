@@ -1,4 +1,4 @@
-@import '../../styles/settings/colors';
+@import "../../styles/settings/colors";
 
 /* ==========================================================================
    Component: Thumbnail
@@ -68,6 +68,10 @@
 
 .c-thumbnail-media--collection .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
 	color: $color-ocean-green;
+}
+
+.c-thumbnail-media--assignment .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
+	color: $color-french-rose;
 }
 
 .c-thumbnail-media--video .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {

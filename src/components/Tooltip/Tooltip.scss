@@ -1,4 +1,4 @@
-@import '../../styles/settings/colors';
+@import "../../styles/settings/colors";
 
 /* ==========================================================================
    Component: Tooltip
@@ -38,38 +38,38 @@
 	}
 
 	.c-tooltip__arrow::before {
-		content: '';
+		content: "";
 		transform: rotate(45deg);
 		background-color: $color-gray-50;
 		border: 1px solid $color-gray-400;
 	}
 
-	&[data-popper-placement^='top'] > .c-tooltip__arrow {
+	&[data-popper-placement^="top"] > .c-tooltip__arrow {
 		bottom: -4px;
 		left: 50%;
 		transform: translate(-8px, 0);
-		clip: rect(4px,20px,20px,0px);
+		clip: rect(4px, 20px, 20px, 0px);
 	}
 
-	&[data-popper-placement^='bottom'] > .c-tooltip__arrow {
+	&[data-popper-placement^="bottom"] > .c-tooltip__arrow {
 		top: -4px;
 		left: 50%;
 		transform: translate(-8px, 0);
 		clip: rect(-3px, 20px, 4px, 0px);
 	}
 
-	&[data-popper-placement^='left'] > .c-tooltip__arrow {
+	&[data-popper-placement^="left"] > .c-tooltip__arrow {
 		right: 0;
 		top: 50%;
 		transform: translate(0, -4px);
 		clip: rect(-5px, 20px, 17px, 8px);
 	}
 
-	&[data-popper-placement^='right'] > .c-tooltip__arrow {
-		left: -8px;
+	&[data-popper-placement^="right"] > .c-tooltip__arrow {
+		left: -4px;
 		top: 50%;
 		transform: translate(0, -4px);
-		clip: rect(-2px, 8px, 20px, 0px);
+		clip: rect(-2px, 4px, 20px, 0px);
 	}
 }
 
