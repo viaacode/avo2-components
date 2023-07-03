@@ -61,7 +61,6 @@ import type { PillPropsSchema } from './Pill/Pill';
 import type { QuotePropsSchema } from './Quote/Quote';
 import type { RadioButtonPropsSchema } from './RadioButton/RadioButton';
 import type { RadioButtonGroupPropsSchema } from './RadioButtonGroup/RadioButtonGroup';
-import type { SearchResultPropsSchema } from './SearchResult/SearchResult';
 import type { SelectOptionSchema, SelectPropsSchema } from './Select/Select';
 import type { SpacerOptionSchema, SpacerPropsSchema } from './Spacer/Spacer';
 import type { SpinnerPropsSchema } from './Spinner/Spinner';
@@ -241,14 +240,6 @@ export type RadioButtonProps = RadioButtonPropsSchema;
 
 export { RadioButtonGroup } from './RadioButtonGroup/RadioButtonGroup';
 export type RadioButtonGroupProps = RadioButtonGroupPropsSchema;
-
-export { SearchResult } from './SearchResult/SearchResult';
-export type SearchResultProps = SearchResultPropsSchema;
-export {
-	SearchResultSubtitle,
-	SearchResultThumbnail,
-	SearchResultTitle,
-} from './SearchResult/SearchResult.slots';
 
 export { Select } from './Select/Select';
 export type SelectProps = SelectPropsSchema;
