@@ -255,6 +255,11 @@
     "type": ""
   },
   {
+    "fileName": "collection-2.svg",
+    "name": "collection-2",
+    "type": ""
+  },
+  {
     "fileName": "collection.svg",
     "name": "collection",
     "type": ""
@@ -972,6 +977,11 @@
   {
     "fileName": "video.svg",
     "name": "video",
+    "type": ""
+  },
+  {
+    "fileName": "view-and-listen.svg",
+    "name": "view-and-listen",
     "type": ""
   },
   {
