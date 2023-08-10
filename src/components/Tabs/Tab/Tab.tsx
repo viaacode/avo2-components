@@ -19,6 +19,7 @@ export interface TabPropsSchema extends DefaultProps {
 
 export const Tab: FunctionComponent<TabPropsSchema> = ({
 	className,
+	id,
 	label,
 	icon,
 	active,
@@ -32,6 +33,7 @@ export const Tab: FunctionComponent<TabPropsSchema> = ({
 		})}
 		style={{ cursor: 'pointer' }}
 		onClick={onClick}
+		data-id={id}
 	>
 		{icon && <Icon name={icon} />}
 		<span>{label}</span>
