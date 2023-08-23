@@ -54,8 +54,9 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 	const footerRight = useSlot(ModalFooterRight, children);
 	const footerLeft = useSlot(ModalFooterLeft, children);
 	// eslint-disable-next-line prettier/prettier
-	const [mouseDownLocation, setMouseDownLocation] =
-		useState<{ x: number; y: number } | null>(null);
+	const [mouseDownLocation, setMouseDownLocation] = useState<{ x: number; y: number } | null>(
+		null
+	);
 
 	useKeyPress('Escape', close);
 

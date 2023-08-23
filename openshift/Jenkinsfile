@@ -27,7 +27,7 @@ pipeline {
             tty: true
             imagePullPolicy: Always
           - name: npm
-            image: node:lts
+            image: node:20.4-alpine
             command:
             - cat
             tty: true
@@ -46,7 +46,7 @@ pipeline {
 	}
 	environment {
 		OC_PROJECT = 'avo'
-		BASE_IMG = 'node:12-alpine'
+		BASE_IMG = 'node:20.4-alpine'
 		OC_URL = 'https://c113-e.private.eu-de.containers.cloud.ibm.com:30227'
 		JIRA_URL = 'meemoo.atlassian.net'
 		APP_NAME = 'avo-components'
@@ -90,11 +90,24 @@ pipeline {
                         '''
 					}
 				}
-				container('npm') {
-
+				container('npm react-scrollbars') {
 					script {
 								sh'''#!/bin/bash
-								npm install react-scrollbars-custom@4.1.1 --force && npm --registry=https://registry.npmjs.org install --legacy-peer-deps && npm run build || exit 1
+								npm install react-scrollbars-custom@4.1.1 --force || exit 1
+								'''
+					} // script
+				}
+				container('npm install') {
+					script {
+								sh'''#!/bin/bash
+								npm --registry=https://registry.npmjs.org install --legacy-peer-deps || exit 1
+								'''
+					} // script
+				}
+				container('npm build') {
+					script {
+								sh'''#!/bin/bash
+								npm run build || exit 1
 								'''
 					} // script
 				}
@@ -154,7 +167,7 @@ pipeline {
 }
 
 void getImageFromDockerfile() {
-	return 'node:12-alpine'
+	return 'node:20.4-alpine'
 }
 
 void setGitHubBuildStatus(String message, String state) {
