@@ -27,7 +27,7 @@ pipeline {
             tty: true
             imagePullPolicy: Always
           - name: npm
-            image: node:lts
+            image: node:20.4-alpine
             command:
             - cat
             tty: true
@@ -46,7 +46,7 @@ pipeline {
 	}
 	environment {
 		OC_PROJECT = 'avo'
-		BASE_IMG = 'node:12-alpine'
+		BASE_IMG = 'node:20.4-alpine'
 		OC_URL = 'https://c113-e.private.eu-de.containers.cloud.ibm.com:30227'
 		JIRA_URL = 'meemoo.atlassian.net'
 		APP_NAME = 'avo-components'
@@ -154,7 +154,7 @@ pipeline {
 }
 
 void getImageFromDockerfile() {
-	return 'node:12-alpine'
+	return 'node:20.4-alpine'
 }
 
 void setGitHubBuildStatus(String message, String state) {
