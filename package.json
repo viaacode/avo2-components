@@ -83,15 +83,14 @@
     "@types/autosize": "^3.0.7",
     "@types/classnames": "^2.2.10",
     "@types/enzyme": "^3.10.5",
-    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.10",
     "@types/lodash-es": "^4.17.3",
     "@types/marked": "^4.0.3",
     "@types/node": "14.6.1",
     "@types/raf": "^3.4.0",
-    "@types/react": "17.0.2",
+    "@types/react": "17.0.65",
     "@types/react-datepicker": "4.4.2",
-    "@types/react-dom": "17.0.2",
+    "@types/react-dom": "17.0.20",
     "@types/storybook__addon-actions": "^5.2.1",
     "@types/storybook__react": "^5.2.1",
     "@typescript-eslint/eslint-plugin": "5.36.2",
@@ -103,7 +102,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^4.2.2",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.3",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.8.0",
     "eslint": "8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -114,8 +113,6 @@
     "lint-staged": "^13.0.3",
     "lorem-ipsum": "^2.0.3",
     "prettier": "^2.1.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
     "react-scripts": "^5.0.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.26.7",
@@ -134,13 +131,9 @@
     "typescript": "4.8.3",
     "webpack": "^5.74.0"
   },
-  "resolutions": {
-    "@types/react": "17.0.2",
-    "@types/react-dom": "17.0.2"
-  },
   "overrides": {
-    "@types/react": "17.0.2",
-    "@types/react-dom": "17.0.2",
+    "@types/react": "17.0.65",
+    "@types/react-dom": "17.0.20",
     "webpack": "^5.74.0"
   },
   "publishConfig": {
