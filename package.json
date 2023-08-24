@@ -7,6 +7,7 @@
   "homepage": "./",
   "scripts": {
     "analyze": "source-map-explorer 'build/*.js'",
+    "preinstall": "npx npm-force-resolutions",
     "prebuild": "rimraf dist",
     "build": "rollup -c",
     "copy-to-avo-client": "rimraf ../avo2-client/node_modules/@viaa/avo2-components/dist ../avo2-client/node_modules/@viaa/avo2-components/src ../avo2-client/node_modules/.cache && cp -r dist src package.json ../avo2-client/node_modules/@viaa/avo2-components",
