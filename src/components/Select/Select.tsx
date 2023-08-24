@@ -2,10 +2,6 @@ import classnames from 'clsx';
 import { get, noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import ReactSelect, { ActionMeta } from 'react-select';
-// eslint-disable-next-line import/no-unresolved
-import { CreatableAdditionalProps } from 'react-select/dist/declarations/src/useCreatable';
-// eslint-disable-next-line import/no-unresolved
-import { StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
 
 import { DefaultProps } from '../../types';
 
@@ -17,12 +13,7 @@ export interface SelectOptionSchema<T = string> {
 	disabled?: boolean;
 }
 
-export interface SelectPropsSchema
-	extends DefaultProps,
-		Omit<
-			StateManagerProps<any, any, any> & CreatableAdditionalProps<any, any>,
-			'onChange' | 'value' | 'options'
-		> {
+export interface SelectPropsSchema extends DefaultProps {
 	options: SelectOptionSchema[];
 	id?: string;
 	disabled?: boolean;
@@ -30,6 +21,8 @@ export interface SelectPropsSchema
 	clearable?: boolean;
 	value?: string | null;
 	placeholder?: string;
+	isSearchable?: boolean;
+	isClearable?: boolean;
 	onChange?: (value: string) => void;
 }
 
