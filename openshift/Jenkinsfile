@@ -23,7 +23,7 @@ pipeline {
           - name: oc
             image: image-registry.openshift-image-registry.svc:5000/ci-cd/py:3.7
             command:
-            - cat
+            - cat & npm install -g npm@9.7.2
             tty: true
             imagePullPolicy: Always
           - name: npm
@@ -88,10 +88,6 @@ pipeline {
 							#sleep 3
 							#oc annotate --overwrite buildconfig/$APP_NAME-$GIT_SHORT_COMMIT ref=$BRANCH_NAME shortcommit=$GIT_SHORT_COMMIT
 							#oc start-build $APP_NAME-$GIT_SHORT_COMMIT --from-dir=. --wait=true
-
-
-                            echo 'update npm'
-                            sudo npm install -g npm@9.7.2
 
                             echo 'node version'
                             node -v
