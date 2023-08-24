@@ -23,7 +23,7 @@ pipeline {
           - name: oc
             image: image-registry.openshift-image-registry.svc:5000/ci-cd/py:3.7
             command:
-            - cat & npm install -g npm@9.7.2
+            - cat
             tty: true
             imagePullPolicy: Always
           - name: npm
