@@ -91,7 +91,7 @@ pipeline {
 
 
                             echo 'update npm'
-                            npm install -g npm@9.7.2
+                            sudo npm install -g npm@9.7.2
 
                             echo 'node version'
                             node -v
