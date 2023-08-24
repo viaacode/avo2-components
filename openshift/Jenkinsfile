@@ -89,6 +89,10 @@ pipeline {
 							#oc annotate --overwrite buildconfig/$APP_NAME-$GIT_SHORT_COMMIT ref=$BRANCH_NAME shortcommit=$GIT_SHORT_COMMIT
 							#oc start-build $APP_NAME-$GIT_SHORT_COMMIT --from-dir=. --wait=true
 
+
+                            echo 'update npm'
+                            npm install -g npm@9.7.2
+
                             echo 'node version'
                             node -v
 
