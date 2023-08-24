@@ -79,40 +79,44 @@ pipeline {
 			steps {
 				container('oc') {
 					script {
-						sh '''#!/bin/bash
-                        echo 'disabled no deployment that works atm (storybook)'
-                        #oc project $OC_PROJECT
-                        #oc import-image $BASE_IMG --confirm
-                        #oc new-build -l ref=$BRANCH_NAME --strategy=docker --name $APP_NAME-$GIT_SHORT_COMMIT --to $APP_NAME:$GIT_SHORT_COMMIT --binary --context-dir="" || echo "Probably already exists, start new build"
-                        #sleep 3
-                        #oc annotate --overwrite buildconfig/$APP_NAME-$GIT_SHORT_COMMIT ref=$BRANCH_NAME shortcommit=$GIT_SHORT_COMMIT
-                        #oc start-build $APP_NAME-$GIT_SHORT_COMMIT --from-dir=. --wait=true
+						sh '''
+							#!/bin/bash
+							echo 'disabled no deployment that works atm (storybook)'
+							#oc project $OC_PROJECT
+							#oc import-image $BASE_IMG --confirm
+							#oc new-build -l ref=$BRANCH_NAME --strategy=docker --name $APP_NAME-$GIT_SHORT_COMMIT --to $APP_NAME:$GIT_SHORT_COMMIT --binary --context-dir="" || echo "Probably already exists, start new build"
+							#sleep 3
+							#oc annotate --overwrite buildconfig/$APP_NAME-$GIT_SHORT_COMMIT ref=$BRANCH_NAME shortcommit=$GIT_SHORT_COMMIT
+							#oc start-build $APP_NAME-$GIT_SHORT_COMMIT --from-dir=. --wait=true
                         '''
-					}
+					} // script disabled no deployment that works atm (storybook)
 				}
 				container('npm react-scrollbars') {
 					script {
-								sh'''#!/bin/bash
-								echo 'installing react-scrollbars-custom@4.1.1'
-								npm install react-scrollbars-custom@4.1.1 --force
-								'''
-					} // script
+						sh'''
+							#!/bin/bash
+							echo 'installing react-scrollbars-custom@4.1.1'
+							npm install react-scrollbars-custom@4.1.1 --force
+						'''
+					} // script npm react-scrollbars
 				}
 				container('npm install') {
 					script {
-								sh'''#!/bin/bash
-								echo 'installing node modules'
-								npm --registry=https://registry.npmjs.org install --legacy-peer-deps
-								'''
-					} // script
+						sh'''
+							#!/bin/bash
+							echo 'installing node modules'
+							npm --registry=https://registry.npmjs.org install --legacy-peer-deps
+						'''
+					} // script npm install
 				}
 				container('npm build') {
 					script {
-								sh'''#!/bin/bash
-								echo 'building avo2-components'
-								npm run build
-								'''
-					} // script
+						sh'''
+							#!/bin/bash
+							echo 'building avo2-components'
+							npm run build
+						'''
+					} // script npm build
 				}
 			}
 		}// end stage build
