@@ -93,21 +93,24 @@ pipeline {
 				container('npm react-scrollbars') {
 					script {
 								sh'''#!/bin/bash
-								npm install react-scrollbars-custom@4.1.1 --force || exit 1
+								echo 'installing react-scrollbars-custom@4.1.1'
+								npm install react-scrollbars-custom@4.1.1 --force
 								'''
 					} // script
 				}
 				container('npm install') {
 					script {
 								sh'''#!/bin/bash
-								npm --registry=https://registry.npmjs.org install --legacy-peer-deps || exit 1
+								echo 'installing node modules'
+								npm --registry=https://registry.npmjs.org install --legacy-peer-deps
 								'''
 					} // script
 				}
 				container('npm build') {
 					script {
 								sh'''#!/bin/bash
-								npm run build || exit 1
+								echo 'building avo2-components'
+								npm run build
 								'''
 					} // script
 				}
