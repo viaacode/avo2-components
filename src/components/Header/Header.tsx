@@ -16,7 +16,18 @@ import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import './Header.scss';
-import { HeaderAvatar, HeaderButtons, HeaderRow, HeaderTags } from './Header.slots';
+import {
+	HeaderAvatar,
+	HeaderBottomRowLeft,
+	HeaderBottomRowRight,
+	HeaderButtons,
+	HeaderMiddleRowLeft,
+	HeaderMiddleRowRight,
+	HeaderRow,
+	HeaderTags,
+	HeaderTopRowLeft,
+	HeaderTopRowRight,
+} from './Header.slots';
 
 export interface HeaderPropsSchema extends DefaultProps {
 	bookmarks?: string;
@@ -44,6 +55,12 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 	const avatarSlot = useSlot(HeaderAvatar, children);
 	const tagSlot = useSlot(HeaderTags, children);
 	const rowSlot = useSlot(HeaderRow, children);
+	const headerTopRowLeftSlot = useSlot(HeaderTopRowLeft, children);
+	const headerTopRowRightSlot = useSlot(HeaderTopRowRight, children);
+	const headerMiddleRowLeftSlot = useSlot(HeaderMiddleRowLeft, children);
+	const headerMiddleRowRightSlot = useSlot(HeaderMiddleRowRight, children);
+	const headerBottomRowLeftSlot = useSlot(HeaderBottomRowLeft, children);
+	const headerBottomRowRightSlot = useSlot(HeaderBottomRowRight, children);
 
 	const renderTitle = () => {
 		if (typeof title === 'string') {
@@ -94,9 +111,28 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 									</MetaData>
 								</Spacer>
 							)}
-
+							{headerTopRowLeftSlot}
+						</ToolbarItem>
+					</ToolbarLeft>
+					<ToolbarRight>{headerTopRowRightSlot}</ToolbarRight>
+				</Toolbar>
+				<Toolbar autoHeight>
+					<ToolbarLeft>
+						<ToolbarItem>
 							{renderTitle()}
-
+							{headerMiddleRowLeftSlot}
+						</ToolbarItem>
+					</ToolbarLeft>
+					<ToolbarRight>
+						<ToolbarItem>
+							{buttonSlot}
+							{headerMiddleRowRightSlot}
+						</ToolbarItem>
+					</ToolbarRight>
+				</Toolbar>
+				<Toolbar autoHeight>
+					<ToolbarLeft>
+						<ToolbarItem>
 							{(avatarSlot || tagSlot) && (
 								<Spacer margin="top-small">
 									<Flex spaced="regular">
@@ -105,22 +141,15 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 									</Flex>
 								</Spacer>
 							)}
+							{rowSlot}
+							{headerBottomRowLeftSlot}
 						</ToolbarItem>
 					</ToolbarLeft>
-					{buttonSlot && (
-						<ToolbarRight>
-							<ToolbarItem>{buttonSlot}</ToolbarItem>
-						</ToolbarRight>
-					)}
+					<ToolbarRight>
+						<ToolbarItem>{headerBottomRowRightSlot}</ToolbarItem>
+					</ToolbarRight>
 				</Toolbar>
 			</Container>
-			{rowSlot && (
-				<Container mode="horizontal">
-					<Toolbar autoHeight>
-						<ToolbarLeft>{rowSlot}</ToolbarLeft>
-					</Toolbar>
-				</Container>
-			)}
 		</Container>
 	);
 };
