@@ -91,25 +91,23 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 					<ToolbarLeft>
 						<ToolbarItem>
 							{showMetaData && !!category && (
-								<Spacer margin="bottom-small">
-									<MetaData spaced={true} category={category}>
-										<MetaDataItem>
-											<HeaderContentType
-												category={category}
-												label={translateContentType(category, 'en', false)}
-											/>
-										</MetaDataItem>
-										{views && (
-											<MetaDataItem icon={IconNameSchema.eye} label={views} />
-										)}
-										{bookmarks && (
-											<MetaDataItem
-												icon={IconNameSchema.bookmark}
-												label={bookmarks}
-											/>
-										)}
-									</MetaData>
-								</Spacer>
+								<MetaData spaced={true} category={category}>
+									<MetaDataItem>
+										<HeaderContentType
+											category={category}
+											label={translateContentType(category, 'en', false)}
+										/>
+									</MetaDataItem>
+									{views && (
+										<MetaDataItem icon={IconNameSchema.eye} label={views} />
+									)}
+									{bookmarks && (
+										<MetaDataItem
+											icon={IconNameSchema.bookmark}
+											label={bookmarks}
+										/>
+									)}
+								</MetaData>
 							)}
 							{headerTopRowLeftSlot}
 						</ToolbarItem>
