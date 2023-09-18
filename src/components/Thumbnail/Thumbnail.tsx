@@ -15,6 +15,7 @@ export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
 	collection: IconNameSchema.collection,
 	bundle: IconNameSchema.folder,
 	search: IconNameSchema.search,
+	assignment: IconNameSchema.clipboard,
 };
 
 export interface ThumbnailPropsSchema extends DefaultProps {

@@ -4,9 +4,8 @@ import React, { ChangeEvent, FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
-
-import './Toggle.scss';
 import { IconNameSchema } from '../Icon/Icon.types';
+import './Toggle.scss';
 
 export interface TogglePropsSchema extends DefaultProps {
 	id?: string;

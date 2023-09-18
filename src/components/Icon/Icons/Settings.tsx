@@ -1,7 +1,13 @@
 import React, { SVGProps } from 'react';
-
 const Settings = (props: SVGProps<SVGSVGElement>) => (
-	<svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
+	<svg
+		width={24}
+		height={24}
+		viewBox="0 0 24 24"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
 		<path
 			d="M12 16c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z"
 			fill="#000"
@@ -12,5 +18,4 @@ const Settings = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
-
 export default Settings;

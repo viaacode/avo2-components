@@ -1,4 +1,8 @@
 .c-header {
+	.c-toolbar {
+		min-height: 4rem;
+	}
+
 	.c-toolbar__left, .c-toolbar__right {
 		flex: initial;
 	}

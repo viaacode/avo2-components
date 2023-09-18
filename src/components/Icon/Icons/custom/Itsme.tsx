@@ -1,5 +1,4 @@
 import React, { SVGProps } from 'react';
-
 const Itsme = (props: SVGProps<SVGSVGElement>) => (
 	<svg viewBox="0 0 24 24" {...props}>
 		<path
@@ -12,5 +11,4 @@ const Itsme = (props: SVGProps<SVGSVGElement>) => (
 		/>
 	</svg>
 );
-
 export default Itsme;

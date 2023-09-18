@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 
-import { testRenderLink } from '../../helpers/render-link';
+import { testRenderLink } from '../../helpers';
 import { LinkTarget } from '../../types';
 import { IconNameSchema } from '../Icon/Icon.types';
 

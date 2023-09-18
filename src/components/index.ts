@@ -61,7 +61,6 @@ import type { PillPropsSchema } from './Pill/Pill';
 import type { QuotePropsSchema } from './Quote/Quote';
 import type { RadioButtonPropsSchema } from './RadioButton/RadioButton';
 import type { RadioButtonGroupPropsSchema } from './RadioButtonGroup/RadioButtonGroup';
-import type { SearchResultPropsSchema } from './SearchResult/SearchResult';
 import type { SelectOptionSchema, SelectPropsSchema } from './Select/Select';
 import type { SpacerOptionSchema, SpacerPropsSchema } from './Spacer/Spacer';
 import type { SpinnerPropsSchema } from './Spinner/Spinner';
@@ -165,7 +164,18 @@ export type GridProps = GridPropsSchema;
 
 export { Header } from './Header/Header';
 export type HeaderProps = HeaderPropsSchema;
-export { HeaderAvatar, HeaderButtons, HeaderTags, HeaderRow } from './Header/Header.slots';
+export {
+	HeaderAvatar,
+	HeaderButtons,
+	HeaderTags,
+	HeaderRow,
+	HeaderTopRowLeft,
+	HeaderTopRowRight,
+	HeaderMiddleRowLeft,
+	HeaderMiddleRowRight,
+	HeaderBottomRowLeft,
+	HeaderBottomRowRight,
+} from './Header/Header.slots';
 
 export { HeaderContentType } from './HeaderContentType/HeaderContentType';
 export type HeaderContentTypeProps = HeaderContentTypePropsSchema;
@@ -241,14 +251,6 @@ export type RadioButtonProps = RadioButtonPropsSchema;
 
 export { RadioButtonGroup } from './RadioButtonGroup/RadioButtonGroup';
 export type RadioButtonGroupProps = RadioButtonGroupPropsSchema;
-
-export { SearchResult } from './SearchResult/SearchResult';
-export type SearchResultProps = SearchResultPropsSchema;
-export {
-	SearchResultSubtitle,
-	SearchResultThumbnail,
-	SearchResultTitle,
-} from './SearchResult/SearchResult.slots';
 
 export { Select } from './Select/Select';
 export type SelectProps = SelectPropsSchema;

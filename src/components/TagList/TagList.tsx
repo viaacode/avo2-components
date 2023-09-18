@@ -13,6 +13,8 @@ export interface TagOptionSchema {
 	id: string | number;
 	color?: string;
 	active?: boolean;
+	icon?: IconNameSchema;
+	className?: string;
 }
 
 export interface TagListPropsSchema extends DefaultProps {
@@ -41,7 +43,7 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 		<ul className={classnames(className, 'c-tag-list', styles['c-tag-list'])}>
 			{tags.map((tag: TagOptionSchema, index) => (
 				<li
-					className={classnames({
+					className={classnames(tag.className, {
 						'c-label': !bordered,
 
 						// Normal
@@ -93,6 +95,7 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
 							style={onTagClicked ? { cursor: 'pointer' } : {}}
 						>
+							{tag.icon && <Icon name={tag.icon} />}
 							{tag.label}
 						</span>
 					)}

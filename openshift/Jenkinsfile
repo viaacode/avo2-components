@@ -27,7 +27,7 @@ pipeline {
             tty: true
             imagePullPolicy: Always
           - name: npm
-            image: node:lts
+            image: node:20.4-alpine
             command:
             - cat
             tty: true
@@ -46,7 +46,7 @@ pipeline {
 	}
 	environment {
 		OC_PROJECT = 'avo'
-		BASE_IMG = 'node:12-alpine'
+		BASE_IMG = 'node:20.4-alpine'
 		OC_URL = 'https://c113-e.private.eu-de.containers.cloud.ibm.com:30227'
 		JIRA_URL = 'meemoo.atlassian.net'
 		APP_NAME = 'avo-components'
@@ -77,26 +77,41 @@ pipeline {
 				}
 			}
 			steps {
-				container('oc') {
-					script {
-						sh '''#!/bin/bash
-                        echo 'disabled no deployment that works atm (storybook)'
-                        #oc project $OC_PROJECT
-                        #oc import-image $BASE_IMG --confirm
-                        #oc new-build -l ref=$BRANCH_NAME --strategy=docker --name $APP_NAME-$GIT_SHORT_COMMIT --to $APP_NAME:$GIT_SHORT_COMMIT --binary --context-dir="" || echo "Probably already exists, start new build"
-                        #sleep 3
-                        #oc annotate --overwrite buildconfig/$APP_NAME-$GIT_SHORT_COMMIT ref=$BRANCH_NAME shortcommit=$GIT_SHORT_COMMIT
-                        #oc start-build $APP_NAME-$GIT_SHORT_COMMIT --from-dir=. --wait=true
-                        '''
-					}
-				}
+//				container('oc') {
+//					script {
+//						sh '''
+//							#!/bin/bash
+//							echo 'disabled no deployment that works atm (storybook)'
+//							#oc project $OC_PROJECT
+//							#oc import-image $BASE_IMG --confirm
+//							#oc new-build -l ref=$BRANCH_NAME --strategy=docker --name $APP_NAME-$GIT_SHORT_COMMIT --to $APP_NAME:$GIT_SHORT_COMMIT --binary --context-dir="" || echo "Probably already exists, start new build"
+//							#sleep 3
+//							#oc annotate --overwrite buildconfig/$APP_NAME-$GIT_SHORT_COMMIT ref=$BRANCH_NAME shortcommit=$GIT_SHORT_COMMIT
+//							#oc start-build $APP_NAME-$GIT_SHORT_COMMIT --from-dir=. --wait=true
+//                        '''
+//					} // script disabled no deployment that works atm (storybook)
+//				}
 				container('npm') {
-
 					script {
-								sh'''#!/bin/bash
-								npm install react-scrollbars-custom@4.1.1 --force && npm --registry=https://registry.npmjs.org install --legacy-peer-deps && npm run build || exit 1
-								'''
-					} // script
+						sh '''
+							#!/bin/bash
+
+                            echo 'node version'
+                            node -v
+
+                            echo 'npm version'
+                            npm -v
+
+                            echo 'installing node modules'
+                            npm --registry=https://registry.npmjs.org install --force
+
+                            echo 'list versions of @types/react. should all be v17.0.2'
+                            npm list @types/react
+
+                            echo 'building avo2-components'
+                            npm run build
+                        '''
+					} // script disabled no deployment that works atm (storybook)
 				}
 			}
 		}// end stage build
@@ -153,17 +168,17 @@ pipeline {
 	}
 }
 
-void getImageFromDockerfile() {
-	return 'node:12-alpine'
+String getImageFromDockerfile() {
+	return 'node:20.4-alpine'
 }
 
 void setGitHubBuildStatus(String message, String state) {
 	step([
-			$class            : 'GitHubCommitStatusSetter',
-			reposSource       : [$class: 'ManuallyEnteredRepositorySource', url: "${GIT_URL}"],
-			commitShaSource   : [$class: 'ManuallyEnteredShaSource', sha: "${GIT_COMMIT}"],
-			errorHandlers     : [[$class: 'ChangingBuildStatusErrorHandler', result: 'UNSTABLE']],
-			statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: message, state: state]]]
+		$class            : 'GitHubCommitStatusSetter',
+		reposSource       : [$class: 'ManuallyEnteredRepositorySource', url: "${GIT_URL}"],
+		commitShaSource   : [$class: 'ManuallyEnteredShaSource', sha: "${GIT_COMMIT}"],
+		errorHandlers     : [[$class: 'ChangingBuildStatusErrorHandler', result: 'UNSTABLE']],
+		statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: message, state: state]]]
 	])
 }
 

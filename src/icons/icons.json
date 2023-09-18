@@ -200,6 +200,16 @@
     "type": ""
   },
   {
+    "fileName": "check-badge.svg",
+    "name": "check-badge",
+    "type": ""
+  },
+  {
+    "fileName": "check-circle-2.svg",
+    "name": "check-circle-2",
+    "type": ""
+  },
+  {
     "fileName": "check-circle.svg",
     "name": "check-circle",
     "type": ""
@@ -230,6 +240,11 @@
     "type": ""
   },
   {
+    "fileName": "close-circle.svg",
+    "name": "close-circle",
+    "type": ""
+  },
+  {
     "fileName": "close.svg",
     "name": "close",
     "type": ""
@@ -237,6 +252,11 @@
   {
     "fileName": "code.svg",
     "name": "code",
+    "type": ""
+  },
+  {
+    "fileName": "collection-2.svg",
+    "name": "collection-2",
     "type": ""
   },
   {
@@ -322,6 +342,11 @@
   {
     "fileName": "edit-3.svg",
     "name": "edit-3",
+    "type": ""
+  },
+  {
+    "fileName": "edit-4.svg",
+    "name": "edit-4",
     "type": ""
   },
   {
@@ -645,6 +670,11 @@
     "type": ""
   },
   {
+    "fileName": "pointer.svg",
+    "name": "pointer",
+    "type": ""
+  },
+  {
     "fileName": "power.svg",
     "name": "power",
     "type": ""
@@ -695,8 +725,18 @@
     "type": ""
   },
   {
+    "fileName": "school.svg",
+    "name": "school",
+    "type": ""
+  },
+  {
     "fileName": "scissors.svg",
     "name": "scissors",
+    "type": ""
+  },
+  {
+    "fileName": "search-2.svg",
+    "name": "search-2",
     "type": ""
   },
   {
@@ -747,6 +787,11 @@
   {
     "fileName": "slash.svg",
     "name": "slash",
+    "type": ""
+  },
+  {
+    "fileName": "sliders-2.svg",
+    "name": "sliders-2",
     "type": ""
   },
   {
@@ -815,6 +860,11 @@
     "type": ""
   },
   {
+    "fileName": "trash.svg",
+    "name": "trash",
+    "type": ""
+  },
+  {
     "fileName": "trending-down.svg",
     "name": "trending-down",
     "type": ""
@@ -865,6 +915,11 @@
     "type": ""
   },
   {
+    "fileName": "user-2.svg",
+    "name": "user-2",
+    "type": ""
+  },
+  {
     "fileName": "user-check.svg",
     "name": "user-check",
     "type": ""
@@ -895,6 +950,21 @@
     "type": ""
   },
   {
+    "fileName": "userGroup-2.svg",
+    "name": "userGroup-2",
+    "type": ""
+  },
+  {
+    "fileName": "userGroup-3.svg",
+    "name": "userGroup-3",
+    "type": ""
+  },
+  {
+    "fileName": "userGroup.svg",
+    "name": "userGroup",
+    "type": ""
+  },
+  {
     "fileName": "users.svg",
     "name": "users",
     "type": ""
@@ -907,6 +977,11 @@
   {
     "fileName": "video.svg",
     "name": "video",
+    "type": ""
+  },
+  {
+    "fileName": "view-and-listen.svg",
+    "name": "view-and-listen",
     "type": ""
   },
   {

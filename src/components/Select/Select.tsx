@@ -2,9 +2,10 @@ import classnames from 'clsx';
 import { get, noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import ReactSelect, { ActionMeta } from 'react-select';
-import type { CreatableProps } from 'react-select/src/Creatable';
-import type { NamedProps } from 'react-select/src/Select';
-import type { ValueType } from 'react-select/src/types';
+// eslint-disable-next-line import/no-unresolved
+import { CreatableAdditionalProps } from 'react-select/dist/declarations/src/useCreatable';
+// eslint-disable-next-line import/no-unresolved
+import { StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
 
 import { DefaultProps } from '../../types';
 
@@ -18,8 +19,10 @@ export interface SelectOptionSchema<T = string> {
 
 export interface SelectPropsSchema
 	extends DefaultProps,
-		CreatableProps<SelectOptionSchema, true>,
-		Omit<NamedProps, 'onChange' | 'value' | 'options'> {
+		Omit<
+			StateManagerProps<any, any, any> & CreatableAdditionalProps<any, any>,
+			'onChange' | 'value' | 'options'
+		> {
 	options: SelectOptionSchema[];
 	id?: string;
 	disabled?: boolean;
@@ -42,10 +45,7 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 	onChange = noop,
 	...props
 }) => {
-	function onValueChange(
-		changedValue: ValueType<SelectOptionSchema, boolean>,
-		actionMeta: ActionMeta<SelectOptionSchema>
-	) {
+	function onValueChange(changedValue: any, actionMeta: ActionMeta<SelectOptionSchema>) {
 		if (actionMeta.action !== 'create-option') {
 			onChange(get(changedValue, 'value', null));
 		}
@@ -67,8 +67,8 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 			onChange={onValueChange}
 			noOptionsMessage={() => 'Geen opties'}
 			loadingMessage={() => 'Bezig met laden'}
-			formatCreateLabel={(value: string) => `"${value}" aanmaken`}
-			{...(props as any)}
+			{...{ formatCreateLabel: ((value: string) => `"${value}" aanmaken`) as any }}
+			{...props}
 		/>
 	);
 };

@@ -1,4 +1,4 @@
-@import '../../styles/settings/colors';
+@import "../../styles/settings/colors";
 
 /* ==========================================================================
    Component: Thumbnail
@@ -66,10 +66,6 @@
 	}
 }
 
-.c-thumbnail-media--collection .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
-	color: $color-ocean-green;
-}
-
 .c-thumbnail-media--video .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
 	color: $color-yellow;
 }
@@ -78,8 +74,16 @@
 	color: $color-teal-bright;
 }
 
+.c-thumbnail-media--collection .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
+	color: $color-ocean-green;
+}
+
 .c-thumbnail-media--bundle .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
 	color: $color-tapestry;
+}
+
+.c-thumbnail-media--assignment .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
+	color: $color-french-rose;
 }
 
 // hide the type label on narrow screens so it doesn't collide with the label on the right
