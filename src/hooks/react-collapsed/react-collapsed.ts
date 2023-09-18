@@ -50,12 +50,12 @@ export default function useCollapse(initialConfig = {} as any) {
 						...expandStyles,
 						display: 'block',
 						overflow: 'hidden',
-					} as any)
+					}) as any
 			);
 			setShouldAnimateOpen(true);
 		} else {
 			const height = getElementHeight(el);
-			setStyles((oldStyles) => ({ ...oldStyles, ...collapseStyles, height } as any));
+			setStyles((oldStyles) => ({ ...oldStyles, ...collapseStyles, height }) as any);
 			setShouldAnimateOpen(false);
 		}
 	}, [isOpen, initialConfig.collapsedHeight, el]);
@@ -63,7 +63,7 @@ export default function useCollapse(initialConfig = {} as any) {
 	useLayoutEffectAfterMount(() => {
 		const height = getElementHeight(el);
 		if (shouldAnimateOpen) {
-			setStyles((oldStyles) => ({ ...oldStyles, height } as any));
+			setStyles((oldStyles) => ({ ...oldStyles, height }) as any);
 			setHeightAtTransition(height);
 		} else {
 			// requestAnimationFrame required to transition, otherwise will flash closed
@@ -74,7 +74,7 @@ export default function useCollapse(initialConfig = {} as any) {
 							...oldStyles,
 							height: getCollapsedHeightStyle(),
 							overflow: 'hidden',
-						} as any)
+						}) as any
 				);
 				setHeightAtTransition(height);
 			});
@@ -111,7 +111,7 @@ export default function useCollapse(initialConfig = {} as any) {
 		const height = getElementHeight(el);
 		if (isOpen && height !== heightAtTransition) {
 			setHeightAtTransition(height);
-			setStyles((oldStyles) => ({ ...oldStyles, height } as any));
+			setStyles((oldStyles) => ({ ...oldStyles, height }) as any);
 			return;
 		}
 

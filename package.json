@@ -26,6 +26,7 @@
     "lint:fix": "eslint \"./{src,scripts}/**/*.{ts,tsx}\" --fix",
     "format": "prettier --list-different \"{src,scripts}/**/*.{ts,tsx}\"",
     "format:fix": "prettier --list-different --write \"{src,scripts}/**/*.{ts,tsx}\"",
+    "dev": "start-storybook -p 3020",
     "start": "start-storybook -p 3020 --ci",
     "test": "jest --verbose",
     "test:output": "cross-env CI=true jest --json --outputFile=.storybook/test-results.json",
