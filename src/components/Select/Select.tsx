@@ -62,7 +62,7 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 			isDisabled={disabled}
 			isLoading={loading}
 			isClearable={clearable}
-			isOptionDisabled={(option) => (option as SelectOptionSchema).disabled}
+			isOptionDisabled={(option) => (option as SelectOptionSchema).disabled ?? false}
 			placeholder={placeholder}
 			onChange={onValueChange}
 			noOptionsMessage={() => 'Geen opties'}

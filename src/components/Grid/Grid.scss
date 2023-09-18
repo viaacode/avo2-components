@@ -35,9 +35,9 @@ $o-grid-column-gap: 2.4rem !default;
 // Activate columns regardless of breakpoint
 $i: 0;
 
-@while($i < $o-grid-columns) {
-	.o-grid-col-#{$i + 1}{
-		width: calc(#{math.div( ( $i + 1 ), $o-grid-columns ) * 100}% - #{$o-grid-column-gap});
+@while ($i < $o-grid-columns) {
+	.o-grid-col-#{$i + 1} {
+		width: calc(#{math.div( ( $i + 1 ), $o-grid-columns )} * 100% - #{$o-grid-column-gap});
 		flex: 1 1 auto;
 	}
 	$i: $i + 1;
@@ -51,9 +51,9 @@ $i: 0;
 		flex: 1 1 auto;
 	}
 
-	@while($i < $o-grid-columns) {
+	@while ($i < $o-grid-columns) {
 		.o-grid-col-bp1-#{$i + 1} {
-			width: calc(#{math.div( ( $i + 1 ), $o-grid-columns ) * 100}% - #{$o-grid-column-gap});
+			width: calc(#{math.div( ( $i + 1 ), $o-grid-columns )} * 100% - #{$o-grid-column-gap});
 		}
 		$i: $i + 1;
 	}
@@ -67,9 +67,9 @@ $i: 0;
 		flex: 1 1 auto;
 	}
 
-	@while($i < $o-grid-columns) {
+	@while ($i < $o-grid-columns) {
 		.o-grid-col-bp2-#{$i + 1} {
-			width: calc(#{math.div( ( $i + 1 ), $o-grid-columns ) * 100}% - #{$o-grid-column-gap});
+			width: calc(#{math.div( ( $i + 1 ), $o-grid-columns )} * 100% - #{$o-grid-column-gap});
 		}
 		$i: $i + 1;
 	}
@@ -79,9 +79,9 @@ $i: 0;
 
 // Activate columns only from breakpoint 3
 @media (min-width: $o-grid-bp3) {
-	@while($i < $o-grid-columns) {
+	@while ($i < $o-grid-columns) {
 		.o-grid-col-bp3-#{$i + 1} {
-			width: calc(#{math.div( ( $i + 1 ), $o-grid-columns ) * 100}% - #{$o-grid-column-gap});
+			width: calc(#{math.div( ( $i + 1 ), $o-grid-columns )} * 100% - #{$o-grid-column-gap});
 		}
 		$i: $i + 1;
 	}
