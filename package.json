@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -48,7 +48,6 @@
     ]
   },
   "peerDependencies": {
-    "@flowplayer/player": "3.3.0",
     "@popperjs/core": "2.11.6",
     "@viaa/avo2-types": "2.49.0",
     "autosize": "6.0.1",
@@ -57,21 +56,17 @@
     "date-fns": "2.30.0",
     "lodash-es": "4.17.21",
     "marked": "4.0.15",
-    "postcss": "8.4.19",
     "raf": "3.4.1",
     "react": "17.0.2",
-    "react-colorful": "5.5.1",
     "react-datepicker": "4.7.0",
     "react-dom": "17.0.2",
-    "react-modal": "3.14.4",
     "react-perfect-scrollbar": "1.5.8",
     "react-popper": "2.3.0",
     "react-range": "1.8.14",
-    "react-scrollbars-custom": "4.1.1",
-    "react-select": "5.7.4",
-    "react-table": "7.7.0"
+    "react-select": "5.7.4"
   },
   "devDependencies": {
+    "postcss": "8.4.19",
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
     "@snyk/protect": "1.1221.0",
