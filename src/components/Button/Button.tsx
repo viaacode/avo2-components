@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -59,7 +59,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 	iconPosition = 'left',
 	renderIcon,
 }) => {
-	const rootCls = classnames(className, {
+	const rootCls = clsx(className, {
 		// Normal
 		['c-button']: true,
 		['c-button--active']: active,
@@ -104,7 +104,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 
 		return (
 			<Icon
-				className={classnames(
+				className={clsx(
 					'c-button__icon',
 					styles['c-button__icon'],
 					skins['c-button__icon']
@@ -130,7 +130,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 					children
 				) : (
 					<div
-						className={classnames(
+						className={clsx(
 							'c-button__content',
 							styles['c-button__content'],
 							skins['c-button__content']
@@ -140,7 +140,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 
 						{label && (
 							<div
-								className={classnames(
+								className={clsx(
 									'c-button__label',
 									styles['c-button__label'],
 									skins['c-button__label']
@@ -154,7 +154,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 
 						{arrow && (
 							<Icon
-								className={classnames(
+								className={clsx(
 									'c-button__icon',
 									styles['c-button__icon'],
 									skins['c-button__icon']

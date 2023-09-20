@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { getTrackBackground, Range } from 'react-range';
@@ -58,7 +58,7 @@ export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 		}
 	};
 
-	const classes = classnames('c-input-range', className, { 'c-input-range__disabled': disabled });
+	const classes = clsx('c-input-range', className, { 'c-input-range__disabled': disabled });
 
 	const sortedValues = [...values];
 	sortedValues.sort((a: number, b: number) => a - b);

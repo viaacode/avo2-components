@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
@@ -30,7 +30,7 @@ export const Menu: FunctionComponent<MenuPropsSchema> = ({
 }) => {
 	return (
 		<div
-			className={classnames(className, {
+			className={clsx(className, {
 				// Normal
 				['c-menu']: true,
 				['c-menu--search-result']: search,

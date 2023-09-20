@@ -1,5 +1,5 @@
 import { Avo } from '@viaa/avo2-types';
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
@@ -39,7 +39,7 @@ export const MenuSearchResultContent: FunctionComponent<MenuSearchResultContentP
 	const renderMenuItem = (menuItemInfo: MenuSearchResultItemInfoSchema) => {
 		return (
 			<div
-				className={classnames(className, 'c-menu__item')}
+				className={clsx(className, 'c-menu__item')}
 				onClick={() => onClick(menuItemInfo.id)}
 				key={`menu-search-item-${menuItemInfo.id}`}
 			>

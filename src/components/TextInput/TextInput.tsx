@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent, KeyboardEvent } from 'react';
 
@@ -38,7 +38,7 @@ export const TextInput: FunctionComponent<TextInputPropsSchema> = ({
 		onChange(event.target.value);
 	}
 
-	const classes = classnames(className, icon ? 'c-input-with-icon' : 'c-input');
+	const classes = clsx(className, icon ? 'c-input-with-icon' : 'c-input');
 
 	return icon ? (
 		<div className={classes}>

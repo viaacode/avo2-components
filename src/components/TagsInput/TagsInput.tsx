@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import Select, { ActionMeta } from 'react-select';
@@ -56,7 +56,7 @@ export const TagsInput: FunctionComponent<TagsInputPropsSchema> = ({
 		}
 	}
 
-	const classes = classnames(className, 'c-tags-input');
+	const classes = clsx(className, 'c-tags-input');
 
 	return allowCreate ? (
 		<CreatableSelect

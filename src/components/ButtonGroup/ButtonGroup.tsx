@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -10,7 +10,7 @@ export interface ButtonGroupPropsSchema extends DefaultProps {
 }
 
 const ButtonGroup: FunctionComponent<ButtonGroupPropsSchema> = ({ className = '', children }) => (
-	<div className={classnames(className, 'c-button-group')}>{children}</div>
+	<div className={clsx(className, 'c-button-group')}>{children}</div>
 );
 
 export { ButtonGroup };

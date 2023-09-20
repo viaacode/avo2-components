@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { get, noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import ReactSelect, { ActionMeta } from 'react-select';
@@ -53,7 +53,7 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 
 	return (
 		<ReactSelect
-			className={classnames('c-select', className)}
+			className={clsx('c-select', className)}
 			classNamePrefix="c-select"
 			id={id}
 			options={options}

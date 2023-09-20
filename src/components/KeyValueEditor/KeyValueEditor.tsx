@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { cloneDeep, noop } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 
@@ -156,7 +156,7 @@ export const KeyValueEditor: FunctionComponent<KeyValueEditorPropsSchema> = ({
 
 	const [paginatedData, totalFilteredResults] = getPaginatedData();
 	return (
-		<div className={classnames('c-key-value-editor', className)}>
+		<div className={clsx('c-key-value-editor', className)}>
 			<Toolbar>
 				<ToolbarRight>
 					<ToolbarItem>

@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../../types';
@@ -16,9 +16,7 @@ export const ToolbarItem: FunctionComponent<ToolbarItemPropsSchema> = ({
 	className,
 }) => {
 	return (
-		<div
-			className={classnames(className, 'c-toolbar__item', { 'c-toolbar__item--grow': grow })}
-		>
+		<div className={clsx(className, 'c-toolbar__item', { 'c-toolbar__item--grow': grow })}>
 			{children}
 		</div>
 	);

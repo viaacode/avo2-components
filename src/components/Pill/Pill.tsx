@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -21,7 +21,7 @@ export const Pill: FunctionComponent<PillPropsSchema> = ({
 	variants = [],
 }) => (
 	<div
-		className={classnames(
+		className={clsx(
 			PillClassName,
 			className,
 			variants.map((variant) => `${PillClassName}--${variant}`)

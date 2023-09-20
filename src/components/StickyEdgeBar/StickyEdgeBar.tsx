@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -21,7 +21,7 @@ export const StickyEdgeBar: FunctionComponent<StickyEdgeBarPropsSchema> = ({
 }) => {
 	return (
 		<div
-			className={classnames(
+			className={clsx(
 				className,
 				'c-sticky-edge-bar',
 				`c-sticky-edge-bar--color--${color}`,

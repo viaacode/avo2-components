@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { format, isValid } from 'date-fns';
 // https://github.com/Hacker0x01/react-datepicker/issues/1815#issuecomment-513215416
 import nl from 'date-fns/locale/nl';
@@ -76,8 +76,8 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	};
 
 	return (
-		<div className={classnames(className, 'avo__c-datepicker')}>
-			<div className={classnames('avo__c-datepicker--date c-input-with-icon-right')}>
+		<div className={clsx(className, 'avo__c-datepicker')}>
+			<div className={clsx('avo__c-datepicker--date c-input-with-icon-right')}>
 				<ReactDatePicker
 					className="c-input"
 					selected={value}

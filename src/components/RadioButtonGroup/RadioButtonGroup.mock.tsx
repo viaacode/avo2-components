@@ -1,6 +1,6 @@
-import { RadioOption } from './RadioButtonGroup';
+import { RadioOptionSchema } from './RadioButtonGroup';
 
-export const RADIO_BUTTON_OPTIONS: RadioOption[] = [
+export const RADIO_BUTTON_OPTIONS: RadioOptionSchema[] = [
 	{
 		label: 'Fish',
 		value: 'fish',

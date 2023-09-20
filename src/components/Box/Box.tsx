@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -18,7 +18,7 @@ export const Box: FunctionComponent<BoxPropsSchema> = ({
 	backgroundColor = 'gray',
 }) => (
 	<div
-		className={classnames(className, {
+		className={clsx(className, {
 			// Normal
 			['c-box']: true,
 			['c-box--padding-small']: condensed,

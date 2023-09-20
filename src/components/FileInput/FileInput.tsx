@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
@@ -25,7 +25,7 @@ export const FileInput: FunctionComponent<FileInputProps> = ({
 }) => {
 	return (
 		<Button
-			className={classnames('c-button--file', className)}
+			className={clsx('c-button--file', className)}
 			type="secondary"
 			disabled={disabled}
 			ariaLabel={ariaLabel || placeholder}

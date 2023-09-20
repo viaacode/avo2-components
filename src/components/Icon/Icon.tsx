@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { camelCase, kebabCase, upperFirst } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
@@ -40,7 +40,7 @@ export const Icon: FunctionComponent<IconPropsSchema> = ({
 
 	return (
 		<div
-			className={classnames(className, 'o-svg-icon', getIconName(), {
+			className={clsx(className, 'o-svg-icon', getIconName(), {
 				'o-svg-icon--action-active': active,
 				'o-svg-icon-multicolor': type === 'multicolor',
 				'o-svg-icon--subtle': subtle,

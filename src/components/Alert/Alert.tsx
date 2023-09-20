@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
@@ -28,16 +28,16 @@ export const Alert: FunctionComponent<AlertPropsSchema> = ({
 }) => {
 	return (
 		<div
-			className={classnames(className, 'c-alert', {
+			className={clsx(className, 'c-alert', {
 				'c-alert--dark': dark,
 				[`c-alert--${type}`]: type,
 			})}
 		>
 			<div className="c-alert__body">
 				{type === 'spinner' ? (
-					<Spinner light={dark} />
+					<Spinner light={dark}></Spinner>
 				) : (
-					<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type]} type="multicolor" />
+					<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type]} type="multicolor"></Icon>
 				)}
 				<div className="c-alert__message">{message || children}</div>
 			</div>

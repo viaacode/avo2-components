@@ -1,5 +1,5 @@
 import { Avo } from '@viaa/avo2-types';
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { isNil, isString, noop } from 'lodash-es';
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
@@ -156,10 +156,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 				: 'chevrons-up-and-down') as IconNameSchema,
 			className: isColumnSorted
 				? undefined
-				: classnames(
-						'c-table__header--sortable-icon',
-						styles['c-table__header--sortable-icon']
-				  ),
+				: clsx('c-table__header--sortable-icon', styles['c-table__header--sortable-icon']),
 		};
 
 		if (!children && !rowKey) {
@@ -171,7 +168,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 		return (
 			<th
 				key={`table-head-${id}`}
-				className={classnames({
+				className={clsx({
 					// Normal
 					[`o-table-col-${col}`]: col,
 					['c-table__header--sortable']: sortable,
@@ -206,7 +203,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	const renderTable = () => (
 		<>
 			<table
-				className={classnames(className, {
+				className={clsx(className, {
 					// Normal
 					['c-table']: true,
 					['c-table--align-middle']: align,
@@ -239,7 +236,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 								<tr>
 									{showCheckboxes && (
 										<th
-											className={classnames(
+											className={clsx(
 												'c-table__checkbox-column',
 												styles['c-table__checkbox-column']
 											)}
@@ -253,7 +250,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 									)}
 									{showRadioButtons && (
 										<th
-											className={classnames(
+											className={clsx(
 												'c-table__checkbox-column',
 												styles['c-table__checkbox-column']
 											)}
@@ -268,14 +265,14 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 								{data.map((rowData, rowIndex) => (
 									<tr
 										key={`table-row-${getRowKey(rowData)}`}
-										className={classnames(className, {
+										className={clsx(className, {
 											'u-clickable': !!onRowClick,
 										})}
 										onClick={() => handleRowClick(rowData)}
 									>
 										{showCheckboxes && (
 											<td
-												className={classnames(
+												className={clsx(
 													'u-clickable',
 													'c-table__checkbox-column',
 													styles['c-table__checkbox-column']
@@ -296,7 +293,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 										)}
 										{showRadioButtons && (
 											<td
-												className={classnames(
+												className={clsx(
 													'u-clickable',
 													'c-table__checkbox-column',
 													styles['c-table__checkbox-column']
@@ -351,7 +348,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 				{(data || []).map((rowData, rowIndex) => (
 					<div
 						key={`table-card-${getRowKey(rowData)}`}
-						className={classnames(className, 'c-table__card', styles['c-table__card'], {
+						className={clsx(className, 'c-table__card', styles['c-table__card'], {
 							'u-clickable': !!onRowClick || showCheckboxes,
 						})}
 						onClick={() => handleRowClick(rowData)}

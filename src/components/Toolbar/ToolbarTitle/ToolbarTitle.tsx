@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../../types';
@@ -13,5 +13,5 @@ export const ToolbarTitle: FunctionComponent<ToolbarTitlePropsSchema> = ({
 	children,
 	className,
 }) => {
-	return <h2 className={classnames(className, 'c-toolbar__title')}>{children}</h2>;
+	return <h2 className={clsx(className, 'c-toolbar__title')}>{children}</h2>;
 };

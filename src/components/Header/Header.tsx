@@ -1,5 +1,5 @@
 import { Avo } from '@viaa/avo2-types';
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
@@ -66,7 +66,7 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 		if (typeof title === 'string') {
 			return (
 				<h2
-					className={classnames(className, `c-heading c-h2`, 'u-m-0', {
+					className={clsx(className, `c-heading c-h2`, 'u-m-0', {
 						'u-clickable': onClickTitle,
 					})}
 					onClick={onClickTitle}
@@ -81,7 +81,7 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 
 	return (
 		<Container
-			className={classnames('c-header', className)}
+			className={clsx('c-header', className)}
 			background="alt"
 			mode="vertical"
 			size={containerSize}

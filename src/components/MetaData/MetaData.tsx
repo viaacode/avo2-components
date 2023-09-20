@@ -1,5 +1,5 @@
 import { Avo } from '@viaa/avo2-types';
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -19,7 +19,7 @@ export const MetaData: FunctionComponent<MetaDataPropsSchema> = ({
 	spaced,
 }) => (
 	<ul
-		className={classnames(className, `c-meta-data c-meta-data--${category}`, {
+		className={clsx(className, `c-meta-data c-meta-data--${category}`, {
 			'c-meta-data--spaced-out': spaced,
 		})}
 	>

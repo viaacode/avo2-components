@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../../types';
@@ -21,7 +21,7 @@ export const AvatarIcon: FunctionComponent<AvatarIconPropsSchema> = ({
 	size,
 }) => (
 	<div
-		className={classnames(className, {
+		className={clsx(className, {
 			// Normal
 			['c-avatar']: true,
 			['c-avatar--img']: image,

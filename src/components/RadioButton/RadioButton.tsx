@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
@@ -25,7 +25,7 @@ export const RadioButton: FunctionComponent<RadioButtonPropsSchema> = ({
 	className,
 }) => {
 	return (
-		<div className={classnames(className, 'c-radio')}>
+		<div className={clsx(className, 'c-radio')}>
 			<label>
 				<input
 					type="radio"

@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
@@ -34,7 +34,7 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 		}
 		return (
 			<div
-				className={classnames(className, 'c-menu__item')}
+				className={clsx(className, 'c-menu__item')}
 				onClick={() => onClick(menuItemInfo.id)}
 				key={`menu-item-${menuItemInfo.id}`}
 			>

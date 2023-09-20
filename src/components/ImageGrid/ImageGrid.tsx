@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
@@ -47,14 +47,14 @@ export const ImageGrid: FunctionComponent<ImageGridPropsSchema> = ({
 
 	return (
 		<div
-			className={classnames('c-image-grid', className, {
+			className={clsx('c-image-grid', className, {
 				'c-image-grid-selectable': allowSelect,
 			})}
 		>
 			{images.map((imgSource) => (
 				<div
 					key={imgSource}
-					className={classnames('c-image-grid__item', {
+					className={clsx('c-image-grid__item', {
 						'c-image-grid__item-selected': value.includes(imgSource),
 					})}
 					style={{

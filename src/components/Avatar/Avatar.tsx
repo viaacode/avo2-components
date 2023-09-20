@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -23,13 +23,11 @@ export const Avatar: FunctionComponent<AvatarPropsSchema> = ({
 	dark = false,
 }) =>
 	name || title ? (
-		<div className={classnames(className, 'c-avatar-and-text', styles['c-avatar-and-text'])}>
+		<div className={clsx(className, 'c-avatar-and-text', styles['c-avatar-and-text'])}>
 			<AvatarIcon initials={initials} size={size} image={image} />
 
-			<div
-				className={classnames('c-avatar-and-text__text', styles['c-avatar-and-text__text'])}
-			>
-				{name && <p className={classnames({ ['u-color-white']: !dark })}>{name}</p>}
+			<div className={clsx('c-avatar-and-text__text', styles['c-avatar-and-text__text'])}>
+				{name && <p className={clsx({ ['u-color-white']: !dark })}>{name}</p>}
 
 				{title && <p className={dark ? 'u-text-muted' : 'u-color-gray-150'}>{title}</p>}
 			</div>

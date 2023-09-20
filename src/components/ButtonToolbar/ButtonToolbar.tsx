@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -12,6 +12,6 @@ export interface ButtonToolbarPropsSchema extends DefaultProps {
 const ButtonToolbar: FunctionComponent<ButtonToolbarPropsSchema> = ({
 	className = '',
 	children,
-}) => <div className={classnames(className, 'c-button-toolbar')}>{children}</div>;
+}) => <div className={clsx(className, 'c-button-toolbar')}>{children}</div>;
 
 export { ButtonToolbar };

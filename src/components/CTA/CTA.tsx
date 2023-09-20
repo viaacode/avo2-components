@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { convertToHtml, defaultRenderLinkFunction } from '../../helpers';
@@ -50,15 +50,11 @@ export const CTA: FunctionComponent<CTAPropsSchema> = ({
 	};
 
 	return (
-		<div className={classnames(className, 'c-cta-item')} style={{ width, backgroundColor }}>
+		<div className={clsx(className, 'c-cta-item')} style={{ width, backgroundColor }}>
 			<div className="c-cta__content">
 				<div className="c-content">
 					<HeadingType
-						className={classnames(
-							className,
-							`c-heading c-${HeadingType}`,
-							`u-text-left`
-						)}
+						className={clsx(className, `c-heading c-${HeadingType}`, `u-text-left`)}
 						style={headingColor ? { color: headingColor } : {}}
 					>
 						{heading}

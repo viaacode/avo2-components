@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode, useCallback, useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
 
@@ -73,7 +73,7 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 			</div>
 
 			<div
-				className={classnames(contentClassName, 'c-tooltip', `c-tooltip--${position}`, {
+				className={clsx(contentClassName, 'c-tooltip', `c-tooltip--${position}`, {
 					'c-tooltip--show': show,
 				})}
 				ref={setPopperElement}

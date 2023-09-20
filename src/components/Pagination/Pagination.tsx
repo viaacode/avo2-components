@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
@@ -59,26 +59,26 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 	const pagesToDisplay = generatePages();
 
 	return (
-		<div className={classnames(className, 'c-pagination', styles['c-pagination'])}>
+		<div className={clsx(className, 'c-pagination', styles['c-pagination'])}>
 			<div
-				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
+				className={clsx('c-pagination__btn', styles['c-pagination__btn'])}
 				onClick={() => changePage(0)}
 			>
 				<Icon name={IconNameSchema.chevronsLeft} type="arrows" />
 			</div>
 
 			<div
-				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
+				className={clsx('c-pagination__btn', styles['c-pagination__btn'])}
 				onClick={() => changePage(currentPage - 1)}
 			>
 				<Icon name={IconNameSchema.chevronLeft} type="arrows" />
 			</div>
 
-			<div className={classnames('c-pagination__pages', styles['c-pagination__pages'])}>
+			<div className={clsx('c-pagination__pages', styles['c-pagination__pages'])}>
 				{pagesToDisplay.map((pageIndex: number) => (
 					<div
 						key={pageIndex}
-						className={classnames({
+						className={clsx({
 							// Normal
 							['c-pagination__btn']: true,
 							['c-pagination__btn--active']: pageIndex === currentPage,
@@ -95,14 +95,14 @@ export const Pagination: FunctionComponent<PaginationPropsSchema> = ({
 			</div>
 
 			<div
-				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
+				className={clsx('c-pagination__btn', styles['c-pagination__btn'])}
 				onClick={() => changePage(currentPage + 1)}
 			>
 				<Icon name={IconNameSchema.chevronRight} type="arrows" />
 			</div>
 
 			<div
-				className={classnames('c-pagination__btn', styles['c-pagination__btn'])}
+				className={clsx('c-pagination__btn', styles['c-pagination__btn'])}
 				onClick={() => changePage(pageCount - 1)}
 			>
 				<Icon name={IconNameSchema.chevronsRight} type="arrows" />

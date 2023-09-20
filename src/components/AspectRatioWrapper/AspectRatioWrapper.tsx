@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps, VideoAspectRatio } from '../../types';
@@ -16,7 +16,7 @@ export const AspectRatioWrapper: FunctionComponent<AspectRatioWrapperPropsSchema
 	style,
 }) => (
 	<div
-		className={classnames(
+		className={clsx(
 			className,
 			'c-aspect-ratio-wrapper',
 			!!aspect &&

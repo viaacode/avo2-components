@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { ElementType, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../../types';
@@ -88,8 +88,6 @@ export const Column: FunctionComponent<ColumnPropsSchema> = ({
 	const sizes = typeof size === 'string' ? [size] : size;
 
 	return (
-		<Tag className={classnames(className, sizes.map(getGridSizeColumn).join(' '))}>
-			{children}
-		</Tag>
+		<Tag className={clsx(className, sizes.map(getGridSizeColumn).join(' '))}>{children}</Tag>
 	);
 };

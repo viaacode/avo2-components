@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
@@ -22,7 +22,7 @@ export const Tabs: FunctionComponent<TabsPropsSchema> = ({
 	onClick = noop,
 }) => (
 	<nav
-		className={classnames(className, 'c-tabs', styles['c-tabs'], {
+		className={clsx(className, 'c-tabs', styles['c-tabs'], {
 			// Normal
 			['c-tabs__bottom-border']: border,
 

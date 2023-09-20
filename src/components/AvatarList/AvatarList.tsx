@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { Fragment, FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -32,7 +32,7 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 	const hasHiddenAvatars = hiddenAvatars && !!hiddenAvatars.length;
 
 	return (
-		<div className={classnames(className, 'c-avatar--multiple', styles['c-avatar--multiple'])}>
+		<div className={clsx(className, 'c-avatar--multiple', styles['c-avatar--multiple'])}>
 			{visibleAvatars.map((avatar, index) => (
 				<Fragment key={index}>
 					<Tooltip position="bottom">
@@ -83,7 +83,7 @@ export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
 												<h4 className="c-h4 u-m-0">{avatar.name}</h4>
 												{avatar.subtitle && (
 													<span
-														className={classnames(
+														className={clsx(
 															'c-avatar-meta',
 															styles['c-avatar-meta']
 														)}

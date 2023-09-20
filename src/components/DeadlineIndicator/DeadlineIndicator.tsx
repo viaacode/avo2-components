@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -19,7 +19,7 @@ export const DeadlineIndicator: FunctionComponent<DeadlineIndicatorPropsSchema> 
 	color = 'error',
 }) => (
 	<div
-		className={classnames(className, 'c-deadline-indicator', {
+		className={clsx(className, 'c-deadline-indicator', {
 			[`c-deadline-indicator--${color}`]: !!color,
 			[`c-deadline-indicator--${shape}`]: !!shape,
 		})}

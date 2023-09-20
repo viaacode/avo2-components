@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -16,7 +16,7 @@ export const Badge: FunctionComponent<BadgePropsSchema> = ({
 	type = 'default',
 }) => (
 	<div
-		className={classnames(className, {
+		className={clsx(className, {
 			// Normal
 			['c-badge']: true,
 			[`c-badge--${type}`]: type,
