@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
@@ -33,7 +33,7 @@ export const Toolbar: FunctionComponent<ToolbarPropsSchema> = ({
 
 	return (
 		<div
-			className={classnames(className, 'c-toolbar', {
+			className={clsx(className, 'c-toolbar', {
 				[`c-toolbar--${size}`]: size,
 				'c-toolbar--spaced': spaced,
 				'c-toolbar--auto': autoHeight,

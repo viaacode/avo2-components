@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -15,7 +15,7 @@ export const Form: FunctionComponent<FormPropsSchema> = ({
 	type = 'standard',
 	children,
 }) => (
-	<div className={classnames(className, 'o-form-group-layout', `o-form-group-layout--${type}`)}>
+	<div className={clsx(className, 'o-form-group-layout', `o-form-group-layout--${type}`)}>
 		{children}
 	</div>
 );

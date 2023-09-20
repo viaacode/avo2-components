@@ -1,5 +1,5 @@
 import { Avo } from '@viaa/avo2-types';
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 
@@ -60,7 +60,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 
 	return (
 		<div
-			className={classnames(
+			className={clsx(
 				className,
 				'c-thumbnail',
 				'c-thumbnail-media',
@@ -79,7 +79,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 			)}
 			{(label || meta || showCategoryIcon) && (
 				<div
-					className={classnames('c-thumbnail-meta', {
+					className={clsx('c-thumbnail-meta', {
 						'c-thumbnail-meta--img-is-loaded': loaded,
 					})}
 				>

@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -20,7 +20,7 @@ export const Quote: FunctionComponent<QuotePropsSchema> = ({
 	authorName,
 	authorInitials,
 }) => (
-	<div className={classnames('c-quote', className)}>
+	<div className={clsx('c-quote', className)}>
 		<blockquote className="c-quote__text">{quote}</blockquote>
 		{authorName && (
 			<cite className="c-quote__author">

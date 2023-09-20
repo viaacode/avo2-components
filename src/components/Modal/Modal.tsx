@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, {
 	Fragment,
 	FunctionComponent,
@@ -9,7 +9,6 @@ import React, {
 } from 'react';
 import ReactDOM from 'react-dom';
 import Scrollbar from 'react-perfect-scrollbar';
-import 'react-perfect-scrollbar/dist/css/styles.css';
 
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
@@ -156,7 +155,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 		);
 	};
 
-	const classNames = classnames('c-modal', {
+	const classNames = clsx('c-modal', {
 		'c-modal--small': size === 'small',
 		'c-modal--medium': size === 'medium',
 		'c-modal--large': size === 'large',
@@ -169,7 +168,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 	return ReactDOM.createPortal(
 		<Fragment>
 			<div
-				className={classnames(className, 'c-modal-context', {
+				className={clsx(className, 'c-modal-context', {
 					'c-modal-context--visible': isOpen,
 				})}
 				onMouseDown={onContextMouseDown}

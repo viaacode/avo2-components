@@ -1,5 +1,5 @@
 import autosize from 'autosize';
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent, useEffect } from 'react';
 
@@ -46,7 +46,7 @@ export const TextArea: FunctionComponent<TextAreaPropsSchema> = ({
 
 	return (
 		<textarea
-			className={classnames(className, 'c-input', {
+			className={clsx(className, 'c-input', {
 				[`c-input--h-${height}`]: height && height !== 'auto',
 				[`c-input--w-${width}`]: width,
 			})}

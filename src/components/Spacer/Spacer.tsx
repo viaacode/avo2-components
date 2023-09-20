@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -63,7 +63,7 @@ export const Spacer: FunctionComponent<SpacerPropsSchema> = ({
 	const paddingClasses = spacersToClasses(padding, 'u-padding');
 
 	return (
-		<div className={classnames(className, marginClasses, paddingClasses)} style={style}>
+		<div className={clsx(className, marginClasses, paddingClasses)} style={style}>
 			{children}
 		</div>
 	);

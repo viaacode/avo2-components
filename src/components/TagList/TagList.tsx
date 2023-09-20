@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent, MouseEvent } from 'react';
 
@@ -40,10 +40,10 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 	const safeOnTagClicked = onTagClicked || noop;
 
 	return !!tags && !!tags.length ? (
-		<ul className={classnames(className, 'c-tag-list', styles['c-tag-list'])}>
+		<ul className={clsx(className, 'c-tag-list', styles['c-tag-list'])}>
 			{tags.map((tag: TagOptionSchema, index) => (
 				<li
-					className={classnames(tag.className, {
+					className={clsx(tag.className, {
 						'c-label': !bordered,
 
 						// Normal
@@ -59,7 +59,7 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 					{/* output swatch element */}
 					{swatches && (
 						<div
-							className={classnames('c-label-swatch', {
+							className={clsx('c-label-swatch', {
 								// Normal
 								[`c-label-swatch--color-${(index % 10) + 1}`]: !tag.color,
 
@@ -76,7 +76,7 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 					{/* output label text element */}
 					{swatches || closable ? (
 						<p
-							className={classnames({
+							className={clsx({
 								'c-label-text': swatches,
 
 								// Normal

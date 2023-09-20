@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { get, noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import ReactSelect, { ActionMeta } from 'react-select';
@@ -53,7 +53,7 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 
 	return (
 		<ReactSelect
-			className={classnames('c-select', className)}
+			className={clsx('c-select', className)}
 			classNamePrefix="c-select"
 			id={id}
 			options={options}
@@ -62,7 +62,7 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 			isDisabled={disabled}
 			isLoading={loading}
 			isClearable={clearable}
-			isOptionDisabled={(option) => !!(option as SelectOptionSchema).disabled}
+			isOptionDisabled={(option) => (option as SelectOptionSchema).disabled ?? false}
 			placeholder={placeholder}
 			onChange={onValueChange}
 			noOptionsMessage={() => 'Geen opties'}

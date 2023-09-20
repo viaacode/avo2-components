@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -22,7 +22,7 @@ export const Navbar: FunctionComponent<NavbarPropsSchema> = ({
 	children,
 }) => (
 	<div
-		className={classnames(className, 'c-navbar', {
+		className={clsx(className, 'c-navbar', {
 			'c-navbar--bordered-bottom': placement === 'top', // Class indicates border location
 			'c-navbar--bordered-top': placement === 'bottom',
 			'c-navbar--fixed': position === 'fixed',

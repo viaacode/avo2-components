@@ -1,5 +1,5 @@
 import { Placement } from '@popperjs/core';
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { usePopper } from 'react-popper';
@@ -99,7 +99,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	return (
 		<>
 			<div
-				className={classnames(triggerClassName, {
+				className={clsx(triggerClassName, {
 					'c-dropdown__trigger': triggerWidth === 'fit-content',
 				})}
 				onClick={() => toggle()}
@@ -131,7 +131,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 				className={isOpen ? 'c-dropdown__content-open' : 'c-dropdown__content-closed'}
 			>
 				<Menu
-					className={classnames(menuClassName, 'c-dropdown__menu')}
+					className={clsx(menuClassName, 'c-dropdown__menu')}
 					isOpen={isOpen}
 					search={searchMenu}
 				>

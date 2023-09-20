@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../../types';
@@ -8,5 +8,5 @@ export interface PanelHeaderProps extends DefaultProps {
 }
 
 export const PanelHeader: FunctionComponent<PanelHeaderProps> = ({ children, className }) => {
-	return <div className={classnames(className, 'c-panel__header')}>{children}</div>;
+	return <div className={clsx(className, 'c-panel__header')}>{children}</div>;
 };

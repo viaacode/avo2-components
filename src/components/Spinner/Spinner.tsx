@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -17,7 +17,7 @@ export const Spinner: FunctionComponent<SpinnerPropsSchema> = ({
 }) => {
 	return (
 		<div
-			className={classnames(className, 'c-spinner', {
+			className={clsx(className, 'c-spinner', {
 				'c-spinner--large': size === 'large',
 				'c-spinner--light': light,
 			})}

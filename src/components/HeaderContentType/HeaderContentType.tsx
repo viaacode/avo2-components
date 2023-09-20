@@ -1,5 +1,5 @@
 import { Avo } from '@viaa/avo2-types';
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -16,7 +16,7 @@ export const HeaderContentType: FunctionComponent<HeaderContentTypePropsSchema> 
 	label,
 	className,
 }) => (
-	<div className={classnames(className, 'c-content-type', `c-content-type--${category}`)}>
+	<div className={clsx(className, 'c-content-type', `c-content-type--${category}`)}>
 		<Icon name={CATEGORY_TO_ICON[category]} />
 		<p>{label.toUpperCase()}</p>
 	</div>

@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent, ReactNode } from 'react';
 
@@ -29,7 +29,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsSchema> = ({
 	}
 
 	return (
-		<div className={classnames(className, 'c-checkbox')}>
+		<div className={clsx(className, 'c-checkbox')}>
 			<label>
 				<input
 					type="checkbox"

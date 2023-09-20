@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../../types';
@@ -21,7 +21,7 @@ export const MetaDataItem: FunctionComponent<MetaDataItemPropsSchema> = ({
 	style,
 }) => (
 	<li
-		className={classnames(className, 'c-meta-data__item', {
+		className={clsx(className, 'c-meta-data__item', {
 			'c-meta-data-item--icon': icon,
 		})}
 		style={style}

@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
@@ -16,7 +16,7 @@ export const Panel: FunctionComponent<PanelPropsSchema> = ({ children, className
 	const body = useSlot(PanelBody, children);
 
 	return (
-		<div className={classnames(className, 'c-panel')}>
+		<div className={clsx(className, 'c-panel')}>
 			{header && <div className="c-panel__header">{header}</div>}
 			{body && <div className="c-panel__body">{body}</div>}
 			{!header && !body && !!children && children}

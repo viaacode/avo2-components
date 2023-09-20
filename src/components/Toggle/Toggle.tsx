@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
@@ -30,7 +30,7 @@ export const Toggle: FunctionComponent<TogglePropsSchema> = ({
 	}
 
 	return (
-		<div className={classnames(className, 'c-toggle')}>
+		<div className={clsx(className, 'c-toggle')}>
 			<input
 				type="checkbox"
 				id={id}

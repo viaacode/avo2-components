@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { ElementType, FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -20,7 +20,7 @@ export const Grid: FunctionComponent<GridPropsSchema> = ({
 	tag: Tag = 'div',
 }) => (
 	<Tag
-		className={classnames(className, 'o-grid', {
+		className={clsx(className, 'o-grid', {
 			'o-grid--no-wrap': noWrap,
 			'o-grid--reverse': reverse,
 		})}

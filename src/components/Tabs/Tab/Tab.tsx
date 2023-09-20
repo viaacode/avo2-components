@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent, ReactNode } from 'react';
 
@@ -27,7 +27,7 @@ export const Tab: FunctionComponent<TabPropsSchema> = ({
 	onClick = noop,
 }) => (
 	<div
-		className={classnames(className, 'c-tab-item', {
+		className={clsx(className, 'c-tab-item', {
 			'c-tab-item__active': active,
 			'c-tab-item__dark': dark,
 		})}

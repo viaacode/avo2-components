@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps, Orientation } from '../../types';
@@ -45,7 +45,7 @@ export const Flex: FunctionComponent<FlexPropsSchema> = ({
 
 	return (
 		<div
-			className={classnames(className, ...classes, {
+			className={clsx(className, ...classes, {
 				[`o-flex--justify-${justify}`]: justify,
 				'o-flex--wrap': wrap,
 			})}

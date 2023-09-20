@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps, Orientation } from '../../types';
@@ -23,7 +23,7 @@ export const Container: FunctionComponent<ContainerPropsSchema> = ({
 	style = {},
 }) => (
 	<div
-		className={classnames(className, {
+		className={clsx(className, {
 			'o-container': mode === 'horizontal',
 			'o-container-vertical': mode === 'vertical',
 			[`o-container--${size}`]: (mode === 'horizontal' || !mode) && size,

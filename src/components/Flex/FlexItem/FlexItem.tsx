@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../../types';
@@ -14,7 +14,7 @@ export const FlexItem: FunctionComponent<FlexItemPropsSchema> = ({
 	children,
 }) => (
 	<div
-		className={classnames(className, 'o-flex__item', {
+		className={clsx(className, 'o-flex__item', {
 			'o-flex__item--shrink': shrink,
 		})}
 	>

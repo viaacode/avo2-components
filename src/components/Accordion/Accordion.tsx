@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, useState } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
@@ -9,8 +9,9 @@ import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
-import './Accordion.scss';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
+
+import './Accordion.scss';
 
 export interface AccordionPropsSchema extends DefaultProps {
 	isOpen?: boolean;
@@ -49,14 +50,11 @@ export const Accordion: FunctionComponent<AccordionPropsSchema> = ({
 
 	return (
 		<div
-			className={classnames(className, 'c-accordion', {
+			className={clsx(className, 'c-accordion', {
 				'c-accordion--closed': !getIsOpen(),
 			})}
 		>
-			<div
-				className={classnames('c-accordion__header', 'u-clickable')}
-				onClick={handleToggle}
-			>
+			<div className={clsx('c-accordion__header', 'u-clickable')} onClick={handleToggle}>
 				<Toolbar autoHeight>
 					<ToolbarLeft>
 						<ToolbarItem>

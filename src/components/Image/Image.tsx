@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -21,7 +21,7 @@ export const Image: FunctionComponent<ImagePropsSchema> = ({
 	width,
 	height,
 }) => (
-	<div className={classnames(className, 'c-image', { 'c-image--full': wide })}>
+	<div className={clsx(className, 'c-image', { 'c-image--full': wide })}>
 		<img src={src} alt={alt} width={width} height={height} />
 	</div>
 );

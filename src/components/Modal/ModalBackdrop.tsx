@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 export interface ModalBackdropProps {
@@ -6,5 +6,5 @@ export interface ModalBackdropProps {
 }
 
 export const ModalBackdrop: FunctionComponent<ModalBackdropProps> = ({ visible = false }) => (
-	<div className={classnames('c-modal-backdrop', { 'c-modal-backdrop--visible': visible })} />
+	<div className={clsx('c-modal-backdrop', { 'c-modal-backdrop--visible': visible })} />
 );

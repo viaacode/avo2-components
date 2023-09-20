@@ -1,4 +1,4 @@
-import classnames from 'clsx';
+import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
@@ -24,7 +24,7 @@ export const Blankslate: FunctionComponent<BlankslatePropsSchema> = ({
 	spacious,
 	title,
 }) => (
-	<div className={classnames(className, 'c-blankslate', { 'c-blankslate--spacious': spacious })}>
+	<div className={clsx(className, 'c-blankslate', { 'c-blankslate--spacious': spacious })}>
 		{icon && (
 			<Spacer margin="bottom-large">
 				<div className="c-blankslate__icon">
