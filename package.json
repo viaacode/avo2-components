@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -50,7 +50,7 @@
   "peerDependencies": {
     "@flowplayer/player": "3.3.0",
     "@popperjs/core": "2.11.6",
-    "@viaa/avo2-types": "2.48.40",
+    "@viaa/avo2-types": "2.49.0",
     "autosize": "6.0.1",
     "caniuse-lite": "1.0.30001538",
     "clsx": "2.0.0",
