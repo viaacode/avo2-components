@@ -1,14 +1,9 @@
 {
   "name": "@viaa/avo2-components",
   "version": "4.0.4",
-  "main": "dist/index.mjs",
+  "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs"
-    }
-  },
   "homepage": "./",
   "scripts": {
     "analyze": "source-map-explorer 'build/*.js'",
@@ -34,18 +29,6 @@
     "licenses": "license-checker --csv --out licenses.csv",
     "snyk-protect": "snyk protect",
     "bump": "bump-package-versions --part=patch --strategy=highest ./package.json"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "peerDependencies": {
     "@popperjs/core": "2.11.6",
@@ -135,6 +118,18 @@
     "webpack": "5.74.0",
     "typescript": "5.1.6",
     "@storybook/addons": "6.5.17-alpha.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "publishConfig": {
     "@viaa:registry": "http://do-prd-mvn-01.do.viaa.be:8081/repository/npm-viaa/"
