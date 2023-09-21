@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { format, isValid } from 'date-fns';
 // https://github.com/Hacker0x01/react-datepicker/issues/1815#issuecomment-513215416
-import nl from 'date-fns/locale/nl';
+import nlBe from 'date-fns/locale/nl-BE/index';
 import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import ReactDatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
@@ -12,7 +12,7 @@ import { IconNameSchema } from '../Icon/Icon.types';
 
 import './DatePicker.scss';
 
-registerLocale('nl', nl);
+registerLocale('nl', nlBe);
 setDefaultLocale('nl');
 
 export const getMaxDate = () => new Date(9999, 11, 31, 23, 59, 59); // https://meemoo.atlassian.net/browse/AVO-1828
