@@ -19,6 +19,7 @@ export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
 };
 
 export interface ThumbnailPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	category: Avo.ContentType.English;
 	src?: string;
 	alt?: string;

@@ -8,6 +8,7 @@ import { Button } from '../Button/Button';
 import './FileInput.scss';
 
 export interface FileInputProps extends DefaultProps {
+	children?: React.ReactNode;
 	id?: string;
 	disabled?: boolean;
 	placeholder?: string;

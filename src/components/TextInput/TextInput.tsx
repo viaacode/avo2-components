@@ -9,6 +9,7 @@ import { IconNameSchema } from '../Icon/Icon.types';
 type InputType = 'password' | 'text' | 'email' | 'search' | 'number' | 'tel' | 'url';
 
 export interface TextInputPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	id?: string;
 	disabled?: boolean;
 	placeholder?: string;

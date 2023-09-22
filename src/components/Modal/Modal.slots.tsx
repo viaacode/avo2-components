@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, ReactNode } from 'react';
 
-export const ModalHeaderRight: FunctionComponent = ({ children }) => <>{children}</>;
-export const ModalBody: FunctionComponent = ({ children }) => <>{children}</>;
-export const ModalFooterRight: FunctionComponent = ({ children }) => <>{children}</>;
-export const ModalFooterLeft: FunctionComponent = ({ children }) => <>{children}</>;
+export const ModalHeaderRight: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const ModalBody: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const ModalFooterRight: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const ModalFooterLeft: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;

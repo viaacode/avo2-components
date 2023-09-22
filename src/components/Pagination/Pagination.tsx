@@ -9,6 +9,7 @@ import { IconNameSchema } from '../Icon/Icon.types';
 import styles from './Pagination.module.scss';
 
 export interface PaginationPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	pageCount: number;
 	displayCount?: number;
 	currentPage?: number;

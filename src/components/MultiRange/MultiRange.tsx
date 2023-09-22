@@ -9,6 +9,7 @@ import { TextInput } from '../TextInput/TextInput';
 import './MultiRange.scss';
 
 export interface MultiRangePropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	id?: string;
 	disabled?: boolean;
 	values?: number[];

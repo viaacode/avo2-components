@@ -7,6 +7,7 @@ import { ButtonTypeSchema } from '../Button/Button.types';
 import { IconNameSchema } from '../Icon/Icon.types';
 
 export interface ToggleButtonPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	icon: IconNameSchema.heart | IconNameSchema.bookmark;
 	active: boolean;
 	ariaLabel: string;

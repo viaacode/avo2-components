@@ -9,7 +9,7 @@ import { TagList } from '../TagList/TagList';
 
 import { Header } from './Header';
 import { MOCK_HEADER_PROPS, MOCK_HEADER_PROPS_FULL } from './Header.mock';
-import { HeaderAvatar, HeaderButtons, HeaderTags } from './Header.slots';
+import { HeaderBottomRowLeft, HeaderMiddleRowRight, HeaderTopRowLeft } from './Header.slots';
 
 storiesOf('components/Header', module)
 	.addParameters({ jest: ['Header'] })
@@ -17,13 +17,13 @@ storiesOf('components/Header', module)
 	.add('Header with meta data', () => <Header {...MOCK_HEADER_PROPS_FULL} />)
 	.add('Header with slots', () => (
 		<Header {...MOCK_HEADER_PROPS}>
-			<HeaderButtons>
+			<HeaderMiddleRowRight>
 				<Button type="secondary" label="Bekijk" onClick={() => null} />
-			</HeaderButtons>
-			<HeaderAvatar>
+			</HeaderMiddleRowRight>
+			<HeaderBottomRowLeft>
 				<Avatar initials="BN" name="Benjamin Naesen" dark />
-			</HeaderAvatar>
-			<HeaderTags>
+			</HeaderBottomRowLeft>
+			<HeaderTopRowLeft>
 				<TagList
 					tags={[
 						{
@@ -33,7 +33,7 @@ storiesOf('components/Header', module)
 						},
 					]}
 				/>
-			</HeaderTags>
+			</HeaderTopRowLeft>
 		</Header>
 	))
 	.add('Header with long title', () => (
@@ -41,7 +41,7 @@ storiesOf('components/Header', module)
 			{...MOCK_HEADER_PROPS_FULL}
 			title="overlap video test Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis odio udgse sdfes se"
 		>
-			<HeaderButtons>
+			<HeaderMiddleRowRight>
 				<ButtonToolbar>
 					{times(4).map((index) => (
 						<Button
@@ -52,6 +52,6 @@ storiesOf('components/Header', module)
 						/>
 					))}
 				</ButtonToolbar>
-			</HeaderButtons>
+			</HeaderMiddleRowRight>
 		</Header>
 	));

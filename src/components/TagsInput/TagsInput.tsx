@@ -14,6 +14,7 @@ export interface TagInfoSchema {
 }
 
 export interface TagsInputPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	options: TagInfoSchema[];
 	id?: string;
 	disabled?: boolean;

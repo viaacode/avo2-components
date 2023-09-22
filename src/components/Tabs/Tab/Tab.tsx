@@ -9,6 +9,7 @@ import { IconNameSchema } from '../../Icon/Icon.types';
 import './Tab.scss';
 
 export interface TabPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	label: ReactNode;
 	id: string | number;
 	icon?: IconNameSchema;

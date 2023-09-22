@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, ReactNode } from 'react';
 
-export const AccordionTitle: FunctionComponent = ({ children }) => <>{children}</>;
-export const AccordionActions: FunctionComponent = ({ children }) => <>{children}</>;
-export const AccordionBody: FunctionComponent = ({ children }) => <>{children}</>;
+export const AccordionTitle: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const AccordionActions: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const AccordionBody: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;

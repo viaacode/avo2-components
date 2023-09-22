@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, ReactNode } from 'react';
 
-export const PanelHeader: FunctionComponent = ({ children }) => <>{children}</>;
-export const PanelBody: FunctionComponent = ({ children }) => <>{children}</>;
+export const PanelHeader: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const PanelBody: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;

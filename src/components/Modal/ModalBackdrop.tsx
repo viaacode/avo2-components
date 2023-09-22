@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
 export interface ModalBackdropProps {
+	children?: React.ReactNode;
 	visible?: boolean;
 }
 

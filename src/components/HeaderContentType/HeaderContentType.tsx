@@ -7,6 +7,7 @@ import { Icon } from '../Icon/Icon';
 import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail';
 
 export interface HeaderContentTypePropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	category: Avo.ContentType.English;
 	label: string;
 }

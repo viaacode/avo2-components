@@ -10,6 +10,7 @@ export enum PillVariants {
 }
 
 export interface PillPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	variants?: Array<PillVariants>; // tslint:disable-line
 }
 

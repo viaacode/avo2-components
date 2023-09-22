@@ -12,6 +12,7 @@ export interface RadioOptionSchema {
 }
 
 export interface RadioButtonGroupPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	options: RadioOptionSchema[];
 	value: string | null;
 	inline?: boolean;

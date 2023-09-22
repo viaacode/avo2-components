@@ -7,6 +7,7 @@ import { IconNameSchema } from '../../Icon/Icon.types';
 import styles from '../Avatar.module.scss';
 
 export interface AvatarIconPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	initials?: string;
 	image?: string;
 	icon?: IconNameSchema;

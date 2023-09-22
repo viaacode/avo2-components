@@ -15,6 +15,7 @@ export interface MenuItemInfoSchema {
 }
 
 export interface MenuContentPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	menuItems: MenuItemInfoSchema[] | MenuItemInfoSchema[][]; // Between arrays, there will be a divider
 	renderItem?: (menuItem: MenuItemInfoSchema) => ReactNode; // If you want to render your own item
 	noResultsLabel?: string;

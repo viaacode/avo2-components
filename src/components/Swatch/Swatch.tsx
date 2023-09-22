@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 export interface SwatchProps {
+	children?: React.ReactNode;
 	color: string;
 	name: string;
 }

@@ -1,28 +1,28 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 /**
  * @deprecated use HeaderTopRowLeft instead
  */
-export const HeaderTags: FunctionComponent = ({ children }) => <>{children}</>;
+export const HeaderTags: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
 
 /**
  * @deprecated use HeaderMiddleRowLeft instead
  */
-export const HeaderRow: FunctionComponent = ({ children }) => <>{children}</>;
+export const HeaderRow: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
 
 /**
  * @deprecated use HeaderMiddleRowRight instead
  */
-export const HeaderButtons: FunctionComponent = ({ children }) => <>{children}</>;
+export const HeaderButtons: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
 
 /**
  * @deprecated use HeaderBottomRowLeft instead
  */
-export const HeaderAvatar: FunctionComponent = ({ children }) => <>{children}</>;
+export const HeaderAvatar: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
 
-export const HeaderTopRowLeft: FunctionComponent = ({ children }) => <>{children}</>;
-export const HeaderTopRowRight: FunctionComponent = ({ children }) => <>{children}</>;
-export const HeaderMiddleRowLeft: FunctionComponent = ({ children }) => <>{children}</>;
-export const HeaderMiddleRowRight: FunctionComponent = ({ children }) => <>{children}</>;
-export const HeaderBottomRowLeft: FunctionComponent = ({ children }) => <>{children}</>;
-export const HeaderBottomRowRight: FunctionComponent = ({ children }) => <>{children}</>;
+export const HeaderTopRowLeft: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const HeaderTopRowRight: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const HeaderMiddleRowLeft: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const HeaderMiddleRowRight: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const HeaderBottomRowLeft: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const HeaderBottomRowRight: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;

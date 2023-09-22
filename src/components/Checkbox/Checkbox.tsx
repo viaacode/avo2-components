@@ -5,6 +5,7 @@ import React, { ChangeEvent, FunctionComponent, ReactNode } from 'react';
 import { DefaultProps } from '../../types';
 
 export interface CheckboxPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	label: string | ReactNode;
 	checked?: boolean;
 	id?: string;

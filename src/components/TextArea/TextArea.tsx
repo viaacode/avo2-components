@@ -7,6 +7,7 @@ import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { DefaultProps } from '../../types';
 
 export interface TextAreaPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	id?: string;
 	name?: string;
 	rows?: number;

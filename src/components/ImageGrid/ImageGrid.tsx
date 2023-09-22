@@ -7,6 +7,7 @@ import { DefaultProps } from '../../types';
 import './ImageGrid.scss';
 
 export interface ImageGridPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	images: string[];
 	value?: string[];
 	width?: number;

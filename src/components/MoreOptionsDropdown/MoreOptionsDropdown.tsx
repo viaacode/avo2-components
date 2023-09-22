@@ -7,6 +7,7 @@ import { IconNameSchema } from '../Icon/Icon.types';
 import { MenuContent, MenuItemInfoSchema } from '../Menu/MenuContent/MenuContent';
 
 export interface MoreOptionsDropdownPropsSchema {
+	children?: React.ReactNode;
 	isOpen: boolean;
 	onClose?: () => void;
 	onOpen?: () => void;

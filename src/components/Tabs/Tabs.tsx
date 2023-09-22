@@ -8,6 +8,7 @@ import { Tab, TabPropsSchema } from './Tab/Tab';
 import styles from './Tabs.module.scss';
 
 export interface TabsPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	tabs: TabPropsSchema[];
 	border?: boolean;
 	dark?: boolean;

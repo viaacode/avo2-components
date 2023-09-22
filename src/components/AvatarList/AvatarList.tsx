@@ -18,6 +18,7 @@ interface ExtendedAvatarProps extends AvatarPropsSchema {
 }
 
 export interface AvatarListPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	avatars: ExtendedAvatarProps[];
 	isOpen: boolean;
 }

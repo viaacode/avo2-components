@@ -18,6 +18,7 @@ setDefaultLocale('nl');
 export const getMaxDate = () => new Date(9999, 11, 31, 23, 59, 59); // https://meemoo.atlassian.net/browse/AVO-1828
 
 export interface DatePickerPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	disabled?: boolean;
 	required?: boolean;
 	showTimeInput?: boolean;

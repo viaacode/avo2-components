@@ -8,6 +8,7 @@ import { IconNameSchema } from '../Icon/Icon.types';
 import './Toggle.scss';
 
 export interface TogglePropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	id?: string;
 	checked?: boolean;
 	disabled?: boolean;

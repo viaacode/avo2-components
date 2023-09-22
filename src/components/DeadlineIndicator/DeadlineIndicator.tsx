@@ -9,6 +9,7 @@ export type DeadlineIndicatorColorsSchema = 'error' | 'yellow' | 'success';
 export type DeadlineIndicatorShapesSchema = 'square' | 'diamond' | 'circle';
 
 export interface DeadlineIndicatorPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	color?: DeadlineIndicatorColorsSchema;
 	shape?: DeadlineIndicatorShapesSchema;
 }

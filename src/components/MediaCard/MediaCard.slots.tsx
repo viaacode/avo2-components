@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, ReactNode } from 'react';
 
-export const MediaCardThumbnail: FunctionComponent = ({ children }) => <>{children}</>;
-export const MediaCardMetaData: FunctionComponent = ({ children }) => <>{children}</>;
+export const MediaCardThumbnail: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
+export const MediaCardMetaData: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;

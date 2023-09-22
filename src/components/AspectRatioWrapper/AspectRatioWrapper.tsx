@@ -6,6 +6,7 @@ import { DefaultProps, VideoAspectRatio } from '../../types';
 import './AspectRatioWrapper.scss';
 
 export interface AspectRatioWrapperPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	aspect?: VideoAspectRatio | number;
 }
 

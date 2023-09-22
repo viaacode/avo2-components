@@ -7,6 +7,7 @@ import styles from './Avatar.module.scss';
 import { AvatarIcon, AvatarIconPropsSchema } from './AvatarIcon/AvatarIcon';
 
 export interface AvatarPropsSchema extends DefaultProps, AvatarIconPropsSchema {
+	children?: React.ReactNode;
 	name?: string;
 	title?: string;
 	dark?: boolean;

@@ -4,6 +4,7 @@ import { Swatch } from './Swatch';
 import { SwatchList } from './SwatchList';
 
 export interface SwatchBlockProps {
+	children?: React.ReactNode;
 	title?: string;
 	colors: {
 		name: string;

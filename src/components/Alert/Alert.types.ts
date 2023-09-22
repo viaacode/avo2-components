@@ -7,6 +7,7 @@ export type AlertTypeSchema = 'info' | 'success' | 'danger' | 'spinner';
 export type AlertTypeWithIcon = Exclude<AlertTypeSchema, 'spinner'>;
 
 export interface AlertPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	dark?: boolean;
 	message?: ReactNode | string;
 	onClose?: () => void;

@@ -18,6 +18,7 @@ export interface TagOptionSchema {
 }
 
 export interface TagListPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	tags: TagOptionSchema[];
 	swatches?: boolean;
 	bordered?: boolean;

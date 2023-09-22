@@ -14,6 +14,7 @@ import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slo
 import './Accordion.scss';
 
 export interface AccordionPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	isOpen?: boolean;
 	onToggle?: () => void; // If undefined, the accordion will be able to toggle itself
 	title?: string;

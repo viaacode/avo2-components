@@ -23,6 +23,7 @@ export interface SelectPropsSchema
 			StateManagerProps<any, any, any> & CreatableAdditionalProps<any, any>,
 			'onChange' | 'value' | 'options'
 		> {
+	children?: React.ReactNode;
 	options: SelectOptionSchema[];
 	id?: string;
 	disabled?: boolean;

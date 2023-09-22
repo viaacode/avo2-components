@@ -6,6 +6,7 @@ import { DefaultProps } from '../../types';
 import './Image.scss';
 
 export interface ImagePropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	src: string;
 	alt?: string;
 	wide?: boolean;

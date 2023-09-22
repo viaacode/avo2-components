@@ -15,6 +15,7 @@ export interface MenuSearchResultItemInfoSchema {
 }
 
 export interface MenuSearchResultContentPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	menuItems: MenuSearchResultItemInfoSchema[];
 	noResultsLabel?: string;
 	onClick?: (menuItemId: string | number) => void;

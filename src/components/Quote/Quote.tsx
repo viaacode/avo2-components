@@ -7,6 +7,7 @@ import { AvatarIcon } from '../Avatar/AvatarIcon/AvatarIcon';
 import './Quote.scss';
 
 export interface QuotePropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	quote: string;
 	authorImage?: string;
 	authorName: string;

@@ -5,6 +5,7 @@ import React, { FunctionComponent } from 'react';
 import { DefaultProps } from '../../types';
 
 export interface RadioButtonPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	label: string;
 	name: string;
 	value: string;

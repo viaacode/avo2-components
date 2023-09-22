@@ -6,6 +6,7 @@ import { DefaultProps } from '../../types';
 import './Spinner.scss';
 
 export interface SpinnerPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	size?: 'large';
 	light?: boolean;
 }

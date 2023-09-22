@@ -6,6 +6,7 @@ export type StopPropagationObject = { stopPropagation: () => void };
 export type StopPropagationFunction = (e: StopPropagationObject) => void;
 
 export interface ContentInputPropsSchema extends TextInputPropsSchema {
+	children?: React.ReactNode;
 	align?: 'left' | 'right';
 	nodeCancel?: ReactNode;
 	nodeSubmit?: ReactNode;

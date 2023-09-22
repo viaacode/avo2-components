@@ -25,6 +25,7 @@ export type KeyValueEditorTableColsSchema = '0' | '1';
 const ENTRIES_PER_PAGE = 20;
 
 export interface KeyValueEditorPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	initialData: KeyValuePairs;
 	data: KeyValuePairs;
 	keyLabel?: string;

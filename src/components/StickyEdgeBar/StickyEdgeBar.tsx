@@ -8,6 +8,7 @@ import './StickyEdgeBar.scss';
 export type StickyEdgeBarPositions = 'bottom' | 'top';
 
 export interface StickyEdgeBarPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	positions?: StickyEdgeBarPositions[];
 	color?: 'teal-bright';
 }

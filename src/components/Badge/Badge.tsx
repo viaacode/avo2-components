@@ -6,6 +6,7 @@ import { DefaultProps } from '../../types';
 import styles from './Badge.module.scss';
 
 export interface BadgePropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	text: string;
 	type?: 'default' | 'success' | 'error';
 }

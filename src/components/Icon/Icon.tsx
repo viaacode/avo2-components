@@ -9,6 +9,7 @@ import { IconNameSchema, IconTypeSchema } from './Icon.types';
 import * as Icons from './Icons';
 
 export interface IconPropsSchema extends DefaultProps {
+	children?: React.ReactNode;
 	name?: IconNameSchema;
 	size?: 'small' | 'large' | 'huge';
 	type?: IconTypeSchema;
