@@ -1,4 +1,4 @@
-import { Avo } from '@viaa/avo2-types';
+import { type Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import { isNil, isString, noop } from 'lodash-es';
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';

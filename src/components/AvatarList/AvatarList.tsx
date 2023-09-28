@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import React, { Fragment, FunctionComponent } from 'react';
+import React, { FC, Fragment } from 'react';
 
-import { DefaultProps } from '../../types';
-import { Avatar, AvatarPropsSchema } from '../Avatar/Avatar';
+import { type DefaultProps } from '../../types';
+import { Avatar, type AvatarPropsSchema } from '../Avatar/Avatar';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots';
 import { Flex } from '../Flex/Flex';
@@ -23,11 +23,7 @@ export interface AvatarListPropsSchema extends DefaultProps {
 	isOpen: boolean;
 }
 
-export const AvatarList: FunctionComponent<AvatarListPropsSchema> = ({
-	avatars,
-	className,
-	isOpen = false,
-}) => {
+export const AvatarList: FC<AvatarListPropsSchema> = ({ avatars, className, isOpen = false }) => {
 	const visibleAvatars = avatars.slice(0, 3);
 	const hiddenAvatars = avatars.slice(3, avatars.length);
 	const hasHiddenAvatars = hiddenAvatars && !!hiddenAvatars.length;
