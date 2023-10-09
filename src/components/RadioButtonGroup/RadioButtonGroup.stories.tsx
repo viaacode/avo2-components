@@ -1,7 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import { noop } from 'lodash-es';
 import React, { Fragment, ReactElement, useState } from 'react';
+
+import { noop } from '../../helpers/noop';
 
 import { RadioButtonGroup } from './RadioButtonGroup';
 import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock';

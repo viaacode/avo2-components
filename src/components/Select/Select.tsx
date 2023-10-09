@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { get, noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import ReactSelect, { ActionMeta } from 'react-select';
 // eslint-disable-next-line import/no-unresolved
@@ -7,6 +6,7 @@ import { CreatableAdditionalProps } from 'react-select/dist/declarations/src/use
 // eslint-disable-next-line import/no-unresolved
 import { StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
 
+import { noop } from '../../helpers/noop';
 import { DefaultProps } from '../../types';
 
 import './Select.scss';
@@ -48,7 +48,7 @@ export const Select: FunctionComponent<SelectPropsSchema> = ({
 }) => {
 	function onValueChange(changedValue: any, actionMeta: ActionMeta<SelectOptionSchema>) {
 		if (actionMeta.action !== 'create-option') {
-			onChange(get(changedValue, 'value', null));
+			onChange(changedValue?.value || null);
 		}
 	}
 

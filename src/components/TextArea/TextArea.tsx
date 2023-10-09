@@ -1,8 +1,8 @@
 import autosize from 'autosize';
 import clsx from 'clsx';
-import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent, useEffect } from 'react';
 
+import { noop } from '../../helpers/noop';
 import { useCallbackRef } from '../../hooks/useCallbackRef';
 import { DefaultProps } from '../../types';
 

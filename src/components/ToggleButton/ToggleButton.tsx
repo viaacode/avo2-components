@@ -1,6 +1,6 @@
-import { noop } from 'lodash-es';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 
+import { noop } from '../../helpers/noop';
 import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
 import { ButtonTypeSchema } from '../Button/Button.types';

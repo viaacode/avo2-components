@@ -1,4 +1,4 @@
-import { times } from 'lodash-es';
+import { times } from '../../helpers/times';
 
 import { KeyValuePairs } from './KeyValueEditor';
 import translations from './nl.json';

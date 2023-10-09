@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
-import { noop } from 'lodash-es';
 import React from 'react';
 
+import { noop } from '../../helpers/noop';
 import { Spacer } from '../Spacer/Spacer';
 
 import { AvatarList } from './AvatarList';

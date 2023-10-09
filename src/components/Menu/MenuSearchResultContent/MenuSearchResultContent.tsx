@@ -1,8 +1,8 @@
 import { type Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
-import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 
+import { noop } from '../../../helpers/noop';
 import { DefaultProps } from '../../../types';
 import { Icon } from '../../Icon/Icon';
 import { CATEGORY_TO_ICON } from '../../Thumbnail/Thumbnail';

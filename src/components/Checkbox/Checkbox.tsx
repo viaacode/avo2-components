@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent, ReactNode } from 'react';
 
+import { noop } from '../../helpers/noop';
 import { DefaultProps } from '../../types';
 
 export interface CheckboxPropsSchema extends DefaultProps {

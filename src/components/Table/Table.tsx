@@ -1,8 +1,9 @@
 import { type Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
-import { isNil, isString, noop } from 'lodash-es';
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
+import { isNil } from '../../helpers/is-nil';
+import { noop } from '../../helpers/noop';
 import { DefaultProps } from '../../types';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { Flex } from '../Flex/Flex';
@@ -96,13 +97,13 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	onSelectAll = noop,
 }) => {
 	const getRowKey = (rowData: any): string => {
-		if (isString(rowKey)) {
+		if (typeof rowKey === 'string') {
 			return rowData[rowKey];
 		}
 		if (isNil(rowKey)) {
 			return rowData.id;
 		}
-		return rowKey(rowData);
+		return (rowKey as (rowData: any) => any)(rowData);
 	};
 
 	const handleRowClick = (rowData: any) => {

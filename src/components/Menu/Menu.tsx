@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { noop } from 'lodash-es';
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
+import { noop } from '../../helpers/noop';
 import { DefaultProps } from '../../types';
 
 import styles from './Menu.module.scss';

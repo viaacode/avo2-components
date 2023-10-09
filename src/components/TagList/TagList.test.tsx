@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
-import { noop } from 'lodash-es';
 import React from 'react';
 
+import { noop } from '../../helpers/noop';
 import { Icon } from '../Icon/Icon';
 
 import { TagList } from './TagList';

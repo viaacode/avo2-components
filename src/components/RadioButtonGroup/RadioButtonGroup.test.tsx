@@ -1,6 +1,7 @@
 import { shallow } from 'enzyme';
-import { noop } from 'lodash-es';
 import React from 'react';
+
+import { noop } from '../../helpers/noop';
 
 import { RadioButtonGroup } from './RadioButtonGroup';
 import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock';

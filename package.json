@@ -31,13 +31,14 @@
     "bump": "bump-package-versions --part=patch --strategy=highest ./package.json"
   },
   "peerDependencies": {
+    "to-camel-case": "1.0.0",
+    "to-slug-case": "1.0.0",
     "@popperjs/core": "2.11.6",
     "@viaa/avo2-types": "2.49.0",
     "autosize": "6.0.1",
     "caniuse-lite": "1.0.30001538",
     "clsx": "2.0.0",
     "date-fns": "2.30.0",
-    "lodash-es": "4.17.21",
     "marked": "4.0.15",
     "raf": "3.4.1",
     "react": "18.2.0",
@@ -49,7 +50,6 @@
     "react-select": "5.7.4"
   },
   "devDependencies": {
-    "postcss": "8.4.19",
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
     "@snyk/protect": "1.1221.0",
@@ -65,7 +65,6 @@
     "@types/autosize": "3.0.7",
     "@types/enzyme": "3.10.13",
     "@types/jest": "26.0.24",
-    "@types/lodash-es": "4.17.9",
     "@types/marked": "4.3.1",
     "@types/node": "14.6.1",
     "@types/raf": "3.4.0",
@@ -95,6 +94,7 @@
     "license-checker": "25.0.1",
     "lint-staged": "13.3.0",
     "lorem-ipsum": "2.0.8",
+    "postcss": "8.4.19",
     "prettier": "3.0.3",
     "rimraf": "3.0.2",
     "sass": "1.67.0",
@@ -106,11 +106,11 @@
     "tslib": "2.6.2",
     "typescript": "5.1.6",
     "vite": "4.4.9",
+    "vite-plugin-css-injected-by-js": "3.1.0",
     "vite-plugin-dts": "3.5.3",
     "vite-plugin-externalize-deps": "0.7.0",
     "vite-plugin-svgr": "3.2.0",
-    "vite-tsconfig-paths": "4.2.1",
-    "vite-plugin-css-injected-by-js": "3.1.0"
+    "vite-tsconfig-paths": "4.2.1"
   },
   "overrides": {
     "react": "18.2.0",

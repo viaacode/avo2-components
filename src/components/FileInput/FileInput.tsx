@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { noop } from 'lodash-es';
 import React, { ChangeEvent, FunctionComponent } from 'react';
 
+import { noop } from '../../helpers/noop';
 import { DefaultProps } from '../../types';
 import { Button } from '../Button/Button';
 

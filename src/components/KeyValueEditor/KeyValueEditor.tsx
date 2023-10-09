@@ -1,7 +1,8 @@
 import clsx from 'clsx';
-import { cloneDeep, noop } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 
+import { cloneDeep } from '../../helpers/cloneDeep';
+import { noop } from '../../helpers/noop';
 import { useTableSort } from '../../hooks/useTableSort';
 import { DefaultProps } from '../../types';
 import { Form } from '../Form/Form';

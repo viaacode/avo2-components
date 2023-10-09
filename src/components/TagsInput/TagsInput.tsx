@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import { noop } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
 import Select, { ActionMeta } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
+import { noop } from '../../helpers/noop';
 import { DefaultProps } from '../../types';
 
 import './TagsInput.scss';

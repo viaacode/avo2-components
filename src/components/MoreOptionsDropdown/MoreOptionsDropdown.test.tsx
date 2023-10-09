@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
-import { noop } from 'lodash-es';
 import React from 'react';
 
+import { noop } from '../../helpers/noop';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { MenuItemInfoSchema } from '../Menu/MenuContent/MenuContent';
 

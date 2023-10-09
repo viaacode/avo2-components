@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { noop } from 'lodash-es';
 import React, { FunctionComponent, MouseEvent } from 'react';
 
+import { noop } from '../../helpers/noop';
 import { DefaultProps } from '../../types';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';

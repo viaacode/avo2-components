@@ -1,7 +1,9 @@
 import clsx from 'clsx';
-import { camelCase, kebabCase, upperFirst } from 'lodash-es';
 import React, { FunctionComponent } from 'react';
+import camelCase from 'to-camel-case';
+import kebabCase from 'to-slug-case';
 
+import { upperFirst } from '../../helpers/upperfirst';
 import { DefaultProps } from '../../types';
 
 import './Icon.scss';

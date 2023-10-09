@@ -1,5 +1,6 @@
 /* tslint:disable */
-import { noop } from 'lodash-es';
+import { noop } from '../../helpers/noop';
+
 /* eslint-disable */
 import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
 import raf from 'raf';

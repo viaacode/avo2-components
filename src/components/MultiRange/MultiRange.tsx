@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { noop } from 'lodash-es';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { getTrackBackground, Range } from 'react-range';
 
+import { noop } from '../../helpers/noop';
 import { DefaultProps } from '../../types';
 import { TextInput } from '../TextInput/TextInput';
 

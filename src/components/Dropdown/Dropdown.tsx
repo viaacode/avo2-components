@@ -1,9 +1,9 @@
 import { Placement } from '@popperjs/core';
 import clsx from 'clsx';
-import { noop } from 'lodash-es';
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { usePopper } from 'react-popper';
 
+import { noop } from '../../helpers/noop';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
