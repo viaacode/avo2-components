@@ -12,6 +12,11 @@ import { IconNameSchema } from '../Icon/Icon.types';
 
 import './DatePicker.scss';
 
+// Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object.
+// https://github.com/Hacker0x01/react-datepicker/issues/3834#issuecomment-1451662259
+const ReactDatePickerLib =
+	(ReactDatePicker as unknown as { default: typeof ReactDatePicker }).default ?? ReactDatePicker;
+
 registerLocale('nl', nlBe);
 setDefaultLocale('nl');
 
@@ -79,7 +84,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	return (
 		<div className={clsx(className, 'avo__c-datepicker')}>
 			<div className={clsx('avo__c-datepicker--date c-input-with-icon-right')}>
-				<ReactDatePicker
+				<ReactDatePickerLib
 					className="c-input"
 					selected={value}
 					disabled={disabled}
