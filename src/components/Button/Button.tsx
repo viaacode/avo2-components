@@ -102,6 +102,10 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 			return renderIcon();
 		}
 
+		if (!icon) {
+			return null;
+		}
+
 		return (
 			<Icon
 				className={clsx(
@@ -136,7 +140,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 							skins['c-button__content']
 						)}
 					>
-						{icon && iconPosition === 'left' && renderIconElement()}
+						{iconPosition === 'left' && renderIconElement()}
 
 						{label && (
 							<div
@@ -150,7 +154,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 							</div>
 						)}
 
-						{icon && iconPosition === 'right' && renderIconElement()}
+						{iconPosition === 'right' && renderIconElement()}
 
 						{arrow && (
 							<Icon
