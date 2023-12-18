@@ -18,6 +18,7 @@ export interface TextAreaPropsSchema extends DefaultProps {
 	width?: 'xsmall' | 'small' | 'medium' | 'large';
 	onChange?: (value: string) => void;
 	onBlur?: () => void;
+	onFocus?: () => void;
 }
 
 export const TextArea: FunctionComponent<TextAreaPropsSchema> = ({
@@ -32,6 +33,7 @@ export const TextArea: FunctionComponent<TextAreaPropsSchema> = ({
 	width,
 	onChange = noop,
 	onBlur = noop,
+	onFocus = noop,
 }) => {
 	const [textArea, textAreaRef] = useCallbackRef<HTMLTextAreaElement>();
 
@@ -59,6 +61,7 @@ export const TextArea: FunctionComponent<TextAreaPropsSchema> = ({
 			value={value}
 			onChange={onValueChange}
 			onBlur={onBlur}
+			onFocus={onFocus}
 			ref={textAreaRef}
 		/>
 	);

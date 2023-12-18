@@ -13,6 +13,7 @@ export interface ContentInputPropsSchema extends TextInputPropsSchema {
 	onCancel?: () => void;
 	onClose?: () => void;
 	onConfirm?: (value: string | ReadonlyArray<string> | number) => void;
+	onFocus?: () => void;
 	onOpen?: () => void;
 	iconStart?: (onOpenHandler: StopPropagationFunction) => ReactNode;
 	iconEnd?: (onOpenHandler: StopPropagationFunction) => ReactNode;

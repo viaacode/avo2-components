@@ -20,6 +20,7 @@ export interface TextInputPropsSchema extends DefaultProps {
 	onChange?: (value: string) => void;
 	onBlur?: (event: ChangeEvent<HTMLInputElement>) => void;
 	onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
+	onFocus?: () => void;
 }
 
 export const TextInput: FunctionComponent<TextInputPropsSchema> = ({
@@ -34,6 +35,7 @@ export const TextInput: FunctionComponent<TextInputPropsSchema> = ({
 	onChange = noop,
 	onBlur = noop,
 	onKeyUp = noop,
+	onFocus = noop,
 }) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
 		onChange(event.target.value);
@@ -54,6 +56,7 @@ export const TextInput: FunctionComponent<TextInputPropsSchema> = ({
 				onChange={onValueChange}
 				onBlur={onBlur}
 				onKeyUp={onKeyUp}
+				onFocus={onFocus}
 			/>
 			<Icon name={icon} />
 		</div>
@@ -69,6 +72,7 @@ export const TextInput: FunctionComponent<TextInputPropsSchema> = ({
 			onChange={onValueChange}
 			onBlur={onBlur}
 			onKeyUp={onKeyUp}
+			onFocus={onFocus}
 		/>
 	);
 };
