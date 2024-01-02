@@ -21,6 +21,7 @@ const TextInputDefaults = {
 	type: 'text',
 	value: '',
 	onChange: () => null,
+	onFocus: () => null,
 };
 
 // eslint-disable-next-line react/display-name
@@ -40,6 +41,7 @@ const ContentInput: FC<ContentInputPropsSchema> = forwardRef<
 			onCancel = () => null,
 			onChange = TextInputDefaults.onChange,
 			onConfirm = () => null,
+			onFocus = TextInputDefaults.onFocus,
 			onOpen = () => null,
 			onClose = () => null,
 			rootClassName: root = 'c-content-input',
@@ -188,6 +190,7 @@ const ContentInput: FC<ContentInputPropsSchema> = forwardRef<
 					disabled={disabled}
 					onChange={(e) => onChange(e.target.value)} // Note: adjusted from source
 					onClick={onOpenHandler}
+					onFocus={onFocus}
 					onKeyDown={(e) => {
 						onKey(e, keysEnter, () => onConfirmHandler(e));
 						onKey(e, keysEscape, () => onCancelHandler(e));
