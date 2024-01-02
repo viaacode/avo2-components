@@ -89,7 +89,7 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 			<Container mode="horizontal">
 				<Toolbar autoHeight>
 					<ToolbarLeft>
-						<ToolbarItem>
+						<ToolbarItem className="c-header__top-row-left-slot">
 							{showMetaData && !!category && (
 								<MetaData spaced={true} category={category}>
 									<MetaDataItem>
@@ -112,17 +112,21 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 							{headerTopRowLeftSlot}
 						</ToolbarItem>
 					</ToolbarLeft>
-					<ToolbarRight>{headerTopRowRightSlot}</ToolbarRight>
+					<ToolbarRight>
+						<ToolbarItem className="c-header__top-row-right-slot">
+							{headerTopRowRightSlot}
+						</ToolbarItem>
+					</ToolbarRight>
 				</Toolbar>
 				<Toolbar autoHeight>
 					<ToolbarLeft>
-						<ToolbarItem>
+						<ToolbarItem className="c-header__middle-row-left-slot">
 							{renderTitle()}
 							{headerMiddleRowLeftSlot}
 						</ToolbarItem>
 					</ToolbarLeft>
 					<ToolbarRight>
-						<ToolbarItem>
+						<ToolbarItem className="c-header__middle-row-right-slot">
 							{buttonSlot}
 							{headerMiddleRowRightSlot}
 						</ToolbarItem>
@@ -130,7 +134,7 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 				</Toolbar>
 				<Toolbar autoHeight>
 					<ToolbarLeft>
-						<ToolbarItem>
+						<ToolbarItem className="c-header__bottom-row-left-slot">
 							{(avatarSlot || tagSlot) && (
 								<Spacer margin="top-small">
 									<Flex spaced="regular">
@@ -144,7 +148,9 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 						</ToolbarItem>
 					</ToolbarLeft>
 					<ToolbarRight>
-						<ToolbarItem>{headerBottomRowRightSlot}</ToolbarItem>
+						<ToolbarItem className="c-header__bottom-row-right-slot">
+							{headerBottomRowRightSlot}
+						</ToolbarItem>
 					</ToolbarRight>
 				</Toolbar>
 			</Container>
