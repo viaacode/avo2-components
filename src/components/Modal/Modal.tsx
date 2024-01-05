@@ -119,7 +119,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 						</Toolbar>
 					</div>
 				)}
-				{scrollable && (
+				{scrollable && !!body && (
 					<Scrollbar
 						className="c-modal__body"
 						options={{
