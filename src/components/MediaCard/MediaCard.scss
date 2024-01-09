@@ -74,6 +74,8 @@
    ========================================================================== */
 
 .c-media-card {
+	position: relative;
+
 	.c-media-card__title {
 		color: $g-text-color;
 	}
@@ -82,19 +84,19 @@
 		.c-media-card__title {
 			color: $color-teal-bright;
 		}
-	
+
 		&.c-media-card--collection {
 			.c-media-card__title {
 				color: $color-ocean-green;
 			}
 		}
-	
+
 		&.c-media-card--video {
 			.c-media-card__title {
 				color: $color-yellow;
 			}
 		}
-	
+
 		&.c-media-card--audio {
 			.c-media-card__title {
 				color: $color-teal-bright;
@@ -106,6 +108,12 @@
 				color: $color-tapestry;
 			}
 		}
+	}
+
+	.c-media-card__top-right {
+		position: absolute;
+		top: 0;
+		right: 0;
 	}
 }
 

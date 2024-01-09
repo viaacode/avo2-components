@@ -103,13 +103,33 @@ describe('<MediaCard />', () => {
 		expect(mediaCardComponent.find(MetaDataItem)).toHaveLength(2);
 	});
 
+	it('Should render top right when slot is passed', () => {
+		const mediaCardComponent = shallow(
+			<MediaCard
+				title="What an amazing title!"
+				category="collection"
+				orientation="horizontal"
+			>
+				<MediaCardMetaData>
+					<MetaData category="collection">
+						<MetaDataItem label="vrt" />
+						<MetaDataItem label="2d geleden" />
+					</MetaData>
+				</MediaCardMetaData>
+			</MediaCard>
+		);
+
+		expect(mediaCardComponent.find(MetaData)).toHaveLength(1);
+		expect(mediaCardComponent.find(MetaDataItem)).toHaveLength(2);
+	});
+
 	it('Should pass `href` property to title & thumbnail', () => {
 		const clickHandler = jest.fn();
 
 		const mediaCardComponent = mount(
 			<MediaCard title="What an amazing title!" onClick={clickHandler} category="collection">
 				<MediaCardThumbnail>
-					<Thumbnail category="collection" />
+					<Thumbnail category="collection" topRight={<>topRightTest</>} />
 				</MediaCardThumbnail>
 			</MediaCard>
 		);
@@ -129,5 +149,19 @@ describe('<MediaCard />', () => {
 		metaCardThumbElement.at(0).simulate('click');
 
 		expect(clickHandler).toHaveBeenCalledTimes(3);
+	});
+
+	it('Should render top right prop on thumbnail', () => {
+		const mediaCardComponent = mount(
+			<MediaCard title="What an amazing title!" category="collection">
+				<MediaCardThumbnail>
+					<Thumbnail category="collection" topRight={<>topRightTest</>} />
+				</MediaCardThumbnail>
+			</MediaCard>
+		);
+
+		const metaCardThumbTopRight = mediaCardComponent.find('.c-thumbnail-media__top-right');
+
+		expect(metaCardThumbTopRight.text()).toEqual('topRightTest');
 	});
 });

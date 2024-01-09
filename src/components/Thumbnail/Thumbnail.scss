@@ -129,6 +129,23 @@
 	border-radius: 0.3rem 0 0.3rem 0;
 }
 
+.c-thumbnail-media__top-right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 1.2rem;
+	color: $color-gray-700;
+	background-color: $color-gray-200;
+	padding: 0.4rem 0.8rem;
+	height: 2.8rem;
+	border-radius: 0.3rem 0 0.3rem 0;
+
+	a {
+		color: $color-gray-700;
+		text-decoration: none !important;
+	}
+}
+
 /* Media thumbnails small
    ========================================================================== */
 

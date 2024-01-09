@@ -25,6 +25,7 @@ storiesOf('components/MediaCard', module)
 						category="collection"
 						src="/images/thumbnail.jpg"
 						meta="7 items"
+						topRight={<div onClick={action('clicked on source')}>{'Bron >'}</div>}
 						label="collection"
 						alt="What an amazing thumbnail!"
 					/>
@@ -51,6 +52,7 @@ storiesOf('components/MediaCard', module)
 					category="collection"
 					src="/images/thumbnail.jpg"
 					meta="7 items"
+					topRight={<div onClick={action('clicked on source')}>{'Bron >'}</div>}
 					label="collection"
 					alt="What an amazing thumbnail!"
 				/>

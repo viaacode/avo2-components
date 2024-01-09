@@ -1,6 +1,6 @@
 import { type Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 
 import { noop } from '../../helpers/noop';
 import { DefaultProps } from '../../types';
@@ -25,6 +25,7 @@ export interface ThumbnailPropsSchema extends DefaultProps {
 	alt?: string;
 	label?: string;
 	meta?: string;
+	topRight?: ReactNode;
 	onClick?: () => void;
 	showCategoryIcon?: boolean;
 }
@@ -36,6 +37,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 	alt,
 	label,
 	meta,
+	topRight,
 	onClick = noop,
 	style,
 	showCategoryIcon = false,
@@ -88,7 +90,8 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 						<Icon name={iconName} />
 						{label && <p>{label}</p>}
 					</div>
-					{meta && <div className="c-thumbnail-media__meta">{meta}</div>}
+					{!!meta && <div className="c-thumbnail-media__meta">{meta}</div>}
+					{!!topRight && <div className="c-thumbnail-media__top-right">{topRight}</div>}
 				</div>
 			)}
 		</div>
