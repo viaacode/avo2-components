@@ -8,20 +8,21 @@ import { IconNameSchema } from '../Icon/Icon.types';
 
 type InputType = 'password' | 'text' | 'email' | 'search' | 'number' | 'tel' | 'url';
 
-export interface TextInputPropsSchema extends DefaultProps {
-	children?: React.ReactNode;
-	id?: string;
-	disabled?: boolean;
-	placeholder?: string;
-	value?: string;
-	icon?: IconNameSchema;
-	type?: InputType;
-	ariaLabel?: string;
-	onChange?: (value: string) => void;
-	onBlur?: (event: ChangeEvent<HTMLInputElement>) => void;
-	onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
-	onFocus?: () => void;
-}
+export type TextInputPropsSchema = DefaultProps &
+	Pick<HTMLInputElement, 'maxLength' | 'minLength'> & {
+		children?: React.ReactNode;
+		id?: string;
+		disabled?: boolean;
+		placeholder?: string;
+		value?: string;
+		icon?: IconNameSchema;
+		type?: InputType;
+		ariaLabel?: string;
+		onChange?: (value: string) => void;
+		onBlur?: (event: ChangeEvent<HTMLInputElement>) => void;
+		onKeyUp?: (event: KeyboardEvent<HTMLInputElement>) => void;
+		onFocus?: () => void;
+	};
 
 export const TextInput: FunctionComponent<TextInputPropsSchema> = ({
 	className,
