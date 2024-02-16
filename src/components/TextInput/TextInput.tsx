@@ -9,7 +9,7 @@ import { IconNameSchema } from '../Icon/Icon.types';
 type InputType = 'password' | 'text' | 'email' | 'search' | 'number' | 'tel' | 'url';
 
 export type TextInputPropsSchema = DefaultProps &
-	Pick<HTMLInputElement, 'maxLength' | 'minLength'> & {
+	Partial<Pick<HTMLInputElement, 'maxLength' | 'minLength'>> & {
 		children?: React.ReactNode;
 		id?: string;
 		disabled?: boolean;
