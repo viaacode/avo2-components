@@ -53,6 +53,7 @@
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
+    "@esbuild/darwin-arm64": "^0.20.1",
     "@snyk/protect": "1.1221.0",
     "@storybook/addon-actions": "6.5.17-alpha.0",
     "@storybook/addon-essentials": "6.5.17-alpha.0",
