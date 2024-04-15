@@ -53,7 +53,6 @@
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
-    "@esbuild/darwin-arm64": "^0.20.1",
     "@snyk/protect": "1.1221.0",
     "@storybook/addon-actions": "6.5.17-alpha.0",
     "@storybook/addon-essentials": "6.5.17-alpha.0",
@@ -123,6 +122,11 @@
     "webpack": "5.74.0",
     "typescript": "5.1.6",
     "@storybook/addons": "6.5.17-alpha.0"
+  },
+  "optionalDependencies": {
+    "@esbuild/darwin-arm64": "^0.20.1",
+    "@esbuild/win32-x64": "^0.20.1",
+    "@esbuild/linux-x64": "^0.20.1"
   },
   "browserslist": {
     "production": [
