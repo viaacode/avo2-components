@@ -28,12 +28,12 @@
     "test:output": "cross-env CI=true jest --json --outputFile=.storybook/test-results.json",
     "licenses": "license-checker --csv --out licenses.csv",
     "snyk-protect": "snyk protect",
-    "bump": "bump-package-versions --part=patch --strategy=highest ./package.json",
+    "bump": "bump-package-versions --part=major --strategy=highest ./package.json",
     "prepare": "husky install"
   },
   "peerDependencies": {
     "@popperjs/core": "2.11.6",
-    "@viaa/avo2-types": "2.49.5",
+    "@viaa/avo2-types": "3.0.1",
     "autosize": "6.0.1",
     "caniuse-lite": "1.0.30001538",
     "clsx": "2.0.0",
