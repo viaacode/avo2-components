@@ -37,11 +37,6 @@ import type { IconPropsSchema } from './Icon/Icon';
 import type { IconTypeSchema } from './Icon/Icon.types';
 import type { ImagePropsSchema } from './Image/Image';
 import type { ImageGridPropsSchema } from './ImageGrid/ImageGrid';
-import type {
-	KeyValueEditorPropsSchema,
-	KeyValueEditorTableColsSchema,
-	KeyValuePairSchema,
-} from './KeyValueEditor/KeyValueEditor';
 import type { MediaCardPropsSchema } from './MediaCard/MediaCard';
 import type { MenuPropsSchema } from './Menu/Menu';
 import type { MenuContentPropsSchema, MenuItemInfoSchema } from './Menu/MenuContent/MenuContent';
@@ -55,7 +50,6 @@ import type { ModalPropsSchema } from './Modal/Modal';
 import type { MoreOptionsDropdownPropsSchema } from './MoreOptionsDropdown/MoreOptionsDropdown';
 import type { MultiRangePropsSchema } from './MultiRange/MultiRange';
 import type { NavbarPropsSchema } from './Navbar/Navbar';
-import type { PaginationPropsSchema } from './Pagination/Pagination';
 import type { PanelPropsSchema } from './Panel/Panel';
 import type { PillPropsSchema } from './Pill/Pill';
 import type { QuotePropsSchema } from './Quote/Quote';
@@ -195,11 +189,6 @@ export type ImageProps = ImagePropsSchema;
 export { ImageGrid } from './ImageGrid/ImageGrid';
 export type ImageGridProps = ImageGridPropsSchema;
 
-export { KeyValueEditor } from './KeyValueEditor/KeyValueEditor';
-export type KeyValueEditorProps = KeyValueEditorPropsSchema;
-export type KeyValuePair = KeyValuePairSchema;
-export type KeyValueEditorTableCols = KeyValueEditorTableColsSchema;
-
 export { MediaCard } from './MediaCard/MediaCard';
 export type MediaCardProps = MediaCardPropsSchema;
 export { MediaCardMetaData, MediaCardThumbnail } from './MediaCard/MediaCard.slots';
@@ -238,9 +227,6 @@ export type MultiRangeProps = MultiRangePropsSchema;
 
 export { Navbar } from './Navbar/Navbar';
 export type NavbarProps = NavbarPropsSchema;
-
-export { Pagination } from './Pagination/Pagination';
-export type PaginationProps = PaginationPropsSchema;
 
 export { Panel } from './Panel/Panel';
 export type PanelProps = PanelPropsSchema;
