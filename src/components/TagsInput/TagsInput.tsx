@@ -53,7 +53,13 @@ export const TagsInput: FunctionComponent<TagsInputPropsSchema> = ({
 				});
 			}
 		} else {
-			onChange(changedValues as TagInfoSchema[]);
+			if (!changedValues) {
+				onChange([]);
+			} else if (Array.isArray(changedValues)) {
+				onChange(changedValues as TagInfoSchema[]);
+			} else {
+				onChange([changedValues as TagInfoSchema]);
+			}
 		}
 	}
 
