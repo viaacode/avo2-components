@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "5.0.7",
+  "version": "5.0.8",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -33,7 +33,7 @@
   },
   "peerDependencies": {
     "@popperjs/core": "2.11.6",
-    "@viaa/avo2-types": "3.0.6",
+    "@viaa/avo2-types": "3.0.7",
     "autosize": "6.0.1",
     "caniuse-lite": "1.0.30001538",
     "clsx": "2.0.0",
