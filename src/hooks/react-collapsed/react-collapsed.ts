@@ -2,44 +2,55 @@
 import { noop } from '../../helpers/noop';
 
 /* eslint-disable */
-import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
-import raf from 'raf';
+import React, { useState, useRef, useCallback, useMemo, useEffect } from "react";
+import raf from "raf";
 import {
 	callAll,
 	getElementHeight,
 	makeTransitionStyles,
 	joinTransitionProperties,
-	defaultTransitionStyles,
-} from './utils';
-import { useUniqueId, useLayoutEffectAfterMount, useStateOrProps } from './hooks';
+	defaultTransitionStyles
+} from "./utils";
+import { useUniqueId, useLayoutEffectAfterMount, useStateOrProps } from "./hooks";
 
-export default function useCollapse(initialConfig = {} as any) {
+interface UseCollapseInitialConfig {
+	collapsedHeight: number;
+	defaultOpen?: boolean;
+	onChange?: (isOpen: boolean) => void;
+	expandStyles?: React.CSSProperties;
+	collapseStyles?: React.CSSProperties;
+}
+
+export default function useCollapse(initialConfig: UseCollapseInitialConfig) {
 	const uniqueId = useUniqueId();
 	const el = useRef<HTMLElement | null>(null);
 	const [isOpen, setOpen] = useStateOrProps(initialConfig as any);
 	const [shouldAnimateOpen, setShouldAnimateOpen] = useState(null as boolean | null);
-	const [heightAtTransition, setHeightAtTransition] = useState<number | 'auto'>(0);
+	const [heightAtTransition, setHeightAtTransition] = useState<number | "auto">(0);
 	const { expandStyles, collapseStyles } = useMemo(
 		() => makeTransitionStyles(initialConfig),
 		[initialConfig]
 	);
 	const getCollapsedHeightStyle = () => {
-		return initialConfig.collapsedHeight + 'px';
+		return initialConfig.collapsedHeight + "px";
 	};
 	const [styles, setStyles] = useState(
 		isOpen
 			? null
 			: {
-					display: getCollapsedHeightStyle() === '0px' ? 'none' : 'block',
-					height: getCollapsedHeightStyle(),
-					overflow: 'hidden',
-			  }
+				display: getCollapsedHeightStyle() === "0px" ? "none" : "block",
+				height: getCollapsedHeightStyle(),
+				overflow: "hidden"
+			}
 	);
 	const [mountChildren, setMountChildren] = useState(isOpen);
 	const [buttonVisible, setButtonVisible] = useState(true);
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const toggleOpen = useCallback(() => setOpen((oldOpen: boolean) => !oldOpen), []);
+	const toggleOpen = useCallback(() => setOpen((oldOpen: boolean) => {
+		initialConfig.onChange?.(!oldOpen);
+		return !oldOpen;
+	}), []);
 
 	useLayoutEffectAfterMount(() => {
 		if (isOpen) {
@@ -49,8 +60,8 @@ export default function useCollapse(initialConfig = {} as any) {
 					({
 						...oldStyles,
 						...expandStyles,
-						display: 'block',
-						overflow: 'hidden',
+						display: "block",
+						overflow: "hidden"
 					}) as any
 			);
 			setShouldAnimateOpen(true);
@@ -74,7 +85,7 @@ export default function useCollapse(initialConfig = {} as any) {
 						({
 							...oldStyles,
 							height: getCollapsedHeightStyle(),
-							overflow: 'hidden',
+							overflow: "hidden"
 						}) as any
 				);
 				setHeightAtTransition(height);
@@ -121,9 +132,9 @@ export default function useCollapse(initialConfig = {} as any) {
 		} else {
 			setMountChildren(false);
 			setStyles({
-				overflow: 'hidden',
-				display: getCollapsedHeightStyle() === '0px' ? 'none' : 'block',
-				height: getCollapsedHeightStyle(),
+				overflow: "hidden",
+				display: getCollapsedHeightStyle() === "0px" ? "none" : "block",
+				height: getCollapsedHeightStyle()
 			});
 		}
 	};
@@ -132,19 +143,19 @@ export default function useCollapse(initialConfig = {} as any) {
 		getToggleProps(
 			{ disabled, onClick, ...rest } = {
 				disabled: false,
-				onClick: noop,
+				onClick: noop
 			}
 		) {
 			return {
-				type: 'button',
-				role: 'button',
+				type: "button",
+				role: "button",
 				id: `react-collapsed-toggle-${uniqueId}`,
-				'aria-controls': `react-collapsed-panel-${uniqueId}`,
-				'aria-expanded': isOpen ? 'true' : 'false',
+				"aria-controls": `react-collapsed-panel-${uniqueId}`,
+				"aria-expanded": isOpen ? "true" : "false",
 				tabIndex: 0,
-				style: buttonVisible ? {} : { display: 'none' },
+				style: buttonVisible ? {} : { display: "none" },
 				...rest,
-				onClick: disabled ? noop : callAll(onClick, toggleOpen),
+				onClick: disabled ? noop : callAll(onClick, toggleOpen)
 			};
 		},
 		getCollapseProps(
@@ -152,7 +163,7 @@ export default function useCollapse(initialConfig = {} as any) {
 		) {
 			return {
 				id: `react-collapsed-panel-${uniqueId}`,
-				'aria-hidden': isOpen ? null : 'true',
+				"aria-hidden": isOpen ? null : "true",
 				...rest,
 				ref: el,
 				onTransitionEnd: callAll(handleTransitionEnd, onTransitionEnd),
@@ -165,12 +176,12 @@ export default function useCollapse(initialConfig = {} as any) {
 					// combine any additional transition properties with height
 					transitionProperty: joinTransitionProperties(style.transitionProperty),
 					// style overrides from state
-					...styles,
-				},
+					...styles
+				}
 			};
 		},
 		isOpen,
 		toggleOpen,
-		mountChildren,
+		mountChildren
 	};
 }

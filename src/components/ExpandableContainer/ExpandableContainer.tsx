@@ -12,6 +12,7 @@ export interface ExpandableContainerPropsSchema {
 	defaultExpanded?: boolean;
 	expandLabel?: string;
 	expandNode?: ReactNode;
+	onChange?: (isOpen: boolean) => void;
 }
 
 export const ExpandableContainer: FunctionComponent<ExpandableContainerPropsSchema> = ({
@@ -22,10 +23,12 @@ export const ExpandableContainer: FunctionComponent<ExpandableContainerPropsSche
 	defaultExpanded = false,
 	expandLabel = 'Meer lezen',
 	expandNode,
+	onChange,
 }) => {
 	const { getCollapseProps, getToggleProps, isOpen } = useCollapsed({
 		collapsedHeight,
 		defaultOpen: defaultExpanded,
+		onChange,
 	});
 
 	const hasCustomControlNodes = collapseNode && expandNode;
@@ -48,7 +51,11 @@ export const ExpandableContainer: FunctionComponent<ExpandableContainerPropsSche
 							expandNode
 						)
 					) : (
-						<Button type="secondary" label={isOpen ? collapseLabel : expandLabel} />
+						<Button
+							type="secondary"
+							label={isOpen ? collapseLabel : expandLabel}
+							onClick={(evt) => evt.currentTarget.blur()}
+						/>
 					)}
 				</div>
 			</Spacer>
