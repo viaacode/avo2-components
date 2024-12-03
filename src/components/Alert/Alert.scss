@@ -90,6 +90,10 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 
 .c-alert--spinner {
 	background-color: $c-alert-spinner-bg-color;
+
+	.c-spinner {
+		width: 2rem;
+	}
 }
 
 .c-alert--dark {
