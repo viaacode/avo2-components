@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "5.0.12",
+  "version": "5.0.13",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
