@@ -91,6 +91,12 @@
 			}
 		}
 
+		&.c-media-card--assignment {
+			.c-media-card__title {
+				color: $color-french-rose;
+			}
+		}
+
 		&.c-media-card--video {
 			.c-media-card__title {
 				color: $color-yellow;

@@ -114,6 +114,10 @@ $o-container-max-width: 130rem;
    Change the look of the entire block
    ========================================================================== */
 
+.o-container-vertical--bg-white {
+	background-color: $color-white;
+}
+
 .o-container-vertical--bg-alt {
 	background-color: $color-gray-50;
 }
