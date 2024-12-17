@@ -9,7 +9,7 @@ export interface FormGroupPropsSchema extends DefaultProps {
 	label?: string;
 	labelFor?: string;
 	required?: boolean;
-	error?: string | string[];
+	error?: (string | ReactNode) | (string | ReactNode)[];
 	inlineMode?: 'grow' | 'shrink';
 	children: ReactNode;
 }
@@ -23,7 +23,7 @@ export const FormGroup: FunctionComponent<FormGroupPropsSchema> = ({
 	inlineMode,
 	children,
 }) => {
-	const errorArray = typeof error === 'string' ? [error] : error;
+	const errorArray = (Array.isArray(error) ? error : [error]) as (string | ReactNode)[];
 
 	return (
 		<div
@@ -46,7 +46,7 @@ export const FormGroup: FunctionComponent<FormGroupPropsSchema> = ({
 				{children}
 				{!!errorArray &&
 					!!errorArray.length &&
-					errorArray.map((err: string, index: number) => (
+					errorArray.map((err: string | ReactNode, index: number) => (
 						<div
 							key={`${err}-${index}`}
 							className="c-form-help-text c-form-help-text--error"
