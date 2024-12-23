@@ -11,6 +11,7 @@ import { MenuContent } from '../MenuContent/MenuContent';
 export interface MenuSearchResultItemInfoSchema {
 	label: string;
 	id: string | number;
+	key: string;
 	type: Avo.ContentType.English;
 }
 

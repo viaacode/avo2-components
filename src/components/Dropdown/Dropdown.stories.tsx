@@ -8,10 +8,10 @@ import { MenuContent } from '../Menu/MenuContent/MenuContent';
 import { Dropdown } from './Dropdown';
 
 const menuItems = [
-	{ label: 'Aluminium', id: 'aluminium' },
-	{ label: 'Cadmium', id: 'cadmium' },
-	{ label: 'Dubnium', id: 'dubnium' },
-	{ label: 'Potassium', id: 'potassium' },
+	{ label: 'Aluminium', id: 'aluminium', key: 'aluminium' },
+	{ label: 'Cadmium', id: 'cadmium', key: 'cadmium' },
+	{ label: 'Dubnium', id: 'dubnium', key: 'dubnium' },
+	{ label: 'Potassium', id: 'potassium', key: 'potassium' },
 ];
 
 const menuItemsWithIcons = [

@@ -4,10 +4,10 @@ import { MenuItemInfoSchema } from './MenuContent/MenuContent';
 import { MenuSearchResultItemInfoSchema } from './MenuSearchResultContent/MenuSearchResultContent';
 
 export const menuItems = [
-	{ label: 'Aluminium', id: 'aluminium' },
-	{ label: 'Cadmium', id: 'cadmium' },
-	{ label: 'Dubnium', id: 'dubnium' },
-	{ label: 'Potassium', id: 'potassium' },
+	{ label: 'Aluminium', id: 'aluminium', key: 'aluminium' },
+	{ label: 'Cadmium', id: 'cadmium', key: 'cadmium' },
+	{ label: 'Dubnium', id: 'dubnium', key: 'dubnium' },
+	{ label: 'Potassium', id: 'potassium', key: 'potassium' },
 ];
 
 export const menuItemsWithIcons: MenuItemInfoSchema[] = [
@@ -24,9 +24,9 @@ export const menuItemsWithDivider = [
 ];
 
 export const menuItemsWithSearch: MenuSearchResultItemInfoSchema[] = [
-	{ label: 'WK Voetbal', id: 0, type: 'collection' },
-	{ label: 'Wereldkampioenschap Voetbal 2018', id: 1, type: 'collection' },
-	{ label: 'Journaal: voetbij bij jongeren', id: 2, type: 'bundle' },
-	{ label: 'Op één: voetbal', id: 3, type: 'video' },
-	{ label: 'Ketnet online: interview wereldbeker voetbal', id: 4, type: 'audio' },
+	{ label: 'WK Voetbal', id: 0, type: 'collection', key: '0-collection' },
+	{ label: 'Wereldkampioenschap Voetbal 2018', id: 1, type: 'collection', key: '1-collection' },
+	{ label: 'Journaal: voetbij bij jongeren', id: 2, type: 'bundle', key: '2-bundle' },
+	{ label: 'Op één: voetbal', id: 3, type: 'video', key: '3-video' },
+	{ label: 'Ketnet online: interview wereldbeker voetbal', id: 4, type: 'audio', key: '4-audio' },
 ];
