@@ -13,6 +13,7 @@ export interface ExpandableContainerPropsSchema {
 	expandLabel?: string;
 	expandNode?: ReactNode;
 	onChange?: (isOpen: boolean) => void;
+	onTransitionEnd?: (isOpen: boolean) => void;
 }
 
 export const ExpandableContainer: FunctionComponent<ExpandableContainerPropsSchema> = ({
@@ -24,11 +25,13 @@ export const ExpandableContainer: FunctionComponent<ExpandableContainerPropsSche
 	expandLabel = 'Meer lezen',
 	expandNode,
 	onChange,
+	onTransitionEnd,
 }) => {
 	const { getCollapseProps, getToggleProps, isOpen } = useCollapsed({
 		collapsedHeight,
 		defaultOpen: defaultExpanded,
 		onChange,
+		onTransitionEnd,
 	});
 
 	const hasCustomControlNodes = collapseNode && expandNode;
