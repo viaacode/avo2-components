@@ -38,7 +38,7 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 			<div
 				className={clsx(className, 'c-menu__item')}
 				onClick={() => onClick(menuItemInfo.id)}
-				key={`menu-item-${menuItemInfo.key || menuItemInfo.key}`}
+				key={`menu-item-${menuItemInfo.key || menuItemInfo.id}`}
 			>
 				<div className={'c-menu__label'}>
 					{menuItemInfo.icon && <Icon name={menuItemInfo.icon} />}
