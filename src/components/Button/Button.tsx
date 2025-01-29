@@ -46,6 +46,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 	block = false,
 	children,
 	className,
+	style,
 	disabled,
 	icon,
 	label,
@@ -129,6 +130,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 				aria-label={ariaLabel}
 				title={title}
 				id={id}
+				style={style}
 			>
 				{children ? (
 					children
