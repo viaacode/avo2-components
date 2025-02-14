@@ -15,6 +15,7 @@ const ALERT_TYPE_TO_ICON_MAPPING: { [type in AlertTypeWithIcon]: IconNameSchema 
 	/* eslint-enable @typescript-eslint/no-unused-vars */
 	info: IconNameSchema.circleInfo,
 	success: IconNameSchema.circleCheck,
+	warn: IconNameSchema.circleWarning,
 	danger: IconNameSchema.circleWarning,
 };
 

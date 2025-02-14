@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { DefaultProps } from '../../types';
 
-export type AlertTypeSchema = 'info' | 'success' | 'danger' | 'spinner';
+export type AlertTypeSchema = 'info' | 'success' | 'warn' | 'danger' | 'spinner';
 
 export type AlertTypeWithIcon = Exclude<AlertTypeSchema, 'spinner'>;
 

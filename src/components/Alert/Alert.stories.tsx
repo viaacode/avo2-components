@@ -22,7 +22,7 @@ function getMultiLineAlertMessage(type: string) {
 }
 
 function renderAlertStories(props?: AlertPropsSchema, message?: (type: string) => JSX.Element) {
-	const types: AlertTypeSchema[] = ['info', 'success', 'danger', 'spinner'];
+	const types: AlertTypeSchema[] = ['info', 'success', 'warn', 'danger', 'spinner'];
 
 	return (
 		<>
