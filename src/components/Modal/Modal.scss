@@ -137,9 +137,18 @@ $g-c-modal-z: 50 !default;
 	padding: $c-modal-padding-vertical $c-modal-padding-horizontal;
 }
 
+.c-modal__subheader {
+	flex: 1 1 auto;
+	padding: $c-modal-padding-horizontal $c-modal-padding-vertical 0;
+}
+
 .c-modal__body--no-vert-padding {
 	padding-top: 0;
 	padding-bottom: 0;
+}
+
+.c-modal__body--no-padding-top {
+	padding-top: 0;
 }
 
 .c-modal__body--no-padding {

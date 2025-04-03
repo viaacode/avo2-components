@@ -21,7 +21,13 @@ import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import './Modal.scss';
-import { ModalBody, ModalFooterLeft, ModalFooterRight, ModalHeaderRight } from './Modal.slots';
+import {
+	ModalBody,
+	ModalFooterLeft,
+	ModalFooterRight,
+	ModalHeaderRight,
+	ModalSubHeader,
+} from './Modal.slots';
 import { ModalBackdrop } from './ModalBackdrop';
 
 export interface ModalPropsSchema extends DefaultProps {
@@ -31,6 +37,7 @@ export interface ModalPropsSchema extends DefaultProps {
 	 * true: modal will not close when clicking the backdrop
 	 */
 	disableContextClick?: boolean;
+	disablePageScroll?: boolean;
 	isOpen: boolean;
 	title?: string | ReactNode;
 	size?: 'small' | 'medium' | 'large' | 'extra-large' | 'fullscreen' | 'fullwidth' | 'auto';
@@ -42,6 +49,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 	children,
 	className,
 	disableContextClick = false,
+	disablePageScroll = false,
 	isOpen,
 	title,
 	size,
@@ -50,6 +58,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 }) => {
 	const body = useSlot(ModalBody, children);
 	const headerRight = useSlot(ModalHeaderRight, children);
+	const subheader = useSlot(ModalSubHeader, children);
 	const footerRight = useSlot(ModalFooterRight, children);
 	const footerLeft = useSlot(ModalFooterLeft, children);
 	// eslint-disable-next-line prettier/prettier
@@ -62,8 +71,12 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 	useEffect(() => {
 		if (isOpen) {
 			document.body.classList.add('modal-open');
+			if (disablePageScroll) {
+				document.documentElement.classList.add('disable-document-scroll');
+			}
 		} else {
 			document.body.classList.remove('modal-open');
+			document.documentElement.classList.remove('disable-document-scroll');
 		}
 	}, [isOpen]);
 
@@ -91,6 +104,9 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 	}
 
 	const renderModalContent = () => {
+		const bodyClassNames = clsx('c-modal__body', {
+			'c-modal__body--no-padding-top': !!subheader,
+		});
 		return (
 			<>
 				{(!!title || !!headerRight || !!onClose) && (
@@ -119,9 +135,10 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 						</Toolbar>
 					</div>
 				)}
+				{subheader && <div className="c-modal__subheader">{subheader}</div>}
 				{scrollable && !!body && (
 					<Scrollbar
-						className="c-modal__body"
+						className={bodyClassNames}
 						options={{
 							wheelPropagation: false,
 							suppressScrollX: true,
@@ -130,7 +147,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 						{body}
 					</Scrollbar>
 				)}
-				{!scrollable && <div className="c-modal__body">{body}</div>}
+				{!scrollable && <div className={bodyClassNames}>{body}</div>}
 				{(footerLeft || footerRight) && (
 					<div className="c-modal__footer c-modal__footer--bordered">
 						<Toolbar spaced>

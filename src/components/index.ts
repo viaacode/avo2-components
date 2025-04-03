@@ -220,6 +220,7 @@ export {
 	ModalFooterLeft,
 	ModalFooterRight,
 	ModalHeaderRight,
+	ModalSubHeader,
 } from './Modal/Modal.slots';
 
 export { MultiRange } from './MultiRange/MultiRange';
