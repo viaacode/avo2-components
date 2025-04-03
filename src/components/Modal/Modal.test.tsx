@@ -2,7 +2,13 @@ import { mount, shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
 import { Modal } from './Modal';
-import { ModalBody, ModalFooterLeft, ModalFooterRight, ModalHeaderRight } from './Modal.slots';
+import {
+	ModalBody,
+	ModalFooterLeft,
+	ModalFooterRight,
+	ModalHeaderRight,
+	ModalSubHeader,
+} from './Modal.slots';
 import { ModalBackdrop } from './ModalBackdrop';
 
 describe('<Modal />', () => {
@@ -319,5 +325,20 @@ describe('<Modal />', () => {
 		const footerLeftElement = modalComponent.find('.c-modal__footer .c-toolbar__right');
 
 		expect(footerLeftElement).toHaveLength(0);
+	});
+
+	it('Should be able to render items in the subheader', () => {
+		const modalComponent = mount(
+			<Modal isOpen={true}>
+				<ModalSubHeader>
+					<p>Test</p>
+				</ModalSubHeader>
+			</Modal>
+		);
+
+		const subheaderElement = modalComponent.find('.c-modal__subheader');
+
+		expect(subheaderElement).toHaveLength(1);
+		expect(subheaderElement.children().html()).toEqual('<p>Test</p>');
 	});
 });
