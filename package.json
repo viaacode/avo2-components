@@ -35,7 +35,7 @@
     "@popperjs/core": "2.11.6",
     "@viaa/avo2-types": "3.0.18",
     "autosize": "6.0.1",
-    "caniuse-lite": "1.0.30001538",
+    "caniuse-lite": "^1.0.30001712",
     "clsx": "2.0.0",
     "date-fns": "2.30.0",
     "marked": "4.0.15",
@@ -125,8 +125,8 @@
   },
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "^0.20.1",
-    "@esbuild/win32-x64": "^0.20.1",
-    "@esbuild/linux-x64": "^0.20.1"
+    "@esbuild/linux-x64": "^0.20.1",
+    "@esbuild/win32-x64": "^0.20.1"
   },
   "browserslist": {
     "production": [
