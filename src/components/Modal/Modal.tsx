@@ -68,7 +68,16 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 
 	useKeyPress('Escape', close);
 
+	// We need to make sure that the classList is updated when the props change as well
+	updateDocumentClasses();
+
+	// the useEffect will not be triggered when the props update, but the parent does not re-render
+	// However without the useEffect the view will also not be updated correctly, so we need both
 	useEffect(() => {
+		updateDocumentClasses();
+	}, [isOpen, disablePageScroll]);
+
+	function updateDocumentClasses() {
 		if (isOpen) {
 			document.body.classList.add('modal-open');
 			if (disablePageScroll) {
@@ -78,7 +87,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = ({
 			document.body.classList.remove('modal-open');
 			document.documentElement.classList.remove('disable-document-scroll');
 		}
-	}, [isOpen]);
+	}
 
 	function close() {
 		onClose && onClose();
