@@ -2,7 +2,6 @@
   "name": "@viaa/avo2-components",
   "version": "5.0.28",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "homepage": "./",
   "scripts": {

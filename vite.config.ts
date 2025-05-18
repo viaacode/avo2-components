@@ -14,8 +14,18 @@ export default defineConfig({
 		lib: {
 			entry: resolve(__dirname, 'src/index.ts'),
 			name: '@viaa/avo2-components',
-			fileName: 'index',
+			fileName: (format, entryName) => {
+				if (entryName === 'src/index') {
+					return `index.${format === 'es' ? 'js' : 'cjs'}`;
+				}
+				return `${entryName}.${format === 'es' ? 'js' : 'cjs'}`;
+			},
 			formats: ['es', 'cjs'],
+		},
+		rollupOptions: {
+			output: {
+				preserveModules: true,
+			},
 		},
 		sourcemap: true,
 	},
