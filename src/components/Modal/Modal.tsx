@@ -93,7 +93,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = forwardRef(
 		}));
 
 		function close() {
-			onClose && onClose();
+			onClose?.();
 		}
 
 		function onContextMouseDown(event: MouseEvent<HTMLElement>) {
