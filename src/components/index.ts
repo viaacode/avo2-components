@@ -46,7 +46,7 @@ import type {
 } from './Menu/MenuSearchResultContent/MenuSearchResultContent';
 import type { MetaDataPropsSchema } from './MetaData/MetaData';
 import type { MetaDataItemPropsSchema } from './MetaData/MetaDataItem/MetaDataItem';
-import type { ModalPropsSchema } from './Modal/Modal';
+import type { ModalPropsSchema, ModalRefSchema } from './Modal/Modal';
 import type { MoreOptionsDropdownPropsSchema } from './MoreOptionsDropdown/MoreOptionsDropdown';
 import type { MultiRangePropsSchema } from './MultiRange/MultiRange';
 import type { NavbarPropsSchema } from './Navbar/Navbar';
