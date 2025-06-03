@@ -215,6 +215,7 @@ export type MetaDataItemProps = MetaDataItemPropsSchema;
 
 export { Modal } from './Modal/Modal';
 export type ModalProps = ModalPropsSchema;
+export type ModalRef = ModalRefSchema;
 export {
 	ModalBody,
 	ModalFooterLeft,
