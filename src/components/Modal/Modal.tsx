@@ -3,7 +3,6 @@ import React, {
 	createRef,
 	forwardRef,
 	Fragment,
-	FunctionComponent,
 	MouseEvent,
 	ReactNode,
 	useEffect,
@@ -35,6 +34,10 @@ import { ModalBackdrop } from './ModalBackdrop';
 
 export interface ModalPropsSchema extends DefaultProps {
 	children: ReactNode;
+	ref: React.Ref<{
+		updateSize: () => void;
+	}>;
+
 	/**
 	 * false: enables the closing of the modal by clicking the backdrop (grey area around the modal)
 	 * true: modal will not close when clicking the backdrop
@@ -48,7 +51,11 @@ export interface ModalPropsSchema extends DefaultProps {
 	onClose?: () => void;
 }
 
-export const Modal: FunctionComponent<ModalPropsSchema> = forwardRef(
+export interface ModalRefSchema {
+	updateSize: () => void;
+}
+
+const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 	(
 		{
 			children,
@@ -71,8 +78,10 @@ export const Modal: FunctionComponent<ModalPropsSchema> = forwardRef(
 		const [mouseDownLocation, setMouseDownLocation] = useState<{ x: number; y: number } | null>(
 			null
 		);
-		const scrollbarRef = createRef<Scrollbar>();
-		const updateSize = () => scrollbarRef?.current?.updateScroll();
+		const scrollbarRef = createRef<typeof Scrollbar>();
+		const updateSize = () => {
+			scrollbarRef?.current?.updateScroll();
+		};
 
 		useKeyPress('Escape', close);
 
@@ -212,3 +221,7 @@ export const Modal: FunctionComponent<ModalPropsSchema> = forwardRef(
 		);
 	}
 );
+
+ModalInternal.displayName = 'Modal';
+
+export const Modal = ModalInternal;
