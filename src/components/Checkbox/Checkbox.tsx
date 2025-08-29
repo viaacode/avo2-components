@@ -10,6 +10,7 @@ export interface CheckboxPropsSchema extends DefaultProps {
 	checked?: boolean;
 	id?: string;
 	disabled?: boolean;
+	indeterminate?: boolean;
 	onChange?: (checked: boolean) => void;
 }
 
@@ -19,6 +20,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsSchema> = ({
 	id,
 	disabled = false,
 	checked = false,
+	 indeterminate,
 	onChange = noop,
 }) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
@@ -35,6 +37,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsSchema> = ({
 				<input
 					type="checkbox"
 					id={id}
+					data-indeterminate={indeterminate||undefined}
 					checked={checked}
 					disabled={disabled}
 					onChange={onValueChange}
