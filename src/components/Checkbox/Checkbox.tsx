@@ -32,7 +32,10 @@ export const Checkbox: FunctionComponent<CheckboxPropsSchema> = ({
 	}
 
 	return (
-		<div className={clsx(className, 'c-checkbox')}>
+		<div className={clsx(className, 'c-checkbox',{
+			'c-checkbox--checked':checked,
+			'c-checkbox--disabled':disabled
+		})}>
 			<label>
 				<input
 					type="checkbox"
