@@ -114,6 +114,24 @@
 				color: $color-tapestry;
 			}
 		}
+
+		&.c-media-card--contentPage {
+			.c-media-card__title {
+				color: $color-silver;
+			}
+
+			&.c-media-card--event_detail {
+				.c-media-card__title {
+					color: $color-green;
+				}
+			}
+
+			&.c-media-card--screencast {
+				.c-media-card__title {
+					color: $color-soft-blue;
+				}
+			}
+		}
 	}
 
 	.c-media-card__top-right {

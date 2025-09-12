@@ -86,6 +86,18 @@
 	color: $color-french-rose;
 }
 
+.c-thumbnail-media--contentPage .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
+	color: $color-silver;
+}
+
+.c-thumbnail-media--contentPage.c-thumbnail-media--event_detail .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
+	color: $color-green;
+}
+
+.c-thumbnail-media--contentPage.c-thumbnail-media--screencast .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
+	color: $color-soft-blue;
+}
+
 // hide the type label on narrow screens so it doesn't collide with the label on the right
 .o-container--medium .c-block-media-list .c-thumbnail-media__category {
 	.o-svg-icon:not(:last-child) {
