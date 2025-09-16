@@ -16,11 +16,20 @@ export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
 	bundle: IconNameSchema.folder,
 	search: IconNameSchema.search,
 	assignment: IconNameSchema.clipboard,
+	contentPage: IconNameSchema.layout,
+	['contentPage.nieuws_item']: IconNameSchema.layout,
+	['contentPage.pagina']: IconNameSchema.layout,
+	['contentPage.project']: IconNameSchema.layout,
+	['contentPage.overzicht']: IconNameSchema.layout,
+	['contentPage.demein_detailL']: IconNameSchema.layout,
+	['contentPage.event_detail']: IconNameSchema.calendar,
+	['contentPage.screencast']: IconNameSchema.helpCircle,
 };
 
 export interface ThumbnailPropsSchema extends DefaultProps {
 	children?: React.ReactNode;
 	category: Avo.ContentType.English;
+	subCategory?: Avo.ContentPage.Type;
 	src?: string;
 	alt?: string;
 	label?: string;
@@ -32,6 +41,7 @@ export interface ThumbnailPropsSchema extends DefaultProps {
 
 export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 	category,
+	subCategory,
 	className,
 	src,
 	alt,
@@ -43,7 +53,8 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 	showCategoryIcon = false,
 }) => {
 	const [loaded, setLoaded] = useState(false);
-	const iconName = CATEGORY_TO_ICON[category];
+	const lowerSubCategory = subCategory?.toLowerCase();
+	const iconName = CATEGORY_TO_ICON[lowerSubCategory ? `${category}.${lowerSubCategory}` : category];
 
 	useEffect(() => {
 		let img: HTMLImageElement | null = null;
@@ -67,7 +78,8 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 				className,
 				'c-thumbnail',
 				'c-thumbnail-media',
-				`c-thumbnail-media--${category}`
+				`c-thumbnail-media--${category}`,
+				`c-thumbnail-media--${lowerSubCategory}`
 			)}
 			style={style}
 			onClick={onClick}

@@ -11,6 +11,7 @@ import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 export interface MediaCardPropsSchema extends DefaultProps {
 	title: string;
 	category: Avo.ContentType.English;
+	subCategory?: Avo.ContentPage.Type;
 	children?: ReactNode;
 	orientation?: Orientation;
 	onClick?: (evt: MouseEvent<HTMLElement>) => void;
@@ -20,6 +21,7 @@ export const MediaCard: FunctionComponent<MediaCardPropsSchema> = ({
 	className,
 	title,
 	category,
+	subCategory,
 	children = [],
 	orientation = 'vertical',
 	onClick,
@@ -29,7 +31,7 @@ export const MediaCard: FunctionComponent<MediaCardPropsSchema> = ({
 
 	return (
 		<div
-			className={clsx(className, 'c-media-card', `c-media-card--${category}`, {
+			className={clsx(className, 'c-media-card', `c-media-card--${category}`, `c-media-card--${subCategory?.toLowerCase()}`, {
 				'c-media-card--horizontal': orientation === 'horizontal',
 				'u-clickable': !!onClick,
 			})}
