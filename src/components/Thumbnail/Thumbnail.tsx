@@ -21,7 +21,7 @@ export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
 	['contentPage.pagina']: IconNameSchema.layout,
 	['contentPage.project']: IconNameSchema.layout,
 	['contentPage.overzicht']: IconNameSchema.layout,
-	['contentPage.demein_detailL']: IconNameSchema.layout,
+	['contentPage.domein_detail']: IconNameSchema.layout,
 	['contentPage.event_detail']: IconNameSchema.calendar,
 	['contentPage.screencast']: IconNameSchema.helpCircle,
 };
