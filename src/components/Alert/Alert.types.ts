@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps } from '../../types/index.js';
 
 export type AlertTypeSchema = 'info' | 'success' | 'warn' | 'danger' | 'spinner';
 

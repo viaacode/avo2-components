@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Badge } from './Badge';
+import { Badge } from './Badge.js';
 
 storiesOf('components/Badge', module)
 	.addParameters({ jest: ['Badge'] })

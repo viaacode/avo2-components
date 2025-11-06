@@ -2,17 +2,17 @@ import { type Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
-import { isNil } from '../../helpers/is-nil';
-import { noop } from '../../helpers/noop';
-import { DefaultProps } from '../../types';
-import { Checkbox } from '../Checkbox/Checkbox';
-import { Flex } from '../Flex/Flex';
-import { Icon } from '../Icon/Icon';
-import { IconNameSchema } from '../Icon/Icon.types';
-import { Panel } from '../Panel/Panel';
-import { PanelBody } from '../Panel/PanelBody/PanelBody';
-import { RadioButton } from '../RadioButton/RadioButton';
-import { Spacer } from '../Spacer/Spacer';
+import { isNil } from '../../helpers/is-nil.js';
+import { noop } from '../../helpers/noop.js';
+import { DefaultProps } from '../../types/index.js';
+import { Checkbox } from '../Checkbox/Checkbox.js';
+import { Flex } from '../Flex/Flex.js';
+import { Icon } from '../Icon/Icon.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { Panel } from '../Panel/Panel.js';
+import { PanelBody } from '../Panel/PanelBody/PanelBody.js';
+import { RadioButton } from '../RadioButton/RadioButton.js';
+import { Spacer } from '../Spacer/Spacer.js';
 
 import styles from './Table.module.scss';
 

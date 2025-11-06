@@ -1,15 +1,15 @@
 import clsx from 'clsx';
 import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
-import { DefaultProps } from '../../types';
-import { Icon } from '../Icon/Icon';
-import { IconNameSchema, IconTypeSchema } from '../Icon/Icon.types';
-import { Tooltip } from '../Tooltip/Tooltip';
-import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
+import { DefaultProps } from '../../types/index.js';
+import { Icon } from '../Icon/Icon.js';
+import { IconNameSchema, IconTypeSchema } from '../Icon/Icon.types.js';
+import { Tooltip } from '../Tooltip/Tooltip.js';
+import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots.js';
 
 import skins from './Button-skins.module.scss';
 import styles from './Button.module.scss';
-import { ButtonTypeSchema } from './Button.types';
+import { ButtonTypeSchema } from './Button.types.js';
 
 export interface ButtonPropsSchema extends DefaultProps {
 	active?: boolean;

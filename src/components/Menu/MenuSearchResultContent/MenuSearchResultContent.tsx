@@ -2,11 +2,11 @@ import { type Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
-import { noop } from '../../../helpers/noop';
-import { DefaultProps } from '../../../types';
-import { Icon } from '../../Icon/Icon';
-import { CATEGORY_TO_ICON } from '../../Thumbnail/Thumbnail';
-import { MenuContent } from '../MenuContent/MenuContent';
+import { noop } from '../../../helpers/noop.js';
+import { DefaultProps } from '../../../types/index.js';
+import { Icon } from '../../Icon/Icon.js';
+import { CATEGORY_TO_ICON } from '../../Thumbnail/Thumbnail.js';
+import { MenuContent } from '../MenuContent/MenuContent.js';
 
 export interface MenuSearchResultItemInfoSchema {
 	label: string;

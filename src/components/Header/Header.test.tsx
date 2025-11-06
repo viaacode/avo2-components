@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Header } from './Header';
-import { MOCK_HEADER_PROPS_FULL } from './Header.mock';
+import { Header } from './Header.js';
+import { MOCK_HEADER_PROPS_FULL } from './Header.mock.js';
 
 describe('<Header />', () => {
 	it('Should be able to render', () => {

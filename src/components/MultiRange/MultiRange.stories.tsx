@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
-import { MultiRange } from './MultiRange';
+import { MultiRange } from './MultiRange.js';
 
 const MultiRangeStoryComponent = ({
 	children,

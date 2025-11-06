@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Checkbox } from '../Checkbox/Checkbox';
+import { Checkbox } from '../Checkbox/Checkbox.js';
 
-import { CheckboxGroup } from './CheckboxGroup';
+import { CheckboxGroup } from './CheckboxGroup.js';
 
 storiesOf('components/CheckboxGroup', module)
 	.addParameters({ jest: ['CheckboxGroup'] })

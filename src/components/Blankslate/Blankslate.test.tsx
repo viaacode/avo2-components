@@ -1,10 +1,10 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Icon } from '../Icon/Icon';
-import { IconNameSchema } from '../Icon/Icon.types';
+import { Icon } from '../Icon/Icon.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
 
-import { Blankslate } from './Blankslate';
+import { Blankslate } from './Blankslate.js';
 
 describe('<Blankslate />', () => {
 	it('Should be able to render', () => {

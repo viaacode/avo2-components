@@ -1,12 +1,12 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { MetaData } from '../MetaData/MetaData';
-import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
-import { Thumbnail } from '../Thumbnail/Thumbnail';
+import { MetaData } from '../MetaData/MetaData.js';
+import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem.js';
+import { Thumbnail } from '../Thumbnail/Thumbnail.js';
 
-import { MediaCard } from './MediaCard';
-import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
+import { MediaCard } from './MediaCard.js';
+import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots.js';
 
 describe('<MediaCard />', () => {
 	it('Should be able to render', () => {

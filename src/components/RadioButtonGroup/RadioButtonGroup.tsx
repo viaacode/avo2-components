@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import React, { FunctionComponent, useState } from 'react';
 
-import { generateRandomId } from '../../helpers/uuid';
-import { DefaultProps } from '../../types';
-import { RadioButton } from '../RadioButton/RadioButton';
+import { generateRandomId } from '../../helpers/uuid.js';
+import { DefaultProps } from '../../types/index.js';
+import { RadioButton } from '../RadioButton/RadioButton.js';
 
 export interface RadioOptionSchema {
 	label: string;

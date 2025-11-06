@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { DatePicker } from './DatePicker';
+import { DatePicker } from './DatePicker.js';
 
 describe('<DatePicker />', () => {
 	it('Should be able to render', () => {

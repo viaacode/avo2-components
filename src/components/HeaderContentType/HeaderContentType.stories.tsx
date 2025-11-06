@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { HeaderContentType } from './HeaderContentType';
+import { HeaderContentType } from './HeaderContentType.js';
 
 storiesOf('components/HeaderContentType', module)
 	.addParameters({ jest: ['HeaderContentType'] })

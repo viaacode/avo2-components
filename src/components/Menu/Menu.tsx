@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
-import { noop } from '../../helpers/noop';
-import { DefaultProps } from '../../types';
+import { noop } from '../../helpers/noop.js';
+import { DefaultProps } from '../../types/index.js';
 
 import styles from './Menu.module.scss';
-import { MenuContent, MenuItemInfoSchema } from './MenuContent/MenuContent';
+import { MenuContent, MenuItemInfoSchema } from './MenuContent/MenuContent.js';
 
 export interface MenuPropsSchema extends DefaultProps {
 	children?: React.ReactNode;

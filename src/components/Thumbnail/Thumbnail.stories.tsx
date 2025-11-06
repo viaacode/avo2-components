@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Thumbnail } from './Thumbnail';
+import { Thumbnail } from './Thumbnail.js';
 
 storiesOf('components/Thumbnail', module)
 	.addParameters({ jest: ['Thumbnail'] })

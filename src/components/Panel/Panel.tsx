@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import { useSlot } from '../../hooks/useSlot';
-import { DefaultProps } from '../../types';
+import { useSlot } from '../../hooks/useSlot.js';
+import { DefaultProps } from '../../types/index.js';
 
 import './Panel.scss';
-import { PanelBody, PanelHeader } from './Panel.slots';
+import { PanelBody, PanelHeader } from './Panel.slots.js';
 
 export interface PanelPropsSchema extends DefaultProps {
 	children: ReactNode;

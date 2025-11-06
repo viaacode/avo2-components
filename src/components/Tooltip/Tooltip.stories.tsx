@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Spacer } from '../Spacer/Spacer';
+import { Spacer } from '../Spacer/Spacer.js';
 
-import { Tooltip } from './Tooltip';
-import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
+import { Tooltip } from './Tooltip.js';
+import { TooltipContent, TooltipTrigger } from './Tooltip.slots.js';
 
 storiesOf('components/Tooltip', module)
 	.addParameters({ jest: ['Tooltip'] })

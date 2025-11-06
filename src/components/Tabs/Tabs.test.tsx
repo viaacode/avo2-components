@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Tab } from './Tab/Tab';
-import { Tabs } from './Tabs';
+import { Tab } from './Tab/Tab.js';
+import { Tabs } from './Tabs.js';
 
 const mockTabs = [
 	{

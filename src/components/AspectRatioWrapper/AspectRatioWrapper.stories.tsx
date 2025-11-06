@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { AspectRatioWrapper } from './AspectRatioWrapper';
+import { AspectRatioWrapper } from './AspectRatioWrapper.js';
 
 storiesOf('components/AspectRatioWrapper', module)
 	.addParameters({ jest: ['AspectRatioWrapper', 'AspectRatioWrapperIcon'] })

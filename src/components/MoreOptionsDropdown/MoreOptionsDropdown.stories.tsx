@@ -2,9 +2,9 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
-import { menuItems } from '../Menu/Menu.mocks';
+import { menuItems } from '../Menu/Menu.mocks.js';
 
-import { MoreOptionsDropdown } from './MoreOptionsDropdown';
+import { MoreOptionsDropdown } from './MoreOptionsDropdown.js';
 
 const MoreOptionsDropdownStory = ({
 	children,

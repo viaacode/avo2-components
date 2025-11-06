@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { AvatarIcon } from './AvatarIcon';
+import { AvatarIcon } from './AvatarIcon.js';
 
 describe('<AvatarIcon />', () => {
 	it('Should be able to render', () => {

@@ -2,11 +2,11 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Box } from '../Box/Box';
-import { Spacer } from '../Spacer/Spacer';
+import { Box } from '../Box/Box.js';
+import { Spacer } from '../Spacer/Spacer.js';
 
-import { Alert } from './Alert';
-import { AlertPropsSchema, AlertTypeSchema } from './Alert.types';
+import { Alert } from './Alert.js';
+import { AlertPropsSchema, AlertTypeSchema } from './Alert.types.js';
 
 function getMultiLineAlertMessage(type: string) {
 	return (

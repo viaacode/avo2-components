@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { IconNameSchema } from '../Icon/Icon.types';
-import { Spacer } from '../Spacer/Spacer';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { Spacer } from '../Spacer/Spacer.js';
 
-import { Blankslate } from './Blankslate';
+import { Blankslate } from './Blankslate.js';
 
 storiesOf('components/Blankslate', module)
 	.addParameters({ jest: ['Blankslate'] })

@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
-import { ToolbarItem } from './ToolbarItem';
+import { ToolbarItem } from './ToolbarItem.js';
 
 describe('<ToolbarItem />', () => {
 	it('Should be able to render', () => {

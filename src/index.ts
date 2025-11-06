@@ -1,16 +1,16 @@
 // Colors
-export { COLORS } from './colors';
+export { COLORS } from './colors/index.js';
 
 // Hooks
-export { useKeyPress } from './hooks/useKeyPress';
-export { useSlot } from './hooks/useSlot';
-export { useTableSort } from './hooks/useTableSort';
+export { useKeyPress } from './hooks/useKeyPress.js';
+export { useSlot } from './hooks/useSlot.js';
+export { useTableSort } from './hooks/useTableSort.js';
 
 // Helpers
-export * from './helpers';
+export * from './helpers/index.js';
 
 // Components
-export * from './components';
+export * from './components/index.js';
 
 // Types
-export * from './types';
+export * from './types/index.js';

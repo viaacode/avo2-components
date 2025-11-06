@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import React, { Fragment } from 'react';
 
-import { Container } from './Container';
+import { Container } from './Container.js';
 
 const content = loremIpsum({ count: 10 });
 

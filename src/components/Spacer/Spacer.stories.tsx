@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import React, { Fragment } from 'react';
 
-import { Spacer } from './Spacer';
+import { Spacer } from './Spacer.js';
 
 const content = loremIpsum({ count: 3 });
 

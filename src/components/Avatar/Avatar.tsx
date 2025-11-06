@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps } from '../../types/index.js';
 
 import styles from './Avatar.module.scss';
-import { AvatarIcon, AvatarIconPropsSchema } from './AvatarIcon/AvatarIcon';
+import { AvatarIcon, AvatarIconPropsSchema } from './AvatarIcon/AvatarIcon.js';
 
 export interface AvatarPropsSchema extends DefaultProps, AvatarIconPropsSchema {
 	children?: React.ReactNode;

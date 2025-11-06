@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import { DefaultProps, Orientation } from '../../types';
+import { DefaultProps, Orientation } from '../../types/index.js';
 
 import './Container.scss';
 

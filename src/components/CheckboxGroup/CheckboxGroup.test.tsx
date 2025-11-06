@@ -1,9 +1,9 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Checkbox } from '../Checkbox/Checkbox';
+import { Checkbox } from '../Checkbox/Checkbox.js';
 
-import { CheckboxGroup } from './CheckboxGroup';
+import { CheckboxGroup } from './CheckboxGroup.js';
 
 describe('<CheckboxGroup />', () => {
 	it('Should be able to render', () => {

@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
-import { TagInfoSchema, TagsInput } from './TagsInput';
+import { TagInfoSchema, TagsInput } from './TagsInput.js';
 
 const TagsInputStoryComponent = ({
 	children,

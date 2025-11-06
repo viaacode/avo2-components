@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { ElementType, FunctionComponent, ReactNode } from 'react';
 
-import { DefaultProps } from '../../../types';
+import { DefaultProps } from '../../../types/index.js';
 
 export type GridSizeSchema =
 	| '1'

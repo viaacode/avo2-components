@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
-import { convertToHtml, defaultRenderLinkFunction } from '../../helpers';
-import { ButtonAction, DefaultProps, HeadingType, RenderLinkFunction } from '../../types';
-import { Button, ButtonPropsSchema } from '../Button/Button';
-import { ButtonTypeSchema } from '../Button/Button.types';
-import { IconNameSchema } from '../Icon/Icon.types';
+import { convertToHtml, defaultRenderLinkFunction } from '../../helpers/index.js';
+import { ButtonAction, DefaultProps, HeadingType, RenderLinkFunction } from '../../types/index.js';
+import { Button, ButtonPropsSchema } from '../Button/Button.js';
+import { ButtonTypeSchema } from '../Button/Button.types.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
 
 import './CTA.scss';
 

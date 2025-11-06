@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { FileInput } from './FileInput';
+import { FileInput } from './FileInput.js';
 
 const customClass = 'c-input-custom';
 

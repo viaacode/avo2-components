@@ -3,7 +3,7 @@ import React from 'react';
 
 import image500x200 from '../../../static/images/500x200.jpg';
 
-import { Image } from './Image';
+import { Image } from './Image.js';
 
 describe('<Image />', () => {
 	it('Should be able to render', () => {

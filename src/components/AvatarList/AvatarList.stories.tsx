@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { noop } from '../../helpers/noop';
-import { Spacer } from '../Spacer/Spacer';
+import { noop } from '../../helpers/noop.js';
+import { Spacer } from '../Spacer/Spacer.js';
 
-import { AvatarList } from './AvatarList';
+import { AvatarList } from './AvatarList.js';
 
 export const mockAvatars = [
 	{

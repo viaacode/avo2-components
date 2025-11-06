@@ -1,9 +1,9 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { IconNameSchema } from '../../Icon/Icon.types';
+import { IconNameSchema } from '../../Icon/Icon.types.js';
 
-import { MetaDataItem } from './MetaDataItem';
+import { MetaDataItem } from './MetaDataItem.js';
 
 describe('<MetaDataItem />', () => {
 	it('Should be able to render', () => {

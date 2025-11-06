@@ -1,11 +1,11 @@
 import { mount, shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
-import { Button } from '../Button/Button';
-import { Icon } from '../Icon/Icon';
-import { IconNameSchema } from '../Icon/Icon.types';
+import { Button } from '../Button/Button.js';
+import { Icon } from '../Icon/Icon.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
 
-import { Table, TableColumnSchema } from './Table';
+import { Table, TableColumnSchema } from './Table.js';
 
 const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },

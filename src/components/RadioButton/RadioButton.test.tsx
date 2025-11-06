@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { RadioButton } from './RadioButton';
+import { RadioButton } from './RadioButton.js';
 
 describe('<RadioButton />', () => {
 	it('Should be able to render', () => {

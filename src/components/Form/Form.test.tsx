@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
-import { Form } from './Form';
+import { Form } from './Form.js';
 
 describe('<Form />', () => {
 	it('Should be able to render', () => {

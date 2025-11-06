@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Quote } from './Quote';
-import { MOCK_QUOTE, MOCK_QUOTE_WITH_IMG } from './Quote.mock';
+import { Quote } from './Quote.js';
+import { MOCK_QUOTE, MOCK_QUOTE_WITH_IMG } from './Quote.mock.js';
 
 storiesOf('components/Quote', module)
 	.addParameters({ jest: ['Quote'] })

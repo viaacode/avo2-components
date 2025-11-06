@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { FlexItem } from './FlexItem';
+import { FlexItem } from './FlexItem.js';
 
 describe('<Flex />', () => {
 	it('Should be able to render', () => {

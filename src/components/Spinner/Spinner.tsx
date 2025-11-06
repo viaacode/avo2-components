@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
-import { DefaultProps } from '../../types';
+import { DefaultProps } from '../../types/index.js';
 
 import './Spinner.scss';
 

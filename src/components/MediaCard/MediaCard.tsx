@@ -2,11 +2,11 @@ import { type Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
-import { useSlot } from '../../hooks/useSlot';
-import { DefaultProps, Orientation } from '../../types';
+import { useSlot } from '../../hooks/useSlot.js';
+import { DefaultProps, Orientation } from '../../types/index.js';
 
 import './MediaCard.scss';
-import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
+import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots.js';
 
 export interface MediaCardPropsSchema extends DefaultProps {
 	title: string;

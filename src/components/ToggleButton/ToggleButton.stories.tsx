@@ -2,9 +2,9 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { IconNameSchema } from '../Icon/Icon.types';
+import { IconNameSchema } from '../Icon/Icon.types.js';
 
-import { ToggleButton } from './ToggleButton';
+import { ToggleButton } from './ToggleButton.js';
 
 storiesOf('components/ToggleButton', module)
 	.addParameters({ jest: ['ToggleButton'] })

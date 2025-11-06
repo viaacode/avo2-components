@@ -2,8 +2,8 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
-import { Select } from './Select';
-import { SELECT_MOCK_OPTIONS } from './Select.mock';
+import { Select } from './Select.js';
+import { SELECT_MOCK_OPTIONS } from './Select.mock.js';
 
 const SelectStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [value, setValue] = useState<string | null>('Al');

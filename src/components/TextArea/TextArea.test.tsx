@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { TextArea } from './TextArea';
+import { TextArea } from './TextArea.js';
 
 describe('<TextArea />', () => {
 	it('Should be able to render', () => {

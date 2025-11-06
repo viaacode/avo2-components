@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { useState } from 'react';
 
-import ContentInput from './ContentInput';
-import { ContentInputPropsSchema } from './ContentInput.types';
+import ContentInput from './ContentInput.js';
+import { ContentInputPropsSchema } from './ContentInput.types.js';
 
 export default {
 	title: 'Components/ContentInput',

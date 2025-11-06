@@ -1,7 +1,7 @@
 import type { Avo } from '@viaa/avo2-types';
 import { CSSProperties, ReactNode } from 'react';
 
-export * from './content-type';
+export * from './content-type.js';
 
 export type DefaultProps = {
 	className?: string;

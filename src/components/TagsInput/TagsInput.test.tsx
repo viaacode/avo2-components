@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { TagsInput } from './TagsInput';
+import { TagsInput } from './TagsInput.js';
 
 const customClass = 'c-tags-input-custom';
 

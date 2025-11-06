@@ -2,11 +2,11 @@ import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode, useCallback, useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
 
-import { generateRandomId } from '../../helpers/uuid';
-import { useSlot } from '../../hooks/useSlot';
+import { generateRandomId } from '../../helpers/uuid.js';
+import { useSlot } from '../../hooks/useSlot.js';
 
 import './Tooltip.scss';
-import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
+import { TooltipContent, TooltipTrigger } from './Tooltip.slots.js';
 
 export interface TooltipPropsSchema {
 	children: ReactNode;

@@ -1,11 +1,11 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { noop } from '../../helpers/noop';
-import { IconNameSchema } from '../Icon/Icon.types';
-import { MenuItemInfoSchema } from '../Menu/MenuContent/MenuContent';
+import { noop } from '../../helpers/noop.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { MenuItemInfoSchema } from '../Menu/MenuContent/MenuContent.js';
 
-import { MoreOptionsDropdown } from './MoreOptionsDropdown';
+import { MoreOptionsDropdown } from './MoreOptionsDropdown.js';
 
 const menuItems: MenuItemInfoSchema[] = [
 	{

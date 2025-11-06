@@ -1,10 +1,10 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { noop } from '../../helpers/noop';
+import { noop } from '../../helpers/noop.js';
 
-import { RadioButtonGroup } from './RadioButtonGroup';
-import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock';
+import { RadioButtonGroup } from './RadioButtonGroup.js';
+import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock.js';
 
 describe('<RadioButtonGroup />', () => {
 	it('Should be able to render', () => {

@@ -1,10 +1,10 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { noop } from '../../helpers/noop';
-import { Icon } from '../Icon/Icon';
+import { noop } from '../../helpers/noop.js';
+import { Icon } from '../Icon/Icon.js';
 
-import { TagList } from './TagList';
+import { TagList } from './TagList.js';
 
 const tags = [
 	{ label: 'Aluminium', id: 'aluminium' },

@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
-import { ExpandableContainer } from './ExpandableContainer';
+import { ExpandableContainer } from './ExpandableContainer.js';
 
 describe('<Container />', () => {
 	it('Should be able to render', () => {

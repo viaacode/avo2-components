@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import { DefaultProps } from '../../types';
-import { Icon } from '../Icon/Icon';
-import { IconNameSchema } from '../Icon/Icon.types';
-import { Spacer } from '../Spacer/Spacer';
+import { DefaultProps } from '../../types/index.js';
+import { Icon } from '../Icon/Icon.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { Spacer } from '../Spacer/Spacer.js';
 
 import './Blankslate.scss';
 

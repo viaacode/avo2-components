@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { DeadlineIndicator } from './DeadlineIndicator';
+import { DeadlineIndicator } from './DeadlineIndicator.js';
 
 storiesOf('components/DeadlineIndicator', module)
 	.addParameters({ jest: ['DeadlineIndicator'] })

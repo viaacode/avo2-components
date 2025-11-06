@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
-import { Toggle } from './Toggle';
+import { Toggle } from './Toggle.js';
 
 const ToggleStoryComponent = ({
 	children,

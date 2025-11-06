@@ -2,18 +2,18 @@ import { type Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import { useSlot } from '../../hooks/useSlot';
-import { DefaultProps, translateContentType } from '../../types';
-import { Container, ContainerPropsSchema } from '../Container/Container';
-import { Flex } from '../Flex/Flex';
-import { HeaderContentType } from '../HeaderContentType/HeaderContentType';
-import { IconNameSchema } from '../Icon/Icon.types';
-import { MetaData } from '../MetaData/MetaData';
-import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
-import { Spacer } from '../Spacer/Spacer';
-import { Toolbar } from '../Toolbar/Toolbar';
-import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
-import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
+import { useSlot } from '../../hooks/useSlot.js';
+import { DefaultProps, translateContentType } from '../../types/index.js';
+import { Container, ContainerPropsSchema } from '../Container/Container.js';
+import { Flex } from '../Flex/Flex.js';
+import { HeaderContentType } from '../HeaderContentType/HeaderContentType.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { MetaData } from '../MetaData/MetaData.js';
+import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem.js';
+import { Spacer } from '../Spacer/Spacer.js';
+import { Toolbar } from '../Toolbar/Toolbar.js';
+import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots.js';
+import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem.js';
 
 import './Header.scss';
 import {
@@ -27,7 +27,7 @@ import {
 	HeaderTags,
 	HeaderTopRowLeft,
 	HeaderTopRowRight,
-} from './Header.slots';
+} from './Header.slots.js';
 
 export interface HeaderPropsSchema extends DefaultProps {
 	bookmarks?: string;

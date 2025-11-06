@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { IconNameSchema } from '../../Icon/Icon.types';
+import { IconNameSchema } from '../../Icon/Icon.types.js';
 
-import { Tab } from './Tab';
+import { Tab } from './Tab.js';
 
 const mockTab = {
 	id: 'videosTestId',

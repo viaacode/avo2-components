@@ -2,9 +2,9 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
-import { Spacer } from '../Spacer/Spacer';
+import { Spacer } from '../Spacer/Spacer.js';
 
-import { DatePicker } from './DatePicker';
+import { DatePicker } from './DatePicker.js';
 
 const DatePickerStoryComponent = ({
 	children,

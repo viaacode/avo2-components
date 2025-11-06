@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import React, { ChangeEvent, FunctionComponent, ReactNode } from 'react';
 
-import { noop } from '../../helpers/noop';
-import { DefaultProps } from '../../types';
+import { noop } from '../../helpers/noop.js';
+import { DefaultProps } from '../../types/index.js';
 
 export interface CheckboxPropsSchema extends DefaultProps {
 	children?: React.ReactNode;

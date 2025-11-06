@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { HeaderContentType } from './HeaderContentType';
+import { HeaderContentType } from './HeaderContentType.js';
 
 describe('<HeaderContentType />', () => {
 	it('Should be able to render', () => {

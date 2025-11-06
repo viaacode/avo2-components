@@ -1,15 +1,15 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { times } from '../../helpers/times';
-import { Avatar } from '../Avatar/Avatar';
-import { Button } from '../Button/Button';
-import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
-import { TagList } from '../TagList/TagList';
+import { times } from '../../helpers/times.js';
+import { Avatar } from '../Avatar/Avatar.js';
+import { Button } from '../Button/Button.js';
+import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar.js';
+import { TagList } from '../TagList/TagList.js';
 
-import { Header } from './Header';
-import { MOCK_HEADER_PROPS, MOCK_HEADER_PROPS_FULL } from './Header.mock';
-import { HeaderBottomRowLeft, HeaderMiddleRowRight, HeaderTopRowLeft } from './Header.slots';
+import { Header } from './Header.js';
+import { MOCK_HEADER_PROPS, MOCK_HEADER_PROPS_FULL } from './Header.mock.js';
+import { HeaderBottomRowLeft, HeaderMiddleRowRight, HeaderTopRowLeft } from './Header.slots.js';
 
 storiesOf('components/Header', module)
 	.addParameters({ jest: ['Header'] })

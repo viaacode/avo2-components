@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React, { ReactNode } from 'react';
 
-import { Column } from './Column/Column';
-import { Grid } from './Grid';
+import { Column } from './Column/Column.js';
+import { Grid } from './Grid.js';
 
 const GridDecorator = (story: () => ReactNode) => (
 	<div className="br-styleguide">

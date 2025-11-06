@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { getTrackBackground, Range } from 'react-range';
 
-import { noop } from '../../helpers/noop';
-import { DefaultProps } from '../../types';
-import { TextInput } from '../TextInput/TextInput';
+import { noop } from '../../helpers/noop.js';
+import { DefaultProps } from '../../types/index.js';
+import { TextInput } from '../TextInput/TextInput.js';
 
 import './MultiRange.scss';
 

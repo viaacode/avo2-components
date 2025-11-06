@@ -2,10 +2,10 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
-import { IconNameSchema } from '../Icon/Icon.types';
-import { Spacer } from '../Spacer/Spacer';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { Spacer } from '../Spacer/Spacer.js';
 
-import { TextInput } from './TextInput';
+import { TextInput } from './TextInput.js';
 
 const TextInputStoryComponent = ({
 	children,

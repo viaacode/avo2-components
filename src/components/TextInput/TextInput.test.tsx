@@ -1,10 +1,10 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Icon } from '../Icon/Icon';
-import { IconNameSchema } from '../Icon/Icon.types';
+import { Icon } from '../Icon/Icon.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
 
-import { TextInput } from './TextInput';
+import { TextInput } from './TextInput.js';
 
 const customClass = 'c-input-custom';
 

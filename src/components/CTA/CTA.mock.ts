@@ -1,10 +1,10 @@
 import { action } from '@storybook/addon-actions';
 
-import { testRenderLink } from '../../helpers';
-import { LinkTarget } from '../../types';
-import { IconNameSchema } from '../Icon/Icon.types';
+import { testRenderLink } from '../../helpers/index.js';
+import { LinkTarget } from '../../types/index.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
 
-import { CTAPropsSchema } from './CTA';
+import { CTAPropsSchema } from './CTA.js';
 
 export const CTA_MOCK: CTAPropsSchema = {
 	heading: 'Titel',

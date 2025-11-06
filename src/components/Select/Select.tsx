@@ -2,12 +2,12 @@ import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 import ReactSelect, { ActionMeta } from 'react-select';
 // eslint-disable-next-line import/no-unresolved
-import { CreatableAdditionalProps } from 'react-select/dist/declarations/src/useCreatable';
+import { CreatableAdditionalProps } from '../../../node_modules/react-select/dist/declarations/src/useCreatable.js';
 // eslint-disable-next-line import/no-unresolved
-import { StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
+import { StateManagerProps } from '../../../node_modules/react-select/dist/declarations/src/useStateManager.js';
 
-import { noop } from '../../helpers/noop';
-import { DefaultProps } from '../../types';
+import { noop } from '../../helpers/noop.js';
+import { DefaultProps } from '../../types/index.js';
 
 import './Select.scss';
 

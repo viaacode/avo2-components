@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { useKeyPress } from './useKeyPress';
+import { useKeyPress } from './useKeyPress.js';
 
 const TestComponent = ({
 	onPressDown,

@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
-import { DefaultProps } from '../../../types';
-import { Icon } from '../../Icon/Icon';
-import { IconNameSchema } from '../../Icon/Icon.types';
+import { DefaultProps } from '../../../types/index.js';
+import { Icon } from '../../Icon/Icon.js';
+import { IconNameSchema } from '../../Icon/Icon.types.js';
 import styles from '../Avatar.module.scss';
 
 export interface AvatarIconPropsSchema extends DefaultProps {

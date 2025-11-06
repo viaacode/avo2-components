@@ -7,8 +7,8 @@
       "esnext"
     ],
 		"types": ["vite/client", "vite-plugin-svgr/client", "jest"],
-		"module": "esnext",
-    "moduleResolution": "node",
+		"module": "NodeNext",
+    "moduleResolution": "nodenext",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -22,7 +22,7 @@
     "noEmit": true,
     "outDir": "dist",
     "allowJs": true,
-    "isolatedModules": false
+    "isolatedModules": false,
   },
   "include": [
     "src"

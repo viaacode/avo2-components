@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Toggle } from './Toggle';
+import { Toggle } from './Toggle.js';
 
 describe('<Toggle />', () => {
 	it('Should be able to render', () => {

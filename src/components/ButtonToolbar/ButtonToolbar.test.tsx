@@ -1,9 +1,9 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Button } from '../Button/Button';
+import { Button } from '../Button/Button.js';
 
-import { ButtonToolbar } from './ButtonToolbar';
+import { ButtonToolbar } from './ButtonToolbar.js';
 
 describe('<ButtonToolbar />', () => {
 	it('Should be able to render', () => {

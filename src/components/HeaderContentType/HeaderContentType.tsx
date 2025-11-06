@@ -2,9 +2,9 @@ import { type Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
-import { DefaultProps } from '../../types';
-import { Icon } from '../Icon/Icon';
-import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail';
+import { DefaultProps } from '../../types/index.js';
+import { Icon } from '../Icon/Icon.js';
+import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail.js';
 
 export interface HeaderContentTypePropsSchema extends DefaultProps {
 	children?: React.ReactNode;

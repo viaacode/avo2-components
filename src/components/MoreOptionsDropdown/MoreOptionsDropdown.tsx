@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 
-import { Button } from '../Button/Button';
-import { Dropdown } from '../Dropdown/Dropdown';
-import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots';
-import { IconNameSchema } from '../Icon/Icon.types';
-import { MenuContent, MenuItemInfoSchema } from '../Menu/MenuContent/MenuContent';
+import { Button } from '../Button/Button.js';
+import { Dropdown } from '../Dropdown/Dropdown.js';
+import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { MenuContent, MenuItemInfoSchema } from '../Menu/MenuContent/MenuContent.js';
 
 export interface MoreOptionsDropdownPropsSchema {
 	children?: React.ReactNode;

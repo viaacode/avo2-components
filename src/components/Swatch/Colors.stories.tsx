@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import React, { Fragment } from 'react';
 
-import { type ColorCategory, COLORS } from '../../colors';
+import { type ColorCategory, COLORS } from '../../colors/index.js';
 
-import { SwatchBlock } from './SwatchBlock';
+import { SwatchBlock } from './SwatchBlock.js';
 
 const transformColors = (colors: ColorCategory) => {
 	return Object.entries(colors).map(([name, value]) => ({

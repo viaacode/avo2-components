@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import React, { Fragment } from 'react';
 
-import { Navbar } from './Navbar';
+import { Navbar } from './Navbar.js';
 
 const content = 'navbar content';
 

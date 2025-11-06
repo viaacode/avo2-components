@@ -2,13 +2,13 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { IconNameSchema } from '../Icon/Icon.types';
-import { MetaData } from '../MetaData/MetaData';
-import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
-import { Thumbnail } from '../Thumbnail/Thumbnail';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { MetaData } from '../MetaData/MetaData.js';
+import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem.js';
+import { Thumbnail } from '../Thumbnail/Thumbnail.js';
 
-import { MediaCard } from './MediaCard';
-import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
+import { MediaCard } from './MediaCard.js';
+import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots.js';
 
 storiesOf('components/MediaCard', module)
 	.addParameters({ jest: ['MediaCard'] })

@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { times } from '../../helpers/times';
-import { Button } from '../Button/Button';
+import { times } from '../../helpers/times.js';
+import { Button } from '../Button/Button.js';
 
-import { ButtonToolbar } from './ButtonToolbar';
+import { ButtonToolbar } from './ButtonToolbar.js';
 
 storiesOf('components/ButtonToolbar', module)
 	.addParameters({ jest: ['ButtonToolbar'] })

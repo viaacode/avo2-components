@@ -3,8 +3,8 @@ import React, { FunctionComponent } from 'react';
 import Select, { ActionMeta } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
-import { noop } from '../../helpers/noop';
-import { DefaultProps } from '../../types';
+import { noop } from '../../helpers/noop.js';
+import { DefaultProps } from '../../types/index.js';
 
 import './TagsInput.scss';
 

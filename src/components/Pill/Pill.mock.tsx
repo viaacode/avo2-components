@@ -1,4 +1,4 @@
-import { PillPropsSchema, PillVariants } from './Pill';
+import { PillPropsSchema, PillVariants } from './Pill.js';
 
 export const MOCK_PILL: PillPropsSchema = {
 	style: {},

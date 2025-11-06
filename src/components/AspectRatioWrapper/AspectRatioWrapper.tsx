@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
-import { DefaultProps, VideoAspectRatio } from '../../types';
+import { DefaultProps, VideoAspectRatio } from '../../types/index.js';
 
 import './AspectRatioWrapper.scss';
 

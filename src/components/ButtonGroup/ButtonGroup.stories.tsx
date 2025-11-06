@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Button } from '../Button/Button';
+import { Button } from '../Button/Button.js';
 
-import { ButtonGroup } from './ButtonGroup';
+import { ButtonGroup } from './ButtonGroup.js';
 
 storiesOf('components/ButtonGroup', module)
 	.addParameters({ jest: ['ButtonGroup'] })

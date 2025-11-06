@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Checkbox } from './Checkbox';
+import { Checkbox } from './Checkbox.js';
 
 describe('<Checkbox />', () => {
 	it('Should be able to render', () => {

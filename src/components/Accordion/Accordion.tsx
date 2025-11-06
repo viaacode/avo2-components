@@ -1,15 +1,15 @@
 import clsx from 'clsx';
 import React, { FunctionComponent, useState } from 'react';
 
-import { useSlot } from '../../hooks/useSlot';
-import { DefaultProps } from '../../types';
-import { Icon } from '../Icon/Icon';
-import { IconNameSchema } from '../Icon/Icon.types';
-import { Toolbar } from '../Toolbar/Toolbar';
-import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
-import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
+import { useSlot } from '../../hooks/useSlot.js';
+import { DefaultProps } from '../../types/index.js';
+import { Icon } from '../Icon/Icon.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { Toolbar } from '../Toolbar/Toolbar.js';
+import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots.js';
+import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem.js';
 
-import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
+import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots.js';
 
 import './Accordion.scss';
 

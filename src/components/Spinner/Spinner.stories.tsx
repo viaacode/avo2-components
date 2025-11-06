@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { COLORS } from '../../colors';
+import { COLORS } from '../../colors/index.js';
 
-import { Spinner } from './Spinner';
+import { Spinner } from './Spinner.js';
 
 storiesOf('components/Spinner', module)
 	.addParameters({ jest: ['Spinner'] })

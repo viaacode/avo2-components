@@ -1,12 +1,12 @@
 import { storiesOf } from '@storybook/react';
 import React, { Fragment } from 'react';
 
-import { Button } from '../Button/Button';
-import { Select } from '../Select/Select';
-import { TextInput } from '../TextInput/TextInput';
+import { Button } from '../Button/Button.js';
+import { Select } from '../Select/Select.js';
+import { TextInput } from '../TextInput/TextInput.js';
 
-import { Form } from './Form';
-import { FormGroup } from './FormGroup/FormGroup';
+import { Form } from './Form.js';
+import { FormGroup } from './FormGroup/FormGroup.js';
 
 storiesOf('components/Form', module)
 	.addParameters({ jest: ['Form', 'FormGroup'] })

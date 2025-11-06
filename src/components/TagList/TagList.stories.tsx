@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
-import { TagList } from './TagList';
+import { TagList } from './TagList.js';
 
 const tags = [
 	{ label: 'Aluminium', id: 'aluminium' },

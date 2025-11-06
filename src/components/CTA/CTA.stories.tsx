@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { CTA } from './CTA';
-import { CTA_MOCK } from './CTA.mock';
+import { CTA } from './CTA.js';
+import { CTA_MOCK } from './CTA.mock.js';
 
 storiesOf('components/CTA', module)
 	.addParameters({ jest: ['CTA'] })

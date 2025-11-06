@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { DeadlineIndicator } from './DeadlineIndicator';
+import { DeadlineIndicator } from './DeadlineIndicator.js';
 
 describe('<DeadlineIndicator />', () => {
 	it('Should be able to render', () => {

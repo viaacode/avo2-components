@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { ButtonAction, RenderLinkFunction } from '../types';
+import { ButtonAction, RenderLinkFunction } from '../types/index.js';
 
 export function testRenderLink(
 	testActionHandler: (info: ButtonAction) => void

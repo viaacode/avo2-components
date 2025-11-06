@@ -2,11 +2,11 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import thumbnail from '../../../static/images/thumbnail.jpg';
-import { Box } from '../Box/Box';
-import { Icon } from '../Icon/Icon';
-import { IconNameSchema } from '../Icon/Icon.types';
+import { Box } from '../Box/Box.js';
+import { Icon } from '../Icon/Icon.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
 
-import { Avatar } from './Avatar';
+import { Avatar } from './Avatar.js';
 
 storiesOf('components/Avatar', module)
 	.addParameters({ jest: ['Avatar', 'AvatarIcon'] })

@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
-import { noop } from '../../helpers/noop';
-import { DefaultProps } from '../../types';
+import { noop } from '../../helpers/noop.js';
+import { DefaultProps } from '../../types/index.js';
 
 import './ImageGrid.scss';
 

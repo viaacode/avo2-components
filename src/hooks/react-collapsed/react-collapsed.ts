@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { noop } from '../../helpers/noop';
+import { noop } from '../../helpers/noop.js';
 
 /* eslint-disable */
 import React, { useState, useRef, useCallback, useMemo, useEffect } from 'react';
@@ -10,8 +10,8 @@ import {
 	makeTransitionStyles,
 	joinTransitionProperties,
 	defaultTransitionStyles,
-} from './utils';
-import { useUniqueId, useLayoutEffectAfterMount, useStateOrProps } from './hooks';
+} from './utils.js';
+import { useUniqueId, useLayoutEffectAfterMount, useStateOrProps } from './hooks.js';
 
 interface UseCollapseInitialConfig {
 	collapsedHeight: number;

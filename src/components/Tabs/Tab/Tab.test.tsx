@@ -1,10 +1,10 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Icon } from '../../Icon/Icon';
-import { IconNameSchema } from '../../Icon/Icon.types';
+import { Icon } from '../../Icon/Icon.js';
+import { IconNameSchema } from '../../Icon/Icon.types.js';
 
-import { Tab } from './Tab';
+import { Tab } from './Tab.js';
 
 const mockTab = {
 	className: 'c-tabs__item-custom',

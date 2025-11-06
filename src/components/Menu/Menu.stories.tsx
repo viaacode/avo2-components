@@ -2,14 +2,14 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Menu } from './Menu';
+import { Menu } from './Menu.js';
 import {
 	menuItems,
 	menuItemsWithDivider,
 	menuItemsWithIcons,
 	menuItemsWithSearch,
-} from './Menu.mocks';
-import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent';
+} from './Menu.mocks.js';
+import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent.js';
 
 storiesOf('components/Menu', module)
 	.addParameters({ jest: ['Menu'] })

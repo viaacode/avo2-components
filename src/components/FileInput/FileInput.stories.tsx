@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
 
-import { FileInput } from './FileInput';
+import { FileInput } from './FileInput.js';
 
 const FileInputStoryComponent = ({
 	children,

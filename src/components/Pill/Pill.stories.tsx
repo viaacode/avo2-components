@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Pill } from './Pill';
-import { MOCK_PILL, MOCK_PILL__ACTIVE } from './Pill.mock';
+import { Pill } from './Pill.js';
+import { MOCK_PILL, MOCK_PILL__ACTIVE } from './Pill.mock.js';
 
 storiesOf('components/Pill', module)
 	.addParameters({ jest: ['Pill'] })

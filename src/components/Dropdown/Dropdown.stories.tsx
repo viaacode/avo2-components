@@ -2,10 +2,10 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { cloneElement, ReactElement, useState } from 'react';
 
-import { IconNameSchema } from '../Icon/Icon.types';
-import { MenuContent } from '../Menu/MenuContent/MenuContent';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { MenuContent } from '../Menu/MenuContent/MenuContent.js';
 
-import { Dropdown } from './Dropdown';
+import { Dropdown } from './Dropdown.js';
 
 const menuItems = [
 	{ label: 'Aluminium', id: 'aluminium', key: 'aluminium' },

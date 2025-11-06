@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import { noop } from '../../../helpers/noop';
-import { DefaultProps } from '../../../types';
-import { Icon } from '../../Icon/Icon';
-import { IconNameSchema } from '../../Icon/Icon.types';
+import { noop } from '../../../helpers/noop.js';
+import { DefaultProps } from '../../../types/index.js';
+import { Icon } from '../../Icon/Icon.js';
+import { IconNameSchema } from '../../Icon/Icon.types.js';
 
 import './Tab.scss';
 

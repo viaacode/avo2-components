@@ -4,5 +4,5 @@
 
 // For more details, see https://meemoo.atlassian.net/browse/AVO-1939
 
-export * from './bem-class';
-export * from './key-up';
+export * from './bem-class/index.js';
+export * from './key-up/index.js';

@@ -2,9 +2,9 @@ import autosize from 'autosize';
 import clsx from 'clsx';
 import React, { ChangeEvent, FunctionComponent, useEffect } from 'react';
 
-import { noop } from '../../helpers/noop';
-import { useCallbackRef } from '../../hooks/useCallbackRef';
-import { DefaultProps } from '../../types';
+import { noop } from '../../helpers/noop.js';
+import { useCallbackRef } from '../../hooks/useCallbackRef.js';
+import { DefaultProps } from '../../types/index.js';
 
 export interface TextAreaPropsSchema extends DefaultProps {
 	children?: React.ReactNode;

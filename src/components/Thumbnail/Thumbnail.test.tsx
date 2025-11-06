@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Thumbnail } from './Thumbnail';
+import { Thumbnail } from './Thumbnail.js';
 
 describe('<Thumbnail />', () => {
 	it('Should be able to render', () => {

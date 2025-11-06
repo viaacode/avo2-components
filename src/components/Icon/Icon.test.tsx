@@ -1,9 +1,9 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Icon } from './Icon';
-import { IconNameSchema } from './Icon.types';
-import { Download, Slash, ThumbsUp } from './Icons';
+import { Icon } from './Icon.js';
+import { IconNameSchema } from './Icon.types.js';
+import { Download, Slash, ThumbsUp } from './Icons/index.js';
 
 describe('<Icon />', () => {
 	it('Should render when a known icon is passed', () => {

@@ -1,10 +1,10 @@
 import { mount, shallow } from 'enzyme';
 import React, { Fragment } from 'react';
 
-import { Button } from '../Button/Button';
+import { Button } from '../Button/Button.js';
 
-import { Dropdown } from './Dropdown';
-import { DropdownButton, DropdownContent } from './Dropdown.slots';
+import { Dropdown } from './Dropdown.js';
+import { DropdownButton, DropdownContent } from './Dropdown.slots.js';
 
 describe('<Dropdown />', () => {
 	it('Should be able to render', () => {

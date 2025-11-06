@@ -2,9 +2,9 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { IconNameSchema } from '../Icon/Icon.types';
-import { Pill, PillVariants } from '../Pill/Pill';
-import { Tabs } from '../Tabs/Tabs';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { Pill, PillVariants } from '../Pill/Pill.js';
+import { Tabs } from '../Tabs/Tabs.js';
 
 const mockTabs = [
 	{

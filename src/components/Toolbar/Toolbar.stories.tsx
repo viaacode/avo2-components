@@ -1,14 +1,14 @@
 import { storiesOf } from '@storybook/react';
 import React, { Fragment } from 'react';
 
-import { Button } from '../Button/Button';
-import { Icon } from '../Icon/Icon';
-import { IconNameSchema } from '../Icon/Icon.types';
+import { Button } from '../Button/Button.js';
+import { Icon } from '../Icon/Icon.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
 
-import { Toolbar } from './Toolbar';
-import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
-import { ToolbarItem } from './ToolbarItem/ToolbarItem';
-import { ToolbarTitle } from './ToolbarTitle/ToolbarTitle';
+import { Toolbar } from './Toolbar.js';
+import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots.js';
+import { ToolbarItem } from './ToolbarItem/ToolbarItem.js';
+import { ToolbarTitle } from './ToolbarTitle/ToolbarTitle.js';
 
 storiesOf('components/Toolbar', module)
 	.addParameters({ jest: ['Toolbar', 'ToolbarItem', 'ToolbarTitle'] })

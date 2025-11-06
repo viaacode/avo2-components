@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import React, { FunctionComponent } from 'react';
 
-import { DefaultProps } from '../../types';
-import { AvatarIcon } from '../Avatar/AvatarIcon/AvatarIcon';
+import { DefaultProps } from '../../types/index.js';
+import { AvatarIcon } from '../Avatar/AvatarIcon/AvatarIcon.js';
 
 import './Quote.scss';
 

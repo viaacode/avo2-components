@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { IconNameSchema } from '../../Icon/Icon.types';
-import { MetaData } from '../MetaData';
+import { IconNameSchema } from '../../Icon/Icon.types.js';
+import { MetaData } from '../MetaData.js';
 
-import { MetaDataItem } from './MetaDataItem';
+import { MetaDataItem } from './MetaDataItem.js';
 
 storiesOf('components/MetaDataItem', module)
 	.addParameters({ jest: ['MetaDataItem'] })

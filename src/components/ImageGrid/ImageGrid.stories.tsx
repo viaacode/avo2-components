@@ -5,7 +5,7 @@ import React, { cloneElement, ReactElement, useState } from 'react';
 import image200x200 from '../../../static/images/200x200.jpg';
 import image500x200 from '../../../static/images/500x200.jpg';
 
-import { ImageGrid } from './ImageGrid';
+import { ImageGrid } from './ImageGrid.js';
 
 const images = [
 	image200x200,

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React, { CSSProperties } from 'react';
 
-import { StickyEdgeBar } from './StickyEdgeBar';
+import { StickyEdgeBar } from './StickyEdgeBar.js';
 
 const pusherStyle: CSSProperties = {
 	height: '768px',

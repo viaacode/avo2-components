@@ -12,15 +12,15 @@ import React, {
 import ReactDOM from 'react-dom';
 import Scrollbar from 'react-perfect-scrollbar';
 
-import { useKeyPress } from '../../hooks/useKeyPress';
-import { useSlot } from '../../hooks/useSlot';
-import { DefaultProps } from '../../types';
-import { Button } from '../Button/Button';
-import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
-import { IconNameSchema } from '../Icon/Icon.types';
-import { Toolbar } from '../Toolbar/Toolbar';
-import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
-import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
+import { useKeyPress } from '../../hooks/useKeyPress.js';
+import { useSlot } from '../../hooks/useSlot.js';
+import { DefaultProps } from '../../types/index.js';
+import { Button } from '../Button/Button.js';
+import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar.js';
+import { IconNameSchema } from '../Icon/Icon.types.js';
+import { Toolbar } from '../Toolbar/Toolbar.js';
+import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots.js';
+import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem.js';
 
 import './Modal.scss';
 import {
@@ -29,8 +29,8 @@ import {
 	ModalFooterRight,
 	ModalHeaderRight,
 	ModalSubHeader,
-} from './Modal.slots';
-import { ModalBackdrop } from './ModalBackdrop';
+} from './Modal.slots.js';
+import { ModalBackdrop } from './ModalBackdrop.js';
 
 export interface ModalPropsSchema extends DefaultProps {
 	children: ReactNode;

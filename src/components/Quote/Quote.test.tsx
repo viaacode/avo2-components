@@ -1,8 +1,8 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { Quote } from './Quote';
-import { MOCK_QUOTE_WITH_IMG } from './Quote.mock';
+import { Quote } from './Quote.js';
+import { MOCK_QUOTE_WITH_IMG } from './Quote.mock.js';
 
 const CUSTOM_CLASS = 'c-block-custom';
 
