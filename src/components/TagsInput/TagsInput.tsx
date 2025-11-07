@@ -1,10 +1,11 @@
 import clsx from 'clsx';
-import React, { FunctionComponent } from 'react';
-import Select, { ActionMeta } from 'react-select';
+import type React from 'react';
+import type { FunctionComponent } from 'react';
+import Select, { type ActionMeta } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
 import { noop } from '../../helpers/noop.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 
 import './TagsInput.scss';
 

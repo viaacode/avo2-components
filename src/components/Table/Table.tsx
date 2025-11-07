@@ -1,19 +1,19 @@
-import { type Avo } from '@viaa/avo2-types';
+import type { Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
-import React, { Fragment, FunctionComponent, ReactNode } from 'react';
+import { Fragment, type FunctionComponent, type ReactNode } from 'react';
 
 import { isNil } from '../../helpers/is-nil.js';
 import { noop } from '../../helpers/noop.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
+import { handleEnterOrSpace } from '../../utils/index.js';
 import { Checkbox } from '../Checkbox/Checkbox.js';
 import { Flex } from '../Flex/Flex.js';
 import { Icon } from '../Icon/Icon.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
+import type { IconNameSchema } from '../Icon/Icon.types.js';
 import { Panel } from '../Panel/Panel.js';
 import { PanelBody } from '../Panel/PanelBody/PanelBody.js';
 import { RadioButton } from '../RadioButton/RadioButton.js';
 import { Spacer } from '../Spacer/Spacer.js';
-
 import styles from './Table.module.scss';
 
 export type TableColumnSchema = {
@@ -51,12 +51,7 @@ export interface TablePropsSchema extends DefaultProps {
 	nowrap?: boolean;
 	onColumnClick?: (id: string) => void;
 	onRowClick?: (rowData: any) => void;
-	renderCell?: (
-		rowData: any,
-		columnId: string,
-		rowIndex: number,
-		columnIndex: number
-	) => ReactNode;
+	renderCell?: (rowData: any, columnId: string, rowIndex: number, columnIndex: number) => ReactNode;
 	rowKey?: string | ((rowData: any) => string);
 	sortColumn?: string;
 	sortOrder?: Avo.Search.OrderDirection;
@@ -172,7 +167,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 				className={clsx({
 					// Normal
 					[`o-table-col-${col}`]: col,
-					['c-table__header--sortable']: sortable,
+					'c-table__header--sortable': sortable,
 
 					// Module
 					[styles[`o-table-col-${col}`]]: col,
@@ -206,15 +201,15 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 			<table
 				className={clsx(className, {
 					// Normal
-					['c-table']: true,
-					['c-table--align-middle']: align,
-					['c-table--bordered']: variant === 'bordered',
-					['c-table--invisible']: variant === 'invisible',
-					['c-table--horizontal']: horizontal,
-					['c-table--nowrap']: nowrap,
-					['c-table--striped']: striped,
-					['c-table--styled']: variant === 'styled' || variant === 'bordered',
-					['c-table--untable']: untable,
+					'c-table': true,
+					'c-table--align-middle': align,
+					'c-table--bordered': variant === 'bordered',
+					'c-table--invisible': variant === 'invisible',
+					'c-table--horizontal': horizontal,
+					'c-table--nowrap': nowrap,
+					'c-table--striped': striped,
+					'c-table--styled': variant === 'styled' || variant === 'bordered',
+					'c-table--untable': untable,
 
 					// Module
 					[styles['c-table']]: true,
@@ -279,14 +274,13 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 													styles['c-table__checkbox-column']
 												)}
 												onClick={() => toggleItemSelection(rowData)}
+												onKeyUp={handleEnterOrSpace(() => toggleItemSelection(rowData))}
 											>
 												<Checkbox
 													label=""
 													checked={
 														!!selectedItemIds.find(
-															(selectedItemId) =>
-																selectedItemId ===
-																getRowKey(rowData)
+															(selectedItemId) => selectedItemId === getRowKey(rowData)
 														)
 													}
 												/>
@@ -300,6 +294,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 													styles['c-table__checkbox-column']
 												)}
 												onClick={() => toggleRadioItemSelection(rowData)}
+												onKeyUp={handleEnterOrSpace(() => toggleRadioItemSelection(rowData))}
 											>
 												<RadioButton
 													label=""
@@ -307,9 +302,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 													value={getRowKey(rowData)}
 													checked={
 														!!selectedItemIds.find(
-															(selectedItemId) =>
-																selectedItemId ===
-																getRowKey(rowData)
+															(selectedItemId) => selectedItemId === getRowKey(rowData)
 														)
 													}
 												/>
@@ -318,13 +311,8 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 										{columns
 											.map((col) => col.id)
 											.map((columnId, columnIndex) => (
-												<td key={columnIndex}>
-													{renderCell(
-														rowData,
-														columnId,
-														rowIndex,
-														columnIndex
-													)}
+												<td key={columnId}>
+													{renderCell(rowData, columnId, rowIndex, columnIndex)}
 												</td>
 											))}
 									</tr>
@@ -347,12 +335,14 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 		return (
 			<>
 				{(data || []).map((rowData, rowIndex) => (
+					// biome-ignore lint/a11y/noStaticElementInteractions: TODO fix
 					<div
 						key={`table-card-${getRowKey(rowData)}`}
 						className={clsx(className, 'c-table__card', styles['c-table__card'], {
 							'u-clickable': !!onRowClick || showCheckboxes,
 						})}
 						onClick={() => handleRowClick(rowData)}
+						onKeyUp={handleEnterOrSpace(() => handleRowClick(rowData))}
 					>
 						<Spacer margin="bottom">
 							<Panel>
@@ -360,13 +350,8 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 									{columns
 										.map((col) => col.id)
 										.map((columnId, columnIndex) => (
-											<Fragment key={columnIndex}>
-												{renderCell(
-													rowData,
-													columnId,
-													rowIndex,
-													columnIndex
-												)}
+											<Fragment key={columnId}>
+												{renderCell(rowData, columnId, rowIndex, columnIndex)}
 											</Fragment>
 										))}
 								</PanelBody>

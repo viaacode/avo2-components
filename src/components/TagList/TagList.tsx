@@ -1,11 +1,12 @@
 import clsx from 'clsx';
-import React, { FunctionComponent, MouseEvent } from 'react';
+import type React from 'react';
+import type { FunctionComponent, MouseEvent } from 'react';
 
 import { noop } from '../../helpers/noop.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
+import { handleEnterOrSpace } from '../../utils/index.js';
 import { Icon } from '../Icon/Icon.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
-
 import styles from './TagList.module.scss';
 
 export interface TagOptionSchema {
@@ -48,8 +49,8 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 						'c-label': !bordered,
 
 						// Normal
-						['c-tag']: bordered,
-						['c-tag__active']: selectable && tag.active,
+						'c-tag': bordered,
+						'c-tag__active': selectable && tag.active,
 
 						// Module
 						[styles['c-tag']]: bordered,
@@ -59,6 +60,7 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 				>
 					{/* output swatch element */}
 					{swatches && (
+						// biome-ignore lint/a11y/noStaticElementInteractions: TODO fix
 						<div
 							className={clsx('c-label-swatch', {
 								// Normal
@@ -68,6 +70,7 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 								[styles[`c-label-swatch--color-${(index % 10) + 1}`]]: !tag.color,
 							})}
 							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
+							onKeyUp={handleEnterOrSpace((evt: MouseEvent) => safeOnTagClicked(tag.id, evt))}
 							style={{
 								...(onTagClicked ? { cursor: 'pointer' } : {}),
 								...(tag.color ? { backgroundColor: tag.color } : {}),
@@ -81,19 +84,22 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 								'c-label-text': swatches,
 
 								// Normal
-								['c-tag__label']: !swatches,
+								'c-tag__label': !swatches,
 
 								// Module
 								[styles['c-tag__label']]: !swatches,
 							})}
 							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
+							onKeyUp={handleEnterOrSpace((evt: MouseEvent) => safeOnTagClicked(tag.id, evt))}
 							style={onTagClicked ? { cursor: 'pointer' } : {}}
 						>
 							{tag.label}
 						</p>
 					) : (
+						// biome-ignore lint/a11y/noStaticElementInteractions: TODO fix
 						<span
 							onClick={(evt: MouseEvent) => safeOnTagClicked(tag.id, evt)}
+							onKeyUp={handleEnterOrSpace((evt: MouseEvent) => safeOnTagClicked(tag.id, evt))}
 							style={onTagClicked ? { cursor: 'pointer' } : {}}
 						>
 							{tag.icon && <Icon name={tag.icon} />}
@@ -102,6 +108,8 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 					)}
 					{/* output close button element */}
 					{closable && (
+						// biome-ignore lint/a11y/noStaticElementInteractions: TODO fix
+						// biome-ignore lint/a11y/useValidAnchor: TODO fix
 						<a onClick={(evt: MouseEvent) => onTagClosed(tag.id, evt)}>
 							<Icon name={IconNameSchema.close} />
 						</a>

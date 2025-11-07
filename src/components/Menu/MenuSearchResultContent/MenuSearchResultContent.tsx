@@ -1,9 +1,11 @@
-import { type Avo } from '@viaa/avo2-types';
+import type { Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
-import React, { FunctionComponent } from 'react';
+import type React from 'react';
+import type { FunctionComponent } from 'react';
 
 import { noop } from '../../../helpers/noop.js';
-import { DefaultProps } from '../../../types/index.js';
+import type { DefaultProps } from '../../../types/index.js';
+import { handleEnterOrSpace } from '../../../utils/index.js';
 import { Icon } from '../../Icon/Icon.js';
 import { CATEGORY_TO_ICON } from '../../Thumbnail/Thumbnail.js';
 import { MenuContent } from '../MenuContent/MenuContent.js';
@@ -40,9 +42,11 @@ export const MenuSearchResultContent: FunctionComponent<MenuSearchResultContentP
 }) => {
 	const renderMenuItem = (menuItemInfo: MenuSearchResultItemInfoSchema) => {
 		return (
+			// biome-ignore lint/a11y/noStaticElementInteractions: TODO fix
 			<div
 				className={clsx(className, 'c-menu__item')}
 				onClick={() => onClick(menuItemInfo.id)}
+				onKeyUp={handleEnterOrSpace(() => onClick(menuItemInfo.id))}
 				key={`menu-search-item-${menuItemInfo.id}`}
 			>
 				<div className={'c-menu__label'}>

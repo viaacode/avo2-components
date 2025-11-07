@@ -1,6 +1,5 @@
 import { mount, shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
-import React from 'react';
 
 import { Flex } from './Flex.js';
 

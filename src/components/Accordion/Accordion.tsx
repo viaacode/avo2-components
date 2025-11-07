@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import React, { FunctionComponent, useState } from 'react';
+import { type FunctionComponent, useState } from 'react';
 
 import { useSlot } from '../../hooks/useSlot.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 import { Icon } from '../Icon/Icon.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
 import { Toolbar } from '../Toolbar/Toolbar.js';
@@ -12,6 +12,7 @@ import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem.js';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots.js';
 
 import './Accordion.scss';
+import { handleEnterOrSpace } from '../../utils/index.js';
 
 export interface AccordionPropsSchema extends DefaultProps {
 	children?: React.ReactNode;
@@ -55,7 +56,12 @@ export const Accordion: FunctionComponent<AccordionPropsSchema> = ({
 				'c-accordion--closed': !getIsOpen(),
 			})}
 		>
-			<div className={clsx('c-accordion__header', 'u-clickable')} onClick={handleToggle}>
+			{/** biome-ignore lint/a11y/noStaticElementInteractions: TODO fix */}
+			<div
+				className={clsx('c-accordion__header', 'u-clickable')}
+				onClick={handleToggle}
+				onKeyUp={handleEnterOrSpace(handleToggle)}
+			>
 				<Toolbar autoHeight>
 					<ToolbarLeft>
 						<ToolbarItem>
@@ -64,6 +70,8 @@ export const Accordion: FunctionComponent<AccordionPropsSchema> = ({
 					</ToolbarLeft>
 					<ToolbarRight>
 						<ToolbarItem>
+							{/** biome-ignore lint/a11y/useKeyWithClickEvents: this only prevents the default click behavior. It doesn't trigger anything */}
+							{/** biome-ignore lint/a11y/noStaticElementInteractions: this only prevents the default click behavior. It doesn't trigger anything */}
 							<div onClick={(evt) => evt.stopPropagation()}>{actionsSlot}</div>
 						</ToolbarItem>
 						<ToolbarItem>

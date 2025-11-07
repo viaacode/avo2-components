@@ -1,5 +1,4 @@
 import { shallow } from 'enzyme';
-import React from 'react';
 
 import { Accordion } from './Accordion.js';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots.js';

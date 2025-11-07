@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { Form } from './Form.js';
 

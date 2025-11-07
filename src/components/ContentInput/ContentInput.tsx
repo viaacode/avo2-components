@@ -1,16 +1,16 @@
-import React, {
-	FC,
+import {
+	type FC,
 	forwardRef,
-	KeyboardEvent,
-	MouseEvent,
-	ReactNode,
+	type KeyboardEvent,
+	type MouseEvent,
+	type ReactNode,
 	useCallback,
 	useState,
 } from 'react';
 
 import { bemCls, keysEnter, keysEscape, keysSpacebar, onKey } from '../../utils/index.js';
 
-import { ContentInputPropsSchema, StopPropagationObject } from './ContentInput.types.js';
+import type { ContentInputPropsSchema, StopPropagationObject } from './ContentInput.types.js';
 
 // Taken from viaacode/react-components/src/components/TextInput/TextInput.tsx
 const TextInputDefaults = {
@@ -24,7 +24,6 @@ const TextInputDefaults = {
 	onFocus: () => null,
 };
 
-// eslint-disable-next-line react/display-name
 const ContentInput: FC<ContentInputPropsSchema> = forwardRef<
 	HTMLInputElement,
 	ContentInputPropsSchema
@@ -65,7 +64,7 @@ const ContentInput: FC<ContentInputPropsSchema> = forwardRef<
 				iconEnd !== null ? [bem('', 'icon-end')] : '',
 			],
 		]
-			.filter((value) => value !== undefined && value.length)
+			.filter((value) => value?.length)
 			.join(' ');
 
 		/**
@@ -125,14 +124,13 @@ const ContentInput: FC<ContentInputPropsSchema> = forwardRef<
 
 		const isSingleElement = (node: ReactNode) => {
 			const el = node as JSX.Element;
-			return !(el && el.props && el.props.children && el.props.children.length > 1);
+			return !(el?.props?.children && el.props.children.length > 1);
 		};
 
 		const makeInteractionObject = (func: (e: MouseEvent | KeyboardEvent) => void) => {
 			return {
 				onClick: func,
-				onKeyDown: (e: KeyboardEvent) =>
-					onKey(e, [...keysEnter, ...keysSpacebar], () => func(e)),
+				onKeyDown: (e: KeyboardEvent) => onKey(e, [...keysEnter, ...keysSpacebar], () => func(e)),
 				role: 'button',
 				tabIndex: 0,
 			};
@@ -151,9 +149,7 @@ const ContentInput: FC<ContentInputPropsSchema> = forwardRef<
 			<>
 				<div
 					className={bem('submit')}
-					{...(isSingleElement(nodeSubmit)
-						? makeInteractionObject(onConfirmHandler)
-						: {})}
+					{...(isSingleElement(nodeSubmit) ? makeInteractionObject(onConfirmHandler) : {})}
 				>
 					{nodeSubmit}
 				</div>
@@ -176,9 +172,7 @@ const ContentInput: FC<ContentInputPropsSchema> = forwardRef<
 					role="button"
 					tabIndex={0}
 					onClick={onOpenHandler}
-					onKeyDown={(e) =>
-						onKey(e, [...keysEnter, ...keysSpacebar], () => onConfirmHandler(e))
-					}
+					onKeyDown={(e) => onKey(e, [...keysEnter, ...keysSpacebar], () => onConfirmHandler(e))}
 					className={bem('value')}
 				>
 					{value}

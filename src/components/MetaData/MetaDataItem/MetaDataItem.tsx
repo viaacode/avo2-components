@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import React, { FunctionComponent, ReactNode } from 'react';
+import type { FunctionComponent, ReactNode } from 'react';
 
-import { DefaultProps } from '../../../types/index.js';
+import type { DefaultProps } from '../../../types/index.js';
 import { Icon } from '../../Icon/Icon.js';
-import { IconNameSchema } from '../../Icon/Icon.types.js';
+import type { IconNameSchema } from '../../Icon/Icon.types.js';
 
 import './MetaDataItem.scss';
 

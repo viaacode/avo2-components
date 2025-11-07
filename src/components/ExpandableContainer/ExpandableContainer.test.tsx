@@ -1,5 +1,5 @@
 import { mount, shallow } from 'enzyme';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { ExpandableContainer } from './ExpandableContainer.js';
 
@@ -23,7 +23,7 @@ describe('<Container />', () => {
 
 		const textContentDiv = containerComponent.find('div').get(0);
 
-		expect((textContentDiv.props.style || {}).height).toEqual(`${height}px`);
+		expect(textContentDiv.props.style?.height).toEqual(`${height}px`);
 	});
 
 	it('Should render with custom expand/collapse labels', () => {

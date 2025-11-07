@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 export const AccordionTitle: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
 export const AccordionActions: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;

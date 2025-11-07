@@ -1,8 +1,9 @@
 import clsx from 'clsx';
-import React, { ChangeEvent, FunctionComponent } from 'react';
+import type React from 'react';
+import type { ChangeEvent, FunctionComponent } from 'react';
 
 import { noop } from '../../helpers/noop.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 import { Icon } from '../Icon/Icon.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
 import './Toggle.scss';

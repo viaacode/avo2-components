@@ -1,5 +1,4 @@
 import { mount, shallow } from 'enzyme';
-import React from 'react';
 
 import { Button } from '../Button/Button.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';

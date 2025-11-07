@@ -1,5 +1,5 @@
 // This scripts generate a .json-file with metadata for the icons
-const fs = require('fs');
+const fs = require('node:fs');
 
 const glob = require('glob');
 const _ = require('lodash');
@@ -20,12 +20,10 @@ function getCategory(path, fileName) {
 }
 
 function definedAndUnique(arr) {
-	return arr.filter(function (elem, pos) {
-		return elem && arr.indexOf(elem) === pos;
-	});
+	return arr.filter((elem, pos) => elem && arr.indexOf(elem) === pos);
 }
 
-glob(`${directory}/**/*.svg`, function (err, res) {
+glob(`${directory}/**/*.svg`, (err, res) => {
 	if (err) {
 		console.error(err);
 	} else {
@@ -57,7 +55,7 @@ glob(`${directory}/**/*.svg`, function (err, res) {
 			})
 		);
 
-		let iconTypeFileContent = `export enum IconNameSchema {
+		const iconTypeFileContent = `export enum IconNameSchema {
 ${iconNames}}
 
 export type IconTypeSchema = '${iconTypeNames.join("' | '")}';

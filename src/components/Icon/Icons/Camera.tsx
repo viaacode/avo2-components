@@ -1,5 +1,7 @@
-import React, { SVGProps } from 'react';
+import type { SVGProps } from 'react';
+
 const Camera = (props: SVGProps<SVGSVGElement>) => (
+	// biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
 	<svg
 		width={24}
 		height={24}

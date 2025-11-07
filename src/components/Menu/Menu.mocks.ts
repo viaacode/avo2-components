@@ -1,7 +1,7 @@
 import { IconNameSchema } from '../Icon/Icon.types.js';
 
-import { MenuItemInfoSchema } from './MenuContent/MenuContent.js';
-import { MenuSearchResultItemInfoSchema } from './MenuSearchResultContent/MenuSearchResultContent.js';
+import type { MenuItemInfoSchema } from './MenuContent/MenuContent.js';
+import type { MenuSearchResultItemInfoSchema } from './MenuSearchResultContent/MenuSearchResultContent.js';
 
 export const menuItems = [
 	{ label: 'Aluminium', id: 'aluminium', key: 'aluminium' },

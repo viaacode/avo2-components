@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import React, { FunctionComponent, ReactNode } from 'react';
+import type { FunctionComponent, ReactNode } from 'react';
 
-import { DefaultProps } from '../../../types/index.js';
+import type { DefaultProps } from '../../../types/index.js';
 
 import './FormGroup.scss';
 
@@ -44,16 +44,14 @@ export const FormGroup: FunctionComponent<FormGroupPropsSchema> = ({
 			)}
 			<div className="o-form-group__controls">
 				{children}
-				{!!errorArray &&
-					!!errorArray.length &&
-					errorArray.map((err: string | ReactNode, index: number) => (
-						<div
-							key={`${err}-${index}`}
-							className="c-form-help-text c-form-help-text--error"
-						>
+				{(errorArray || []).map((err: string | ReactNode, index: number) => {
+					return (
+						// biome-ignore lint/suspicious/noArrayIndexKey: no guaranteed that all error strings are unique
+						<div key={`${err}-${index}`} className="c-form-help-text c-form-help-text--error">
 							{err}
 						</div>
-					))}
+					);
+				})}
 			</div>
 		</div>
 	);

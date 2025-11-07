@@ -1,10 +1,11 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import type React from 'react';
+import { type FunctionComponent, useEffect, useState } from 'react'
 
 import { noop } from '../../helpers/noop.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 import { Button } from '../Button/Button.js';
-import { ButtonTypeSchema } from '../Button/Button.types.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
+import type { ButtonTypeSchema } from '../Button/Button.types.js';
+import type { IconNameSchema } from '../Icon/Icon.types.js';
 
 export interface ToggleButtonPropsSchema extends DefaultProps {
 	children?: React.ReactNode;

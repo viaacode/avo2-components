@@ -1,12 +1,14 @@
 import clsx from 'clsx';
-import React, { Fragment, FunctionComponent, ReactNode } from 'react';
+import type React from 'react';
+import { Fragment, type FunctionComponent, type ReactNode } from 'react';
 
 import { noop } from '../../../helpers/noop.js';
-import { DefaultProps } from '../../../types/index.js';
+import type { DefaultProps } from '../../../types/index.js';
 import { Icon } from '../../Icon/Icon.js';
-import { IconNameSchema } from '../../Icon/Icon.types.js';
+import type { IconNameSchema } from '../../Icon/Icon.types.js';
 
 import './MenuContent.scss';
+import { handleEnterOrSpace } from '../../../utils/index.js';
 
 export interface MenuItemInfoSchema {
 	label: string;
@@ -35,9 +37,11 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 			return renderItem(menuItemInfo);
 		}
 		return (
+			// biome-ignore lint/a11y/noStaticElementInteractions: TODO fix
 			<div
 				className={clsx(className, 'c-menu__item')}
 				onClick={() => onClick(menuItemInfo.id)}
+				onKeyUp={handleEnterOrSpace(() => onClick(menuItemInfo.id))}
 				key={`menu-item-${menuItemInfo.key || menuItemInfo.id}`}
 			>
 				<div className={'c-menu__label'}>
@@ -52,9 +56,7 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 		return menuItems.map(renderMenuItem);
 	};
 
-	const renderMenuItemArrays = (
-		menuItemArrays: MenuItemInfoSchema[] | MenuItemInfoSchema[][]
-	) => {
+	const renderMenuItemArrays = (menuItemArrays: MenuItemInfoSchema[] | MenuItemInfoSchema[][]) => {
 		if (menuItems.length) {
 			if (Array.isArray(menuItemArrays[0])) {
 				// Array of arrays with dividers in between
@@ -64,9 +66,7 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 							if (index < menuItemArrays.length - 1) {
 								return (
 									<Fragment
-										key={`menu-item-group-${menuItems
-											.map((mi) => mi.key || mi.id)
-											.join('-')}`}
+										key={`menu-item-group-${menuItems.map((mi) => mi.key || mi.id).join('-')}`}
 									>
 										{renderMenuItems(menuItems)}
 										<div className="c-menu__divider" />
@@ -75,9 +75,7 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 							}
 							return (
 								<Fragment
-									key={`menu-item-group-${menuItems
-										.map((mi) => mi.key || mi.id)
-										.join('-')}`}
+									key={`menu-item-group-${menuItems.map((mi) => mi.key || mi.id).join('-')}`}
 								>
 									{renderMenuItems(menuItems)}
 								</Fragment>
@@ -88,9 +86,7 @@ export const MenuContent: FunctionComponent<MenuContentPropsSchema> = ({
 			}
 			// Regular list of menuItems
 			return (
-				<Fragment
-					key={(menuItemArrays as MenuItemInfoSchema[]).map((mi) => mi.id).join('-')}
-				>
+				<Fragment key={(menuItemArrays as MenuItemInfoSchema[]).map((mi) => mi.id).join('-')}>
 					{renderMenuItems(menuItems as MenuItemInfoSchema[])}
 				</Fragment>
 			);

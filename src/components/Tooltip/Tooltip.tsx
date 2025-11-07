@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FunctionComponent, ReactNode, useCallback, useEffect, useState } from 'react';
+import { type FunctionComponent, type ReactNode, useCallback, useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
 
 import { generateRandomId } from '../../helpers/uuid.js';

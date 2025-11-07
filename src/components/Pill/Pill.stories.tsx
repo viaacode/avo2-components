@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
 
 import { Pill } from './Pill.js';
 import { MOCK_PILL, MOCK_PILL__ACTIVE } from './Pill.mock.js';

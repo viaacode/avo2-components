@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import React, { cloneElement, ReactElement, useState } from 'react';
+import { cloneElement, type ReactElement, useState } from 'react';
 
 import image200x200 from '../../../static/images/200x200.jpg';
 import image500x200 from '../../../static/images/500x200.jpg';

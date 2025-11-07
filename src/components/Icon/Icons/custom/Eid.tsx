@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import type { SVGProps } from 'react';
 const Eid = (props: SVGProps<SVGSVGElement>) => (
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="500 500 24 24" {...props}>
 		<path d="M516.1 513.1H508c-.6 0-1.1-.5-1.1-1.1v-10.9c0-.6.5-1.1 1.1-1.1h8.1c.6 0 1.1.5 1.1 1.1V512c0 .6-.5 1.1-1.1 1.1zm-8.2-12.7c-.4 0-.7.3-.7.7V512c0 .4.3.7.7.7h8.1c.4 0 .7-.3.7-.7v-10.9c0-.4-.3-.7-.7-.7h-8.1zM510.8 517.1h2.5c.2 0 .4.2.4.4v1.3c0 .2-.2.4-.4.4h-2.5c-.2 0-.4-.2-.4-.4v-1.3c-.1-.2.1-.4.4-.4z" />

@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
 
 import image1600x900 from '../../../static/images/1600x900.jpg';
 import image400x300 from '../../../static/images/400x300.jpg';

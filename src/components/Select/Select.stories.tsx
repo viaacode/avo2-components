@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import React, { cloneElement, ReactElement, useState } from 'react';
+import { cloneElement, type ReactElement, useState } from 'react';
 
 import { Select } from './Select.js';
 import { SELECT_MOCK_OPTIONS } from './Select.mock.js';

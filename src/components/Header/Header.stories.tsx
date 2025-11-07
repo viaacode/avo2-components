@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
 
 import { times } from '../../helpers/times.js';
 import { Avatar } from '../Avatar/Avatar.js';

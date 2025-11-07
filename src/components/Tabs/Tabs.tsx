@@ -1,10 +1,11 @@
 import clsx from 'clsx';
-import React, { FunctionComponent } from 'react';
+import type React from 'react';
+import type { FunctionComponent } from 'react';
 
 import { noop } from '../../helpers/noop.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 
-import { Tab, TabPropsSchema } from './Tab/Tab.js';
+import { Tab, type TabPropsSchema } from './Tab/Tab.js';
 import styles from './Tabs.module.scss';
 
 export interface TabsPropsSchema extends DefaultProps {
@@ -25,7 +26,7 @@ export const Tabs: FunctionComponent<TabsPropsSchema> = ({
 	<nav
 		className={clsx(className, 'c-tabs', styles['c-tabs'], {
 			// Normal
-			['c-tabs__bottom-border']: border,
+			'c-tabs__bottom-border': border,
 
 			// Module
 			[styles['c-tabs__bottom-border']]: border,

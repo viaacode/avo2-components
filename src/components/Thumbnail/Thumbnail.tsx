@@ -1,13 +1,15 @@
-import { type Avo } from '@viaa/avo2-types';
+import type { Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
-import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
+import type React from 'react';
+import { type FunctionComponent, type ReactNode, useEffect, useState } from 'react';
 
 import { noop } from '../../helpers/noop.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 import { Icon } from '../Icon/Icon.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
 
 import './Thumbnail.scss';
+import { handleEnterOrSpace } from '../../utils/index.js';
 
 export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
 	audio: IconNameSchema.headphone,
@@ -17,13 +19,13 @@ export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
 	search: IconNameSchema.search,
 	assignment: IconNameSchema.clipboard,
 	contentPage: IconNameSchema.layout,
-	['contentPage.nieuws_item']: IconNameSchema.layout,
-	['contentPage.pagina']: IconNameSchema.layout,
-	['contentPage.project']: IconNameSchema.layout,
-	['contentPage.overzicht']: IconNameSchema.layout,
-	['contentPage.domein_detail']: IconNameSchema.layout,
-	['contentPage.event_detail']: IconNameSchema.calendar,
-	['contentPage.screencast']: IconNameSchema.helpCircle,
+	'contentPage.nieuws_item': IconNameSchema.layout,
+	'contentPage.pagina': IconNameSchema.layout,
+	'contentPage.project': IconNameSchema.layout,
+	'contentPage.overzicht': IconNameSchema.layout,
+	'contentPage.domein_detail': IconNameSchema.layout,
+	'contentPage.event_detail': IconNameSchema.calendar,
+	'contentPage.screencast': IconNameSchema.helpCircle,
 };
 
 export interface ThumbnailPropsSchema extends DefaultProps {
@@ -54,7 +56,8 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 }) => {
 	const [loaded, setLoaded] = useState(false);
 	const lowerSubCategory = subCategory?.toLowerCase();
-	const iconName = CATEGORY_TO_ICON[lowerSubCategory ? `${category}.${lowerSubCategory}` : category];
+	const iconName =
+		CATEGORY_TO_ICON[lowerSubCategory ? `${category}.${lowerSubCategory}` : category];
 
 	useEffect(() => {
 		let img: HTMLImageElement | null = null;
@@ -73,6 +76,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 	}, [src]);
 
 	return (
+		// biome-ignore lint/a11y/noStaticElementInteractions: TODO fix
 		<div
 			className={clsx(
 				className,
@@ -83,6 +87,7 @@ export const Thumbnail: FunctionComponent<ThumbnailPropsSchema> = ({
 			)}
 			style={style}
 			onClick={onClick}
+			onKeyUp={handleEnterOrSpace(onClick)}
 		>
 			<div className="c-thumbnail-placeholder">{category && <Icon name={iconName} />}</div>
 			{src && (

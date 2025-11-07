@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
-import iconList from '../../icons/icons.json';
+import iconList from '../../icons/icons.json' with { type: 'json' };
 import { Spacer } from '../Spacer/Spacer.js';
 
 import { Icon } from './Icon.js';
@@ -28,26 +28,22 @@ const story = storiesOf('components/Icons', module);
 
 story.addParameters({ jest: ['Icon'] });
 
-stories.forEach(([title, icons]: any) =>
+stories.forEach(([title, icons]: any) => {
 	story.add(title, () => (
 		<Fragment>
 			<div className="c-styleguide-svg-icons__category">
 				<div className="c-styleguide-svg-icons__type">
-					{icons.map(
-						({ name, type }: { name: IconNameSchema; type: any }, index: number) => (
-							<div className="c-styleguide-svg-icon" key={index}>
-								<Fragment>
-									<Icon className="o-svg-icon--red" name={name} type={type} />
-									<code>{name}</code>
-								</Fragment>
-							</div>
-						)
-					)}
+					{icons.map(({ name, type }: { name: IconNameSchema; type: any }, index: number) => (
+						<div className="c-styleguide-svg-icon" key={index}>
+							<Icon className="o-svg-icon--red" name={name} type={type} />
+							<code>{name}</code>
+						</div>
+					))}
 				</div>
 			</div>
 		</Fragment>
-	))
-);
+	));
+});
 
 story.add('Icon sizes', () => (
 	<Fragment>

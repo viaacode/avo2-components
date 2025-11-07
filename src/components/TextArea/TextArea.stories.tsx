@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
+import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 
 import { Spacer } from '../Spacer/Spacer.js';
 

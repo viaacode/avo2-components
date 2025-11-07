@@ -1,5 +1,4 @@
 import { mount, shallow } from 'enzyme';
-import React from 'react';
 
 import { MetaData } from '../MetaData/MetaData.js';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem.js';

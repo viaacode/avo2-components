@@ -1,11 +1,12 @@
 import clsx from 'clsx';
-import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import type React from 'react';
+import type { CSSProperties, FunctionComponent, ReactNode } from 'react';
 
 import { noop } from '../../helpers/noop.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 
 import styles from './Menu.module.scss';
-import { MenuContent, MenuItemInfoSchema } from './MenuContent/MenuContent.js';
+import { MenuContent, type MenuItemInfoSchema } from './MenuContent/MenuContent.js';
 
 export interface MenuPropsSchema extends DefaultProps {
 	children?: React.ReactNode;
@@ -33,9 +34,9 @@ export const Menu: FunctionComponent<MenuPropsSchema> = ({
 		<div
 			className={clsx(className, {
 				// Normal
-				['c-menu']: true,
-				['c-menu--search-result']: search,
-				['c-menu--visible']: isOpen,
+				'c-menu': true,
+				'c-menu--search-result': search,
+				'c-menu--visible': isOpen,
 
 				// Module
 				[styles['c-menu']]: true,

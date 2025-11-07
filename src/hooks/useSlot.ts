@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, ReactNodeArray, ReactPortal } from 'react';
+import type { ReactElement, ReactNode, ReactNodeArray, ReactPortal } from 'react';
 
 export function useSlot<T>(type: T, children: ReactNode): ReactNode {
 	const slots: ReactNodeArray = Array.isArray(children) ? children : [children];
@@ -6,7 +6,7 @@ export function useSlot<T>(type: T, children: ReactNode): ReactNode {
 		(slot: ReactNode) => slot && (slot as ReactPortal).type === type
 	) as ReactElement;
 
-	if (element && element.props.children) {
+	if (element?.props.children) {
 		return element.props.children;
 	}
 

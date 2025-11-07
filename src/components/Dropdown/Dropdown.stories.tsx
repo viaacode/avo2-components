@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import React, { cloneElement, ReactElement, useState } from 'react';
+import { cloneElement, type ReactElement, useState } from 'react';
 
-import { IconNameSchema } from '../Icon/Icon.types.js';
+import type { IconNameSchema } from '../Icon/Icon.types.js';
 import { MenuContent } from '../Menu/MenuContent/MenuContent.js';
 
 import { Dropdown } from './Dropdown.js';
@@ -65,7 +65,7 @@ const DropdownMoveTriggerStoryComponent = ({ children }: { children: ReactElemen
 		<>
 			<span
 				style={{
-					width: closeCount * 20 + 'px',
+					width: `${closeCount * 20}px`,
 					display: 'inline-block',
 					height: '40px',
 					backgroundColor: 'grey',
@@ -149,12 +149,7 @@ storiesOf('components/Dropdown', module)
 	.add('Dropdown top-end', () => (
 		<div style={{ paddingTop: '200px' }}>
 			<DropdownStoryComponent>
-				<Dropdown
-					label="Show options"
-					menuWidth="fit-content"
-					isOpen={false}
-					placement={'top-end'}
-				>
+				<Dropdown label="Show options" menuWidth="fit-content" isOpen={false} placement={'top-end'}>
 					<MenuContent menuItems={menuItems} />
 				</Dropdown>
 			</DropdownStoryComponent>

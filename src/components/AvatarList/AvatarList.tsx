@@ -1,7 +1,8 @@
 import clsx from 'clsx';
-import React, { FC, Fragment } from 'react';
+import { type FC, Fragment } from 'react';
 
-import { type DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
+import { handleEnterOrSpace } from '../../utils/index.js';
 import { Avatar, type AvatarPropsSchema } from '../Avatar/Avatar.js';
 import { Dropdown } from '../Dropdown/Dropdown.js';
 import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots.js';
@@ -9,7 +10,6 @@ import { Flex } from '../Flex/Flex.js';
 import { Spacer } from '../Spacer/Spacer.js';
 import { Tooltip } from '../Tooltip/Tooltip.js';
 import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots.js';
-
 import styles from './AvatarList.module.scss';
 
 interface ExtendedAvatarProps extends AvatarPropsSchema {
@@ -30,17 +30,15 @@ export const AvatarList: FC<AvatarListPropsSchema> = ({ avatars, className, isOp
 
 	return (
 		<div className={clsx(className, 'c-avatar--multiple', styles['c-avatar--multiple'])}>
-			{visibleAvatars.map((avatar, index) => (
-				<Fragment key={index}>
+			{visibleAvatars.map((avatar) => (
+				<Fragment key={`${avatar.name}--${avatar.title}`}>
 					<Tooltip position="bottom">
 						<TooltipTrigger>
 							<Avatar initials={avatar.initials} />
 						</TooltipTrigger>
 						<TooltipContent>
-							<Fragment>
-								<h4 className="c-h4 u-m-0">{avatar.name}</h4>
-								<span className="c-tooltip__meta">{avatar.subtitle}</span>
-							</Fragment>
+							<h4 className="c-h4 u-m-0">{avatar.name}</h4>
+							<span className="c-tooltip__meta">{avatar.subtitle}</span>
 						</TooltipContent>
 					</Tooltip>
 				</Fragment>
@@ -56,44 +54,36 @@ export const AvatarList: FC<AvatarListPropsSchema> = ({ avatars, className, isOp
 						<button
 							className="c-avatar c-avatar-dropdown"
 							data-dropdown="multipleAvatarsDropdown"
+							type="button"
 						>
 							+{hiddenAvatars.length}
 						</button>
 					</DropdownButton>
 					<DropdownContent>
-						<Fragment>
-							{hiddenAvatars.map((avatar, index) => (
-								<a
-									key={index}
-									className={'c-menu__item'}
-									onClick={() =>
-										avatar.onClick ? avatar.onClick(avatar) : undefined
-									}
-								>
-									<div className={'c-menu__label'}>
-										<Flex orientation="vertical" center>
-											<Avatar
-												initials={avatar.initials}
-												image={avatar.image}
-											/>
-											<Spacer margin="left-small">
-												<h4 className="c-h4 u-m-0">{avatar.name}</h4>
-												{avatar.subtitle && (
-													<span
-														className={clsx(
-															'c-avatar-meta',
-															styles['c-avatar-meta']
-														)}
-													>
-														{avatar.subtitle}
-													</span>
-												)}
-											</Spacer>
-										</Flex>
-									</div>
-								</a>
-							))}
-						</Fragment>
+						{hiddenAvatars.map((avatar) => (
+							// biome-ignore lint/a11y/noStaticElementInteractions: TODO fix
+							<a
+								key={`${avatar.name}--${avatar.title}`}
+								className={'c-menu__item'}
+								// biome-ignore lint/a11y/useValidAnchor: TODO fix
+								onClick={() => avatar.onClick?.(avatar)}
+								onKeyUp={handleEnterOrSpace(() => avatar.onClick?.(avatar))}
+							>
+								<div className={'c-menu__label'}>
+									<Flex orientation="vertical" center>
+										<Avatar initials={avatar.initials} image={avatar.image} />
+										<Spacer margin="left-small">
+											<h4 className="c-h4 u-m-0">{avatar.name}</h4>
+											{avatar.subtitle && (
+												<span className={clsx('c-avatar-meta', styles['c-avatar-meta'])}>
+													{avatar.subtitle}
+												</span>
+											)}
+										</Spacer>
+									</Flex>
+								</div>
+							</a>
+						))}
 					</DropdownContent>
 				</Dropdown>
 			)}

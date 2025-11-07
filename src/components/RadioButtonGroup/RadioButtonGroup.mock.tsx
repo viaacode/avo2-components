@@ -1,4 +1,4 @@
-import { RadioOptionSchema } from './RadioButtonGroup.js';
+import type { RadioOptionSchema } from './RadioButtonGroup.js';
 
 export const RADIO_BUTTON_OPTIONS: RadioOptionSchema[] = [
 	{

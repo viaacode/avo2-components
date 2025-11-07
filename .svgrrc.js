@@ -6,7 +6,7 @@ module.exports = {
 		const name = componentName.name.substring('Svg'.length);
 
 		return typeScriptTpl.ast`
-			import React, { SVGProps } from 'react';
+			import { SVGProps } from 'react';
 			const ${name} = (props: SVGProps<SVGSVGElement>) => ${jsx};
 			export default ${name};
 		`;

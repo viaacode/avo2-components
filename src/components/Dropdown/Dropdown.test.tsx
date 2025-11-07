@@ -1,5 +1,4 @@
 import { mount, shallow } from 'enzyme';
-import React, { Fragment } from 'react';
 
 import { Button } from '../Button/Button.js';
 
@@ -125,13 +124,11 @@ describe('<Dropdown />', () => {
 					<Button label={label} />
 				</DropdownButton>
 				<DropdownContent>
-					<Fragment>
-						<div className="firstItem">OneOneOneOneOneOne</div>
-						<div>Two</div>
-						<div>Three</div>
-						<div>Four</div>
-						<div>Five</div>
-					</Fragment>
+					<div className="firstItem">OneOneOneOneOneOne</div>
+					<div>Two</div>
+					<div>Three</div>
+					<div>Four</div>
+					<div>Five</div>
 				</DropdownContent>
 			</Dropdown>
 		);
@@ -155,9 +152,7 @@ describe('<Dropdown />', () => {
 			</Dropdown>
 		);
 
-		expect(
-			dropdownFullWidthComponent.find('.c-button').hasClass('c-button--block')
-		).toBeTruthy();
+		expect(dropdownFullWidthComponent.find('.c-button').hasClass('c-button--block')).toBeTruthy();
 		expect(dropdownFitContentComponent.find('.c-dropdown__trigger')).toHaveLength(1);
 	});
 

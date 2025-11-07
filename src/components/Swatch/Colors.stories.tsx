@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
-import { type ColorCategory, COLORS } from '../../colors/index.js';
+import { COLORS, type ColorCategory } from '../../colors/index.js';
 
 import { SwatchBlock } from './SwatchBlock.js';
 
@@ -21,7 +21,9 @@ const stories = [
 
 const story = storiesOf('components/Colors', module);
 
-stories.forEach(([title, colors]: any) => story.add(title, () => <SwatchBlock colors={colors} />));
+stories.forEach(([title, colors]: any) => {
+	story.add(title, () => <SwatchBlock colors={colors} />);
+});
 
 story.add('All colors', () => (
 	<Fragment>

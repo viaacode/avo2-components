@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
 
 import { noop } from '../../helpers/noop.js';
 import { Spacer } from '../Spacer/Spacer.js';

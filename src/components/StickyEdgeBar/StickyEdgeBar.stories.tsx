@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import React, { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
 import { StickyEdgeBar } from './StickyEdgeBar.js';
 

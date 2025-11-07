@@ -1,12 +1,11 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import React from 'react';
 
 import { Box } from '../Box/Box.js';
 import { Spacer } from '../Spacer/Spacer.js';
 
 import { Alert } from './Alert.js';
-import { AlertPropsSchema, AlertTypeSchema } from './Alert.types.js';
+import type { AlertPropsSchema, AlertTypeSchema } from './Alert.types.js';
 
 function getMultiLineAlertMessage(type: string) {
 	return (
@@ -26,10 +25,10 @@ function renderAlertStories(props?: AlertPropsSchema, message?: (type: string) =
 
 	return (
 		<>
-			{types.map((type, i) => (
-				<Spacer key={type + '--' + i} margin="bottom">
+			{types.map((type) => (
+				<Spacer key={type} margin="bottom">
 					<Alert
-						key={`${type}-${i}`}
+						key={`${type}`}
 						{...props}
 						message={message ? message(type) : `${type} alert message`}
 						type={type}
@@ -38,7 +37,7 @@ function renderAlertStories(props?: AlertPropsSchema, message?: (type: string) =
 								? action('alert closed')
 								: () => {
 										// Ignore empty function
-								  }
+									}
 						}
 					/>
 				</Spacer>

@@ -1,12 +1,12 @@
 import { action } from '@storybook/addon-actions';
-import { Meta, storiesOf, Story } from '@storybook/react';
-import React, { Fragment } from 'react';
+import { type Meta, type Story, storiesOf } from '@storybook/react';
+import { Fragment } from 'react';
 
 import { COLORS } from '../../colors/index.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
 import { Spacer } from '../Spacer/Spacer.js';
 
-import { Button, ButtonPropsSchema } from './Button.js';
+import { Button, type ButtonPropsSchema } from './Button.js';
 
 const buttonProps: Partial<ButtonPropsSchema>[] = [
 	{ label: 'Primary', type: 'primary' },

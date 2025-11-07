@@ -1,17 +1,19 @@
 /* tslint:disable */
-import { noop } from '../../helpers/noop.js';
+
+import raf from 'raf';
 
 /* eslint-disable */
-import React, { useState, useRef, useCallback, useMemo, useEffect } from 'react';
-import raf from 'raf';
+import type React from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { noop } from '../../helpers/noop.js';
+import { useLayoutEffectAfterMount, useStateOrProps, useUniqueId } from './hooks.js';
 import {
 	callAll,
-	getElementHeight,
-	makeTransitionStyles,
-	joinTransitionProperties,
 	defaultTransitionStyles,
+	getElementHeight,
+	joinTransitionProperties,
+	makeTransitionStyles,
 } from './utils.js';
-import { useUniqueId, useLayoutEffectAfterMount, useStateOrProps } from './hooks.js';
 
 interface UseCollapseInitialConfig {
 	collapsedHeight: number;
@@ -33,7 +35,7 @@ export default function useCollapsed(initialConfig: UseCollapseInitialConfig) {
 		[initialConfig]
 	);
 	const getCollapsedHeightStyle = () => {
-		return initialConfig.collapsedHeight + 'px';
+		return `${initialConfig.collapsedHeight}px`;
 	};
 	const [styles, setStyles] = useState(
 		isOpen
@@ -42,12 +44,12 @@ export default function useCollapsed(initialConfig: UseCollapseInitialConfig) {
 					display: getCollapsedHeightStyle() === '0px' ? 'none' : 'block',
 					height: getCollapsedHeightStyle(),
 					overflow: 'hidden',
-			  }
+				}
 	);
 	const [mountChildren, setMountChildren] = useState(isOpen);
 	const [buttonVisible, setButtonVisible] = useState(true);
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// biome-ignore lint/correctness/useExhaustiveDependencies: check if this is intended
 	const toggleOpen = useCallback(
 		() =>
 			setOpen((oldOpen: boolean) => {
@@ -101,6 +103,8 @@ export default function useCollapsed(initialConfig: UseCollapseInitialConfig) {
 	/**
 	 * Show/hide button if content fits in collapsedHeight
 	 */
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: TODO check which deps are required for this to function properly
 	useEffect(() => {
 		if (el && !isOpen) {
 			// We assume the children are always wrapped in a single html element for easy height calculation

@@ -1,9 +1,10 @@
 import clsx from 'clsx';
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import type React from 'react';
+import { type FunctionComponent, useEffect, useState } from 'react';
 import { getTrackBackground, Range } from 'react-range';
 
 import { noop } from '../../helpers/noop.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 import { TextInput } from '../TextInput/TextInput.js';
 
 import './MultiRange.scss';
@@ -55,7 +56,7 @@ export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 				setInputText(String(newValue));
 			}
 		} catch (err) {
-			console.error('Multirange value must be number');
+			console.error('Multirange value must be number', err);
 		}
 	};
 
@@ -77,6 +78,7 @@ export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 					onChange(tempValues || values);
 				}}
 				renderTrack={({ props, children }) => (
+					// biome-ignore lint/a11y/noStaticElementInteractions: TODO fix
 					<div
 						onMouseDown={props.onMouseDown}
 						onTouchStart={props.onTouchStart}
@@ -100,11 +102,7 @@ export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 									colors:
 										values.length === 1
 											? ['hsl(190, 80%, 40%)', 'rgb(196, 196, 196)']
-											: [
-													'rgb(196, 196, 196)',
-													'hsl(190, 80%, 40%)',
-													'rgb(196, 196, 196)',
-											  ],
+											: ['rgb(196, 196, 196)', 'hsl(190, 80%, 40%)', 'rgb(196, 196, 196)'],
 								}),
 								alignSelf: 'center',
 							}}

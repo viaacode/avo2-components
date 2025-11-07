@@ -1,5 +1,4 @@
 import { shallow } from 'enzyme';
-import React from 'react';
 
 import { CTA } from './CTA.js';
 import { CTA_MOCK } from './CTA.mock.js';

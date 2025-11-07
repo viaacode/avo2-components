@@ -1,10 +1,11 @@
 import clsx from 'clsx';
-import React, {
+import type React from 'react';
+import {
 	createRef,
-	forwardRef,
 	Fragment,
-	MouseEvent,
-	ReactNode,
+	forwardRef,
+	type MouseEvent,
+	type ReactNode,
 	useEffect,
 	useImperativeHandle,
 	useState,
@@ -14,7 +15,7 @@ import Scrollbar from 'react-perfect-scrollbar';
 
 import { useKeyPress } from '../../hooks/useKeyPress.js';
 import { useSlot } from '../../hooks/useSlot.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 import { Button } from '../Button/Button.js';
 import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
@@ -95,7 +96,7 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 				document.body.classList.remove('modal-open');
 				document.documentElement.classList.remove('disable-document-scroll');
 			}
-		}, [isOpen]);
+		}, [isOpen, disablePageScroll]);
 
 		useImperativeHandle(ref, () => ({
 			updateSize,
@@ -206,6 +207,7 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 		});
 		return ReactDOM.createPortal(
 			<Fragment>
+				{/** biome-ignore lint/a11y/noStaticElementInteractions: TODO fix */}
 				<div
 					className={clsx(className, 'c-modal-context', {
 						'c-modal-context--visible': isOpen,

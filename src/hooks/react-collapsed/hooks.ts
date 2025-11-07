@@ -20,6 +20,7 @@ export function useLayoutEffectAfterMount(cb: () => void, dependencies: any[]): 
 			return cb();
 		}
 		justMounted.current = false;
+		// biome-ignore lint/correctness/useExhaustiveDependencies: TODO fix
 	}, dependencies);
 }
 

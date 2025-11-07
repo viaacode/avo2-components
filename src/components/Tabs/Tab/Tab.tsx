@@ -1,12 +1,14 @@
 import clsx from 'clsx';
-import React, { FunctionComponent, ReactNode } from 'react';
+import type React from 'react';
+import type { FunctionComponent, ReactNode } from 'react';
 
 import { noop } from '../../../helpers/noop.js';
-import { DefaultProps } from '../../../types/index.js';
+import type { DefaultProps } from '../../../types/index.js';
 import { Icon } from '../../Icon/Icon.js';
-import { IconNameSchema } from '../../Icon/Icon.types.js';
+import type { IconNameSchema } from '../../Icon/Icon.types.js';
 
 import './Tab.scss';
+import { handleEnterOrSpace } from '../../../utils/index.js';
 
 export interface TabPropsSchema extends DefaultProps {
 	children?: React.ReactNode;
@@ -27,6 +29,7 @@ export const Tab: FunctionComponent<TabPropsSchema> = ({
 	dark = false,
 	onClick = noop,
 }) => (
+	// biome-ignore lint/a11y/noStaticElementInteractions: TODO fix
 	<div
 		className={clsx(className, 'c-tab-item', {
 			'c-tab-item__active': active,
@@ -34,6 +37,7 @@ export const Tab: FunctionComponent<TabPropsSchema> = ({
 		})}
 		style={{ cursor: 'pointer' }}
 		onClick={onClick}
+		onKeyUp={handleEnterOrSpace(onClick)}
 		data-id={id}
 	>
 		{icon && <Icon name={icon} />}

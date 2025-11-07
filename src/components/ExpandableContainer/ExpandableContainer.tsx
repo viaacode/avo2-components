@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent, ReactNode } from 'react';
+import { Fragment, type FunctionComponent, type ReactNode } from 'react';
 
 import useCollapsed from '../../hooks/react-collapsed/react-collapsed.js';
 import { Button } from '../Button/Button.js';

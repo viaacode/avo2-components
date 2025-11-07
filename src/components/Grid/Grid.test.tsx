@@ -1,5 +1,4 @@
 import { shallow } from 'enzyme';
-import React from 'react';
 
 import { Column } from './Column/Column.js';
 import { Grid } from './Grid.js';

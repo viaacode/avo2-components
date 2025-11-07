@@ -1,10 +1,11 @@
 import clsx from 'clsx';
-import React, { FunctionComponent } from 'react';
+import type React from 'react';
+import type { FunctionComponent } from 'react';
 
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 
 import styles from './Avatar.module.scss';
-import { AvatarIcon, AvatarIconPropsSchema } from './AvatarIcon/AvatarIcon.js';
+import { AvatarIcon, type AvatarIconPropsSchema } from './AvatarIcon/AvatarIcon.js';
 
 export interface AvatarPropsSchema extends DefaultProps, AvatarIconPropsSchema {
 	children?: React.ReactNode;
@@ -28,17 +29,11 @@ export const Avatar: FunctionComponent<AvatarPropsSchema> = ({
 			<AvatarIcon initials={initials} size={size} image={image} />
 
 			<div className={clsx('c-avatar-and-text__text', styles['c-avatar-and-text__text'])}>
-				{name && <p className={clsx({ ['u-color-white']: !dark })}>{name}</p>}
+				{name && <p className={clsx({ 'u-color-white': !dark })}>{name}</p>}
 
 				{title && <p className={dark ? 'u-text-muted' : 'u-color-gray-150'}>{title}</p>}
 			</div>
 		</div>
 	) : (
-		<AvatarIcon
-			className={className}
-			initials={initials}
-			size={size}
-			image={image}
-			icon={icon}
-		/>
+		<AvatarIcon className={className} initials={initials} size={size} image={image} icon={icon} />
 	);

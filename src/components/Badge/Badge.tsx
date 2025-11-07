@@ -1,7 +1,8 @@
 import clsx from 'clsx';
-import React, { FunctionComponent } from 'react';
+import type React from 'react';
+import type { FunctionComponent } from 'react';
 
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 
 import styles from './Badge.module.scss';
 
@@ -19,7 +20,7 @@ export const Badge: FunctionComponent<BadgePropsSchema> = ({
 	<div
 		className={clsx(className, {
 			// Normal
-			['c-badge']: true,
+			'c-badge': true,
 			[`c-badge--${type}`]: type,
 
 			// Module

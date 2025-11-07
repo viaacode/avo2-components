@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { Flex } from './Flex.js';
 import { FlexItem } from './FlexItem/FlexItem.js';

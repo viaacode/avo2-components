@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
-import React, { cloneElement, Fragment, ReactElement, useState } from 'react';
+import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 
 import { Button } from '../Button/Button.js';
 

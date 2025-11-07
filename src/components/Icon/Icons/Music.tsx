@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import type { SVGProps } from 'react';
 const Music = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={24}

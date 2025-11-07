@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import React, { FunctionComponent, ReactNode } from 'react';
+import type { FunctionComponent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 
 import './Toolbar.scss';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots.js';

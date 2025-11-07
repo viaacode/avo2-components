@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { Panel } from './Panel.js';
 import { PanelBody, PanelHeader } from './Panel.slots.js';

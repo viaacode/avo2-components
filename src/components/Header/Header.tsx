@@ -1,10 +1,10 @@
-import { type Avo } from '@viaa/avo2-types';
+import type { Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
-import React, { FunctionComponent, ReactNode } from 'react';
+import type { FunctionComponent, ReactNode } from 'react';
 
 import { useSlot } from '../../hooks/useSlot.js';
-import { DefaultProps, translateContentType } from '../../types/index.js';
-import { Container, ContainerPropsSchema } from '../Container/Container.js';
+import { type DefaultProps, translateContentType } from '../../types/index.js';
+import { Container, type ContainerPropsSchema } from '../Container/Container.js';
 import { Flex } from '../Flex/Flex.js';
 import { HeaderContentType } from '../HeaderContentType/HeaderContentType.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
@@ -16,6 +16,7 @@ import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots.js';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem.js';
 
 import './Header.scss';
+import { handleEnterOrSpace } from '../../utils/index.js';
 import {
 	HeaderAvatar,
 	HeaderBottomRowLeft,
@@ -70,6 +71,7 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 						'u-clickable': onClickTitle,
 					})}
 					onClick={onClickTitle}
+					onKeyUp={handleEnterOrSpace(onClickTitle)}
 				>
 					{title}
 				</h2>
@@ -98,15 +100,8 @@ export const Header: FunctionComponent<HeaderPropsSchema> = ({
 											label={translateContentType(category, 'en', false)}
 										/>
 									</MetaDataItem>
-									{views && (
-										<MetaDataItem icon={IconNameSchema.eye} label={views} />
-									)}
-									{bookmarks && (
-										<MetaDataItem
-											icon={IconNameSchema.bookmark}
-											label={bookmarks}
-										/>
-									)}
+									{views && <MetaDataItem icon={IconNameSchema.eye} label={views} />}
+									{bookmarks && <MetaDataItem icon={IconNameSchema.bookmark} label={bookmarks} />}
 								</MetaData>
 							)}
 							{headerTopRowLeftSlot}

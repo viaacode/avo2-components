@@ -1,5 +1,4 @@
 import { shallow } from 'enzyme';
-import React from 'react';
 
 import { Header } from './Header.js';
 import { MOCK_HEADER_PROPS_FULL } from './Header.mock.js';

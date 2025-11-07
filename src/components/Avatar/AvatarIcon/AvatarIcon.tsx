@@ -1,7 +1,8 @@
 import clsx from 'clsx';
-import React, { FunctionComponent } from 'react';
+import type React from 'react';
+import type { FunctionComponent } from 'react';
 
-import { DefaultProps } from '../../../types/index.js';
+import type { DefaultProps } from '../../../types/index.js';
 import { Icon } from '../../Icon/Icon.js';
 import { IconNameSchema } from '../../Icon/Icon.types.js';
 import styles from '../Avatar.module.scss';
@@ -24,10 +25,10 @@ export const AvatarIcon: FunctionComponent<AvatarIconPropsSchema> = ({
 	<div
 		className={clsx(className, {
 			// Normal
-			['c-avatar']: true,
-			['c-avatar--img']: image,
-			['c-avatar--small']: size === 'small',
-			['c-avatar--large']: size === 'large',
+			'c-avatar': true,
+			'c-avatar--img': image,
+			'c-avatar--small': size === 'small',
+			'c-avatar--large': size === 'large',
 
 			// Module
 			[styles['c-avatar']]: true,

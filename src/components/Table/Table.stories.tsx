@@ -1,12 +1,12 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import React, { ReactElement, useCallback, useEffect, useState } from 'react';
+import { type ReactElement, useCallback, useEffect, useState } from 'react';
 
 import { Button } from '../Button/Button.js';
 import { Icon } from '../Icon/Icon.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
 
-import { Table, TableColumnSchema } from './Table.js';
+import { Table, type TableColumnSchema } from './Table.js';
 
 const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },
@@ -46,8 +46,7 @@ const comparators: any = {
 
 		return 0;
 	},
-	age: (order: 'asc' | 'desc') => (a: any, b: any) =>
-		(a.age - b.age) * (order === 'asc' ? 1 : -1),
+	age: (order: 'asc' | 'desc') => (a: any, b: any) => (a.age - b.age) * (order === 'asc' ? 1 : -1),
 };
 
 const TableStoryComponent = ({ children }: { children: ReactElement }) => {
@@ -61,11 +60,10 @@ const TableStoryComponent = ({ children }: { children: ReactElement }) => {
 		[sortColumn, sortOrder]
 	);
 
-	const [selectedItems, setSelectedItems] = useState<any[]>(
-		sort(children.props.data).slice(2, 4)
-	);
+	const [selectedItems, setSelectedItems] = useState<any[]>(sort(children.props.data).slice(2, 4));
 	const [data, setData] = useState(sort(children.props.data));
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: not sure if sortOrder and sortColumn were intended to be in the dependency array
 	useEffect(() => {
 		// re-sort the list if the column or order changes
 		setData(sort(data));

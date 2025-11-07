@@ -1,5 +1,4 @@
 import { shallow } from 'enzyme';
-import React from 'react';
 
 import image200x200 from '../../../static/images/200x200.jpg';
 

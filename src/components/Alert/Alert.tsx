@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FunctionComponent } from 'react';
+import type { FunctionComponent } from 'react';
 
 import { noop } from '../../helpers/noop.js';
 import { Button } from '../Button/Button.js';
@@ -8,7 +8,7 @@ import { IconNameSchema } from '../Icon/Icon.types.js';
 import { Spinner } from '../Spinner/Spinner.js';
 
 import './Alert.scss';
-import { AlertPropsSchema, AlertTypeWithIcon } from './Alert.types.js';
+import type { AlertPropsSchema, AlertTypeWithIcon } from './Alert.types.js';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const ALERT_TYPE_TO_ICON_MAPPING: { [type in AlertTypeWithIcon]: IconNameSchema } = {

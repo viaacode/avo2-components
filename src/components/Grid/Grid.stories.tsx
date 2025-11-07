@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { Column } from './Column/Column.js';
 import { Grid } from './Grid.js';

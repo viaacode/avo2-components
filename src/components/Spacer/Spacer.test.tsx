@@ -1,7 +1,6 @@
 import { mount, shallow } from 'enzyme';
-import React from 'react';
 
-import { Spacer, SpacerOptionSchema } from './Spacer.js';
+import { Spacer, type SpacerOptionSchema } from './Spacer.js';
 
 describe('<Spacer />', () => {
 	it('Should be able to render', () => {

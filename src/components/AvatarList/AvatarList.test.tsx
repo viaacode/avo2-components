@@ -1,5 +1,4 @@
 import { mount, shallow } from 'enzyme';
-import React from 'react';
 
 import { AvatarList } from './AvatarList.js';
 import { mockAvatars } from './AvatarList.stories.js';

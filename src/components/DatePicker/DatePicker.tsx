@@ -2,11 +2,12 @@ import clsx from 'clsx';
 import { format, isValid } from 'date-fns';
 // https://github.com/Hacker0x01/react-datepicker/issues/1815#issuecomment-513215416
 import nlBe from 'date-fns/locale/nl-BE/index.js';
-import React, { FunctionComponent } from 'react';
-import { ReactDatePicker, registerLocale, setDefaultLocale } from 'react-datepicker';
+import type React from 'react';
+import type { FunctionComponent } from 'react';
+import { DatePicker as ReactDatePicker, registerLocale, setDefaultLocale } from 'react-datepicker';
 
 import { noop } from '../../helpers/noop.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 import { Icon } from '../Icon/Icon.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
 
@@ -42,8 +43,12 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	maxDate = getMaxDate(),
 	onChange = noop,
 }) => {
-	const handleChangedDate = (newDate: Date) => {
+	const handleChangedDate = (newDate: Date | null) => {
 		try {
+			if (!newDate) {
+				onChange(null);
+				return;
+			}
 			const newOutput = new Date(
 				newDate.getFullYear(),
 				newDate.getMonth(),
@@ -54,7 +59,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 			if (isValid(newOutput)) {
 				onChange(newOutput);
 			}
-		} catch (err) {
+		} catch (_err) {
 			// ignore invalid dates
 		}
 	};
@@ -71,7 +76,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 			if (isValid(newOutput)) {
 				onChange(newOutput);
 			}
-		} catch (err) {
+		} catch (_err) {
 			// ignore invalid dates
 		}
 	};
@@ -85,14 +90,12 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 					disabled={disabled}
 					required={required}
 					placeholderText={placeholder || 'dd/mm/yyyy'}
-					onChange={handleChangedDate}
+					onChange={(newDate) => handleChangedDate(newDate)}
 					dateFormat={'dd/MM/yyyy'}
 					minDate={minDate}
 					maxDate={
 						// https://meemoo.atlassian.net/browse/AVO-1828
-						getMaxDate().valueOf() <= new Date(maxDate).valueOf()
-							? getMaxDate()
-							: maxDate
+						getMaxDate().valueOf() <= new Date(maxDate).valueOf() ? getMaxDate() : maxDate
 					}
 				/>
 				<Icon name={IconNameSchema.calendar} />

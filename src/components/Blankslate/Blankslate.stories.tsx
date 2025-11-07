@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
 
 import { IconNameSchema } from '../Icon/Icon.types.js';
 import { Spacer } from '../Spacer/Spacer.js';

@@ -1,6 +1,6 @@
-import { Placement } from '@popperjs/core';
+import type { Placement } from '@popperjs/core';
 import clsx from 'clsx';
-import React, { FunctionComponent, ReactNode, useState } from 'react';
+import { type FunctionComponent, type ReactNode, useState } from 'react';
 import { usePopper } from 'react-popper';
 
 import { noop } from '../../helpers/noop.js';
@@ -8,7 +8,7 @@ import { useClickOutside } from '../../hooks/useClickOutside.js';
 import { useKeyPress } from '../../hooks/useKeyPress.js';
 import { useSlot } from '../../hooks/useSlot.js';
 import { Button } from '../Button/Button.js';
-import { ButtonTypeSchema } from '../Button/Button.types.js';
+import type { ButtonTypeSchema } from '../Button/Button.types.js';
 import { Icon } from '../Icon/Icon.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
 import { Menu } from '../Menu/Menu.js';
@@ -16,6 +16,7 @@ import { Menu } from '../Menu/Menu.js';
 import { DropdownButton, DropdownContent } from './Dropdown.slots.js';
 
 import './Dropdown.scss';
+import { handleEnterOrSpace } from '../../utils/index.js';
 
 export interface DropdownPropsSchema {
 	children: ReactNode;
@@ -98,11 +99,13 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 
 	return (
 		<>
+			{/** biome-ignore lint/a11y/noStaticElementInteractions: TODO fix */}
 			<div
 				className={clsx(triggerClassName, {
 					'c-dropdown__trigger': triggerWidth === 'fit-content',
 				})}
 				onClick={() => toggle()}
+				onKeyUp={handleEnterOrSpace(toggle)}
 				ref={setReferenceElement}
 			>
 				{dropdownButtonSlot || (
@@ -112,9 +115,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 							{label && <div className="c-button__label">{label}</div>}
 							{!icon && (
 								<Icon
-									name={
-										isOpen ? IconNameSchema.caretUp : IconNameSchema.caretDown
-									}
+									name={isOpen ? IconNameSchema.caretUp : IconNameSchema.caretDown}
 									size="small"
 									type="arrows"
 								/>

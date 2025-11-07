@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from 'react';
+import type React from 'react';
+import type { FunctionComponent } from 'react';
 
 export interface SwatchProps {
 	children?: React.ReactNode;

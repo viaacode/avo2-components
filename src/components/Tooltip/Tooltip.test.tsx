@@ -1,5 +1,5 @@
 import { mount, shallow } from 'enzyme';
-import React, { act } from 'react';
+import { act } from 'react';
 
 import { Tooltip } from './Tooltip.js';
 import { TooltipContent, TooltipTrigger } from './Tooltip.slots.js';

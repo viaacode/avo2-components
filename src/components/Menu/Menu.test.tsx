@@ -1,5 +1,4 @@
 import { mount, shallow } from 'enzyme';
-import React from 'react';
 
 import { Menu } from './Menu.js';
 import {
@@ -8,7 +7,7 @@ import {
 	menuItemsWithIcons,
 	menuItemsWithSearch,
 } from './Menu.mocks.js';
-import { MenuItemInfoSchema } from './MenuContent/MenuContent.js';
+import type { MenuItemInfoSchema } from './MenuContent/MenuContent.js';
 import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent.js';
 
 describe('<MenuItem />', () => {

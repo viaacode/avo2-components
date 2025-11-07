@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 export const ModalHeaderRight: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;
 export const ModalSubHeader: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>;

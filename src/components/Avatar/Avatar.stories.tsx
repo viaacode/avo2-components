@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
 
 import thumbnail from '../../../static/images/thumbnail.jpg';
 import { Box } from '../Box/Box.js';

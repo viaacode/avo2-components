@@ -1,5 +1,4 @@
 import { mount, shallow } from 'enzyme';
-import React from 'react';
 
 import { Select } from './Select.js';
 import { SELECT_MOCK_OPTIONS } from './Select.mock.js';

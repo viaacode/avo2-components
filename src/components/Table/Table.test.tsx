@@ -1,11 +1,10 @@
 import { mount, shallow } from 'enzyme';
-import React, { Fragment } from 'react';
 
 import { Button } from '../Button/Button.js';
 import { Icon } from '../Icon/Icon.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
 
-import { Table, TableColumnSchema } from './Table.js';
+import { Table, type TableColumnSchema } from './Table.js';
 
 const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },
@@ -71,13 +70,7 @@ describe('<Table />', () => {
 
 	it('Should render a chevron based on `sortColumn` & `sortOrder` when a column is sortable', () => {
 		const ascTableComponent = shallow(
-			<Table
-				columns={COLUMNS}
-				data={DATA}
-				rowKey="id"
-				sortOrder="asc"
-				sortColumn={COLUMNS[0].id}
-			/>
+			<Table columns={COLUMNS} data={DATA} rowKey="id" sortOrder="asc" sortColumn={COLUMNS[0].id} />
 		);
 
 		const descTableComponent = shallow(
@@ -209,14 +202,7 @@ describe('<Table />', () => {
 		const emptyStateMessage = 'No data test test no data...';
 
 		const tableComponent = mount(
-			<Fragment>
-				<Table
-					columns={COLUMNS}
-					data={[]}
-					rowKey="id"
-					emptyStateMessage={emptyStateMessage}
-				/>
-			</Fragment>
+			<Table columns={COLUMNS} data={[]} rowKey="id" emptyStateMessage={emptyStateMessage} />
 		);
 
 		const emptyStateParagraph = tableComponent.find('div.u-spacer-left-s.u-spacer-top');
@@ -228,12 +214,7 @@ describe('<Table />', () => {
 		const emptyStateMessage = 'No data test test no data...';
 
 		const tableComponent = shallow(
-			<Table
-				columns={COLUMNS}
-				data={DATA}
-				rowKey="id"
-				emptyStateMessage={emptyStateMessage}
-			/>
+			<Table columns={COLUMNS} data={DATA} rowKey="id" emptyStateMessage={emptyStateMessage} />
 		);
 
 		const emptyStateParagraph = tableComponent.find('p.u-spacer-top');

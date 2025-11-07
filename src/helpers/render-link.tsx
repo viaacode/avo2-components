@@ -1,11 +1,10 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import { ButtonAction, RenderLinkFunction } from '../types/index.js';
+import type { ButtonAction, RenderLinkFunction } from '../types/index.js';
 
 export function testRenderLink(
 	testActionHandler: (info: ButtonAction) => void
 ): RenderLinkFunction {
-	// eslint-disable-next-line react/display-name
 	return (buttonAction: ButtonAction | undefined | null, children: ReactNode): ReactNode => {
 		if (buttonAction) {
 			return (
@@ -28,9 +27,7 @@ export function testRenderLink(
 export function defaultRenderLinkFunction(
 	_buttonAction: ButtonAction | undefined | null,
 	children: ReactNode,
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	_label?: string,
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	_title?: string
 ): ReactNode | null {
 	return <>{children}</>;

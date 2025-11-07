@@ -1,10 +1,10 @@
 import { shallow } from 'enzyme';
-import React from 'react';
 
-import { AspectRatioWrapper, AspectRatioWrapperPropsSchema } from './AspectRatioWrapper.js';
+import { AspectRatioWrapper, type AspectRatioWrapperPropsSchema } from './AspectRatioWrapper.js';
 
 const aspectRatioWrapper = (props: AspectRatioWrapperPropsSchema = {}) => (
 	<AspectRatioWrapper {...props}>
+		{/** biome-ignore lint/a11y/useMediaCaption: this is a test file, no need for accessibility */}
 		<video
 			src="https://archief-media.viaa.be/viaa/TESTBEELD/c44b877a9a7d4b1a99c5b8b676c3aef4ca370f2fe15d42d49b438e71eea6b99d/browse.mp4"
 			controls

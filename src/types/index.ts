@@ -1,5 +1,5 @@
 import type { Avo } from '@viaa/avo2-types';
-import { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 export * from './content-type.js';
 

@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import type { SVGProps } from 'react';
 const Notification = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={15}

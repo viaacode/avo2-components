@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { Navbar } from './Navbar.js';
 
@@ -25,15 +25,15 @@ storiesOf('components/Navbar', module)
 	))
 	.add('Auto height navbar', () => (
 		<Navbar autoHeight={true}>
-			<Fragment>{content}</Fragment>
+			{content}
 			<br />
-			<Fragment>{content}</Fragment>
+			{content}
 			<br />
-			<Fragment>{content}</Fragment>
+			{content}
 			<br />
-			<Fragment>{content}</Fragment>
+			{content}
 			<br />
-			<Fragment>{content}</Fragment>
+			{content}
 		</Navbar>
 	))
 	.add('Navbar backgrounds', () => (

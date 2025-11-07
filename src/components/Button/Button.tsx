@@ -1,15 +1,15 @@
 import clsx from 'clsx';
-import React, { FunctionComponent, MouseEvent, ReactNode } from 'react';
+import type { FunctionComponent, KeyboardEvent, MouseEvent, ReactNode } from 'react';
 
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
+import { handleEnterOrSpace } from '../../utils/index.js';
 import { Icon } from '../Icon/Icon.js';
-import { IconNameSchema, IconTypeSchema } from '../Icon/Icon.types.js';
+import { IconNameSchema, type IconTypeSchema } from '../Icon/Icon.types.js';
 import { Tooltip } from '../Tooltip/Tooltip.js';
 import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots.js';
-
-import skins from './Button-skins.module.scss';
 import styles from './Button.module.scss';
-import { ButtonTypeSchema } from './Button.types.js';
+import type { ButtonTypeSchema } from './Button.types.js';
+import skins from './Button-skins.module.scss';
 
 export interface ButtonPropsSchema extends DefaultProps {
 	active?: boolean;
@@ -27,7 +27,7 @@ export interface ButtonPropsSchema extends DefaultProps {
 	iconPosition?: 'left' | 'right';
 	label?: string;
 
-	onClick?: (event: MouseEvent<HTMLElement>) => void;
+	onClick?: (event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>) => void;
 	renderIcon?: () => ReactNode;
 
 	size?: 'small' | 'large';
@@ -62,13 +62,13 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 }) => {
 	const rootCls = clsx(className, {
 		// Normal
-		['c-button']: true,
-		['c-button--active']: active,
-		['c-button--auto']: autoHeight,
-		['c-button--small']: size === 'small',
-		['c-button--large']: size === 'large',
-		['c-button--block']: block,
-		['c-button--icon']: icon && !label,
+		'c-button': true,
+		'c-button--active': active,
+		'c-button--auto': autoHeight,
+		'c-button--small': size === 'small',
+		'c-button--large': size === 'large',
+		'c-button--block': block,
+		'c-button--icon': icon && !label,
 		[`c-button--${type}`]: type,
 
 		// Module
@@ -92,7 +92,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 		[skins[`c-button--${type}`]]: type,
 	});
 
-	const handleButtonClick = (evt: MouseEvent<HTMLElement>) => {
+	const handleButtonClick = (evt: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>) => {
 		if (!disabled && onClick) {
 			onClick(evt);
 		}
@@ -109,11 +109,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 
 		return (
 			<Icon
-				className={clsx(
-					'c-button__icon',
-					styles['c-button__icon'],
-					skins['c-button__icon']
-				)}
+				className={clsx('c-button__icon', styles['c-button__icon'], skins['c-button__icon'])}
 				name={icon}
 				active={active}
 				type={iconType}
@@ -126,11 +122,13 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 			<button
 				className={rootCls}
 				onClick={handleButtonClick}
+				onKeyUp={handleEnterOrSpace(handleButtonClick)}
 				disabled={disabled}
 				aria-label={ariaLabel}
 				title={title}
 				id={id}
 				style={style}
+				type="button"
 			>
 				{children ? (
 					children

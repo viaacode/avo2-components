@@ -1,5 +1,6 @@
 /* tslint:disable */
-import React, { RefObject } from 'react';
+import type React from 'react';
+import type { RefObject } from 'react';
 
 export function getElementHeight(el: RefObject<HTMLElement | null>): number | 'auto' {
 	if (!el || !el.current) {
@@ -12,7 +13,9 @@ export function getElementHeight(el: RefObject<HTMLElement | null>): number | 'a
 export const callAll =
 	(...fns: ((...args: any[]) => void)[]) =>
 	(...args: any[]): void =>
-		fns.forEach((fn: (...args: any[]) => void) => fn && fn(...args));
+		fns.forEach((fn: (...args: any[]) => void) => {
+			fn?.(...args);
+		});
 
 export const defaultTransitionStyles: React.CSSProperties = {
 	transitionDuration: '300ms',

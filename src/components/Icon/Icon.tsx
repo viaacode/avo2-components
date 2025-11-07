@@ -1,13 +1,14 @@
 import clsx from 'clsx';
-import React, { FunctionComponent } from 'react';
+import type React from 'react';
+import type { FunctionComponent } from 'react';
 import camelCase from 'to-camel-case';
 import kebabCase from 'to-slug-case';
 
 import { upperFirst } from '../../helpers/upperfirst.js';
-import { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types/index.js';
 
 import './Icon.scss';
-import { IconNameSchema, IconTypeSchema } from './Icon.types.js';
+import type { IconNameSchema, IconTypeSchema } from './Icon.types.js';
 import * as Icons from './Icons/index.js';
 
 export interface IconPropsSchema extends DefaultProps {
@@ -38,7 +39,7 @@ export const Icon: FunctionComponent<IconPropsSchema> = ({
 
 	if (!IconToRender) {
 		console.error(`Icon with name: ${name} was not found.`);
-		IconToRender = (Icons as any)['Slash'];
+		IconToRender = (Icons as any).Slash;
 	}
 
 	return (

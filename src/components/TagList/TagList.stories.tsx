@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
-import React, { cloneElement, ReactElement, useState } from 'react';
+import { cloneElement, type ReactElement, useState } from 'react';
 
 import { TagList } from './TagList.js';
 
