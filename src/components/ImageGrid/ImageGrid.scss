@@ -1,4 +1,4 @@
-@import '../../styles/settings/colors';
+@use '../../styles/settings/colors' as colors;
 
 .c-image-grid {
 	display: flex;
@@ -21,7 +21,7 @@
 		.c-image-grid__item {
 			&.c-image-grid__item-selected,
 			&:hover {
-				outline: 0.5rem solid $color-border-color;
+				outline: 0.5rem solid colors.$color-border-color;
 			}
 		}
 	}

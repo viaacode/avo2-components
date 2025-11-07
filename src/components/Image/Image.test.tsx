@@ -22,9 +22,7 @@ describe('<Image />', () => {
 	});
 
 	it('Should set the correct className in wide mode', () => {
-		const imageComponent = shallow(
-			<Image src={image500x200} alt="dummy image 500 by 200" wide />
-		);
+		const imageComponent = shallow(<Image src={image500x200} alt="dummy image 500 by 200" wide />);
 
 		expect(imageComponent.hasClass('c-image--full')).toEqual(true);
 	});

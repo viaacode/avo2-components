@@ -42,10 +42,7 @@ export const ExpandableContainer: FunctionComponent<ExpandableContainerPropsSche
 				<div>{children}</div>
 			</div>
 
-			<Spacer
-				className={!hasCustomControlNodes ? 'u-text-center' : undefined}
-				margin="top-small"
-			>
+			<Spacer className={!hasCustomControlNodes ? 'u-text-center' : undefined} margin="top-small">
 				<div {...(getToggleProps() as any)}>
 					{hasCustomControlNodes ? (
 						isOpen ? (

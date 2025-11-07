@@ -1,4 +1,4 @@
-@import '../../../styles/settings/colors';
+@use '../../../styles/settings/colors' as colors;
 
 /* ==========================================================================
    Component: Menu content
@@ -13,7 +13,7 @@
 	cursor: pointer;
 
 	&:hover {
-		background-color: $color-gray-50;
+		background-color: colors.$color-gray-50;
 	}
 
 	&.c-menu__item--large {
@@ -45,7 +45,7 @@
 }
 
 .c-menu__divider {
-	border-top: 0.1rem solid $color-gray-200;
+	border-top: 0.1rem solid colors.$color-gray-200;
 	display: block;
 	margin-top: 0.4rem;
 	padding-top: 0.4rem;

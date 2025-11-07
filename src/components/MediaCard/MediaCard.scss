@@ -1,6 +1,6 @@
 @use 'sass:math';
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 /* ==========================================================================
    Component: Media card
@@ -19,14 +19,14 @@
 
 .c-media-card__title {
 	margin-bottom: 0.8rem;
-	font-weight: $g-headings-font-weight;
+	font-weight: variables.$g-headings-font-weight;
 	overflow: hidden;
 	text-overflow: ellipsis;
 
 	a {
 		font-size: 1.7rem;
-		color: $color-gray-800;
-		font-weight: $g-headings-font-weight;
+		color: colors.$color-gray-800;
+		font-weight: variables.$g-headings-font-weight;
 		text-decoration: none;
 
 		&:hover {
@@ -77,58 +77,58 @@
 	position: relative;
 
 	.c-media-card__title {
-		color: $g-text-color;
+		color: variables.$g-text-color;
 	}
 
 	&:hover {
 		.c-media-card__title {
-			color: $color-teal-bright;
+			color: colors.$color-teal-bright;
 		}
 
 		&.c-media-card--collection {
 			.c-media-card__title {
-				color: $color-ocean-green;
+				color: colors.$color-ocean-green;
 			}
 		}
 
 		&.c-media-card--assignment {
 			.c-media-card__title {
-				color: $color-french-rose;
+				color: colors.$color-french-rose;
 			}
 		}
 
 		&.c-media-card--video {
 			.c-media-card__title {
-				color: $color-yellow;
+				color: colors.$color-yellow;
 			}
 		}
 
 		&.c-media-card--audio {
 			.c-media-card__title {
-				color: $color-teal-bright;
+				color: colors.$color-teal-bright;
 			}
 		}
 
 		&.c-media-card--bundle {
 			.c-media-card__title {
-				color: $color-tapestry;
+				color: colors.$color-tapestry;
 			}
 		}
 
 		&.c-media-card--contentPage {
 			.c-media-card__title {
-				color: $color-green;
+				color: colors.$color-green;
 			}
 
 			&.c-media-card--event_detail {
 				.c-media-card__title {
-					color: $color-dark-orange;
+					color: colors.$color-dark-orange;
 				}
 			}
 
 			&.c-media-card--screencast {
 				.c-media-card__title {
-					color: $color-soft-blue;
+					color: colors.$color-soft-blue;
 				}
 			}
 		}

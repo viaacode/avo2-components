@@ -1,5 +1,5 @@
 import type React from 'react';
-import { type FunctionComponent, useEffect, useState } from 'react'
+import { type FunctionComponent, useEffect, useState } from 'react';
 
 import { noop } from '../../helpers/noop.js';
 import type { DefaultProps } from '../../types/index.js';

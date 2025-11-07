@@ -1,3 +1,6 @@
+@use "../settings/variables";
+@use "../settings/colors";
+
 /* ==========================================================================
    Component: Content
    ---
@@ -8,8 +11,8 @@
    Usage: use these classes to style individual components like their rich text equivalent
    ========================================================================== */
 @mixin heading-default-styling {
-	font-family: $g-headings-font-family;
-	font-weight: $g-headings-font-weight;
+	font-family: variables.$g-headings-font-family;
+	font-weight: variables.$g-headings-font-weight;
 	line-height: 1.25;
 }
 
@@ -39,11 +42,10 @@
 
 .c-h4,
 .c-content h4 {
-	font-family: $g-base-font-family;
-	font-weight: $g-headings-font-weight;
-	font-size: $g-base-font-size;
+	font-family: variables.$g-base-font-family;
+	font-weight: variables.$g-headings-font-weight;
+	font-size: variables.$g-base-font-size;
 	margin: 1.5rem 0;
-	font-weight: 500;
 }
 
 .c-h1-display,
@@ -55,7 +57,7 @@
 }
 
 .c-body-1 {
-	font-size: $g-base-font-size;
+	font-size: variables.$g-base-font-size;
 	margin: 1.5rem 0;
 }
 
@@ -73,7 +75,7 @@
 }
 
 .c-overline {
-	font-weight: $g-headings-font-weight;
+	font-weight: variables.$g-headings-font-weight;
 	font-size: 1.4rem;
 	line-height: 1;
 	text-transform: uppercase;
@@ -119,7 +121,7 @@
 	}
 
 	dl {
-		border: 1px solid $color-gray-100;
+		border: 1px solid colors.$color-gray-100;
 		border-radius: 0.3rem;
 		overflow: hidden;
 		padding: 1.2rem;
@@ -129,7 +131,7 @@
 			float: left;
 			width: 30%;
 			clear: left;
-			font-weight: $g-headings-font-weight;
+			font-weight: variables.$g-headings-font-weight;
 		}
 
 		dd {
@@ -178,17 +180,17 @@
 	}
 
 	table th {
-		border-bottom: 0.2rem solid $color-gray-200;
-		font-weight: $g-headings-font-weight;
+		border-bottom: 0.2rem solid colors.$color-gray-200;
+		font-weight: variables.$g-headings-font-weight;
 		text-align: left;
 	}
 
 	table td {
-		border-bottom: 1px solid $color-gray-100;
+		border-bottom: 1px solid colors.$color-gray-100;
 	}
 
 	strong {
-		font-weight: $g-headings-font-weight;
+		font-weight: variables.$g-headings-font-weight;
 	}
 
 	a {
@@ -200,7 +202,7 @@
 	}
 
 	pre {
-		background-color: $color-gray-50;
+		background-color: colors.$color-gray-50;
 		padding: 1.5rem;
 		margin: 0 0 1rem;
 		font-size: 85%;
@@ -209,18 +211,18 @@
 
 	pre,
 	code {
-		font-family: $g-code-font-family;
+		font-family: variables.$g-code-font-family;
 	}
 
 	code {
 		font-size: 85%;
-		background-color: $color-gray-50;
+		background-color: colors.$color-gray-50;
 		padding: 0.2rem;
 		border-radius: 0.2rem;
-		color: $color-error;
+		color: colors.$color-error;
 	}
 }
 
 .c-content--inverse {
-	color: $color-gray-100;
+	color: colors.$color-gray-100;
 }

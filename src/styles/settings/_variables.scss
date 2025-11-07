@@ -1,3 +1,5 @@
+@use './colors';
+
 /* ==========================================================================
    Variables
    ---
@@ -17,7 +19,7 @@ $g-headings-font-family: "Avenir LT Std", "Avenir Next", Avenir,  Montserrat, sa
 /* Colors
    ========================================================================== */
 
-$g-text-color: $color-gray-700;
+$g-text-color: colors.$color-gray-700;
 $g-base-background: #FFF;
 
 /* Breakpoints
@@ -71,18 +73,18 @@ $o-grid-bp4: 1200px;
 /* Button overrides
    ========================================================================== */
 
-$c-button-link-color: $color-night-blue;
+$c-button-link-color: colors.$color-night-blue;
 
 
 /* Inputs
    ========================================================================== */
 
 $c-input-border-radius: 0.3rem !default;
-$c-input-dark-text-color: $color-gray-600 !default;
-$c-input-focus-icon-color: $color-gray-600 !default;
+$c-input-dark-text-color: colors.$color-gray-600 !default;
+$c-input-focus-icon-color: colors.$color-gray-600 !default;
 $c-input-bg-color: #fff !default;
-$c-input-border-color: $color-gray-150 !default;
-$c-input-readonly-border-color: $color-gray-150 !default;
-$c-input-accent-color: $color-teal-bright !default;
-$c-input-error-accent-color: $color-error !default;
+$c-input-border-color: colors.$color-gray-150 !default;
+$c-input-readonly-border-color: colors.$color-gray-150 !default;
+$c-input-accent-color: colors.$color-teal-bright !default;
+$c-input-error-accent-color: colors.$color-error !default;
 $c-input-padding: 0.8rem !default;

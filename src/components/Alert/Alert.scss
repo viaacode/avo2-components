@@ -1,4 +1,6 @@
-@import '../../styles/settings/colors';
+@use 'sass:color';
+
+@use '../../styles/settings/colors' as colors;
 
 /* ==========================================================================
    Component: Alert
@@ -17,7 +19,7 @@ $c-alert-warn-icon-color: #FFAB23 !default;
 $c-alert-info-bg-color: #F2F9FA !default;
 $c-alert-spinner-bg-color: #FAFCFC !default;
 $c-alert-success-bg-color: #EFF9F6 !default;
-$c-dark-alert-bg-color: $color-gray-700 !default;
+$c-dark-alert-bg-color: colors.$color-gray-700 !default;
 
 /* Component
    ========================================================================== */
@@ -25,7 +27,7 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 .c-alert {
   background-color: #FFF;
   border-radius: 0.3rem;
-  border: 1px solid $color-gray-100;
+  border: 1px solid colors.$color-gray-100;
   padding: 1.2rem 1.6rem;
   display: flex;
   justify-content: space-between;
@@ -76,12 +78,12 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 
 .c-alert--info {
   background-color: $c-alert-info-bg-color;
-  border-color: darken($c-alert-info-bg-color, 10%);
+  border-color: color.adjust($c-alert-info-bg-color, $lightness: -10%);
 }
 
 .c-alert--warn {
   background-color: $c-alert-warn-bg-color;
-  border-color: darken($c-alert-warn-bg-color, 10%);
+  border-color: color.adjust($c-alert-warn-bg-color, $lightness: -10%);
 
   svg path[fill="#FF1744"] {
 	fill: $c-alert-warn-icon-color;
@@ -90,12 +92,12 @@ $c-dark-alert-bg-color: $color-gray-700 !default;
 
 .c-alert--danger {
   background-color: $c-alert-danger-bg-color;
-  border-color: rgba($color-error-200, 0.33);
+  border-color: rgba(colors.$color-error-200, 0.33);
 }
 
 .c-alert--success {
   background-color: $c-alert-success-bg-color;
-  border-color: darken($c-alert-success-bg-color, 10%);
+  border-color: color.adjust($c-alert-success-bg-color, $lightness: -10%);
 }
 
 .c-alert--spinner {

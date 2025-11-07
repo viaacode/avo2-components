@@ -27,12 +27,7 @@ storiesOf('components/Select', module)
 	))
 	.add('Select clearable', () => (
 		<SelectStoryComponent>
-			<Select
-				options={SELECT_MOCK_OPTIONS}
-				value="Db"
-				onChange={action('onChange')}
-				clearable
-			/>
+			<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} clearable />
 		</SelectStoryComponent>
 	))
 	.add('Select loading', () => (

@@ -1,4 +1,4 @@
-@import '../../styles/settings/colors';
+@use '../../styles/settings/colors' as colors;
 
 /* ==========================================================================
    Object: SVG Icon
@@ -51,11 +51,11 @@
    ========================================================================== */
 
 .o-svg-icon--green {
-	color: $color-success;
+	color: colors.$color-success;
 }
 
 .o-svg-icon--red {
-	color: $color-error;
+	color: colors.$color-error;
 }
 
 .o-svg-icon--white {
@@ -63,5 +63,5 @@
 }
 
 .o-svg-icon--subtle {
-	color: $color-gray-400;
+	color: colors.$color-gray-400;
 }

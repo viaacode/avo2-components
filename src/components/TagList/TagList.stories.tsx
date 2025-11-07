@@ -72,11 +72,7 @@ storiesOf('components/TagList', module)
 	))
 	.add('TagList with multiline tags', () => (
 		<div style={{ width: '300px' }}>
-			<TagList
-				tags={[{ label: loremIpsum({ count: 1 }), id: 'test' }]}
-				closable
-				swatches={false}
-			/>
+			<TagList tags={[{ label: loremIpsum({ count: 1 }), id: 'test' }]} closable swatches={false} />
 		</div>
 	))
 	.add('TagList with selectable tags', () => (

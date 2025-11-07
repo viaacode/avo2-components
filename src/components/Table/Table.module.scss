@@ -1,6 +1,6 @@
 @use 'sass:math';
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 /* ==========================================================================
    Component: Table
@@ -12,10 +12,10 @@
    ========================================================================== */
 
 $c-table-background-color: #FFF !default;
-$c-table-border-color: $color-gray-100 !default;
-$c-table-row-odd-color: $color-gray-50 !default;
+$c-table-border-color: colors.$color-gray-100 !default;
+$c-table-row-odd-color: colors.$color-gray-50 !default;
 $c-table-row-selected-color: #FFF !default;
-$c-table-row-selected-bg: $color-primary !default;
+$c-table-row-selected-bg: colors.$color-primary !default;
 
 /* Component
    ========================================================================== */
@@ -40,7 +40,7 @@ $c-table-row-selected-bg: $color-primary !default;
 		}
 
 		&.u-clickable:hover {
-			background-color: $color-gray-50;
+			background-color: colors.$color-gray-50;
 		}
 	}
 
@@ -111,7 +111,7 @@ $c-table-row-selected-bg: $color-primary !default;
 		}
 
 		.o-svg-icon {
-			color: $color-gray-300;
+			color: colors.$color-gray-300;
 		}
 
 		.c-table__header--sortable-icon {
@@ -121,8 +121,8 @@ $c-table-row-selected-bg: $color-primary !default;
 
 	.c-table__row--selected {
 		td {
-			background-color: $color-gray-100;
-			border-color: $color-gray-300;
+			background-color: colors.$color-gray-100;
+			border-color: colors.$color-gray-300;
 		}
 	}
 
@@ -191,7 +191,7 @@ $i: 1;
 		}
 	}
 
-	@media (min-width: $g-bp2) {
+	@media (min-width: variables.$g-bp2) {
 		tr {
 			display: table-row;
 

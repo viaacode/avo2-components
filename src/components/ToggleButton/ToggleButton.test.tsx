@@ -7,9 +7,7 @@ import { ToggleButton } from './ToggleButton.js';
 
 describe('<ToggleButton ariaLabel="test button" />', () => {
 	it('Should be able to render', () => {
-		shallow(
-			<ToggleButton ariaLabel="test button" icon={IconNameSchema.heart} active={false} />
-		);
+		shallow(<ToggleButton ariaLabel="test button" icon={IconNameSchema.heart} active={false} />);
 	});
 
 	it('should correctly pass a custom className', () => {

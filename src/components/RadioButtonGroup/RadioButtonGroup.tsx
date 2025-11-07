@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type React from 'react';
-import { type FunctionComponent, useState } from 'react'
+import { type FunctionComponent, useState } from 'react';
 
 import { generateRandomId } from '../../helpers/uuid.js';
 import type { DefaultProps } from '../../types/index.js';

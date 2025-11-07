@@ -1,4 +1,4 @@
-@import '../../styles/settings/colors';
+@use '../../styles/settings/colors' as colors;
 
 /* ==========================================================================
    Component: Avatar list
@@ -29,8 +29,8 @@
 	.c-avatar-dropdown {
 		margin-left: 0.8rem;
 		border: none;
-		background-color: $color-gray-100;
-		color: $color-gray-700;
+		background-color: colors.$color-gray-100;
+		color: colors.$color-gray-700;
 	}
 
 	.c-menu {
@@ -46,6 +46,6 @@
 
 .c-avatar-meta {
 	font-size: 1.2rem;
-	color: $color-gray-400;
+	color: colors.$color-gray-400;
 	text-transform: uppercase;
 }

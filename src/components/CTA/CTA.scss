@@ -1,6 +1,6 @@
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
-@import '../../styles/utilities/color';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
+@use '../../styles/utilities/color' as color;
 
 .c-heading {
 	&.c-h1,
@@ -13,7 +13,7 @@
 
 .c-cta-item {
 	margin-bottom: 3.2rem;
-	background-color: $color-gray-50;
+	background-color: colors.$color-gray-50;
 }
 
 .c-cta__content {
@@ -21,7 +21,7 @@
 	@extend .u-color-gray-700;
 }
 
-@media (min-width: $g-bp2) {
+@media (min-width: variables.$g-bp2) {
 	.c-cta {
 		display: flex;
 	}

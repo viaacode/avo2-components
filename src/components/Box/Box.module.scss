@@ -1,4 +1,4 @@
-@import '../../styles/settings/colors';
+@use '../../styles/settings/colors' as colors;
 
 /* ==========================================================================
   Component: c-box
@@ -6,7 +6,7 @@
 
 .c-box {
 	padding: 3.2rem;
-	background-color: $color-gray-50;
+	background-color: colors.$color-gray-50;
 	border-radius: 0.3rem;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .c-box--dark {
-	background-color: $color-dark-night-blue;
+	background-color: colors.$color-dark-night-blue;
 }
 
 .c-box--padding-small {

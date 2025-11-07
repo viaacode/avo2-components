@@ -1,5 +1,5 @@
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 .c-select {
 	.c-select__menu {
@@ -8,7 +8,7 @@
 
 	&.c-select--is-disabled {
 		.c-select__control {
-			background-color: $color-gray-100;
+			background-color: colors.$color-gray-100;
 		}
 	}
 
@@ -17,10 +17,10 @@
 	}
 
 	.c-select__control {
-		border-radius: $c-input-border-radius;
-		background-color: $c-input-bg-color;
+		border-radius: variables.$c-input-border-radius;
+		background-color: variables.$c-input-bg-color;
 		box-shadow: inset 0 0 0.3rem rgba(0, 0, 0, 0.1);
-		border: 1px solid $c-input-border-color;
+		border: 1px solid variables.$c-input-border-color;
 		font-size: inherit;
 		min-height: 3.6rem;
 		width: 100%;
@@ -28,18 +28,18 @@
 		transition: all 0.15s ease-in-out;
 
 		&:hover {
-			border: 1px solid $c-input-border-color;
+			border: 1px solid variables.$c-input-border-color;
 		}
 
 		&.c-select__control--is-focused {
 			outline: 0;
-			border-color: $color-border-color;
-			box-shadow: inset 0 0 0 0.1rem $color-border-color, 0 0 0.5rem $color-input-box-shadow;
+			border-color: colors.$color-border-color;
+			box-shadow: inset 0 0 0 0.1rem colors.$color-border-color, 0 0 0.5rem colors.$color-input-box-shadow;
 		}
 	}
 
 	.c-select__option--is-selected {
-		background-color: $color-gray-200;
+		background-color: colors.$color-gray-200;
 	}
 }
 

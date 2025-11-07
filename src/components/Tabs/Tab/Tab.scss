@@ -1,5 +1,5 @@
-@import '../../../styles/settings/colors';
-@import '../../../styles/settings/variables';
+@use '../../../styles/settings/colors' as colors;
+@use '../../../styles/settings/variables' as variables;
 
 /* ==========================================================================
    Component: Tab item
@@ -8,15 +8,15 @@
 /* Variables
    ========================================================================== */
 
-$c-tabs-item-color: $color-gray-300 !default;
-$c-tabs-item-active-color: $color-teal-bright !default;
-$c-tabs-item-border-color: $color-primary !default;
-$c-tabs-item-hover-border-color: $color-gray-200 !default;
+$c-tabs-item-color: colors.$color-gray-300 !default;
+$c-tabs-item-active-color: colors.$color-teal-bright !default;
+$c-tabs-item-border-color: colors.$color-primary !default;
+$c-tabs-item-hover-border-color: colors.$color-gray-200 !default;
 
-$c-tabs-item-dark-color: $color-gray-100 !default;
+$c-tabs-item-dark-color: colors.$color-gray-100 !default;
 $c-tabs-item-dark-active-color: #fff !default;
 $c-tabs-item-dark-border-color: #fff !default;
-$c-tabs-item-dark-hover-border-color: $color-gray-25 !default;
+$c-tabs-item-dark-hover-border-color: colors.$color-gray-25 !default;
 
 /* Component
    ========================================================================== */
@@ -88,9 +88,9 @@ $c-tabs-item-dark-hover-border-color: $color-gray-25 !default;
 		box-shadow: inset 0 -0.2rem 0 $c-tabs-item-border-color;
 		margin-bottom: -0.1rem;
 		color: $c-tabs-item-active-color;
-		font-weight: $g-headings-font-weight;
+		font-weight: variables.$g-headings-font-weight;
 		position: relative; // makes box-shadow to be on top of the global border
-		z-index: $g-c-tabs-z;
+		z-index: variables.$g-c-tabs-z;
 
 		&.c-tab-item__dark {
 			color: $c-tabs-item-dark-active-color;

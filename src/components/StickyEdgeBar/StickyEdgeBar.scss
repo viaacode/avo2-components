@@ -1,12 +1,12 @@
 @use 'sass:math';
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 $c-sticky-edge-bar-border-radius: 4px;
 
 .c-sticky-edge-bar {
 	position: sticky;
-	padding: (math.div($g-spacer-unit, 1rem) * 2px * 10) (math.div($g-spacer-unit, 1rem) * 3px * 10);
+	padding: (math.div(variables.$g-spacer-unit, 1rem) * 2px * 10) (math.div(variables.$g-spacer-unit, 1rem) * 3px * 10);
 
 	&--position--bottom {
 		bottom: 0;
@@ -22,6 +22,6 @@ $c-sticky-edge-bar-border-radius: 4px;
 
 	&--color--teal-bright {
 		color: #fff;
-		background-color: $color-teal-bright;
+		background-color: colors.$color-teal-bright;
 	}
 }

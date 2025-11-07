@@ -1,4 +1,4 @@
-@import '../../styles/settings/colors';
+@use '../../styles/settings/colors' as colors;
 
 /* ==========================================================================
    Component: Tag list
@@ -16,12 +16,12 @@
 
 .c-tag {
 	background-color: #fff;
-	border: 1px solid $color-gray-150;
+	border: 1px solid colors.$color-gray-150;
 	border-radius: 2.4rem;
 	padding: 0.3rem 1.6rem;
 	display: flex;
 	align-items: center;
-	color: $color-gray-700;
+	color: colors.$color-gray-700;
 	text-decoration: none;
 
 	// Label
@@ -31,7 +31,7 @@
 	}
 
 	&.c-tag__active {
-		background-color: $color-teal-bright;
+		background-color: colors.$color-teal-bright;
 		color: white;
 	}
 }
@@ -46,7 +46,7 @@
 
 .c-tag > a { // Close button
 	border-radius: 100%;
-	background-color: $color-gray-200;
+	background-color: colors.$color-gray-200;
 	color: #FFF;
 	text-align: center;
 	border: none;
@@ -67,7 +67,7 @@
 	&:hover,
 	&:active,
 	&:focus {
-		background-color: $color-error;
+		background-color: colors.$color-error;
 		text-decoration: none;
 		color: #FFF;
 		box-shadow: 0 0 0 2px #FFF;

@@ -1,4 +1,4 @@
-@import "../../styles/settings/colors";
+@use "../../styles/settings/colors";
 
 /* ==========================================================================
    Component: Thumbnail
@@ -34,14 +34,14 @@
 
 .c-thumbnail-placeholder {
 	display: flex;
-	background-color: $color-gray-100;
+	background-color: colors.$color-gray-100;
 }
 
 .c-thumbnail-placeholder .o-svg-icon {
 	margin: auto;
 	width: 2rem;
 	height: 2rem;
-	color: $color-gray-300;
+	color: colors.$color-gray-300;
 }
 
 .c-thumbnail-image {
@@ -54,8 +54,8 @@
    ========================================================================== */
 
 .c-thumbnail-meta .c-media-card-thumb__category {
-	background-color: $color-gray-150;
-	color: $color-gray-400;
+	background-color: colors.$color-gray-150;
+	color: colors.$color-gray-400;
 }
 
 .c-thumbnail-meta--img-is-loaded {
@@ -67,35 +67,35 @@
 }
 
 .c-thumbnail-media--video .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
-	color: $color-yellow;
+	color: colors.$color-yellow;
 }
 
 .c-thumbnail-media--audio .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
-	color: $color-teal-bright;
+	color: colors.$color-teal-bright;
 }
 
 .c-thumbnail-media--collection .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
-	color: $color-ocean-green;
+	color: colors.$color-ocean-green;
 }
 
 .c-thumbnail-media--bundle .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
-	color: $color-tapestry;
+	color: colors.$color-tapestry;
 }
 
 .c-thumbnail-media--assignment .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
-	color: $color-french-rose;
+	color: colors.$color-french-rose;
 }
 
 .c-thumbnail-media--contentPage .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
-	color: $color-green;
+	color: colors.$color-green;
 }
 
 .c-thumbnail-media--contentPage.c-thumbnail-media--event_detail .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
-	color: $color-dark-orange;
+	color: colors.$color-dark-orange;
 }
 
 .c-thumbnail-media--contentPage.c-thumbnail-media--screencast .c-thumbnail-meta--img-is-loaded .c-thumbnail-media__category .o-svg-icon {
-	color: $color-soft-blue;
+	color: colors.$color-soft-blue;
 }
 
 // hide the type label on narrow screens so it doesn't collide with the label on the right
@@ -118,8 +118,8 @@
 	font-size: 1.2rem;
 	font-weight: 500;
 	text-transform: uppercase;
-	color: $color-gray-700;
-	background-color: $color-gray-200;
+	color: colors.$color-gray-700;
+	background-color: colors.$color-gray-200;
 	padding: 0.4rem 0.8rem;
 	height: 2.8rem;
 	border-radius: 0 0.3rem 0 0.3rem;
@@ -134,8 +134,8 @@
 	bottom: 0;
 	right: 0;
 	font-size: 1.2rem;
-	color: $color-gray-700;
-	background-color: $color-gray-200;
+	color: colors.$color-gray-700;
+	background-color: colors.$color-gray-200;
 	padding: 0.4rem 0.8rem;
 	height: 2.8rem;
 	border-radius: 0.3rem 0 0.3rem 0;
@@ -146,14 +146,14 @@
 	top: 0;
 	right: 0;
 	font-size: 1.2rem;
-	color: $color-gray-700;
-	background-color: $color-gray-200;
+	color: colors.$color-gray-700;
+	background-color: colors.$color-gray-200;
 	padding: 0.4rem 0.8rem;
 	height: 2.8rem;
 	border-radius: 0.3rem 0 0.3rem 0;
 
 	a {
-		color: $color-gray-700;
+		color: colors.$color-gray-700;
 		text-decoration: none !important;
 	}
 }

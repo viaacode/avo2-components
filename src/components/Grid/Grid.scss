@@ -1,6 +1,6 @@
 @use 'sass:math';
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 /* ==========================================================================
    Grid
@@ -46,7 +46,7 @@ $i: 0;
 // Activate columns only from breakpoint 1
 $i: 0;
 
-@media (min-width: $o-grid-bp1) {
+@media (min-width: variables.$o-grid-bp1) {
 	[class*='o-grid-col-bp1-'] {
 		flex: 1 1 auto;
 	}
@@ -62,7 +62,7 @@ $i: 0;
 // Activate columns only from breakpoint 2
 $i: 0;
 
-@media (min-width: $o-grid-bp2) {
+@media (min-width: variables.$o-grid-bp2) {
 	[class*='o-grid-col-bp2-'] {
 		flex: 1 1 auto;
 	}
@@ -78,7 +78,7 @@ $i: 0;
 $i: 0;
 
 // Activate columns only from breakpoint 3
-@media (min-width: $o-grid-bp3) {
+@media (min-width: variables.$o-grid-bp3) {
 	@while ($i < $o-grid-columns) {
 		.o-grid-col-bp3-#{$i + 1} {
 			width: calc(#{math.div( ( $i + 1 ), $o-grid-columns )} * 100% - #{$o-grid-column-gap});

@@ -1,6 +1,6 @@
 @use 'sass:math';
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 /* ==========================================================================
    Component: Toolbar
@@ -12,7 +12,7 @@
    ========================================================================== */
 
 $c-toolbar-item-spacing: 1.6rem !default;
-$c-toolbar-main-border-color: $color-gray-200 !default;
+$c-toolbar-main-border-color: colors.$color-gray-200 !default;
 
 /* Component
    ========================================================================== */
@@ -23,7 +23,7 @@ $c-toolbar-main-border-color: $color-gray-200 !default;
 	flex-shrink: 0;
 	align-items: center;
 	justify-content: space-between;
-	min-height: $g-bar-size-regular;
+	min-height: variables.$g-bar-size-regular;
 
 	&.c-toolbar--wrap {
 		.c-toolbar__left,
@@ -39,15 +39,15 @@ $c-toolbar-main-border-color: $color-gray-200 !default;
 }
 
 .c-toolbar--medium {
-	height: $g-bar-size-medium;
+	height: variables.$g-bar-size-medium;
 }
 
 .c-toolbar--large {
-	height: $g-bar-size-large;
+	height: variables.$g-bar-size-large;
 }
 
 .c-toolbar--huge {
-	height: $g-bar-size-huge;
+	height: variables.$g-bar-size-huge;
 }
 
 .c-toolbar--spaced {
@@ -116,7 +116,7 @@ $c-toolbar-main-border-color: $color-gray-200 !default;
 }
 
 .c-toolbar__center--interactive {
-	z-index: $g-c-local-toolbar-middle-z; // If our middle element is interactive (rare) we can specifiy this
+	z-index: variables.$g-c-local-toolbar-middle-z; // If our middle element is interactive (rare) we can specifiy this
 }
 
 // For some cases you need to set -100% to actually center the item
@@ -148,14 +148,14 @@ $c-toolbar-main-border-color: $color-gray-200 !default;
 /* Drop columns on request
    ========================================================================== */
 
-@media (max-width: $g-bp2 - 1) {
+@media (max-width: variables.$g-bp2 - 1) {
 	.c-toolbar.c-toolbar--drop-columns-low-mq {
 		height: auto;
 		display: block;
 
 		.c-toolbar__left,
 		.c-toolbar__right {
-			min-height: $g-bar-size-medium;
+			min-height: variables.$g-bar-size-medium;
 		}
 
 		.c-toolbar__right {

@@ -1,6 +1,6 @@
 @use 'react-perfect-scrollbar/dist/css/styles';
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 /* ==========================================================================
    Component: Modal
@@ -14,12 +14,12 @@
 $c-modal-padding-horizontal: 2.4rem !default;
 $c-modal-padding-vertical: 2.4rem !default;
 $c-modal-border-radius: 0.3rem !default;
-$c-modal-shadow-color: $color-gray-900 !default;
+$c-modal-shadow-color: colors.$color-gray-900 !default;
 
 $c-modal-header-bg-color: #FFF !default;
 $c-modal-footer-bg-color: #FFF !default;
-$c-modal-header-border-color: $color-gray-100 !default;
-$c-modal-footer-border-color: $color-gray-100 !default;
+$c-modal-header-border-color: colors.$color-gray-100 !default;
+$c-modal-footer-border-color: colors.$color-gray-100 !default;
 
 $g-c-modal-backdrop-z: 30 !default;
 $g-c-modal-context-z: 40 !default;
@@ -105,7 +105,7 @@ $g-c-modal-z: 50 !default;
 		}
 	}
 
-	@media (min-width: $g-bp2) {
+	@media (min-width: variables.$g-bp2) {
 		box-shadow: 0 0 1.6rem rgba($c-modal-shadow-color, 0.25),
 		0 0 2.4rem rgba($c-modal-shadow-color, 0.15),
 		0 0 3.2rem rgba($c-modal-shadow-color, 0.05);
@@ -118,7 +118,7 @@ $g-c-modal-z: 50 !default;
 .c-modal-context {
 	.c-modal {
 
-		@media (max-width: $g-bp2) {
+		@media (max-width: variables.$g-bp2) {
 			&,
 			&.c-modal--fullscreen,
 			&.c-modal--scrollable {
@@ -160,7 +160,7 @@ $g-c-modal-z: 50 !default;
 	border-radius: $c-modal-border-radius $c-modal-border-radius 0 0;
 
 	.c-toolbar {
-		min-height: $g-bar-size-regular;
+		min-height: variables.$g-bar-size-regular;
 		padding-top: 1.6rem;
 		padding-bottom: 1.6rem;
 	}
@@ -171,7 +171,7 @@ $g-c-modal-z: 50 !default;
 }
 
 .c-modal__header--bg-alt {
-	background-color: $color-gray-50;
+	background-color: colors.$color-gray-50;
 }
 
 .c-modal__header--bordered {
@@ -180,7 +180,7 @@ $g-c-modal-z: 50 !default;
 
 .c-modal__title {
 	font-size: 1.6rem;
-	font-weight: $g-headings-font-weight;
+	font-weight: variables.$g-headings-font-weight;
 }
 
 .c-modal__header--no-padding {
@@ -198,7 +198,7 @@ $g-c-modal-z: 50 !default;
 }
 
 .c-modal__footer--bg-alt {
-	background-color: $color-gray-50;
+	background-color: colors.$color-gray-50;
 }
 
 .c-modal__content {

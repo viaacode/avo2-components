@@ -1,6 +1,6 @@
 @use 'sass:math';
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 /* ==========================================================================
    Component: Form group
@@ -11,10 +11,10 @@
 /* Variables
    ========================================================================== */
 
-$o-form-group-spacing: $g-base-font-size;
-$c-input-label-color: $color-gray-700;
+$o-form-group-spacing: variables.$g-base-font-size;
+$c-input-label-color: colors.$color-gray-700;
 $o-form-group-spacer-unit: 0.8rem !default;
-$o-form-group-label-font-weight: $g-headings-font-weight !default;
+$o-form-group-label-font-weight: variables.$g-headings-font-weight !default;
 
 /* o-form-group
 	Group within a form that defines a layout
@@ -38,7 +38,7 @@ $o-form-group-label-font-weight: $g-headings-font-weight !default;
 
 		color: $c-input-label-color;
 		flex: none;
-		font-size: $g-base-font-size;
+		font-size: variables.$g-base-font-size;
 		font-weight: $o-form-group-label-font-weight;
 		display: block;
 	}
@@ -58,7 +58,7 @@ $o-form-group-label-font-weight: $g-headings-font-weight !default;
 	.o-form-group__label {
 		display: block;
 		width: 19.2rem;
-		font-weight: $g-headings-font-weight;
+		font-weight: variables.$g-headings-font-weight;
 	}
 }
 
@@ -89,7 +89,7 @@ $o-form-group-label-font-weight: $g-headings-font-weight !default;
 	}
 
 	.o-form-group__label {
-		font-weight: $g-headings-font-weight;
+		font-weight: variables.$g-headings-font-weight;
 		margin-right: .8rem;
 	}
 

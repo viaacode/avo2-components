@@ -1,5 +1,5 @@
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 /* ==========================================================================
    Component: Menu
@@ -17,10 +17,10 @@ $g-c-menu-z: 60 !default;
 
 .c-menu {
 	background-color: #FFF;
-	border: 1px solid $color-gray-200;
+	border: 1px solid colors.$color-gray-200;
 	border-radius: 0.3rem;
-	box-shadow: 0 2px 20px 0 rgba($g-text-color, 0.1), 0 1px 3px 0 rgba($g-text-color, 0.1);
-	color: $g-text-color;
+	box-shadow: 0 2px 20px 0 rgba(variables.$g-text-color, 0.1), 0 1px 3px 0 rgba(variables.$g-text-color, 0.1);
+	color: variables.$g-text-color;
 	min-width: 10rem;
 	opacity: 0;
 	padding: 0.4rem 0;
@@ -42,7 +42,7 @@ $g-c-menu-z: 60 !default;
 		padding: 1.2rem 1.6rem;
 
 		&:not(:last-child) {
-			border-bottom: 0.1rem solid $color-gray-100;
+			border-bottom: 0.1rem solid colors.$color-gray-100;
 		}
 	}
 

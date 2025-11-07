@@ -1,5 +1,5 @@
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 $component: 'c-pill';
 
@@ -8,8 +8,8 @@ $pill-transition: 0.3s ease-in-out;
 
 .#{$component} {
 	border-radius: $pill-border-radius;
-	border: 1px solid $color-gray-200;
-	color: $color-gray-200;
+	border: 1px solid colors.$color-gray-200;
+	color: colors.$color-gray-200;
 	display: inline-block;
 	font-size: 11px;
 	font-weight: 700;
@@ -19,8 +19,8 @@ $pill-transition: 0.3s ease-in-out;
 	transition: color $pill-transition, border-color $pill-transition, background-color $pill-transition;
 
 	&--active {
-		background-color: $color-teal-bright;
-		border-color: $color-teal-bright;
-		color: $color-white;
+		background-color: colors.$color-teal-bright;
+		border-color: colors.$color-teal-bright;
+		color: colors.$color-white;
 	}
 }

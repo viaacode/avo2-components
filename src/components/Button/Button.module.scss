@@ -1,6 +1,11 @@
 @use 'sass:math';
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
+
+/* Button skins
+   ========================================================================== */
+
+@use './Button-skins.module.scss';
 
 /* ==========================================================================
    Component: Buttons
@@ -180,7 +185,7 @@ a.c-button {
 	&.c-button--active {
 		.o-svg-icon--action-active {
 			display: block;
-			color: $color-teal-bright;
+			color: colors.$color-teal-bright;
 		}
 
 		.o-svg-icon--action-inactive {
@@ -188,8 +193,3 @@ a.c-button {
 		}
 	}
 }
-
-/* Button skins
-   ========================================================================== */
-
-@import './Button-skins.module.scss';

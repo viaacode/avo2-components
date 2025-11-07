@@ -1,4 +1,4 @@
-@import '../../styles/settings/colors';
+@use '../../styles/settings/colors' as colors;
 
 /* ==========================================================================
    Component: Avatar
@@ -9,7 +9,7 @@
 /* Variables
    ========================================================================== */
 
-$c-avatar-default-bg: $color-night-blue !default;
+$c-avatar-default-bg: colors.$color-night-blue !default;
 $c-avatar-dimensions: 3.2rem !default;
 $c-avatar-dimensions-s: 2.4rem !default;
 $c-avatar-dimensions-l: 9.6rem !default;
@@ -57,7 +57,7 @@ $c-avatar-dimensions-l: 9.6rem !default;
 	height: $c-avatar-dimensions-l;
 	min-width: $c-avatar-dimensions-l;
 	min-height: $c-avatar-dimensions-l;
-	background-color: $color-gray-200;
+	background-color: colors.$color-gray-200;
 
 	.o-svg-icon,
 	img {
@@ -67,7 +67,7 @@ $c-avatar-dimensions-l: 9.6rem !default;
 }
 
 .c-avatar--muted {
-	background-color: $color-gray-150;
+	background-color: colors.$color-gray-150;
 }
 
 .c-avatar--img {

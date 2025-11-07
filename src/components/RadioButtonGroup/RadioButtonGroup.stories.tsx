@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import { Fragment, type ReactElement, useState } from 'react';
+import React, { Fragment, type ReactElement, useState } from 'react';
 
 import { noop } from '../../helpers/noop.js';
 

@@ -8,10 +8,7 @@ const CircleCheck = (props: SVGProps<SVGSVGElement>) => (
 		xmlns="http://www.w3.org/2000/svg"
 		{...props}
 	>
-		<path
-			d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
-			fill="#1FC5A0"
-		/>
+		<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#1FC5A0" />
 		<path d="M5 12l5 5 9-9-1.41-1.42L10 14.17l-3.59-3.58L5 12z" fill="#fff" />
 	</svg>
 );

@@ -11,9 +11,7 @@ describe('<Select />', () => {
 	});
 
 	it('Should set the correct className', () => {
-		const selectComponent = mount(
-			<Select className={customClass} options={SELECT_MOCK_OPTIONS} />
-		);
+		const selectComponent = mount(<Select className={customClass} options={SELECT_MOCK_OPTIONS} />);
 
 		const selectElement = selectComponent.find('div').at(0);
 

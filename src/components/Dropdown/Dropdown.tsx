@@ -105,7 +105,7 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 					'c-dropdown__trigger': triggerWidth === 'fit-content',
 				})}
 				onClick={() => toggle()}
-				onKeyUp={handleEnterOrSpace(toggle)}
+				onKeyUp={handleEnterOrSpace(() => toggle())}
 				ref={setReferenceElement}
 			>
 				{dropdownButtonSlot || (

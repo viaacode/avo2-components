@@ -8,15 +8,15 @@
 /* Settings: preprocessor variables, colors, global settings
    ========================================================================== */
 
-@import './settings/colors';
-@import './settings/variables';
+@use './settings/colors' as colors;
+@use './settings/variables' as variables;
 
 /* Styling for grid documentation
    ========================================================================== */
 
 .br-styleguide #component-01-o-grid [class*=o-grid-col] {
 	color: #FFF;
-	background-color: $color-gray-500;
+	background-color: colors.$color-gray-500;
 	margin-bottom: 1.6rem;
 	padding: 1rem;
 	text-align: center;
@@ -50,7 +50,7 @@
 }
 
 .c-swatch__color-hex {
-	color: $color-gray-200;
+	color: colors.$color-gray-200;
 }
 
 /* Styling for icon documentation

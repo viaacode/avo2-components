@@ -1,8 +1,10 @@
+@use '../../styles/settings/colors' as colors;
+
 /* ==========================================================================
    Utility: Color
    ========================================================================== */
 .u-color-gray-700 {
-	color: $color-gray-700 !important;
+	color: colors.$color-gray-700 !important;
 }
 
 .u-color-white {
@@ -10,13 +12,13 @@
 }
 
 .u-color-gray-150 {
-	color: $color-gray-150 !important;
+	color: colors.$color-gray-150 !important;
 }
 
 .u-color-ocean-green {
-	color: $color-ocean-green !important;
+	color: colors.$color-ocean-green !important;
 }
 
 .u-color-french-rose {
-	color: $color-french-rose !important;
+	color: colors.$color-french-rose !important;
 }

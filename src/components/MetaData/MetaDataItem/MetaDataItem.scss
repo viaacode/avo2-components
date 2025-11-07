@@ -1,4 +1,4 @@
-@import '../../../styles/settings/colors';
+@use '../../../styles/settings/colors' as colors;
 
 /* ==========================================================================
    Component: Meta data item
@@ -7,7 +7,7 @@
 .c-meta-data__item {
 	margin-right: 0.8rem;
 	font-size: 1.3rem;
-	color: $color-gray-400;
+	color: colors.$color-gray-400;
 }
 
 .c-meta-data-item--icon {

@@ -1,11 +1,11 @@
-@import '../../../styles/settings/colors';
-@import '../../../styles/settings/variables';
+@use '../../../styles/settings/colors' as colors;
+@use '../../../styles/settings/variables' as variables;
 
 /* ==========================================================================
    Component: Toolbar title
    ========================================================================== */
 
 .c-toolbar__title {
-	font-weight: $g-headings-font-weight;
+	font-weight: variables.$g-headings-font-weight;
 	font-size: 1.8rem;
 }

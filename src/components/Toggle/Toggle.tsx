@@ -42,11 +42,7 @@ export const Toggle: FunctionComponent<TogglePropsSchema> = ({
 			/>
 			<div className="c-toggle__back" />
 			<div className="c-toggle__knob">
-				<Icon
-					className="c-toggle__knob__checkmark"
-					name={IconNameSchema.check}
-					size="small"
-				/>
+				<Icon className="c-toggle__knob__checkmark" name={IconNameSchema.check} size="small" />
 			</div>
 		</div>
 	);

@@ -178,9 +178,7 @@ describe('<Toolbar />', () => {
 
 		const children = toolbarComponent.find('#test');
 
-		expect(toolbarComponent.find('.c-toolbar__left').children().html()).toContain(
-			children.html()
-		);
+		expect(toolbarComponent.find('.c-toolbar__left').children().html()).toContain(children.html());
 
 		const leftElement = toolbarComponent.find('.c-toolbar__left');
 		const centerElement = toolbarComponent.find('.c-toolbar__center');
@@ -230,9 +228,7 @@ describe('<Toolbar />', () => {
 
 		const children = toolbarComponent.find('#test');
 
-		expect(toolbarComponent.find('.c-toolbar__right').children().html()).toContain(
-			children.html()
-		);
+		expect(toolbarComponent.find('.c-toolbar__right').children().html()).toContain(children.html());
 
 		const leftElement = toolbarComponent.find('.c-toolbar__left');
 		const centerElement = toolbarComponent.find('.c-toolbar__center');

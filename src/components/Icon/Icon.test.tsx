@@ -26,9 +26,7 @@ describe('<Icon />', () => {
 	it('Should correctly pass a custom className', () => {
 		const customClass = 'c-icon-custom';
 
-		const iconComponent = shallow(
-			<Icon className={customClass} name={IconNameSchema.download} />
-		);
+		const iconComponent = shallow(<Icon className={customClass} name={IconNameSchema.download} />);
 
 		expect(iconComponent.hasClass(customClass)).toEqual(true);
 	});
@@ -67,9 +65,7 @@ describe('<Icon />', () => {
 	});
 
 	it('Should correctly set the className when active', () => {
-		const activeIconComponent = shallow(
-			<Icon name={IconNameSchema.circleCheck} active={true} />
-		);
+		const activeIconComponent = shallow(<Icon name={IconNameSchema.circleCheck} active={true} />);
 		const inactiveIconComponent = shallow(
 			<Icon name={IconNameSchema.circleCheck} active={false} />
 		);

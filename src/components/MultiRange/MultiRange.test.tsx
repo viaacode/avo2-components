@@ -26,8 +26,6 @@ describe('<MultiRange />', () => {
 	it('Should be able to set the disabled state', () => {
 		const multiRangeComponent = mount(<MultiRange disabled />);
 
-		expect(multiRangeComponent.find('div').at(0).hasClass('c-input-range__disabled')).toEqual(
-			true
-		);
+		expect(multiRangeComponent.find('div').at(0).hasClass('c-input-range__disabled')).toEqual(true);
 	});
 });

@@ -92,6 +92,4 @@ storiesOf('components/Tabs', module)
 		</>
 	))
 	.add('Tabs (border)', () => <Tabs tabs={mockTabs} border onClick={action('tab clicked')} />)
-	.add('Tabs with Icons', () => (
-		<Tabs tabs={mockTabsWithIcons} onClick={action('tab clicked')} />
-	));
+	.add('Tabs with Icons', () => <Tabs tabs={mockTabsWithIcons} onClick={action('tab clicked')} />);

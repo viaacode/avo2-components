@@ -89,11 +89,7 @@ storiesOf('components/Form', module)
 			<FormGroup labelFor="name" label="Name" error="Please enter a valid name">
 				<input type="text" id="name" />
 			</FormGroup>
-			<FormGroup
-				labelFor="email"
-				label="Email address"
-				error="Please enter a valid e-mail address"
-			>
+			<FormGroup labelFor="email" label="Email address" error="Please enter a valid e-mail address">
 				<input type="email" id="email" />
 			</FormGroup>
 			<FormGroup

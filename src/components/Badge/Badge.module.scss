@@ -1,4 +1,4 @@
-@import '../../styles/settings/colors';
+@use '../../styles/settings/colors' as colors;
 
 /* ==========================================================================
   Component: Badge
@@ -26,13 +26,13 @@
 }
 
 .c-badge--default {
-	@include badge-variant(#FFF, $color-gray-400, $color-gray-200);
+	@include badge-variant(#FFF, colors.$color-gray-400, colors.$color-gray-200);
 }
 
 .c-badge--success {
-	@include badge-variant($color-success, #FFF, $color-success);
+	@include badge-variant(colors.$color-success, #FFF, colors.$color-success);
 }
 
 .c-badge--error {
-	@include badge-variant($color-error, #FFF, $color-error);
+	@include badge-variant(colors.$color-error, #FFF, colors.$color-error);
 }

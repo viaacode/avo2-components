@@ -40,9 +40,7 @@ describe('<Button />', () => {
 	});
 
 	it('Should set the correct type className', () => {
-		const secondaryButtonComponent = shallow(
-			<Button type="secondary" ariaLabel="test button" />
-		);
+		const secondaryButtonComponent = shallow(<Button type="secondary" ariaLabel="test button" />);
 		const dangerButtonComponent = shallow(<Button type="danger" ariaLabel="test button" />);
 		const linkButtonComponent = shallow(<Button type="link" ariaLabel="test button" />);
 		const inlineLinkButtonComponent = shallow(
@@ -82,9 +80,7 @@ describe('<Button />', () => {
 	it('Should be able to render a label and an icon', () => {
 		const label = 'Click me!';
 		const icon = IconNameSchema.search;
-		const buttonComponent = shallow(
-			<Button label={label} icon={icon} ariaLabel="test button" />
-		);
+		const buttonComponent = shallow(<Button label={label} icon={icon} ariaLabel="test button" />);
 
 		const labelElement = buttonComponent.find('.c-button__label');
 		const iconComponent = buttonComponent.find('.c-button__icon');
@@ -96,9 +92,7 @@ describe('<Button />', () => {
 	});
 
 	it('Should get a special className when only an icon is passed', () => {
-		const buttonComponent = shallow(
-			<Button icon={IconNameSchema.link} ariaLabel="test button" />
-		);
+		const buttonComponent = shallow(<Button icon={IconNameSchema.link} ariaLabel="test button" />);
 
 		expect(buttonComponent.hasClass('c-button--icon')).toEqual(true);
 	});
@@ -115,9 +109,7 @@ describe('<Button />', () => {
 	it('Should call the `onClick`-handler when clicked', () => {
 		const onClickHandler = jest.fn();
 
-		const buttonComponent = shallow(
-			<Button onClick={onClickHandler} ariaLabel="test button" />
-		);
+		const buttonComponent = shallow(<Button onClick={onClickHandler} ariaLabel="test button" />);
 
 		const buttonElement = buttonComponent.find('button');
 

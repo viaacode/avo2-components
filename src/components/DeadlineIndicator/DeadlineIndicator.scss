@@ -1,26 +1,26 @@
 @use "sass:math";
 
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 $component: 'c-deadline-indicator';
 
-$c-deadline-indicator-size: math.div($g-spacer-unit, 1rem) * 10px;
+$c-deadline-indicator-size: math.div(variables.$g-spacer-unit, 1rem) * 10px;
 
 .#{$component} {
     width: $c-deadline-indicator-size;
     height: $c-deadline-indicator-size;
 
     &--error {
-        background-color: $color-error;
+        background-color: colors.$color-error;
     }
 
     &--yellow {
-        background-color: $color-yellow;
+        background-color: colors.$color-yellow;
     }
 
     &--success {
-        background-color: $color-success;
+        background-color: colors.$color-success;
     }
 
     &--diamond {

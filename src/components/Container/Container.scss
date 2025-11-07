@@ -1,5 +1,5 @@
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 /* ==========================================================================
    Object: Container
@@ -28,13 +28,13 @@ $o-container-max-width: 130rem;
 	max-width: $o-container-max-width;
 	width: $o-container-width-bp1;
 
-	@media (min-width: $g-bp2) {
+	@media (min-width: variables.$g-bp2) {
 		width: $o-container-width-bp2;
 	}
-	@media (min-width: $g-bp3) {
+	@media (min-width: variables.$g-bp3) {
 		width: $o-container-width-bp3;
 	}
-	@media (min-width: $g-bp4) {
+	@media (min-width: variables.$g-bp4) {
 		width: $o-container-width-bp4;
 	}
 }
@@ -60,7 +60,7 @@ $o-container-max-width: 130rem;
 	padding-right: 1rem;
 }
 
-@media (min-width: $g-bp2) {
+@media (min-width: variables.$g-bp2) {
 	.o-container-bp2 {
 		max-width: $o-container-max-width;
 	}
@@ -105,7 +105,7 @@ $o-container-max-width: 130rem;
 }
 
 .o-container-vertical--large-bp3 {
-	@media (min-width: $g-bp3) {
+	@media (min-width: variables.$g-bp3) {
 		padding: 6.4rem 0;
 	}
 }
@@ -115,20 +115,20 @@ $o-container-max-width: 130rem;
    ========================================================================== */
 
 .o-container-vertical--bg-white {
-	background-color: $color-white;
+	background-color: colors.$color-white;
 }
 
 .o-container-vertical--bg-alt {
-	background-color: $color-gray-50;
+	background-color: colors.$color-gray-50;
 }
 
 .o-container-vertical--bottom-bordered {
-	border-bottom: 1px solid $color-gray-100;
+	border-bottom: 1px solid colors.$color-gray-100;
 }
 
 
 .o-container-vertical--bg-inverse {
-	background-color: $color-gray-700;
+	background-color: colors.$color-gray-700;
 }
 
 /* ==========================================================================

@@ -21,7 +21,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsSchema> = ({
 	id,
 	disabled = false,
 	checked = false,
-	 indeterminate,
+	indeterminate,
 	onChange = noop,
 }) => {
 	function onValueChange(event: ChangeEvent<HTMLInputElement>) {
@@ -38,7 +38,7 @@ export const Checkbox: FunctionComponent<CheckboxPropsSchema> = ({
 				<input
 					type="checkbox"
 					id={id}
-					data-indeterminate={indeterminate||undefined}
+					data-indeterminate={indeterminate || undefined}
 					checked={checked}
 					disabled={disabled}
 					onChange={onValueChange}

@@ -1,4 +1,4 @@
-@import '../../styles/settings/colors';
+@use '../../styles/settings/colors' as colors;
 
 /* ==========================================================================
    Component: Accordion
@@ -7,7 +7,7 @@
 /* Variables
    ========================================================================== */
 
-$c-accordion-border: $color-gray-100 !default;
+$c-accordion-border: colors.$color-gray-100 !default;
 
 /* Component
    ========================================================================== */
@@ -57,7 +57,7 @@ $c-accordion-border: $color-gray-100 !default;
 }
 
 .c-accordion__header-title {
-	color: $color-gray-700;
+	color: colors.$color-gray-700;
 	font-size: 1.6rem;
 	font-weight: 500;
 }
@@ -69,5 +69,5 @@ $c-accordion-border: $color-gray-100 !default;
 
 .c-accordion__body {
 	border-top: 1px solid $c-accordion-border;
-	color: $color-gray-700 !important;
+	color: colors.$color-gray-700 !important;
 }

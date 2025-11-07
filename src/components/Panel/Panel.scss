@@ -1,9 +1,9 @@
-@import '../../styles/settings/colors';
-@import '../../styles/settings/variables';
+@use '../../styles/settings/colors' as colors;
+@use '../../styles/settings/variables' as variables;
 
 $c-panel-padding-horizontal: 2.4rem !default;
 $c-panel-padding-vertical: 2.4rem !default;
-$c-panel-border-color: $color-gray-150 !default;
+$c-panel-border-color: colors.$color-gray-150 !default;
 $c-panel-border-radius: 0.3rem !default;
 
 .c-panel {
@@ -14,7 +14,7 @@ $c-panel-border-radius: 0.3rem !default;
 .c-panel__title {
 	font-weight: 500;
 	font-size: 1.6rem;
-	color: $color-gray-900;
+	color: colors.$color-gray-900;
 }
 
 .c-panel__header {
@@ -28,7 +28,7 @@ $c-panel-border-radius: 0.3rem !default;
 	background-color: #FFF;
 	padding: $c-panel-padding-vertical $c-panel-padding-horizontal;
 
-	@media (max-width: $g-bp2 - 1) {
+	@media (max-width: variables.$g-bp2 - 1) {
 		padding: $c-panel-padding-vertical*0.66 $c-panel-padding-horizontal*0.66;
 	}
 
