@@ -4,7 +4,11 @@ import { format, isValid } from 'date-fns';
 import nlBe from 'date-fns/locale/nl-BE/index.js';
 import type React from 'react';
 import type { FunctionComponent } from 'react';
-import { DatePicker as ReactDatePicker, registerLocale, setDefaultLocale } from 'react-datepicker';
+import ReactDatePicker, {
+	type DatePicker as ReactDatePickerType,
+	registerLocale,
+	setDefaultLocale,
+} from 'react-datepicker';
 
 import { noop } from '../../helpers/noop.js';
 import type { DefaultProps } from '../../types/index.js';
@@ -15,6 +19,8 @@ import './DatePicker.scss';
 
 registerLocale('nl', nlBe);
 setDefaultLocale('nl');
+
+const ReactDatePickerGlobal = ReactDatePicker as unknown as typeof ReactDatePickerType;
 
 export const getMaxDate = () => new Date(9999, 11, 31, 23, 59, 59); // https://meemoo.atlassian.net/browse/AVO-1828
 
@@ -84,7 +90,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 	return (
 		<div className={clsx(className, 'avo__c-datepicker')}>
 			<div className={clsx('avo__c-datepicker--date c-input-with-icon-right')}>
-				<ReactDatePicker
+				<ReactDatePickerGlobal
 					className="c-input"
 					selected={value}
 					disabled={disabled}
