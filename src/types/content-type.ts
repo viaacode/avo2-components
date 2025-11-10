@@ -1,39 +1,39 @@
-import type { Avo } from '@viaa/avo2-types';
+import { Avo } from '@viaa/avo2-types';
 
 export type Language = 'en' | 'nl';
 
 export const contentTypes: Avo.ContentType.Dict[] = [
 	{
-		en: 'collection',
-		nl: 'collectie',
+		en: Avo.ContentType.English.COLLECTION,
+		nl: Avo.ContentType.Dutch.COLLECTIE,
 	},
 	{
-		en: 'item',
-		nl: 'item',
+		en: Avo.ContentType.English.ITEM,
+		nl: Avo.ContentType.Dutch.ITEM,
 	},
 	{
-		en: 'audio',
-		nl: 'audio',
+		en: Avo.ContentType.English.AUDIO,
+		nl: Avo.ContentType.Dutch.AUDIO,
 	},
 	{
-		en: 'video',
-		nl: 'video',
+		en: Avo.ContentType.English.VIDEO,
+		nl: Avo.ContentType.Dutch.VIDEO,
 	},
 	{
-		en: 'bundle',
-		nl: 'bundel',
+		en: Avo.ContentType.English.BUNDLE,
+		nl: Avo.ContentType.Dutch.BUNDEL,
 	},
 	{
-		en: 'search',
-		nl: 'zoek',
+		en: Avo.ContentType.English.SEARCH,
+		nl: Avo.ContentType.Dutch.ZOEK,
 	},
 	{
-		en: 'searchquery',
-		nl: 'zoekopdracht',
+		en: Avo.ContentType.English.SEARCHQUERY,
+		nl: Avo.ContentType.Dutch.ZOEKOPDRACHT,
 	},
 	{
-		en: 'assignment',
-		nl: 'opdracht',
+		en: Avo.ContentType.English.ASSIGNMENT,
+		nl: Avo.ContentType.Dutch.OPDRACHT,
 	},
 ];
 

@@ -1,5 +1,5 @@
+import { Avo } from '@viaa/avo2-types';
 import { shallow } from 'enzyme';
-
 import { Thumbnail } from './Thumbnail.js';
 
 describe('<Thumbnail />', () => {
@@ -8,7 +8,7 @@ describe('<Thumbnail />', () => {
 			<Thumbnail
 				src="/images/thumbnail.jpg"
 				meta="4 items"
-				category="collection"
+				category={Avo.ContentType.English.COLLECTION}
 				label="collection"
 			/>
 		);
@@ -22,7 +22,7 @@ describe('<Thumbnail />', () => {
 				className={customClass}
 				src="/images/thumbnail.jpg"
 				meta="4 items"
-				category="collection"
+				category={Avo.ContentType.English.COLLECTION}
 				label="collection"
 			/>
 		);
@@ -37,7 +37,7 @@ describe('<Thumbnail />', () => {
 			<Thumbnail
 				src="/images/thumbnail.jpg"
 				meta="4 items"
-				category="collection"
+				category={Avo.ContentType.English.COLLECTION}
 				label="collection"
 			/>
 		);
@@ -48,7 +48,12 @@ describe('<Thumbnail />', () => {
 	it('Should render image if src is correctly passed', () => {
 		const img = '/images/thumbnail.jpg';
 		const thumbnailComponent = shallow(
-			<Thumbnail src={img} meta="4 items" category="collection" label="collection" />
+			<Thumbnail
+				src={img}
+				meta="4 items"
+				category={Avo.ContentType.English.COLLECTION}
+				label="collection"
+			/>
 		);
 
 		const imageContainer = thumbnailComponent.find('.c-thumbnail-image');
@@ -58,7 +63,7 @@ describe('<Thumbnail />', () => {
 
 	it('Should render placeholder if no src is passed', () => {
 		const thumbnailComponent = shallow(
-			<Thumbnail meta="4 items" category="collection" label="collection" />
+			<Thumbnail meta="4 items" category={Avo.ContentType.English.COLLECTION} label="collection" />
 		);
 
 		const imageContainer = thumbnailComponent.find('.c-thumbnail-image');
@@ -76,7 +81,7 @@ describe('<Thumbnail />', () => {
 				src="/images/thumbnail.jpg"
 				alt={alt}
 				meta="4 items"
-				category="collection"
+				category={Avo.ContentType.English.COLLECTION}
 				label="collection"
 			/>
 		);
@@ -90,7 +95,7 @@ describe('<Thumbnail />', () => {
 			<Thumbnail
 				src="/images/thumbnail.jpg"
 				meta="4 items"
-				category="collection"
+				category={Avo.ContentType.English.COLLECTION}
 				label="collection"
 			/>
 		);
@@ -101,7 +106,11 @@ describe('<Thumbnail />', () => {
 
 	it('Should not render meta if it was not passed', () => {
 		const thumbnailComponent = shallow(
-			<Thumbnail src="/images/thumbnail.jpg" category="collection" label="collection" />
+			<Thumbnail
+				src="/images/thumbnail.jpg"
+				category={Avo.ContentType.English.COLLECTION}
+				label="collection"
+			/>
 		);
 
 		const metaElement = thumbnailComponent.find('.c-thumbnail-media__meta');

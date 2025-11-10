@@ -1,8 +1,8 @@
-// This scripts generate a .json-file with metadata for the icons
+// This script generate a .json-file with metadata for the icons
 const fs = require('node:fs');
 
 const glob = require('glob');
-const _ = require('lodash');
+const { camelCase, kebabCase } = require('es-toolkit');
 
 const directory = process.argv[2];
 
@@ -45,7 +45,7 @@ glob(`${directory}/**/*.svg`, (err, res) => {
 				const fileName = getFileName(path);
 				return stripExtension(fileName);
 			})
-			.map((iconName) => `\t${_.camelCase(iconName)} = '${_.kebabCase(iconName)}',\n`)
+			.map((iconName) => `\t${camelCase(iconName)} = '${kebabCase(iconName)}',\n`)
 			.join('');
 
 		const iconTypeNames = definedAndUnique(

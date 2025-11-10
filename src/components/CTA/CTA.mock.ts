@@ -1,9 +1,8 @@
 import { action } from '@storybook/addon-actions';
-
+import { Avo } from '@viaa/avo2-types';
 import { testRenderLink } from '../../helpers/index.js';
 import { LinkTarget } from '../../types/index.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
-
 import type { CTAPropsSchema } from './CTA.js';
 
 export const CTA_MOCK: CTAPropsSchema = {
@@ -14,7 +13,7 @@ export const CTA_MOCK: CTAPropsSchema = {
 	buttonIcon: IconNameSchema.chevronDown,
 	buttonAction: {
 		target: LinkTarget.Blank,
-		type: 'EXTERNAL_LINK',
+		type: Avo.Core.ContentPickerType.EXTERNAL_LINK,
 		value: 'http://google.com',
 	},
 	renderLink: testRenderLink(action('navigate to')),

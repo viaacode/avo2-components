@@ -1,14 +1,13 @@
+import { Avo } from '@viaa/avo2-types';
 import { mount, shallow } from 'enzyme';
-
 import { IconNameSchema } from '../Icon/Icon.types.js';
-
 import { MetaData } from './MetaData.js';
 import { MetaDataItem } from './MetaDataItem/MetaDataItem.js';
 
 describe('<MetaDataItem />', () => {
 	it('Should be able to render', () => {
 		shallow(
-			<MetaData category="video">
+			<MetaData category={Avo.ContentType.English.VIDEO}>
 				<MetaDataItem label="VRT" />s
 				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
@@ -20,7 +19,7 @@ describe('<MetaDataItem />', () => {
 		const customClass = 'c-meta-data-custom';
 
 		const metaDataComponent = shallow(
-			<MetaData category="video" className={customClass}>
+			<MetaData category={Avo.ContentType.English.VIDEO} className={customClass}>
 				<MetaDataItem label="VRT" />
 				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
@@ -33,7 +32,7 @@ describe('<MetaDataItem />', () => {
 
 	it('Should set the correct className with each category', () => {
 		const metaDataCollectionComponent = shallow(
-			<MetaData category="collection">
+			<MetaData category={Avo.ContentType.English.COLLECTION}>
 				<MetaDataItem label="VRT" />
 				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
@@ -41,7 +40,7 @@ describe('<MetaDataItem />', () => {
 		);
 
 		const metaDataVideoComponent = shallow(
-			<MetaData category="video">
+			<MetaData category={Avo.ContentType.English.VIDEO}>
 				<MetaDataItem label="VRT" />
 				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
@@ -49,7 +48,7 @@ describe('<MetaDataItem />', () => {
 		);
 
 		const metaDataAudioComponent = shallow(
-			<MetaData category="audio">
+			<MetaData category={Avo.ContentType.English.AUDIO}>
 				<MetaDataItem label="VRT" />
 				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
@@ -57,7 +56,7 @@ describe('<MetaDataItem />', () => {
 		);
 
 		const metaDataMapComponent = shallow(
-			<MetaData category="bundle">
+			<MetaData category={Avo.ContentType.English.BUNDLE}>
 				<MetaDataItem label="VRT" />
 				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
@@ -72,7 +71,7 @@ describe('<MetaDataItem />', () => {
 
 	it('Should set the correct className when spaced is passed', () => {
 		const metaDataComponent = shallow(
-			<MetaData category="video" spaced>
+			<MetaData category={Avo.ContentType.English.VIDEO} spaced>
 				<MetaDataItem label="VRT" />
 				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />
@@ -84,7 +83,7 @@ describe('<MetaDataItem />', () => {
 
 	it('Should correctly pass children', () => {
 		const metaDataComponent = mount(
-			<MetaData category="video">
+			<MetaData category={Avo.ContentType.English.VIDEO}>
 				<MetaDataItem label="VRT" />
 				<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 				<MetaDataItem label="2d geleden" />

@@ -1,22 +1,27 @@
+import { Avo } from '@viaa/avo2-types';
 import { mount, shallow } from 'enzyme';
-
 import { MetaData } from '../MetaData/MetaData.js';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem.js';
 import { Thumbnail } from '../Thumbnail/Thumbnail.js';
-
 import { MediaCard } from './MediaCard.js';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots.js';
 
 describe('<MediaCard />', () => {
 	it('Should be able to render', () => {
-		shallow(<MediaCard title="What an amazing title!" category="collection" />);
+		shallow(
+			<MediaCard title="What an amazing title!" category={Avo.ContentType.English.COLLECTION} />
+		);
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-media-card-custom';
 
 		const mediaCardComponent = shallow(
-			<MediaCard className={customClass} title="What an amazing title!" category="collection" />
+			<MediaCard
+				className={customClass}
+				title="What an amazing title!"
+				category={Avo.ContentType.English.COLLECTION}
+			/>
 		);
 
 		expect(mediaCardComponent.hasClass(customClass)).toEqual(true);
@@ -25,15 +30,15 @@ describe('<MediaCard />', () => {
 
 	it('Should set the correct className for each category', () => {
 		const collectionMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="collection" />
+			<MediaCard title="What an amazing title!" category={Avo.ContentType.English.COLLECTION} />
 		);
 
 		const videoMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="video" />
+			<MediaCard title="What an amazing title!" category={Avo.ContentType.English.VIDEO} />
 		);
 
 		const audioMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="audio" />
+			<MediaCard title="What an amazing title!" category={Avo.ContentType.English.AUDIO} />
 		);
 
 		expect(collectionMediaCardComponent.hasClass('c-media-card--collection')).toEqual(true);
@@ -43,11 +48,19 @@ describe('<MediaCard />', () => {
 
 	it('Should set the correct className for each orientation', () => {
 		const horizontalMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="collection" orientation="horizontal" />
+			<MediaCard
+				title="What an amazing title!"
+				category={Avo.ContentType.English.COLLECTION}
+				orientation="horizontal"
+			/>
 		);
 
 		const verticalMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="collection" orientation="vertical" />
+			<MediaCard
+				title="What an amazing title!"
+				category={Avo.ContentType.English.COLLECTION}
+				orientation="vertical"
+			/>
 		);
 
 		expect(horizontalMediaCardComponent.hasClass('c-media-card--horizontal')).toEqual(true);
@@ -56,9 +69,13 @@ describe('<MediaCard />', () => {
 
 	it('Should render thumbnail when slot is passed', () => {
 		const mediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="collection" orientation="horizontal">
+			<MediaCard
+				title="What an amazing title!"
+				category={Avo.ContentType.English.COLLECTION}
+				orientation="horizontal"
+			>
 				<MediaCardThumbnail>
-					<Thumbnail category="collection" />
+					<Thumbnail category={Avo.ContentType.English.COLLECTION} />
 				</MediaCardThumbnail>
 			</MediaCard>
 		);
@@ -68,9 +85,13 @@ describe('<MediaCard />', () => {
 
 	it('Should render metaData when slot is passed', () => {
 		const mediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="collection" orientation="horizontal">
+			<MediaCard
+				title="What an amazing title!"
+				category={Avo.ContentType.English.COLLECTION}
+				orientation="horizontal"
+			>
 				<MediaCardMetaData>
-					<MetaData category="collection">
+					<MetaData category={Avo.ContentType.English.COLLECTION}>
 						<MetaDataItem label="vrt" />
 						<MetaDataItem label="2d geleden" />
 					</MetaData>
@@ -84,9 +105,13 @@ describe('<MediaCard />', () => {
 
 	it('Should render top right when slot is passed', () => {
 		const mediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category="collection" orientation="horizontal">
+			<MediaCard
+				title="What an amazing title!"
+				category={Avo.ContentType.English.COLLECTION}
+				orientation="horizontal"
+			>
 				<MediaCardMetaData>
-					<MetaData category="collection">
+					<MetaData category={Avo.ContentType.English.COLLECTION}>
 						<MetaDataItem label="vrt" />
 						<MetaDataItem label="2d geleden" />
 					</MetaData>
@@ -102,9 +127,13 @@ describe('<MediaCard />', () => {
 		const clickHandler = jest.fn();
 
 		const mediaCardComponent = mount(
-			<MediaCard title="What an amazing title!" onClick={clickHandler} category="collection">
+			<MediaCard
+				title="What an amazing title!"
+				onClick={clickHandler}
+				category={Avo.ContentType.English.COLLECTION}
+			>
 				<MediaCardThumbnail>
-					<Thumbnail category="collection" topRight={<>topRightTest</>} />
+					<Thumbnail category={Avo.ContentType.English.COLLECTION} topRight={<>topRightTest</>} />
 				</MediaCardThumbnail>
 			</MediaCard>
 		);
@@ -128,9 +157,9 @@ describe('<MediaCard />', () => {
 
 	it('Should render top right prop on thumbnail', () => {
 		const mediaCardComponent = mount(
-			<MediaCard title="What an amazing title!" category="collection">
+			<MediaCard title="What an amazing title!" category={Avo.ContentType.English.COLLECTION}>
 				<MediaCardThumbnail>
-					<Thumbnail category="collection" topRight={<>topRightTest</>} />
+					<Thumbnail category={Avo.ContentType.English.COLLECTION} topRight={<>topRightTest</>} />
 				</MediaCardThumbnail>
 			</MediaCard>
 		);

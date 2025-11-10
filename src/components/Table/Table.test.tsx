@@ -1,9 +1,8 @@
+import { Avo } from '@viaa/avo2-types';
 import { mount, shallow } from 'enzyme';
-
 import { Button } from '../Button/Button.js';
 import { Icon } from '../Icon/Icon.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
-
 import { Table, type TableColumnSchema } from './Table.js';
 
 const COLUMNS: TableColumnSchema[] = [
@@ -70,7 +69,13 @@ describe('<Table />', () => {
 
 	it('Should render a chevron based on `sortColumn` & `sortOrder` when a column is sortable', () => {
 		const ascTableComponent = shallow(
-			<Table columns={COLUMNS} data={DATA} rowKey="id" sortOrder="asc" sortColumn={COLUMNS[0].id} />
+			<Table
+				columns={COLUMNS}
+				data={DATA}
+				rowKey="id"
+				sortOrder={Avo.Search.OrderDirection.ASC}
+				sortColumn={COLUMNS[0].id}
+			/>
 		);
 
 		const descTableComponent = shallow(
@@ -78,7 +83,7 @@ describe('<Table />', () => {
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
-				sortOrder="desc"
+				sortOrder={Avo.Search.OrderDirection.DESC}
 				sortColumn={COLUMNS[0].id}
 			/>
 		);
@@ -169,7 +174,7 @@ describe('<Table />', () => {
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
-				sortOrder="asc"
+				sortOrder={Avo.Search.OrderDirection.ASC}
 				sortColumn={COLUMNS[0].id}
 				onColumnClick={onColumnClickHandler}
 			/>
