@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { storiesOf } from '@storybook/react';
 import { Avo } from '@viaa/avo2-types';
 import { IconNameSchema } from '../Icon/Icon.types.js';

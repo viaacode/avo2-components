@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { type Meta, type Story, storiesOf } from '@storybook/react';
 import { Fragment } from 'react';
 

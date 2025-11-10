@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { storiesOf } from '@storybook/react';
 
 import { IconNameSchema } from '../Icon/Icon.types.js';
