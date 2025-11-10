@@ -1,12 +1,11 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { type ReactElement, useCallback, useEffect, useState } from 'react';
+import { action } from 'storybook/actions';
 
 import { Button } from '../Button/Button.js';
 import { Icon } from '../Icon/Icon.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
-
-import { Table, type TableColumnSchema } from './Table.js';
+import { Table, type TableColumnSchema, type TablePropsSchema } from './Table.js';
 
 const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },
@@ -105,94 +104,87 @@ function renderCell(r: any[], c: any) {
 	}
 }
 
-storiesOf('components/Table', module)
-	.addParameters({ jest: ['Table'] })
-	.add('Table', () => (
-		<TableStoryComponent>
-			<Table
-				columns={COLUMNS}
-				data={DATA}
-				rowKey="id"
-				renderCell={(row, cell) => renderCell(row, cell)}
-			/>
-		</TableStoryComponent>
-	))
-	.add('Styled Table', () => (
-		<TableStoryComponent>
-			<Table
-				columns={COLUMNS}
-				data={DATA}
-				rowKey="id"
-				renderCell={(row, cell) => renderCell(row, cell)}
-				variant="styled"
-			/>
-		</TableStoryComponent>
-	))
-	.add('Bordered Table', () => (
-		<TableStoryComponent>
-			<Table
-				columns={COLUMNS}
-				data={DATA}
-				rowKey="id"
-				renderCell={(row, cell) => renderCell(row, cell)}
-				variant="bordered"
-			/>
-		</TableStoryComponent>
-	))
-	.add('Table empty state', () => (
-		<TableStoryComponent>
-			<Table
-				columns={COLUMNS}
-				data={[]}
-				rowKey="id"
-				renderCell={(row, cell) => renderCell(row, cell)}
-				emptyStateMessage="No data was found. Try again later."
-			/>
-		</TableStoryComponent>
-	))
-	.add('Table clickable row', () => (
-		<TableStoryComponent>
-			<Table
-				columns={COLUMNS}
-				data={DATA}
-				rowKey="id"
-				renderCell={(row, cell) => renderCell(row, cell)}
-				onRowClick={action('Row clicked')}
-			/>
-		</TableStoryComponent>
-	))
-	.add('Table checkboxes', () => (
-		<TableStoryComponent>
-			<Table
-				align
-				columns={COLUMNS}
-				data={DATA}
-				rowKey="id"
-				renderCell={(row, cell) => renderCell(row, cell)}
-				showCheckboxes
-			/>
-		</TableStoryComponent>
-	))
-	.add('Table icon headers', () => (
-		<TableStoryComponent>
-			<Table
-				align
-				columns={COLUMNS_WITH_ICONS}
-				data={DATA}
-				rowKey="id"
-				renderCell={(row, cell) => renderCell(row, cell)}
-				showCheckboxes
-			/>
-		</TableStoryComponent>
-	))
-	.add('Table mobile cards', () => (
-		<TableStoryComponent>
-			<Table
-				columns={COLUMNS}
-				data={DATA}
-				rowKey="id"
-				renderCell={(row, cell) => renderCell(row, cell)}
-				useCards
-			/>
-		</TableStoryComponent>
-	));
+export default {
+	title: 'components/Table',
+	component: Table,
+	parameters: { jest: ['Table'] },
+} as Meta;
+
+const Template: StoryFn = (args: TablePropsSchema) => (
+	<TableStoryComponent>
+		<Table {...args} />
+	</TableStoryComponent>
+);
+
+export const DefaultTable = Template.bind({});
+DefaultTable.args = {
+	columns: COLUMNS,
+	data: DATA,
+	rowKey: 'id',
+	renderCell: (row: any[], cell: any) => renderCell(row, cell),
+};
+
+export const StyledTable = Template.bind({});
+StyledTable.args = {
+	columns: COLUMNS,
+	data: DATA,
+	rowKey: 'id',
+	renderCell: (row: any[], cell: any) => renderCell(row, cell),
+	variant: 'styled',
+};
+
+export const BorderedTable = Template.bind({});
+BorderedTable.args = {
+	columns: COLUMNS,
+	data: DATA,
+	rowKey: 'id',
+	renderCell: (row: any[], cell: any) => renderCell(row, cell),
+	variant: 'bordered',
+};
+
+export const EmptyStateTable = Template.bind({});
+EmptyStateTable.args = {
+	columns: COLUMNS,
+	data: [],
+	rowKey: 'id',
+	renderCell: (row: any[], cell: any) => renderCell(row, cell),
+	emptyStateMessage: 'No data was found. Try again later.',
+};
+
+export const ClickableRowTable = Template.bind({});
+ClickableRowTable.args = {
+	columns: COLUMNS,
+	data: DATA,
+	rowKey: 'id',
+	renderCell: (row: any[], cell: any) => renderCell(row, cell),
+	onRowClick: action('Row clicked'),
+};
+
+export const TableWithCheckboxes = Template.bind({});
+TableWithCheckboxes.args = {
+	align: true,
+	columns: COLUMNS,
+	data: DATA,
+	rowKey: 'id',
+	renderCell: (row: any[], cell: any) => renderCell(row, cell),
+	showCheckboxes: true,
+};
+
+export const TableWithIconHeaders = Template.bind({});
+TableWithIconHeaders.args = {
+	align: true,
+	columns: COLUMNS_WITH_ICONS,
+	data: DATA,
+	rowKey: 'id',
+	renderCell: (row: any[], cell: any) => renderCell(row, cell),
+	showCheckboxes: true,
+};
+
+export const MobileCardsTable = Template.bind({});
+MobileCardsTable.args = {
+	columns: COLUMNS,
+	data: DATA,
+	rowKey: 'id',
+	renderCell: (row: any[], cell: any) => renderCell(row, cell),
+	useCards: true,
+};

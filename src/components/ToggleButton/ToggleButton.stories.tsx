@@ -1,26 +1,40 @@
 import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
 
 import { IconNameSchema } from '../Icon/Icon.types.js';
 
 import { ToggleButton } from './ToggleButton.js';
 
-storiesOf('components/ToggleButton', module)
-	.addParameters({ jest: ['ToggleButton'] })
-	.add('ToggleButton', () => (
-		<ToggleButton
-			icon={IconNameSchema.heart}
-			active={false}
-			onClick={action('onClick')}
-			ariaLabel="toggle favorite"
-			title="toggle favorite"
-		/>
-	))
-	.add('ToggleButton active', () => (
-		<ToggleButton
-			icon={IconNameSchema.bookmark}
-			active={true}
-			onClick={action('onClick')}
-			ariaLabel="toggle bookmark"
-		/>
-	));
+export default {
+  title: 'components/ToggleButton',
+
+  parameters: {
+    jest: ['ToggleButton'],
+  },
+};
+
+export const _ToggleButton = () => (
+  <ToggleButton
+    icon={IconNameSchema.heart}
+    active={false}
+    onClick={action('onClick')}
+    ariaLabel="toggle favorite"
+    title="toggle favorite"
+  />
+);
+
+_ToggleButton.story = {
+  name: 'ToggleButton',
+};
+
+export const ToggleButtonActive = () => (
+  <ToggleButton
+    icon={IconNameSchema.bookmark}
+    active={true}
+    onClick={action('onClick')}
+    ariaLabel="toggle bookmark"
+  />
+);
+
+ToggleButtonActive.story = {
+  name: 'ToggleButton active',
+};

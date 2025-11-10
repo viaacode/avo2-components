@@ -1,9 +1,7 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import React, { Fragment, type ReactElement, useState } from 'react';
-
+import { action } from 'storybook/actions';
 import { noop } from '../../helpers/noop.js';
-
 import { RadioButtonGroup } from './RadioButtonGroup.js';
 import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock.js';
 
@@ -20,29 +18,42 @@ const RadioButtonGroupStoryComponent = ({
 		<Fragment>
 			{React.cloneElement(children, {
 				value,
-				onChange: (value: string) => {
-					action('RadioButtonGroup value changed')(value);
-					setValue(value);
+				onChange: (v: string) => {
+					action('RadioButtonGroup value changed')(v);
+					setValue(v);
 				},
 			})}
 		</Fragment>
 	);
 };
 
-storiesOf('components/RadioButtonGroup', module)
-	.addParameters({ jest: ['RadioButtonGroup'] })
-	.add('RadioButtonGroup', () => (
+const meta: Meta<typeof RadioButtonGroup> = {
+	title: 'components/RadioButtonGroup',
+	component: RadioButtonGroup,
+	parameters: { jest: ['RadioButtonGroup'] },
+};
+export default meta;
+
+type Story = StoryObj<typeof RadioButtonGroup>;
+
+export const RadioButtonGroupStory: Story = {
+	render: () => (
 		<RadioButtonGroupStoryComponent>
 			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={noop} />
 		</RadioButtonGroupStoryComponent>
-	))
-	.add('RadioButtonGroup default option', () => (
+	),
+};
+export const RadioButtonGroupDefaultOption: Story = {
+	render: () => (
 		<RadioButtonGroupStoryComponent defaultValue="steak">
 			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={noop} />
 		</RadioButtonGroupStoryComponent>
-	))
-	.add('RadioButtonGroup inline', () => (
+	),
+};
+export const RadioButtonGroupInline: Story = {
+	render: () => (
 		<RadioButtonGroupStoryComponent>
 			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={noop} inline />
 		</RadioButtonGroupStoryComponent>
-	));
+	),
+};

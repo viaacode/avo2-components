@@ -1,5 +1,5 @@
+import type { Meta, StoryFn } from '@storybook/react';
 import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
 
 import { Box } from '../Box/Box.js';
 import { Spacer } from '../Spacer/Spacer.js';
@@ -46,23 +46,33 @@ function renderAlertStories(props?: AlertPropsSchema, message?: (type: string) =
 	);
 }
 
-storiesOf('components/Alert', module)
-	.addParameters({ jest: ['Alert'] })
-	.add('Alerts', () => <Box backgroundColor="dark">{renderAlertStories()}</Box>)
-	.add('Alerts multiline', () => renderAlertStories({}, getMultiLineAlertMessage))
-	.add('Dark alerts', () => renderAlertStories({ dark: true }))
-	.add('Alerts custom content', () => (
-		<Alert>
-			<span>
-				Info alert message <a href="#alert">with link</a>
-			</span>
-		</Alert>
-	))
-	.add('Alerts heading', () => (
-		<Alert>
-			<span className="c-content">
-				<h4>Test heading</h4>
-				Heading should not have any margin top
-			</span>
-		</Alert>
-	));
+const meta: Meta = {
+	title: 'components/Alert',
+	parameters: {
+		jest: ['Alert'],
+	},
+};
+export default meta;
+
+export const Alerts: StoryFn = () => <Box backgroundColor="dark">{renderAlertStories()}</Box>;
+
+export const AlertsMultiline: StoryFn = () => renderAlertStories({}, getMultiLineAlertMessage);
+
+export const DarkAlerts: StoryFn = () => renderAlertStories({ dark: true });
+
+export const AlertsCustomContent: StoryFn = () => (
+	<Alert>
+		<span>
+			Info alert message <a href="#alert">with link</a>
+		</span>
+	</Alert>
+);
+
+export const AlertsHeading: StoryFn = () => (
+	<Alert>
+		<span className="c-content">
+			<h4>Test heading</h4>
+			Heading should not have any margin top
+		</span>
+	</Alert>
+);

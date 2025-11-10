@@ -1,7 +1,6 @@
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import type { IconNameSchema } from '../../Icon/Icon.types.js';
-
 import { Tab } from './Tab.js';
 
 const mockTab = {
@@ -16,7 +15,14 @@ const mockTabWithIcon = {
 	icon: 'video' as IconNameSchema,
 };
 
-storiesOf('components/Tab', module)
-	.addParameters({ jest: ['Tab'] })
-	.add('Tab', () => <Tab {...mockTab} />)
-	.add('Tab with Icon', () => <Tab {...mockTabWithIcon} />);
+const meta: Meta<typeof Tab> = {
+	title: 'components/Tab',
+	component: Tab,
+	parameters: { jest: ['Tab'] },
+};
+export default meta;
+
+type Story = StoryObj<typeof Tab>;
+
+export const TabStory: Story = { render: () => <Tab {...mockTab} /> };
+export const TabWithIcon: Story = { render: () => <Tab {...mockTabWithIcon} /> };

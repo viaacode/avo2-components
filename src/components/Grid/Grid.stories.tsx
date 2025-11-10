@@ -1,4 +1,4 @@
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import type { ReactNode } from 'react';
 
 import { Column } from './Column/Column.js';
@@ -10,10 +10,20 @@ const GridDecorator = (story: () => ReactNode) => (
 	</div>
 );
 
-storiesOf('components/Grid', module)
-	.addParameters({ jest: ['Grid', 'Column'] })
-	.addDecorator(GridDecorator)
-	.add('Grid', () => (
+const meta: Meta = {
+	title: 'components/Grid',
+	component: Grid,
+	decorators: [GridDecorator],
+	parameters: {
+		jest: ['Grid', 'Column'],
+	},
+};
+export default meta;
+
+type Story = StoryObj<typeof Grid>;
+
+export const Default: Story = {
+	render: () => (
 		<Grid>
 			<Column size="12">12</Column>
 
@@ -67,4 +77,5 @@ storiesOf('components/Grid', module)
 			<Column size="static">This column will adapt to its content</Column>
 			<Column size="flex">This column will fill the remaining space</Column>
 		</Grid>
-	));
+	),
+};

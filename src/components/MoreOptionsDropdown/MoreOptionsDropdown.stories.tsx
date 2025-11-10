@@ -1,9 +1,7 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
 
 import { menuItems } from '../Menu/Menu.mocks.js';
-
 import { MoreOptionsDropdown } from './MoreOptionsDropdown.js';
 
 const MoreOptionsDropdownStory = ({
@@ -21,14 +19,26 @@ const MoreOptionsDropdownStory = ({
 	});
 };
 
-storiesOf('components/MoreOptionsDropdown', module)
-	.addParameters({ jest: ['MoreOptionsDropdown'] })
-	.add('MoreOptionsDropdown', () => (
+const meta: Meta<typeof MoreOptionsDropdown> = {
+	title: 'components/MoreOptionsDropdown',
+	component: MoreOptionsDropdown,
+	tags: ['autodocs'],
+	parameters: {
+		jest: ['MoreOptionsDropdown'],
+	},
+};
+export default meta;
+
+type Story = StoryObj<typeof MoreOptionsDropdown>;
+
+export const Default: Story = {
+	render: () => (
 		<MoreOptionsDropdownStory>
 			<MoreOptionsDropdown
-				onOptionClicked={action('clicked menu item')}
+				onOptionClicked={() => console.log('clicked menu item')}
 				menuItems={menuItems}
 				isOpen={false}
 			/>
 		</MoreOptionsDropdownStory>
-	));
+	),
+};

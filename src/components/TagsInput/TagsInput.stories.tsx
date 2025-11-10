@@ -1,6 +1,6 @@
+import type { Meta, StoryFn } from '@storybook/react';
+import { cloneElement, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
-import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 
 import { type TagInfoSchema, TagsInput } from './TagsInput.js';
 
@@ -39,40 +39,48 @@ const tags = [
 	{ label: 'Uranium', value: 'uranium' },
 ];
 
-storiesOf('components/TagsInput', module)
-	.addParameters({ jest: ['TagsInput'] })
-	.add('TagsInput', () => (
-		<Fragment>
-			<TagsInputStoryComponent>
-				<TagsInput options={tags} placeholder="Select elements" className="test" id="elements" />
-			</TagsInputStoryComponent>
-		</Fragment>
-	))
-	.add('TagsInput allow create', () => (
-		<Fragment>
-			<TagsInputStoryComponent>
-				<TagsInput options={tags} allowCreate />
-			</TagsInputStoryComponent>
-		</Fragment>
-	))
-	.add('TagsInput disabled', () => (
-		<Fragment>
-			<TagsInputStoryComponent>
-				<TagsInput options={tags} disabled />
-			</TagsInputStoryComponent>
-		</Fragment>
-	))
-	.add('TagsInput single value', () => (
-		<Fragment>
-			<TagsInputStoryComponent>
-				<TagsInput options={tags} allowMulti={false} />
-			</TagsInputStoryComponent>
-		</Fragment>
-	))
-	.add('TagsInput isLoading', () => (
-		<Fragment>
-			<TagsInputStoryComponent>
-				<TagsInput options={[]} isLoading={true} />
-			</TagsInputStoryComponent>
-		</Fragment>
-	));
+export default {
+	title: 'components/TagsInput',
+	component: TagsInput,
+	parameters: {
+		jest: ['TagsInput'],
+	},
+} as Meta;
+
+const Template: StoryFn = (args) => (
+	<TagsInputStoryComponent>
+		<TagsInput options={[]} {...args} />
+	</TagsInputStoryComponent>
+);
+
+export const Default = Template.bind({});
+Default.args = {
+	options: tags,
+	placeholder: 'Select elements',
+	className: 'test',
+	id: 'elements',
+};
+
+export const AllowCreate = Template.bind({});
+AllowCreate.args = {
+	options: tags,
+	allowCreate: true,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+	options: tags,
+	disabled: true,
+};
+
+export const SingleValue = Template.bind({});
+SingleValue.args = {
+	options: tags,
+	allowMulti: false,
+};
+
+export const IsLoading = Template.bind({});
+IsLoading.args = {
+	options: [],
+	isLoading: true,
+};

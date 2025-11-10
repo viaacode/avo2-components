@@ -1,8 +1,21 @@
-import { storiesOf } from '@storybook/react';
-
 import { FlexItem } from '../FlexItem/FlexItem.js';
 
-storiesOf('components/FlexItem', module)
-	.addParameters({ jest: ['FlexItem'] })
-	.add('FlexItem', () => <FlexItem>Flex Item</FlexItem>)
-	.add('FlexItem (shrink)', () => <FlexItem shrink>Flex Item</FlexItem>);
+export default {
+  title: 'components/FlexItem',
+
+  parameters: {
+    jest: ['FlexItem'],
+  },
+};
+
+export const _FlexItem = () => <FlexItem>Flex Item</FlexItem>;
+
+_FlexItem.story = {
+  name: 'FlexItem',
+};
+
+export const FlexItemShrink = () => <FlexItem shrink>Flex Item</FlexItem>;
+
+FlexItemShrink.story = {
+  name: 'FlexItem (shrink)',
+};

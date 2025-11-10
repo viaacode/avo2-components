@@ -1,10 +1,8 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
-
+import { action } from 'storybook/actions';
 import { IconNameSchema } from '../Icon/Icon.types.js';
 import { Spacer } from '../Spacer/Spacer.js';
-
 import { TextInput } from './TextInput.js';
 
 const TextInputStoryComponent = ({
@@ -25,9 +23,19 @@ const TextInputStoryComponent = ({
 	});
 };
 
-storiesOf('components/TextInput', module)
-	.addParameters({ jest: ['TextInput'] })
-	.add('TextInput', () => (
+const meta: Meta<typeof TextInput> = {
+	title: 'components/TextInput',
+	component: TextInput,
+	parameters: {
+		jest: ['TextInput'],
+	},
+};
+export default meta;
+
+type Story = StoryObj<typeof TextInput>;
+
+export const Default: Story = {
+	render: () => (
 		<Fragment>
 			<Spacer margin="bottom">
 				<TextInputStoryComponent>
@@ -53,8 +61,11 @@ storiesOf('components/TextInput', module)
 				<TextInput disabled placeholder="No typing here..." />
 			</TextInputStoryComponent>
 		</Fragment>
-	))
-	.add('TextInput without placeholder', () => (
+	),
+};
+
+export const WithoutPlaceholder: Story = {
+	render: () => (
 		<Fragment>
 			<Spacer margin="bottom">
 				<TextInputStoryComponent>
@@ -65,8 +76,11 @@ storiesOf('components/TextInput', module)
 				<TextInput disabled />
 			</TextInputStoryComponent>
 		</Fragment>
-	))
-	.add('TextInput with default value', () => (
+	),
+};
+
+export const WithDefaultValue: Story = {
+	render: () => (
 		<Fragment>
 			<Spacer margin="bottom">
 				<TextInputStoryComponent>
@@ -81,8 +95,11 @@ storiesOf('components/TextInput', module)
 				<TextInput disabled />
 			</TextInputStoryComponent>
 		</Fragment>
-	))
-	.add('TextInput with icon', () => (
+	),
+};
+
+export const WithIcon: Story = {
+	render: () => (
 		<Fragment>
 			<Spacer margin="bottom">
 				<TextInputStoryComponent>
@@ -97,4 +114,5 @@ storiesOf('components/TextInput', module)
 				<TextInput icon={IconNameSchema.x} disabled placeholder="No typing here..." />
 			</TextInputStoryComponent>
 		</Fragment>
-	));
+	),
+};

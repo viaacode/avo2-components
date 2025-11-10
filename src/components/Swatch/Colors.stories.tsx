@@ -1,38 +1,56 @@
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Fragment } from 'react';
 
 import { COLORS, type ColorCategory } from '../../colors/index.js';
-
 import { SwatchBlock } from './SwatchBlock.js';
 
-const transformColors = (colors: ColorCategory) => {
-	return Object.entries(colors).map(([name, value]) => ({
-		name,
-		value,
-	}));
+const transformColors = (colors: ColorCategory) =>
+	Object.entries(colors).map(([name, value]) => ({ name, value }));
+
+const grayscale = transformColors(COLORS.GRAYSCALE);
+const primary = transformColors(COLORS.PRIMARY);
+const secondary = transformColors(COLORS.SECONDARY);
+const tertiary = transformColors(COLORS.TERTIARY);
+
+const meta: Meta<typeof SwatchBlock> = {
+	title: 'components/Colors',
+	component: SwatchBlock,
+};
+export default meta;
+
+type Story = StoryObj<typeof SwatchBlock>;
+
+export const Grayscale: Story = {
+	render: () => <SwatchBlock colors={grayscale} />,
 };
 
-const stories = [
-	['Grayscale', transformColors(COLORS.GRAYSCALE)],
-	['Primary', transformColors(COLORS.PRIMARY)],
-	['Secondary', transformColors(COLORS.SECONDARY)],
-	['Tertiary', transformColors(COLORS.TERTIARY)],
-];
+export const Primary: Story = {
+	render: () => <SwatchBlock colors={primary} />,
+};
 
-const story = storiesOf('components/Colors', module);
+export const Secondary: Story = {
+	render: () => <SwatchBlock colors={secondary} />,
+};
 
-stories.forEach(([title, colors]: any) => {
-	story.add(title, () => <SwatchBlock colors={colors} />);
-});
+export const Tertiary: Story = {
+	render: () => <SwatchBlock colors={tertiary} />,
+};
 
-story.add('All colors', () => (
-	<Fragment>
-		{stories.map(([title, colors]: any) => (
-			<SwatchBlock
-				key={colors.map((color: { name: string; value: string }) => color.value).join('-')}
-				title={title}
-				colors={colors}
-			/>
-		))}
-	</Fragment>
-));
+export const AllColors: Story = {
+	render: () => (
+		<Fragment>
+			{[
+				['Grayscale', grayscale],
+				['Primary', primary],
+				['Secondary', secondary],
+				['Tertiary', tertiary],
+			].map(([title, colors]) => (
+				<SwatchBlock
+					key={(colors as { name: string; value: string }[]).map((c) => c.value).join('-')}
+					title={title as string}
+					colors={colors as { name: string; value: string }[]}
+				/>
+			))}
+		</Fragment>
+	),
+};

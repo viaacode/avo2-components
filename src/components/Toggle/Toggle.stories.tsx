@@ -1,6 +1,6 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
+import { action } from 'storybook/actions';
 
 import { Toggle } from './Toggle.js';
 
@@ -15,22 +15,33 @@ const ToggleStoryComponent = ({
 
 	return cloneElement(children, {
 		checked,
-		onChange: (checked: boolean) => {
-			action('Toggle toggled')(checked);
-			setChecked(checked);
+		onChange: (c: boolean) => {
+			action('Toggle toggled')(c);
+			setChecked(c);
 		},
 	});
 };
 
-storiesOf('components/Toggle', module)
-	.addParameters({ jest: ['Toggle'] })
-	.add('Toggle', () => (
+const meta: Meta<typeof Toggle> = {
+	title: 'components/Toggle',
+	component: Toggle,
+	parameters: { jest: ['Toggle'] },
+};
+export default meta;
+
+type Story = StoryObj<typeof Toggle>;
+
+export const ToggleStory: Story = {
+	render: () => (
 		<ToggleStoryComponent>
 			<Toggle />
 		</ToggleStoryComponent>
-	))
-	.add('Toggle default checked', () => (
+	),
+};
+export const ToggleDefaultChecked: Story = {
+	render: () => (
 		<ToggleStoryComponent defaultChecked={true}>
 			<Toggle />
 		</ToggleStoryComponent>
-	));
+	),
+};

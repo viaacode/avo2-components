@@ -1,11 +1,11 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
+import { action } from 'storybook/actions';
 
 import type { IconNameSchema } from '../Icon/Icon.types.js';
 import { MenuContent } from '../Menu/MenuContent/MenuContent.js';
 
-import { Dropdown } from './Dropdown.js';
+import { Dropdown, type DropdownPropsSchema } from './Dropdown.js';
 
 const menuItems = [
 	{ label: 'Aluminium', id: 'aluminium', key: 'aluminium' },
@@ -76,89 +76,98 @@ const DropdownMoveTriggerStoryComponent = ({ children }: { children: ReactElemen
 	);
 };
 
-storiesOf('components/Dropdown', module)
-	.addParameters({ jest: ['Dropdown'] })
-	.add('Dropdown', () => (
-		<DropdownStoryComponent>
-			<Dropdown label="Show options" isOpen={false}>
-				<MenuContent menuItems={menuItems} />
-			</Dropdown>
-		</DropdownStoryComponent>
-	))
-	.add('Dropdown fit menu content', () => (
-		<DropdownStoryComponent>
-			<Dropdown label="Show options" isOpen={false} menuWidth="fit-content">
-				<MenuContent menuItems={menuItemsWithIcons} />
-			</Dropdown>
-		</DropdownStoryComponent>
-	))
-	.add('Dropdown full width', () => (
-		<DropdownStoryComponent>
-			<Dropdown label="Show options" isOpen={false} triggerWidth="full-width">
-				<MenuContent menuItems={menuItems} />
-			</Dropdown>
-		</DropdownStoryComponent>
-	))
-	.add('Dropdown up', () => (
-		<div style={{ paddingTop: '200px' }}>
-			<DropdownStoryComponent>
-				<Dropdown label="Show options" isOpen={false} placement={'top'}>
-					<MenuContent menuItems={menuItemsWithIcons} />
-				</Dropdown>
-			</DropdownStoryComponent>
-		</div>
-	))
-	.add('Dropdown bottom-start', () => (
-		<DropdownStoryComponent>
-			<Dropdown
-				label="Show options"
-				menuWidth="fit-content"
-				isOpen={false}
-				placement={'bottom-start'}
-			>
-				<MenuContent menuItems={menuItemsWithIcons} />
-			</Dropdown>
-		</DropdownStoryComponent>
-	))
-	.add('Dropdown bottom-end', () => (
-		<DropdownStoryComponent>
-			<Dropdown
-				label="Show options"
-				menuWidth="fit-content"
-				isOpen={false}
-				placement={'bottom-end'}
-			>
-				<MenuContent menuItems={menuItems} />
-			</Dropdown>
-		</DropdownStoryComponent>
-	))
-	.add('Dropdown top-start', () => (
-		<div style={{ paddingTop: '200px' }}>
-			<DropdownStoryComponent>
-				<Dropdown
-					label="Show options"
-					menuWidth="fit-content"
-					isOpen={false}
-					placement={'top-start'}
-				>
-					<MenuContent menuItems={menuItemsWithIcons} />
-				</Dropdown>
-			</DropdownStoryComponent>
-		</div>
-	))
-	.add('Dropdown top-end', () => (
-		<div style={{ paddingTop: '200px' }}>
-			<DropdownStoryComponent>
-				<Dropdown label="Show options" menuWidth="fit-content" isOpen={false} placement={'top-end'}>
-					<MenuContent menuItems={menuItems} />
-				</Dropdown>
-			</DropdownStoryComponent>
-		</div>
-	))
-	.add('Dropdown with trigger moving', () => (
-		<DropdownMoveTriggerStoryComponent>
-			<Dropdown label="Show options" isOpen={false}>
-				<MenuContent menuItems={menuItems} />
-			</Dropdown>
-		</DropdownMoveTriggerStoryComponent>
-	));
+export default {
+	title: 'components/Dropdown',
+	parameters: { jest: ['Dropdown'] },
+} as Meta;
+
+const Template: StoryFn = (args) => (
+	<DropdownStoryComponent>
+		<Dropdown isOpen={true} {...args}>
+			<MenuContent menuItems={args.menuItems} />
+		</Dropdown>
+	</DropdownStoryComponent>
+);
+
+export const DropdownDefault = Template.bind({});
+DropdownDefault.args = {
+	label: 'Show options',
+	isOpen: false,
+	menuItems,
+};
+
+export const DropdownFitMenuContent = Template.bind({});
+DropdownFitMenuContent.args = {
+	label: 'Show options',
+	isOpen: false,
+	menuWidth: 'fit-content',
+	menuItems: menuItemsWithIcons,
+};
+
+export const DropdownFullWidth = Template.bind({});
+DropdownFullWidth.args = {
+	label: 'Show options',
+	isOpen: false,
+	triggerWidth: 'full-width',
+	menuItems,
+};
+
+export const DropdownUp = Template.bind({});
+DropdownUp.args = {
+	label: 'Show options',
+	isOpen: false,
+	placement: 'top',
+	menuItems: menuItemsWithIcons,
+};
+DropdownUp.decorators = [(Story) => <div style={{ paddingTop: '200px' }}>{Story()}</div>];
+
+export const DropdownBottomStart = Template.bind({});
+DropdownBottomStart.args = {
+	label: 'Show options',
+	isOpen: false,
+	menuWidth: 'fit-content',
+	placement: 'bottom-start',
+	menuItems: menuItemsWithIcons,
+};
+
+export const DropdownBottomEnd = Template.bind({});
+DropdownBottomEnd.args = {
+	label: 'Show options',
+	isOpen: false,
+	menuWidth: 'fit-content',
+	placement: 'bottom-end',
+	menuItems,
+};
+
+export const DropdownTopStart = Template.bind({});
+DropdownTopStart.args = {
+	label: 'Show options',
+	isOpen: false,
+	menuWidth: 'fit-content',
+	placement: 'top-start',
+	menuItems: menuItemsWithIcons,
+};
+DropdownTopStart.decorators = [(Story) => <div style={{ paddingTop: '200px' }}>{Story()}</div>];
+
+export const DropdownTopEnd = Template.bind({});
+DropdownTopEnd.args = {
+	label: 'Show options',
+	isOpen: false,
+	menuWidth: 'fit-content',
+	placement: 'top-end',
+	menuItems,
+};
+DropdownTopEnd.decorators = [(Story) => <div style={{ paddingTop: '200px' }}>{Story()}</div>];
+
+export const DropdownWithTriggerMoving = (args: DropdownPropsSchema & { menuItems: any[] }) => (
+	<DropdownMoveTriggerStoryComponent>
+		<Dropdown {...args}>
+			<MenuContent menuItems={args.menuItems} />
+		</Dropdown>
+	</DropdownMoveTriggerStoryComponent>
+);
+DropdownWithTriggerMoving.args = {
+	label: 'Show options',
+	isOpen: false,
+	menuItems,
+};

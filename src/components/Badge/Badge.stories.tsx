@@ -1,9 +1,22 @@
-import { storiesOf } from '@storybook/react';
-
 import { Badge } from './Badge.js';
 
-storiesOf('components/Badge', module)
-	.addParameters({ jest: ['Badge'] })
-	.add('Badge', () => <Badge text="Pending approval" />)
-	.add('Success badge', () => <Badge text="Approval granted" type="success" />)
-	.add('Error badge', () => <Badge text="Approval denied" type="error" />);
+export default {
+  title: 'components/Badge',
+
+  parameters: {
+    jest: ['Badge'],
+  },
+};
+
+export const _Badge = () => <Badge text="Pending approval" />;
+export const SuccessBadge = () => <Badge text="Approval granted" type="success" />;
+
+SuccessBadge.story = {
+  name: 'Success badge',
+};
+
+export const ErrorBadge = () => <Badge text="Approval denied" type="error" />;
+
+ErrorBadge.story = {
+  name: 'Error badge',
+};

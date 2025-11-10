@@ -1,5 +1,4 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
 
 import { MultiRange } from './MultiRange.js';
@@ -16,41 +15,52 @@ const MultiRangeStoryComponent = ({
 	return cloneElement(children, {
 		values,
 		onChange: (values: number[]) => {
-			action('Input changed')(values);
+			console.log('Input changed', values);
 			setValues(values);
 		},
 	});
 };
 
-storiesOf('components/MultiRange', module)
-	.addParameters({ jest: ['MultiRange'] })
-	.add('MultiRange', () => (
-		<MultiRangeStoryComponent>
-			<MultiRange />
-		</MultiRangeStoryComponent>
-	))
-	.add('MultiRange disabled', () => (
-		<MultiRangeStoryComponent>
-			<MultiRange disabled />
-		</MultiRangeStoryComponent>
-	))
-	.add('MultiRange allow overlap', () => (
-		<MultiRangeStoryComponent>
-			<MultiRange allowOverlap={true} onChange={action('Value changed')} />
-		</MultiRangeStoryComponent>
-	))
-	.add('MultiRange with default values', () => (
-		<MultiRangeStoryComponent defaultValues={[20, 60]}>
-			<MultiRange />
-		</MultiRangeStoryComponent>
-	))
-	.add('MultiRange with single value', () => (
-		<MultiRangeStoryComponent defaultValues={[20]}>
-			<MultiRange />
-		</MultiRangeStoryComponent>
-	))
-	.add('MultiRange with number field', () => (
-		<MultiRangeStoryComponent defaultValues={[20]}>
-			<MultiRange showNumber />
-		</MultiRangeStoryComponent>
-	));
+export default {
+	title: 'components/MultiRange',
+	component: MultiRange,
+	parameters: {
+		jest: ['MultiRange'],
+	},
+} as Meta;
+
+export const Default: StoryFn = () => (
+	<MultiRangeStoryComponent>
+		<MultiRange />
+	</MultiRangeStoryComponent>
+);
+
+export const Disabled: StoryFn = () => (
+	<MultiRangeStoryComponent>
+		<MultiRange disabled />
+	</MultiRangeStoryComponent>
+);
+
+export const AllowOverlap: StoryFn = () => (
+	<MultiRangeStoryComponent>
+		<MultiRange allowOverlap={true} onChange={(values) => console.log('Value changed', values)} />
+	</MultiRangeStoryComponent>
+);
+
+export const WithDefaultValues: StoryFn = () => (
+	<MultiRangeStoryComponent defaultValues={[20, 60]}>
+		<MultiRange />
+	</MultiRangeStoryComponent>
+);
+
+export const WithSingleValue: StoryFn = () => (
+	<MultiRangeStoryComponent defaultValues={[20]}>
+		<MultiRange />
+	</MultiRangeStoryComponent>
+);
+
+export const WithNumberField: StoryFn = () => (
+	<MultiRangeStoryComponent defaultValues={[20]}>
+		<MultiRange showNumber />
+	</MultiRangeStoryComponent>
+);

@@ -1,8 +1,18 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 
 import { FileInput } from './FileInput.js';
+
+const meta: Meta<typeof FileInput> = {
+	title: 'components/FileInput',
+	component: FileInput,
+	parameters: {
+		jest: ['FileInput'],
+	},
+};
+export default meta;
+
+type Story = StoryObj<typeof FileInput>;
 
 const FileInputStoryComponent = ({
 	children,
@@ -16,28 +26,34 @@ const FileInputStoryComponent = ({
 	return cloneElement(children, {
 		value,
 		onChange: (value: string) => {
-			action('Input changed')(value);
+			console.log('Input changed', value);
 			setValue(value);
 		},
 	});
 };
 
-storiesOf('components/FileInput', module)
-	.addParameters({ jest: ['FileInput'] })
-	.add('FileInput', () => (
+export const Default: Story = {
+	render: () => (
 		<FileInputStoryComponent>
-			<FileInput placeholder="Profielfoto uploaden" onChange={action('onChange')} />
+			<FileInput placeholder="Profielfoto uploaden" />
 		</FileInputStoryComponent>
-	))
-	.add('FileInput disabled', () => (
+	),
+};
+
+export const Disabled: Story = {
+	render: () => (
 		<FileInputStoryComponent>
-			<FileInput disabled placeholder="Profielfoto uploaden" onChange={action('onChange')} />
+			<FileInput disabled placeholder="Profielfoto uploaden" />
 		</FileInputStoryComponent>
-	))
-	.add('FileInput without placeholder', () => (
+	),
+};
+
+export const WithoutPlaceholder: Story = {
+	render: () => (
 		<Fragment>
 			<FileInputStoryComponent>
-				<FileInput onChange={action('onChange')} />
+				<FileInput />
 			</FileInputStoryComponent>
 		</Fragment>
-	));
+	),
+};

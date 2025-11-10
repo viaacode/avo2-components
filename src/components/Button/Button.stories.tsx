@@ -1,6 +1,6 @@
-import { action } from 'storybook/actions';
-import { type Meta, type Story, storiesOf } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Fragment } from 'react';
+import { action } from 'storybook/actions';
 
 import { COLORS } from '../../colors/index.js';
 import { IconNameSchema } from '../Icon/Icon.types.js';
@@ -92,7 +92,7 @@ export default {
 	component: Button,
 } as Meta;
 
-const Template: Story<Partial<ButtonPropsSchema>> = ({
+const Template: StoryFn<Partial<ButtonPropsSchema>> = ({
 	label,
 	ariaLabel,
 	title,
@@ -125,31 +125,38 @@ Buttons.args = {
 	tooltip: 'test',
 };
 
-storiesOf('components/Button', module)
-	.addParameters({ jest: ['Button'] })
-	.add('Buttons', () => renderButtonStories(buttonProps))
-	.add('Button with icon', () => renderButtonStories(buttonIconProps))
-	.add('Icon only button', () => renderButtonStories(buttonIconProps, false))
-	.add('Button with arrow', () => renderButtonStories(buttonIconProps, true, { arrow: true }))
-	.add('Small buttons', () => renderButtonStories(buttonIconProps, true, { size: 'small' }))
-	.add('Large buttons', () => renderButtonStories(buttonIconProps, true, { size: 'large' }))
-	.add('Block buttons', () => renderButtonStories(buttonIconProps, true, { block: true }))
-	.add('Multicolor icon buttons', () =>
-		renderButtonStories(buttonIconProps, true, { icon: 'itsme', iconType: 'multicolor' })
-	)
-	.add('Inverse buttons', () => (
-		<div
-			style={{
-				display: 'inline-block',
-				padding: '20px',
-				backgroundColor: COLORS.GRAYSCALE.G800,
-			}}
-		>
-			{renderButtonStories(buttonInverseProps)}
-		</div>
-	))
-	.add('Active buttons', () => renderButtonStories(buttonActiveProps))
-	.add('Auto height buttons', () => renderButtonStories(buttonAutoHeightProps, false))
-	.add('Button with tooltip', () =>
-		renderButtonStories(buttonProps, true, { tooltip: 'Dit is een download button' })
-	);
+export const ButtonsDefault = () => renderButtonStories(buttonProps);
+
+export const ButtonWithIcon = () => renderButtonStories(buttonIconProps);
+
+export const IconOnlyButton = () => renderButtonStories(buttonIconProps, false);
+
+export const ButtonWithArrow = () => renderButtonStories(buttonIconProps, true, { arrow: true });
+
+export const SmallButtons = () => renderButtonStories(buttonIconProps, true, { size: 'small' });
+
+export const LargeButtons = () => renderButtonStories(buttonIconProps, true, { size: 'large' });
+
+export const BlockButtons = () => renderButtonStories(buttonIconProps, true, { block: true });
+
+export const MulticolorIconButtons = () =>
+	renderButtonStories(buttonIconProps, true, { icon: 'itsme', iconType: 'multicolor' });
+
+export const InverseButtons = () => (
+	<div
+		style={{
+			display: 'inline-block',
+			padding: '20px',
+			backgroundColor: COLORS.GRAYSCALE.G800,
+		}}
+	>
+		{renderButtonStories(buttonInverseProps)}
+	</div>
+);
+
+export const ActiveButtons = () => renderButtonStories(buttonActiveProps);
+
+export const AutoHeightButtons = () => renderButtonStories(buttonAutoHeightProps, false);
+
+export const ButtonWithTooltip = () =>
+	renderButtonStories(buttonProps, true, { tooltip: 'Dit is een download button' });

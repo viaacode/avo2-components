@@ -1,9 +1,7 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
-
+import { action } from 'storybook/actions';
 import { Spacer } from '../Spacer/Spacer.js';
-
 import { DatePicker } from './DatePicker.js';
 
 const DatePickerStoryComponent = ({
@@ -24,60 +22,71 @@ const DatePickerStoryComponent = ({
 	});
 };
 
-storiesOf('components/DatePicker', module)
-	.addParameters({ jest: ['DatePicker'] })
-	.add('DatePicker', () => (
-		<Fragment>
+export default {
+	title: 'components/DatePicker',
+	parameters: {
+		jest: ['DatePicker'],
+	},
+} as Meta;
+
+export const DatePickerDefault: StoryFn = () => (
+	<Fragment>
+		<DatePickerStoryComponent>
+			<DatePicker onChange={action('onChange')} />
+		</DatePickerStoryComponent>
+	</Fragment>
+);
+
+export const DatePickerDisabled: StoryFn = () => (
+	<Fragment>
+		<DatePickerStoryComponent>
+			<DatePicker disabled />
+		</DatePickerStoryComponent>
+	</Fragment>
+);
+
+export const DatePickerPlaceholder: StoryFn = () => (
+	<Fragment>
+		<DatePickerStoryComponent>
+			<DatePicker placeholder="dd mm yy" onChange={action('onChange')} />
+		</DatePickerStoryComponent>
+	</Fragment>
+);
+
+export const DateTimePicker: StoryFn = () => (
+	<Fragment>
+		<Spacer margin="bottom">
 			<DatePickerStoryComponent>
-				<DatePicker onChange={action('onChange')} />
+				<DatePicker showTimeInput onChange={action('onChange')} />
 			</DatePickerStoryComponent>
-		</Fragment>
-	))
-	.add('DatePicker disabled', () => (
-		<Fragment>
+		</Spacer>
+	</Fragment>
+);
+
+export const DateTimePickerDisabled: StoryFn = () => (
+	<Fragment>
+		<Spacer margin="bottom">
 			<DatePickerStoryComponent>
-				<DatePicker disabled />
+				<DatePicker showTimeInput onChange={action('onChange')} disabled />
 			</DatePickerStoryComponent>
-		</Fragment>
-	))
-	.add('DatePicker placeholder', () => (
-		<Fragment>
-			<DatePickerStoryComponent>
-				<DatePicker placeholder="dd mm yy" onChange={action('onChange')} />
+		</Spacer>
+	</Fragment>
+);
+
+export const DateTimePickerDefaultValue: StoryFn = () => (
+	<Fragment>
+		<Spacer margin="bottom">
+			<DatePickerStoryComponent defaultValue={new Date(2022, 7, 12, 23, 59)}>
+				<DatePicker showTimeInput onChange={action('onChange')} />
 			</DatePickerStoryComponent>
-		</Fragment>
-	))
-	.add('DateTimePicker', () => (
-		<Fragment>
-			<Spacer margin="bottom">
-				<DatePickerStoryComponent>
-					<DatePicker showTimeInput onChange={action('onChange')} />
-				</DatePickerStoryComponent>
-			</Spacer>
-		</Fragment>
-	))
-	.add('DateTimePicker disabled', () => (
-		<Fragment>
-			<Spacer margin="bottom">
-				<DatePickerStoryComponent>
-					<DatePicker showTimeInput onChange={action('onChange')} disabled />
-				</DatePickerStoryComponent>
-			</Spacer>
-		</Fragment>
-	))
-	.add('DateTimePicker default value', () => (
-		<Fragment>
-			<Spacer margin="bottom">
-				<DatePickerStoryComponent defaultValue={new Date(2022, 7, 12, 23, 59)}>
-					<DatePicker showTimeInput onChange={action('onChange')} />
-				</DatePickerStoryComponent>
-			</Spacer>
-		</Fragment>
-	))
-	.add('DatePicker min value', () => (
-		<Fragment>
-			<DatePickerStoryComponent>
-				<DatePicker showTimeInput onChange={action('onChange')} minDate={new Date()} />
-			</DatePickerStoryComponent>
-		</Fragment>
-	));
+		</Spacer>
+	</Fragment>
+);
+
+export const DatePickerMinValue: StoryFn = () => (
+	<Fragment>
+		<DatePickerStoryComponent>
+			<DatePicker showTimeInput onChange={action('onChange')} minDate={new Date()} />
+		</DatePickerStoryComponent>
+	</Fragment>
+);

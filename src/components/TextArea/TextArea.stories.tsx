@@ -1,9 +1,7 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
-
+import { action } from 'storybook/actions';
 import { Spacer } from '../Spacer/Spacer.js';
-
 import { TextArea } from './TextArea.js';
 
 const TextAreaStoryComponent = ({
@@ -24,9 +22,19 @@ const TextAreaStoryComponent = ({
 	});
 };
 
-storiesOf('components/TextArea', module)
-	.addParameters({ jest: ['TextArea'] })
-	.add('TextArea', () => (
+const meta: Meta<typeof TextArea> = {
+	title: 'components/TextArea',
+	component: TextArea,
+	parameters: {
+		jest: ['TextArea'],
+	},
+};
+export default meta;
+
+type Story = StoryObj<typeof TextArea>;
+
+export const Default: Story = {
+	render: () => (
 		<Fragment>
 			<Spacer margin="bottom">
 				<TextAreaStoryComponent>
@@ -37,8 +45,11 @@ storiesOf('components/TextArea', module)
 				<TextArea disabled placeholder="No typing here..." />
 			</TextAreaStoryComponent>
 		</Fragment>
-	))
-	.add('TextArea heights', () => (
+	),
+};
+
+export const TextAreaHeights: Story = {
+	render: () => (
 		<Fragment>
 			<Spacer margin="bottom">
 				<TextAreaStoryComponent>
@@ -64,8 +75,11 @@ storiesOf('components/TextArea', module)
 				<TextArea placeholder="A TextArea with 10 rows" rows={10} />
 			</TextAreaStoryComponent>
 		</Fragment>
-	))
-	.add('TextArea widths', () => (
+	),
+};
+
+export const TextAreaWidths: Story = {
+	render: () => (
 		<Fragment>
 			<Spacer margin="bottom">
 				<TextAreaStoryComponent>
@@ -86,4 +100,5 @@ storiesOf('components/TextArea', module)
 				<TextArea placeholder="An large TextArea" width="large" />
 			</TextAreaStoryComponent>
 		</Fragment>
-	));
+	),
+};

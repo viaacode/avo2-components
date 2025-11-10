@@ -1,9 +1,19 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
 
 import { Select } from './Select.js';
 import { SELECT_MOCK_OPTIONS } from './Select.mock.js';
+
+const meta: Meta<typeof Select> = {
+	title: 'components/Select',
+	component: Select,
+	parameters: {
+		jest: ['Select'],
+	},
+};
+export default meta;
+
+type Story = StoryObj<typeof Select>;
 
 const SelectStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [value, setValue] = useState<string | null>('Al');
@@ -12,34 +22,54 @@ const SelectStoryComponent = ({ children }: { children: ReactElement }) => {
 		value,
 		onChange: (value: string | null) => {
 			setValue(value);
-			action('selection changed: ')(value);
+			console.log('selection changed: ', value);
 		},
 	});
 };
 
-storiesOf('components/Select', module)
-	.addParameters({ jest: ['Select'] })
-	.add('Select', () => (
-		<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} />
-	))
-	.add('Select disabled', () => (
-		<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} disabled />
-	))
-	.add('Select clearable', () => (
+export const Default: Story = {
+	args: {
+		options: SELECT_MOCK_OPTIONS,
+		value: 'Db',
+		onChange: console.log,
+	},
+};
+
+export const Disabled: Story = {
+	args: {
+		options: SELECT_MOCK_OPTIONS,
+		value: 'Db',
+		onChange: console.log,
+		disabled: true,
+	},
+};
+
+export const Clearable: Story = {
+	render: () => (
 		<SelectStoryComponent>
-			<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} clearable />
+			<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={console.log} clearable />
 		</SelectStoryComponent>
-	))
-	.add('Select loading', () => (
-		<Select options={SELECT_MOCK_OPTIONS} value="Db" onChange={action('onChange')} loading />
-	))
-	.add('Select reset after select option', () => (
+	),
+};
+
+export const Loading: Story = {
+	args: {
+		options: SELECT_MOCK_OPTIONS,
+		value: 'Db',
+		onChange: console.log,
+		loading: true,
+	},
+};
+
+export const ResetAfterSelect: Story = {
+	render: () => (
 		<SelectStoryComponent>
 			<Select
 				options={SELECT_MOCK_OPTIONS}
 				placeholder="select a value"
-				onChange={action('onChange')}
+				onChange={console.log}
 				value={null}
 			/>
 		</SelectStoryComponent>
-	));
+	),
+};

@@ -1,6 +1,6 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
+import { action } from 'storybook/actions';
 
 import { RadioButton } from './RadioButton.js';
 
@@ -15,16 +15,24 @@ const RadioButtonStoryComponent = ({
 
 	return cloneElement(children, {
 		checked,
-		onChange: (checked: boolean) => {
-			action('RadioButton toggled')(checked);
-			setChecked(checked);
+		onChange: (c: boolean) => {
+			action('RadioButton toggled')(c);
+			setChecked(c);
 		},
 	});
 };
 
-storiesOf('components/RadioButton', module)
-	.addParameters({ jest: ['RadioButton'] })
-	.add('Radio Button', () => (
+const meta: Meta<typeof RadioButton> = {
+	title: 'components/RadioButton',
+	component: RadioButton,
+	parameters: { jest: ['RadioButton'] },
+};
+export default meta;
+
+type Story = StoryObj<typeof RadioButton>;
+
+export const RadioButtonStory: Story = {
+	render: () => (
 		<RadioButtonStoryComponent>
 			<RadioButton
 				name="List1"
@@ -33,8 +41,10 @@ storiesOf('components/RadioButton', module)
 				onChange={action('Radio button selected')}
 			/>
 		</RadioButtonStoryComponent>
-	))
-	.add('Radio Button default checked', () => (
+	),
+};
+export const RadioButtonDefaultChecked: Story = {
+	render: () => (
 		<RadioButtonStoryComponent defaultChecked={true}>
 			<RadioButton
 				name="List2"
@@ -43,4 +53,5 @@ storiesOf('components/RadioButton', module)
 				onChange={action('Radio button selected')}
 			/>
 		</RadioButtonStoryComponent>
-	));
+	),
+};

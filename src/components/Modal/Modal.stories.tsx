@@ -1,9 +1,8 @@
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 
 import { Button } from '../Button/Button.js';
-
 import { Modal } from './Modal.js';
 import { ModalBody, ModalFooterLeft, ModalFooterRight } from './Modal.slots.js';
 
@@ -20,9 +19,19 @@ const ModalStoryComponent = ({ children }: { children: ReactElement }) => {
 	);
 };
 
-storiesOf('components/Modal', module)
-	.addParameters({ jest: ['Modal', 'ModalBackdrop'] })
-	.add('Modal', () => (
+const meta: Meta = {
+	title: 'components/Modal',
+	component: Modal,
+	parameters: {
+		jest: ['Modal', 'ModalBackdrop'],
+	},
+};
+export default meta;
+
+type Story = StoryObj;
+
+export const Default: Story = {
+	render: () => (
 		<ModalStoryComponent>
 			<Modal title="Modal title" isOpen={false}>
 				<ModalBody>
@@ -39,8 +48,11 @@ storiesOf('components/Modal', module)
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
-	))
-	.add('Small modal', () => (
+	),
+};
+
+export const SmallModal: Story = {
+	render: () => (
 		<ModalStoryComponent>
 			<Modal isOpen title="Modal title" size="small">
 				<ModalBody>
@@ -54,8 +66,11 @@ storiesOf('components/Modal', module)
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
-	))
-	.add('Medium modal', () => (
+	),
+};
+
+export const MediumModal: Story = {
+	render: () => (
 		<ModalStoryComponent>
 			<Modal isOpen title="Modal title" size="medium">
 				<ModalBody>
@@ -69,8 +84,11 @@ storiesOf('components/Modal', module)
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
-	))
-	.add('Large modal', () => (
+	),
+};
+
+export const LargeModal: Story = {
+	render: () => (
 		<ModalStoryComponent>
 			<Modal isOpen title="Modal title" size="large">
 				<ModalBody>
@@ -84,8 +102,11 @@ storiesOf('components/Modal', module)
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
-	))
-	.add('Extra large modal', () => (
+	),
+};
+
+export const ExtraLargeModal: Story = {
+	render: () => (
 		<ModalStoryComponent>
 			<Modal isOpen title="Modal title" size="extra-large">
 				<ModalBody>
@@ -99,8 +120,11 @@ storiesOf('components/Modal', module)
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
-	))
-	.add('Wide title modal', () => (
+	),
+};
+
+export const WideTitleModal: Story = {
+	render: () => (
 		<Modal isOpen title={loremIpsum({ count: 2 })} size="small">
 			<ModalBody>
 				<p>{loremIpsum({ count: 5 })}</p>
@@ -109,8 +133,11 @@ storiesOf('components/Modal', module)
 				<Button type="primary" label="Ok" ariaLabel="Ok" />
 			</ModalFooterRight>
 		</Modal>
-	))
-	.add('Fullscreen modal', () => (
+	),
+};
+
+export const FullscreenModal: Story = {
+	render: () => (
 		<ModalStoryComponent>
 			<Modal isOpen title="Modal title" size="fullscreen">
 				<ModalBody>
@@ -124,8 +151,11 @@ storiesOf('components/Modal', module)
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
-	))
-	.add('Auto-height modal', () => (
+	),
+};
+
+export const AutoHeightModal: Story = {
+	render: () => (
 		<ModalStoryComponent>
 			<Modal isOpen title="Modal title" size="auto">
 				<ModalBody>
@@ -139,8 +169,11 @@ storiesOf('components/Modal', module)
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
-	))
-	.add('Scrollable modal', () => (
+	),
+};
+
+export const ScrollableModal: Story = {
+	render: () => (
 		<>
 			<ModalStoryComponent>
 				<Modal isOpen title="Modal title" size="small" scrollable>
@@ -156,8 +189,11 @@ storiesOf('components/Modal', module)
 			<br />
 			<div style={{ maxWidth: '200px' }}>{loremIpsum({ count: 40 })}</div>
 		</>
-	))
-	.add('Headless modal', () => (
+	),
+};
+
+export const HeadlessModal: Story = {
+	render: () => (
 		<ModalStoryComponent>
 			<Modal isOpen size="small" scrollable>
 				<ModalBody>
@@ -168,4 +204,5 @@ storiesOf('components/Modal', module)
 				</ModalFooterRight>
 			</Modal>
 		</ModalStoryComponent>
-	));
+	),
+};

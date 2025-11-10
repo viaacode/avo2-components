@@ -1,8 +1,7 @@
-import { action } from 'storybook/actions';
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import { cloneElement, type ReactElement, useState } from 'react';
-
+import { action } from 'storybook/actions';
 import { TagList } from './TagList.js';
 
 const tags = [
@@ -58,35 +57,45 @@ const TagListStoryComponent = ({
 	});
 };
 
-storiesOf('components/TagList', module)
-	.addParameters({ jest: ['TagList'] })
-	.add('TagList', () => <TagList tags={tags} />)
-	.add('TagList with closable tags', () => (
+export default {
+	title: 'components/TagList',
+	parameters: { jest: ['TagList'] },
+} as Meta;
+
+export const Default: StoryFn = () => <TagList tags={tags} />;
+
+export const ClosableTags: StoryFn = () => (
+	<TagList
+		tags={tags}
+		closable
+		swatches={false}
+		onTagClosed={action('Tag closed')}
+		onTagClicked={action('Tag clicked')}
+	/>
+);
+
+export const MultilineTags: StoryFn = () => (
+	<div style={{ width: '300px' }}>
+		<TagList tags={[{ label: loremIpsum({ count: 1 }), id: 'test' }]} closable swatches={false} />
+	</div>
+);
+
+export const SelectableTags: StoryFn = () => (
+	<TagListStoryComponent>
 		<TagList
 			tags={tags}
-			closable
+			closable={false}
 			swatches={false}
-			onTagClosed={action('Tag closed')}
-			onTagClicked={action('Tag clicked')}
+			selectable={true}
+			onTagClicked={action('selected a tag')}
 		/>
-	))
-	.add('TagList with multiline tags', () => (
-		<div style={{ width: '300px' }}>
-			<TagList tags={[{ label: loremIpsum({ count: 1 }), id: 'test' }]} closable swatches={false} />
-		</div>
-	))
-	.add('TagList with selectable tags', () => (
-		<TagListStoryComponent>
-			<TagList
-				tags={tags}
-				closable={false}
-				swatches={false}
-				selectable={true}
-				onTagClicked={action('selected a tag')}
-			/>
-		</TagListStoryComponent>
-	))
-	.add('TagList with custom color swatches', () => <TagList tags={colorTags} swatches />)
-	.add('TagList without swatches', () => <TagList tags={tags} swatches={false} />)
-	.add('TagList with borderless tags', () => <TagList tags={tags} bordered={false} />)
-	.add('Minimalist TagList', () => <TagList tags={tags} swatches={false} bordered={false} />);
+	</TagListStoryComponent>
+);
+
+export const CustomColorSwatches: StoryFn = () => <TagList tags={colorTags} swatches />;
+
+export const WithoutSwatches: StoryFn = () => <TagList tags={tags} swatches={false} />;
+
+export const BorderlessTags: StoryFn = () => <TagList tags={tags} bordered={false} />;
+
+export const Minimalist: StoryFn = () => <TagList tags={tags} swatches={false} bordered={false} />;
