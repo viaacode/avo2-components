@@ -1,7 +1,5 @@
 @use '../../styles/settings/colors' as colors;
 
-$rangeColor: hsl(190, 80%, 40%);
-
 .c-input-range {
 	display: flex;
 	align-items: center;
@@ -36,8 +34,7 @@ $rangeColor: hsl(190, 80%, 40%);
 		left: 10px;
 		top: 10px;
 		border-radius: 50%;
-		background-color: rgb(250, 250, 250); /* Old browsers */
-		background: linear-gradient(to bottom, rgba(250, 250, 250, 1) 0%, rgba(244, 244, 244, 1) 49%, rgba(240, 240, 240, 1) 51%, rgba(254, 254, 254, 1) 100%);
+		background: rgb(250 250 250) linear-gradient(to bottom, rgb(250 250 250 / 100%) 0%, rgb(244 244 244 / 100%) 49%, rgb(240 240 240 / 100%) 51%, rgb(254 254 254 / 100%) 100%);
 	}
 
 	&.c-input-range__disabled {

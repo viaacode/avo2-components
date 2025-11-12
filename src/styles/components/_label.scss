@@ -12,6 +12,7 @@
 .c-label + .c-label {
 	margin-left: 1.6rem;
 }
+
 .c-label-swatch {
 	width: 1.6rem;
 	height: 1.6rem;
@@ -54,7 +55,6 @@
 	max-width: 15rem;
 
 	.c-label-swatch-picker {
-		padding: 1.2rem;
 		display: flex;
 		flex-wrap: wrap;
 		padding: 1.2rem 0.8rem;
@@ -76,7 +76,7 @@
 			width: 1.6rem;
 			height: 1.6rem;
 			display: none;
-			color: rgba(255,255,255,0.9);
+			color: rgb(255 255 255 / 90%);
 		}
 
 		&:focus .o-svg-icon {

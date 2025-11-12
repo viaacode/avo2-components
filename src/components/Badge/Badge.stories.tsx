@@ -1,22 +1,22 @@
 import { Badge } from './Badge.js';
 
 export default {
-  title: 'components/Badge',
+	title: 'components/Badge',
 
-  parameters: {
-    jest: ['Badge'],
-  },
+	parameters: {
+		jest: ['Badge'],
+	},
 };
 
 export const _Badge = () => <Badge text="Pending approval" />;
 export const SuccessBadge = () => <Badge text="Approval granted" type="success" />;
 
 SuccessBadge.story = {
-  name: 'Success badge',
+	name: 'Success badge',
 };
 
 export const ErrorBadge = () => <Badge text="Approval denied" type="error" />;
 
 ErrorBadge.story = {
-  name: 'Error badge',
+	name: 'Error badge',
 };

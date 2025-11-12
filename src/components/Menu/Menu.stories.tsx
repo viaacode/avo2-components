@@ -2,46 +2,46 @@ import { action } from 'storybook/actions';
 
 import { Menu } from './Menu.js';
 import {
-  menuItems,
-  menuItemsWithDivider,
-  menuItemsWithIcons,
-  menuItemsWithSearch,
+	menuItems,
+	menuItemsWithDivider,
+	menuItemsWithIcons,
+	menuItemsWithSearch,
 } from './Menu.mocks.js';
 import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent.js';
 
 export default {
-  title: 'components/Menu',
+	title: 'components/Menu',
 
-  parameters: {
-    jest: ['Menu'],
-  },
+	parameters: {
+		jest: ['Menu'],
+	},
 };
 
 export const _Menu = () => <Menu menuItems={menuItems} onClick={action('clicked menu item')} />;
 export const MenuWithIcons = () => <Menu menuItems={menuItemsWithIcons} />;
 
 MenuWithIcons.story = {
-  name: 'Menu with icons',
+	name: 'Menu with icons',
 };
 
 export const MenuWithDividers = () => <Menu menuItems={menuItemsWithDivider} />;
 
 MenuWithDividers.story = {
-  name: 'Menu with dividers',
+	name: 'Menu with dividers',
 };
 
 export const MenuWithSearchResults = () => (
-  <Menu search>
-    <MenuSearchResultContent menuItems={menuItemsWithSearch} />
-  </Menu>
+	<Menu search>
+		<MenuSearchResultContent menuItems={menuItemsWithSearch} />
+	</Menu>
 );
 
 MenuWithSearchResults.story = {
-  name: 'Menu with search results',
+	name: 'Menu with search results',
 };
 
 export const MenuNoResults = () => <Menu menuItems={[]} noResultsLabel="No results" />;
 
 MenuNoResults.story = {
-  name: 'Menu no results',
+	name: 'Menu no results',
 };

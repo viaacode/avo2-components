@@ -22,7 +22,7 @@ $o-form-group-label-font-weight: variables.$g-headings-font-weight !default;
 
 .o-form-group-layout--standard {
 	.o-form-group {
-		margin-bottom: $o-form-group-spacer-unit*2;
+		margin-bottom: $o-form-group-spacer-unit * 2;
 
 		&:last-child {
 			margin-bottom: 0;
@@ -35,7 +35,6 @@ $o-form-group-label-font-weight: variables.$g-headings-font-weight !default;
 
 	.o-form-group__label {
 		padding: math.div($o-form-group-spacing, 2) 0;
-
 		color: $c-input-label-color;
 		flex: none;
 		font-size: variables.$g-base-font-size;
@@ -65,10 +64,6 @@ $o-form-group-label-font-weight: variables.$g-headings-font-weight !default;
 .o-form-group-layout--inline {
 	display: flex;
 
-	.o-form-group__label {
-		white-space: nowrap;
-	}
-
 	.o-form-group {
 		display: flex;
 		flex: 1 0 auto;
@@ -89,6 +84,7 @@ $o-form-group-label-font-weight: variables.$g-headings-font-weight !default;
 	}
 
 	.o-form-group__label {
+	  white-space: nowrap;
 		font-weight: variables.$g-headings-font-weight;
 		margin-right: .8rem;
 	}

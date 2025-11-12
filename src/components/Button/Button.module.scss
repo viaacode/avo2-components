@@ -5,7 +5,7 @@
 /* Button skins
    ========================================================================== */
 
-@use './Button-skins.module.scss';
+@use './Button-skins.module';
 
 /* ==========================================================================
    Component: Buttons
@@ -19,7 +19,6 @@
 $c-button-selector-content: '.c-button__content, :global(.c-button__content)';
 $c-button-selector-label: '.c-button__label, :global(.c-button__label)';
 $c-button-selector-icon: '.c-button__icon, :global(.c-button__icon)';
-
 $c-button-selector-icon-before-label: '.c-button__icon + .c-button__label, :global(.c-button__icon + .c-button__label)';
 $c-button-selector-label-before-icon: '.c-button__label + .c-button__icon, :global(.c-button__label + .c-button__icon)';
 
@@ -58,138 +57,123 @@ $c-button-icon-spacing-small: 0.2rem !default;
    ========================================================================== */
 
 .c-button {
-	appearance: none; // Fix for Mobile Safari
-	text-decoration: none; // to reset <a> element
-	cursor: pointer;
-	vertical-align: middle;
-	border-radius: $c-button-border-radius;
-	padding: math.div(($c-button-height - $c-button-line-height), 2) $c-button-padding-horizontal;
-	max-height: $c-button-height;
-	font-size: $c-button-font-size;
-	text-align: center;
-	align-items: center;
-	font-weight: 400;
+  appearance: none; // Fix for Mobile Safari
+  text-decoration: none; // to reset <a> element
+  cursor: pointer;
+  vertical-align: middle;
+  border-radius: $c-button-border-radius;
+  padding: math.div(($c-button-height - $c-button-line-height), 2) $c-button-padding-horizontal;
+  max-height: $c-button-height;
+  font-size: $c-button-font-size;
+  text-align: center;
+  align-items: center;
+  font-weight: 400;
+  margin: 0;
 
-	.c-button__icon {
-		pointer-events: none;
-	}
+  .c-button__icon {
+	pointer-events: none;
+	padding: math.div(($c-button-height - $c-button-line-height), 2);
+  }
+
+  &::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+  }
+
+  #{$c-button-selector-content} {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
+  }
+
+  #{$c-button-selector-label} {
+	line-height: $c-button-line-height;
+	white-space: nowrap;
+  }
+
+  #{$c-button-selector-icon-before-label},
+  #{$c-button-selector-label-before-icon} {
+	margin-left: $c-button-icon-spacing;
+  }
 }
 
 a.c-button {
-	display: inline-flex;
-	justify-content: center;
-}
-
-.c-button {
-	appearance: none;
-	margin: 0;
-
-	&::-moz-focus-inner {
-		border: 0;
-		padding: 0;
-	}
-}
-
-.c-button {
-	#{$c-button-selector-content} {
-		align-items: center;
-		display: flex;
-		justify-content: center;
-		gap: 0.5rem;
-	}
-
-	#{$c-button-selector-label} {
-		line-height: $c-button-line-height;
-		white-space: nowrap;
-	}
-
-	#{$c-button-selector-icon-before-label},
-	#{$c-button-selector-label-before-icon} {
-		margin-left: $c-button-icon-spacing;
-	}
+  display: inline-flex;
+  justify-content: center;
 }
 
 /* Small size
    ========================================================================== */
 
 .c-button--small {
-	font-size: $c-button-font-size-small;
-	padding: math.div(($c-button-height-small - $c-button-line-height-small), 2) $c-button-padding-horizontal-small;
+  font-size: $c-button-font-size-small;
+  padding: math.div(($c-button-height-small - $c-button-line-height-small), 2) $c-button-padding-horizontal-small;
 
-	&.c-button--icon {
-		padding: math.div(($c-button-height-small - $c-button-line-height-small), 2);
-	}
+  &.c-button--icon {
+	padding: math.div(($c-button-height-small - $c-button-line-height-small), 2);
+  }
 
-	#{$c-button-selector-label} {
-		line-height: $c-button-line-height-small;
-	}
+  #{$c-button-selector-label} {
+	line-height: $c-button-line-height-small;
+  }
 
-	#{$c-button-selector-icon} {
-		height: $c-button-line-height-small;
-		width: $c-button-line-height-small;
-	}
+  #{$c-button-selector-icon} {
+	height: $c-button-line-height-small;
+	width: $c-button-line-height-small;
+  }
 
-	#{$c-button-selector-icon-before-label},
-	#{$c-button-selector-label-before-icon} {
-		margin-left: $c-button-icon-spacing-small;
-	}
+  #{$c-button-selector-icon-before-label},
+  #{$c-button-selector-label-before-icon} {
+	margin-left: $c-button-icon-spacing-small;
+  }
 }
 
 /* Large size
    ========================================================================== */
 
 .c-button--large {
-	padding: 0.9rem 1.8rem;
-	max-height: 4.3rem;
+  padding: 0.9rem 1.8rem;
+  max-height: 4.3rem;
 }
 
-/* Icon-only Button (Square)
-   ========================================================================== */
-
-.c-button.c-button--icon {
-	padding: math.div(($c-button-height - $c-button-line-height), 2);
-}
-
-.c-button--small.c-button--icon {
-	padding: math.div(($c-button-height-small - $c-button-line-height-small), 2);
-}
 
 /* Block button
    ========================================================================== */
 
 .c-button--block {
-	width: 100%;
-	text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 /* Auto height button
    ========================================================================== */
 
 .c-button--auto {
-	max-height: none;
-	min-height: $c-button-height;
+  max-height: none;
+  min-height: $c-button-height;
 
-	#{$c-button-selector-label} {
-		white-space: normal;
-	}
+  #{$c-button-selector-label} {
+	white-space: normal;
+  }
 }
 
 /* Button action
    ========================================================================== */
 
 .c-button-action {
+  .o-svg-icon--action-active {
+	display: none;
+  }
+
+  &.c-button--active {
 	.o-svg-icon--action-active {
-		display: none;
+	  display: block;
+	  color: colors.$color-teal-bright;
 	}
 
-	&.c-button--active {
-		.o-svg-icon--action-active {
-			display: block;
-			color: colors.$color-teal-bright;
-		}
-
-		.o-svg-icon--action-inactive {
-			display: none;
-		}
+	.o-svg-icon--action-inactive {
+	  display: none;
 	}
+  }
 }

@@ -17,19 +17,16 @@ $toggle-transition: 0.08s ease-in-out;
 	.c-toggle__back {
 		background-color: colors.$color-gray-300;
 		border-radius: 1.2rem;
-		bottom: 0;
-		box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.2);
-		left: 0;
+		inset: 0;
+		box-shadow: inset 0 0 0 0.1rem rgb(0 0 0 / 20%);
 		pointer-events: none;
 		position: absolute;
-		right: 0;
-		top: 0;
 		transition: background-color $toggle-transition;
 	}
 
 	.c-toggle__knob {
 		background-color: #fff;
-		box-shadow: 0 0.1rem 0.2rem 0 rgba(0, 0, 0, 0.2);
+		box-shadow: 0 0.1rem 0.2rem 0 rgb(0 0 0 / 20%);
 		border-radius: 100%;
 		content: '';
 		height: 1.8rem;
@@ -40,7 +37,7 @@ $toggle-transition: 0.08s ease-in-out;
 		transition: transform $toggle-transition;
 		width: 1.8rem;
 
-		&:after {
+		&::after {
 			color: rgba(#fff, 0.7);
 			font-size: 0.8rem;
 			font-weight: 600;
@@ -74,13 +71,13 @@ $toggle-transition: 0.08s ease-in-out;
 		width: 100%;
 
 		&:focus ~ .c-toggle__knob {
-			box-shadow: 0 0 0 0.5rem rgba(0, 0, 0, 0.1);
+			box-shadow: 0 0 0 0.5rem rgb(0 0 0 / 10%);
 		}
 
 		&:checked ~ .c-toggle__knob {
 			transform: translateX(1.8rem);
 
-			&:after {
+			&::after {
 				left: auto;
 				right: 100%;
 			}
@@ -101,14 +98,14 @@ $toggle-transition: 0.08s ease-in-out;
 		&:disabled ~ .c-toggle__knob {
 			opacity: 0.5;
 
-			&:after {
+			&::after {
 				content: '';
 			}
 		}
 
 		&:disabled ~ .c-toggle__back {
 			background-color: colors.$color-gray-200;
-			box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.1);
+			box-shadow: inset 0 0 0 0.1rem rgb(0 0 0 / 10%);
 		}
 	}
 }

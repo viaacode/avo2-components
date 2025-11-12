@@ -19,7 +19,7 @@
 	.c-select__control {
 		border-radius: variables.$c-input-border-radius;
 		background-color: variables.$c-input-bg-color;
-		box-shadow: inset 0 0 0.3rem rgba(0, 0, 0, 0.1);
+		box-shadow: inset 0 0 0.3rem rgb(0 0 0 / 10%);
 		border: 1px solid variables.$c-input-border-color;
 		font-size: inherit;
 		min-height: 3.6rem;

@@ -20,6 +20,7 @@
 	padding: variables.$c-input-padding;
 	width: 100%;
 	appearance: none;
+
 	@include textfield.textfield-transition;
 	@include textfield.textfield-focus;
 

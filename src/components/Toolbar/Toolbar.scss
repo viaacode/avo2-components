@@ -136,9 +136,7 @@ $c-toolbar-main-border-color: colors.$color-gray-200 !default;
 	.c-toolbar__item {
 		margin-right: $c-toolbar-item-spacing;
 	}
-}
 
-.c-toolbar--justified {
 	.c-toolbar__item:last-child {
 		margin: 0;
 	}

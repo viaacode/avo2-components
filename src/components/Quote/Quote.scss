@@ -24,14 +24,14 @@
 	font-size: 2.2rem;
 	letter-spacing: -0.05rem;
 	line-height: 3.2rem;
-	margin: 0 0 2.4rem 0;
+	margin: 0 0 2.4rem;
 
-	&:before {
+	&::before {
 		content: '\201C';
 		transform: translateX(-150%);
 	}
 
-	&:after {
+	&::after {
 		content: '\201D';
 	}
 }
@@ -55,7 +55,7 @@
 	}
 }
 
-@media (max-width: 400px) {
+@media (width <= 400px) {
 	.c-quote__text {
 		font-size: 2rem;
 	}

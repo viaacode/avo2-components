@@ -14,7 +14,6 @@ $o-container-width-bp1: calc(100% - 2.4rem);
 $o-container-width-bp2: calc(100% - 3.2rem);
 $o-container-width-bp3: calc(100% - 4.8rem);
 $o-container-width-bp4: calc(100% - 6.4rem);
-
 $o-container-max-width-small: 56rem;
 $o-container-max-width-medium: 72rem;
 $o-container-max-width-large: 94rem;
@@ -31,9 +30,11 @@ $o-container-max-width: 130rem;
 	@media (min-width: variables.$g-bp2) {
 		width: $o-container-width-bp2;
 	}
+
 	@media (min-width: variables.$g-bp3) {
 		width: $o-container-width-bp3;
 	}
+
 	@media (min-width: variables.$g-bp4) {
 		width: $o-container-width-bp4;
 	}

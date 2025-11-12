@@ -1,21 +1,21 @@
 import { FlexItem } from '../FlexItem/FlexItem.js';
 
 export default {
-  title: 'components/FlexItem',
+	title: 'components/FlexItem',
 
-  parameters: {
-    jest: ['FlexItem'],
-  },
+	parameters: {
+		jest: ['FlexItem'],
+	},
 };
 
 export const _FlexItem = () => <FlexItem>Flex Item</FlexItem>;
 
 _FlexItem.story = {
-  name: 'FlexItem',
+	name: 'FlexItem',
 };
 
 export const FlexItemShrink = () => <FlexItem shrink>Flex Item</FlexItem>;
 
 FlexItemShrink.story = {
-  name: 'FlexItem (shrink)',
+	name: 'FlexItem (shrink)',
 };

@@ -27,7 +27,6 @@
 	user-select: none;
 	visibility: hidden;
 	pointer-events: none;
-
 	z-index: 75;
 
 	.c-tooltip__arrow,
@@ -49,28 +48,28 @@
 		bottom: -4px;
 		left: 50%;
 		transform: translate(-8px, 0);
-		clip: rect(4px, 20px, 20px, 0px);
+		clip-path: inset(4px 20px 20px 0);
 	}
 
 	&[data-popper-placement^="bottom"] > .c-tooltip__arrow {
 		top: -4px;
 		left: 50%;
 		transform: translate(-8px, 0);
-		clip: rect(-3px, 20px, 4px, 0px);
+		clip-path: inset(-3px, 20px, 4px, 0);
 	}
 
 	&[data-popper-placement^="left"] > .c-tooltip__arrow {
 		right: 0;
 		top: 50%;
 		transform: translate(0, -4px);
-		clip: rect(-5px, 20px, 17px, 8px);
+		clip-path: inset(-5px, 20px, 17px, 8px);
 	}
 
 	&[data-popper-placement^="right"] > .c-tooltip__arrow {
 		left: -4px;
 		top: 50%;
 		transform: translate(0, -4px);
-		clip: rect(-2px, 4px, 20px, 0px);
+		clip-path: inset(-2px, 4px, 20px, 0);
 	}
 }
 
@@ -84,5 +83,5 @@
 .c-tooltip__meta {
 	font-size: 1.3rem;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.6);
+	color: rgb(255 255 255 / 60%);
 }

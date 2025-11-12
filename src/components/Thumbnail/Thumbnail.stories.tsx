@@ -2,83 +2,83 @@ import { Avo } from '@viaa/avo2-types';
 import { Thumbnail } from './Thumbnail.js';
 
 export default {
-  title: 'components/Thumbnail',
+	title: 'components/Thumbnail',
 
-  parameters: {
-    jest: ['Thumbnail'],
-  },
+	parameters: {
+		jest: ['Thumbnail'],
+	},
 };
 
 export const ThumbnailImage = () => (
-  <div className="o-grid-col-bp3-4">
-    <Thumbnail
-      src="/images/thumbnail.jpg"
-      meta="4 items"
-      category={Avo.ContentType.English.VIDEO}
-      label="video"
-    />
-  </div>
+	<div className="o-grid-col-bp3-4">
+		<Thumbnail
+			src="/images/thumbnail.jpg"
+			meta="4 items"
+			category={Avo.ContentType.English.VIDEO}
+			label="video"
+		/>
+	</div>
 );
 
 ThumbnailImage.story = {
-  name: 'Thumbnail (image)',
+	name: 'Thumbnail (image)',
 };
 
 export const ThumbnailPlaceholder = () => (
-  <div className="o-grid-col-bp3-4">
-    <Thumbnail meta="4 items" category={Avo.ContentType.English.COLLECTION} label="collection" />
-  </div>
+	<div className="o-grid-col-bp3-4">
+		<Thumbnail meta="4 items" category={Avo.ContentType.English.COLLECTION} label="collection" />
+	</div>
 );
 
 ThumbnailPlaceholder.story = {
-  name: 'Thumbnail (placeholder)',
+	name: 'Thumbnail (placeholder)',
 };
 
 export const ThumbnailWithLabel = () => (
-  <div className="o-grid-col-bp3-4">
-    <Thumbnail
-      src="/images/thumbnail.jpg"
-      category={Avo.ContentType.English.COLLECTION}
-      meta="4 items"
-      label="collection"
-    />
-  </div>
+	<div className="o-grid-col-bp3-4">
+		<Thumbnail
+			src="/images/thumbnail.jpg"
+			category={Avo.ContentType.English.COLLECTION}
+			meta="4 items"
+			label="collection"
+		/>
+	</div>
 );
 
 ThumbnailWithLabel.story = {
-  name: 'Thumbnail with label',
+	name: 'Thumbnail with label',
 };
 
 export const ThumbnailWithoutLabel = () => (
-  <div className="o-grid-col-bp3-4">
-    <Thumbnail src="/images/thumbnail.jpg" category={Avo.ContentType.English.BUNDLE} meta="2:22" />
-  </div>
+	<div className="o-grid-col-bp3-4">
+		<Thumbnail src="/images/thumbnail.jpg" category={Avo.ContentType.English.BUNDLE} meta="2:22" />
+	</div>
 );
 
 ThumbnailWithoutLabel.story = {
-  name: 'Thumbnail without label',
+	name: 'Thumbnail without label',
 };
 
 export const ThumbnailWithoutMeta = () => (
-  <div className="o-grid-col-bp3-4">
-    <Thumbnail src="/images/thumbnail.jpg" category={Avo.ContentType.English.AUDIO} label="audio" />
-  </div>
+	<div className="o-grid-col-bp3-4">
+		<Thumbnail src="/images/thumbnail.jpg" category={Avo.ContentType.English.AUDIO} label="audio" />
+	</div>
 );
 
 ThumbnailWithoutMeta.story = {
-  name: 'Thumbnail without meta',
+	name: 'Thumbnail without meta',
 };
 
 export const ThumbnailWithShowCategoryIcon = () => (
-  <div className="o-grid-col-bp3-4">
-    <Thumbnail
-      src="/images/thumbnail.jpg"
-      category={Avo.ContentType.English.AUDIO}
-      showCategoryIcon
-    />
-  </div>
+	<div className="o-grid-col-bp3-4">
+		<Thumbnail
+			src="/images/thumbnail.jpg"
+			category={Avo.ContentType.English.AUDIO}
+			showCategoryIcon
+		/>
+	</div>
 );
 
 ThumbnailWithShowCategoryIcon.story = {
-  name: 'Thumbnail with showCategoryIcon',
+	name: 'Thumbnail with showCategoryIcon',
 };

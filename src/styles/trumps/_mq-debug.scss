@@ -4,7 +4,7 @@
    Trumps: Media query debug
    ========================================================================== */
 
-.t-mq-debug:before {
+.t-mq-debug::before {
 	content: "No breakpoint";
 	position: fixed;
 	top: 3rem;
@@ -16,25 +16,25 @@
 }
 
 @media (min-width: variables.$g-bp1) {
-	.t-mq-debug:before {
+	.t-mq-debug::before {
 		content: "Breakpoint 1";
 	}
 }
 
 @media (min-width: variables.$g-bp2) {
-	.t-mq-debug:before {
+	.t-mq-debug::before {
 		content: "Breakpoint 2";
 	}
 }
 
 @media (min-width: variables.$g-bp3) {
-	.t-mq-debug:before {
+	.t-mq-debug::before {
 		content: "Breakpoint 3";
 	}
 }
 
 @media (min-width: variables.$g-bp4) {
-	.t-mq-debug:before {
+	.t-mq-debug::before {
 		content: "Breakpoint 4";
 	}
 }

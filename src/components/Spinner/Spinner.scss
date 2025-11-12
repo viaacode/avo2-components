@@ -1,4 +1,5 @@
 @use 'sass:math';
+
 /* ==========================================================================
    Component: Spinner
    ---
@@ -11,7 +12,6 @@
 $c-spinner-container-width: 2rem;
 $c-spinner-bar-width: 0.1rem;
 $c-spinner-bar-height: 0.5rem;
-
 $c-spinner-large-container-width: 4rem;
 $c-spinner-large-bar-width: 0.2rem;
 $c-spinner-large-bar-height: 1rem;
@@ -19,10 +19,11 @@ $c-spinner-large-bar-height: 1rem;
 /* Animations
    ========================================================================== */
 
-@keyframes cSpinnerFade {
+@keyframes c-spinner-fade {
 	0% {
 		opacity: 0;
 	}
+
 	100% {
 		opacity: 1;
 	}
@@ -52,7 +53,7 @@ $c-spinner-large-bar-height: 1rem;
 
 	&.c-spinner--light {
 		.c-spinner__bar {
-			background-color: rgba(255, 255, 255, 0.8);
+			background-color: rgb(255 255 255 / 80%);
 		}
 	}
 }
@@ -67,6 +68,7 @@ $c-spinner-large-bar-height: 1rem;
 	border-radius: 4px;
 	background-color: rgba(#000,0.6);
 	transform-origin: 50% math.div($c-spinner-container-width, 2); /* container height / 2 */
+	animation: c-spinner-fade 1s infinite linear;
 
 	.c-spinner--large & {
 		left: (math.div($c-spinner-large-container-width, 2) - $c-spinner-large-bar-width);
@@ -76,20 +78,16 @@ $c-spinner-large-bar-height: 1rem;
 	}
 }
 
-.c-spinner__bar {
-	animation: cSpinnerFade 1s infinite linear;
-}
+$spin-count: 0;
+$spin-total: 12;
 
-$spinCount: 0;
-$spinTotal: 12;
-
-@while $spinCount < $spinTotal {
-	.c-spinner .c-spinner__bar:nth-child(#{$spinCount+1}) {
-		transform: rotate(#{$spinCount*30}deg);
-		animation-delay: math.div($spinCount, $spinTotal) * 1s;
+@while $spin-count < $spin-total {
+	.c-spinner .c-spinner__bar:nth-child(#{$spin-count + 1}) {
+		transform: rotate(#{$spin-count * 30}deg);
+		animation-delay: math.div($spin-count, $spin-total) * 1s;
 	}
 
-	$spinCount: $spinCount + 1;
+	$spin-count: $spin-count + 1;
 }
 
 // When spinner meets buttons

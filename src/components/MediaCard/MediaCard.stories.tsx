@@ -8,73 +8,73 @@ import { MediaCard } from './MediaCard.js';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots.js';
 
 export default {
-  title: 'components/MediaCard',
+	title: 'components/MediaCard',
 
-  parameters: {
-    jest: ['MediaCard'],
-  },
+	parameters: {
+		jest: ['MediaCard'],
+	},
 };
 
 export const MediaCardVertical = () => (
-  <div className="o-grid-col-bp3-4">
-    <MediaCard
-      title="What an amazing title!"
-      onClick={action('clicked on media card')}
-      category={Avo.ContentType.English.COLLECTION}
-      orientation="vertical"
-    >
-      <MediaCardThumbnail>
-        <Thumbnail
-          category={Avo.ContentType.English.COLLECTION}
-          src="/images/thumbnail.jpg"
-          meta="7 items"
-          topRight={<div onClick={action('clicked on source')}>{'Bron >'}</div>}
-          label="collection"
-          alt="What an amazing thumbnail!"
-        />
-      </MediaCardThumbnail>
-      <MediaCardMetaData>
-        <MetaData category={Avo.ContentType.English.COLLECTION}>
-          <MetaDataItem label="vrt" />
-          <MetaDataItem label="728" icon={IconNameSchema.eye} />
-          <MetaDataItem label="2d geleden" />
-        </MetaData>
-      </MediaCardMetaData>
-    </MediaCard>
-  </div>
+	<div className="o-grid-col-bp3-4">
+		<MediaCard
+			title="What an amazing title!"
+			onClick={action('clicked on media card')}
+			category={Avo.ContentType.English.COLLECTION}
+			orientation="vertical"
+		>
+			<MediaCardThumbnail>
+				<Thumbnail
+					category={Avo.ContentType.English.COLLECTION}
+					src="/images/thumbnail.jpg"
+					meta="7 items"
+					topRight={<div onClick={action('clicked on source')}>{'Bron >'}</div>}
+					label="collection"
+					alt="What an amazing thumbnail!"
+				/>
+			</MediaCardThumbnail>
+			<MediaCardMetaData>
+				<MetaData category={Avo.ContentType.English.COLLECTION}>
+					<MetaDataItem label="vrt" />
+					<MetaDataItem label="728" icon={IconNameSchema.eye} />
+					<MetaDataItem label="2d geleden" />
+				</MetaData>
+			</MediaCardMetaData>
+		</MediaCard>
+	</div>
 );
 
 MediaCardVertical.story = {
-  name: 'Media card (vertical)',
+	name: 'Media card (vertical)',
 };
 
 export const MediaCardHorizontal = () => (
-  <MediaCard
-    title="What an amazing title!"
-    onClick={action('clicked on media card')}
-    category={Avo.ContentType.English.COLLECTION}
-    orientation="horizontal"
-  >
-    <MediaCardThumbnail>
-      <Thumbnail
-        category={Avo.ContentType.English.COLLECTION}
-        src="/images/thumbnail.jpg"
-        meta="7 items"
-        topRight={<div onClick={action('clicked on source')}>{'Bron >'}</div>}
-        label="collection"
-        alt="What an amazing thumbnail!"
-      />
-    </MediaCardThumbnail>
-    <MediaCardMetaData>
-      <MetaData category={Avo.ContentType.English.COLLECTION}>
-        <MetaDataItem label="vrt" />
-        <MetaDataItem label="728" icon={IconNameSchema.eye} />
-        <MetaDataItem label="2d geleden" />
-      </MetaData>
-    </MediaCardMetaData>
-  </MediaCard>
+	<MediaCard
+		title="What an amazing title!"
+		onClick={action('clicked on media card')}
+		category={Avo.ContentType.English.COLLECTION}
+		orientation="horizontal"
+	>
+		<MediaCardThumbnail>
+			<Thumbnail
+				category={Avo.ContentType.English.COLLECTION}
+				src="/images/thumbnail.jpg"
+				meta="7 items"
+				topRight={<div onClick={action('clicked on source')}>{'Bron >'}</div>}
+				label="collection"
+				alt="What an amazing thumbnail!"
+			/>
+		</MediaCardThumbnail>
+		<MediaCardMetaData>
+			<MetaData category={Avo.ContentType.English.COLLECTION}>
+				<MetaDataItem label="vrt" />
+				<MetaDataItem label="728" icon={IconNameSchema.eye} />
+				<MetaDataItem label="2d geleden" />
+			</MetaData>
+		</MediaCardMetaData>
+	</MediaCard>
 );
 
 MediaCardHorizontal.story = {
-  name: 'Media card (horizontal)',
+	name: 'Media card (horizontal)',
 };

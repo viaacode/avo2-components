@@ -1,25 +1,25 @@
 import { DeadlineIndicator } from './DeadlineIndicator.js';
 
 export default {
-  title: 'components/DeadlineIndicator',
+	title: 'components/DeadlineIndicator',
 
-  parameters: {
-    jest: ['DeadlineIndicator'],
-  },
+	parameters: {
+		jest: ['DeadlineIndicator'],
+	},
 };
 
 export const DeadlineIndicators = () => (
-  <>
-    <DeadlineIndicator />
-    <DeadlineIndicator color="yellow" />
-    <DeadlineIndicator color="success" />
+	<>
+		<DeadlineIndicator />
+		<DeadlineIndicator color="yellow" />
+		<DeadlineIndicator color="success" />
 
-    <DeadlineIndicator shape="square" />
-    <DeadlineIndicator shape="diamond" />
-    <DeadlineIndicator shape="circle" />
-  </>
+		<DeadlineIndicator shape="square" />
+		<DeadlineIndicator shape="diamond" />
+		<DeadlineIndicator shape="circle" />
+	</>
 );
 
 DeadlineIndicators.story = {
-  name: 'DeadlineIndicators',
+	name: 'DeadlineIndicators',
 };
