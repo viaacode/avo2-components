@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 
-import { Badge } from './Badge.js';
+import { Badge } from './Badge';
 
 describe('<Badge />', () => {
 	it('Should be able to render', () => {

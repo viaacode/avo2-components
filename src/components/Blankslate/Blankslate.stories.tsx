@@ -1,7 +1,7 @@
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import { Spacer } from '../Spacer/Spacer.js';
+import { IconNameSchema } from '../Icon/Icon.types';
+import { Spacer } from '../Spacer/Spacer';
 
-import { Blankslate } from './Blankslate.js';
+import { Blankslate } from './Blankslate';
 
 export default {
 	title: 'components/Blankslate',

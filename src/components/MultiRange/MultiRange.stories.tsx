@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
 
-import { MultiRange } from './MultiRange.js';
+import { MultiRange } from './MultiRange';
 
 const MultiRangeStoryComponent = ({
 	children,

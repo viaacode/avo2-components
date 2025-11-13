@@ -4,8 +4,8 @@ import type { FunctionComponent } from 'react';
 import Select, { type ActionMeta } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
-import { noop } from '../../helpers/noop.js';
-import type { DefaultProps } from '../../types/index.js';
+import { noop } from '../../helpers/noop';
+import type { DefaultProps } from '../../types';
 
 import './TagsInput.scss';
 

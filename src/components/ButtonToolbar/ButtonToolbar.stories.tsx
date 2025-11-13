@@ -1,7 +1,7 @@
-import { times } from '../../helpers/times.js';
-import { Button } from '../Button/Button.js';
+import { times } from '../../helpers/times';
+import { Button } from '../Button/Button';
 
-import { ButtonToolbar } from './ButtonToolbar.js';
+import { ButtonToolbar } from './ButtonToolbar';
 
 export default {
 	title: 'components/ButtonToolbar',

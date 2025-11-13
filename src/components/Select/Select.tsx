@@ -2,11 +2,11 @@ import clsx from 'clsx';
 import type React from 'react';
 import type { FunctionComponent } from 'react';
 import ReactSelect, { type ActionMeta } from 'react-select';
-import type { CreatableAdditionalProps } from '../../../node_modules/react-select/dist/declarations/src/useCreatable.js';
-import type { StateManagerProps } from '../../../node_modules/react-select/dist/declarations/src/useStateManager.js';
+import type { CreatableAdditionalProps } from '../../../node_modules/react-select/dist/declarations/src/useCreatable';
+import type { StateManagerProps } from '../../../node_modules/react-select/dist/declarations/src/useStateManager';
 
-import { noop } from '../../helpers/noop.js';
-import type { DefaultProps } from '../../types/index.js';
+import { noop } from '../../helpers/noop';
+import type { DefaultProps } from '../../types';
 
 import './Select.scss';
 

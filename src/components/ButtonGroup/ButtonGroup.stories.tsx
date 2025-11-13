@@ -1,6 +1,6 @@
-import { Button } from '../Button/Button.js';
+import { Button } from '../Button/Button';
 
-import { ButtonGroup } from './ButtonGroup.js';
+import { ButtonGroup } from './ButtonGroup';
 
 export default {
 	title: 'components/ButtonGroup',

@@ -1,11 +1,11 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { action } from 'storybook/actions';
 
-import { Box } from '../Box/Box.js';
-import { Spacer } from '../Spacer/Spacer.js';
+import { Box } from '../Box/Box';
+import { Spacer } from '../Spacer/Spacer';
 
-import { Alert } from './Alert.js';
-import type { AlertPropsSchema, AlertTypeSchema } from './Alert.types.js';
+import { Alert } from './Alert';
+import type { AlertPropsSchema, AlertTypeSchema } from './Alert.types';
 
 function getMultiLineAlertMessage(type: string) {
 	return (

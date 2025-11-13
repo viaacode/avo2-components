@@ -1,7 +1,7 @@
-import { Spacer } from '../Spacer/Spacer.js';
+import { Spacer } from '../Spacer/Spacer';
 
-import { Tooltip } from './Tooltip.js';
-import { TooltipContent, TooltipTrigger } from './Tooltip.slots.js';
+import { Tooltip } from './Tooltip';
+import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
 export default {
 	title: 'components/Tooltip',

@@ -1,5 +1,5 @@
-export { default as Eid } from './Eid.js';
-export { default as Itsme } from './Itsme.js';
-export { default as Klascement } from './Klascement.js';
-export { default as Leerid } from './Leerid.js';
-export { default as Smartschool } from './Smartschool.js';
+export { default as Eid } from './Eid';
+export { default as Itsme } from './Itsme';
+export { default as Klascement } from './Klascement';
+export { default as Leerid } from './Leerid';
+export { default as Smartschool } from './Smartschool';

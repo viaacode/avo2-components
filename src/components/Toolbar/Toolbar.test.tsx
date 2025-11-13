@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 
-import { Toolbar } from './Toolbar.js';
-import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots.js';
-import { ToolbarItem } from './ToolbarItem/ToolbarItem.js';
+import { Toolbar } from './Toolbar';
+import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
+import { ToolbarItem } from './ToolbarItem/ToolbarItem';
 
 describe('<Toolbar />', () => {
 	it('Should be able to render', () => {

@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import type React from 'react';
 import type { FunctionComponent } from 'react';
 
-import { noop } from '../../helpers/noop.js';
-import type { DefaultProps } from '../../types/index.js';
+import { noop } from '../../helpers/noop';
+import type { DefaultProps } from '../../types';
 
-import { Tab, type TabPropsSchema } from './Tab/Tab.js';
+import { Tab, type TabPropsSchema } from './Tab/Tab';
 import styles from './Tabs.module.scss';
 
 export interface TabsPropsSchema extends DefaultProps {

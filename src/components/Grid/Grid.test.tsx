@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 
-import { Column } from './Column/Column.js';
-import { Grid } from './Grid.js';
+import { Column } from './Column/Column';
+import { Grid } from './Grid';
 
 describe('<Grid />', () => {
 	it('Should be able to render', () => {

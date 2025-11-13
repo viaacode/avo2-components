@@ -1,8 +1,8 @@
 import { Fragment, type FunctionComponent, type ReactNode } from 'react';
 
-import useCollapsed from '../../hooks/react-collapsed/react-collapsed.js';
-import { Button } from '../Button/Button.js';
-import { Spacer } from '../Spacer/Spacer.js';
+import useCollapsed from '../../hooks/react-collapsed/react-collapsed';
+import { Button } from '../Button/Button';
+import { Spacer } from '../Spacer/Spacer';
 
 export interface ExpandableContainerPropsSchema {
 	children: ReactNode;

@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import { Fragment } from 'react';
 
-import { FormGroup } from './FormGroup.js';
+import { FormGroup } from './FormGroup';
 
 describe('<FormGroup />', () => {
 	it('Should be able to render', () => {

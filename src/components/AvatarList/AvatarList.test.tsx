@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 
-import { AvatarList } from './AvatarList.js';
-import { mockAvatars } from './AvatarList.stories.js';
+import { AvatarList } from './AvatarList';
+import { mockAvatars } from './AvatarList.stories';
 
 describe('AvatarList', () => {
 	const avatarsLength = mockAvatars.length;

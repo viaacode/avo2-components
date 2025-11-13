@@ -1,4 +1,4 @@
-import { AspectRatioWrapper } from './AspectRatioWrapper.js';
+import { AspectRatioWrapper } from './AspectRatioWrapper';
 
 export default {
 	title: 'components/AspectRatioWrapper',

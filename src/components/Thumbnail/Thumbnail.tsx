@@ -3,13 +3,13 @@ import clsx from 'clsx';
 import type React from 'react';
 import { type FunctionComponent, type ReactNode, useEffect, useState } from 'react';
 
-import { noop } from '../../helpers/noop.js';
-import type { DefaultProps } from '../../types/index.js';
-import { Icon } from '../Icon/Icon.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
+import { noop } from '../../helpers/noop';
+import type { DefaultProps } from '../../types';
+import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import './Thumbnail.scss';
-import { handleEnterOrSpace } from '../../utils/index.js';
+import { handleEnterOrSpace } from '../../utils';
 
 export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
 	audio: IconNameSchema.headphone,

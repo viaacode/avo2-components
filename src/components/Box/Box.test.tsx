@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 
-import { Box } from './Box.js';
+import { Box } from './Box';
 
 describe('<Box />', () => {
 	it('Should be able to render', () => {

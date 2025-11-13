@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { FunctionComponent, ReactNode } from 'react';
 
-import type { DefaultProps } from '../../../types/index.js';
+import type { DefaultProps } from '../../../types';
 
 export interface PanelHeaderProps extends DefaultProps {
 	children: ReactNode;

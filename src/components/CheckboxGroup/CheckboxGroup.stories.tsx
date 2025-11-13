@@ -1,6 +1,6 @@
-import { Checkbox } from '../Checkbox/Checkbox.js';
+import { Checkbox } from '../Checkbox/Checkbox';
 
-import { CheckboxGroup } from './CheckboxGroup.js';
+import { CheckboxGroup } from './CheckboxGroup';
 
 export default {
 	title: 'components/CheckboxGroup',

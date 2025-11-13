@@ -1,15 +1,15 @@
 import clsx from 'clsx';
 import { type FC, Fragment } from 'react';
 
-import type { DefaultProps } from '../../types/index.js';
-import { handleEnterOrSpace } from '../../utils/index.js';
-import { Avatar, type AvatarPropsSchema } from '../Avatar/Avatar.js';
-import { Dropdown } from '../Dropdown/Dropdown.js';
-import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots.js';
-import { Flex } from '../Flex/Flex.js';
-import { Spacer } from '../Spacer/Spacer.js';
-import { Tooltip } from '../Tooltip/Tooltip.js';
-import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots.js';
+import type { DefaultProps } from '../../types';
+import { handleEnterOrSpace } from '../../utils';
+import { Avatar, type AvatarPropsSchema } from '../Avatar/Avatar';
+import { Dropdown } from '../Dropdown/Dropdown';
+import { DropdownButton, DropdownContent } from '../Dropdown/Dropdown.slots';
+import { Flex } from '../Flex/Flex';
+import { Spacer } from '../Spacer/Spacer';
+import { Tooltip } from '../Tooltip/Tooltip';
+import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 import styles from './AvatarList.module.scss';
 
 interface ExtendedAvatarProps extends AvatarPropsSchema {

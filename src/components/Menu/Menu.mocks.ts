@@ -1,7 +1,7 @@
 import { Avo } from '@viaa/avo2-types';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import type { MenuItemInfoSchema } from './MenuContent/MenuContent.js';
-import type { MenuSearchResultItemInfoSchema } from './MenuSearchResultContent/MenuSearchResultContent.js';
+import { IconNameSchema } from '../Icon/Icon.types';
+import type { MenuItemInfoSchema } from './MenuContent/MenuContent';
+import type { MenuSearchResultItemInfoSchema } from './MenuSearchResultContent/MenuSearchResultContent';
 
 export const menuItems = [
 	{ label: 'Aluminium', id: 'aluminium', key: 'aluminium' },

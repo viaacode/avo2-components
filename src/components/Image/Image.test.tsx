@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 
 import image500x200 from '../../../static/images/500x200.jpg';
 
-import { Image } from './Image.js';
+import { Image } from './Image';
 
 describe('<Image />', () => {
 	it('Should be able to render', () => {

@@ -2,21 +2,21 @@ import type { Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import type { FunctionComponent, ReactNode } from 'react';
 
-import { useSlot } from '../../hooks/useSlot.js';
-import { type DefaultProps, translateContentType } from '../../types/index.js';
-import { Container, type ContainerPropsSchema } from '../Container/Container.js';
-import { Flex } from '../Flex/Flex.js';
-import { HeaderContentType } from '../HeaderContentType/HeaderContentType.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import { MetaData } from '../MetaData/MetaData.js';
-import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem.js';
-import { Spacer } from '../Spacer/Spacer.js';
-import { Toolbar } from '../Toolbar/Toolbar.js';
-import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots.js';
-import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem.js';
+import { useSlot } from '../../hooks/useSlot';
+import { type DefaultProps, translateContentType } from '../../types';
+import { Container, type ContainerPropsSchema } from '../Container/Container';
+import { Flex } from '../Flex/Flex';
+import { HeaderContentType } from '../HeaderContentType/HeaderContentType';
+import { IconNameSchema } from '../Icon/Icon.types';
+import { MetaData } from '../MetaData/MetaData';
+import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
+import { Spacer } from '../Spacer/Spacer';
+import { Toolbar } from '../Toolbar/Toolbar';
+import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
+import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import './Header.scss';
-import { handleEnterOrSpace } from '../../utils/index.js';
+import { handleEnterOrSpace } from '../../utils';
 import {
 	HeaderAvatar,
 	HeaderBottomRowLeft,
@@ -28,7 +28,7 @@ import {
 	HeaderTags,
 	HeaderTopRowLeft,
 	HeaderTopRowRight,
-} from './Header.slots.js';
+} from './Header.slots';
 
 export interface HeaderPropsSchema extends DefaultProps {
 	bookmarks?: string;

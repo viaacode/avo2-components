@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 
-import { ModalBackdrop } from './ModalBackdrop.js';
+import { ModalBackdrop } from './ModalBackdrop';
 
 describe('<ModalBackdrop />', () => {
 	it('Should be able to render', () => {

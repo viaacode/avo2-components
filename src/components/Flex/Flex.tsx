@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { FunctionComponent, ReactNode } from 'react';
 
-import type { DefaultProps, Orientation } from '../../types/index.js';
+import type { DefaultProps, Orientation } from '../../types';
 
 import './Flex.scss';
 

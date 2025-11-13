@@ -8,9 +8,9 @@ import {
 	useState,
 } from 'react';
 
-import { bemCls, keysEnter, keysEscape, keysSpacebar, onKey } from '../../utils/index.js';
+import { bemCls, keysEnter, keysEscape, keysSpacebar, onKey } from '../../utils';
 
-import type { ContentInputPropsSchema, StopPropagationObject } from './ContentInput.types.js';
+import type { ContentInputPropsSchema, StopPropagationObject } from './ContentInput.types';
 
 // Taken from viaacode/react-components/src/components/TextInput/TextInput.tsx
 const TextInputDefaults = {

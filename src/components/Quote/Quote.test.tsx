@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 
-import { Quote } from './Quote.js';
-import { MOCK_QUOTE_WITH_IMG } from './Quote.mock.js';
+import { Quote } from './Quote';
+import { MOCK_QUOTE_WITH_IMG } from './Quote.mock';
 
 const CUSTOM_CLASS = 'c-block-custom';
 

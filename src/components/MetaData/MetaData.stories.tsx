@@ -1,7 +1,7 @@
 import { Avo } from '@viaa/avo2-types';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import { MetaData } from './MetaData.js';
-import { MetaDataItem } from './MetaDataItem/MetaDataItem.js';
+import { IconNameSchema } from '../Icon/Icon.types';
+import { MetaData } from './MetaData';
+import { MetaDataItem } from './MetaDataItem/MetaDataItem';
 
 export default {
 	title: 'components/MetaData',

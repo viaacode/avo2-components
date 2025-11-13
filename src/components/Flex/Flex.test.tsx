@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import { loremIpsum } from 'lorem-ipsum';
 
-import { Flex } from './Flex.js';
+import { Flex } from './Flex';
 
 const content = loremIpsum({ count: 1 });
 const customClass = 'c-flex-custom';

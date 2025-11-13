@@ -1,14 +1,14 @@
 import { mount, shallow } from 'enzyme';
 
-import { Menu } from './Menu.js';
+import { Menu } from './Menu';
 import {
 	menuItems,
 	menuItemsWithDivider,
 	menuItemsWithIcons,
 	menuItemsWithSearch,
-} from './Menu.mocks.js';
-import type { MenuItemInfoSchema } from './MenuContent/MenuContent.js';
-import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent.js';
+} from './Menu.mocks';
+import type { MenuItemInfoSchema } from './MenuContent/MenuContent';
+import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent';
 
 describe('<MenuItem />', () => {
 	it('Should be able to render', () => {

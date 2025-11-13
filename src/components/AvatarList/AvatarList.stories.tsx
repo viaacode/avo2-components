@@ -1,7 +1,7 @@
-import { noop } from '../../helpers/noop.js';
-import { Spacer } from '../Spacer/Spacer.js';
+import { noop } from '../../helpers/noop';
+import { Spacer } from '../Spacer/Spacer';
 
-import { AvatarList } from './AvatarList.js';
+import { AvatarList } from './AvatarList';
 
 export const mockAvatars = [
 	{

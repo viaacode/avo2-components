@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 import { Fragment } from 'react';
 
-import { Panel } from './Panel.js';
-import { PanelBody, PanelHeader } from './Panel.slots.js';
+import { Panel } from './Panel';
+import { PanelBody, PanelHeader } from './Panel.slots';
 
 describe('<Panel />', () => {
 	it('Should be able to render', () => {

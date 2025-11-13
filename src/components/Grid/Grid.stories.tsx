@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ReactNode } from 'react';
 
-import { Column } from './Column/Column.js';
-import { Grid } from './Grid.js';
+import { Column } from './Column/Column';
+import { Grid } from './Grid';
 
 const GridDecorator = (story: () => ReactNode) => (
 	<div className="br-styleguide">

@@ -1,6 +1,6 @@
 import { mount, shallow } from 'enzyme';
 
-import { Spacer, type SpacerOptionSchema } from './Spacer.js';
+import { Spacer, type SpacerOptionSchema } from './Spacer';
 
 describe('<Spacer />', () => {
 	it('Should be able to render', () => {

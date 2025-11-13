@@ -1,4 +1,4 @@
-import { DeadlineIndicator } from './DeadlineIndicator.js';
+import { DeadlineIndicator } from './DeadlineIndicator';
 
 export default {
 	title: 'components/DeadlineIndicator',

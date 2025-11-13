@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions';
 import { Avo } from '@viaa/avo2-types';
-import { testRenderLink } from '../../helpers/index.js';
-import { LinkTarget } from '../../types/index.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import type { CTAPropsSchema } from './CTA.js';
+import { testRenderLink } from '../../helpers';
+import { LinkTarget } from '../../types';
+import { IconNameSchema } from '../Icon/Icon.types';
+import type { CTAPropsSchema } from './CTA';
 
 export const CTA_MOCK: CTAPropsSchema = {
 	heading: 'Titel',

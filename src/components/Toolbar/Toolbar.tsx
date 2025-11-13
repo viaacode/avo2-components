@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import type { FunctionComponent, ReactNode } from 'react';
 
-import { useSlot } from '../../hooks/useSlot.js';
-import type { DefaultProps } from '../../types/index.js';
+import { useSlot } from '../../hooks/useSlot';
+import type { DefaultProps } from '../../types';
 
 import './Toolbar.scss';
-import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots.js';
+import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
 
 export interface ToolbarPropsSchema extends DefaultProps {
 	children: ReactNode;

@@ -2,10 +2,10 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { type ReactElement, useCallback, useEffect, useState } from 'react';
 import { action } from 'storybook/actions';
 
-import { Button } from '../Button/Button.js';
-import { Icon } from '../Icon/Icon.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import { Table, type TableColumnSchema, type TablePropsSchema } from './Table.js';
+import { Button } from '../Button/Button';
+import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
+import { Table, type TableColumnSchema, type TablePropsSchema } from './Table';
 
 const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },

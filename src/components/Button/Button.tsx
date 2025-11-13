@@ -1,14 +1,14 @@
 import clsx from 'clsx';
 import type { FunctionComponent, KeyboardEvent, MouseEvent, ReactNode } from 'react';
 
-import type { DefaultProps } from '../../types/index.js';
-import { handleEnterOrSpace } from '../../utils/index.js';
-import { Icon } from '../Icon/Icon.js';
-import { IconNameSchema, type IconTypeSchema } from '../Icon/Icon.types.js';
-import { Tooltip } from '../Tooltip/Tooltip.js';
-import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots.js';
+import type { DefaultProps } from '../../types';
+import { handleEnterOrSpace } from '../../utils';
+import { Icon } from '../Icon/Icon';
+import { IconNameSchema, type IconTypeSchema } from '../Icon/Icon.types';
+import { Tooltip } from '../Tooltip/Tooltip';
+import { TooltipContent, TooltipTrigger } from '../Tooltip/Tooltip.slots';
 import styles from './Button.module.scss';
-import type { ButtonTypeSchema } from './Button.types.js';
+import type { ButtonTypeSchema } from './Button.types';
 import skins from './Button-skins.module.scss';
 
 export interface ButtonPropsSchema extends DefaultProps {

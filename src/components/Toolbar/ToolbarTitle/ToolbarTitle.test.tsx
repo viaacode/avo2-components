@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import { Fragment } from 'react';
 
-import { ToolbarTitle } from './ToolbarTitle.js';
+import { ToolbarTitle } from './ToolbarTitle';
 
 describe('<ToolbarTitle />', () => {
 	it('Should be able to render', () => {

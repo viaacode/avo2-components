@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import type { IconNameSchema } from '../../Icon/Icon.types.js';
-import { Tab } from './Tab.js';
+import type { IconNameSchema } from '../../Icon/Icon.types';
+import { Tab } from './Tab';
 
 const mockTab = {
 	id: 'videosTestId',

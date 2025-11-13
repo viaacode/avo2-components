@@ -1,8 +1,8 @@
 import { Avo } from '@viaa/avo2-types';
 import { mount, shallow } from 'enzyme';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import { MetaData } from './MetaData.js';
-import { MetaDataItem } from './MetaDataItem/MetaDataItem.js';
+import { IconNameSchema } from '../Icon/Icon.types';
+import { MetaData } from './MetaData';
+import { MetaDataItem } from './MetaDataItem/MetaDataItem';
 
 describe('<MetaDataItem />', () => {
 	it('Should be able to render', () => {

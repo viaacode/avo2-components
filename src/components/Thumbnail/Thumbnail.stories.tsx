@@ -1,5 +1,5 @@
 import { Avo } from '@viaa/avo2-types';
-import { Thumbnail } from './Thumbnail.js';
+import { Thumbnail } from './Thumbnail';
 
 export default {
 	title: 'components/Thumbnail',

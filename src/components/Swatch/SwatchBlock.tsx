@@ -1,8 +1,8 @@
 import type React from 'react';
 import { Fragment, type FunctionComponent } from 'react';
 
-import { Swatch } from './Swatch.js';
-import { SwatchList } from './SwatchList.js';
+import { Swatch } from './Swatch';
+import { SwatchList } from './SwatchList';
 
 export interface SwatchBlockProps {
 	children?: React.ReactNode;

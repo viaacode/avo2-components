@@ -1,9 +1,9 @@
 import thumbnail from '../../../static/images/thumbnail.jpg';
-import { Box } from '../Box/Box.js';
-import { Icon } from '../Icon/Icon.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
+import { Box } from '../Box/Box';
+import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
-import { Avatar } from './Avatar.js';
+import { Avatar } from './Avatar';
 
 export default {
 	title: 'components/Avatar',

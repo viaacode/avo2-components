@@ -1,6 +1,6 @@
-import { COLORS } from '../../colors/index.js';
+import { COLORS } from '../../colors';
 
-import { Spinner } from './Spinner.js';
+import { Spinner } from './Spinner';
 
 export default {
 	title: 'components/Spinner',

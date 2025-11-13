@@ -1,4 +1,4 @@
-import { FlexItem } from '../FlexItem/FlexItem.js';
+import { FlexItem } from '../FlexItem/FlexItem';
 
 export default {
 	title: 'components/FlexItem',

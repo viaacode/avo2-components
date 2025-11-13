@@ -1,15 +1,15 @@
 import { mount, shallow } from 'enzyme';
 import { Fragment } from 'react';
 
-import { Modal } from './Modal.js';
+import { Modal } from './Modal';
 import {
 	ModalBody,
 	ModalFooterLeft,
 	ModalFooterRight,
 	ModalHeaderRight,
 	ModalSubHeader,
-} from './Modal.slots.js';
-import { ModalBackdrop } from './ModalBackdrop.js';
+} from './Modal.slots';
+import { ModalBackdrop } from './ModalBackdrop';
 
 describe('<Modal />', () => {
 	it('Should be able to render', () => {

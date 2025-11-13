@@ -1,5 +1,5 @@
 import { Avo } from '@viaa/avo2-types';
-import { HeaderContentType } from './HeaderContentType.js';
+import { HeaderContentType } from './HeaderContentType';
 
 export default {
 	title: 'components/HeaderContentType',

@@ -3,9 +3,9 @@ import clsx from 'clsx';
 import type React from 'react';
 import { type ChangeEvent, type FunctionComponent, useEffect } from 'react';
 
-import { noop } from '../../helpers/noop.js';
-import { useCallbackRef } from '../../hooks/useCallbackRef.js';
-import type { DefaultProps } from '../../types/index.js';
+import { noop } from '../../helpers/noop';
+import { useCallbackRef } from '../../hooks/useCallbackRef';
+import type { DefaultProps } from '../../types';
 
 export interface TextAreaPropsSchema extends DefaultProps {
 	children?: React.ReactNode;

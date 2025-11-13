@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
 
-import { menuItems } from '../Menu/Menu.mocks.js';
-import { MoreOptionsDropdown } from './MoreOptionsDropdown.js';
+import { menuItems } from '../Menu/Menu.mocks';
+import { MoreOptionsDropdown } from './MoreOptionsDropdown';
 
 const MoreOptionsDropdownStory = ({
 	children,

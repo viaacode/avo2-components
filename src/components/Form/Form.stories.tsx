@@ -1,11 +1,11 @@
 import { Fragment } from 'react';
 
-import { Button } from '../Button/Button.js';
-import { Select } from '../Select/Select.js';
-import { TextInput } from '../TextInput/TextInput.js';
+import { Button } from '../Button/Button';
+import { Select } from '../Select/Select';
+import { TextInput } from '../TextInput/TextInput';
 
-import { Form } from './Form.js';
-import { FormGroup } from './FormGroup/FormGroup.js';
+import { Form } from './Form';
+import { FormGroup } from './FormGroup/FormGroup';
 
 export default {
 	title: 'components/Form',

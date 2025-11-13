@@ -1,13 +1,13 @@
 import { action } from 'storybook/actions';
 
-import { Menu } from './Menu.js';
+import { Menu } from './Menu';
 import {
 	menuItems,
 	menuItemsWithDivider,
 	menuItemsWithIcons,
 	menuItemsWithSearch,
-} from './Menu.mocks.js';
-import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent.js';
+} from './Menu.mocks';
+import { MenuSearchResultContent } from './MenuSearchResultContent/MenuSearchResultContent';
 
 export default {
 	title: 'components/Menu',

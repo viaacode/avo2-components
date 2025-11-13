@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 
-import { AspectRatioWrapper, type AspectRatioWrapperPropsSchema } from './AspectRatioWrapper.js';
+import { AspectRatioWrapper, type AspectRatioWrapperPropsSchema } from './AspectRatioWrapper';
 
 const aspectRatioWrapper = (props: AspectRatioWrapperPropsSchema = {}) => (
 	<AspectRatioWrapper {...props}>

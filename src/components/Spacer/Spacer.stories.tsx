@@ -1,7 +1,7 @@
 import { loremIpsum } from 'lorem-ipsum';
 import { Fragment } from 'react';
 
-import { Spacer } from './Spacer.js';
+import { Spacer } from './Spacer';
 
 const content = loremIpsum({ count: 3 });
 

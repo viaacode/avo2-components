@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 
-import { CTA } from './CTA.js';
-import { CTA_MOCK } from './CTA.mock.js';
+import { CTA } from './CTA';
+import { CTA_MOCK } from './CTA.mock';
 
 describe('<CTA />', () => {
 	it('Should be able to render', () => {

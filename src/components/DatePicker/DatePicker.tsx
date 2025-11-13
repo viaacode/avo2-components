@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { format, isValid } from 'date-fns';
 // https://github.com/Hacker0x01/react-datepicker/issues/1815#issuecomment-513215416
-import nlBe from 'date-fns/locale/nl-BE/index.js';
+import nlBe from 'date-fns/locale/nl-BE';
 import type React from 'react';
 import type { FunctionComponent } from 'react';
 import ReactDatePicker, {
@@ -10,10 +10,10 @@ import ReactDatePicker, {
 	setDefaultLocale,
 } from 'react-datepicker';
 
-import { noop } from '../../helpers/noop.js';
-import type { DefaultProps } from '../../types/index.js';
-import { Icon } from '../Icon/Icon.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
+import { noop } from '../../helpers/noop';
+import type { DefaultProps } from '../../types';
+import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 
 import './DatePicker.scss';
 

@@ -1,6 +1,6 @@
 import { loremIpsum } from 'lorem-ipsum';
 
-import { ExpandableContainer } from './ExpandableContainer.js';
+import { ExpandableContainer } from './ExpandableContainer';
 
 export default {
 	title: 'components/ExpandableContainer',

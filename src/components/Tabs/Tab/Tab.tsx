@@ -2,13 +2,13 @@ import clsx from 'clsx';
 import type React from 'react';
 import type { FunctionComponent, ReactNode } from 'react';
 
-import { noop } from '../../../helpers/noop.js';
-import type { DefaultProps } from '../../../types/index.js';
-import { Icon } from '../../Icon/Icon.js';
-import type { IconNameSchema } from '../../Icon/Icon.types.js';
+import { noop } from '../../../helpers/noop';
+import type { DefaultProps } from '../../../types';
+import { Icon } from '../../Icon/Icon';
+import type { IconNameSchema } from '../../Icon/Icon.types';
 
 import './Tab.scss';
-import { handleEnterOrSpace } from '../../../utils/index.js';
+import { handleEnterOrSpace } from '../../../utils';
 
 export interface TabPropsSchema extends DefaultProps {
 	children?: React.ReactNode;

@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 
-import { Pill } from './Pill.js';
-import { MOCK_PILL, MOCK_PILL__ACTIVE } from './Pill.mock.js';
+import { Pill } from './Pill';
+import { MOCK_PILL, MOCK_PILL__ACTIVE } from './Pill.mock';
 
 const CUSTOM_CLASS = 'c-pill--custom';
 

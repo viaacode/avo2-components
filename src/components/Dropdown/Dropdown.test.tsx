@@ -1,9 +1,9 @@
 import { mount, shallow } from 'enzyme';
 
-import { Button } from '../Button/Button.js';
+import { Button } from '../Button/Button';
 
-import { Dropdown } from './Dropdown.js';
-import { DropdownButton, DropdownContent } from './Dropdown.slots.js';
+import { Dropdown } from './Dropdown';
+import { DropdownButton, DropdownContent } from './Dropdown.slots';
 
 describe('<Dropdown />', () => {
 	it('Should be able to render', () => {

@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 
-import { Avatar } from './Avatar.js';
-import { AvatarIcon } from './AvatarIcon/AvatarIcon.js';
+import { Avatar } from './Avatar';
+import { AvatarIcon } from './AvatarIcon/AvatarIcon';
 
 describe('<Avatar />', () => {
 	it('Should be able to render', () => {

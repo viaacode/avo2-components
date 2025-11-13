@@ -2,7 +2,7 @@ import type { Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import type { FunctionComponent, ReactNode } from 'react';
 
-import type { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types';
 
 import './MetaData.scss';
 

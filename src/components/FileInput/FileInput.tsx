@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import type React from 'react';
 import type { ChangeEvent, FunctionComponent } from 'react';
 
-import { noop } from '../../helpers/noop.js';
-import type { DefaultProps } from '../../types/index.js';
-import { Button } from '../Button/Button.js';
+import { noop } from '../../helpers/noop';
+import type { DefaultProps } from '../../types';
+import { Button } from '../Button/Button';
 
 import './FileInput.scss';
 

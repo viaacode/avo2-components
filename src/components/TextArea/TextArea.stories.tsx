@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
-import { Spacer } from '../Spacer/Spacer.js';
-import { TextArea } from './TextArea.js';
+import { Spacer } from '../Spacer/Spacer';
+import { TextArea } from './TextArea';
 
 const TextAreaStoryComponent = ({
 	children,

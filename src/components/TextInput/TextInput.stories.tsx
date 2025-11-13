@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import { Spacer } from '../Spacer/Spacer.js';
-import { TextInput } from './TextInput.js';
+import { IconNameSchema } from '../Icon/Icon.types';
+import { Spacer } from '../Spacer/Spacer';
+import { TextInput } from './TextInput';
 
 const TextInputStoryComponent = ({
 	children,

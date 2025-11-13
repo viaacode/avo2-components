@@ -1,219 +1,219 @@
 // tslint:disable:@typescript-eslint/no-unused-vars
-import type { AccordionPropsSchema } from './Accordion/Accordion.js';
-import type { AlertPropsSchema, AlertTypeSchema } from './Alert/Alert.types.js';
-import type { AspectRatioWrapperPropsSchema } from './AspectRatioWrapper/AspectRatioWrapper.js';
-import type { AvatarPropsSchema } from './Avatar/Avatar.js';
-import type { AvatarIconPropsSchema } from './Avatar/AvatarIcon/AvatarIcon.js';
-import type { AvatarListPropsSchema } from './AvatarList/AvatarList.js';
-import type { BadgePropsSchema } from './Badge/Badge.js';
-import type { BlankslatePropsSchema } from './Blankslate/Blankslate.js';
-import type { BoxPropsSchema } from './Box/Box.js';
-import type { ButtonPropsSchema } from './Button/Button.js';
-import type { ButtonTypeSchema } from './Button/Button.types.js';
-import type { ButtonGroupPropsSchema } from './ButtonGroup/ButtonGroup.js';
-import type { ButtonToolbarPropsSchema } from './ButtonToolbar/ButtonToolbar.js';
-import type { CTAPropsSchema } from './CTA/CTA.js';
-import type { CheckboxPropsSchema } from './Checkbox/Checkbox.js';
-import type { CheckboxGroupPropsSchema } from './CheckboxGroup/CheckboxGroup.js';
-import type { ContainerPropsSchema } from './Container/Container.js';
-import type { ContentInputPropsSchema } from './ContentInput/index.js';
-import type { DatePickerPropsSchema } from './DatePicker/DatePicker.js';
+import type { AccordionPropsSchema } from './Accordion/Accordion';
+import type { AlertPropsSchema, AlertTypeSchema } from './Alert/Alert.types';
+import type { AspectRatioWrapperPropsSchema } from './AspectRatioWrapper/AspectRatioWrapper';
+import type { AvatarPropsSchema } from './Avatar/Avatar';
+import type { AvatarIconPropsSchema } from './Avatar/AvatarIcon/AvatarIcon';
+import type { AvatarListPropsSchema } from './AvatarList/AvatarList';
+import type { BadgePropsSchema } from './Badge/Badge';
+import type { BlankslatePropsSchema } from './Blankslate/Blankslate';
+import type { BoxPropsSchema } from './Box/Box';
+import type { ButtonPropsSchema } from './Button/Button';
+import type { ButtonTypeSchema } from './Button/Button.types';
+import type { ButtonGroupPropsSchema } from './ButtonGroup/ButtonGroup';
+import type { ButtonToolbarPropsSchema } from './ButtonToolbar/ButtonToolbar';
+import type { CheckboxPropsSchema } from './Checkbox/Checkbox';
+import type { CheckboxGroupPropsSchema } from './CheckboxGroup/CheckboxGroup';
+import type { ContainerPropsSchema } from './Container/Container';
+import type { ContentInputPropsSchema } from './ContentInput';
+import type { CTAPropsSchema } from './CTA/CTA';
+import type { DatePickerPropsSchema } from './DatePicker/DatePicker';
 import type {
 	DeadlineIndicatorColorsSchema,
 	DeadlineIndicatorPropsSchema,
 	DeadlineIndicatorShapesSchema,
-} from './DeadlineIndicator/DeadlineIndicator.js';
-import type { DropdownPropsSchema } from './Dropdown/Dropdown.js';
-import type { ExpandableContainerPropsSchema } from './ExpandableContainer/ExpandableContainer.js';
-import type { FlexPropsSchema } from './Flex/Flex.js';
-import type { FlexItemPropsSchema } from './Flex/FlexItem/FlexItem.js';
-import type { FormPropsSchema } from './Form/Form.js';
-import type { FormGroupPropsSchema } from './Form/FormGroup/FormGroup.js';
-import type { ColumnPropsSchema, GridSizeSchema } from './Grid/Column/Column.js';
-import type { GridPropsSchema } from './Grid/Grid.js';
-import type { HeaderPropsSchema } from './Header/Header.js';
-import type { HeaderContentTypePropsSchema } from './HeaderContentType/HeaderContentType.js';
-import type { IconPropsSchema } from './Icon/Icon.js';
-import type { IconTypeSchema } from './Icon/Icon.types.js';
-import type { ImagePropsSchema } from './Image/Image.js';
-import type { ImageGridPropsSchema } from './ImageGrid/ImageGrid.js';
-import type { MediaCardPropsSchema } from './MediaCard/MediaCard.js';
-import type { MenuPropsSchema } from './Menu/Menu.js';
-import type { MenuContentPropsSchema, MenuItemInfoSchema } from './Menu/MenuContent/MenuContent.js';
+} from './DeadlineIndicator/DeadlineIndicator';
+import type { DropdownPropsSchema } from './Dropdown/Dropdown';
+import type { ExpandableContainerPropsSchema } from './ExpandableContainer/ExpandableContainer';
+import type { FlexPropsSchema } from './Flex/Flex';
+import type { FlexItemPropsSchema } from './Flex/FlexItem/FlexItem';
+import type { FormPropsSchema } from './Form/Form';
+import type { FormGroupPropsSchema } from './Form/FormGroup/FormGroup';
+import type { ColumnPropsSchema, GridSizeSchema } from './Grid/Column/Column';
+import type { GridPropsSchema } from './Grid/Grid';
+import type { HeaderPropsSchema } from './Header/Header';
+import type { HeaderContentTypePropsSchema } from './HeaderContentType/HeaderContentType';
+import type { IconPropsSchema } from './Icon/Icon';
+import type { IconTypeSchema } from './Icon/Icon.types';
+import type { ImagePropsSchema } from './Image/Image';
+import type { ImageGridPropsSchema } from './ImageGrid/ImageGrid';
+import type { MediaCardPropsSchema } from './MediaCard/MediaCard';
+import type { MenuPropsSchema } from './Menu/Menu';
+import type { MenuContentPropsSchema, MenuItemInfoSchema } from './Menu/MenuContent/MenuContent';
 import type {
 	MenuSearchResultContentPropsSchema,
 	MenuSearchResultItemInfoSchema,
-} from './Menu/MenuSearchResultContent/MenuSearchResultContent.js';
-import type { MetaDataPropsSchema } from './MetaData/MetaData.js';
-import type { MetaDataItemPropsSchema } from './MetaData/MetaDataItem/MetaDataItem.js';
-import type { ModalPropsSchema, ModalRefSchema } from './Modal/Modal.js';
-import type { MoreOptionsDropdownPropsSchema } from './MoreOptionsDropdown/MoreOptionsDropdown.js';
-import type { MultiRangePropsSchema } from './MultiRange/MultiRange.js';
-import type { NavbarPropsSchema } from './Navbar/Navbar.js';
-import type { PanelPropsSchema } from './Panel/Panel.js';
-import type { PillPropsSchema } from './Pill/Pill.js';
-import type { QuotePropsSchema } from './Quote/Quote.js';
-import type { RadioButtonPropsSchema } from './RadioButton/RadioButton.js';
+} from './Menu/MenuSearchResultContent/MenuSearchResultContent';
+import type { MetaDataPropsSchema } from './MetaData/MetaData';
+import type { MetaDataItemPropsSchema } from './MetaData/MetaDataItem/MetaDataItem';
+import type { ModalPropsSchema, ModalRefSchema } from './Modal/Modal';
+import type { MoreOptionsDropdownPropsSchema } from './MoreOptionsDropdown/MoreOptionsDropdown';
+import type { MultiRangePropsSchema } from './MultiRange/MultiRange';
+import type { NavbarPropsSchema } from './Navbar/Navbar';
+import type { PanelPropsSchema } from './Panel/Panel';
+import type { PillPropsSchema } from './Pill/Pill';
+import type { QuotePropsSchema } from './Quote/Quote';
+import type { RadioButtonPropsSchema } from './RadioButton/RadioButton';
 import type {
 	RadioButtonGroupPropsSchema,
 	RadioOptionSchema,
-} from './RadioButtonGroup/RadioButtonGroup.js';
-import type { SelectOptionSchema, SelectPropsSchema } from './Select/Select.js';
-import type { SpacerOptionSchema, SpacerPropsSchema } from './Spacer/Spacer.js';
-import type { SpinnerPropsSchema } from './Spinner/Spinner.js';
-import type { StickyEdgeBarPropsSchema } from './StickyEdgeBar/StickyEdgeBar.js';
-import type { TableColumnSchema, TablePropsSchema } from './Table/Table.js';
-import type { TabPropsSchema } from './Tabs/Tab/Tab.js';
-import type { TabsPropsSchema } from './Tabs/Tabs.js';
-import type { TagListPropsSchema, TagOptionSchema } from './TagList/TagList.js';
-import type { TagInfoSchema, TagsInputPropsSchema } from './TagsInput/TagsInput.js';
-import type { TextAreaPropsSchema } from './TextArea/TextArea.js';
-import type { TextInputPropsSchema } from './TextInput/TextInput.js';
-import type { ThumbnailPropsSchema } from './Thumbnail/Thumbnail.js';
-import type { TogglePropsSchema } from './Toggle/Toggle.js';
-import type { ToggleButtonPropsSchema } from './ToggleButton/ToggleButton.js';
-import type { ToolbarPropsSchema } from './Toolbar/Toolbar.js';
-import type { ToolbarItemPropsSchema } from './Toolbar/ToolbarItem/ToolbarItem.js';
-import type { ToolbarTitlePropsSchema } from './Toolbar/ToolbarTitle/ToolbarTitle.js';
-import type { TooltipPropsSchema } from './Tooltip/Tooltip.js';
+} from './RadioButtonGroup/RadioButtonGroup';
+import type { SelectOptionSchema, SelectPropsSchema } from './Select/Select';
+import type { SpacerOptionSchema, SpacerPropsSchema } from './Spacer/Spacer';
+import type { SpinnerPropsSchema } from './Spinner/Spinner';
+import type { StickyEdgeBarPropsSchema } from './StickyEdgeBar/StickyEdgeBar';
+import type { TableColumnSchema, TablePropsSchema } from './Table/Table';
+import type { TabPropsSchema } from './Tabs/Tab/Tab';
+import type { TabsPropsSchema } from './Tabs/Tabs';
+import type { TagListPropsSchema, TagOptionSchema } from './TagList/TagList';
+import type { TagInfoSchema, TagsInputPropsSchema } from './TagsInput/TagsInput';
+import type { TextAreaPropsSchema } from './TextArea/TextArea';
+import type { TextInputPropsSchema } from './TextInput/TextInput';
+import type { ThumbnailPropsSchema } from './Thumbnail/Thumbnail';
+import type { TogglePropsSchema } from './Toggle/Toggle';
+import type { ToggleButtonPropsSchema } from './ToggleButton/ToggleButton';
+import type { ToolbarPropsSchema } from './Toolbar/Toolbar';
+import type { ToolbarItemPropsSchema } from './Toolbar/ToolbarItem/ToolbarItem';
+import type { ToolbarTitlePropsSchema } from './Toolbar/ToolbarTitle/ToolbarTitle';
+import type { TooltipPropsSchema } from './Tooltip/Tooltip';
 
-export { Accordion } from './Accordion/Accordion.js';
+export { Accordion } from './Accordion/Accordion';
 export type AccordionProps = AccordionPropsSchema;
 
-export { AccordionActions, AccordionBody, AccordionTitle } from './Accordion/Accordion.slots.js';
-export { Alert } from './Alert/Alert.js';
+export { AccordionActions, AccordionBody, AccordionTitle } from './Accordion/Accordion.slots';
+export { Alert } from './Alert/Alert';
 
 export type AlertProps = AlertPropsSchema;
 export type AlertType = AlertTypeSchema;
 
-export { AspectRatioWrapper } from './AspectRatioWrapper/AspectRatioWrapper.js';
+export { AspectRatioWrapper } from './AspectRatioWrapper/AspectRatioWrapper';
 export type AspectRatioWrapperProps = AspectRatioWrapperPropsSchema;
 
-export { Avatar } from './Avatar/Avatar.js';
+export { Avatar } from './Avatar/Avatar';
 export type AvatarProps = AvatarPropsSchema;
 
-export { AvatarIcon } from './Avatar/AvatarIcon/AvatarIcon.js';
+export { AvatarIcon } from './Avatar/AvatarIcon/AvatarIcon';
 export type AvatarIconProps = AvatarIconPropsSchema;
 
-export { AvatarList } from './AvatarList/AvatarList.js';
+export { AvatarList } from './AvatarList/AvatarList';
 export type AvatarListProps = AvatarListPropsSchema;
 
-export { Badge } from './Badge/Badge.js';
+export { Badge } from './Badge/Badge';
 export type BadgeProps = BadgePropsSchema;
 
-export { Blankslate } from './Blankslate/Blankslate.js';
+export { Blankslate } from './Blankslate/Blankslate';
 export type BlankslateProps = BlankslatePropsSchema;
 
-export { Box } from './Box/Box.js';
+export { Box } from './Box/Box';
 export type BoxProps = BoxPropsSchema;
 
-export { Button } from './Button/Button.js';
+export { Button } from './Button/Button';
 export type ButtonProps = ButtonPropsSchema;
 
 export type ButtonType = ButtonTypeSchema;
 
-export { ButtonGroup } from './ButtonGroup/ButtonGroup.js';
+export { ButtonGroup } from './ButtonGroup/ButtonGroup';
 export type ButtonGroupProps = ButtonGroupPropsSchema;
 
-export { ButtonToolbar } from './ButtonToolbar/ButtonToolbar.js';
+export { ButtonToolbar } from './ButtonToolbar/ButtonToolbar';
 export type ButtonToolbarProps = ButtonToolbarPropsSchema;
 
-export { Checkbox } from './Checkbox/Checkbox.js';
+export { Checkbox } from './Checkbox/Checkbox';
 export type CheckboxProps = CheckboxPropsSchema;
 
-export { CheckboxGroup } from './CheckboxGroup/CheckboxGroup.js';
+export { CheckboxGroup } from './CheckboxGroup/CheckboxGroup';
 export type CheckboxGroupProps = CheckboxGroupPropsSchema;
 
-export { Container } from './Container/Container.js';
+export { Container } from './Container/Container';
 export type ContainerProps = ContainerPropsSchema;
 
-export { CTA } from './CTA/CTA.js';
+export { CTA } from './CTA/CTA';
 export type CTAProps = CTAPropsSchema;
 
-export { DatePicker } from './DatePicker/DatePicker.js';
+export { DatePicker } from './DatePicker/DatePicker';
 export type DatePickerProps = DatePickerPropsSchema;
 
-export { Dropdown } from './Dropdown/Dropdown.js';
+export { Dropdown } from './Dropdown/Dropdown';
 export type DropdownProps = DropdownPropsSchema;
-export { DropdownButton, DropdownContent } from './Dropdown/Dropdown.slots.js';
+export { DropdownButton, DropdownContent } from './Dropdown/Dropdown.slots';
 
-export { ExpandableContainer } from './ExpandableContainer/ExpandableContainer.js';
+export { ExpandableContainer } from './ExpandableContainer/ExpandableContainer';
 export type ExpandableContainerProps = ExpandableContainerPropsSchema;
 
-export { Flex } from './Flex/Flex.js';
+export { Flex } from './Flex/Flex';
 export type FlexProps = FlexPropsSchema;
 
-export { FlexItem } from './Flex/FlexItem/FlexItem.js';
+export { FlexItem } from './Flex/FlexItem/FlexItem';
 export type FlexItemProps = FlexItemPropsSchema;
 
-export { Form } from './Form/Form.js';
+export { Form } from './Form/Form';
 export type FormProps = FormPropsSchema;
 
-export { FormGroup } from './Form/FormGroup/FormGroup.js';
+export { FormGroup } from './Form/FormGroup/FormGroup';
 export type FormGroupProps = FormGroupPropsSchema;
 
-export { Column } from './Grid/Column/Column.js';
+export { Column } from './Grid/Column/Column';
 export type ColumnProps = ColumnPropsSchema;
 export type GridSize = GridSizeSchema;
 
-export { Grid } from './Grid/Grid.js';
+export { Grid } from './Grid/Grid';
 export type GridProps = GridPropsSchema;
 
-export { Header } from './Header/Header.js';
+export { Header } from './Header/Header';
 export type HeaderProps = HeaderPropsSchema;
 export {
 	HeaderAvatar,
-	HeaderButtons,
-	HeaderTags,
-	HeaderRow,
-	HeaderTopRowLeft,
-	HeaderTopRowRight,
-	HeaderMiddleRowLeft,
-	HeaderMiddleRowRight,
 	HeaderBottomRowLeft,
 	HeaderBottomRowRight,
-} from './Header/Header.slots.js';
+	HeaderButtons,
+	HeaderMiddleRowLeft,
+	HeaderMiddleRowRight,
+	HeaderRow,
+	HeaderTags,
+	HeaderTopRowLeft,
+	HeaderTopRowRight,
+} from './Header/Header.slots';
 
-export { HeaderContentType } from './HeaderContentType/HeaderContentType.js';
+export { HeaderContentType } from './HeaderContentType/HeaderContentType';
 export type HeaderContentTypeProps = HeaderContentTypePropsSchema;
 
-export { Icon } from './Icon/Icon.js';
+export { Icon } from './Icon/Icon';
 export type IconProps = IconPropsSchema;
 
 export type IconType = IconTypeSchema;
-export { IconNameSchema as IconName } from './Icon/Icon.types.js';
+export { IconNameSchema as IconName } from './Icon/Icon.types';
 
-export { Image } from './Image/Image.js';
+export { Image } from './Image/Image';
 export type ImageProps = ImagePropsSchema;
 
-export { ImageGrid } from './ImageGrid/ImageGrid.js';
+export { ImageGrid } from './ImageGrid/ImageGrid';
 export type ImageGridProps = ImageGridPropsSchema;
 
-export { MediaCard } from './MediaCard/MediaCard.js';
+export { MediaCard } from './MediaCard/MediaCard';
 export type MediaCardProps = MediaCardPropsSchema;
-export { MediaCardMetaData, MediaCardThumbnail } from './MediaCard/MediaCard.slots.js';
+export { MediaCardMetaData, MediaCardThumbnail } from './MediaCard/MediaCard.slots';
 
-export { Menu } from './Menu/Menu.js';
+export { Menu } from './Menu/Menu';
 export type MenuProps = MenuPropsSchema;
 
-export { MenuContent } from './Menu/MenuContent/MenuContent.js';
+export { MenuContent } from './Menu/MenuContent/MenuContent';
 export type MenuContentProps = MenuContentPropsSchema;
 export type MenuItemInfo = MenuItemInfoSchema;
 
-export { MenuSearchResultContent } from './Menu/MenuSearchResultContent/MenuSearchResultContent.js';
+export { MenuSearchResultContent } from './Menu/MenuSearchResultContent/MenuSearchResultContent';
 export type MenuSearchResultContentProps = MenuSearchResultContentPropsSchema;
 export type MenuSearchResultItemInfo = MenuSearchResultItemInfoSchema;
 
-export { MoreOptionsDropdown } from './MoreOptionsDropdown/MoreOptionsDropdown.js';
+export { MoreOptionsDropdown } from './MoreOptionsDropdown/MoreOptionsDropdown';
 export type MoreOptionsDropdownProps = MoreOptionsDropdownPropsSchema;
 
-export { MetaData } from './MetaData/MetaData.js';
+export { MetaData } from './MetaData/MetaData';
 export type MetaDataProps = MetaDataPropsSchema;
 
-export { MetaDataItem } from './MetaData/MetaDataItem/MetaDataItem.js';
+export { MetaDataItem } from './MetaData/MetaDataItem/MetaDataItem';
 export type MetaDataItemProps = MetaDataItemPropsSchema;
 
-export { Modal } from './Modal/Modal.js';
+export { Modal } from './Modal/Modal';
 export type ModalProps = ModalPropsSchema;
 export type ModalRef = ModalRefSchema;
 export {
@@ -222,96 +222,96 @@ export {
 	ModalFooterRight,
 	ModalHeaderRight,
 	ModalSubHeader,
-} from './Modal/Modal.slots.js';
+} from './Modal/Modal.slots';
 
-export { MultiRange } from './MultiRange/MultiRange.js';
+export { MultiRange } from './MultiRange/MultiRange';
 export type MultiRangeProps = MultiRangePropsSchema;
 
-export { Navbar } from './Navbar/Navbar.js';
+export { Navbar } from './Navbar/Navbar';
 export type NavbarProps = NavbarPropsSchema;
 
-export { Panel } from './Panel/Panel.js';
+export { Panel } from './Panel/Panel';
 export type PanelProps = PanelPropsSchema;
-export { PanelBody, PanelHeader } from './Panel/Panel.slots.js';
+export { PanelBody, PanelHeader } from './Panel/Panel.slots';
 
-export { Quote } from './Quote/Quote.js';
+export { Quote } from './Quote/Quote';
 export type QuoteProps = QuotePropsSchema;
 
-export { RadioButton } from './RadioButton/RadioButton.js';
+export { RadioButton } from './RadioButton/RadioButton';
 export type RadioButtonProps = RadioButtonPropsSchema;
 
-export { RadioButtonGroup } from './RadioButtonGroup/RadioButtonGroup.js';
+export { RadioButtonGroup } from './RadioButtonGroup/RadioButtonGroup';
 export type RadioButtonGroupProps = RadioButtonGroupPropsSchema;
 export type RadioOption = RadioOptionSchema;
 
-export { Select } from './Select/Select.js';
+export { Select } from './Select/Select';
 export type SelectProps = SelectPropsSchema;
 export type SelectOption<T> = SelectOptionSchema<T>;
 
-export { Spacer } from './Spacer/Spacer.js';
+export { Spacer } from './Spacer/Spacer';
 export type SpacerProps = SpacerPropsSchema;
 export type SpacerOption = SpacerOptionSchema;
 
-export { Spinner } from './Spinner/Spinner.js';
+export { Spinner } from './Spinner/Spinner';
 export type SpinnerProps = SpinnerPropsSchema;
 
-export { Table } from './Table/Table.js';
+export { Table } from './Table/Table';
 export type TableProps = TablePropsSchema;
 export type TableColumn = TableColumnSchema;
 
-export { Tab } from './Tabs/Tab/Tab.js';
+export { Tab } from './Tabs/Tab/Tab';
 export type TabProps = TabPropsSchema;
 
-export { Tabs } from './Tabs/Tabs.js';
+export { Tabs } from './Tabs/Tabs';
 export type TabsProps = TabsPropsSchema;
 
-export { TagList } from './TagList/TagList.js';
+export { TagList } from './TagList/TagList';
 export type TagListProps = TagListPropsSchema;
 export type TagOption = TagOptionSchema;
 
-export { TagsInput } from './TagsInput/TagsInput.js';
+export { TagsInput } from './TagsInput/TagsInput';
 export type TagsInputProps = TagsInputPropsSchema;
 export type TagInfo = TagInfoSchema;
 
-export { TextArea } from './TextArea/TextArea.js';
+export { TextArea } from './TextArea/TextArea';
 export type TextAreaProps = TextAreaPropsSchema;
 
-export { TextInput } from './TextInput/TextInput.js';
+export { TextInput } from './TextInput/TextInput';
 export type TextInputProps = TextInputPropsSchema;
 
-export { Thumbnail } from './Thumbnail/Thumbnail.js';
+export { Thumbnail } from './Thumbnail/Thumbnail';
 export type ThumbnailProps = ThumbnailPropsSchema;
 
-export { Toggle } from './Toggle/Toggle.js';
+export { Toggle } from './Toggle/Toggle';
 export type ToggleProps = TogglePropsSchema;
 
-export { ToggleButton } from './ToggleButton/ToggleButton.js';
+export { ToggleButton } from './ToggleButton/ToggleButton';
 export type ToggleButtonProps = ToggleButtonPropsSchema;
 
-export { Toolbar } from './Toolbar/Toolbar.js';
+export { Toolbar } from './Toolbar/Toolbar';
 export type ToolbarProps = ToolbarPropsSchema;
-export { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar/Toolbar.slots.js';
+export { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar/Toolbar.slots';
 
-export { ToolbarItem } from './Toolbar/ToolbarItem/ToolbarItem.js';
+export { ToolbarItem } from './Toolbar/ToolbarItem/ToolbarItem';
 export type ToolbarItemProps = ToolbarItemPropsSchema;
 
-export { ToolbarTitle } from './Toolbar/ToolbarTitle/ToolbarTitle.js';
+export { ToolbarTitle } from './Toolbar/ToolbarTitle/ToolbarTitle';
 export type ToolbarTitleProps = ToolbarTitlePropsSchema;
 
-export { Tooltip } from './Tooltip/Tooltip.js';
+export { Tooltip } from './Tooltip/Tooltip';
 export type TooltipProps = TooltipPropsSchema;
-export { TooltipContent, TooltipTrigger } from './Tooltip/Tooltip.slots.js';
 
-export { Pill, PillVariants } from './Pill/Pill.js';
+export { Pill, PillVariants } from './Pill/Pill';
+export { TooltipContent, TooltipTrigger } from './Tooltip/Tooltip.slots';
 export type PillProps = PillPropsSchema;
 
-export { ContentInput } from './ContentInput/index.js';
+export { ContentInput } from './ContentInput';
 export type ContentInputProps = ContentInputPropsSchema;
 
-export { StickyEdgeBar } from './StickyEdgeBar/StickyEdgeBar.js';
+export { StickyEdgeBar } from './StickyEdgeBar/StickyEdgeBar';
 export type StickyEdgeBarProps = StickyEdgeBarPropsSchema;
 
-export { DeadlineIndicator } from './DeadlineIndicator/DeadlineIndicator.js';
+export { DeadlineIndicator } from './DeadlineIndicator/DeadlineIndicator';
 export type DeadlineIndicatorProps = DeadlineIndicatorPropsSchema;
 export type DeadlineIndicatorColors = DeadlineIndicatorColorsSchema;
 export type DeadlineIndicatorShapes = DeadlineIndicatorShapesSchema;

@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { action } from 'storybook/actions';
-import type { IconNameSchema } from '../Icon/Icon.types.js';
-import { Pill, PillVariants } from '../Pill/Pill.js';
-import { Tabs } from './Tabs.js';
+import type { IconNameSchema } from '../Icon/Icon.types';
+import { Pill, PillVariants } from '../Pill/Pill';
+import { Tabs } from './Tabs';
 
 const mockTabs = [
 	{

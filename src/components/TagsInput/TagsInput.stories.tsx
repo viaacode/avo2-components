@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
 
-import { type TagInfoSchema, TagsInput } from './TagsInput.js';
+import { type TagInfoSchema, TagsInput } from './TagsInput';
 
 const TagsInputStoryComponent = ({
 	children,

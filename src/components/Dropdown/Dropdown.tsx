@@ -3,20 +3,20 @@ import clsx from 'clsx';
 import { type FunctionComponent, type ReactNode, useState } from 'react';
 import { usePopper } from 'react-popper';
 
-import { noop } from '../../helpers/noop.js';
-import { useClickOutside } from '../../hooks/useClickOutside.js';
-import { useKeyPress } from '../../hooks/useKeyPress.js';
-import { useSlot } from '../../hooks/useSlot.js';
-import { Button } from '../Button/Button.js';
-import type { ButtonTypeSchema } from '../Button/Button.types.js';
-import { Icon } from '../Icon/Icon.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import { Menu } from '../Menu/Menu.js';
+import { noop } from '../../helpers/noop';
+import { useClickOutside } from '../../hooks/useClickOutside';
+import { useKeyPress } from '../../hooks/useKeyPress';
+import { useSlot } from '../../hooks/useSlot';
+import { Button } from '../Button/Button';
+import type { ButtonTypeSchema } from '../Button/Button.types';
+import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
+import { Menu } from '../Menu/Menu';
 
-import { DropdownButton, DropdownContent } from './Dropdown.slots.js';
+import { DropdownButton, DropdownContent } from './Dropdown.slots';
 
 import './Dropdown.scss';
-import { handleEnterOrSpace } from '../../utils/index.js';
+import { handleEnterOrSpace } from '../../utils';
 
 export interface DropdownPropsSchema {
 	children: ReactNode;

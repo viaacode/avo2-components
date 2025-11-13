@@ -1,6 +1,6 @@
 import { mount, shallow } from 'enzyme';
 
-import { FlexItem } from './FlexItem.js';
+import { FlexItem } from './FlexItem';
 
 describe('<Flex />', () => {
 	it('Should be able to render', () => {

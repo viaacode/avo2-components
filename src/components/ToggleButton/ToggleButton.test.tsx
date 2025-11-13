@@ -1,9 +1,9 @@
 import { mount, shallow } from 'enzyme';
 
-import { Button } from '../Button/Button.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
+import { Button } from '../Button/Button';
+import { IconNameSchema } from '../Icon/Icon.types';
 
-import { ToggleButton } from './ToggleButton.js';
+import { ToggleButton } from './ToggleButton';
 
 describe('<ToggleButton ariaLabel="test button" />', () => {
 	it('Should be able to render', () => {

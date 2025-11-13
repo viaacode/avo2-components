@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import { Fragment } from 'react';
 
-import { Container } from './Container.js';
+import { Container } from './Container';
 
 describe('<Container />', () => {
 	it('Should be able to render', () => {

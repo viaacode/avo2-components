@@ -4,12 +4,12 @@ import type { FunctionComponent } from 'react';
 import camelCase from 'to-camel-case';
 import kebabCase from 'to-slug-case';
 
-import { upperFirst } from '../../helpers/upperfirst.js';
-import type { DefaultProps } from '../../types/index.js';
+import { upperFirst } from '../../helpers/upperfirst';
+import type { DefaultProps } from '../../types';
 
 import './Icon.scss';
-import type { IconNameSchema, IconTypeSchema } from './Icon.types.js';
-import * as Icons from './Icons/index.js';
+import type { IconNameSchema, IconTypeSchema } from './Icon.types';
+import * as Icons from './Icons';
 
 export interface IconPropsSchema extends DefaultProps {
 	children?: React.ReactNode;

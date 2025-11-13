@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import type React from 'react';
 import type { ChangeEvent, FunctionComponent } from 'react';
 
-import { noop } from '../../helpers/noop.js';
-import type { DefaultProps } from '../../types/index.js';
-import { Icon } from '../Icon/Icon.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
+import { noop } from '../../helpers/noop';
+import type { DefaultProps } from '../../types';
+import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
 import './Toggle.scss';
 
 export interface TogglePropsSchema extends DefaultProps {

@@ -1,9 +1,9 @@
 import { Avo } from '@viaa/avo2-types';
 import { mount, shallow } from 'enzyme';
-import { Button } from '../Button/Button.js';
-import { Icon } from '../Icon/Icon.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import { Table, type TableColumnSchema } from './Table.js';
+import { Button } from '../Button/Button';
+import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
+import { Table, type TableColumnSchema } from './Table';
 
 const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },

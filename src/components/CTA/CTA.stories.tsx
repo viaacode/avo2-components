@@ -1,5 +1,5 @@
-import { CTA } from './CTA.js';
-import { CTA_MOCK } from './CTA.mock.js';
+import { CTA } from './CTA';
+import { CTA_MOCK } from './CTA.mock';
 
 export default {
 	title: 'components/CTA',

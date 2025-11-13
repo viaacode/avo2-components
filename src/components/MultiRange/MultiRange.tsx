@@ -3,9 +3,9 @@ import type React from 'react';
 import { type FunctionComponent, useEffect, useState } from 'react';
 import { getTrackBackground, Range } from 'react-range';
 
-import { noop } from '../../helpers/noop.js';
-import type { DefaultProps } from '../../types/index.js';
-import { TextInput } from '../TextInput/TextInput.js';
+import { noop } from '../../helpers/noop';
+import type { DefaultProps } from '../../types';
+import { TextInput } from '../TextInput/TextInput';
 
 import './MultiRange.scss';
 

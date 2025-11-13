@@ -1,6 +1,6 @@
 import { Avo } from '@viaa/avo2-types';
 import { shallow } from 'enzyme';
-import { HeaderContentType } from './HeaderContentType.js';
+import { HeaderContentType } from './HeaderContentType';
 
 describe('<HeaderContentType />', () => {
 	it('Should be able to render', () => {

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { ElementType, FunctionComponent, ReactNode } from 'react';
 
-import type { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types';
 
 import './Grid.scss';
 

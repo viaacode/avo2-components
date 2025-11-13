@@ -1,5 +1,5 @@
-import { Quote } from './Quote.js';
-import { MOCK_QUOTE, MOCK_QUOTE_WITH_IMG } from './Quote.mock.js';
+import { Quote } from './Quote';
+import { MOCK_QUOTE, MOCK_QUOTE_WITH_IMG } from './Quote.mock';
 
 export default {
 	title: 'components/Quote',

@@ -2,11 +2,11 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Fragment } from 'react';
 import { action } from 'storybook/actions';
 
-import { COLORS } from '../../colors/index.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import { Spacer } from '../Spacer/Spacer.js';
+import { COLORS } from '../../colors';
+import { IconNameSchema } from '../Icon/Icon.types';
+import { Spacer } from '../Spacer/Spacer';
 
-import { Button, type ButtonPropsSchema } from './Button.js';
+import { Button, type ButtonPropsSchema } from './Button';
 
 const buttonProps: Partial<ButtonPropsSchema>[] = [
 	{ label: 'Primary', type: 'primary' },

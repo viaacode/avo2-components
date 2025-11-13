@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import { Fragment } from 'react';
 
-import { Navbar } from './Navbar.js';
+import { Navbar } from './Navbar';
 
 describe('<Navbar />', () => {
 	it('Should be able to render', () => {

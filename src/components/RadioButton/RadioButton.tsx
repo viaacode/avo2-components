@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import type React from 'react';
 import type { FunctionComponent } from 'react';
 
-import { noop } from '../../helpers/noop.js';
-import type { DefaultProps } from '../../types/index.js';
+import { noop } from '../../helpers/noop';
+import type { DefaultProps } from '../../types';
 
 export interface RadioButtonPropsSchema extends DefaultProps {
 	children?: React.ReactNode;

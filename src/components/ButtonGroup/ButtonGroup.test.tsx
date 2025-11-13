@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 
-import { Button } from '../Button/Button.js';
+import { Button } from '../Button/Button';
 
-import { ButtonGroup } from './ButtonGroup.js';
+import { ButtonGroup } from './ButtonGroup';
 
 describe('<ButtonGroup />', () => {
 	it('Should be able to render', () => {

@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
-import ContentInput from './ContentInput.js';
-import type { ContentInputPropsSchema } from './ContentInput.types.js';
+import ContentInput from './ContentInput';
+import type { ContentInputPropsSchema } from './ContentInput.types';
 
 const meta: Meta<typeof ContentInput> = {
 	title: 'Components/ContentInput',

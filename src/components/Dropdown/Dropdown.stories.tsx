@@ -2,10 +2,10 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
 
-import type { IconNameSchema } from '../Icon/Icon.types.js';
-import { MenuContent } from '../Menu/MenuContent/MenuContent.js';
+import type { IconNameSchema } from '../Icon/Icon.types';
+import { MenuContent } from '../Menu/MenuContent/MenuContent';
 
-import { Dropdown, type DropdownPropsSchema } from './Dropdown.js';
+import { Dropdown, type DropdownPropsSchema } from './Dropdown';
 
 const menuItems = [
 	{ label: 'Aluminium', id: 'aluminium', key: 'aluminium' },

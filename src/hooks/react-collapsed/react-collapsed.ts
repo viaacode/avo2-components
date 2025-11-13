@@ -5,15 +5,15 @@ import raf from 'raf';
 /* eslint-disable */
 import type React from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { noop } from '../../helpers/noop.js';
-import { useLayoutEffectAfterMount, useStateOrProps, useUniqueId } from './hooks.js';
+import { noop } from '../../helpers/noop';
+import { useLayoutEffectAfterMount, useStateOrProps, useUniqueId } from './hooks';
 import {
 	callAll,
 	defaultTransitionStyles,
 	getElementHeight,
 	joinTransitionProperties,
 	makeTransitionStyles,
-} from './utils.js';
+} from './utils';
 
 interface UseCollapseInitialConfig {
 	collapsedHeight: number;

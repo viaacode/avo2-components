@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 
-import { Accordion } from './Accordion.js';
-import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots.js';
+import { Accordion } from './Accordion';
+import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
 
 const customClassName = 'c-custom-accordion';
 

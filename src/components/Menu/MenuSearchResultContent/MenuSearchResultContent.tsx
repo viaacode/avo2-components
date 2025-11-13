@@ -3,12 +3,12 @@ import clsx from 'clsx';
 import type React from 'react';
 import type { FunctionComponent } from 'react';
 
-import { noop } from '../../../helpers/noop.js';
-import type { DefaultProps } from '../../../types/index.js';
-import { handleEnterOrSpace } from '../../../utils/index.js';
-import { Icon } from '../../Icon/Icon.js';
-import { CATEGORY_TO_ICON } from '../../Thumbnail/Thumbnail.js';
-import { MenuContent } from '../MenuContent/MenuContent.js';
+import { noop } from '../../../helpers/noop';
+import type { DefaultProps } from '../../../types';
+import { handleEnterOrSpace } from '../../../utils';
+import { Icon } from '../../Icon/Icon';
+import { CATEGORY_TO_ICON } from '../../Thumbnail/Thumbnail';
+import { MenuContent } from '../MenuContent/MenuContent';
 
 export interface MenuSearchResultItemInfoSchema {
 	label: string;

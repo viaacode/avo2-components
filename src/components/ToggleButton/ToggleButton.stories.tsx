@@ -1,8 +1,8 @@
 import { action } from 'storybook/actions';
 
-import { IconNameSchema } from '../Icon/Icon.types.js';
+import { IconNameSchema } from '../Icon/Icon.types';
 
-import { ToggleButton } from './ToggleButton.js';
+import { ToggleButton } from './ToggleButton';
 
 export default {
 	title: 'components/ToggleButton',

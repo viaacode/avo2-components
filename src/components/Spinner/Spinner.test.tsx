@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 
-import { Spinner } from './Spinner.js';
+import { Spinner } from './Spinner';
 
 describe('<Spinner />', () => {
 	it('Should be able to render', () => {

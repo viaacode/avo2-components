@@ -1,8 +1,8 @@
 import { mount, shallow } from 'enzyme';
 import { act } from 'react';
 
-import { Tooltip } from './Tooltip.js';
-import { TooltipContent, TooltipTrigger } from './Tooltip.slots.js';
+import { Tooltip } from './Tooltip';
+import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
 
 describe('Tooltip', () => {
 	const contentText = 'This is a tooltip';

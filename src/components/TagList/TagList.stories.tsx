@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import { cloneElement, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
-import { TagList } from './TagList.js';
+import { TagList } from './TagList';
 
 const tags = [
 	{ label: 'Aluminium', id: 'aluminium' },

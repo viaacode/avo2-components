@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 
-import { FileInput } from './FileInput.js';
+import { FileInput } from './FileInput';
 
 const meta: Meta<typeof FileInput> = {
 	title: 'components/FileInput',

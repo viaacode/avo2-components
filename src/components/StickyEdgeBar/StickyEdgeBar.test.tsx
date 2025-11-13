@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 
-import { StickyEdgeBar } from './StickyEdgeBar.js';
+import { StickyEdgeBar } from './StickyEdgeBar';
 
 describe('<StickyEdgeBar />', () => {
 	it('Should be able to render', () => {

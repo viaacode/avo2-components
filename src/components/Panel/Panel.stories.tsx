@@ -1,5 +1,5 @@
-import { Panel } from './Panel.js';
-import { PanelBody, PanelHeader } from './Panel.slots.js';
+import { Panel } from './Panel';
+import { PanelBody, PanelHeader } from './Panel.slots';
 
 export default {
 	title: 'components/Panel',

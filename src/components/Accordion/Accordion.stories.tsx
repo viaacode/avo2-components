@@ -2,16 +2,16 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import { cloneElement, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
-import { Button } from '../Button/Button.js';
-import { ButtonGroup } from '../ButtonGroup/ButtonGroup.js';
-import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar.js';
-import { Form } from '../Form/Form.js';
-import { FormGroup } from '../Form/FormGroup/FormGroup.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import { TextArea } from '../TextArea/TextArea.js';
-import { TextInput } from '../TextInput/TextInput.js';
-import { Accordion } from './Accordion.js';
-import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots.js';
+import { Button } from '../Button/Button';
+import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
+import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
+import { Form } from '../Form/Form';
+import { FormGroup } from '../Form/FormGroup/FormGroup';
+import { IconNameSchema } from '../Icon/Icon.types';
+import { TextArea } from '../TextArea/TextArea';
+import { TextInput } from '../TextInput/TextInput';
+import { Accordion } from './Accordion';
+import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
 
 const AccordionStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [isOpen, setIsOpen] = useState(false);

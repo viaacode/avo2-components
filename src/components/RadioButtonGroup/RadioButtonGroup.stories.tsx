@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { Fragment, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
-import { noop } from '../../helpers/noop.js';
-import { RadioButtonGroup } from './RadioButtonGroup.js';
-import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock.js';
+import { noop } from '../../helpers/noop';
+import { RadioButtonGroup } from './RadioButtonGroup';
+import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock';
 
 const RadioButtonGroupStoryComponent = ({
 	children,

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import type React from 'react';
 import type { FunctionComponent } from 'react';
 
-import type { DefaultProps } from '../../types/index.js';
+import type { DefaultProps } from '../../types';
 
 import './DeadlineIndicator.scss';
 

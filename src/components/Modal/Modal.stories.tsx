@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 
-import { Button } from '../Button/Button.js';
-import { Modal } from './Modal.js';
-import { ModalBody, ModalFooterLeft, ModalFooterRight } from './Modal.slots.js';
+import { Button } from '../Button/Button';
+import { Modal } from './Modal';
+import { ModalBody, ModalFooterLeft, ModalFooterRight } from './Modal.slots';
 
 const ModalStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [isOpen, setOpen] = useState(false);

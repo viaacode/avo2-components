@@ -1,5 +1,5 @@
-import { Pill } from './Pill.js';
-import { MOCK_PILL, MOCK_PILL__ACTIVE } from './Pill.mock.js';
+import { Pill } from './Pill';
+import { MOCK_PILL, MOCK_PILL__ACTIVE } from './Pill.mock';
 
 export default {
 	title: 'components/Pill',

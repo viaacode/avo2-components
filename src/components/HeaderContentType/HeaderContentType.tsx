@@ -3,9 +3,9 @@ import clsx from 'clsx';
 import type React from 'react';
 import type { FunctionComponent } from 'react';
 
-import type { DefaultProps } from '../../types/index.js';
-import { Icon } from '../Icon/Icon.js';
-import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail.js';
+import type { DefaultProps } from '../../types';
+import { Icon } from '../Icon/Icon';
+import { CATEGORY_TO_ICON } from '../Thumbnail/Thumbnail';
 
 export interface HeaderContentTypePropsSchema extends DefaultProps {
 	children?: React.ReactNode;

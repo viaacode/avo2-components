@@ -1,7 +1,7 @@
 import { loremIpsum } from 'lorem-ipsum';
 import { Fragment } from 'react';
 
-import { Navbar } from './Navbar.js';
+import { Navbar } from './Navbar';
 
 const content = 'navbar content';
 

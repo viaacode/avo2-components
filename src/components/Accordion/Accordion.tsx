@@ -1,18 +1,18 @@
 import clsx from 'clsx';
 import { type FunctionComponent, useState } from 'react';
 
-import { useSlot } from '../../hooks/useSlot.js';
-import type { DefaultProps } from '../../types/index.js';
-import { Icon } from '../Icon/Icon.js';
-import { IconNameSchema } from '../Icon/Icon.types.js';
-import { Toolbar } from '../Toolbar/Toolbar.js';
-import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots.js';
-import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem.js';
+import { useSlot } from '../../hooks/useSlot';
+import type { DefaultProps } from '../../types';
+import { Icon } from '../Icon/Icon';
+import { IconNameSchema } from '../Icon/Icon.types';
+import { Toolbar } from '../Toolbar/Toolbar';
+import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
+import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
-import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots.js';
+import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
 
 import './Accordion.scss';
-import { handleEnterOrSpace } from '../../utils/index.js';
+import { handleEnterOrSpace } from '../../utils';
 
 export interface AccordionPropsSchema extends DefaultProps {
 	children?: React.ReactNode;

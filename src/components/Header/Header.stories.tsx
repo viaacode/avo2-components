@@ -1,12 +1,12 @@
-import { times } from '../../helpers/times.js';
-import { Avatar } from '../Avatar/Avatar.js';
-import { Button } from '../Button/Button.js';
-import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar.js';
-import { TagList } from '../TagList/TagList.js';
+import { times } from '../../helpers/times';
+import { Avatar } from '../Avatar/Avatar';
+import { Button } from '../Button/Button';
+import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
+import { TagList } from '../TagList/TagList';
 
-import { Header } from './Header.js';
-import { MOCK_HEADER_PROPS, MOCK_HEADER_PROPS_FULL } from './Header.mock.js';
-import { HeaderBottomRowLeft, HeaderMiddleRowRight, HeaderTopRowLeft } from './Header.slots.js';
+import { Header } from './Header';
+import { MOCK_HEADER_PROPS, MOCK_HEADER_PROPS_FULL } from './Header.mock';
+import { HeaderBottomRowLeft, HeaderMiddleRowRight, HeaderTopRowLeft } from './Header.slots';
 
 export default {
 	title: 'components/Header',

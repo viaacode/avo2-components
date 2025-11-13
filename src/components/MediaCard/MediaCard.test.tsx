@@ -1,10 +1,10 @@
 import { Avo } from '@viaa/avo2-types';
 import { mount, shallow } from 'enzyme';
-import { MetaData } from '../MetaData/MetaData.js';
-import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem.js';
-import { Thumbnail } from '../Thumbnail/Thumbnail.js';
-import { MediaCard } from './MediaCard.js';
-import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots.js';
+import { MetaData } from '../MetaData/MetaData';
+import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
+import { Thumbnail } from '../Thumbnail/Thumbnail';
+import { MediaCard } from './MediaCard';
+import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 describe('<MediaCard />', () => {
 	it('Should be able to render', () => {

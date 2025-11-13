@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 
-import { IconNameSchema } from '../Icon/Icon.types.js';
+import { IconNameSchema } from '../Icon/Icon.types';
 
-import { Button } from './Button.js';
+import { Button } from './Button';
 
 describe('<Button />', () => {
 	it('Should be able to render', () => {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { CSSProperties } from 'react';
-import { StickyEdgeBar } from './StickyEdgeBar.js';
+import { StickyEdgeBar } from './StickyEdgeBar';
 
 const pusherStyle: CSSProperties = {
 	height: '768px',

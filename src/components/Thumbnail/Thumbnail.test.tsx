@@ -1,6 +1,6 @@
 import { Avo } from '@viaa/avo2-types';
 import { shallow } from 'enzyme';
-import { Thumbnail } from './Thumbnail.js';
+import { Thumbnail } from './Thumbnail';
 
 describe('<Thumbnail />', () => {
 	it('Should be able to render', () => {

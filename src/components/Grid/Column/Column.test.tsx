@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 
-import { Column } from './Column.js';
+import { Column } from './Column';
 
 describe('<Column />', () => {
 	it('Should be able to render', () => {

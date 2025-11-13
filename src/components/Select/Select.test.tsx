@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 
-import { Select } from './Select.js';
-import { SELECT_MOCK_OPTIONS } from './Select.mock.js';
+import { Select } from './Select';
+import { SELECT_MOCK_OPTIONS } from './Select.mock';
 
 const customClass = 'c-select-custom';
 

@@ -1,7 +1,7 @@
 import { loremIpsum } from 'lorem-ipsum';
 import { Fragment } from 'react';
 
-import { Container } from './Container.js';
+import { Container } from './Container';
 
 const content = loremIpsum({ count: 10 });
 

@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 
-import { MultiRange } from './MultiRange.js';
+import { MultiRange } from './MultiRange';
 
 const customClass = 'c-input-custom';
 

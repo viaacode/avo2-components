@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
 
-import { Toggle } from './Toggle.js';
+import { Toggle } from './Toggle';
 
 const ToggleStoryComponent = ({
 	children,

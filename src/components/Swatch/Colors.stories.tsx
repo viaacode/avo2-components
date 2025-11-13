@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Fragment } from 'react';
 
-import { COLORS, type ColorCategory } from '../../colors/index.js';
-import { SwatchBlock } from './SwatchBlock.js';
+import { COLORS, type ColorCategory } from '../../colors';
+import { SwatchBlock } from './SwatchBlock';
 
 const transformColors = (colors: ColorCategory) =>
 	Object.entries(colors).map(([name, value]) => ({ name, value }));

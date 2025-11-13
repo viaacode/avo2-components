@@ -4,7 +4,7 @@ import { action } from 'storybook/actions';
 
 import image200x200 from '../../../static/images/200x200.jpg';
 import image500x200 from '../../../static/images/500x200.jpg';
-import { ImageGrid } from './ImageGrid.js';
+import { ImageGrid } from './ImageGrid';
 
 const images = [
 	image200x200,
