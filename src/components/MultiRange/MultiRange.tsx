@@ -22,6 +22,9 @@ export interface MultiRangePropsSchema extends DefaultProps {
 	onChange?: (values: number[]) => void;
 }
 
+/**
+ * @deprecated use the one of react-components instead
+ */
 export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 	className,
 	id,
