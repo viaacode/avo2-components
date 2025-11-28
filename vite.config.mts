@@ -37,4 +37,10 @@ export default defineConfig({
 		externalizeDeps(),
 		cssInjectedByJsPlugin(),
 	],
+	resolve: {
+		alias: {
+			// Force vite to use the ESM build of avo2 typings
+			"@viaa/avo2-types": "@viaa/avo2-types/dist/esm/index.js",
+		},
+	}
 });
