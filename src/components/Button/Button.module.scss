@@ -72,7 +72,6 @@ $c-button-icon-spacing-small: 0.2rem !default;
 
   .c-button__icon {
 	pointer-events: none;
-	padding: math.div(($c-button-height - $c-button-line-height), 2);
   }
 
   &::-moz-focus-inner {
