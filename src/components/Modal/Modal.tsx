@@ -195,6 +195,10 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 			);
 		};
 
+		if (isServerSideRendering()) {
+			// bCan't access document when server-side rendering
+			return null;
+		}
 		const classNames = clsx('c-modal', {
 			'c-modal--small': size === 'small',
 			'c-modal--medium': size === 'medium',
