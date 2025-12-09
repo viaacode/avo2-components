@@ -24,6 +24,7 @@ import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import './Modal.scss';
+import { isServerSideRendering } from '../../utils/is-server-side-rendering';
 import {
 	ModalBody,
 	ModalFooterLeft,
@@ -196,7 +197,7 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 		};
 
 		if (isServerSideRendering()) {
-			// bCan't access document when server-side rendering
+			// Can't access document when server-side rendering
 			return null;
 		}
 		const classNames = clsx('c-modal', {
