@@ -63,7 +63,7 @@
     "@snyk/protect": "1.1221.0",
     "@storybook/addon-docs": "10.0.6",
     "@storybook/react": "10.0.6",
-    "@storybook/react-vite": "^10.0.6",
+    "@storybook/react-vite": "10.0.8",
     "@svgr/cli": "5.5.0",
     "@tom-odb/named-exports": "1.4.6",
     "@types/autosize": "3.0.7",

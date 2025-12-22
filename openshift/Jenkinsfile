@@ -109,7 +109,7 @@ pipeline {
                             npm list @types/react
 
                             echo 'building avo2-components'
-                            npm run build
+                            NO_COLOR=true npm run build
                         '''
 					} // script disabled no deployment that works atm (storybook)
 				}
@@ -128,7 +128,7 @@ pipeline {
 						}
 						sh '''#/bin/bash
 					npm config fix
-					npm publish
+					npm publish --tag legacy-v5
 					echo "removing .npmrc for install to nexus not seems @viaa:registry=.."
 					rm -f .npmrc
 					'''
