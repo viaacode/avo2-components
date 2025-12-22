@@ -128,7 +128,7 @@ pipeline {
 						}
 						sh '''#/bin/bash
 					npm config fix
-					npm publish
+					npm publish --tag legacy-v5
 					echo "removing .npmrc for install to nexus not seems @viaa:registry=.."
 					rm -f .npmrc
 					'''
