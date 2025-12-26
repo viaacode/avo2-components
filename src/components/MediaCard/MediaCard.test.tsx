@@ -1,4 +1,4 @@
-import { Avo } from '@viaa/avo2-types';
+import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 import { mount, shallow } from 'enzyme';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
@@ -9,7 +9,7 @@ import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 describe('<MediaCard />', () => {
 	it('Should be able to render', () => {
 		shallow(
-			<MediaCard title="What an amazing title!" category={Avo.ContentType.English.COLLECTION} />
+			<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.COLLECTION} />
 		);
 	});
 
@@ -20,7 +20,7 @@ describe('<MediaCard />', () => {
 			<MediaCard
 				className={customClass}
 				title="What an amazing title!"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 			/>
 		);
 
@@ -30,15 +30,15 @@ describe('<MediaCard />', () => {
 
 	it('Should set the correct className for each category', () => {
 		const collectionMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category={Avo.ContentType.English.COLLECTION} />
+			<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.COLLECTION} />
 		);
 
 		const videoMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category={Avo.ContentType.English.VIDEO} />
+			<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.VIDEO} />
 		);
 
 		const audioMediaCardComponent = shallow(
-			<MediaCard title="What an amazing title!" category={Avo.ContentType.English.AUDIO} />
+			<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.AUDIO} />
 		);
 
 		expect(collectionMediaCardComponent.hasClass('c-media-card--collection')).toEqual(true);
@@ -50,7 +50,7 @@ describe('<MediaCard />', () => {
 		const horizontalMediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				orientation="horizontal"
 			/>
 		);
@@ -58,7 +58,7 @@ describe('<MediaCard />', () => {
 		const verticalMediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				orientation="vertical"
 			/>
 		);
@@ -71,11 +71,11 @@ describe('<MediaCard />', () => {
 		const mediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				orientation="horizontal"
 			>
 				<MediaCardThumbnail>
-					<Thumbnail category={Avo.ContentType.English.COLLECTION} />
+					<Thumbnail category={AvoContentTypeEnglish.COLLECTION} />
 				</MediaCardThumbnail>
 			</MediaCard>
 		);
@@ -87,11 +87,11 @@ describe('<MediaCard />', () => {
 		const mediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				orientation="horizontal"
 			>
 				<MediaCardMetaData>
-					<MetaData category={Avo.ContentType.English.COLLECTION}>
+					<MetaData category={AvoContentTypeEnglish.COLLECTION}>
 						<MetaDataItem label="vrt" />
 						<MetaDataItem label="2d geleden" />
 					</MetaData>
@@ -107,11 +107,11 @@ describe('<MediaCard />', () => {
 		const mediaCardComponent = shallow(
 			<MediaCard
 				title="What an amazing title!"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				orientation="horizontal"
 			>
 				<MediaCardMetaData>
-					<MetaData category={Avo.ContentType.English.COLLECTION}>
+					<MetaData category={AvoContentTypeEnglish.COLLECTION}>
 						<MetaDataItem label="vrt" />
 						<MetaDataItem label="2d geleden" />
 					</MetaData>
@@ -130,10 +130,10 @@ describe('<MediaCard />', () => {
 			<MediaCard
 				title="What an amazing title!"
 				onClick={clickHandler}
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 			>
 				<MediaCardThumbnail>
-					<Thumbnail category={Avo.ContentType.English.COLLECTION} topRight={<>topRightTest</>} />
+					<Thumbnail category={AvoContentTypeEnglish.COLLECTION} topRight={<>topRightTest</>} />
 				</MediaCardThumbnail>
 			</MediaCard>
 		);
@@ -157,9 +157,9 @@ describe('<MediaCard />', () => {
 
 	it('Should render top right prop on thumbnail', () => {
 		const mediaCardComponent = mount(
-			<MediaCard title="What an amazing title!" category={Avo.ContentType.English.COLLECTION}>
+			<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.COLLECTION}>
 				<MediaCardThumbnail>
-					<Thumbnail category={Avo.ContentType.English.COLLECTION} topRight={<>topRightTest</>} />
+					<Thumbnail category={AvoContentTypeEnglish.COLLECTION} topRight={<>topRightTest</>} />
 				</MediaCardThumbnail>
 			</MediaCard>
 		);

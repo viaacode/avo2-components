@@ -1,39 +1,39 @@
-import { Avo } from '@viaa/avo2-types';
+import {type AvoContentTypeDict, AvoContentTypeDutch, AvoContentTypeEnglish,} from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 
 export type Language = 'en' | 'nl';
 
-export const contentTypes: Avo.ContentType.Dict[] = [
+export const contentTypes: AvoContentTypeDict[] = [
 	{
-		en: Avo.ContentType.English.COLLECTION,
-		nl: Avo.ContentType.Dutch.COLLECTIE,
+		en: AvoContentTypeEnglish.COLLECTION,
+		nl: AvoContentTypeDutch.COLLECTIE,
 	},
 	{
-		en: Avo.ContentType.English.ITEM,
-		nl: Avo.ContentType.Dutch.ITEM,
+		en: AvoContentTypeEnglish.ITEM,
+		nl: AvoContentTypeDutch.ITEM,
 	},
 	{
-		en: Avo.ContentType.English.AUDIO,
-		nl: Avo.ContentType.Dutch.AUDIO,
+		en: AvoContentTypeEnglish.AUDIO,
+		nl: AvoContentTypeDutch.AUDIO,
 	},
 	{
-		en: Avo.ContentType.English.VIDEO,
-		nl: Avo.ContentType.Dutch.VIDEO,
+		en: AvoContentTypeEnglish.VIDEO,
+		nl: AvoContentTypeDutch.VIDEO,
 	},
 	{
-		en: Avo.ContentType.English.BUNDLE,
-		nl: Avo.ContentType.Dutch.BUNDEL,
+		en: AvoContentTypeEnglish.BUNDLE,
+		nl: AvoContentTypeDutch.BUNDEL,
 	},
 	{
-		en: Avo.ContentType.English.SEARCH,
-		nl: Avo.ContentType.Dutch.ZOEK,
+		en: AvoContentTypeEnglish.SEARCH,
+		nl: AvoContentTypeDutch.ZOEK,
 	},
 	{
-		en: Avo.ContentType.English.SEARCHQUERY,
-		nl: Avo.ContentType.Dutch.ZOEKOPDRACHT,
+		en: AvoContentTypeEnglish.SEARCHQUERY,
+		nl: AvoContentTypeDutch.ZOEKOPDRACHT,
 	},
 	{
-		en: Avo.ContentType.English.ASSIGNMENT,
-		nl: Avo.ContentType.Dutch.OPDRACHT,
+		en: AvoContentTypeEnglish.ASSIGNMENT,
+		nl: AvoContentTypeDutch.OPDRACHT,
 	},
 ];
 

@@ -1,5 +1,5 @@
-import type { Avo } from '@viaa/avo2-types';
-import type { CSSProperties, ReactNode } from 'react';
+import type {AvoCoreContentPickerType} from '@viaa/avo2-types/dist/exports/Avo.Core';
+import type {CSSProperties, ReactNode} from 'react';
 
 export * from './content-type';
 
@@ -20,7 +20,7 @@ export enum LinkTarget {
 }
 
 export interface ButtonAction {
-	type: Avo.Core.ContentPickerType;
+	type: AvoCoreContentPickerType;
 	value: string | number;
 	target?: LinkTarget;
 }

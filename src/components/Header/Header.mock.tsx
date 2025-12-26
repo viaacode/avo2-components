@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { Avo } from '@viaa/avo2-types';
+import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 
 export const MOCK_HEADER_PROPS = {
 	title: 'De wasberen slaan op hol in Pairi Daiza.',
@@ -7,7 +7,7 @@ export const MOCK_HEADER_PROPS = {
 };
 export const MOCK_HEADER_PROPS_FULL = {
 	...MOCK_HEADER_PROPS,
-	category: Avo.ContentType.English.COLLECTION,
+	category: AvoContentTypeEnglish.COLLECTION,
 	onClickTitle: action('Title clicked'),
 	showMetaData: true,
 	bookmarks: '12',

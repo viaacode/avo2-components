@@ -1,7 +1,6 @@
-import type { Avo } from '@viaa/avo2-types';
+import type { AvoSearchOrderDirection } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import { Fragment, type FunctionComponent, type ReactNode } from 'react';
-
 import { isNil } from '../../helpers/is-nil';
 import { noop } from '../../helpers/noop';
 import type { DefaultProps } from '../../types';
@@ -54,7 +53,7 @@ export interface TablePropsSchema extends DefaultProps {
 	renderCell?: (rowData: any, columnId: string, rowIndex: number, columnIndex: number) => ReactNode;
 	rowKey?: string | ((rowData: any) => string);
 	sortColumn?: string;
-	sortOrder?: Avo.Search.OrderDirection;
+	sortOrder?: AvoSearchOrderDirection;
 	striped?: boolean;
 	untable?: boolean;
 	variant?: 'bordered' | 'invisible' | 'styled';

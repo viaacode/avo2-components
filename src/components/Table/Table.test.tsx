@@ -1,4 +1,4 @@
-import { Avo } from '@viaa/avo2-types';
+import { AvoSearchOrderDirection } from '@viaa/avo2-types/dist/exports/Avo.Search';
 import { mount, shallow } from 'enzyme';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
@@ -73,7 +73,7 @@ describe('<Table />', () => {
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
-				sortOrder={Avo.Search.OrderDirection.ASC}
+				sortOrder={AvoSearchOrderDirection.ASC}
 				sortColumn={COLUMNS[0].id}
 			/>
 		);
@@ -83,7 +83,7 @@ describe('<Table />', () => {
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
-				sortOrder={Avo.Search.OrderDirection.DESC}
+				sortOrder={AvoSearchOrderDirection.DESC}
 				sortColumn={COLUMNS[0].id}
 			/>
 		);
@@ -174,7 +174,7 @@ describe('<Table />', () => {
 				columns={COLUMNS}
 				data={DATA}
 				rowKey="id"
-				sortOrder={Avo.Search.OrderDirection.ASC}
+				sortOrder={AvoSearchOrderDirection.ASC}
 				sortColumn={COLUMNS[0].id}
 				onColumnClick={onColumnClickHandler}
 			/>

@@ -1,10 +1,10 @@
-import { Avo } from '@viaa/avo2-types';
+import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 import { shallow } from 'enzyme';
 import { HeaderContentType } from './HeaderContentType';
 
 describe('<HeaderContentType />', () => {
 	it('Should be able to render', () => {
-		shallow(<HeaderContentType category={Avo.ContentType.English.COLLECTION} label="collectie" />);
+		shallow(<HeaderContentType category={AvoContentTypeEnglish.COLLECTION} label="collectie" />);
 	});
 
 	it('should pass a custom className', () => {
@@ -12,7 +12,7 @@ describe('<HeaderContentType />', () => {
 		const HeaderContentTypeComponent = (
 			<HeaderContentType
 				className={customClass}
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				label="collectie"
 			/>
 		);

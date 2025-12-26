@@ -1,8 +1,7 @@
-import type { Avo } from '@viaa/avo2-types';
+import type { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 import clsx from 'clsx';
 import type React from 'react';
 import type { FunctionComponent } from 'react';
-
 import { noop } from '../../../helpers/noop';
 import type { DefaultProps } from '../../../types';
 import { handleEnterOrSpace } from '../../../utils';
@@ -14,7 +13,7 @@ export interface MenuSearchResultItemInfoSchema {
 	label: string;
 	id: string | number;
 	key: string;
-	type: Avo.ContentType.English;
+	type: AvoContentTypeEnglish;
 }
 
 export interface MenuSearchResultContentPropsSchema extends DefaultProps {
@@ -25,7 +24,7 @@ export interface MenuSearchResultContentPropsSchema extends DefaultProps {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-export const CONTENT_TYPE_TO_LABEL: { [contentType in Avo.ContentType.English]?: string } = {
+export const CONTENT_TYPE_TO_LABEL: { [contentType in AvoContentTypeEnglish]?: string } = {
 	/* eslint-enable @typescript-eslint/no-unused-vars */
 	collection: 'Collectie',
 	video: 'Video',

@@ -1,4 +1,4 @@
-import { Avo } from '@viaa/avo2-types';
+import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 import { Thumbnail } from './Thumbnail';
 
 export default {
@@ -14,7 +14,7 @@ export const ThumbnailImage = () => (
 		<Thumbnail
 			src="/images/thumbnail.jpg"
 			meta="4 items"
-			category={Avo.ContentType.English.VIDEO}
+			category={AvoContentTypeEnglish.VIDEO}
 			label="video"
 		/>
 	</div>
@@ -26,7 +26,7 @@ ThumbnailImage.story = {
 
 export const ThumbnailPlaceholder = () => (
 	<div className="o-grid-col-bp3-4">
-		<Thumbnail meta="4 items" category={Avo.ContentType.English.COLLECTION} label="collection" />
+		<Thumbnail meta="4 items" category={AvoContentTypeEnglish.COLLECTION} label="collection" />
 	</div>
 );
 
@@ -38,7 +38,7 @@ export const ThumbnailWithLabel = () => (
 	<div className="o-grid-col-bp3-4">
 		<Thumbnail
 			src="/images/thumbnail.jpg"
-			category={Avo.ContentType.English.COLLECTION}
+			category={AvoContentTypeEnglish.COLLECTION}
 			meta="4 items"
 			label="collection"
 		/>
@@ -51,7 +51,7 @@ ThumbnailWithLabel.story = {
 
 export const ThumbnailWithoutLabel = () => (
 	<div className="o-grid-col-bp3-4">
-		<Thumbnail src="/images/thumbnail.jpg" category={Avo.ContentType.English.BUNDLE} meta="2:22" />
+		<Thumbnail src="/images/thumbnail.jpg" category={AvoContentTypeEnglish.BUNDLE} meta="2:22" />
 	</div>
 );
 
@@ -61,7 +61,7 @@ ThumbnailWithoutLabel.story = {
 
 export const ThumbnailWithoutMeta = () => (
 	<div className="o-grid-col-bp3-4">
-		<Thumbnail src="/images/thumbnail.jpg" category={Avo.ContentType.English.AUDIO} label="audio" />
+		<Thumbnail src="/images/thumbnail.jpg" category={AvoContentTypeEnglish.AUDIO} label="audio" />
 	</div>
 );
 
@@ -73,7 +73,7 @@ export const ThumbnailWithShowCategoryIcon = () => (
 	<div className="o-grid-col-bp3-4">
 		<Thumbnail
 			src="/images/thumbnail.jpg"
-			category={Avo.ContentType.English.AUDIO}
+			category={AvoContentTypeEnglish.AUDIO}
 			showCategoryIcon
 		/>
 	</div>

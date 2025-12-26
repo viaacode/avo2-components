@@ -1,4 +1,4 @@
-import { Avo } from '@viaa/avo2-types';
+import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 import { shallow } from 'enzyme';
 import { Thumbnail } from './Thumbnail';
 
@@ -8,7 +8,7 @@ describe('<Thumbnail />', () => {
 			<Thumbnail
 				src="/images/thumbnail.jpg"
 				meta="4 items"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				label="collection"
 			/>
 		);
@@ -22,7 +22,7 @@ describe('<Thumbnail />', () => {
 				className={customClass}
 				src="/images/thumbnail.jpg"
 				meta="4 items"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				label="collection"
 			/>
 		);
@@ -37,7 +37,7 @@ describe('<Thumbnail />', () => {
 			<Thumbnail
 				src="/images/thumbnail.jpg"
 				meta="4 items"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				label="collection"
 			/>
 		);
@@ -51,7 +51,7 @@ describe('<Thumbnail />', () => {
 			<Thumbnail
 				src={img}
 				meta="4 items"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				label="collection"
 			/>
 		);
@@ -63,7 +63,7 @@ describe('<Thumbnail />', () => {
 
 	it('Should render placeholder if no src is passed', () => {
 		const thumbnailComponent = shallow(
-			<Thumbnail meta="4 items" category={Avo.ContentType.English.COLLECTION} label="collection" />
+			<Thumbnail meta="4 items" category={AvoContentTypeEnglish.COLLECTION} label="collection" />
 		);
 
 		const imageContainer = thumbnailComponent.find('.c-thumbnail-image');
@@ -81,7 +81,7 @@ describe('<Thumbnail />', () => {
 				src="/images/thumbnail.jpg"
 				alt={alt}
 				meta="4 items"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				label="collection"
 			/>
 		);
@@ -95,7 +95,7 @@ describe('<Thumbnail />', () => {
 			<Thumbnail
 				src="/images/thumbnail.jpg"
 				meta="4 items"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				label="collection"
 			/>
 		);
@@ -108,7 +108,7 @@ describe('<Thumbnail />', () => {
 		const thumbnailComponent = shallow(
 			<Thumbnail
 				src="/images/thumbnail.jpg"
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				label="collection"
 			/>
 		);

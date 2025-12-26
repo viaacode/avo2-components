@@ -1,4 +1,4 @@
-import { Avo } from '@viaa/avo2-types';
+import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { MetaData } from './MetaData';
 import { MetaDataItem } from './MetaDataItem/MetaDataItem';
@@ -12,7 +12,7 @@ export default {
 };
 
 export const MetaDataAudio = () => (
-	<MetaData category={Avo.ContentType.English.AUDIO}>
+	<MetaData category={AvoContentTypeEnglish.AUDIO}>
 		<MetaDataItem label="VRT" />
 		<MetaDataItem icon={IconNameSchema.headphone} label="738" />
 		<MetaDataItem label="2d geleden" />
@@ -24,7 +24,7 @@ MetaDataAudio.story = {
 };
 
 export const MetaDataVideo = () => (
-	<MetaData category={Avo.ContentType.English.VIDEO}>
+	<MetaData category={AvoContentTypeEnglish.VIDEO}>
 		<MetaDataItem label="VRT" />
 		<MetaDataItem icon={IconNameSchema.eye} label="738" />
 		<MetaDataItem label="2d geleden" />
@@ -36,7 +36,7 @@ MetaDataVideo.story = {
 };
 
 export const MetaDataCollection = () => (
-	<MetaData category={Avo.ContentType.English.COLLECTION}>
+	<MetaData category={AvoContentTypeEnglish.COLLECTION}>
 		<MetaDataItem label="7 items" />
 		<MetaDataItem icon={IconNameSchema.eye} label="738" />
 		<MetaDataItem label="2d geleden" />
@@ -48,7 +48,7 @@ MetaDataCollection.story = {
 };
 
 export const MetaDataBundle = () => (
-	<MetaData category={Avo.ContentType.English.BUNDLE}>
+	<MetaData category={AvoContentTypeEnglish.BUNDLE}>
 		<MetaDataItem label="7 items" />
 		<MetaDataItem icon={IconNameSchema.eye} label="738" />
 		<MetaDataItem label="2d geleden" />

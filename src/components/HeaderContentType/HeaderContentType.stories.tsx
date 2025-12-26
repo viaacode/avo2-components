@@ -1,4 +1,4 @@
-import { Avo } from '@viaa/avo2-types';
+import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 import { HeaderContentType } from './HeaderContentType';
 
 export default {
@@ -10,7 +10,7 @@ export default {
 };
 
 export const HeaderContentTypes = () => (
-	<HeaderContentType category={Avo.ContentType.English.COLLECTION} label="collectie" />
+	<HeaderContentType category={AvoContentTypeEnglish.COLLECTION} label="collectie" />
 );
 
 HeaderContentTypes.story = {

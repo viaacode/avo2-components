@@ -1,4 +1,3 @@
-import type { Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import type { FunctionComponent, ReactNode } from 'react';
 
@@ -16,6 +15,7 @@ import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import './Header.scss';
+import type { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 import { handleEnterOrSpace } from '../../utils';
 import {
 	HeaderAvatar,
@@ -32,7 +32,7 @@ import {
 
 export interface HeaderPropsSchema extends DefaultProps {
 	bookmarks?: string;
-	category?: Avo.ContentType.English;
+	category?: AvoContentTypeEnglish;
 	children?: ReactNode;
 	containerSize?: ContainerPropsSchema['size'];
 	onClickTitle?: () => void;

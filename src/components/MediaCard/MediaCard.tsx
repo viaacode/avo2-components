@@ -1,4 +1,3 @@
-import type { Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import type { FunctionComponent, MouseEvent, ReactNode } from 'react';
 
@@ -6,13 +5,15 @@ import { useSlot } from '../../hooks/useSlot';
 import type { DefaultProps, Orientation } from '../../types';
 
 import './MediaCard.scss';
+import type { AvoContentPageType } from '@viaa/avo2-types/dist/exports/Avo.ContentPage';
+import type { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 import { handleEnterOrSpace } from '../../utils';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 export interface MediaCardPropsSchema extends DefaultProps {
 	title: string;
-	category: Avo.ContentType.English;
-	subCategory?: Avo.ContentPage.Type;
+	category: AvoContentTypeEnglish;
+	subCategory?: AvoContentPageType;
 	children?: ReactNode;
 	orientation?: Orientation;
 	onClick?: (evt: MouseEvent<HTMLElement>) => void;

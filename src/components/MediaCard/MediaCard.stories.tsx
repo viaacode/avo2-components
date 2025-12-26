@@ -1,5 +1,5 @@
+import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 import { action } from 'storybook/actions';
-import { Avo } from '@viaa/avo2-types';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
@@ -20,12 +20,12 @@ export const MediaCardVertical = () => (
 		<MediaCard
 			title="What an amazing title!"
 			onClick={action('clicked on media card')}
-			category={Avo.ContentType.English.COLLECTION}
+			category={AvoContentTypeEnglish.COLLECTION}
 			orientation="vertical"
 		>
 			<MediaCardThumbnail>
 				<Thumbnail
-					category={Avo.ContentType.English.COLLECTION}
+					category={AvoContentTypeEnglish.COLLECTION}
 					src="/images/thumbnail.jpg"
 					meta="7 items"
 					topRight={<div onClick={action('clicked on source')}>{'Bron >'}</div>}
@@ -34,7 +34,7 @@ export const MediaCardVertical = () => (
 				/>
 			</MediaCardThumbnail>
 			<MediaCardMetaData>
-				<MetaData category={Avo.ContentType.English.COLLECTION}>
+				<MetaData category={AvoContentTypeEnglish.COLLECTION}>
 					<MetaDataItem label="vrt" />
 					<MetaDataItem label="728" icon={IconNameSchema.eye} />
 					<MetaDataItem label="2d geleden" />
@@ -52,12 +52,12 @@ export const MediaCardHorizontal = () => (
 	<MediaCard
 		title="What an amazing title!"
 		onClick={action('clicked on media card')}
-		category={Avo.ContentType.English.COLLECTION}
+		category={AvoContentTypeEnglish.COLLECTION}
 		orientation="horizontal"
 	>
 		<MediaCardThumbnail>
 			<Thumbnail
-				category={Avo.ContentType.English.COLLECTION}
+				category={AvoContentTypeEnglish.COLLECTION}
 				src="/images/thumbnail.jpg"
 				meta="7 items"
 				topRight={<div onClick={action('clicked on source')}>{'Bron >'}</div>}
@@ -66,7 +66,7 @@ export const MediaCardHorizontal = () => (
 			/>
 		</MediaCardThumbnail>
 		<MediaCardMetaData>
-			<MetaData category={Avo.ContentType.English.COLLECTION}>
+			<MetaData category={AvoContentTypeEnglish.COLLECTION}>
 				<MetaDataItem label="vrt" />
 				<MetaDataItem label="728" icon={IconNameSchema.eye} />
 				<MetaDataItem label="2d geleden" />

@@ -16,15 +16,13 @@ import Scrollbar from 'react-perfect-scrollbar';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useSlot } from '../../hooks/useSlot';
 import type { DefaultProps } from '../../types';
+import { isServerSideRendering } from '../../utils/is-server-side-rendering';
 import { Button } from '../Button/Button';
 import { ButtonToolbar } from '../ButtonToolbar/ButtonToolbar';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
-
-import './Modal.scss';
-import { isServerSideRendering } from '../../utils/is-server-side-rendering';
 import {
 	ModalBody,
 	ModalFooterLeft,
@@ -33,6 +31,7 @@ import {
 	ModalSubHeader,
 } from './Modal.slots';
 import { ModalBackdrop } from './ModalBackdrop';
+import './Modal.scss';
 
 export interface ModalPropsSchema extends DefaultProps {
 	children: ReactNode;

@@ -1,4 +1,3 @@
-import type { Avo } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import type React from 'react';
 import { type FunctionComponent, type ReactNode, useEffect, useState } from 'react';
@@ -9,6 +8,8 @@ import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 
 import './Thumbnail.scss';
+import type { AvoContentPageType } from '@viaa/avo2-types/dist/exports/Avo.ContentPage';
+import type { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
 import { handleEnterOrSpace } from '../../utils';
 
 export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
@@ -30,8 +31,8 @@ export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {
 
 export interface ThumbnailPropsSchema extends DefaultProps {
 	children?: React.ReactNode;
-	category: Avo.ContentType.English;
-	subCategory?: Avo.ContentPage.Type;
+	category: AvoContentTypeEnglish;
+	subCategory?: AvoContentPageType;
 	src?: string;
 	alt?: string;
 	label?: string;
