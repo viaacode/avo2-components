@@ -1,4 +1,4 @@
-import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
+import { AvoContentTypeEnglish } from '@viaa/avo2-types';
 import { mount, shallow } from 'enzyme';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { MetaData } from './MetaData';

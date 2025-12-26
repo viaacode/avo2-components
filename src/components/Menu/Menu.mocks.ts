@@ -1,4 +1,4 @@
-import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
+import { AvoContentTypeEnglish } from '@viaa/avo2-types';
 import { IconNameSchema } from '../Icon/Icon.types';
 import type { MenuItemInfoSchema } from './MenuContent/MenuContent';
 import type { MenuSearchResultItemInfoSchema } from './MenuSearchResultContent/MenuSearchResultContent';

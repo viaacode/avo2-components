@@ -1,4 +1,4 @@
-import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
+import { AvoContentTypeEnglish } from '@viaa/avo2-types';
 import { Thumbnail } from './Thumbnail';
 
 export default {

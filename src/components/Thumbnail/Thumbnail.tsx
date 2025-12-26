@@ -8,8 +8,7 @@ import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 
 import './Thumbnail.scss';
-import type { AvoContentPageType } from '@viaa/avo2-types/dist/exports/Avo.ContentPage';
-import type { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
+import type { AvoContentPageType, AvoContentTypeEnglish } from '@viaa/avo2-types';
 import { handleEnterOrSpace } from '../../utils';
 
 export const CATEGORY_TO_ICON: { [category: string]: IconNameSchema } = {

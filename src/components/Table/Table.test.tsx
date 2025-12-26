@@ -1,4 +1,4 @@
-import { AvoSearchOrderDirection } from '@viaa/avo2-types/dist/exports/Avo.Search';
+import { AvoSearchOrderDirection } from '@viaa/avo2-types';
 import { mount, shallow } from 'enzyme';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';

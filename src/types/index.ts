@@ -1,5 +1,5 @@
-import type {AvoCoreContentPickerType} from '@viaa/avo2-types/dist/exports/Avo.Core';
-import type {CSSProperties, ReactNode} from 'react';
+import type { AvoCoreContentPickerType } from '@viaa/avo2-types';
+import type { CSSProperties, ReactNode } from 'react';
 
 export * from './content-type';
 

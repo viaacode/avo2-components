@@ -1,4 +1,4 @@
-import type { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
+import type { AvoContentTypeEnglish } from '@viaa/avo2-types';
 import clsx from 'clsx';
 import type React from 'react';
 import type { FunctionComponent } from 'react';

@@ -4,7 +4,7 @@ import type { FunctionComponent, ReactNode } from 'react';
 import type { DefaultProps } from '../../types';
 
 import './MetaData.scss';
-import type { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
+import type { AvoContentTypeEnglish } from '@viaa/avo2-types';
 
 export interface MetaDataPropsSchema extends DefaultProps {
 	children: ReactNode;

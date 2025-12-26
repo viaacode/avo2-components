@@ -15,7 +15,7 @@ import { ToolbarLeft, ToolbarRight } from '../Toolbar/Toolbar.slots';
 import { ToolbarItem } from '../Toolbar/ToolbarItem/ToolbarItem';
 
 import './Header.scss';
-import type { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
+import type { AvoContentTypeEnglish } from '@viaa/avo2-types';
 import { handleEnterOrSpace } from '../../utils';
 import {
 	HeaderAvatar,

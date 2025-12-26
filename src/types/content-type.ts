@@ -1,4 +1,8 @@
-import {type AvoContentTypeDict, AvoContentTypeDutch, AvoContentTypeEnglish,} from '@viaa/avo2-types/dist/exports/Avo.ContentType';
+import {
+	type AvoContentTypeDict,
+	AvoContentTypeDutch,
+	AvoContentTypeEnglish,
+} from '@viaa/avo2-types';
 
 export type Language = 'en' | 'nl';
 

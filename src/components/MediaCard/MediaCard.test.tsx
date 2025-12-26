@@ -1,4 +1,4 @@
-import { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
+import { AvoContentTypeEnglish } from '@viaa/avo2-types';
 import { mount, shallow } from 'enzyme';
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';

@@ -5,8 +5,7 @@ import { useSlot } from '../../hooks/useSlot';
 import type { DefaultProps, Orientation } from '../../types';
 
 import './MediaCard.scss';
-import type { AvoContentPageType } from '@viaa/avo2-types/dist/exports/Avo.ContentPage';
-import type { AvoContentTypeEnglish } from '@viaa/avo2-types/dist/exports/Avo.ContentType';
+import type { AvoContentPageType, AvoContentTypeEnglish } from '@viaa/avo2-types';
 import { handleEnterOrSpace } from '../../utils';
 import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
