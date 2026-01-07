@@ -2,11 +2,18 @@ import { resolve } from 'path';
 
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import dts from 'vite-plugin-dts';
-import { externalizeDeps } from 'vite-plugin-externalize-deps';
 import svgrPlugin from 'vite-plugin-svgr';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
+import pkg from './package.json';
+
+const peerDependencies: string[] = Object.keys(pkg.peerDependencies);
+
+const external = [
+	...peerDependencies,
+	'react/jsx-runtime',
+	'react/jsx-dev-runtime',
+];
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,6 +30,7 @@ export default defineConfig({
 			formats: ['es'],
 		},
 		rollupOptions: {
+			external,
 			output: {
 				preserveModules: true,
 			},
@@ -34,8 +42,6 @@ export default defineConfig({
 		viteTsconfigPaths(),
 		svgrPlugin(),
 		dts(),
-		externalizeDeps(),
-		cssInjectedByJsPlugin(),
 	],
 	resolve: {
 		alias: {
