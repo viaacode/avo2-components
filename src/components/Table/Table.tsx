@@ -262,7 +262,10 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 							<thead>
 								<tr>
 									{enableRowFocusOnClick && (
-										<th className={clsx('c-table__focus-cell', styles['c-table__focus-cell'])}>
+										<th
+											aria-hidden={true}
+											className={clsx('c-table__focus-cell', styles['c-table__focus-cell'])}
+										>
 											&nbsp;
 										</th>
 									)}
@@ -304,6 +307,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 									>
 										{enableRowFocusOnClick && (
 											<td
+												aria-hidden={true}
 												className={clsx('c-table__focus-cell', styles['c-table__focus-cell'], {
 													'c-table__focus-cell--active': getRowKey(rowData) === focusedRowId,
 												})}
