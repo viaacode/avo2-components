@@ -1,6 +1,13 @@
 import type { AvoSearchOrderDirection } from '@viaa/avo2-types';
 import clsx from 'clsx';
-import { Fragment, type FunctionComponent, type ReactNode } from 'react';
+import {
+	Fragment,
+	type FunctionComponent,
+	type ReactNode,
+	useCallback,
+	useEffect,
+	useState,
+} from 'react';
 import { isNil } from '../../helpers/is-nil';
 import { noop } from '../../helpers/noop';
 import type { DefaultProps } from '../../types';
@@ -46,12 +53,14 @@ export interface TablePropsSchema extends DefaultProps {
 	columns?: TableColumnSchema[];
 	data?: any[];
 	emptyStateMessage?: string;
+	isLoading?: boolean;
 	horizontal?: boolean;
 	nowrap?: boolean;
 	onColumnClick?: (id: string) => void;
 	onRowClick?: (rowData: any) => void;
 	renderCell?: (rowData: any, columnId: string, rowIndex: number, columnIndex: number) => ReactNode;
 	rowKey?: string | ((rowData: any) => string);
+	enableRowFocusOnClick?: boolean;
 	sortColumn?: string;
 	sortOrder?: AvoSearchOrderDirection;
 	striped?: boolean;
@@ -72,12 +81,14 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	columns = [],
 	data = [],
 	emptyStateMessage,
+	isLoading = false,
 	horizontal,
 	nowrap,
 	onColumnClick = noop,
 	onRowClick,
 	renderCell = () => null,
 	rowKey,
+	enableRowFocusOnClick = false,
 	sortColumn,
 	sortOrder = 'asc',
 	striped,
@@ -90,17 +101,37 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	onSelectionChanged = noop,
 	onSelectAll = noop,
 }) => {
-	const getRowKey = (rowData: any): string => {
-		if (typeof rowKey === 'string') {
-			return rowData[rowKey];
+	const [focusedRowId, setFocusedRowId] = useState<string | null>(null);
+
+	const getRowKey = useCallback(
+		(rowData: any): string => {
+			if (typeof rowKey === 'string') {
+				return rowData[rowKey];
+			}
+			if (isNil(rowKey)) {
+				return rowData.id;
+			}
+			return (rowKey as (rowData: any) => any)(rowData);
+		},
+		[rowKey]
+	);
+
+	useEffect(() => {
+		// We have row focus enabled, have a focused row but the data changed and the row is not available anymore
+		if (
+			enableRowFocusOnClick &&
+			focusedRowId &&
+			!isLoading &&
+			!data.find((item) => getRowKey(item) === focusedRowId)
+		) {
+			setFocusedRowId(null);
 		}
-		if (isNil(rowKey)) {
-			return rowData.id;
-		}
-		return (rowKey as (rowData: any) => any)(rowData);
-	};
+	}, [enableRowFocusOnClick, data, isLoading, focusedRowId, getRowKey]);
 
 	const handleRowClick = (rowData: any) => {
+		if (enableRowFocusOnClick) {
+			setFocusedRowId(getRowKey(rowData));
+		}
 		if (onRowClick) {
 			onRowClick(rowData);
 		}
@@ -209,6 +240,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 					'c-table--striped': striped,
 					'c-table--styled': variant === 'styled' || variant === 'bordered',
 					'c-table--untable': untable,
+					'c-table--with-row-focus': enableRowFocusOnClick,
 
 					// Module
 					[styles['c-table']]: true,
@@ -229,6 +261,11 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 						{columns.length > 0 && (
 							<thead>
 								<tr>
+									{enableRowFocusOnClick && (
+										<th className={clsx('c-table__focus-cell', styles['c-table__focus-cell'])}>
+											&nbsp;
+										</th>
+									)}
 									{showCheckboxes && (
 										<th
 											className={clsx(
@@ -265,6 +302,15 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 										})}
 										onClick={() => handleRowClick(rowData)}
 									>
+										{enableRowFocusOnClick && (
+											<td
+												className={clsx('c-table__focus-cell', styles['c-table__focus-cell'], {
+													'c-table__focus-cell--active': getRowKey(rowData) === focusedRowId,
+												})}
+											>
+												&nbsp;
+											</td>
+										)}
 										{showCheckboxes && (
 											<td
 												className={clsx(
