@@ -35,6 +35,9 @@ $c-table-row-selected-bg: colors.$color-primary !default;
 	}
 
 	tr {
+		.c-table__focus-cell {
+			width: .8rem;
+		}
 		.c-table__checkbox-column {
 			width: 4rem;
 		}
