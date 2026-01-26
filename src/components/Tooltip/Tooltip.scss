@@ -48,28 +48,28 @@
 		bottom: -4px;
 		left: 50%;
 		transform: translate(-8px, 0);
-		clip-path: inset(4px 20px 20px 0);
+		clip-path: inset(4px -100px -100px -100px);
 	}
 
 	&[data-popper-placement^="bottom"] > .c-tooltip__arrow {
 		top: -4px;
 		left: 50%;
 		transform: translate(-8px, 0);
-		clip-path: inset(-3px, 20px, 4px, 0);
+		clip-path: inset(-100px -100px 4px -100px);
 	}
 
 	&[data-popper-placement^="left"] > .c-tooltip__arrow {
 		right: 0;
 		top: 50%;
 		transform: translate(0, -4px);
-		clip-path: inset(-5px, 20px, 17px, 8px);
+		clip-path: inset(-100px -100px -100px 4px);
 	}
 
 	&[data-popper-placement^="right"] > .c-tooltip__arrow {
 		left: -4px;
 		top: 50%;
 		transform: translate(0, -4px);
-		clip-path: inset(-2px, 4px, 20px, 0);
+		clip-path: inset(-100px 4px -100px -100px);
 	}
 }
 
