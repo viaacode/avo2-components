@@ -36,6 +36,7 @@ export interface ButtonPropsSchema extends DefaultProps {
 	tooltip?: string;
 	type?: ButtonTypeSchema | string; // for string values, the prefix c-button is prepended => 'c-button' + value
 	id?: string;
+	tabIndex?: number;
 }
 
 const Button: FunctionComponent<ButtonPropsSchema> = ({
@@ -59,6 +60,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 	id,
 	iconPosition = 'left',
 	renderIcon,
+	tabIndex,
 }) => {
 	const rootCls = clsx(className, {
 		// Normal
@@ -129,6 +131,7 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 				id={id}
 				style={style}
 				type="button"
+				tabIndex={tabIndex}
 			>
 				{children ? (
 					children
