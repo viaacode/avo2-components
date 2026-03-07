@@ -10,8 +10,8 @@ export default {
 	},
 };
 
-export const _Spinner = () => <Spinner />;
-export const LargeSpinner = () => <Spinner size="large" />;
+export const _Spinner = () => <Spinner locationId="test" />;
+export const LargeSpinner = () => <Spinner size="large" locationId="test" />;
 
 LargeSpinner.story = {
 	name: 'Large spinner',
@@ -19,7 +19,7 @@ LargeSpinner.story = {
 
 export const LightSpinner = () => (
 	<span style={{ padding: '20px', backgroundColor: COLORS.GRAYSCALE.G800 }}>
-		<Spinner light />
+		<Spinner light locationId="test" />
 	</span>
 );
 

@@ -36,7 +36,7 @@ export const Alert: FunctionComponent<AlertPropsSchema> = ({
 		>
 			<div className="c-alert__body">
 				{type === 'spinner' ? (
-					<Spinner light={dark}></Spinner>
+					<Spinner light={dark} locationId="test"></Spinner>
 				) : (
 					<Icon name={ALERT_TYPE_TO_ICON_MAPPING[type]} type="multicolor"></Icon>
 				)}
