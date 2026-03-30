@@ -37,7 +37,31 @@ $c-table-row-selected-bg: colors.$color-primary !default;
 	tr {
 		.c-table__focus-cell {
 			width: .8rem;
+			padding: 0;
+
+			&--active {
+				background-color: colors.$color-ocean-green;
+			}
 		}
+
+		.c-table__focus-cell-button {
+			width: 100%;
+			height: 100%;
+			min-height: 4rem;
+			padding: 0;
+			margin: 0;
+			border: none;
+			background: transparent;
+			cursor: pointer;
+			outline: none;
+			display: block;
+			opacity: 0;
+
+			&:focus-visible {
+				opacity: 1;
+			}
+		}
+
 		.c-table__checkbox-column {
 			width: 4rem;
 		}
