@@ -129,9 +129,8 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	}, [enableRowFocusOnClick, data, isLoading, focusedRowId, getRowKey]);
 
 	const handleRowClick = (rowData: any) => {
-		if (enableRowFocusOnClick) {
-			setFocusedRowId(getRowKey(rowData));
-		}
+		handleRowFocus(rowData);
+
 		if (onRowClick) {
 			onRowClick(rowData);
 		}
