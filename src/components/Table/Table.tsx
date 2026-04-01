@@ -137,6 +137,12 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 		}
 	};
 
+	const handleRowFocus = (rowData: any) => {
+		if (enableRowFocusOnClick) {
+			setFocusedRowId(getRowKey(rowData));
+		}
+	};
+
 	const areAllItemsSelected = () => {
 		return selectedItemIds.length >= (data || []).length;
 	};
@@ -263,8 +269,8 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 								<tr>
 									{enableRowFocusOnClick && (
 										<th
+											aria-hidden={true}
 											className={clsx('c-table__focus-cell', styles['c-table__focus-cell'])}
-											aria-label="Focus column"
 										>
 											&nbsp;
 										</th>
@@ -309,7 +315,6 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 											<td
 												className={clsx('c-table__focus-cell', styles['c-table__focus-cell'], {
 													'c-table__focus-cell--active': getRowKey(rowData) === focusedRowId,
-													[styles['c-table__focus-cell--active']]: getRowKey(rowData) === focusedRowId,
 												})}
 											>
 												<button
@@ -322,11 +327,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 														e.stopPropagation();
 														handleRowClick(rowData);
 													}}
-													onFocus={() => {
-														if (enableRowFocusOnClick) {
-															setFocusedRowId(getRowKey(rowData));
-														}
-													}}
+													onFocus={() => handleRowFocus(rowData)}
 													aria-label="Focus row"
 												>
 													&nbsp;
@@ -342,11 +343,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 												)}
 												onClick={() => toggleItemSelection(rowData)}
 												onKeyUp={handleEnterOrSpace(() => toggleItemSelection(rowData))}
-												onFocus={() => {
-													if (enableRowFocusOnClick) {
-														setFocusedRowId(getRowKey(rowData));
-													}
-												}}
+												onFocus={() => handleRowFocus(rowData)}
 											>
 												<Checkbox
 													label=""
@@ -367,11 +364,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 												)}
 												onClick={() => toggleRadioItemSelection(rowData)}
 												onKeyUp={handleEnterOrSpace(() => toggleRadioItemSelection(rowData))}
-												onFocus={() => {
-													if (enableRowFocusOnClick) {
-														setFocusedRowId(getRowKey(rowData));
-													}
-												}}
+												onFocus={() => handleRowFocus(rowData)}
 											>
 												<RadioButton
 													label=""
