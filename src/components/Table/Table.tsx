@@ -129,11 +129,16 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 	}, [enableRowFocusOnClick, data, isLoading, focusedRowId, getRowKey]);
 
 	const handleRowClick = (rowData: any) => {
-		if (enableRowFocusOnClick) {
-			setFocusedRowId(getRowKey(rowData));
-		}
+		handleRowFocus(rowData);
+
 		if (onRowClick) {
 			onRowClick(rowData);
+		}
+	};
+
+	const handleRowFocus = (rowData: any) => {
+		if (enableRowFocusOnClick) {
+			setFocusedRowId(getRowKey(rowData));
 		}
 	};
 
@@ -307,12 +312,25 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 									>
 										{enableRowFocusOnClick && (
 											<td
-												aria-hidden={true}
 												className={clsx('c-table__focus-cell', styles['c-table__focus-cell'], {
 													'c-table__focus-cell--active': getRowKey(rowData) === focusedRowId,
 												})}
 											>
-												&nbsp;
+												<button
+													type="button"
+													className={clsx(
+														'c-table__focus-cell-button',
+														styles['c-table__focus-cell-button']
+													)}
+													onClick={(e) => {
+														e.stopPropagation();
+														handleRowClick(rowData);
+													}}
+													onFocus={() => handleRowFocus(rowData)}
+													aria-label="Focus row"
+												>
+													&nbsp;
+												</button>
 											</td>
 										)}
 										{showCheckboxes && (
@@ -324,6 +342,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 												)}
 												onClick={() => toggleItemSelection(rowData)}
 												onKeyUp={handleEnterOrSpace(() => toggleItemSelection(rowData))}
+												onFocus={() => handleRowFocus(rowData)}
 											>
 												<Checkbox
 													label=""
@@ -344,6 +363,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 												)}
 												onClick={() => toggleRadioItemSelection(rowData)}
 												onKeyUp={handleEnterOrSpace(() => toggleRadioItemSelection(rowData))}
+												onFocus={() => handleRowFocus(rowData)}
 											>
 												<RadioButton
 													label=""
