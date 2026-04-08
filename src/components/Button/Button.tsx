@@ -177,7 +177,12 @@ const Button: FunctionComponent<ButtonPropsSchema> = ({
 
 	if (tooltip?.trim()) {
 		return (
-			<Tooltip contentClassName="c-button__tooltip" position="top" offset={20}>
+			<Tooltip
+				contentClassName="c-button__tooltip"
+				position="top"
+				offset={20}
+				id={`button-tooltip--${id}`}
+			>
 				<TooltipTrigger>
 					<span>{renderButton()}</span>
 				</TooltipTrigger>

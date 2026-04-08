@@ -13,7 +13,7 @@ export default {
 
 export const TooltipTop = () => (
 	<div className="u-text-center" style={{ paddingTop: '40px' }}>
-		<Tooltip position="top">
+		<Tooltip position="top" id="tooltip-top-id">
 			<TooltipTrigger>
 				<span>Hover me!</span>
 			</TooltipTrigger>
@@ -30,7 +30,7 @@ TooltipTop.story = {
 
 export const TooltipRight = () => (
 	<div className="u-text-center">
-		<Tooltip position="right">
+		<Tooltip position="right" id="tooltip-right-id">
 			<TooltipTrigger>
 				<span>Hover me!</span>
 			</TooltipTrigger>
@@ -47,7 +47,7 @@ TooltipRight.story = {
 
 export const TooltipBottom = () => (
 	<div className="u-text-center">
-		<Tooltip position="bottom">
+		<Tooltip position="bottom" id="tooltip-bottom-id">
 			<TooltipTrigger>
 				<span>Hover me!</span>
 			</TooltipTrigger>
@@ -64,7 +64,7 @@ TooltipBottom.story = {
 
 export const TooltipLeft = () => (
 	<div className="u-text-center">
-		<Tooltip position="left">
+		<Tooltip position="left" id="tooltip-left-id">
 			<TooltipTrigger>
 				<span>Hover me!</span>
 			</TooltipTrigger>
@@ -82,7 +82,7 @@ TooltipLeft.story = {
 export const TooltipOffset = () => (
 	<Spacer margin="top-extra-large">
 		<div className="u-text-center">
-			<Tooltip position="right">
+			<Tooltip position="right" id="tooltip-offset-1-id">
 				<TooltipTrigger>
 					<span>Hover me!</span>
 				</TooltipTrigger>
@@ -92,7 +92,7 @@ export const TooltipOffset = () => (
 			</Tooltip>
 		</div>
 		<div className="u-text-center">
-			<Tooltip position="right" offset={60}>
+			<Tooltip position="right" offset={60} id="tooltip-offset-2-id">
 				<TooltipTrigger>
 					<span>Hover me!</span>
 				</TooltipTrigger>
@@ -111,7 +111,7 @@ TooltipOffset.story = {
 export const TooltipMultiple = () => (
 	<>
 		<div className="u-text-center">
-			<Tooltip position="right">
+			<Tooltip position="right" id="tooltip-multiple-1-id">
 				<TooltipTrigger>
 					<span>Foo</span>
 				</TooltipTrigger>
@@ -121,7 +121,7 @@ export const TooltipMultiple = () => (
 			</Tooltip>
 		</div>
 		<div className="u-text-center">
-			<Tooltip position="right">
+			<Tooltip position="right" id="tooltip-multiple-2-id">
 				<TooltipTrigger>
 					<span>Marco</span>
 				</TooltipTrigger>

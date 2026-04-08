@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import { type FunctionComponent, type ReactNode, useCallback, useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
 
-import { generateRandomId } from '../../helpers/uuid';
 import { useSlot } from '../../hooks/useSlot';
 
 import './Tooltip.scss';
@@ -13,6 +12,7 @@ export interface TooltipPropsSchema {
 	position: 'top' | 'right' | 'bottom' | 'left';
 	offset?: number;
 	contentClassName?: string;
+	id: string;
 }
 
 export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
@@ -20,12 +20,12 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 	position = 'bottom',
 	offset,
 	contentClassName,
+	id,
 }) => {
 	const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
 	const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
 
 	const [show, setShow] = useState(false);
-	const [id] = useState(generateRandomId());
 
 	const tooltipSlot = useSlot(TooltipContent, children);
 	const triggerSlot = useSlot(TooltipTrigger, children);
