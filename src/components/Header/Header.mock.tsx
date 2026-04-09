@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions';
 import { AvoContentTypeEnglish } from '@viaa/avo2-types';
 
 export const MOCK_HEADER_PROPS = {
@@ -8,7 +7,7 @@ export const MOCK_HEADER_PROPS = {
 export const MOCK_HEADER_PROPS_FULL = {
 	...MOCK_HEADER_PROPS,
 	category: AvoContentTypeEnglish.COLLECTION,
-	onClickTitle: action('Title clicked'),
+	onClickTitle: () => { action: 'Title clicked' },
 	showMetaData: true,
 	bookmarks: '12',
 	views: '23',
