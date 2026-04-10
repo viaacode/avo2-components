@@ -4,6 +4,12 @@ import { cloneElement, type ReactElement, useState } from 'react';
 import { menuItems } from '../Menu/Menu.mocks';
 import { MoreOptionsDropdown } from './MoreOptionsDropdown';
 
+type Props = {
+	isOpen: boolean;
+	onOpen: () => void;
+	onClose: () => void;
+};
+
 const MoreOptionsDropdownStory = ({
 	children,
 }: {
@@ -12,7 +18,7 @@ const MoreOptionsDropdownStory = ({
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<Props>, {
 		isOpen,
 		onClose: () => setIsOpen(false),
 		onOpen: () => setIsOpen(true),

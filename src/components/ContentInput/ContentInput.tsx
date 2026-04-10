@@ -191,7 +191,11 @@ const ContentInput: FC<ContentInputPropsSchema> = forwardRef<
 					}}
 					ref={(element) => {
 						setInstance(element);
-						return ref;
+						if (typeof ref === 'function') {
+							ref(element);
+						} else if (ref) {
+							ref.current = element;
+						}
 					}}
 					type={type}
 					value={value}

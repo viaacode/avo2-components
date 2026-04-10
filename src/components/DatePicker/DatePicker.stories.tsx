@@ -4,6 +4,11 @@ import { action } from 'storybook/actions';
 import { Spacer } from '../Spacer/Spacer';
 import { DatePicker } from './DatePicker';
 
+type Props = {
+	value?: Date;
+	onChange: (value: Date) => void;
+};
+
 const DatePickerStoryComponent = ({
 	children,
 	defaultValue,
@@ -13,7 +18,7 @@ const DatePickerStoryComponent = ({
 }) => {
 	const [value, setValue] = useState(defaultValue);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<Props>, {
 		value,
 		onChange: (value: Date) => {
 			action('Date changed')(value);

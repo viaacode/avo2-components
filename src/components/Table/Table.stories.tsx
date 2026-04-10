@@ -6,6 +6,7 @@ import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Table, type TableColumnSchema, type TablePropsSchema } from './Table';
+import { SearchOrderDirection } from '../../../../avo2-typings/dist/modules/search';
 
 const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },
@@ -48,7 +49,7 @@ const comparators: any = {
 	age: (order: 'asc' | 'desc') => (a: any, b: any) => (a.age - b.age) * (order === 'asc' ? 1 : -1),
 };
 
-const TableStoryComponent = ({ children }: { children: ReactElement }) => {
+const TableStoryComponent = ({ children }: { children: ReactElement<TablePropsSchema> }) => {
 	const [sortColumn, setSortColumn] = useState<string>('name');
 	const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
@@ -59,8 +60,10 @@ const TableStoryComponent = ({ children }: { children: ReactElement }) => {
 		[sortColumn, sortOrder]
 	);
 
-	const [selectedItems, setSelectedItems] = useState<any[]>(sort(children.props.data).slice(2, 4));
-	const [data, setData] = useState(sort(children.props.data));
+	const [selectedItemIds, setSelectedItemIds] = useState<(string | number)[]>(
+		sort(children.props.data ?? []).slice(2, 4).map((item: any) => item.id)
+	);
+	const [data, setData] = useState<any[]>(sort(children.props.data ?? []));
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: not sure if sortOrder and sortColumn were intended to be in the dependency array
 	useEffect(() => {
@@ -70,10 +73,10 @@ const TableStoryComponent = ({ children }: { children: ReactElement }) => {
 
 	return (
 		<Table
-			{...children.props}
+			{...children.props as TablePropsSchema}
 			data={data}
 			sortColumn={sortColumn}
-			sortOrder={sortOrder}
+			sortOrder={sortOrder as SearchOrderDirection}
 			onColumnClick={(id: string) => {
 				action('Column clicked')(id);
 				if (id === sortColumn) {
@@ -83,10 +86,10 @@ const TableStoryComponent = ({ children }: { children: ReactElement }) => {
 					setSortOrder('asc');
 				}
 			}}
-			selectedItems={selectedItems}
-			onSelectionChanged={(newSelectedItems: any[]) => {
-				setSelectedItems(newSelectedItems);
-				action('Selection changed')(newSelectedItems);
+			selectedItemIds={selectedItemIds}
+			onSelectionChanged={(newSelectedItemIds: (string | number)[]) => {
+				setSelectedItemIds(newSelectedItemIds);
+				action('Selection changed')(newSelectedItemIds);
 			}}
 		/>
 	);

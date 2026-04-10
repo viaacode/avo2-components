@@ -5,6 +5,11 @@ import { noop } from '../../helpers/noop';
 import { RadioButtonGroup } from './RadioButtonGroup';
 import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock';
 
+type Props = {
+	value: string;
+	onChange: (value: string) => void;
+};
+
 const RadioButtonGroupStoryComponent = ({
 	children,
 	defaultValue,
@@ -16,7 +21,7 @@ const RadioButtonGroupStoryComponent = ({
 
 	return (
 		<Fragment>
-			{React.cloneElement(children, {
+			{React.cloneElement(children as ReactElement<Props>, {
 				value,
 				onChange: (v: string) => {
 					action('RadioButtonGroup value changed')(v);

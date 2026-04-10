@@ -31,7 +31,10 @@ const images2 = [
 	image500x200,
 	image500x200,
 ];
-
+type Props = {
+	value: string[];
+	onChange: (value: string[]) => void;
+};
 const ImageGroupStoryComponent = ({
 	children,
 	defaultValue = [],
@@ -40,7 +43,7 @@ const ImageGroupStoryComponent = ({
 	defaultValue?: string[];
 }) => {
 	const [value, setValue] = useState(defaultValue);
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<Props>, {
 		value,
 		onChange: (value: string[]) => {
 			action('Image selection changed')(value);

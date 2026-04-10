@@ -13,7 +13,10 @@ const meta: Meta<typeof FileInput> = {
 export default meta;
 
 type Story = StoryObj<typeof FileInput>;
-
+type Props = {
+	value: string;
+	onChange: (value: string) => void;
+};
 const FileInputStoryComponent = ({
 	children,
 	defaultValue = '',
@@ -23,7 +26,7 @@ const FileInputStoryComponent = ({
 }) => {
 	const [value, setValue] = useState(defaultValue);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<Props>, {
 		value,
 		onChange: (value: string) => {
 			console.log('Input changed', value);

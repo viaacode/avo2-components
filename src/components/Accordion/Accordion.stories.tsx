@@ -14,9 +14,10 @@ import { Accordion } from './Accordion';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
 
 const AccordionStoryComponent = ({ children }: { children: ReactElement }) => {
+	type Props = { isOpen: boolean, onToggle: () => void };
 	const [isOpen, setIsOpen] = useState(false);
 
-	return cloneElement(children, {
+	return cloneElement(children as React.ReactElement<Props>, {
 		isOpen,
 		onToggle: () => setIsOpen(!isOpen),
 	});

@@ -4,6 +4,12 @@ import { action } from 'storybook/actions';
 
 import { type TagInfoSchema, TagsInput } from './TagsInput';
 
+type Props = {
+	value: TagInfoSchema[];
+	onChange: (value: TagInfoSchema[]) => void;
+	onCreate: (tagToBeCreated: TagInfoSchema) => void;
+};
+
 const TagsInputStoryComponent = ({
 	children,
 	defaultValue = [] as TagInfoSchema[],
@@ -13,7 +19,7 @@ const TagsInputStoryComponent = ({
 }) => {
 	const [value, setValue] = useState(defaultValue);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<Props>, {
 		value,
 		onChange: (changedValues: TagInfoSchema[]) => {
 			action('tags input changed')(changedValues);

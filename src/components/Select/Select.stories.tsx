@@ -12,13 +12,16 @@ const meta: Meta<typeof Select> = {
 	},
 };
 export default meta;
-
+type Props = {
+	value: string | null;
+	onChange: (value: string | null) => void;
+}
 type Story = StoryObj<typeof Select>;
 
 const SelectStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [value, setValue] = useState<string | null>('Al');
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<Props>, {
 		value,
 		onChange: (value: string | null) => {
 			setValue(value);

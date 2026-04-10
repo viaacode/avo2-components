@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { type FunctionComponent, type ReactNode, useCallback, useEffect, useState } from 'react';
-import { usePopper } from 'react-popper';
+import { useFloating, offset as floating_offset } from '@floating-ui/react';
 
 import { generateRandomId } from '../../helpers/uuid';
 import { useSlot } from '../../hooks/useSlot';
@@ -21,26 +21,18 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 	offset,
 	contentClassName,
 }) => {
-	const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
-	const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
 
 	const [show, setShow] = useState(false);
 	const [id] = useState(generateRandomId());
 
 	const tooltipSlot = useSlot(TooltipContent, children);
 	const triggerSlot = useSlot(TooltipTrigger, children);
-
-	const { styles, attributes } = usePopper(referenceElement, popperElement, {
-		placement: position,
-		modifiers: [
-			{
-				name: 'offset',
-				options: {
-					offset: [0, offset || 10],
-				},
-			},
-		],
+	
+	const { x, y, strategy, refs } = useFloating({
+	placement: position,
+	middleware: [floating_offset(offset ?? 10)],
 	});
+
 
 	const handleMouseMove = useCallback(
 		(evt: Event) => {
@@ -68,7 +60,7 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 
 	return tooltipSlot && triggerSlot ? (
 		<>
-			<div className="c-tooltip-trigger" data-id={id} ref={setReferenceElement}>
+			<div className="c-tooltip-trigger" data-id={id} ref={refs.setReference}>
 				{triggerSlot}
 			</div>
 
@@ -76,9 +68,12 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 				className={clsx(contentClassName, 'c-tooltip', `c-tooltip--${position}`, {
 					'c-tooltip--show': show,
 				})}
-				ref={setPopperElement}
-				style={styles.popper}
-				{...attributes.popper}
+				ref={refs.setFloating}
+				style={{
+					position: strategy,
+					top: y ?? 0,
+					left: x ?? 0,
+				}}
 			>
 				{tooltipSlot}
 				<div className="c-tooltip__arrow" data-popper-arrow />

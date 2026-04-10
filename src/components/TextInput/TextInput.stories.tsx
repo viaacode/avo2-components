@@ -5,6 +5,10 @@ import { IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
 import { TextInput } from './TextInput';
 
+type Props = {
+	value: string;
+	onChange: (value: string) => void;
+};
 const TextInputStoryComponent = ({
 	children,
 	defaultValue = '',
@@ -14,7 +18,7 @@ const TextInputStoryComponent = ({
 }) => {
 	const [value, setValue] = useState(defaultValue);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<Props>, {
 		value,
 		onChange: (value: string) => {
 			action('Input changed')(value);

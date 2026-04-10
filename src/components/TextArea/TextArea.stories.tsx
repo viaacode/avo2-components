@@ -4,6 +4,11 @@ import { action } from 'storybook/actions';
 import { Spacer } from '../Spacer/Spacer';
 import { TextArea } from './TextArea';
 
+type Props = {
+	value: string;
+	onChange: (value: string) => void;
+};
+
 const TextAreaStoryComponent = ({
 	children,
 	defaultValue = '',
@@ -13,7 +18,7 @@ const TextAreaStoryComponent = ({
 }) => {
 	const [value, setValue] = useState(defaultValue);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<Props>, {
 		value,
 		onChange: (value: string) => {
 			action('TextArea changed')(value);

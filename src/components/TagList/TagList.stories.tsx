@@ -31,6 +31,11 @@ const colorTags = [
 	{ label: 'Uranium', id: 'uranium' },
 ];
 
+type Props = {
+	tags: { label: string; id: string; color?: string }[];
+	onTagClicked: (tagId: string) => void;
+};
+
 const TagListStoryComponent = ({
 	children,
 }: {
@@ -39,7 +44,7 @@ const TagListStoryComponent = ({
 }) => {
 	const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<Props>, {
 		tags: tags.map((tag) => ({ ...tag, active: selectedTags.includes(tag.id) })),
 		onTagClicked: (tagId: string) => {
 			action('tag toggled')(tagId);

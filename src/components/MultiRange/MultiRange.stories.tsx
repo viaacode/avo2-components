@@ -3,6 +3,11 @@ import { cloneElement, type ReactElement, useState } from 'react';
 
 import { MultiRange } from './MultiRange';
 
+type Props = {
+	values: number[];
+	onChange: (values: number[]) => void;
+};
+
 const MultiRangeStoryComponent = ({
 	children,
 	defaultValues = [0, 100],
@@ -12,7 +17,7 @@ const MultiRangeStoryComponent = ({
 }) => {
 	const [values, setValues] = useState(defaultValues);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<Props>, {
 		values,
 		onChange: (values: number[]) => {
 			console.log('Input changed', values);

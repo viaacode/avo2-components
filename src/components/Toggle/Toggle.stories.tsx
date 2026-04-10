@@ -3,7 +3,10 @@ import { cloneElement, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
 
 import { Toggle } from './Toggle';
-
+type Props = {
+	checked: boolean;
+	onChange: (checked: boolean) => void;
+};
 const ToggleStoryComponent = ({
 	children,
 	defaultChecked,
@@ -13,7 +16,7 @@ const ToggleStoryComponent = ({
 }) => {
 	const [checked, setChecked] = useState(defaultChecked);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<Props>, {
 		checked,
 		onChange: (c: boolean) => {
 			action('Toggle toggled')(c);
