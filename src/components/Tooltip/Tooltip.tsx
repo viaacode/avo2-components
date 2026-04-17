@@ -1,8 +1,14 @@
 import clsx from 'clsx';
-import { type FunctionComponent, type ReactNode, useCallback, useEffect, useState } from 'react';
-import { useFloating, offset as floating_offset } from '@floating-ui/react';
+import { type FunctionComponent, type ReactNode, useState } from 'react';
+import {
+	autoUpdate,
+	offset as floating_offset,
+	useFloating,
+	useFocus,
+	useHover,
+	useInteractions,
+} from '@floating-ui/react';
 
-import { generateRandomId } from '../../helpers/uuid';
 import { useSlot } from '../../hooks/useSlot';
 
 import './Tooltip.scss';
@@ -23,44 +29,25 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 }) => {
 
 	const [show, setShow] = useState(false);
-	const [id] = useState(generateRandomId());
 
 	const tooltipSlot = useSlot(TooltipContent, children);
 	const triggerSlot = useSlot(TooltipTrigger, children);
-	
-	const { x, y, strategy, refs } = useFloating({
-	placement: position,
-	middleware: [floating_offset(offset ?? 10)],
+
+	const { refs, floatingStyles, context } = useFloating({
+		open: show,
+		onOpenChange: setShow,
+		placement: position,
+		middleware: [floating_offset(offset ?? 10)],
+		whileElementsMounted: autoUpdate,
 	});
 
-
-	const handleMouseMove = useCallback(
-		(evt: Event) => {
-			const elem = evt.target as HTMLElement;
-			let tooltipElem: HTMLElement | null = null;
-			if (elem.classList.contains('c-tooltip-trigger')) {
-				tooltipElem = elem;
-			} else if (elem.closest('.c-tooltip-trigger')) {
-				tooltipElem = elem.closest('.c-tooltip-trigger');
-			}
-			setShow(!!tooltipElem && tooltipElem.getAttribute('data-id') === id);
-		},
-		[id]
-	);
-
-	useEffect(() => {
-		document.body.addEventListener('mousemove', handleMouseMove);
-		document.body.addEventListener('touch', handleMouseMove);
-
-		return () => {
-			document.body.removeEventListener('mousemove', handleMouseMove);
-			document.body.removeEventListener('touch', handleMouseMove);
-		};
-	}, [handleMouseMove]);
+	const hover = useHover(context);
+	const focus = useFocus(context);
+	const { getFloatingProps, getReferenceProps } = useInteractions([hover, focus]);
 
 	return tooltipSlot && triggerSlot ? (
 		<>
-			<div className="c-tooltip-trigger" data-id={id} ref={refs.setReference}>
+			<div className="c-tooltip-trigger" ref={refs.setReference} {...getReferenceProps()}>
 				{triggerSlot}
 			</div>
 
@@ -69,11 +56,8 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 					'c-tooltip--show': show,
 				})}
 				ref={refs.setFloating}
-				style={{
-					position: strategy,
-					top: y ?? 0,
-					left: x ?? 0,
-				}}
+				style={floatingStyles}
+				{...getFloatingProps()}
 			>
 				{tooltipSlot}
 				<div className="c-tooltip__arrow" data-popper-arrow />

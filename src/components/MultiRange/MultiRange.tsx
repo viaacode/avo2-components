@@ -114,11 +114,12 @@ export const MultiRange: FunctionComponent<MultiRangePropsSchema> = ({
 						</div>
 					</div>
 				)}
-				renderThumb={({ props }) => (
+				renderThumb={({ props: { key, ...thumbProps } }) => (
 					<div
-						{...props}
+						key={key}
+						{...thumbProps}
 						style={{
-							...props.style,
+							...thumbProps.style,
 							height: '40px',
 							width: '40px',
 						}}
