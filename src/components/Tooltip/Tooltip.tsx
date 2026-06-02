@@ -19,6 +19,7 @@ export interface TooltipPropsSchema {
 	position: 'top' | 'right' | 'bottom' | 'left';
 	offset?: number;
 	contentClassName?: string;
+	id: string;
 }
 
 export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
@@ -26,6 +27,7 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 	position = 'bottom',
 	offset,
 	contentClassName,
+	id,
 }) => {
 
 	const [show, setShow] = useState(false);

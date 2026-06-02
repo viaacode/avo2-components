@@ -32,7 +32,7 @@ export const AvatarList: FC<AvatarListPropsSchema> = ({ avatars, className, isOp
 		<div className={clsx(className, 'c-avatar--multiple', styles['c-avatar--multiple'])}>
 			{visibleAvatars.map((avatar) => (
 				<Fragment key={`${avatar.name}--${avatar.title}`}>
-					<Tooltip position="bottom">
+					<Tooltip position="bottom" id={`avatar-tooltip-${avatar.name}`}>
 						<TooltipTrigger>
 							<Avatar initials={avatar.initials} />
 						</TooltipTrigger>

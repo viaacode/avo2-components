@@ -10,7 +10,7 @@ describe('Tooltip', () => {
 	const tooltipPlacement = 'bottom';
 
 	const tooltip = (
-		<Tooltip position={tooltipPlacement}>
+		<Tooltip position={tooltipPlacement} id="test-tooltip-id">
 			<TooltipTrigger>
 				<span className="trigger">{triggerText}</span>
 			</TooltipTrigger>
