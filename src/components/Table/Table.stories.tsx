@@ -6,7 +6,7 @@ import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Table, type TableColumnSchema, type TablePropsSchema } from './Table';
-import { SearchOrderDirection } from '../../../../avo2-typings/dist/modules/search';
+import { AvoSearchOrderDirection } from '@viaa/avo2-types';
 
 const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },
@@ -76,7 +76,7 @@ const TableStoryComponent = ({ children }: { children: ReactElement<TablePropsSc
 			{...children.props as TablePropsSchema}
 			data={data}
 			sortColumn={sortColumn}
-			sortOrder={sortOrder as SearchOrderDirection}
+			sortOrder={sortOrder as AvoSearchOrderDirection}
 			onColumnClick={(id: string) => {
 				action('Column clicked')(id);
 				if (id === sortColumn) {

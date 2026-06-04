@@ -1,8 +1,10 @@
 import clsx from 'clsx';
-import { type FunctionComponent, type ReactNode, useState } from 'react';
+import { type FunctionComponent, type ReactNode, useRef, useState } from 'react';
 import {
 	autoUpdate,
-	offset as floating_offset,
+	FloatingArrow,
+	arrow,
+	offset as floatingOffset,
 	useFloating,
 	useFocus,
 	useHover,
@@ -25,12 +27,13 @@ export interface TooltipPropsSchema {
 export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 	children,
 	position = 'bottom',
-	offset,
+	offset = 10,
 	contentClassName,
 	id,
 }) => {
 
 	const [show, setShow] = useState(false);
+	const arrowRef = useRef(null);
 
 	const tooltipSlot = useSlot(TooltipContent, children);
 	const triggerSlot = useSlot(TooltipTrigger, children);
@@ -39,7 +42,12 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 		open: show,
 		onOpenChange: setShow,
 		placement: position,
-		middleware: [floating_offset(offset ?? 10)],
+		middleware: [
+			floatingOffset({ mainAxis: offset }),
+			arrow({
+				element: arrowRef,
+			}),
+		],
 		whileElementsMounted: autoUpdate,
 	});
 
@@ -62,7 +70,11 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 				{...getFloatingProps()}
 			>
 				{tooltipSlot}
-				<div className="c-tooltip__arrow" data-popper-arrow />
+				<FloatingArrow
+					ref={arrowRef}
+					context={context}
+					className="c-tooltip__arrow"
+				/>
 			</div>
 		</>
 	) : null;

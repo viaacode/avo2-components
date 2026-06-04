@@ -28,49 +28,13 @@
 	visibility: hidden;
 	pointer-events: none;
 	z-index: 75;
+}
 
-	.c-tooltip__arrow,
-	.c-tooltip__arrow::before {
-		position: absolute;
-		width: 8px;
-		height: 8px;
-		z-index: -1;
-	}
-
-	.c-tooltip__arrow::before {
-		content: "";
-		transform: rotate(45deg);
-		background-color: colors.$color-gray-50;
-		border: 1px solid colors.$color-gray-400;
-	}
-
-	&[data-popper-placement^="top"] > .c-tooltip__arrow {
-		bottom: -4px;
-		left: 50%;
-		transform: translate(-8px, 0);
-		clip-path: inset(4px -100px -100px -100px);
-	}
-
-	&[data-popper-placement^="bottom"] > .c-tooltip__arrow {
-		top: -4px;
-		left: 50%;
-		transform: translate(-8px, 0);
-		clip-path: inset(-100px -100px 4px -100px);
-	}
-
-	&[data-popper-placement^="left"] > .c-tooltip__arrow {
-		right: 0;
-		top: 50%;
-		transform: translate(0, -4px);
-		clip-path: inset(-100px -100px -100px 4px);
-	}
-
-	&[data-popper-placement^="right"] > .c-tooltip__arrow {
-		left: -4px;
-		top: 50%;
-		transform: translate(0, -4px);
-		clip-path: inset(-100px 4px -100px -100px);
-	}
+.c-tooltip__arrow {
+	height: 1rem;
+	fill: colors.$color-gray-50;
+	stroke: colors.$color-gray-400 !important;
+	stroke-width: 1px !important;
 }
 
 .c-tooltip--show {
