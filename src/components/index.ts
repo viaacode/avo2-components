@@ -75,7 +75,6 @@ import type { ToggleButtonPropsSchema } from './ToggleButton/ToggleButton';
 import type { ToolbarPropsSchema } from './Toolbar/Toolbar';
 import type { ToolbarItemPropsSchema } from './Toolbar/ToolbarItem/ToolbarItem';
 import type { ToolbarTitlePropsSchema } from './Toolbar/ToolbarTitle/ToolbarTitle';
-import type { TooltipPropsSchema } from './Tooltip/Tooltip';
 
 export { Accordion } from './Accordion/Accordion';
 export type AccordionProps = AccordionPropsSchema;
@@ -298,11 +297,7 @@ export type ToolbarItemProps = ToolbarItemPropsSchema;
 export { ToolbarTitle } from './Toolbar/ToolbarTitle/ToolbarTitle';
 export type ToolbarTitleProps = ToolbarTitlePropsSchema;
 
-export { Tooltip } from './Tooltip/Tooltip';
-export type TooltipProps = TooltipPropsSchema;
-
 export { Pill, PillVariants } from './Pill/Pill';
-export { TooltipContent, TooltipTrigger } from './Tooltip/Tooltip.slots';
 export type PillProps = PillPropsSchema;
 
 export { ContentInput } from './ContentInput';
