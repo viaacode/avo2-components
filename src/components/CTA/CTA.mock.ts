@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions';
 import { AvoCoreContentPickerType } from '@viaa/avo2-types';
 import { testRenderLink } from '../../helpers';
 import { LinkTarget } from '../../types';
@@ -16,5 +15,5 @@ export const CTA_MOCK: CTAPropsSchema = {
 		type: AvoCoreContentPickerType.EXTERNAL_LINK,
 		value: 'http://google.com',
 	},
-	renderLink: testRenderLink(action('navigate to')),
+	renderLink: testRenderLink(() => {}),
 };

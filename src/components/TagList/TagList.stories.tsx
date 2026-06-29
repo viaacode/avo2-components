@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { loremIpsum } from 'lorem-ipsum';
 import { cloneElement, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
-import { TagList } from './TagList';
+import { TagList, type TagListPropsSchema } from './TagList';
 
 const tags = [
 	{ label: 'Aluminium', id: 'aluminium' },
@@ -39,11 +39,11 @@ const TagListStoryComponent = ({
 }) => {
 	const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<TagListPropsSchema>, {
 		tags: tags.map((tag) => ({ ...tag, active: selectedTags.includes(tag.id) })),
-		onTagClicked: (tagId: string) => {
+		onTagClicked: (tagId: string | number) => {
 			action('tag toggled')(tagId);
-			const indexOf = selectedTags.indexOf(tagId);
+			const indexOf = selectedTags.indexOf(tagId as string);
 			if (indexOf !== -1) {
 				// already in the selected tags => remove the tag
 				const newTabs = [...selectedTags];
@@ -51,7 +51,7 @@ const TagListStoryComponent = ({
 				setSelectedTags(newTabs);
 			} else {
 				// add the tag
-				setSelectedTags([...selectedTags, tagId]);
+				setSelectedTags([...selectedTags, tagId as string]);
 			}
 		},
 	});

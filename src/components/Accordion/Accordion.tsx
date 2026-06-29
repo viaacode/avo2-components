@@ -56,7 +56,6 @@ export const Accordion: FunctionComponent<AccordionPropsSchema> = ({
 				'c-accordion--closed': !getIsOpen(),
 			})}
 		>
-			{/** biome-ignore lint/a11y/noStaticElementInteractions: TODO fix */}
 			<div
 				className={clsx('c-accordion__header', 'u-clickable')}
 				role="button"

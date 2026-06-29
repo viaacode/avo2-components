@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
 
-import { MultiRange } from './MultiRange';
+import { MultiRange, type MultiRangePropsSchema } from './MultiRange';
 
 const MultiRangeStoryComponent = ({
 	children,
@@ -12,7 +12,7 @@ const MultiRangeStoryComponent = ({
 }) => {
 	const [values, setValues] = useState(defaultValues);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<MultiRangePropsSchema>, {
 		values,
 		onChange: (values: number[]) => {
 			console.log('Input changed', values);

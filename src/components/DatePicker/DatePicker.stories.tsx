@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
+import type { DatePickerProps } from '../index';
 import { Spacer } from '../Spacer/Spacer';
 import { DatePicker } from './DatePicker';
 
@@ -13,11 +14,11 @@ const DatePickerStoryComponent = ({
 }) => {
 	const [value, setValue] = useState(defaultValue);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<DatePickerProps>, {
 		value,
-		onChange: (value: Date) => {
+		onChange: (value: Date | null) => {
 			action('Date changed')(value);
-			setValue(value);
+			setValue(value || undefined);
 		},
 	});
 };

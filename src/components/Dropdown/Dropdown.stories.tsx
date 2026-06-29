@@ -20,6 +20,11 @@ const menuItemsWithIcons = [
 	{ ...menuItems[2], label: 'Dubnium with an icon', icon: 'square' as IconNameSchema },
 	{ ...menuItems[3], label: 'Potassium with an icon', icon: 'triangle' as IconNameSchema },
 ];
+type DropdownProps = {
+	isOpen: boolean;
+	onOpen: () => void;
+	onClose: () => void;
+};
 
 const DropdownStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [isOpen, setOpen] = useState(false);
@@ -34,7 +39,7 @@ const DropdownStoryComponent = ({ children }: { children: ReactElement }) => {
 		setOpen(false);
 	};
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<DropdownProps>, {
 		isOpen,
 		onOpen: open,
 		onClose: close,
@@ -56,7 +61,7 @@ const DropdownMoveTriggerStoryComponent = ({ children }: { children: ReactElemen
 		setOpen(false);
 	};
 
-	const clone = cloneElement(children, {
+	const clone = cloneElement(children as ReactElement<DropdownProps>, {
 		isOpen,
 		onOpen: open,
 		onClose: close,

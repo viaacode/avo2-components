@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
-
 import { menuItems } from '../Menu/Menu.mocks';
-import { MoreOptionsDropdown } from './MoreOptionsDropdown';
+import { MoreOptionsDropdown, type MoreOptionsDropdownPropsSchema } from './MoreOptionsDropdown';
 
 const MoreOptionsDropdownStory = ({
 	children,
@@ -12,7 +11,7 @@ const MoreOptionsDropdownStory = ({
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<MoreOptionsDropdownPropsSchema>, {
 		isOpen,
 		onClose: () => setIsOpen(false),
 		onOpen: () => setIsOpen(true),

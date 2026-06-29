@@ -96,7 +96,7 @@ export const DatePicker: FunctionComponent<DatePickerPropsSchema> = ({
 					disabled={disabled}
 					required={required}
 					placeholderText={placeholder || 'dd/mm/yyyy'}
-					onChange={(newDate) => handleChangedDate(newDate)}
+					onChange={(newDate: Date | null) => handleChangedDate(newDate)}
 					dateFormat={'dd/MM/yyyy'}
 					minDate={minDate}
 					maxDate={

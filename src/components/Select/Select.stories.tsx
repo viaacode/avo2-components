@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
-
+import type { SelectProps } from '../index';
 import { Select } from './Select';
 import { SELECT_MOCK_OPTIONS } from './Select.mock';
 
@@ -12,13 +12,12 @@ const meta: Meta<typeof Select> = {
 	},
 };
 export default meta;
-
 type Story = StoryObj<typeof Select>;
 
 const SelectStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [value, setValue] = useState<string | null>('Al');
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<SelectProps>, {
 		value,
 		onChange: (value: string | null) => {
 			setValue(value);

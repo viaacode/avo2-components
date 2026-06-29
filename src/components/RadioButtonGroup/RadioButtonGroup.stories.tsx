@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { Fragment, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
 import { noop } from '../../helpers/noop';
-import { RadioButtonGroup } from './RadioButtonGroup';
+import { RadioButtonGroup, type RadioButtonGroupPropsSchema } from './RadioButtonGroup';
 import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock';
 
 const RadioButtonGroupStoryComponent = ({
@@ -16,7 +16,7 @@ const RadioButtonGroupStoryComponent = ({
 
 	return (
 		<Fragment>
-			{React.cloneElement(children, {
+			{React.cloneElement(children as ReactElement<RadioButtonGroupPropsSchema>, {
 				value,
 				onChange: (v: string) => {
 					action('RadioButtonGroup value changed')(v);

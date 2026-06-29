@@ -28,7 +28,7 @@ export default defineConfig({
 			},
 			formats: ['es'],
 		},
-		rollupOptions: {
+		rolldownOptions: {
 			external,
 		},
 		sourcemap: true,
@@ -38,10 +38,4 @@ export default defineConfig({
 		svgrPlugin(),
 		dts(),
 	],
-	resolve: {
-		alias: {
-			// Force vite to use the ESM build of avo2 typings
-			"@viaa/avo2-types": "@viaa/avo2-types/dist/esm/index.js",
-		},
-	}
 });

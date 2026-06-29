@@ -1,14 +1,16 @@
-import type { ReactElement, ReactNode, ReactNodeArray, ReactPortal } from 'react';
+import { Children, isValidElement, type ReactNode } from 'react';
 
-export function useSlot<T>(type: T, children: ReactNode): ReactNode {
-	const slots: ReactNodeArray = Array.isArray(children) ? children : [children];
-	const element: ReactElement = slots.find(
-		(slot: ReactNode) => slot && (slot as ReactPortal).type === type
-	) as ReactElement;
+export const useSlot = (slotComponent: unknown, children: ReactNode): ReactNode | null => {
+    let slot: ReactNode | null = null;
 
-	if (element?.props.children) {
-		return element.props.children;
-	}
+    Children.forEach(children, (child) => {
+        if (!isValidElement<{ children?: ReactNode }>(child)) {
+            return;
+        }
+        if (child.type === slotComponent) {
+            slot = child.props.children ?? null;
+        }
+    });
 
-	return null;
-}
+    return slot;
+};

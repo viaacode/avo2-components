@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
-
+import type { CheckboxProps } from '../index';
 import { Checkbox } from './Checkbox';
 
 const CheckboxStoryComponent = ({
@@ -13,7 +13,7 @@ const CheckboxStoryComponent = ({
 }) => {
 	const [checked, setChecked] = useState(defaultChecked);
 
-	return cloneElement(children, {
+	return cloneElement(children as ReactElement<CheckboxProps>, {
 		checked,
 		onChange: (c: boolean) => {
 			action('Checkbox toggled')(c);
