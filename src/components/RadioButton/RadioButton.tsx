@@ -13,7 +13,7 @@ export interface RadioButtonPropsSchema extends DefaultProps {
 	id?: string;
 	disabled?: boolean;
 	checked?: boolean;
-	onChange?: (value: string) => void;
+	onChange?: (value: boolean) => void;
 }
 
 export const RadioButton: FunctionComponent<RadioButtonPropsSchema> = ({
@@ -36,7 +36,7 @@ export const RadioButton: FunctionComponent<RadioButtonPropsSchema> = ({
 					id={id}
 					checked={checked}
 					disabled={disabled}
-					onChange={(evt) => onChange(evt.target.value)}
+					onChange={(evt) => onChange(evt.target.value === 'true')}
 				/>
 				{label}
 			</label>

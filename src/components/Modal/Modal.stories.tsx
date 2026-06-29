@@ -3,18 +3,17 @@ import { loremIpsum } from 'lorem-ipsum';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 
 import { Button } from '../Button/Button';
+import type { ModalProps } from '../index';
 import { Modal } from './Modal';
 import { ModalBody, ModalFooterLeft, ModalFooterRight } from './Modal.slots';
-
-type Props = {
-	isOpen: boolean;
-	onClose: () => void;
-};
 
 const ModalStoryComponent = ({ children }: { children: ReactElement }) => {
 	const [isOpen, setOpen] = useState(false);
 
-	const childrenWithProps = cloneElement(children as ReactElement<Props>, { isOpen, onClose: () => setOpen(false) });
+	const childrenWithProps = cloneElement(children as ReactElement<ModalProps>, {
+		isOpen,
+		onClose: () => setOpen(false),
+	});
 
 	return (
 		<Fragment>

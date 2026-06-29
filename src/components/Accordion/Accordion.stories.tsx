@@ -10,14 +10,13 @@ import { FormGroup } from '../Form/FormGroup/FormGroup';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { TextArea } from '../TextArea/TextArea';
 import { TextInput } from '../TextInput/TextInput';
-import { Accordion } from './Accordion';
+import { Accordion, type AccordionPropsSchema } from './Accordion';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
 
 const AccordionStoryComponent = ({ children }: { children: ReactElement }) => {
-	type Props = { isOpen: boolean, onToggle: () => void };
 	const [isOpen, setIsOpen] = useState(false);
 
-	return cloneElement(children as React.ReactElement<Props>, {
+	return cloneElement(children as ReactElement<AccordionPropsSchema>, {
 		isOpen,
 		onToggle: () => setIsOpen(!isOpen),
 	});

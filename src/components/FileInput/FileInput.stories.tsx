@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { cloneElement, Fragment, type ReactElement, useState } from 'react';
+import { type ChangeEvent, cloneElement, Fragment, type ReactElement, useState } from 'react';
 
-import { FileInput } from './FileInput';
+import { FileInput, type FileInputProps } from './FileInput';
 
 const meta: Meta<typeof FileInput> = {
 	title: 'components/FileInput',
@@ -13,10 +13,6 @@ const meta: Meta<typeof FileInput> = {
 export default meta;
 
 type Story = StoryObj<typeof FileInput>;
-type Props = {
-	value: string;
-	onChange: (value: string) => void;
-};
 const FileInputStoryComponent = ({
 	children,
 	defaultValue = '',
@@ -24,13 +20,12 @@ const FileInputStoryComponent = ({
 	children: ReactElement;
 	defaultValue?: string;
 }) => {
-	const [value, setValue] = useState(defaultValue);
+	const [, setValue] = useState(defaultValue);
 
-	return cloneElement(children as ReactElement<Props>, {
-		value,
-		onChange: (value: string) => {
-			console.log('Input changed', value);
-			setValue(value);
+	return cloneElement(children as ReactElement<FileInputProps>, {
+		onChange: (evt: ChangeEvent<HTMLInputElement>) => {
+			console.log('Input changed', evt.target.value);
+			setValue(evt.target.value);
 		},
 	});
 };

@@ -3,12 +3,8 @@ import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Spacer } from '../Spacer/Spacer';
-import { TextInput } from './TextInput';
+import { TextInput, type TextInputPropsSchema } from './TextInput';
 
-type Props = {
-	value: string;
-	onChange: (value: string) => void;
-};
 const TextInputStoryComponent = ({
 	children,
 	defaultValue = '',
@@ -18,7 +14,7 @@ const TextInputStoryComponent = ({
 }) => {
 	const [value, setValue] = useState(defaultValue);
 
-	return cloneElement(children as ReactElement<Props>, {
+	return cloneElement(children as ReactElement<TextInputPropsSchema>, {
 		value,
 		onChange: (value: string) => {
 			action('Input changed')(value);

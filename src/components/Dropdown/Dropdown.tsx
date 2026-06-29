@@ -1,5 +1,5 @@
  import clsx from 'clsx';
-import { type FunctionComponent, type ReactNode } from 'react';
+import type { FunctionComponent, ReactNode } from 'react';
 import { useFloating, autoUpdate } from '@floating-ui/react';
 import type { Placement } from '@floating-ui/react';
 import { noop } from '../../helpers/noop';

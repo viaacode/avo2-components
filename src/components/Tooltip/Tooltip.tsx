@@ -1,15 +1,15 @@
-import clsx from 'clsx';
-import { type FunctionComponent, type ReactNode, useRef, useState } from 'react';
 import {
+	arrow,
 	autoUpdate,
 	FloatingArrow,
-	arrow,
 	offset as floatingOffset,
 	useFloating,
 	useFocus,
 	useHover,
 	useInteractions,
 } from '@floating-ui/react';
+import clsx from 'clsx';
+import { type FunctionComponent, type ReactNode, useRef, useState } from 'react';
 
 import { useSlot } from '../../hooks/useSlot';
 
@@ -31,7 +31,6 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 	contentClassName,
 	id,
 }) => {
-
 	const [show, setShow] = useState(false);
 	const arrowRef = useRef(null);
 
@@ -57,7 +56,7 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 
 	return tooltipSlot && triggerSlot ? (
 		<>
-			<div className="c-tooltip-trigger" ref={refs.setReference} {...getReferenceProps()}>
+			<div className="c-tooltip-trigger" ref={refs.setReference} {...getReferenceProps()} id={id}>
 				{triggerSlot}
 			</div>
 
@@ -70,11 +69,7 @@ export const Tooltip: FunctionComponent<TooltipPropsSchema> = ({
 				{...getFloatingProps()}
 			>
 				{tooltipSlot}
-				<FloatingArrow
-					ref={arrowRef}
-					context={context}
-					className="c-tooltip__arrow"
-				/>
+				<FloatingArrow ref={arrowRef} context={context} className="c-tooltip__arrow" />
 			</div>
 		</>
 	) : null;

@@ -4,7 +4,7 @@ import { action } from 'storybook/actions';
 
 import image200x200 from '../../../static/images/200x200.jpg';
 import image500x200 from '../../../static/images/500x200.jpg';
-import { ImageGrid } from './ImageGrid';
+import { ImageGrid, type ImageGridPropsSchema } from './ImageGrid';
 
 const images = [
 	image200x200,
@@ -31,10 +31,6 @@ const images2 = [
 	image500x200,
 	image500x200,
 ];
-type Props = {
-	value: string[];
-	onChange: (value: string[]) => void;
-};
 const ImageGroupStoryComponent = ({
 	children,
 	defaultValue = [],
@@ -43,7 +39,7 @@ const ImageGroupStoryComponent = ({
 	defaultValue?: string[];
 }) => {
 	const [value, setValue] = useState(defaultValue);
-	return cloneElement(children as ReactElement<Props>, {
+	return cloneElement(children as ReactElement<ImageGridPropsSchema>, {
 		value,
 		onChange: (value: string[]) => {
 			action('Image selection changed')(value);

@@ -37,7 +37,11 @@ export const RadioButtonGroup: FunctionComponent<RadioButtonGroupPropsSchema> = 
 						label={option.label}
 						name={generatedName}
 						value={option.value}
-						onChange={onChange}
+						onChange={(isSelected: boolean) => {
+							if (isSelected) {
+								onChange(option.value);
+							}
+						}}
 						checked={option.value === value}
 						disabled={option.disabled}
 						key={`${generatedName}-${option.value}`}

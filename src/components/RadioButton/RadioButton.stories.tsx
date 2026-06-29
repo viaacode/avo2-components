@@ -1,12 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
-
+import type { RadioButtonProps } from '../index';
 import { RadioButton } from './RadioButton';
-type Props = {
-	checked: boolean;
-	onChange: (checked: boolean) => void;
-};
+
 const RadioButtonStoryComponent = ({
 	children,
 	defaultChecked,
@@ -16,7 +13,7 @@ const RadioButtonStoryComponent = ({
 }) => {
 	const [checked, setChecked] = useState(defaultChecked);
 
-	return cloneElement(children as ReactElement<Props>, {
+	return cloneElement(children as ReactElement<RadioButtonProps>, {
 		checked,
 		onChange: (c: boolean) => {
 			action('RadioButton toggled')(c);
@@ -41,7 +38,9 @@ export const RadioButtonStory: Story = {
 				name="List1"
 				label="One"
 				value="One"
-				onChange={action('Radio button selected')}
+				onChange={(newCheckedState) => {
+					action(`Radio button onchange, isChecked: ${newCheckedState}`);
+				}}
 			/>
 		</RadioButtonStoryComponent>
 	),
@@ -53,7 +52,9 @@ export const RadioButtonDefaultChecked: Story = {
 				name="List2"
 				label="One"
 				value="One"
-				onChange={action('Radio button selected')}
+				onChange={(newCheckedState) => {
+					action(`Radio button onchange, isChecked: ${newCheckedState}`);
+				}}
 			/>
 		</RadioButtonStoryComponent>
 	),

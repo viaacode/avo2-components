@@ -6,7 +6,7 @@ import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Table, type TableColumnSchema, type TablePropsSchema } from './Table';
-import { AvoSearchOrderDirection } from '@viaa/avo2-types';
+import type { AvoSearchOrderDirection } from '@viaa/avo2-types';
 
 const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },

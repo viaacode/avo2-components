@@ -267,6 +267,7 @@ export const Table: FunctionComponent<TablePropsSchema> = ({
 							<thead>
 								<tr>
 									{enableRowFocusOnClick && (
+										// biome-ignore lint/a11y/noAriaHiddenOnFocusable: this is a hidden first column to show a selection indicator. This should not be visible to screen readers
 										<th
 											aria-hidden={true}
 											className={clsx('c-table__focus-cell', styles['c-table__focus-cell'])}

@@ -2,12 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { cloneElement, Fragment, type ReactElement, useState } from 'react';
 import { action } from 'storybook/actions';
 import { Spacer } from '../Spacer/Spacer';
-import { TextArea } from './TextArea';
-
-type Props = {
-	value: string;
-	onChange: (value: string) => void;
-};
+import { TextArea, type TextAreaPropsSchema } from './TextArea';
 
 const TextAreaStoryComponent = ({
 	children,
@@ -18,7 +13,7 @@ const TextAreaStoryComponent = ({
 }) => {
 	const [value, setValue] = useState(defaultValue);
 
-	return cloneElement(children as ReactElement<Props>, {
+	return cloneElement(children as ReactElement<TextAreaPropsSchema>, {
 		value,
 		onChange: (value: string) => {
 			action('TextArea changed')(value);
