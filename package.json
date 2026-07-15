@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
@@ -43,7 +43,7 @@
   },
   "peerDependencies": {
     "@popperjs/core": "2.11.6",
-    "@viaa/avo2-types": "5.0.16",
+    "@viaa/avo2-types": "5.0.18",
     "autosize": "6.0.1",
     "clsx": "2.0.0",
     "date-fns": "3.6.0",
@@ -110,6 +110,13 @@
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "@floating-ui/react": "0.27.19"
+  },
+  "allowScripts": {
+    "core-js@2.6.12": true,
+    "@parcel/watcher@2.5.6": true,
+    "core-js@3.32.2": true,
+    "esbuild@0.27.7": true,
+    "fsevents@2.3.3": true
   },
   "browserslist": {
     "production": [
