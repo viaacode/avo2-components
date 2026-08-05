@@ -13,6 +13,7 @@ export interface ImagePropsSchema extends DefaultProps {
 	wide?: boolean;
 	width?: string;
 	height?: string;
+	loading?: 'eager' | 'lazy' | undefined;
 }
 
 export const Image: FunctionComponent<ImagePropsSchema> = ({
@@ -22,8 +23,9 @@ export const Image: FunctionComponent<ImagePropsSchema> = ({
 	wide,
 	width,
 	height,
+	loading,
 }) => (
 	<div className={clsx(className, 'c-image', { 'c-image--full': wide })}>
-		<img src={src} alt={alt} width={width} height={height} />
+		<img src={src} alt={alt} width={width} height={height} loading={loading} />
 	</div>
 );
