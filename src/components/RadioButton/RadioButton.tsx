@@ -36,7 +36,7 @@ export const RadioButton: FunctionComponent<RadioButtonPropsSchema> = ({
 					id={id}
 					checked={checked}
 					disabled={disabled}
-					onChange={(evt) => onChange(evt.target.value === 'true')}
+					onChange={() => onChange(!checked)}
 				/>
 				{label}
 			</label>
