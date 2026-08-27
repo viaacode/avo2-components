@@ -327,6 +327,44 @@ describe('<Modal />', () => {
 		expect(footerLeftElement).toHaveLength(0);
 	});
 
+	it('Should render the header with the transparent modifier and no border when transparentHeader is set', () => {
+		const modalComponent = shallow(
+			<Modal isOpen={true} onClose={() => undefined} transparentHeader>
+				<Fragment />
+			</Modal>
+		);
+
+		const headerElement = modalComponent.find('.c-modal__header');
+
+		expect(headerElement.hasClass('c-modal__header--transparent')).toEqual(true);
+		expect(headerElement.hasClass('c-modal__header--bordered')).toEqual(false);
+	});
+
+	it('Should render the header with the bordered modifier by default', () => {
+		const modalComponent = shallow(
+			<Modal isOpen={true} onClose={() => undefined}>
+				<Fragment />
+			</Modal>
+		);
+
+		const headerElement = modalComponent.find('.c-modal__header');
+
+		expect(headerElement.hasClass('c-modal__header--bordered')).toEqual(true);
+		expect(headerElement.hasClass('c-modal__header--transparent')).toEqual(false);
+	});
+
+	it('Should pass backdropClassName through to the backdrop', () => {
+		const modalComponent = shallow(
+			<Modal isOpen={true} backdropClassName="c-modal-backdrop-custom">
+				<Fragment />
+			</Modal>
+		);
+
+		const modalBackdropComponent = modalComponent.find(ModalBackdrop);
+
+		expect(modalBackdropComponent.prop('className')).toEqual('c-modal-backdrop-custom');
+	});
+
 	it('Should be able to render items in the subheader', () => {
 		const modalComponent = mount(
 			<Modal isOpen={true}>

@@ -5,8 +5,14 @@ import type { FunctionComponent } from 'react';
 export interface ModalBackdropProps {
 	children?: React.ReactNode;
 	visible?: boolean;
+	className?: string;
 }
 
-export const ModalBackdrop: FunctionComponent<ModalBackdropProps> = ({ visible = false }) => (
-	<div className={clsx('c-modal-backdrop', { 'c-modal-backdrop--visible': visible })} />
+export const ModalBackdrop: FunctionComponent<ModalBackdropProps> = ({
+	visible = false,
+	className,
+}) => (
+	<div
+		className={clsx('c-modal-backdrop', className, { 'c-modal-backdrop--visible': visible })}
+	/>
 );

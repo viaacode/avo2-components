@@ -19,4 +19,11 @@ describe('<ModalBackdrop />', () => {
 
 		expect(modalBackdropComponent.hasClass('c-modal-backdrop--visible')).toEqual(true);
 	});
+
+	it('Should include a given className alongside the default one', () => {
+		const modalBackdropComponent = shallow(<ModalBackdrop className="c-modal-backdrop-custom" />);
+
+		expect(modalBackdropComponent.hasClass('c-modal-backdrop')).toEqual(true);
+		expect(modalBackdropComponent.hasClass('c-modal-backdrop-custom')).toEqual(true);
+	});
 });

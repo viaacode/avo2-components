@@ -50,6 +50,16 @@ export interface ModalPropsSchema extends DefaultProps {
 	size?: 'small' | 'medium' | 'large' | 'extra-large' | 'fullscreen' | 'fullwidth' | 'auto';
 	scrollable?: boolean;
 	onClose?: () => void;
+	/**
+	 * Drops the header's white background and bottom border, and takes it out of the content flow
+	 * so it floats over whatever `children` render instead of pushing it down. The close button (and
+	 * `headerRight`, if any) still render -- only the chrome around them changes. For a modal with no
+	 * `title` and no `headerRight`, this is what turns the always-rendered close button into a bare
+	 * floating control instead of a full header bar with nothing else in it.
+	 */
+	transparentHeader?: boolean;
+	/** Replaces the backdrop's default class, e.g. for a modal that needs a darker overlay than the default. */
+	backdropClassName?: string;
 }
 
 export interface ModalRefSchema {
@@ -68,6 +78,8 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 			size,
 			scrollable,
 			onClose,
+			transparentHeader = false,
+			backdropClassName,
 		},
 		ref
 	) => {
@@ -132,7 +144,12 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 			return (
 				<>
 					{(!!title || !!headerRight || !!onClose) && (
-						<div className="c-modal__header c-modal__header--bordered">
+						<div
+							className={clsx('c-modal__header', {
+								'c-modal__header--bordered': !transparentHeader,
+								'c-modal__header--transparent': transparentHeader,
+							})}
+						>
 							<Toolbar autoHeight spaced>
 								{title && (
 									<ToolbarLeft>
@@ -221,7 +238,7 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 				>
 					<div className={classNames}>{renderModalContent()}</div>
 				</div>
-				<ModalBackdrop visible={isOpen} />
+				<ModalBackdrop visible={isOpen} className={backdropClassName} />
 			</Fragment>,
 			document.body
 		);
