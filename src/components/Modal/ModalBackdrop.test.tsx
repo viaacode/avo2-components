@@ -20,10 +20,16 @@ describe('<ModalBackdrop />', () => {
 		expect(modalBackdropComponent.hasClass('c-modal-backdrop--visible')).toEqual(true);
 	});
 
-	it('Should include a given className alongside the default one', () => {
-		const modalBackdropComponent = shallow(<ModalBackdrop className="c-modal-backdrop-custom" />);
+	it('Should set the borderless modifier when `borderless`', () => {
+		const modalBackdropComponent = shallow(<ModalBackdrop borderless />);
 
 		expect(modalBackdropComponent.hasClass('c-modal-backdrop')).toEqual(true);
-		expect(modalBackdropComponent.hasClass('c-modal-backdrop-custom')).toEqual(true);
+		expect(modalBackdropComponent.hasClass('c-modal-backdrop--borderless')).toEqual(true);
+	});
+
+	it('Should not set the borderless modifier by default', () => {
+		const modalBackdropComponent = shallow(<ModalBackdrop />);
+
+		expect(modalBackdropComponent.hasClass('c-modal-backdrop--borderless')).toEqual(false);
 	});
 });

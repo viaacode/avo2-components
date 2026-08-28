@@ -235,5 +235,12 @@ $g-c-modal-z: 50 !default;
 		visibility: visible;
 		pointer-events: auto;
 	}
+
+	// Modal's `borderless` variant: a takeover of whatever it shows reads as darker than a dialog
+	// floating over the page. Fixed here rather than left to a consumer-supplied className, so every
+	// borderless modal in the app looks the same instead of drifting apart per caller.
+	&.c-modal-backdrop--borderless {
+		background-color: rgba(colors.$color-gray-shadow, 0.96);
+	}
 }
 

@@ -327,9 +327,9 @@ describe('<Modal />', () => {
 		expect(footerLeftElement).toHaveLength(0);
 	});
 
-	it('Should render the header with the transparent modifier and no border when transparentHeader is set', () => {
+	it('Should render the header with the transparent modifier and no border when borderless is set', () => {
 		const modalComponent = shallow(
-			<Modal isOpen={true} onClose={() => undefined} transparentHeader>
+			<Modal isOpen={true} onClose={() => undefined} borderless>
 				<Fragment />
 			</Modal>
 		);
@@ -353,16 +353,28 @@ describe('<Modal />', () => {
 		expect(headerElement.hasClass('c-modal__header--transparent')).toEqual(false);
 	});
 
-	it('Should pass backdropClassName through to the backdrop', () => {
+	it('Should pass borderless through to the backdrop', () => {
 		const modalComponent = shallow(
-			<Modal isOpen={true} backdropClassName="c-modal-backdrop-custom">
+			<Modal isOpen={true} borderless>
 				<Fragment />
 			</Modal>
 		);
 
 		const modalBackdropComponent = modalComponent.find(ModalBackdrop);
 
-		expect(modalBackdropComponent.prop('className')).toEqual('c-modal-backdrop-custom');
+		expect(modalBackdropComponent.prop('borderless')).toEqual(true);
+	});
+
+	it('Should not mark the backdrop borderless by default', () => {
+		const modalComponent = shallow(
+			<Modal isOpen={true}>
+				<Fragment />
+			</Modal>
+		);
+
+		const modalBackdropComponent = modalComponent.find(ModalBackdrop);
+
+		expect(modalBackdropComponent.prop('borderless')).toEqual(false);
 	});
 
 	it('Should be able to render items in the subheader', () => {

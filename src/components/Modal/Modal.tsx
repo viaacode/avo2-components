@@ -51,15 +51,15 @@ export interface ModalPropsSchema extends DefaultProps {
 	scrollable?: boolean;
 	onClose?: () => void;
 	/**
-	 * Drops the header's white background and bottom border, and takes it out of the content flow
-	 * so it floats over whatever `children` render instead of pushing it down. The close button (and
-	 * `headerRight`, if any) still render -- only the chrome around them changes. For a modal with no
-	 * `title` and no `headerRight`, this is what turns the always-rendered close button into a bare
-	 * floating control instead of a full header bar with nothing else in it.
+	 * A single opinionated variant for a modal that reads as a takeover of whatever it shows (e.g. a
+	 * video) rather than a dialog floating over the page: drops the header's white background and
+	 * bottom border and takes it out of the content flow so it floats over `children` instead of
+	 * pushing it down (the close button, and `headerRight` if any, still render -- only the chrome
+	 * around them changes), and swaps the backdrop for a fixed, darker one. Deliberately not exposed
+	 * as separate, freely combinable props (a header toggle plus an arbitrary backdrop className) --
+	 * one fixed look here instead of many bespoke ones drifting apart across consumers.
 	 */
-	transparentHeader?: boolean;
-	/** Replaces the backdrop's default class, e.g. for a modal that needs a darker overlay than the default. */
-	backdropClassName?: string;
+	borderless?: boolean;
 }
 
 export interface ModalRefSchema {
@@ -78,8 +78,7 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 			size,
 			scrollable,
 			onClose,
-			transparentHeader = false,
-			backdropClassName,
+			borderless = false,
 		},
 		ref
 	) => {
@@ -146,8 +145,8 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 					{(!!title || !!headerRight || !!onClose) && (
 						<div
 							className={clsx('c-modal__header', {
-								'c-modal__header--bordered': !transparentHeader,
-								'c-modal__header--transparent': transparentHeader,
+								'c-modal__header--bordered': !borderless,
+								'c-modal__header--transparent': borderless,
 							})}
 						>
 							<Toolbar autoHeight spaced>
@@ -238,7 +237,7 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 				>
 					<div className={classNames}>{renderModalContent()}</div>
 				</div>
-				<ModalBackdrop visible={isOpen} className={backdropClassName} />
+				<ModalBackdrop visible={isOpen} borderless={borderless} />
 			</Fragment>,
 			document.body
 		);

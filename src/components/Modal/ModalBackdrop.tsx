@@ -5,14 +5,18 @@ import type { FunctionComponent } from 'react';
 export interface ModalBackdropProps {
 	children?: React.ReactNode;
 	visible?: boolean;
-	className?: string;
+	/** A fixed, darker backdrop for Modal's `borderless` variant -- see its own prop doc. */
+	borderless?: boolean;
 }
 
 export const ModalBackdrop: FunctionComponent<ModalBackdropProps> = ({
 	visible = false,
-	className,
+	borderless = false,
 }) => (
 	<div
-		className={clsx('c-modal-backdrop', className, { 'c-modal-backdrop--visible': visible })}
+		className={clsx('c-modal-backdrop', {
+			'c-modal-backdrop--visible': visible,
+			'c-modal-backdrop--borderless': borderless,
+		})}
 	/>
 );
