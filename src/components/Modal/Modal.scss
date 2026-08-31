@@ -173,6 +173,16 @@ $g-c-modal-z: 50 !default;
 	border-bottom: 1px solid $c-modal-header-border-color;
 }
 
+// Floats the header (in practice: just the close button, for a modal with no title) over the
+// content below instead of reserving a row for it, e.g. a modal whose body is edge-to-edge media.
+.c-modal__header--transparent {
+	background-color: transparent;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+}
+
 .c-modal__title {
 	font-size: 1.6rem;
 	font-weight: variables.$g-headings-font-weight;
@@ -224,6 +234,13 @@ $g-c-modal-z: 50 !default;
 		transition-delay: 0s;
 		visibility: visible;
 		pointer-events: auto;
+	}
+
+	// Modal's `borderless` variant: a takeover of whatever it shows reads as darker than a dialog
+	// floating over the page. Fixed here rather than left to a consumer-supplied className, so every
+	// borderless modal in the app looks the same instead of drifting apart per caller.
+	&.c-modal-backdrop--borderless {
+		background-color: rgba(colors.$color-gray-shadow, 0.96);
 	}
 }
 
