@@ -224,6 +224,7 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 			'c-modal--fullwidth': size === 'fullwidth',
 			'c-modal--height-auto': size === 'auto',
 			'c-modal--scrollable': scrollable,
+			'c-modal--borderless': borderless,
 		});
 		return ReactDOM.createPortal(
 			<Fragment>
@@ -231,6 +232,7 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 				<div
 					className={clsx(className, 'c-modal-context', {
 						'c-modal-context--visible': isOpen,
+						'c-modal-context--borderless': borderless,
 					})}
 					onMouseDown={onContextMouseDown}
 					onMouseUp={onContextMouseUp}

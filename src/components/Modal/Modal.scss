@@ -181,6 +181,41 @@ $g-c-modal-z: 50 !default;
 	top: 0;
 	right: 0;
 	z-index: 1;
+
+	// Insets the close button from the corner. The header floats, so it no longer inherits the
+	// padding the toolbar gives a header that reserves its own row.
+	padding: variables.$g-spacer-unit * 2;
+
+	// The button sits on the content rather than on a header bar, so it carries its own ground to
+	// stay visible over whatever is behind it.
+	.c-button--icon {
+		width: 3.2rem;
+		height: 3.2rem;
+		border-radius: 50%;
+		background-color: colors.$color-gray-1000;
+		color: colors.$color-white;
+	}
+}
+
+.c-modal--borderless {
+	// The floating header leaves no row for a title, so it would paint over the content. It stays in
+	// the DOM unseen, because the dialog still needs its accessible name.
+	.c-modal__title {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	// Edge-to-edge content instead of the default body padding.
+	.c-modal__body {
+		padding: 0;
+	}
 }
 
 .c-modal__title {
@@ -244,3 +279,28 @@ $g-c-modal-z: 50 !default;
 	}
 }
 
+
+// Below this breakpoint the dialog is forced to near-full screen height and painted, which leaves a
+// void under a borderless modal shorter than the screen. Its content carries its own ground, so the
+// height goes back to the content and the dialog stops painting. Listed after the rule it overrides,
+// at matching specificity.
+@media (max-width: variables.$g-bp2) {
+	.c-modal-context--borderless {
+		align-items: center;
+	}
+
+	.c-modal-context--borderless .c-modal--borderless {
+		&,
+		&.c-modal--fullscreen,
+		&.c-modal--scrollable {
+			height: auto;
+			max-height: calc(100% - 4rem);
+			background-color: transparent;
+		}
+	}
+
+	// Lines the close button up with the inset corner of the content, not the dialog edge.
+	.c-modal--borderless .c-modal__header--transparent {
+		padding: variables.$g-spacer-unit * 2 variables.$g-spacer-unit * 2.5;
+	}
+}
