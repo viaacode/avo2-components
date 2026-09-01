@@ -181,6 +181,10 @@ $g-c-modal-z: 50 !default;
 	top: 0;
 	right: 0;
 	z-index: 1;
+
+	// Insets the close button from the corner. The header floats, so it no longer inherits the
+	// padding the toolbar gives a header that reserves its own row.
+	padding: variables.$g-spacer-unit * 2 variables.$g-spacer-unit * 2.5;
 }
 
 .c-modal__title {
