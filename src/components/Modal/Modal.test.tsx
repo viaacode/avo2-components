@@ -340,6 +340,29 @@ describe('<Modal />', () => {
 		expect(headerElement.hasClass('c-modal__header--bordered')).toEqual(false);
 	});
 
+	it('Should render the close button without a toolbar when borderless is set', () => {
+		const modalComponent = mount(
+			<Modal isOpen={true} onClose={() => undefined} borderless>
+				<Fragment />
+			</Modal>
+		);
+
+		expect(modalComponent.find('.c-modal__header .c-modal__close').exists()).toEqual(true);
+		expect(modalComponent.find('.c-modal__header .c-toolbar').exists()).toEqual(false);
+	});
+
+	it('Should render items in the header (right) beside the close button when borderless is set', () => {
+		const modalComponent = mount(
+			<Modal isOpen={true} onClose={() => undefined} borderless>
+				<ModalHeaderRight>
+					<p>Test (right)</p>
+				</ModalHeaderRight>
+			</Modal>
+		);
+
+		expect(modalComponent.find('.c-modal__header p').html()).toEqual('<p>Test (right)</p>');
+	});
+
 	it('Should render the header with the bordered modifier by default', () => {
 		const modalComponent = shallow(
 			<Modal isOpen={true} onClose={() => undefined}>
