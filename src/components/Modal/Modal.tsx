@@ -149,28 +149,47 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 								'c-modal__header--transparent': borderless,
 							})}
 						>
-							<Toolbar autoHeight spaced>
-								{title && (
-									<ToolbarLeft>
-										<ToolbarItem>
-											<h2 className="c-modal__title">{title}</h2>
-										</ToolbarItem>
-									</ToolbarLeft>
-								)}
-								<ToolbarRight>
-									{headerRight && <ToolbarItem>{headerRight}</ToolbarItem>}
+							{borderless ? (
+								// The toolbar lays out a title row, and this header has no visible title and
+								// floats in the corner. It would only add the insets that keep the close
+								// button off that corner.
+								<>
+									{title && <h2 className="c-modal__title">{title}</h2>}
+									{headerRight}
 									{!!onClose && (
-										<ToolbarItem>
-											<Button
-												onClick={close}
-												icon={IconNameSchema.close}
-												type="borderless"
-												ariaLabel="close modal"
-											/>
-										</ToolbarItem>
+										<Button
+											className="c-modal__close"
+											onClick={close}
+											icon={IconNameSchema.close}
+											type="borderless"
+											ariaLabel="close modal"
+										/>
 									)}
-								</ToolbarRight>
-							</Toolbar>
+								</>
+							) : (
+								<Toolbar autoHeight spaced>
+									{title && (
+										<ToolbarLeft>
+											<ToolbarItem>
+												<h2 className="c-modal__title">{title}</h2>
+											</ToolbarItem>
+										</ToolbarLeft>
+									)}
+									<ToolbarRight>
+										{headerRight && <ToolbarItem>{headerRight}</ToolbarItem>}
+										{!!onClose && (
+											<ToolbarItem>
+												<Button
+													onClick={close}
+													icon={IconNameSchema.close}
+													type="borderless"
+													ariaLabel="close modal"
+												/>
+											</ToolbarItem>
+										)}
+									</ToolbarRight>
+								</Toolbar>
+							)}
 						</div>
 					)}
 					{subheader && <div className="c-modal__subheader">{subheader}</div>}

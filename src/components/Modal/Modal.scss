@@ -17,6 +17,7 @@ $c-modal-border-radius: 0.3rem !default;
 $c-modal-shadow-color: colors.$color-gray-900 !default;
 $c-modal-header-bg-color: #FFF !default;
 $c-modal-footer-bg-color: #FFF !default;
+$c-modal-close-size: 6.4rem !default;
 $c-modal-header-border-color: colors.$color-gray-100 !default;
 $c-modal-footer-border-color: colors.$color-gray-100 !default;
 $g-c-modal-backdrop-z: 30 !default;
@@ -182,16 +183,23 @@ $g-c-modal-z: 50 !default;
 	right: 0;
 	z-index: 1;
 
-	// Insets the close button from the corner. The header floats, so it no longer inherits the
-	// padding the toolbar gives a header that reserves its own row.
-	padding: variables.$g-spacer-unit * 2;
+	// The close button reaches the corner itself, so the header adds nothing around it. A
+	// `headerRight` slot sits beside the button rather than above it.
+	display: flex;
+	align-items: flex-start;
+	padding: 0;
 
 	// The button sits on the content rather than on a header bar, so it carries its own ground to
 	// stay visible over whatever is behind it.
-	.c-button--icon {
-		width: 3.2rem;
-		height: 3.2rem;
-		border-radius: 50%;
+	.c-modal__close {
+		width: $c-modal-close-size;
+		height: $c-modal-close-size;
+
+		// The button caps its own height and pads for a label it does not have, which would leave
+		// this a rectangle with the icon off centre.
+		max-height: $c-modal-close-size;
+		padding: 0;
+		border-radius: 0;
 		background-color: colors.$color-gray-1000;
 		color: colors.$color-white;
 	}
@@ -299,8 +307,9 @@ $g-c-modal-z: 50 !default;
 		}
 	}
 
-	// Lines the close button up with the inset corner of the content, not the dialog edge.
+	// The content is inset from the dialog edge here, so the button follows that edge instead. It
+	// still reaches the top itself, as it does on a wider screen.
 	.c-modal--borderless .c-modal__header--transparent {
-		padding: variables.$g-spacer-unit * 2 variables.$g-spacer-unit * 2.5;
+		padding: 0 variables.$g-spacer-unit * 2.5;
 	}
 }
