@@ -18,6 +18,13 @@ $c-modal-shadow-color: colors.$color-gray-900 !default;
 $c-modal-header-bg-color: #FFF !default;
 $c-modal-footer-bg-color: #FFF !default;
 $c-modal-close-size: 6.4rem !default;
+
+// A black ground can only be lightened, so these states go up rather than down. The values are the
+// ones the archive's own black buttons use, and they are overridable like every token here.
+$c-modal-close-bg-color: colors.$color-gray-1000 !default;
+$c-modal-close-hover-bg-color: #505050 !default;
+$c-modal-close-active-bg-color: #333 !default;
+$c-modal-close-focus-outline-color: #00c8aa !default;
 $c-modal-header-border-color: colors.$color-gray-100 !default;
 $c-modal-footer-border-color: colors.$color-gray-100 !default;
 $g-c-modal-backdrop-z: 30 !default;
@@ -200,8 +207,34 @@ $g-c-modal-z: 50 !default;
 		max-height: $c-modal-close-size;
 		padding: 0;
 		border-radius: 0;
-		background-color: colors.$color-gray-1000;
+		background-color: $c-modal-close-bg-color;
 		color: colors.$color-white;
+	}
+
+	// The borderless skin drops a light ground under every interactive state and leaves the icon
+	// white, which puts the cross at 1.36:1. Keeping the ground dark holds it at 8.06:1. The
+	// `.c-button` is there for weight: the skin's own `.c-button.c-button--borderless:hover` carries
+	// three classes and would otherwise win. ARC-3813
+	.c-modal__close.c-button:hover,
+	.c-modal__close.c-button:focus,
+	.c-modal__close.c-button.c-button--active,
+	.c-modal__close.c-button.c-button--active:focus {
+		background-color: $c-modal-close-hover-bg-color;
+		color: colors.$color-white;
+	}
+
+	// Last, so a press reads through a hover the pointer is already holding.
+	.c-modal__close.c-button:active {
+		background-color: $c-modal-close-active-bg-color;
+		color: colors.$color-white;
+	}
+
+	// That same skin clears the outline on focus, which leaves this button with no keyboard
+	// indicator at all. Inset rather than outside: the ring holds 3.78:1 or better against the
+	// button's own grounds, but only 2.13:1 against a light page behind it.
+	.c-modal__close.c-button:focus-visible {
+		outline: 2px solid $c-modal-close-focus-outline-color;
+		outline-offset: -0.4rem;
 	}
 }
 
