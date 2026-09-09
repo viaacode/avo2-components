@@ -50,16 +50,6 @@ export interface ModalPropsSchema extends DefaultProps {
 	size?: 'small' | 'medium' | 'large' | 'extra-large' | 'fullscreen' | 'fullwidth' | 'auto';
 	scrollable?: boolean;
 	onClose?: () => void;
-	/**
-	 * A single opinionated variant for a modal that reads as a takeover of whatever it shows (e.g. a
-	 * video) rather than a dialog floating over the page: drops the header's white background and
-	 * bottom border and takes it out of the content flow so it floats over `children` instead of
-	 * pushing it down (the close button, and `headerRight` if any, still render -- only the chrome
-	 * around them changes), and swaps the backdrop for a fixed, darker one. Deliberately not exposed
-	 * as separate, freely combinable props (a header toggle plus an arbitrary backdrop className) --
-	 * one fixed look here instead of many bespoke ones drifting apart across consumers.
-	 */
-	borderless?: boolean;
 }
 
 export interface ModalRefSchema {
@@ -78,7 +68,6 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 			size,
 			scrollable,
 			onClose,
-			borderless = false,
 		},
 		ref
 	) => {
@@ -143,12 +132,7 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 			return (
 				<>
 					{(!!title || !!headerRight || !!onClose) && (
-						<div
-							className={clsx('c-modal__header', {
-								'c-modal__header--bordered': !borderless,
-								'c-modal__header--transparent': borderless,
-							})}
-						>
+						<div className="c-modal__header c-modal__header--bordered">
 							<Toolbar autoHeight spaced>
 								{title && (
 									<ToolbarLeft>
@@ -224,7 +208,6 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 			'c-modal--fullwidth': size === 'fullwidth',
 			'c-modal--height-auto': size === 'auto',
 			'c-modal--scrollable': scrollable,
-			'c-modal--borderless': borderless,
 		});
 		return ReactDOM.createPortal(
 			<Fragment>
@@ -232,14 +215,13 @@ const ModalInternal = forwardRef<ModalRefSchema, ModalPropsSchema>(
 				<div
 					className={clsx(className, 'c-modal-context', {
 						'c-modal-context--visible': isOpen,
-						'c-modal-context--borderless': borderless,
 					})}
 					onMouseDown={onContextMouseDown}
 					onMouseUp={onContextMouseUp}
 				>
 					<div className={classNames}>{renderModalContent()}</div>
 				</div>
-				<ModalBackdrop visible={isOpen} borderless={borderless} />
+				<ModalBackdrop visible={isOpen} />
 			</Fragment>,
 			document.body
 		);
