@@ -1,5 +1,6 @@
 @use 'sass:color';
 @use '../../styles/settings/colors' as colors;
+@use '../../styles/mixins/hover' as hover;
 @use '../../styles/settings/variables' as variables;
 
 /* ==========================================================================
@@ -33,11 +34,15 @@ $c-button-link-color: colors.$color-primary !default;
 		fill: #FFF;
 	}
 
-	&:hover,
 	&:active,
 	&.c-button--active,
 	&:active:focus,
 	&.c-button--active:focus {
+		background-color: color.adjust(colors.$color-primary, $lightness: -15%);
+		border-color: color.adjust(colors.$color-primary, $lightness: -15%);
+	}
+
+	@include hover.hover {
 		background-color: color.adjust(colors.$color-primary, $lightness: -15%);
 		border-color: color.adjust(colors.$color-primary, $lightness: -15%);
 	}
@@ -51,11 +56,14 @@ $c-button-link-color: colors.$color-primary !default;
 	background-color: colors.$color-gray-50;
 	color: colors.$color-gray-700;
 
-	&:hover,
 	&:active,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background-color: #FFF;
+	}
+
+	@include hover.hover {
 		background-color: #FFF;
 	}
 }
@@ -68,11 +76,15 @@ $c-button-link-color: colors.$color-primary !default;
 	border: 1px solid rgba(#FFF,0.75);
 	color: #FFF;
 
-	&:hover,
 	&:active,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background-color: rgba(#FFF,0.1);
+		border-color: #FFF;
+	}
+
+	@include hover.hover {
 		background-color: rgba(#FFF,0.1);
 		border-color: #FFF;
 	}
@@ -87,11 +99,14 @@ $c-button-link-color: colors.$color-primary !default;
 	color: colors.$color-gray-700;
 	border: 1px solid colors.$color-gray-150;
 
-	&:hover,
 	&:active,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background-color: colors.$color-gray-50;
+	}
+
+	@include hover.hover {
 		background-color: colors.$color-gray-50;
 	}
 }
@@ -108,11 +123,15 @@ $c-button-link-color: colors.$color-primary !default;
 		fill: #FFF;
 	}
 
-	&:hover,
 	&:active,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background-color: color.adjust(colors.$color-error, $lightness: -10%);
+		border-color: color.adjust(colors.$color-error, $lightness: -10%);
+	}
+
+	@include hover.hover {
 		background-color: color.adjust(colors.$color-error, $lightness: -10%);
 		border-color: color.adjust(colors.$color-error, $lightness: -10%);
 	}
@@ -132,10 +151,19 @@ $c-button-link-color: colors.$color-primary !default;
 	}
 
 	&:active,
-	&:hover,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		border-color: colors.$color-error;
+		background-color: colors.$color-error;
+		color: #FFF;
+
+		svg * {
+			fill: #FFF;
+		}
+	}
+
+	@include hover.hover {
 		border-color: colors.$color-error;
 		background-color: colors.$color-error;
 		color: #FFF;
@@ -154,7 +182,7 @@ $c-button-link-color: colors.$color-primary !default;
 	background: none;
 	border: 0;
 
-	&:hover {
+	@include hover.hover {
 		box-shadow: inset 0 0 0 0.1rem $c-button-hover-border-color;
 	}
 
@@ -163,10 +191,14 @@ $c-button-link-color: colors.$color-primary !default;
 	}
 
 	&:active,
-	&:hover,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background-color: colors.$color-gray-100;
+		box-shadow: inset 0 0 0 0.1rem $c-button-hover-border-color;
+	}
+
+	@include hover.hover {
 		background-color: colors.$color-gray-100;
 		box-shadow: inset 0 0 0 0.1rem $c-button-hover-border-color;
 	}
@@ -181,15 +213,19 @@ $c-button-link-color: colors.$color-primary !default;
 	background: none;
 	border: 1px solid transparent;
 
-	&:hover {
+	@include hover.hover {
 		border-color: rgba(#FFF,0.25);
 	}
 
-	&:hover,
 	&:active,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background-color: rgba(#FFF,0.1);
+		border-color: #FFF;
+	}
+
+	@include hover.hover {
 		background-color: rgba(#FFF,0.1);
 		border-color: #FFF;
 	}
@@ -203,11 +239,14 @@ $c-button-link-color: colors.$color-primary !default;
 	border: none;
 	color: colors.$color-teal-bright;
 
-	&:hover,
 	&:active,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background-color: colors.$color-gray-50;
+	}
+
+	@include hover.hover {
 		background-color: colors.$color-gray-50;
 	}
 }
@@ -223,11 +262,14 @@ $c-button-link-color: colors.$color-primary !default;
 	margin-top: -2px;
 	text-decoration: underline;
 
-	&:hover,
 	&:active,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background-color: colors.$color-gray-50;
+	}
+
+	@include hover.hover {
 		background-color: colors.$color-gray-50;
 	}
 }
@@ -240,11 +282,15 @@ $c-button-link-color: colors.$color-primary !default;
 
 	text-decoration: underline;
 
-	&:hover,
 	&:active,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background-color: transparent;
+		color: colors.$color-teal;
+	}
+
+	@include hover.hover {
 		background-color: transparent;
 		color: colors.$color-teal;
 	}
@@ -262,11 +308,15 @@ $c-button-link-color: colors.$color-primary !default;
 		fill: #FFF;
 	}
 
-	&:hover,
 	&:active,
 	&.c-button--active,
 	&:active:focus,
 	&.c-button--active:focus {
+		background: color.adjust(colors.$color-yellow, $lightness: -15%);
+		border-color: color.adjust(colors.$color-yellow, $lightness: -15%);
+	}
+
+	@include hover.hover {
 		background: color.adjust(colors.$color-yellow, $lightness: -15%);
 		border-color: color.adjust(colors.$color-yellow, $lightness: -15%);
 	}
@@ -280,11 +330,14 @@ $c-button-link-color: colors.$color-primary !default;
 	border: none;
 	color: colors.$color-yellow;
 
-	&:hover,
 	&:active,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background: colors.$color-gray-50;
+	}
+
+	@include hover.hover {
 		background: colors.$color-gray-50;
 	}
 }
@@ -299,11 +352,14 @@ $c-button-link-color: colors.$color-primary !default;
 	padding: 0;
 	margin-top: -2px;
 
-	&:hover,
 	&:active,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background: colors.$color-gray-50;
+	}
+
+	@include hover.hover {
 		background: colors.$color-gray-50;
 	}
 }
@@ -317,11 +373,15 @@ $c-button-link-color: colors.$color-primary !default;
 	text-decoration: underline;
 	color: colors.$color-yellow;
 
-	&:hover,
 	&:active,
 	&:focus,
 	&.c-button--active,
 	&.c-button--active:focus {
+		background: transparent;
+		color: color.adjust(colors.$color-yellow, $lightness: -15%);
+	}
+
+	@include hover.hover {
 		background: transparent;
 		color: color.adjust(colors.$color-yellow, $lightness: -15%);
 	}
