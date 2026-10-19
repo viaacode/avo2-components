@@ -1,57 +1,56 @@
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Toggle } from './Toggle';
 
 describe('<Toggle />', () => {
 	it('Should be able to render', () => {
-		shallow(<Toggle checked={false} />);
+		render(<Toggle checked={false} />);
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-toggle-custom';
 
-		const toggleComponent = shallow(<Toggle className={customClass} checked={false} />);
+		const { container } = render(<Toggle className={customClass} checked={false} />);
 
-		expect(toggleComponent.hasClass('c-toggle')).toEqual(true);
-		expect(toggleComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-toggle');
+		expect(container.firstChild).toHaveClass(customClass);
 	});
 
 	it('Should correctly render `checked state`', () => {
-		const checkedToggleComponent = shallow(<Toggle checked={true} />);
-		const uncheckedToggleComponent = shallow(<Toggle checked={false} />);
+		const { unmount } = render(<Toggle checked={true} />);
+		expect(screen.getByRole('checkbox')).toBeChecked();
+		unmount();
 
-		expect(checkedToggleComponent.find('input').prop('checked')).toEqual(true);
-		expect(uncheckedToggleComponent.find('input').prop('checked')).toEqual(false);
+		render(<Toggle checked={false} />);
+		expect(screen.getByRole('checkbox')).not.toBeChecked();
 	});
 
 	it('Should correctly render `id`', () => {
 		const id = 'test';
 
-		const toggleComponent = shallow(<Toggle checked={false} id={id} />);
+		render(<Toggle checked={false} id={id} />);
 
-		expect(toggleComponent.find('[type="checkbox"]').prop('id')).toEqual(id);
+		expect(screen.getByRole('checkbox')).toHaveAttribute('id', id);
 	});
 
 	it('Should be able to render without `id`', () => {
-		const toggleComponent = shallow(<Toggle checked={false} />);
+		render(<Toggle checked={false} />);
 
-		expect(toggleComponent.find('[type="checkbox"]').prop('id')).toEqual(undefined);
+		expect(screen.getByRole('checkbox')).not.toHaveAttribute('id');
 	});
 
 	it('Should be able to set the disabled state', () => {
-		const toggleComponent = shallow(<Toggle checked={false} disabled />);
+		render(<Toggle checked={false} disabled />);
 
-		expect(toggleComponent.find('input').prop('disabled')).toEqual(true);
+		expect(screen.getByRole('checkbox')).toBeDisabled();
 	});
 
 	it('Should call `onChange` when toggling toggle', () => {
 		const onChangeHandler = jest.fn();
 
-		const toggleComponent = shallow(<Toggle checked={false} id="one" onChange={onChangeHandler} />);
+		render(<Toggle checked={false} id="one" onChange={onChangeHandler} />);
 
-		const toggleElement = toggleComponent.find('[type="checkbox"]');
-
-		toggleElement.simulate('change', { target: { checked: true } });
+		fireEvent.click(screen.getByRole('checkbox'));
 
 		expect(onChangeHandler).toHaveBeenCalled();
 		expect(onChangeHandler).toHaveBeenCalledTimes(1);

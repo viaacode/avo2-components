@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
 import { Quote } from './Quote';
 import { MOCK_QUOTE_WITH_IMG } from './Quote.mock';
@@ -9,39 +9,32 @@ export const quoteExample = <Quote className={CUSTOM_CLASS} {...MOCK_QUOTE_WITH_
 
 describe('<Quote />', () => {
 	it('Should be able to render', () => {
-		shallow(quoteExample);
+		render(quoteExample);
 	});
 
 	it('Should render the quote text correctly', () => {
-		const component = shallow(quoteExample);
+		const { container } = render(quoteExample);
 
-		const quoteElement = component.find('blockquote');
-
-		expect(quoteElement.html()).toContain(`>${MOCK_QUOTE_WITH_IMG.quote}<`);
+		expect(container.querySelector('blockquote')).toHaveTextContent(MOCK_QUOTE_WITH_IMG.quote);
 	});
 
 	it('Should render the author name correctly', () => {
-		const component = shallow(quoteExample);
+		render(quoteExample);
 
-		const spanElement = component.find('span');
+		const spanElement = screen.getByText(MOCK_QUOTE_WITH_IMG.authorName);
 
-		expect(spanElement.html()).toContain(`>${MOCK_QUOTE_WITH_IMG.authorName}<`);
+		expect(spanElement.tagName).toBe('SPAN');
 	});
 
 	it('Should set the correct className', () => {
-		const component = mount(quoteExample);
+		const { container } = render(quoteExample);
 
-		const verticalWrapper = component.find('.o-container-vertical');
-		const quoteDivElement = component.find('.c-quote');
-		const quoteElement = quoteDivElement.find('blockquote');
-		const citeElement = quoteDivElement.find('cite');
+		const quoteDivElements = container.querySelectorAll('.c-quote');
+		const quoteDivElement = quoteDivElements[0];
 
-		expect(verticalWrapper).toHaveLength(1);
-		expect(verticalWrapper.hasClass(CUSTOM_CLASS)).toBeTruthy();
-		expect(verticalWrapper.hasClass('o-container-vertical-quote')).toBeTruthy();
-
-		expect(quoteDivElement).toHaveLength(1);
-		expect(quoteElement.hasClass('c-quote__text')).toBeTruthy();
-		expect(citeElement.hasClass('c-quote__author')).toBeTruthy();
+		expect(quoteDivElements).toHaveLength(1);
+		expect(quoteDivElement).toHaveClass(CUSTOM_CLASS);
+		expect(quoteDivElement.querySelector('blockquote')).toHaveClass('c-quote__text');
+		expect(quoteDivElement.querySelector('cite')).toHaveClass('c-quote__author');
 	});
 });

@@ -1,13 +1,12 @@
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
-import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 
 import { Blankslate } from './Blankslate';
 
 describe('<Blankslate />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<Blankslate
 				title="This is a blank slate"
 				body="Use it to provide information when no dynamic content exists."
@@ -18,7 +17,7 @@ describe('<Blankslate />', () => {
 	it('Should set the correct className', () => {
 		const customClass = 'c-blankslate';
 
-		const blankslateComponent = shallow(
+		const { container } = render(
 			<Blankslate
 				className={customClass}
 				title="This is a blank slate"
@@ -26,12 +25,12 @@ describe('<Blankslate />', () => {
 			/>
 		);
 
-		expect(blankslateComponent.hasClass('c-blankslate')).toEqual(true);
-		expect(blankslateComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-blankslate');
+		expect(container.firstChild).toHaveClass(customClass);
 	});
 
 	it('Should set the correct className when in spacious mode', () => {
-		const blankslateComponent = shallow(
+		const { container } = render(
 			<Blankslate
 				title="This is a blank slate"
 				body="Use it to provide information when no dynamic content exists."
@@ -39,38 +38,40 @@ describe('<Blankslate />', () => {
 			/>
 		);
 
-		expect(blankslateComponent.hasClass('c-blankslate--spacious')).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-blankslate--spacious');
 	});
 
 	it('Should render the title correctly', () => {
 		const title = 'This is a test';
 
-		const blankslateComponent = mount(
+		render(
 			<Blankslate
 				title={title}
 				body="Use it to provide information when no dynamic content exists."
 			/>
 		);
 
-		const titleElement = blankslateComponent.find('h4.c-h4');
+		const titleElement = screen.getByRole('heading', { level: 4 });
 
-		expect(titleElement.text()).toEqual(title);
+		expect(titleElement).toHaveClass('c-h4');
+		expect(titleElement).toHaveTextContent(title);
 	});
 
 	it('Should render the body correctly', () => {
 		const body = 'Lorem ipsum test';
 
-		const blankslateComponent = mount(<Blankslate title="This is a blank slate" body={body} />);
+		render(<Blankslate title="This is a blank slate" body={body} />);
 
-		const bodyElement = blankslateComponent.find('p.c-body-1');
+		const bodyElement = screen.getByText(body);
 
-		expect(bodyElement.text()).toEqual(body);
+		expect(bodyElement.tagName).toBe('P');
+		expect(bodyElement).toHaveClass('c-body-1');
 	});
 
 	it('Should be able to render an icon', () => {
 		const iconName = IconNameSchema.database;
 
-		const blankslateComponent = shallow(
+		const { container } = render(
 			<Blankslate
 				title="This is a blank slate"
 				body="Use it to provide information when no dynamic content exists."
@@ -78,14 +79,15 @@ describe('<Blankslate />', () => {
 			/>
 		);
 
-		const iconComponent = blankslateComponent.find(Icon);
+		const iconElements = container.querySelectorAll('.o-svg-icon');
 
-		expect(iconComponent).toHaveLength(1);
-		expect(iconComponent.props()).toMatchObject({ name: iconName, size: 'large' });
+		expect(iconElements).toHaveLength(1);
+		expect(iconElements[0]).toHaveClass(`o-svg-icon--${iconName}`);
+		expect(iconElements[0]).toHaveClass('o-svg-icon--large');
 	});
 
 	it('Should correctly pass children', () => {
-		const blankslateComponent = shallow(
+		const { container } = render(
 			<Blankslate
 				title="This is a blank slate"
 				body="Use it to provide information when no dynamic content exists."
@@ -94,8 +96,9 @@ describe('<Blankslate />', () => {
 			</Blankslate>
 		);
 
-		const paragraph = blankslateComponent.find('#blankslate-test');
+		const paragraph = container.querySelector('#blankslate-test');
 
-		expect(blankslateComponent.html()).toContain(paragraph.html());
+		expect(paragraph).toBeInTheDocument();
+		expect(paragraph?.parentElement).toBe(container.firstChild);
 	});
 });

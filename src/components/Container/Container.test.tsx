@@ -1,11 +1,11 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { Fragment } from 'react';
 
 import { Container } from './Container';
 
 describe('<Container />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<Container>
 				<Fragment />
 			</Container>
@@ -13,147 +13,142 @@ describe('<Container />', () => {
 	});
 
 	it('Should set the correct classnames when in horizontal mode', () => {
-		const containerComponent = shallow(
+		const { container } = render(
 			<Container mode="horizontal">
 				<Fragment />
 			</Container>
 		);
 
-		expect(containerComponent.hasClass('o-container')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-container');
 	});
 
 	it('Should set the correct custom classnames', () => {
 		const customClass = 'o-container-vertical-title';
-		const containerComponent = shallow(
+		const { container } = render(
 			<Container className={customClass}>
 				<Fragment />
 			</Container>
 		);
 
-		expect(containerComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
 	});
 
 	it('Should set the correct classnames when passing `size` and no mode is passed', () => {
-		const smallContainerComponent = shallow(
+		const { container: smallContainer } = render(
 			<Container size="small">
 				<Fragment />
 			</Container>
 		);
-
-		const mediumContainerComponent = shallow(
+		const { container: mediumContainer } = render(
 			<Container size="medium">
 				<Fragment />
 			</Container>
 		);
-
-		const largeContainerComponent = shallow(
+		const { container: largeContainer } = render(
 			<Container size="large">
 				<Fragment />
 			</Container>
 		);
 
-		expect(smallContainerComponent.hasClass('o-container--small')).toEqual(true);
-		expect(mediumContainerComponent.hasClass('o-container--medium')).toEqual(true);
-		expect(largeContainerComponent.hasClass('o-container--large')).toEqual(true);
+		expect(smallContainer.firstChild).toHaveClass('o-container--small');
+		expect(mediumContainer.firstChild).toHaveClass('o-container--medium');
+		expect(largeContainer.firstChild).toHaveClass('o-container--large');
 	});
 
 	it('Should set the correct classnames when passing `size` in horizontal mode', () => {
-		const smallContainerComponent = shallow(
+		const { container: smallContainer } = render(
 			<Container mode="horizontal" size="small">
 				<Fragment />
 			</Container>
 		);
-
-		const mediumContainerComponent = shallow(
+		const { container: mediumContainer } = render(
 			<Container mode="horizontal" size="medium">
 				<Fragment />
 			</Container>
 		);
-
-		const largeContainerComponent = shallow(
+		const { container: largeContainer } = render(
 			<Container mode="horizontal" size="large">
 				<Fragment />
 			</Container>
 		);
 
-		expect(smallContainerComponent.hasClass('o-container--small')).toEqual(true);
-		expect(mediumContainerComponent.hasClass('o-container--medium')).toEqual(true);
-		expect(largeContainerComponent.hasClass('o-container--large')).toEqual(true);
+		expect(smallContainer.firstChild).toHaveClass('o-container--small');
+		expect(mediumContainer.firstChild).toHaveClass('o-container--medium');
+		expect(largeContainer.firstChild).toHaveClass('o-container--large');
 	});
 
 	it('Should set the correct classnames when in vertical mode', () => {
-		const containerComponent = shallow(
+		const { container } = render(
 			<Container mode="vertical">
 				<Fragment />
 			</Container>
 		);
 
-		expect(containerComponent.hasClass('o-container-vertical')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-container-vertical');
 	});
 
 	it('Should set the correct classnames when passing `size` in vertical mode', () => {
-		const smallContainerComponent = shallow(
+		const { container: smallContainer } = render(
 			<Container mode="vertical" size="small">
 				<Fragment />
 			</Container>
 		);
-
-		const mediumContainerComponent = shallow(
+		const { container: mediumContainer } = render(
 			<Container mode="vertical" size="medium">
 				<Fragment />
 			</Container>
 		);
-
-		const largeContainerComponent = shallow(
+		const { container: largeContainer } = render(
 			<Container mode="vertical" size="large">
 				<Fragment />
 			</Container>
 		);
 
-		expect(smallContainerComponent.hasClass('o-container-vertical--small')).toEqual(true);
-		expect(mediumContainerComponent.hasClass('o-container-vertical--medium')).toEqual(true);
-		expect(largeContainerComponent.hasClass('o-container-vertical--large')).toEqual(true);
+		expect(smallContainer.firstChild).toHaveClass('o-container-vertical--small');
+		expect(mediumContainer.firstChild).toHaveClass('o-container-vertical--medium');
+		expect(largeContainer.firstChild).toHaveClass('o-container-vertical--large');
 	});
 
 	it('Should be able to have an `alt` background', () => {
-		const containerComponent = shallow(
+		const { container } = render(
 			<Container background="alt">
 				<Fragment />
 			</Container>
 		);
 
-		expect(containerComponent.hasClass('o-container-vertical--bg-alt')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-container-vertical--bg-alt');
 	});
 
 	it('Should be able to have an `inverse` background', () => {
-		const containerComponent = shallow(
+		const { container } = render(
 			<Container background="inverse">
 				<Fragment />
 			</Container>
 		);
 
-		expect(containerComponent.hasClass('o-container-vertical--bg-inverse')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-container-vertical--bg-inverse');
 	});
 
 	it('Should be able to be rendered with a bottom border', () => {
-		const containerComponent = shallow(
+		const { container } = render(
 			<Container bordered>
 				<Fragment />
 			</Container>
 		);
 
-		expect(containerComponent.hasClass('o-container-vertical--bottom-bordered')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-container-vertical--bottom-bordered');
 	});
 
 	it('Should correctly pass children', () => {
-		const containerComponent = shallow(
+		const { container } = render(
 			<Container>
 				<p className="container-test" />
 			</Container>
 		);
 
-		const paragraph = containerComponent.find('.container-test');
+		const paragraph = container.querySelector('.container-test');
 
-		expect(containerComponent.children().html()).toEqual(paragraph.html());
+		expect(paragraph).toBeInTheDocument();
+		expect(container.firstChild?.firstChild).toBe(paragraph);
 	});
 });

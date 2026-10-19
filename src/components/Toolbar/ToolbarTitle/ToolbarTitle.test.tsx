@@ -1,11 +1,11 @@
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { Fragment } from 'react';
 
 import { ToolbarTitle } from './ToolbarTitle';
 
 describe('<ToolbarTitle />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<ToolbarTitle>
 				<Fragment />
 			</ToolbarTitle>
@@ -15,25 +15,26 @@ describe('<ToolbarTitle />', () => {
 	it('Should set the correct className(s)', () => {
 		const customClass = 'c-toolbar__title-custom';
 
-		const toolbarItemComponent = shallow(
+		const { container } = render(
 			<ToolbarTitle className={customClass}>
 				<Fragment />
 			</ToolbarTitle>
 		);
 
-		expect(toolbarItemComponent.hasClass(customClass)).toEqual(true);
-		expect(toolbarItemComponent.hasClass('c-toolbar__title')).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-toolbar__title');
 	});
 
 	it('Should correctly pass children', () => {
-		const toolbarItemComponent = shallow(
+		render(
 			<ToolbarTitle>
 				<p id="toolbar-title-test">Testing 123</p>
 			</ToolbarTitle>
 		);
 
-		const paragraph = toolbarItemComponent.find('#toolbar-title-test');
+		const paragraph = screen.getByText('Testing 123');
 
-		expect(toolbarItemComponent.html()).toContain(paragraph.html());
+		expect(paragraph).toHaveAttribute('id', 'toolbar-title-test');
+		expect(screen.getByRole('heading', { level: 2 })).toContainElement(paragraph);
 	});
 });

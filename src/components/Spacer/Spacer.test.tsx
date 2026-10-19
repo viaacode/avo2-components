@@ -1,63 +1,63 @@
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
 import { Spacer, type SpacerOptionSchema } from './Spacer';
 
 describe('<Spacer />', () => {
 	it('Should be able to render', () => {
-		shallow(<Spacer />);
+		render(<Spacer />);
 	});
 
 	it('Should set the correct className', () => {
 		const cumstomClass = 'c-spacer-custom';
 
-		const spacerComponent = shallow(<Spacer className={cumstomClass} />);
+		const { container } = render(<Spacer className={cumstomClass} />);
 
-		expect(spacerComponent.hasClass(cumstomClass)).toBeTruthy();
-		expect(spacerComponent.hasClass('u-spacer')).toBeTruthy();
+		expect(container.firstChild).toHaveClass(cumstomClass);
+		expect(container.firstChild).toHaveClass('u-spacer');
 	});
 
 	it('Should set the correct className when margin/padding is passed (string)', () => {
-		const spacerComponent = shallow(<Spacer margin="left-small" padding="left-small" />);
+		const { container } = render(<Spacer margin="left-small" padding="left-small" />);
 
-		expect(spacerComponent.hasClass('u-spacer-left-s')).toBeTruthy();
-		expect(spacerComponent.hasClass('u-padding-left-s')).toBeTruthy();
+		expect(container.firstChild).toHaveClass('u-spacer-left-s');
+		expect(container.firstChild).toHaveClass('u-padding-left-s');
 	});
 
 	it('Should set no padding/margin when none is passed', () => {
-		const spacerComponent = shallow(<Spacer margin="none" padding="none" />);
+		const { container } = render(<Spacer margin="none" padding="none" />);
 
-		expect(spacerComponent.prop('className')).toBe('');
+		expect((container.firstChild as HTMLElement).className).toBe('');
 	});
 
 	it('Should set the correct className when margin/padding is passed (array)', () => {
-		const spacerComponent = shallow(<Spacer margin={['left-small']} padding={['left-small']} />);
+		const { container } = render(<Spacer margin={['left-small']} padding={['left-small']} />);
 
-		expect(spacerComponent.hasClass('u-spacer-left-s')).toBeTruthy();
-		expect(spacerComponent.hasClass('u-padding-left-s')).toBeTruthy();
+		expect(container.firstChild).toHaveClass('u-spacer-left-s');
+		expect(container.firstChild).toHaveClass('u-padding-left-s');
 	});
 
 	it('Should set the correct className when multiple margins/paddings are passed', () => {
 		const spacers: SpacerOptionSchema[] = ['left-small', 'top-large', 'right-extra-large'];
-		const spacerComponent = shallow(<Spacer margin={spacers} padding={spacers} />);
+		const { container } = render(<Spacer margin={spacers} padding={spacers} />);
 
-		expect(spacerComponent.hasClass('u-spacer-left-s')).toBeTruthy();
-		expect(spacerComponent.hasClass('u-spacer-top-l')).toBeTruthy();
-		expect(spacerComponent.hasClass('u-spacer-right-xl')).toBeTruthy();
+		expect(container.firstChild).toHaveClass('u-spacer-left-s');
+		expect(container.firstChild).toHaveClass('u-spacer-top-l');
+		expect(container.firstChild).toHaveClass('u-spacer-right-xl');
 
-		expect(spacerComponent.hasClass('u-padding-left-s')).toBeTruthy();
-		expect(spacerComponent.hasClass('u-padding-top-l')).toBeTruthy();
-		expect(spacerComponent.hasClass('u-padding-right-xl')).toBeTruthy();
+		expect(container.firstChild).toHaveClass('u-padding-left-s');
+		expect(container.firstChild).toHaveClass('u-padding-top-l');
+		expect(container.firstChild).toHaveClass('u-padding-right-xl');
 	});
 
 	it('Should correctly pass children', () => {
-		const spacerComponent = mount(
+		const { container } = render(
 			<Spacer margin="large">
 				<p>What a nice smile you have there!</p>
 			</Spacer>
 		);
 
-		const paragraph = spacerComponent.find('p');
-
-		expect(spacerComponent.html()).toContain(paragraph.html());
+		expect(container.firstChild).toContainElement(
+			screen.getByText('What a nice smile you have there!')
+		);
 	});
 });

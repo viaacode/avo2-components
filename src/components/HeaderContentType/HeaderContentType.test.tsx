@@ -1,15 +1,16 @@
+import { render } from '@testing-library/react';
 import { AvoContentTypeEnglish } from '@viaa/avo2-types';
-import { shallow } from 'enzyme';
+
 import { HeaderContentType } from './HeaderContentType';
 
 describe('<HeaderContentType />', () => {
 	it('Should be able to render', () => {
-		shallow(<HeaderContentType category={AvoContentTypeEnglish.COLLECTION} label="collectie" />);
+		render(<HeaderContentType category={AvoContentTypeEnglish.COLLECTION} label="collectie" />);
 	});
 
 	it('should pass a custom className', () => {
 		const customClass = 'c-header-content-type-custom';
-		const HeaderContentTypeComponent = (
+		const { container } = render(
 			<HeaderContentType
 				className={customClass}
 				category={AvoContentTypeEnglish.COLLECTION}
@@ -17,6 +18,6 @@ describe('<HeaderContentType />', () => {
 			/>
 		);
 
-		expect(shallow(HeaderContentTypeComponent).hasClass(customClass)).toBeTruthy();
+		expect(container.firstChild).toHaveClass(customClass);
 	});
 });

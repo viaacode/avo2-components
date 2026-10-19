@@ -1,43 +1,43 @@
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
 import { AvatarIcon } from './AvatarIcon';
 
 describe('<AvatarIcon />', () => {
 	it('Should be able to render', () => {
-		shallow(<AvatarIcon initials="JD" />);
+		render(<AvatarIcon initials="JD" />);
 	});
 
 	it('Should correctly set the className', () => {
 		const customClass = 'c-avatar-custom';
 
-		const avatarIconComponent = shallow(<AvatarIcon className={customClass} initials="JD" />);
+		const { container } = render(<AvatarIcon className={customClass} initials="JD" />);
 
-		expect(avatarIconComponent.hasClass('c-avatar')).toEqual(true);
-		expect(avatarIconComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-avatar');
+		expect(container.firstChild).toHaveClass(customClass);
 	});
 
 	it('Should correctly render the initials', () => {
 		const initials = 'FB';
 
-		const avatarIconComponent = shallow(<AvatarIcon initials={initials} />);
+		const { container } = render(<AvatarIcon initials={initials} />);
 
-		expect(avatarIconComponent.text()).toEqual(initials);
+		expect(container.firstChild).toHaveTextContent(initials);
 	});
 
 	it('Should be able to render as a small avatar', () => {
-		const avatarIconComponent = shallow(<AvatarIcon initials="JD" size="small" />);
+		const { container } = render(<AvatarIcon initials="JD" size="small" />);
 
-		expect(avatarIconComponent.hasClass('c-avatar--small')).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-avatar--small');
 	});
 
 	it('Should be able to render an image as the avatar', () => {
 		const image = 'https://api.adorable.io/avatars/128/test';
 
-		const avatarIconComponent = shallow(<AvatarIcon initials="JD" image={image} />);
+		render(<AvatarIcon initials="JD" image={image} />);
 
-		const imageElement = avatarIconComponent.find('img');
+		const imageElements = screen.getAllByRole('img');
 
-		expect(imageElement).toHaveLength(1);
-		expect(imageElement.prop('src')).toEqual(image);
+		expect(imageElements).toHaveLength(1);
+		expect(imageElements[0]).toHaveAttribute('src', image);
 	});
 });

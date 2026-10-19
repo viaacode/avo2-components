@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { noop } from '../../helpers/noop';
 import { IconNameSchema } from '../Icon/Icon.types';
@@ -24,9 +24,12 @@ const menuItems: MenuItemInfoSchema[] = [
 	},
 ];
 
+// floating-ui computes positions asynchronously after mount; flush those updates inside act()
+const flushFloatingUi = () => act(async () => {});
+
 describe('<BooleanCheckboxDropdown />', () => {
-	it('Should be able to render', () => {
-		shallow(
+	it('Should be able to render', async () => {
+		render(
 			<MoreOptionsDropdown
 				isOpen={true}
 				onOpen={noop}
@@ -35,10 +38,11 @@ describe('<BooleanCheckboxDropdown />', () => {
 				onOptionClicked={noop}
 			/>
 		);
+		await flushFloatingUi();
 	});
 
-	it('Should not render if no options are provided', () => {
-		const moreOptionsDropdownComponent = shallow(
+	it('Should not render if no options are provided', async () => {
+		const { container } = render(
 			<MoreOptionsDropdown
 				isOpen={true}
 				onOpen={noop}
@@ -47,14 +51,15 @@ describe('<BooleanCheckboxDropdown />', () => {
 				onOptionClicked={noop}
 			/>
 		);
+		await flushFloatingUi();
 
-		expect(moreOptionsDropdownComponent.type()).toEqual(null);
+		expect(container).toBeEmptyDOMElement();
 	});
 
-	it('Should call `onChange` when toggling checkbox', () => {
+	it('Should call `onChange` when toggling checkbox', async () => {
 		const onOptionClicked = jest.fn();
 
-		const moreOptionsDropdownComponent = mount(
+		render(
 			<MoreOptionsDropdown
 				isOpen={true}
 				onOpen={noop}
@@ -63,19 +68,18 @@ describe('<BooleanCheckboxDropdown />', () => {
 				onOptionClicked={onOptionClicked}
 			/>
 		);
+		await flushFloatingUi();
 
-		const menuItemElements = moreOptionsDropdownComponent.find('.c-menu__item');
+		fireEvent.click(screen.getByText('Add'));
 
-		menuItemElements.at(0).simulate('click');
+		expect(onOptionClicked).toHaveBeenCalledWith(menuItems[0].id);
 
-		expect(onOptionClicked).toBeCalledWith(menuItems[0].id);
+		fireEvent.click(screen.getByText('Delete'));
 
-		menuItemElements.at(1).simulate('click');
+		expect(onOptionClicked).toHaveBeenCalledWith(menuItems[1].id);
 
-		expect(onOptionClicked).toBeCalledWith(menuItems[1].id);
+		fireEvent.click(screen.getByText('Archive'));
 
-		menuItemElements.at(2).simulate('click');
-
-		expect(onOptionClicked).toBeCalledWith(menuItems[2].id);
+		expect(onOptionClicked).toHaveBeenCalledWith(menuItems[2].id);
 	});
 });

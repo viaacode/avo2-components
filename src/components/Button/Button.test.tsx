@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { IconNameSchema } from '../Icon/Icon.types';
 
@@ -6,160 +6,159 @@ import { Button } from './Button';
 
 describe('<Button />', () => {
 	it('Should be able to render', () => {
-		shallow(<Button ariaLabel="test button" />);
+		render(<Button ariaLabel="test button" />);
 	});
 
 	it('Should set the correct aria label', () => {
-		const buttonComponent = shallow(<Button ariaLabel="test button" />);
+		render(<Button ariaLabel="test button" />);
 
-		expect(buttonComponent.prop('aria-label')).toEqual('test button');
+		expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'test button');
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-button-custom';
-		const buttonComponent = shallow(<Button className={customClass} ariaLabel="test button" />);
+		render(<Button className={customClass} ariaLabel="test button" />);
 
-		expect(buttonComponent.hasClass('c-button')).toEqual(true);
-		expect(buttonComponent.hasClass(customClass)).toEqual(true);
+		expect(screen.getByRole('button')).toHaveClass('c-button');
+		expect(screen.getByRole('button')).toHaveClass(customClass);
 	});
 
 	it('Should set the correct size className', () => {
-		const buttonComponent = shallow(<Button size="small" ariaLabel="test button" />);
+		render(<Button size="small" ariaLabel="test button" />);
 
-		expect(buttonComponent.hasClass('c-button--small')).toEqual(true);
+		expect(screen.getByRole('button')).toHaveClass('c-button--small');
 	});
 
 	it('Should set the correct width className when passing block option', () => {
-		const buttonDefaultComponent = shallow(<Button ariaLabel="test button" />);
-		const buttonBlockTrueComponent = shallow(<Button block={true} ariaLabel="test button" />);
-		const buttonBlockFalseComponent = shallow(<Button block={false} ariaLabel="test button" />);
+		const { container: defaultContainer } = render(<Button ariaLabel="test button" />);
+		const { container: blockTrueContainer } = render(
+			<Button block={true} ariaLabel="test button" />
+		);
+		const { container: blockFalseContainer } = render(
+			<Button block={false} ariaLabel="test button" />
+		);
 
-		expect(buttonDefaultComponent.hasClass('c-button--block')).toEqual(false);
-		expect(buttonBlockTrueComponent.hasClass('c-button--block')).toEqual(true);
-		expect(buttonBlockFalseComponent.hasClass('c-button--block')).toEqual(false);
+		expect(defaultContainer.firstChild).not.toHaveClass('c-button--block');
+		expect(blockTrueContainer.firstChild).toHaveClass('c-button--block');
+		expect(blockFalseContainer.firstChild).not.toHaveClass('c-button--block');
 	});
 
 	it('Should set the correct type className', () => {
-		const secondaryButtonComponent = shallow(<Button type="secondary" ariaLabel="test button" />);
-		const dangerButtonComponent = shallow(<Button type="danger" ariaLabel="test button" />);
-		const linkButtonComponent = shallow(<Button type="link" ariaLabel="test button" />);
-		const inlineLinkButtonComponent = shallow(
+		const { container: secondaryContainer } = render(
+			<Button type="secondary" ariaLabel="test button" />
+		);
+		const { container: dangerContainer } = render(<Button type="danger" ariaLabel="test button" />);
+		const { container: linkContainer } = render(<Button type="link" ariaLabel="test button" />);
+		const { container: inlineLinkContainer } = render(
 			<Button type="inline-link" ariaLabel="test button" />
 		);
 
-		expect(secondaryButtonComponent.hasClass('c-button--secondary')).toEqual(true);
-		expect(dangerButtonComponent.hasClass('c-button--danger')).toEqual(true);
-		expect(linkButtonComponent.hasClass('c-button--link')).toEqual(true);
-		expect(inlineLinkButtonComponent.hasClass('c-button--inline-link')).toEqual(true);
+		expect(secondaryContainer.firstChild).toHaveClass('c-button--secondary');
+		expect(dangerContainer.firstChild).toHaveClass('c-button--danger');
+		expect(linkContainer.firstChild).toHaveClass('c-button--link');
+		expect(inlineLinkContainer.firstChild).toHaveClass('c-button--inline-link');
 	});
 
 	it('Should set the correct className when passing autoHeight option', () => {
-		const autoHeightButtonComponent = shallow(<Button autoHeight />);
+		render(<Button autoHeight />);
 
-		expect(autoHeightButtonComponent.hasClass('c-button--auto')).toEqual(true);
+		expect(screen.getByRole('button')).toHaveClass('c-button--auto');
 	});
 
 	it('Should be able to render a label', () => {
 		const label = 'Click me!';
-		const buttonComponent = shallow(<Button label={label} ariaLabel="test button" />);
+		const { container } = render(<Button label={label} ariaLabel="test button" />);
 
-		const labelElement = buttonComponent.find('.c-button__label');
+		const labelElements = container.querySelectorAll('.c-button__label');
 
-		expect(labelElement).toHaveLength(1);
-		expect(labelElement.text()).toEqual(label);
+		expect(labelElements).toHaveLength(1);
+		expect(labelElements[0]).toHaveTextContent(label);
 	});
 
 	it('Should not to render a label when none is passed', () => {
-		const buttonComponent = shallow(<Button ariaLabel="test button" />);
+		const { container } = render(<Button ariaLabel="test button" />);
 
-		const labelElement = buttonComponent.find('.c-button__label');
-
-		expect(labelElement).toHaveLength(0);
+		expect(container.querySelectorAll('.c-button__label')).toHaveLength(0);
 	});
 
 	it('Should be able to render a label and an icon', () => {
 		const label = 'Click me!';
 		const icon = IconNameSchema.search;
-		const buttonComponent = shallow(<Button label={label} icon={icon} ariaLabel="test button" />);
+		const { container } = render(<Button label={label} icon={icon} ariaLabel="test button" />);
 
-		const labelElement = buttonComponent.find('.c-button__label');
-		const iconComponent = buttonComponent.find('.c-button__icon');
+		const labelElements = container.querySelectorAll('.c-button__label');
+		const iconElements = container.querySelectorAll('.c-button__icon');
 
-		expect(labelElement).toHaveLength(1);
-		expect(labelElement.text()).toEqual(label);
-		expect(iconComponent).toHaveLength(1);
-		expect(iconComponent.props()).toMatchObject({ name: icon });
+		expect(labelElements).toHaveLength(1);
+		expect(labelElements[0]).toHaveTextContent(label);
+		expect(iconElements).toHaveLength(1);
+		expect(iconElements[0]).toHaveClass(`o-svg-icon--${icon}`);
 	});
 
 	it('Should get a special className when only an icon is passed', () => {
-		const buttonComponent = shallow(<Button icon={IconNameSchema.link} ariaLabel="test button" />);
+		render(<Button icon={IconNameSchema.link} ariaLabel="test button" />);
 
-		expect(buttonComponent.hasClass('c-button--icon')).toEqual(true);
+		expect(screen.getByRole('button')).toHaveClass('c-button--icon');
 	});
 
 	it('Should be able to render an arrow at the end of the button', () => {
-		const buttonComponent = shallow(<Button arrow ariaLabel="test button" />);
+		const { container } = render(<Button arrow ariaLabel="test button" />);
 
-		const arrowComponent = buttonComponent.find('.c-button__icon');
+		const arrowElements = container.querySelectorAll('.c-button__icon');
 
-		expect(arrowComponent).toHaveLength(1);
-		expect(arrowComponent.props()).toMatchObject({ name: 'caret-down' });
+		expect(arrowElements).toHaveLength(1);
+		expect(arrowElements[0]).toHaveClass('o-svg-icon--caret-down');
 	});
 
 	it('Should call the `onClick`-handler when clicked', () => {
 		const onClickHandler = jest.fn();
 
-		const buttonComponent = shallow(<Button onClick={onClickHandler} ariaLabel="test button" />);
+		render(<Button onClick={onClickHandler} ariaLabel="test button" />);
 
-		const buttonElement = buttonComponent.find('button');
+		const buttonElement = screen.getByRole('button');
 
-		buttonElement.simulate('click');
+		fireEvent.click(buttonElement);
 
 		expect(onClickHandler).toHaveBeenCalled();
 		expect(onClickHandler).toHaveBeenCalledTimes(1);
 
-		buttonElement.simulate('click');
+		fireEvent.click(buttonElement);
 
 		expect(onClickHandler).toHaveBeenCalledTimes(2);
 	});
 
 	it('Should pass on the `disabled`-attribute', () => {
-		const buttonComponent = shallow(<Button disabled ariaLabel="test button" />);
+		render(<Button disabled ariaLabel="test button" />);
 
-		const buttonElement = buttonComponent.find('button');
-
-		expect(buttonElement.prop('disabled')).toEqual(true);
+		expect(screen.getByRole('button')).toBeDisabled();
 	});
 
 	it('Should set the correct classnames when `active` is passed', () => {
-		const buttonComponent = shallow(<Button active={true} ariaLabel="test button" />);
+		render(<Button active={true} ariaLabel="test button" />);
 
-		const buttonElement = buttonComponent.find('button');
-
-		expect(buttonElement.hasClass('c-button--active')).toEqual(true);
+		expect(screen.getByRole('button')).toHaveClass('c-button--active');
 	});
 
 	it('Should pass on the title attribute', () => {
 		const testTitle = 'test title';
-		const buttonComponent = shallow(<Button title={testTitle} />);
+		render(<Button title={testTitle} />);
 
-		const buttonElement = buttonComponent.find('button');
-
-		expect(buttonElement.prop('title')).toEqual(testTitle);
+		expect(screen.getByRole('button')).toHaveAttribute('title', testTitle);
 	});
 
 	it('Should pass on the `active`-prop to the button icon', () => {
-		const activeButtonComponent = shallow(
+		const { container: activeContainer } = render(
 			<Button active={true} icon={IconNameSchema.heart} ariaLabel="test button" />
 		);
-		const inactiveButtonComponent = shallow(
+		const { container: inactiveContainer } = render(
 			<Button active={false} icon={IconNameSchema.heart} ariaLabel="test button" />
 		);
 
-		const activeIconComponent = activeButtonComponent.find('.c-button__icon');
-		const inactiveIconComponent = inactiveButtonComponent.find('.c-button__icon');
-
-		expect(activeIconComponent.prop('active')).toEqual(true);
-		expect(inactiveIconComponent.prop('active')).toEqual(false);
+		expect(activeContainer.querySelector('.c-button__icon')).toHaveClass(
+			'o-svg-icon--action-active'
+		);
+		expect(inactiveContainer.querySelector('.c-button__icon')).not.toHaveClass(
+			'o-svg-icon--action-active'
+		);
 	});
 });

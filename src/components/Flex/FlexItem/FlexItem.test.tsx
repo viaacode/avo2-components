@@ -1,36 +1,37 @@
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
 import { FlexItem } from './FlexItem';
 
 describe('<Flex />', () => {
 	it('Should be able to render', () => {
-		shallow(<FlexItem />);
+		render(<FlexItem />);
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-flex-item-custom';
 
-		const flexComponent = shallow(<FlexItem className={customClass} />);
+		const { container } = render(<FlexItem className={customClass} />);
 
-		expect(flexComponent.hasClass(customClass)).toEqual(true);
-		expect(flexComponent.hasClass('o-flex__item')).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('o-flex__item');
 	});
 
 	it('Should set the correct className when shrink is passed (string)', () => {
-		const flexComponent = shallow(<FlexItem shrink />);
+		const { container } = render(<FlexItem shrink />);
 
-		expect(flexComponent.hasClass('o-flex__item--shrink')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-flex__item--shrink');
 	});
 
 	it('Should correctly pass children', () => {
-		const flexComponent = mount(
+		const { container } = render(
 			<FlexItem>
 				<p>What a nice smile you have there!</p>
 			</FlexItem>
 		);
 
-		const paragraph = flexComponent.find('p');
+		const paragraph = screen.getByText('What a nice smile you have there!');
 
-		expect(flexComponent.html()).toContain(paragraph.html());
+		expect(paragraph.tagName).toBe('P');
+		expect(container.firstChild).toContainElement(paragraph);
 	});
 });

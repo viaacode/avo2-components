@@ -1,6 +1,5 @@
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
-import { Icon } from '../../Icon/Icon';
 import type { IconNameSchema } from '../../Icon/Icon.types';
 
 import { Tab } from './Tab';
@@ -19,38 +18,36 @@ const mockTabWithIcon = {
 
 describe('<Tab />', () => {
 	it('Should be able to render', () => {
-		shallow(<Tab {...mockTab} />);
+		render(<Tab {...mockTab} />);
 	});
 
 	it('Should set the correct className', () => {
-		const tabComponent = shallow(<Tab {...mockTab} />);
+		const { container } = render(<Tab {...mockTab} />);
 
-		expect(tabComponent.hasClass(mockTab.className)).toEqual(true);
-		expect(tabComponent.hasClass('c-tab-item')).toEqual(true);
+		expect(container.firstChild).toHaveClass(mockTab.className);
+		expect(container.firstChild).toHaveClass('c-tab-item');
 	});
 
 	it('Should set the correct className when icon is passed', () => {
-		const tabComponent = mount(<Tab {...mockTabWithIcon} />);
+		const { container } = render(<Tab {...mockTabWithIcon} />);
 
-		const iconComponent = tabComponent.find(Icon);
-
-		expect(iconComponent).toHaveLength(1);
-		expect(iconComponent.prop('name')).toEqual(mockTabWithIcon.icon);
+		expect(container.querySelectorAll('.o-svg-icon')).toHaveLength(1);
+		expect(container.querySelector(`.o-svg-icon--${mockTabWithIcon.icon}`)).toBeInTheDocument();
 	});
 
 	it('Should set the correct className when passing `active`', () => {
-		const tabComponent = shallow(<Tab {...mockTab} />);
+		const { container } = render(<Tab {...mockTab} />);
 
-		expect(tabComponent.hasClass('c-tab-item__active')).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-tab-item__active');
 	});
 
 	it('Should render `label` correctly', () => {
-		const tabComponent = shallow(<Tab {...mockTab} />);
+		const { container } = render(<Tab {...mockTab} />);
 
-		const labelElement = tabComponent.find('span');
+		const labelElements = container.querySelectorAll('span');
 
-		expect(labelElement).toHaveLength(1);
+		expect(labelElements).toHaveLength(1);
 
-		expect(labelElement.text()).toEqual(mockTab.label);
+		expect(labelElements[0]).toHaveTextContent(mockTab.label);
 	});
 });

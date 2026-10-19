@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { loremIpsum } from 'lorem-ipsum';
 
 import { Flex } from './Flex';
@@ -8,78 +8,79 @@ const customClass = 'c-flex-custom';
 
 describe('<Flex />', () => {
 	it('Should be able to render', () => {
-		shallow(<Flex>{content}</Flex>);
+		render(<Flex>{content}</Flex>);
 	});
 
 	it('Should set the correct className', () => {
-		const flexComponent = shallow(<Flex className={customClass}>{content}</Flex>);
+		const { container } = render(<Flex className={customClass}>{content}</Flex>);
 
-		expect(flexComponent.hasClass(customClass)).toEqual(true);
-		expect(flexComponent.hasClass('o-flex')).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('o-flex');
 	});
 
 	it('Should set the correct className when orientation is passed', () => {
-		const flexComponent = shallow(<Flex orientation="horizontal">{content}</Flex>);
+		const { container } = render(<Flex orientation="horizontal">{content}</Flex>);
 
-		expect(flexComponent.hasClass('o-flex--horizontal')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-flex--horizontal');
 	});
 
 	it('Should set the correct className when center is passed', () => {
-		const flexComponent = shallow(<Flex center>{content}</Flex>);
+		const { container } = render(<Flex center>{content}</Flex>);
 
-		expect(flexComponent.hasClass('o-flex--center')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-flex--center');
 	});
 
 	it('Should set the correct className when orientation and center are passed', () => {
-		const flexComponent = shallow(
+		const { container } = render(
 			<Flex orientation="horizontal" center>
 				{content}
 			</Flex>
 		);
 
-		expect(flexComponent.hasClass('o-flex--horizontal-center')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-flex--horizontal-center');
 	});
 
 	it('Should set the correct className when justify is passed', () => {
-		const flexComponent = shallow(<Flex justify="between">{content}</Flex>);
+		const { container } = render(<Flex justify="between">{content}</Flex>);
 
-		expect(flexComponent.hasClass('o-flex--justify-between')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-flex--justify-between');
 	});
 
 	it('Should set the correct className when wrap is passed', () => {
-		const flexComponent = shallow(<Flex wrap>{content}</Flex>);
+		const { container } = render(<Flex wrap>{content}</Flex>);
 
-		expect(flexComponent.hasClass('o-flex--wrap')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-flex--wrap');
 	});
 
 	it('Should set the correct className when spaced is passed (boolean)', () => {
-		const flexComponent = shallow(<Flex spaced="regular">{content}</Flex>);
+		const { container } = render(<Flex spaced="regular">{content}</Flex>);
 
-		expect(flexComponent.hasClass('o-flex--spaced')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-flex--spaced');
 	});
 
 	it('Should set the correct className when spaced is passed (wide)', () => {
-		const flexComponent = shallow(<Flex spaced="wide">{content}</Flex>);
+		const { container } = render(<Flex spaced="wide">{content}</Flex>);
 
-		expect(flexComponent.hasClass('o-flex--spaced-wide')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-flex--spaced-wide');
 	});
 
 	it('Should set the correct className when no spaced is passed', () => {
-		const flexComponent = shallow(<Flex>{content}</Flex>);
+		const { container } = render(<Flex>{content}</Flex>);
 
-		expect(flexComponent.hasClass('o-flex--spaced')).toEqual(false);
-		expect(flexComponent.hasClass('o-flex--spaced-wide')).toEqual(false);
+		expect(container.firstChild).not.toHaveClass('o-flex--spaced');
+		expect(container.firstChild).not.toHaveClass('o-flex--spaced-wide');
 	});
 
 	it('Should correctly pass children', () => {
-		const flexComponent = mount(
+		const { container } = render(
 			<Flex>
 				<p>{content}</p>
 			</Flex>
 		);
 
-		const paragraph = flexComponent.find('p');
+		const paragraph = screen.getByText(content);
 
-		expect(flexComponent.html()).toContain(paragraph.html());
+		expect(paragraph.tagName).toBe('P');
+		expect(container.firstChild).toContainElement(paragraph);
 	});
 });

@@ -1,6 +1,5 @@
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
-import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 
 import { TextInput } from './TextInput';
@@ -9,91 +8,77 @@ const customClass = 'c-input-custom';
 
 describe('<TextInput />', () => {
 	it('Should be able to render', () => {
-		shallow(<TextInput />);
+		render(<TextInput />);
 	});
 
 	it('Should set the correct className', () => {
-		const inputComponent = shallow(<TextInput className={customClass} />);
+		const { container } = render(<TextInput className={customClass} />);
 
-		const inputElement = inputComponent.find('input');
-
-		expect(inputComponent.hasClass(customClass)).toEqual(true);
-		expect(inputElement.hasClass('c-input')).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(screen.getByRole('textbox')).toHaveClass('c-input');
 	});
 
 	it('Should pass on the id', () => {
 		const id = 'test';
 
-		const inputComponent = shallow(<TextInput id={id} />);
+		render(<TextInput id={id} />);
 
-		const inputElement = inputComponent.find('input');
-
-		expect(inputElement.prop('id')).toEqual(id);
+		expect(screen.getByRole('textbox')).toHaveAttribute('id', id);
 	});
 
 	it('Should be able to set the disabled state', () => {
-		const inputComponent = shallow(<TextInput disabled />);
+		render(<TextInput disabled />);
 
-		const inputElement = inputComponent.find('input');
-
-		expect(inputElement.prop('disabled')).toEqual(true);
+		expect(screen.getByRole('textbox')).toBeDisabled();
 	});
 
 	it('Should be able to set the placeholder value', () => {
 		const placeholder = 'this is a test placeholder';
 
-		const inputComponent = shallow(<TextInput placeholder={placeholder} />);
+		render(<TextInput placeholder={placeholder} />);
 
-		const inputElement = inputComponent.find('input');
-
-		expect(inputElement.prop('placeholder')).toEqual(placeholder);
+		expect(screen.getByPlaceholderText(placeholder)).toBeInTheDocument();
 	});
 
 	it('Should be able to set the type value', () => {
 		const type = 'password';
 
-		const inputComponent = shallow(<TextInput type={type} />);
+		const { container } = render(<TextInput type={type} />);
 
-		const inputElement = inputComponent.find('input');
-
-		expect(inputElement.prop('type')).toEqual(type);
+		expect(container.querySelector('input')).toHaveAttribute('type', type);
 	});
 
 	it('Should be able to set an initial value', () => {
 		const value = 'default test value';
 
-		const inputComponent = shallow(<TextInput value={value} />);
+		render(<TextInput value={value} />);
 
-		const inputElement = inputComponent.find('input');
-
-		expect(inputElement.prop('value')).toEqual(value);
+		expect(screen.getByRole('textbox')).toHaveValue(value);
 	});
 
 	it('Should be able to render with an icon', () => {
 		const icon = IconNameSchema.search;
 
-		const inputComponent = shallow(<TextInput className={customClass} icon={icon} />);
+		const { container } = render(<TextInput className={customClass} icon={icon} />);
 
-		const iconComponent = inputComponent.find(Icon);
-
-		expect(inputComponent.hasClass(customClass)).toEqual(true);
-		expect(iconComponent.prop('name')).toEqual(icon);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.querySelector('.o-svg-icon')).toHaveClass(`o-svg-icon--${icon}`);
 	});
 
 	it('Should call the onChange handler when the input changes', () => {
 		const onChangeHandler = jest.fn();
 
-		const inputComponent = shallow(<TextInput onChange={onChangeHandler} />);
+		render(<TextInput onChange={onChangeHandler} />);
 
-		const inputElement = inputComponent.find('input');
+		const inputElement = screen.getByRole('textbox');
 
-		inputElement.simulate('change', { target: { value: 'test' } });
+		fireEvent.change(inputElement, { target: { value: 'test' } });
 
 		expect(onChangeHandler).toHaveBeenCalled();
 		expect(onChangeHandler).toHaveBeenCalledTimes(1);
 		expect(onChangeHandler).toHaveBeenCalledWith('test');
 
-		inputElement.simulate('change', { target: { value: 'testing' } });
+		fireEvent.change(inputElement, { target: { value: 'testing' } });
 
 		expect(onChangeHandler).toHaveBeenCalledTimes(2);
 		expect(onChangeHandler).toHaveBeenCalledWith('testing');

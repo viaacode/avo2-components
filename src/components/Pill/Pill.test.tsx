@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { Pill } from './Pill';
 import { MOCK_PILL, MOCK_PILL__ACTIVE } from './Pill.mock';
@@ -10,24 +10,20 @@ export const pillVariantExample = <Pill {...MOCK_PILL__ACTIVE} />;
 
 describe('<Pill />', () => {
 	it('Should be able to render', () => {
-		shallow(pillExample);
+		render(pillExample);
 	});
 
 	it('Should set the correct className', () => {
-		const component = mount(pillExample);
+		const { container } = render(pillExample);
 
-		const pillDivElement = component.find('.c-pill');
-
-		expect(pillDivElement).toHaveLength(1);
+		expect(container.querySelectorAll('.c-pill')).toHaveLength(1);
 	});
 
 	it('Should set the correct className for variants', () => {
-		const component = mount(pillExample);
+		const { container } = render(pillVariantExample);
 
 		(MOCK_PILL__ACTIVE.variants || []).forEach((variant) => {
-			const pillDivElement = component.find(`.c-pill--${variant}`);
-
-			expect(pillDivElement).toHaveLength(1);
+			expect(container.querySelectorAll(`.c-pill--${variant}`)).toHaveLength(1);
 		});
 	});
 });
