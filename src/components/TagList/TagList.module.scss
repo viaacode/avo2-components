@@ -44,9 +44,7 @@
 	margin-left: -0.8rem;
 }
 
-.c-tag > button { // Close button
-	padding: 0;
-	cursor: pointer;
+.c-tag > a { // Close button
 	border-radius: 100%;
 	background-color: colors.$color-gray-200;
 	color: #FFF;

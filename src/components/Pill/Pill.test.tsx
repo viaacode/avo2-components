@@ -6,6 +6,7 @@ import { MOCK_PILL, MOCK_PILL__ACTIVE } from './Pill.mock';
 const CUSTOM_CLASS = 'c-pill--custom';
 
 const pillExample = <Pill className={CUSTOM_CLASS} {...MOCK_PILL} />;
+const pillVariantExample = <Pill {...MOCK_PILL__ACTIVE} />;
 
 describe('<Pill />', () => {
 	it('Should be able to render', () => {
@@ -21,7 +22,7 @@ describe('<Pill />', () => {
 	});
 
 	it('Should set the correct className for variants', () => {
-		const component = mount(pillExample);
+		const component = mount(pillVariantExample);
 
 		(MOCK_PILL__ACTIVE.variants || []).forEach((variant) => {
 			const pillDivElement = component.find(`.c-pill--${variant}`);

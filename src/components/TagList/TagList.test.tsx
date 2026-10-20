@@ -117,7 +117,7 @@ describe('<TagList />', () => {
 			<TagList tags={tags} closable onTagClosed={onTagClosedHandler} />
 		);
 
-		const closeTagElements = tagListComponent.find('button');
+		const closeTagElements = tagListComponent.find('a');
 
 		const indexToClose = 5;
 		// close the 6th element in the list
