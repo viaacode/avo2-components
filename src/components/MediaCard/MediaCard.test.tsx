@@ -1,5 +1,6 @@
+import { fireEvent, render, screen } from '@testing-library/react';
 import { AvoContentTypeEnglish } from '@viaa/avo2-types';
-import { mount, shallow } from 'enzyme';
+
 import { MetaData } from '../MetaData/MetaData';
 import { MetaDataItem } from '../MetaData/MetaDataItem/MetaDataItem';
 import { Thumbnail } from '../Thumbnail/Thumbnail';
@@ -8,7 +9,7 @@ import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 describe('<MediaCard />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.COLLECTION} />
 		);
 	});
@@ -16,7 +17,7 @@ describe('<MediaCard />', () => {
 	it('Should set the correct className', () => {
 		const customClass = 'c-media-card-custom';
 
-		const mediaCardComponent = shallow(
+		const { container } = render(
 			<MediaCard
 				className={customClass}
 				title="What an amazing title!"
@@ -24,30 +25,30 @@ describe('<MediaCard />', () => {
 			/>
 		);
 
-		expect(mediaCardComponent.hasClass(customClass)).toEqual(true);
-		expect(mediaCardComponent.hasClass('c-media-card')).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-media-card');
 	});
 
 	it('Should set the correct className for each category', () => {
-		const collectionMediaCardComponent = shallow(
+		const { container: collectionContainer } = render(
 			<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.COLLECTION} />
 		);
 
-		const videoMediaCardComponent = shallow(
+		const { container: videoContainer } = render(
 			<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.VIDEO} />
 		);
 
-		const audioMediaCardComponent = shallow(
+		const { container: audioContainer } = render(
 			<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.AUDIO} />
 		);
 
-		expect(collectionMediaCardComponent.hasClass('c-media-card--collection')).toEqual(true);
-		expect(videoMediaCardComponent.hasClass('c-media-card--video')).toEqual(true);
-		expect(audioMediaCardComponent.hasClass('c-media-card--audio')).toEqual(true);
+		expect(collectionContainer.firstChild).toHaveClass('c-media-card--collection');
+		expect(videoContainer.firstChild).toHaveClass('c-media-card--video');
+		expect(audioContainer.firstChild).toHaveClass('c-media-card--audio');
 	});
 
 	it('Should set the correct className for each orientation', () => {
-		const horizontalMediaCardComponent = shallow(
+		const { container: horizontalContainer } = render(
 			<MediaCard
 				title="What an amazing title!"
 				category={AvoContentTypeEnglish.COLLECTION}
@@ -55,7 +56,7 @@ describe('<MediaCard />', () => {
 			/>
 		);
 
-		const verticalMediaCardComponent = shallow(
+		const { container: verticalContainer } = render(
 			<MediaCard
 				title="What an amazing title!"
 				category={AvoContentTypeEnglish.COLLECTION}
@@ -63,12 +64,12 @@ describe('<MediaCard />', () => {
 			/>
 		);
 
-		expect(horizontalMediaCardComponent.hasClass('c-media-card--horizontal')).toEqual(true);
-		expect(verticalMediaCardComponent.hasClass('c-media-card--horizontal')).toEqual(false);
+		expect(horizontalContainer.firstChild).toHaveClass('c-media-card--horizontal');
+		expect(verticalContainer.firstChild).not.toHaveClass('c-media-card--horizontal');
 	});
 
 	it('Should render thumbnail when slot is passed', () => {
-		const mediaCardComponent = shallow(
+		const { container } = render(
 			<MediaCard
 				title="What an amazing title!"
 				category={AvoContentTypeEnglish.COLLECTION}
@@ -80,11 +81,11 @@ describe('<MediaCard />', () => {
 			</MediaCard>
 		);
 
-		expect(mediaCardComponent.find(Thumbnail)).toHaveLength(1);
+		expect(container.querySelectorAll('.c-media-card-thumb .c-thumbnail')).toHaveLength(1);
 	});
 
 	it('Should render metaData when slot is passed', () => {
-		const mediaCardComponent = shallow(
+		const { container } = render(
 			<MediaCard
 				title="What an amazing title!"
 				category={AvoContentTypeEnglish.COLLECTION}
@@ -99,12 +100,13 @@ describe('<MediaCard />', () => {
 			</MediaCard>
 		);
 
-		expect(mediaCardComponent.find(MetaData)).toHaveLength(1);
-		expect(mediaCardComponent.find(MetaDataItem)).toHaveLength(2);
+		expect(container.querySelectorAll('.c-meta-data')).toHaveLength(1);
+		expect(screen.getByText('vrt')).toBeInTheDocument();
+		expect(screen.getByText('2d geleden')).toBeInTheDocument();
 	});
 
 	it('Should render top right when slot is passed', () => {
-		const mediaCardComponent = shallow(
+		const { container } = render(
 			<MediaCard
 				title="What an amazing title!"
 				category={AvoContentTypeEnglish.COLLECTION}
@@ -119,53 +121,58 @@ describe('<MediaCard />', () => {
 			</MediaCard>
 		);
 
-		expect(mediaCardComponent.find(MetaData)).toHaveLength(1);
-		expect(mediaCardComponent.find(MetaDataItem)).toHaveLength(2);
+		expect(container.querySelectorAll('.c-meta-data')).toHaveLength(1);
+		expect(screen.getByText('vrt')).toBeInTheDocument();
+		expect(screen.getByText('2d geleden')).toBeInTheDocument();
 	});
 
 	it('Should pass `href` property to title & thumbnail', () => {
 		const clickHandler = jest.fn();
 
-		const mediaCardComponent = mount(
+		const { container } = render(
 			<MediaCard
 				title="What an amazing title!"
 				onClick={clickHandler}
 				category={AvoContentTypeEnglish.COLLECTION}
 			>
 				<MediaCardThumbnail>
-					<Thumbnail category={AvoContentTypeEnglish.COLLECTION} topRight={<>topRightTest</>} />
+					<Thumbnail
+						category={AvoContentTypeEnglish.COLLECTION}
+						showCategoryIcon
+						topRight={<>topRightTest</>}
+					/>
 				</MediaCardThumbnail>
 			</MediaCard>
 		);
 
-		const metaCardElement = mediaCardComponent.find('.c-media-card');
-		const metaCardTitleElement = mediaCardComponent.find('.c-media-card__title');
-		const metaCardThumbElement = mediaCardComponent.find('.c-media-card-thumb');
-
-		metaCardElement.at(0).simulate('click');
+		fireEvent.click(container.firstChild as HTMLElement);
 
 		expect(clickHandler).toHaveBeenCalledTimes(1);
 
-		metaCardTitleElement.at(0).simulate('click');
+		fireEvent.click(screen.getByRole('heading', { name: 'What an amazing title!' }));
 
 		expect(clickHandler).toHaveBeenCalledTimes(2);
 
-		metaCardThumbElement.at(0).simulate('click');
+		fireEvent.click(container.querySelector('.c-media-card-thumb') as HTMLElement);
 
 		expect(clickHandler).toHaveBeenCalledTimes(3);
 	});
 
 	it('Should render top right prop on thumbnail', () => {
-		const mediaCardComponent = mount(
+		const { container } = render(
 			<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.COLLECTION}>
 				<MediaCardThumbnail>
-					<Thumbnail category={AvoContentTypeEnglish.COLLECTION} topRight={<>topRightTest</>} />
+					<Thumbnail
+						category={AvoContentTypeEnglish.COLLECTION}
+						showCategoryIcon
+						topRight={<>topRightTest</>}
+					/>
 				</MediaCardThumbnail>
 			</MediaCard>
 		);
 
-		const metaCardThumbTopRight = mediaCardComponent.find('.c-thumbnail-media__top-right');
-
-		expect(metaCardThumbTopRight.text()).toEqual('topRightTest');
+		expect(container.querySelector('.c-thumbnail-media__top-right')?.textContent).toEqual(
+			'topRightTest'
+		);
 	});
 });

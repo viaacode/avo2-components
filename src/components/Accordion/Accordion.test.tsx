@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Accordion } from './Accordion';
 import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slots';
@@ -6,38 +6,46 @@ import { AccordionActions, AccordionBody, AccordionTitle } from './Accordion.slo
 const customClassName = 'c-custom-accordion';
 
 describe('<Accordion />', () => {
-	const accordion = <Accordion className={customClassName} isOpen />;
-	const wrapper = shallow(accordion);
-
 	it('should render', () => {
-		shallow(accordion);
+		const { container } = render(<Accordion className={customClassName} isOpen />);
+
+		expect(container.firstChild).toBeInTheDocument();
 	});
 
 	it('Should set the correct className', () => {
-		expect(wrapper.hasClass('c-accordion')).toBeTruthy();
-		expect(wrapper.hasClass('c-accordion--closed')).toBeFalsy();
-		expect(wrapper.hasClass(customClassName)).toBeTruthy();
+		const { container } = render(<Accordion className={customClassName} isOpen />);
+
+		expect(container.firstChild).toHaveClass('c-accordion');
+		expect(container.firstChild).not.toHaveClass('c-accordion--closed');
+		expect(container.firstChild).toHaveClass(customClassName);
 	});
 
 	it('Should render correctly with `isOpen = false`', () => {
-		wrapper.setProps({
-			isOpen: false,
-			onToggle: () => {
-				// ignore empty
-			},
-		});
+		const { container, rerender } = render(<Accordion className={customClassName} isOpen />);
 
-		expect(wrapper.hasClass('c-accordion--closed')).toBeTruthy();
+		rerender(
+			<Accordion
+				className={customClassName}
+				isOpen={false}
+				onToggle={() => {
+					// ignore empty
+				}}
+			/>
+		);
+
+		expect(container.firstChild).toHaveClass('c-accordion--closed');
 	});
 
 	it('Should call the `onToggle` prop when clicking the header', () => {
 		const onToggleHandler = jest.fn();
-		wrapper.setProps({ onToggle: onToggleHandler });
+		const { container } = render(
+			<Accordion className={customClassName} isOpen={false} onToggle={onToggleHandler} />
+		);
 
-		const header = wrapper.find('.c-accordion__header');
-		header.simulate('click');
+		const header = container.querySelector('.c-accordion__header') as HTMLElement;
+		fireEvent.click(header);
 
-		expect(header.hasClass('u-clickable')).toBeTruthy();
+		expect(header).toHaveClass('u-clickable');
 		expect(onToggleHandler).toHaveBeenCalled();
 		expect(onToggleHandler).toHaveBeenCalledTimes(1);
 	});
@@ -47,22 +55,20 @@ describe('<Accordion />', () => {
 		const actionsSlot = 'Actions slot';
 		const bodySlot = 'Body slot';
 
-		const accordionWithSlots = shallow(
+		const { container } = render(
 			<Accordion>
 				<AccordionTitle>{titleSlot}</AccordionTitle>
 				<AccordionActions>
-					<button>{actionsSlot}</button>
+					<button type="button">{actionsSlot}</button>
 				</AccordionActions>
 				<AccordionBody>{bodySlot}</AccordionBody>
 			</Accordion>
 		);
 
-		const titleElement = accordionWithSlots.find('.c-accordion__header-title');
-		const actionsElement = accordionWithSlots.find('.c-accordion__header button');
-		const bodyElement = accordionWithSlots.find('.c-accordion__body .c-accordion__item');
-
-		expect(titleElement.text()).toBe(titleSlot);
-		expect(actionsElement.text()).toBe(actionsSlot);
-		expect(bodyElement.text()).toBe(bodySlot);
+		expect(container.querySelector('.c-accordion__header-title')).toHaveTextContent(titleSlot);
+		expect(screen.getByRole('button', { name: actionsSlot })).toHaveTextContent(actionsSlot);
+		expect(container.querySelector('.c-accordion__body .c-accordion__item')).toHaveTextContent(
+			bodySlot
+		);
 	});
 });

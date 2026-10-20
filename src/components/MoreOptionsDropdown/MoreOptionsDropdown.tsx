@@ -25,7 +25,7 @@ export const MoreOptionsDropdown: FunctionComponent<MoreOptionsDropdownPropsSche
 	label = 'meer opties',
 	onOptionClicked,
 }) => {
-	return !!menuItems?.length ? (
+	return menuItems?.length ? (
 		<Dropdown
 			isOpen={isOpen}
 			menuWidth="fit-content"

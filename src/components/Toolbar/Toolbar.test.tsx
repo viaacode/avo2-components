@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { Toolbar } from './Toolbar';
 import { ToolbarCenter, ToolbarLeft, ToolbarRight } from './Toolbar.slots';
@@ -6,7 +6,7 @@ import { ToolbarItem } from './ToolbarItem/ToolbarItem';
 
 describe('<Toolbar />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<Toolbar>
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
@@ -24,7 +24,7 @@ describe('<Toolbar />', () => {
 	it('Should set the correct className(s)', () => {
 		const customClass = 'c-toolbar-custom';
 
-		const toolbarComponent = shallow(
+		const { container: toolbarContainer } = render(
 			<Toolbar className={customClass}>
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
@@ -38,27 +38,27 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 
-		const mainToolbarDiv = toolbarComponent.find('.c-toolbar');
-		const leftControlsDiv = toolbarComponent.find('.c-toolbar__left');
-		const centerControlsDiv = toolbarComponent.find('.c-toolbar__center');
-		const rightControlsDiv = toolbarComponent.find('.c-toolbar__right');
+		const mainToolbarDiv = toolbarContainer.querySelectorAll('.c-toolbar');
+		const leftControlsDiv = toolbarContainer.querySelectorAll('.c-toolbar__left');
+		const centerControlsDiv = toolbarContainer.querySelectorAll('.c-toolbar__center');
+		const rightControlsDiv = toolbarContainer.querySelectorAll('.c-toolbar__right');
 
 		expect(mainToolbarDiv).toHaveLength(1);
-		expect(mainToolbarDiv.hasClass(customClass)).toBeTruthy();
+		expect(mainToolbarDiv[0]).toHaveClass(customClass);
 		expect(leftControlsDiv).toHaveLength(1);
 		expect(centerControlsDiv).toHaveLength(1);
 		expect(rightControlsDiv).toHaveLength(1);
 	});
 
 	it('Should set the correct className for size', () => {
-		const regularToolbarComponent = shallow(
+		const { container: regularToolbarContainer } = render(
 			<Toolbar>
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
-		const mediumToolbarComponent = shallow(
+		const { container: mediumToolbarContainer } = render(
 			<Toolbar size="medium">
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
@@ -66,22 +66,22 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 
-		const regularToolbarInnerElement = regularToolbarComponent.find('.c-toolbar');
-		const mediumToolbarInnerElement = mediumToolbarComponent.find('.c-toolbar');
+		const regularToolbarInnerElement = regularToolbarContainer.firstChild;
+		const mediumToolbarInnerElement = mediumToolbarContainer.firstChild;
 
-		expect(regularToolbarInnerElement.hasClass('c-toolbar--medium')).toEqual(false);
-		expect(mediumToolbarInnerElement.hasClass('c-toolbar--medium')).toEqual(true);
+		expect(regularToolbarInnerElement).not.toHaveClass('c-toolbar--medium');
+		expect(mediumToolbarInnerElement).toHaveClass('c-toolbar--medium');
 	});
 
 	it('Should set the correct className for spaced', () => {
-		const regularToolbarComponent = shallow(
+		const { container: regularToolbarContainer } = render(
 			<Toolbar>
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
-		const spacedToolbarComponent = shallow(
+		const { container: spacedToolbarContainer } = render(
 			<Toolbar spaced>
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
@@ -89,22 +89,22 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 
-		const regularToolbarInnerElement = regularToolbarComponent.find('.c-toolbar');
-		const spacedToolbarInnerElement = spacedToolbarComponent.find('.c-toolbar');
+		const regularToolbarInnerElement = regularToolbarContainer.firstChild;
+		const spacedToolbarInnerElement = spacedToolbarContainer.firstChild;
 
-		expect(regularToolbarInnerElement.hasClass('c-toolbar--spaced')).toEqual(false);
-		expect(spacedToolbarInnerElement.hasClass('c-toolbar--spaced')).toEqual(true);
+		expect(regularToolbarInnerElement).not.toHaveClass('c-toolbar--spaced');
+		expect(spacedToolbarInnerElement).toHaveClass('c-toolbar--spaced');
 	});
 
 	it('Should set the correct className for justify', () => {
-		const regularToolbarComponent = shallow(
+		const { container: regularToolbarContainer } = render(
 			<Toolbar>
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
-		const justifiedToolbarComponent = shallow(
+		const { container: justifiedToolbarContainer } = render(
 			<Toolbar justify>
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
@@ -112,22 +112,22 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 
-		const regularToolbarInnerElement = regularToolbarComponent.find('.c-toolbar');
-		const justifiedToolbarInnerElement = justifiedToolbarComponent.find('.c-toolbar');
+		const regularToolbarInnerElement = regularToolbarContainer.firstChild;
+		const justifiedToolbarInnerElement = justifiedToolbarContainer.firstChild;
 
-		expect(regularToolbarInnerElement.hasClass('c-toolbar--justified')).toEqual(false);
-		expect(justifiedToolbarInnerElement.hasClass('c-toolbar--justified')).toEqual(true);
+		expect(regularToolbarInnerElement).not.toHaveClass('c-toolbar--justified');
+		expect(justifiedToolbarInnerElement).toHaveClass('c-toolbar--justified');
 	});
 
 	it('Should set the correct className for autoHeight', () => {
-		const regularToolbarComponent = shallow(
+		const { container: regularToolbarContainer } = render(
 			<Toolbar>
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
-		const autoHeightToolbarComponent = shallow(
+		const { container: autoHeightToolbarContainer } = render(
 			<Toolbar autoHeight>
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
@@ -135,22 +135,22 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 
-		const regularToolbarInnerElement = regularToolbarComponent.find('.c-toolbar');
-		const autoHeightToolbarInnerElement = autoHeightToolbarComponent.find('.c-toolbar');
+		const regularToolbarInnerElement = regularToolbarContainer.firstChild;
+		const autoHeightToolbarInnerElement = autoHeightToolbarContainer.firstChild;
 
-		expect(regularToolbarInnerElement.hasClass('c-toolbar--auto')).toEqual(false);
-		expect(autoHeightToolbarInnerElement.hasClass('c-toolbar--auto')).toEqual(true);
+		expect(regularToolbarInnerElement).not.toHaveClass('c-toolbar--auto');
+		expect(autoHeightToolbarInnerElement).toHaveClass('c-toolbar--auto');
 	});
 
 	it('Should set the correct className for alignTop', () => {
-		const regularToolbarComponent = shallow(
+		const { container: regularToolbarContainer } = render(
 			<Toolbar>
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
 				</ToolbarLeft>
 			</Toolbar>
 		);
-		const alignTopToolbarComponent = shallow(
+		const { container: alignTopToolbarContainer } = render(
 			<Toolbar alignTop>
 				<ToolbarLeft>
 					<ToolbarItem>Left</ToolbarItem>
@@ -158,15 +158,15 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 
-		const regularToolbarInnerElement = regularToolbarComponent.find('.c-toolbar');
-		const alignTopToolbarInnerElement = alignTopToolbarComponent.find('.c-toolbar');
+		const regularToolbarInnerElement = regularToolbarContainer.firstChild;
+		const alignTopToolbarInnerElement = alignTopToolbarContainer.firstChild;
 
-		expect(regularToolbarInnerElement.hasClass('c-toolbar--align-top')).toEqual(false);
-		expect(alignTopToolbarInnerElement.hasClass('c-toolbar--align-top')).toEqual(true);
+		expect(regularToolbarInnerElement).not.toHaveClass('c-toolbar--align-top');
+		expect(alignTopToolbarInnerElement).toHaveClass('c-toolbar--align-top');
 	});
 
 	it('Should correctly render the left controls', () => {
-		const toolbarComponent = shallow(
+		const { container: toolbarContainer } = render(
 			<Toolbar>
 				<ToolbarLeft>
 					<ToolbarItem>
@@ -176,13 +176,15 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 
-		const children = toolbarComponent.find('#test');
+		const children = toolbarContainer.querySelector('#test');
 
-		expect(toolbarComponent.find('.c-toolbar__left').children().html()).toContain(children.html());
+		expect(toolbarContainer.querySelector('.c-toolbar__left')).toContainElement(
+			children as HTMLElement
+		);
 
-		const leftElement = toolbarComponent.find('.c-toolbar__left');
-		const centerElement = toolbarComponent.find('.c-toolbar__center');
-		const rightElement = toolbarComponent.find('.c-toolbar__right');
+		const leftElement = toolbarContainer.querySelectorAll('.c-toolbar__left');
+		const centerElement = toolbarContainer.querySelectorAll('.c-toolbar__center');
+		const rightElement = toolbarContainer.querySelectorAll('.c-toolbar__right');
 
 		expect(leftElement).toHaveLength(1);
 		expect(centerElement).toHaveLength(0);
@@ -190,7 +192,7 @@ describe('<Toolbar />', () => {
 	});
 
 	it('Should correctly render the center controls', () => {
-		const toolbarComponent = shallow(
+		const { container: toolbarContainer } = render(
 			<Toolbar>
 				<ToolbarCenter>
 					<ToolbarItem>
@@ -200,15 +202,15 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 
-		const children = toolbarComponent.find('#test');
+		const children = toolbarContainer.querySelector('#test');
 
-		expect(toolbarComponent.find('.c-toolbar__center').children().html()).toContain(
-			children.html()
+		expect(toolbarContainer.querySelector('.c-toolbar__center')).toContainElement(
+			children as HTMLElement
 		);
 
-		const leftElement = toolbarComponent.find('.c-toolbar__left');
-		const centerElement = toolbarComponent.find('.c-toolbar__center');
-		const rightElement = toolbarComponent.find('.c-toolbar__right');
+		const leftElement = toolbarContainer.querySelectorAll('.c-toolbar__left');
+		const centerElement = toolbarContainer.querySelectorAll('.c-toolbar__center');
+		const rightElement = toolbarContainer.querySelectorAll('.c-toolbar__right');
 
 		expect(leftElement).toHaveLength(0);
 		expect(centerElement).toHaveLength(1);
@@ -216,7 +218,7 @@ describe('<Toolbar />', () => {
 	});
 
 	it('Should correctly render the right controls', () => {
-		const toolbarComponent = shallow(
+		const { container: toolbarContainer } = render(
 			<Toolbar>
 				<ToolbarRight>
 					<ToolbarItem>
@@ -226,13 +228,15 @@ describe('<Toolbar />', () => {
 			</Toolbar>
 		);
 
-		const children = toolbarComponent.find('#test');
+		const children = toolbarContainer.querySelector('#test');
 
-		expect(toolbarComponent.find('.c-toolbar__right').children().html()).toContain(children.html());
+		expect(toolbarContainer.querySelector('.c-toolbar__right')).toContainElement(
+			children as HTMLElement
+		);
 
-		const leftElement = toolbarComponent.find('.c-toolbar__left');
-		const centerElement = toolbarComponent.find('.c-toolbar__center');
-		const rightElement = toolbarComponent.find('.c-toolbar__right');
+		const leftElement = toolbarContainer.querySelectorAll('.c-toolbar__left');
+		const centerElement = toolbarContainer.querySelectorAll('.c-toolbar__center');
+		const rightElement = toolbarContainer.querySelectorAll('.c-toolbar__right');
 
 		expect(leftElement).toHaveLength(0);
 		expect(centerElement).toHaveLength(0);

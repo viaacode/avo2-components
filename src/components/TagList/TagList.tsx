@@ -41,7 +41,7 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 }) => {
 	const safeOnTagClicked = onTagClicked || noop;
 
-	return !!tags?.length ? (
+	return tags?.length ? (
 		<ul className={clsx(className, 'c-tag-list', styles['c-tag-list'])}>
 			{tags.map((tag: TagOptionSchema, index) => (
 				<li

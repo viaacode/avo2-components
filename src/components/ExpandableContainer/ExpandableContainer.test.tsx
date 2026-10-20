@@ -1,11 +1,11 @@
-import { mount, shallow } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
 import { Fragment } from 'react';
 
 import { ExpandableContainer } from './ExpandableContainer';
 
 describe('<Container />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<ExpandableContainer>
 				<Fragment />
 			</ExpandableContainer>
@@ -15,51 +15,69 @@ describe('<Container />', () => {
 	it('Should set the correct collapsed height', () => {
 		const height = 40;
 
-		const containerComponent = shallow(
+		const { container } = render(
 			<ExpandableContainer collapsedHeight={height}>
 				<Fragment />
 			</ExpandableContainer>
 		);
 
-		const textContentDiv = containerComponent.find('div').get(0);
+		const textContentDiv = container.firstChild as HTMLElement;
 
-		expect(textContentDiv.props.style?.height).toEqual(`${height}px`);
+		expect(textContentDiv.style.height).toEqual(`${height}px`);
 	});
 
 	it('Should render with custom expand/collapse labels', () => {
 		const collapsedLabel = 'less';
 		const expandLabel = 'more';
 
-		const containerComponent = mount(
+		const { container } = render(
 			<ExpandableContainer collapseLabel={collapsedLabel} expandLabel={expandLabel}>
 				<Fragment />
 			</ExpandableContainer>
 		);
 
-		const button = containerComponent.find('.c-button');
-		const buttonLabel = containerComponent.find('.c-button__label');
+		const button = container.querySelector('.c-button') as HTMLElement;
+		const buttonLabel = container.querySelector('.c-button__label');
 
-		expect(buttonLabel.html()).toContain(`>${expandLabel}<`);
+		expect(buttonLabel).toHaveTextContent(expandLabel);
 
-		button.simulate('click');
+		fireEvent.click(button);
 
-		expect(buttonLabel.html()).toContain(`>${collapsedLabel}<`);
+		expect(buttonLabel).toHaveTextContent(collapsedLabel);
+	});
+
+	it('Should render collapsed state by default', () => {
+		const { container } = render(
+			<ExpandableContainer>
+				<Fragment />
+			</ExpandableContainer>
+		);
+
+		const button = container.querySelector('.c-button') as HTMLElement;
+		const buttonLabel = container.querySelector('.c-button__label');
+
+		expect(buttonLabel).toHaveTextContent('Meer lezen');
+
+		fireEvent.click(button);
+
+		expect(buttonLabel).toHaveTextContent('Minder lezen');
 	});
 
 	it('Should render expanded state if defaultExpanded is true', () => {
-		const containerComponent = mount(
+		const { container } = render(
 			<ExpandableContainer defaultExpanded={true}>
 				<Fragment />
 			</ExpandableContainer>
 		);
 
-		const button = containerComponent.find('.c-button');
-		const buttonLabel = containerComponent.find('.c-button__label');
+		const button = container.querySelector('.c-button') as HTMLElement;
+		const buttonLabel = container.querySelector('.c-button__label');
 
-		expect(buttonLabel.html()).toContain(`>Minder lezen<`);
+		expect(buttonLabel).toHaveTextContent('Minder lezen');
+		expect(buttonLabel).not.toHaveTextContent('Meer lezen');
 
-		button.simulate('click');
+		fireEvent.click(button);
 
-		expect(buttonLabel.html()).toContain(`>Meer lezen<`);
+		expect(buttonLabel).toHaveTextContent('Meer lezen');
 	});
 });

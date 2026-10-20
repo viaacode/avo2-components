@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { AspectRatioWrapper, type AspectRatioWrapperPropsSchema } from './AspectRatioWrapper';
 
@@ -14,20 +14,20 @@ const aspectRatioWrapper = (props: AspectRatioWrapperPropsSchema = {}) => (
 
 describe('<AspectRatioWrapper>', () => {
 	it('should be able to render', () => {
-		shallow(aspectRatioWrapper());
+		render(aspectRatioWrapper());
 	});
 
 	it('should set the correct className', () => {
-		const component = shallow(aspectRatioWrapper());
+		const { container } = render(aspectRatioWrapper());
 
-		expect(component.hasClass('c-aspect-ratio-wrapper')).toBeTruthy();
+		expect(container.firstChild).toHaveClass('c-aspect-ratio-wrapper');
 	});
 
 	it('should set the correct className for the aspect ratio', () => {
-		const component32 = shallow(aspectRatioWrapper({ aspect: '3:2' }));
-		const component169 = shallow(aspectRatioWrapper({ aspect: '16:9' }));
+		const { container: container32 } = render(aspectRatioWrapper({ aspect: '3:2' }));
+		const { container: container169 } = render(aspectRatioWrapper({ aspect: '16:9' }));
 
-		expect(component32.hasClass('c-aspect-ratio-wrapper--aspect-3-2')).toBeTruthy();
-		expect(component169.hasClass('c-aspect-ratio-wrapper--aspect-16-9')).toBeTruthy();
+		expect(container32.firstChild).toHaveClass('c-aspect-ratio-wrapper--aspect-3-2');
+		expect(container169.firstChild).toHaveClass('c-aspect-ratio-wrapper--aspect-16-9');
 	});
 });

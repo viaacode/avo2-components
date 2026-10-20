@@ -23,7 +23,10 @@ export const FormGroup: FunctionComponent<FormGroupPropsSchema> = ({
 	inlineMode,
 	children,
 }) => {
-	const errorArray = (Array.isArray(error) ? error : [error]) as (string | ReactNode)[];
+	const errorArray = (Array.isArray(error) ? error : error ? [error] : []) as (
+		| string
+		| ReactNode
+	)[];
 
 	return (
 		<div

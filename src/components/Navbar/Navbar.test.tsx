@@ -1,11 +1,11 @@
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { Fragment } from 'react';
 
 import { Navbar } from './Navbar';
 
 describe('<Navbar />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<Navbar>
 				<Fragment />
 			</Navbar>
@@ -15,127 +15,129 @@ describe('<Navbar />', () => {
 	it('should correctly pass a custom className', () => {
 		const customClass = 'c-navbar-custom';
 
-		const navbarComponent = shallow(
+		const { container } = render(
 			<Navbar className={customClass}>
 				<Fragment />
 			</Navbar>
 		);
-		expect(navbarComponent.hasClass(customClass)).toBeTruthy();
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-navbar');
 	});
 
 	it('Should set the correct classnames when placement is passed', () => {
-		const navbarDefaultComponent = shallow(
+		const { container: defaultContainer } = render(
 			<Navbar>
 				<Fragment />
 			</Navbar>
 		);
-		const navbarTopComponent = shallow(
+		const { container: topContainer } = render(
 			<Navbar placement="top">
 				<Fragment />
 			</Navbar>
 		);
-		const navbarBottomComponent = shallow(
+		const { container: bottomContainer } = render(
 			<Navbar placement="bottom">
 				<Fragment />
 			</Navbar>
 		);
 
-		expect(navbarDefaultComponent.hasClass('c-navbar--bordered-bottom')).toEqual(true);
-		expect(navbarDefaultComponent.hasClass('c-navbar--bordered-top')).toEqual(false);
+		expect(defaultContainer.firstChild).toHaveClass('c-navbar--bordered-bottom');
+		expect(defaultContainer.firstChild).not.toHaveClass('c-navbar--bordered-top');
 
-		expect(navbarTopComponent.hasClass('c-navbar--bordered-bottom')).toEqual(true);
-		expect(navbarTopComponent.hasClass('c-navbar--bordered-top')).toEqual(false);
+		expect(topContainer.firstChild).toHaveClass('c-navbar--bordered-bottom');
+		expect(topContainer.firstChild).not.toHaveClass('c-navbar--bordered-top');
 
-		expect(navbarBottomComponent.hasClass('c-navbar--bordered-top')).toEqual(true);
-		expect(navbarBottomComponent.hasClass('c-navbar--bordered-bottom')).toEqual(false);
+		expect(bottomContainer.firstChild).toHaveClass('c-navbar--bordered-top');
+		expect(bottomContainer.firstChild).not.toHaveClass('c-navbar--bordered-bottom');
 	});
 
 	it('Should set the correct classnames when position is passed', () => {
-		const navbarDefaultComponent = shallow(
+		const { container: defaultContainer } = render(
 			<Navbar>
 				<Fragment />
 			</Navbar>
 		);
-		const navbarFixedComponent = shallow(
+		const { container: fixedContainer } = render(
 			<Navbar position="fixed">
 				<Fragment />
 			</Navbar>
 		);
 
-		expect(navbarDefaultComponent.hasClass('c-navbar--fixed')).toEqual(false);
-		expect(navbarFixedComponent.hasClass('c-navbar--fixed')).toEqual(true);
+		expect(defaultContainer.firstChild).not.toHaveClass('c-navbar--fixed');
+		expect(fixedContainer.firstChild).toHaveClass('c-navbar--fixed');
 	});
 
 	it('Should set the correct classnames when autoHeight is passed', () => {
-		const navbarDefaultComponent = shallow(
+		const { container: defaultContainer } = render(
 			<Navbar>
 				<Fragment />
 			</Navbar>
 		);
-		const navbarAutoHeightTrueComponent = shallow(
+		const { container: autoHeightTrueContainer } = render(
 			<Navbar autoHeight={true}>
 				<Fragment />
 			</Navbar>
 		);
-		const navbarAutoHeightFalseComponent = shallow(
+		const { container: autoHeightFalseContainer } = render(
 			<Navbar autoHeight={false}>
 				<Fragment />
 			</Navbar>
 		);
 
-		expect(navbarDefaultComponent.hasClass('c-navbar--auto')).toEqual(false);
-		expect(navbarAutoHeightTrueComponent.hasClass('c-navbar--auto')).toEqual(true);
-		expect(navbarAutoHeightFalseComponent.hasClass('c-navbar--auto')).toEqual(false);
+		expect(defaultContainer.firstChild).not.toHaveClass('c-navbar--auto');
+		expect(autoHeightTrueContainer.firstChild).toHaveClass('c-navbar--auto');
+		expect(autoHeightFalseContainer.firstChild).not.toHaveClass('c-navbar--auto');
 	});
 
 	it('Should set the correct classnames when background is passed', () => {
-		const navbarDefaultComponent = shallow(
+		const { container: defaultContainer } = render(
 			<Navbar>
 				<Fragment />
 			</Navbar>
 		);
-		const navbarWhiteComponent = shallow(
+		const { container: whiteContainer } = render(
 			<Navbar background="white">
 				<Fragment />
 			</Navbar>
 		);
-		const navbarAltComponent = shallow(
+		const { container: altContainer } = render(
 			<Navbar background="alt">
 				<Fragment />
 			</Navbar>
 		);
-		const navbarInverseComponent = shallow(
+		const { container: inverseContainer } = render(
 			<Navbar background="inverse">
 				<Fragment />
 			</Navbar>
 		);
 
-		expect(navbarDefaultComponent.hasClass('c-navbar--white')).toEqual(false);
-		expect(navbarDefaultComponent.hasClass('c-navbar--bg-alt')).toEqual(false);
-		expect(navbarDefaultComponent.hasClass('c-navbar--inverse')).toEqual(false);
+		expect(defaultContainer.firstChild).not.toHaveClass('c-navbar--white');
+		expect(defaultContainer.firstChild).not.toHaveClass('c-navbar--bg-alt');
+		expect(defaultContainer.firstChild).not.toHaveClass('c-navbar--inverse');
 
-		expect(navbarWhiteComponent.hasClass('c-navbar--white')).toEqual(true);
-		expect(navbarWhiteComponent.hasClass('c-navbar--bg-alt')).toEqual(false);
-		expect(navbarWhiteComponent.hasClass('c-navbar--inverse')).toEqual(false);
+		expect(whiteContainer.firstChild).toHaveClass('c-navbar--white');
+		expect(whiteContainer.firstChild).not.toHaveClass('c-navbar--bg-alt');
+		expect(whiteContainer.firstChild).not.toHaveClass('c-navbar--inverse');
 
-		expect(navbarAltComponent.hasClass('c-navbar--white')).toEqual(false);
-		expect(navbarAltComponent.hasClass('c-navbar--bg-alt')).toEqual(true);
-		expect(navbarAltComponent.hasClass('c-navbar--inverse')).toEqual(false);
+		expect(altContainer.firstChild).not.toHaveClass('c-navbar--white');
+		expect(altContainer.firstChild).toHaveClass('c-navbar--bg-alt');
+		expect(altContainer.firstChild).not.toHaveClass('c-navbar--inverse');
 
-		expect(navbarInverseComponent.hasClass('c-navbar--white')).toEqual(false);
-		expect(navbarInverseComponent.hasClass('c-navbar--bg-alt')).toEqual(false);
-		expect(navbarInverseComponent.hasClass('c-navbar--inverse')).toEqual(true);
+		expect(inverseContainer.firstChild).not.toHaveClass('c-navbar--white');
+		expect(inverseContainer.firstChild).not.toHaveClass('c-navbar--bg-alt');
+		expect(inverseContainer.firstChild).toHaveClass('c-navbar--inverse');
 	});
 
 	it('Should correctly pass children', () => {
-		const navbarComponent = shallow(
+		render(
 			<Navbar>
-				<p className="navbar-test" />
+				<p data-testid="navbar-test" className="navbar-test" />
 			</Navbar>
 		);
 
-		const paragraph = navbarComponent.find('.navbar-test');
+		const paragraph = screen.getByTestId('navbar-test');
 
-		expect(navbarComponent.children().html()).toEqual(paragraph.html());
+		expect(paragraph.parentElement).toHaveClass('c-navbar');
+		expect(paragraph.parentElement?.children).toHaveLength(1);
 	});
 });

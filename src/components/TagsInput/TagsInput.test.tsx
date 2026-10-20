@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
 
 import { TagsInput } from './TagsInput';
 
@@ -19,27 +19,27 @@ const tags = [
 
 describe('<TextInput />', () => {
 	it('Should be able to render', () => {
-		shallow(<TagsInput options={tags} />);
+		render(<TagsInput options={tags} />);
 	});
 
 	it('Should set the correct className', () => {
-		const tagstagsInputComponent = shallow(<TagsInput options={tags} className={customClass} />);
+		const { container } = render(<TagsInput options={tags} className={customClass} />);
 
-		expect(tagstagsInputComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
 	});
 
 	it('Should pass on the id', () => {
 		const id = 'test';
 
-		const tagsInputComponent = shallow(<TagsInput options={tags} id={id} />);
+		const { container } = render(<TagsInput options={tags} id={id} />);
 
-		expect(tagsInputComponent.prop('id')).toEqual(id);
+		expect(container.firstChild).toHaveAttribute('id', id);
 	});
 
 	it('Should be able to set the disabled state', () => {
-		const tagsInputComponent = mount(<TagsInput options={tags} disabled={true} />);
+		const { container } = render(<TagsInput options={tags} disabled={true} />);
 
-		expect(tagsInputComponent.html().includes('c-tags-input--is-disabled')).toEqual(true);
+		expect(container.querySelector('.c-tags-input--is-disabled')).toBeInTheDocument();
 	});
 
 	it('Should be able to set an initial value', () => {
@@ -48,34 +48,37 @@ describe('<TextInput />', () => {
 			{ label: 'Vanadium', value: 'vanadium' },
 		];
 
-		const tagsInputComponent = mount(<TagsInput options={tags} value={values} />);
+		const { container } = render(<TagsInput options={tags} value={values} />);
 
-		const selectedTagLabels = tagsInputComponent.find('.c-tags-input__multi-value__label');
+		const selectedTagLabels = container.querySelectorAll('.c-tags-input__multi-value__label');
 
-		expect(selectedTagLabels.at(0).text()).toEqual(values[0].label);
-		expect(selectedTagLabels.at(1).text()).toEqual(values[1].label);
+		expect(selectedTagLabels[0]).toHaveTextContent(values[0].label);
+		expect(selectedTagLabels[1]).toHaveTextContent(values[1].label);
 	});
 
 	it('Should call the onChange handler when the input changes', () => {
 		const onChangeHandler = jest.fn();
 
-		const tagsInputComponent = mount(<TagsInput options={tags} onChange={onChangeHandler} />);
+		const { container, rerender } = render(<TagsInput options={tags} onChange={onChangeHandler} />);
 
 		// https://stackoverflow.com/questions/41991077/testing-react-select-component
-		const tagsInputControl = tagsInputComponent.find('.c-tags-input__control').at(0);
-		tagsInputControl.simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
-		tagsInputControl.simulate('keyDown', { key: 'Enter', keyCode: 13 });
+		const tagsInputControl = container.querySelector('.c-tags-input__control') as HTMLElement;
+		fireEvent.keyDown(tagsInputControl, { key: 'ArrowDown', keyCode: 40 });
+		fireEvent.keyDown(tagsInputControl, { key: 'Enter', keyCode: 13 });
 
 		expect(onChangeHandler).toHaveBeenCalled();
 		expect(onChangeHandler).toHaveBeenCalledTimes(1);
 		expect(onChangeHandler).toHaveBeenCalledWith([tags[0]]);
 
-		tagsInputControl.simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
-		tagsInputControl.simulate('keyDown', { key: 'ArrowDown', keyCode: 40 });
-		tagsInputControl.simulate('keyDown', { key: 'Enter', keyCode: 13 });
+		// TagsInput is controlled: feed the selection back in like a parent would
+		rerender(<TagsInput options={tags} value={[tags[0]]} onChange={onChangeHandler} />);
+
+		fireEvent.keyDown(tagsInputControl, { key: 'ArrowDown', keyCode: 40 });
+		fireEvent.keyDown(tagsInputControl, { key: 'ArrowDown', keyCode: 40 });
+		fireEvent.keyDown(tagsInputControl, { key: 'Enter', keyCode: 13 });
 
 		expect(onChangeHandler).toHaveBeenCalledTimes(2);
 		// Selected items are not shown in dropdown
-		expect(onChangeHandler).toHaveBeenCalledWith([tags[0], tags[3]]);
+		expect(onChangeHandler).toHaveBeenCalledWith([tags[0], tags[2]]);
 	});
 });

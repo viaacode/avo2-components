@@ -1,19 +1,18 @@
-import { mount, shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
-import { Button } from '../Button/Button';
 import { IconNameSchema } from '../Icon/Icon.types';
 
 import { ToggleButton } from './ToggleButton';
 
 describe('<ToggleButton ariaLabel="test button" />', () => {
 	it('Should be able to render', () => {
-		shallow(<ToggleButton ariaLabel="test button" icon={IconNameSchema.heart} active={false} />);
+		render(<ToggleButton ariaLabel="test button" icon={IconNameSchema.heart} active={false} />);
 	});
 
 	it('should correctly pass a custom className', () => {
 		const customClass = 'c-toggle-button-custom';
 
-		const toggleButtonComponent = shallow(
+		render(
 			<ToggleButton
 				ariaLabel="test button"
 				className={customClass}
@@ -22,27 +21,31 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 			/>
 		);
 
-		expect(toggleButtonComponent.hasClass(customClass)).toBeTruthy();
+		expect(screen.getByRole('button')).toHaveClass(customClass);
 	});
 
 	it('Should set aria label', () => {
-		const inactiveToggleButtonComponent = mount(
+		const { rerender } = render(
 			<ToggleButton ariaLabel="toggle favorite" icon={IconNameSchema.heart} active={false} />
 		);
-		const activeToggleButtonComponent = mount(
+
+		expect(screen.getByRole('button')).toHaveAttribute(
+			'aria-label',
+			'toggle favorite (currently not active)'
+		);
+
+		rerender(
 			<ToggleButton ariaLabel="toggle favorite" icon={IconNameSchema.heart} active={true} />
 		);
 
-		expect(inactiveToggleButtonComponent.find('button').prop('aria-label')).toEqual(
-			'toggle favorite (currently not active)'
-		);
-		expect(activeToggleButtonComponent.find('button').prop('aria-label')).toEqual(
+		expect(screen.getByRole('button')).toHaveAttribute(
+			'aria-label',
 			'toggle favorite (currently active)'
 		);
 	});
 
 	it('Should set title tooltip', () => {
-		const toggleButtonComponent = mount(
+		render(
 			<ToggleButton
 				title="toggle favorite"
 				ariaLabel="toggle favorite"
@@ -51,27 +54,25 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 			/>
 		);
 
-		expect(toggleButtonComponent.find('button').prop('title')).toEqual('toggle favorite');
+		expect(screen.getByRole('button')).toHaveAttribute('title', 'toggle favorite');
 	});
 
 	it('Should set the normal version of the icon when not `active`', () => {
-		const toggleButtonComponent = shallow(
+		const { container } = render(
 			<ToggleButton ariaLabel="test button" icon={IconNameSchema.bookmark} active={false} />
 		);
 
-		const buttonComponent = toggleButtonComponent.find(Button);
-
-		expect(buttonComponent.prop('icon')).toEqual('bookmark');
+		expect(container.querySelector('.o-svg-icon--bookmark')).toBeInTheDocument();
+		expect(container.querySelector('.o-svg-icon--bookmark-filled')).not.toBeInTheDocument();
 	});
 
 	it('Should set the filled version of the icon when `active`', () => {
-		const toggleButtonComponent = shallow(
+		const { container } = render(
 			<ToggleButton ariaLabel="test button" icon={IconNameSchema.bookmark} active={true} />
 		);
 
-		const buttonComponent = toggleButtonComponent.find(Button);
-
-		expect(buttonComponent.prop('icon')).toEqual('bookmark-filled');
+		expect(container.querySelector('.o-svg-icon--bookmark-filled')).toBeInTheDocument();
+		expect(container.querySelector('.o-svg-icon--bookmark')).not.toBeInTheDocument();
 	});
 
 	it('Should call the `onClick`-handler when clicked', () => {
@@ -79,7 +80,7 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 
 		const active = true;
 
-		const toggleButtonComponent = mount(
+		render(
 			<ToggleButton
 				ariaLabel="test button"
 				icon={IconNameSchema.bookmark}
@@ -88,17 +89,17 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 			/>
 		);
 
-		const buttonElement = toggleButtonComponent.find('button');
+		const buttonElement = screen.getByRole('button');
 
-		buttonElement.simulate('click');
+		fireEvent.click(buttonElement);
 
 		expect(onClickHandler).toHaveBeenCalled();
 		expect(onClickHandler).toHaveBeenCalledTimes(1);
-		expect(onClickHandler).toHaveBeenCalledWith(!active);
+		expect(onClickHandler).toHaveBeenLastCalledWith(false);
 
-		buttonElement.simulate('click');
+		fireEvent.click(buttonElement);
 
 		expect(onClickHandler).toHaveBeenCalledTimes(2);
-		expect(onClickHandler).toHaveBeenCalledWith(active);
+		expect(onClickHandler).toHaveBeenLastCalledWith(true);
 	});
 });

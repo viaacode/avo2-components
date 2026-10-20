@@ -1,22 +1,22 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { ModalBackdrop } from './ModalBackdrop';
 
 describe('<ModalBackdrop />', () => {
 	it('Should be able to render', () => {
-		shallow(<ModalBackdrop />);
+		render(<ModalBackdrop />);
 	});
 
 	it('Should set the correct className(s)', () => {
-		const modalBackdropComponent = shallow(<ModalBackdrop />);
+		const { container } = render(<ModalBackdrop />);
 
-		expect(modalBackdropComponent.hasClass('c-modal-backdrop')).toEqual(true);
-		expect(modalBackdropComponent.hasClass('c-modal-backdrop--visible')).toEqual(false);
+		expect(container.firstChild).toHaveClass('c-modal-backdrop');
+		expect(container.firstChild).not.toHaveClass('c-modal-backdrop--visible');
 	});
 
 	it('Should set the correct className when `visible`', () => {
-		const modalBackdropComponent = shallow(<ModalBackdrop visible />);
+		const { container } = render(<ModalBackdrop visible />);
 
-		expect(modalBackdropComponent.hasClass('c-modal-backdrop--visible')).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-modal-backdrop--visible');
 	});
 });

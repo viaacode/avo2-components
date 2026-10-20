@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { noop } from '../../helpers/noop';
 
@@ -7,13 +7,13 @@ import { RADIO_BUTTON_OPTIONS } from './RadioButtonGroup.mock';
 
 describe('<RadioButtonGroup />', () => {
 	it('Should be able to render', () => {
-		shallow(<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={noop} />);
+		render(<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={noop} />);
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-column-custom';
 
-		const radioButtonGroupComponent = shallow(
+		const { container } = render(
 			<RadioButtonGroup
 				className={customClass}
 				options={RADIO_BUTTON_OPTIONS}
@@ -22,15 +22,15 @@ describe('<RadioButtonGroup />', () => {
 			/>
 		);
 
-		expect(radioButtonGroupComponent.hasClass(customClass)).toEqual(true);
-		expect(radioButtonGroupComponent.hasClass('c-radio-group')).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-radio-group');
 	});
 
 	it('Should set the correct inline className', () => {
-		const radioButtonGroupComponent = shallow(
+		const { container } = render(
 			<RadioButtonGroup options={RADIO_BUTTON_OPTIONS} value={''} onChange={noop} inline />
 		);
 
-		expect(radioButtonGroupComponent.hasClass('c-radio-group--inline')).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-radio-group--inline');
 	});
 });

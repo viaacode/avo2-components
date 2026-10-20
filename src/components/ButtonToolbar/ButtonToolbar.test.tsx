@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { Button } from '../Button/Button';
 
@@ -6,7 +6,7 @@ import { ButtonToolbar } from './ButtonToolbar';
 
 describe('<ButtonToolbar />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<ButtonToolbar>
 				<Button label="test1" />
 				<Button label="test2" />
@@ -16,14 +16,14 @@ describe('<ButtonToolbar />', () => {
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-button-toolbar-custom';
-		const ButtonToolbarComponent = shallow(
+		const { container } = render(
 			<ButtonToolbar className={customClass}>
 				<Button label="test1" />
 				<Button label="test2" />
 			</ButtonToolbar>
 		);
 
-		expect(ButtonToolbarComponent.hasClass('c-button-toolbar')).toEqual(true);
-		expect(ButtonToolbarComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-button-toolbar');
+		expect(container.firstChild).toHaveClass(customClass);
 	});
 });

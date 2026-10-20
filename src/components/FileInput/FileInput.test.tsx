@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { FileInput } from './FileInput';
 
@@ -6,40 +6,35 @@ const customClass = 'c-input-custom';
 
 describe('<TextInput />', () => {
 	it('Should be able to render', () => {
-		shallow(<FileInput />);
+		render(<FileInput />);
 	});
 
 	it('Should set the correct className', () => {
-		const inputComponent = shallow(<FileInput className={customClass} />);
+		const { container } = render(<FileInput className={customClass} />);
 
-		expect(inputComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-button--file');
 	});
 
 	it('Should pass on the id', () => {
 		const id = 'test';
 
-		const inputComponent = shallow(<FileInput id={id} />);
+		const { container } = render(<FileInput id={id} />);
 
-		const inputElement = inputComponent.find('input');
-
-		expect(inputElement.prop('id')).toEqual(id);
+		expect(container.querySelector('input[type="file"]')).toHaveAttribute('id', id);
 	});
 
 	it('Should be able to set the disabled state', () => {
-		const inputComponent = shallow(<FileInput disabled />);
+		const { container } = render(<FileInput disabled />);
 
-		const inputElement = inputComponent.find('input');
-
-		expect(inputElement.prop('disabled')).toEqual(true);
+		expect(container.querySelector('input[type="file"]')).toBeDisabled();
 	});
 
 	it('Should be able to set the placeholder value', () => {
 		const placeholder = 'this is a test placeholder';
 
-		const inputComponent = mount(<FileInput placeholder={placeholder} />);
+		const { container } = render(<FileInput placeholder={placeholder} />);
 
-		const buttonLabel = inputComponent.find('.c-button__label');
-
-		expect(buttonLabel.text()).toEqual(placeholder);
+		expect(container.querySelector('.c-button__label')).toHaveTextContent(placeholder);
 	});
 });

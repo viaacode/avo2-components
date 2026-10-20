@@ -1,51 +1,70 @@
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import type { ReactElement } from 'react';
 
 import { Alert } from './Alert';
 import type { AlertPropsSchema } from './Alert.types';
 
 describe('<Alert />', () => {
-	const alertProps: AlertPropsSchema = {
-		className: 'c-alert-custom',
-		onClose: () => {
-			// Ignore empty function
-		},
-		dark: false,
-		message: 'Alert message',
-		type: 'info',
-	};
-	const alert = <Alert {...alertProps} />;
-	const wrapper = mount(alert);
+	let alertProps: AlertPropsSchema;
+	let alert: ReactElement;
+
+	beforeEach(() => {
+		alertProps = {
+			className: 'c-alert-custom',
+			onClose: () => {
+				// Ignore empty function
+			},
+			dark: false,
+			message: 'Alert message',
+			type: 'info',
+		};
+		alert = <Alert {...alertProps} />;
+	});
 
 	it('should render', () => {
-		shallow(alert);
+		const { container } = render(alert);
+
+		expect(container.firstChild).toBeInTheDocument();
 	});
 
 	it('should pass a custom className', () => {
-		expect(shallow(alert).hasClass('c-alert-custom')).toBeTruthy();
+		const { container } = render(alert);
+
+		expect(container.firstChild).toHaveClass('c-alert-custom');
+		expect(container.firstChild).toHaveClass('c-alert');
 	});
 
 	it('should show the correct message', () => {
-		expect(wrapper.find('.c-alert__body').text()).toEqual(alertProps.message);
+		const { container } = render(alert);
+
+		expect(container.querySelector('.c-alert__body')?.textContent).toEqual('Alert message');
 	});
 
 	it('should show an icon depending on the type option', () => {
-		const svgElement = wrapper.find('.c-alert__body .o-svg-icon');
-		const svgInfoClass = `o-svg-icon-multicolor-circle-${alertProps.type}`;
+		const { container } = render(alert);
+		const svgElement = container.querySelector('.c-alert__body .o-svg-icon');
 
-		expect(svgElement.hasClass(svgInfoClass)).toBeTruthy();
+		expect(svgElement).toHaveClass('o-svg-icon-multicolor-circle-info');
 	});
 
 	it('should set the correct className when setting option dark = true', () => {
-		const alertComponent = shallow(<Alert {...alertProps} dark />);
+		const { container } = render(<Alert {...alertProps} dark />);
 
-		expect(alertComponent.find('.c-alert').hasClass('c-alert--dark')).toBeTruthy();
+		expect(container.firstChild).toHaveClass('c-alert');
+		expect(container.firstChild).toHaveClass('c-alert--dark');
+	});
+
+	it('should not set the dark className when dark = false', () => {
+		const { container } = render(alert);
+
+		expect(container.firstChild).toHaveClass('c-alert');
+		expect(container.firstChild).not.toHaveClass('c-alert--dark');
 	});
 
 	it('should show a spinner when the correct type is passed', () => {
-		const alertComponent = mount(<Alert {...alertProps} type="spinner" />);
-		const svgElement = alertComponent.find('.c-alert__body .o-svg-icon');
+		const { container } = render(<Alert {...alertProps} type="spinner" />);
 
-		expect(alertComponent.find('.c-spinner')).toHaveLength(1);
-		expect(svgElement).toHaveLength(0);
+		expect(container.querySelectorAll('.c-spinner')).toHaveLength(1);
+		expect(container.querySelectorAll('.c-alert__body .o-svg-icon')).toHaveLength(0);
 	});
 });

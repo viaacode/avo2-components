@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 
 import { Checkbox } from '../Checkbox/Checkbox';
 
@@ -6,7 +6,7 @@ import { CheckboxGroup } from './CheckboxGroup';
 
 describe('<CheckboxGroup />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<CheckboxGroup>
 				<Checkbox label="Aluminium" />
 				<Checkbox label="Cadmium" />
@@ -18,7 +18,7 @@ describe('<CheckboxGroup />', () => {
 	it('Should set the correct className', () => {
 		const customClass = 'c-checkbox-group-custom';
 
-		const checkboxGroupComponent = shallow(
+		const { container } = render(
 			<CheckboxGroup className={customClass}>
 				<Checkbox label="Aluminium" />
 				<Checkbox label="Cadmium" />
@@ -26,26 +26,26 @@ describe('<CheckboxGroup />', () => {
 			</CheckboxGroup>
 		);
 
-		expect(checkboxGroupComponent.hasClass('c-checkbox-group')).toEqual(true);
-		expect(checkboxGroupComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-checkbox-group');
+		expect(container.firstChild).toHaveClass(customClass);
 	});
 
 	it('Should set the correct className when passing inline option', () => {
-		const checkboxGroupDefaultComponent = shallow(
+		const { container: defaultContainer } = render(
 			<CheckboxGroup>
 				<Checkbox label="Aluminium" />
 				<Checkbox label="Cadmium" />
 				<Checkbox label="Dubnium" />
 			</CheckboxGroup>
 		);
-		const checkboxGroupInlineTrueComponent = shallow(
+		const { container: inlineTrueContainer } = render(
 			<CheckboxGroup inline={true}>
 				<Checkbox label="Aluminium" />
 				<Checkbox label="Cadmium" />
 				<Checkbox label="Dubnium" />
 			</CheckboxGroup>
 		);
-		const checkboxGroupInlineFalseComponent = shallow(
+		const { container: inlineFalseContainer } = render(
 			<CheckboxGroup inline={false}>
 				<Checkbox label="Aluminium" />
 				<Checkbox label="Cadmium" />
@@ -53,13 +53,13 @@ describe('<CheckboxGroup />', () => {
 			</CheckboxGroup>
 		);
 
-		expect(checkboxGroupDefaultComponent.hasClass('c-checkbox-group--inline')).toEqual(false);
-		expect(checkboxGroupInlineTrueComponent.hasClass('c-checkbox-group--inline')).toEqual(true);
-		expect(checkboxGroupInlineFalseComponent.hasClass('c-checkbox-group--inline')).toEqual(false);
+		expect(defaultContainer.firstChild).not.toHaveClass('c-checkbox-group--inline');
+		expect(inlineTrueContainer.firstChild).toHaveClass('c-checkbox-group--inline');
+		expect(inlineFalseContainer.firstChild).not.toHaveClass('c-checkbox-group--inline');
 	});
 
 	it('Should correctly pass children', () => {
-		const checkboxGroupComponent = mount(
+		render(
 			<CheckboxGroup>
 				<Checkbox label="Aluminium" />
 				<Checkbox label="Cadmium" />
@@ -67,8 +67,6 @@ describe('<CheckboxGroup />', () => {
 			</CheckboxGroup>
 		);
 
-		const checkboxes = checkboxGroupComponent.find('[type="checkbox"]');
-
-		expect(checkboxes).toHaveLength(3);
+		expect(screen.getAllByRole('checkbox')).toHaveLength(3);
 	});
 });

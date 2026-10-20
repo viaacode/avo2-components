@@ -1,7 +1,6 @@
+import { fireEvent, render, screen } from '@testing-library/react';
 import { AvoSearchOrderDirection } from '@viaa/avo2-types';
-import { mount, shallow } from 'enzyme';
 import { Button } from '../Button/Button';
-import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Table, type TableColumnSchema } from './Table';
 
@@ -25,50 +24,57 @@ const DATA = [
 
 describe('<Table />', () => {
 	it('Should be able to render', () => {
-		shallow(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
+		render(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-table-custom';
 
-		const tableComponent = shallow(
-			<Table align className={customClass} horizontal nowrap striped />
-		);
+		render(<Table align className={customClass} horizontal nowrap striped />);
 
-		expect(tableComponent.find('table').hasClass(customClass)).toBeTruthy();
-		expect(tableComponent.find('table').hasClass('c-table')).toBeTruthy();
-		expect(tableComponent.find('table').hasClass('c-table--align-middle')).toBeTruthy();
-		expect(tableComponent.find('table').hasClass('c-table--horizontal')).toBeTruthy();
-		expect(tableComponent.find('table').hasClass('c-table--nowrap')).toBeTruthy();
-		expect(tableComponent.find('table').hasClass('c-table--striped')).toBeTruthy();
+		const table = screen.getByRole('table');
+
+		expect(table).toHaveClass(customClass);
+		expect(table).toHaveClass('c-table');
+		expect(table).toHaveClass('c-table--align-middle');
+		expect(table).toHaveClass('c-table--horizontal');
+		expect(table).toHaveClass('c-table--nowrap');
+		expect(table).toHaveClass('c-table--striped');
 	});
 
 	it('Should set the correct className for `variant`-prop', () => {
-		const tableComponent = shallow(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
+		const { rerender } = render(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
 
-		expect(tableComponent.find('table').hasClass('c-table--styled')).toBeFalsy();
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--styled');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--bordered');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--invisible');
 
-		tableComponent.setProps({ variant: 'styled' });
-		expect(tableComponent.find('table').hasClass('c-table--styled')).toBeTruthy();
+		rerender(<Table columns={COLUMNS} data={DATA} rowKey="id" variant="styled" />);
+		expect(screen.getByRole('table')).toHaveClass('c-table--styled');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--bordered');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--invisible');
 
-		tableComponent.setProps({ variant: 'bordered' });
-		expect(tableComponent.find('table').hasClass('c-table--bordered')).toBeTruthy();
-		expect(tableComponent.find('table').hasClass('c-table--styled')).toBeTruthy();
+		rerender(<Table columns={COLUMNS} data={DATA} rowKey="id" variant="bordered" />);
+		expect(screen.getByRole('table')).toHaveClass('c-table--bordered');
+		expect(screen.getByRole('table')).toHaveClass('c-table--styled');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--invisible');
 
-		tableComponent.setProps({ variant: 'invisible' });
-		expect(tableComponent.find('table').hasClass('c-table--invisible')).toBeTruthy();
+		rerender(<Table columns={COLUMNS} data={DATA} rowKey="id" variant="invisible" />);
+		expect(screen.getByRole('table')).toHaveClass('c-table--invisible');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--bordered');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--styled');
 	});
 
 	it('Should be able to render the table head from `columns`', () => {
-		const tableComponent = shallow(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
+		render(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
 
-		const headings = tableComponent.find('thead > tr > th');
+		const headings = screen.getAllByRole('columnheader');
 
-		expect(headings).toHaveLength(headings.length);
+		expect(headings).toHaveLength(5);
 	});
 
 	it('Should render a chevron based on `sortColumn` & `sortOrder` when a column is sortable', () => {
-		const ascTableComponent = shallow(
+		const { container: ascContainer } = render(
 			<Table
 				columns={COLUMNS}
 				data={DATA}
@@ -78,7 +84,7 @@ describe('<Table />', () => {
 			/>
 		);
 
-		const descTableComponent = shallow(
+		const { container: descContainer } = render(
 			<Table
 				columns={COLUMNS}
 				data={DATA}
@@ -88,49 +94,42 @@ describe('<Table />', () => {
 			/>
 		);
 
-		const ascHeading = ascTableComponent.find('thead > tr > th').first();
-		const descHeading = descTableComponent.find('thead > tr > th').first();
+		const ascHeading = ascContainer.querySelector('thead > tr > th');
+		const descHeading = descContainer.querySelector('thead > tr > th');
 
-		const ascHeadingIcon = ascHeading.find(Icon);
-		const descHeadingIcon = descHeading.find(Icon);
-
-		expect(ascHeadingIcon.prop('name')).toEqual('chevron-up');
-		expect(descHeadingIcon.prop('name')).toEqual('chevron-down');
+		expect(ascHeading?.querySelector('.o-svg-icon')).toHaveClass('o-svg-icon--chevron-up');
+		expect(descHeading?.querySelector('.o-svg-icon')).toHaveClass('o-svg-icon--chevron-down');
 	});
 
 	it('Should set the correct className for a th when col is given', () => {
-		const tableComponent = shallow(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
+		const { container } = render(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
 		const colSize = 2;
 
-		expect(tableComponent.find(`.o-table-col-${colSize}`)).toHaveLength(1);
+		expect(container.querySelectorAll(`.o-table-col-${colSize}`)).toHaveLength(1);
 	});
 
 	it('Should not try to render table head when no `columns` are passed', () => {
-		const tableComponent = shallow(<Table columns={[]} data={DATA} rowKey="id" />);
+		const { container } = render(<Table columns={[]} data={DATA} rowKey="id" />);
 
-		const tableHead = tableComponent.find('thead');
-
-		expect(tableHead).toHaveLength(0);
+		expect(container.querySelector('thead')).not.toBeInTheDocument();
 	});
 
 	it('Should be able to render the table body from `data`', () => {
-		const tableComponent = shallow(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
+		const { container } = render(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
 
-		const rows = tableComponent.find('tbody > tr');
+		const rows = container.querySelectorAll('tbody > tr');
 
 		expect(rows).toHaveLength(DATA.length);
 	});
 
 	it('Should not try to render table body when no `data` is passed', () => {
-		const tableComponent = shallow(<Table columns={COLUMNS} data={[]} rowKey="id" />);
+		const { container } = render(<Table columns={COLUMNS} data={[]} rowKey="id" />);
 
-		const tableHead = tableComponent.find('tbody');
-
-		expect(tableHead).toHaveLength(0);
+		expect(container.querySelector('tbody')).not.toBeInTheDocument();
 	});
 
 	it('Should accept a custom `renderCell`-prop for cell-rendering', () => {
-		const tableComponent = shallow(
+		const { container } = render(
 			<Table
 				columns={COLUMNS}
 				data={DATA}
@@ -144,32 +143,40 @@ describe('<Table />', () => {
 			/>
 		);
 
-		const cells = tableComponent.find('tbody > tr > td > p');
+		const cells = container.querySelectorAll('tbody > tr > td > p');
 
-		expect(cells.at(0).hasClass('0-0')).toBeTruthy();
-		expect(cells.at(0).text()).toEqual(DATA[0].name);
-		expect(cells.at(4).hasClass('1-0')).toBeTruthy();
-		expect(cells.at(4).text()).toEqual(DATA[1].name);
-		expect(cells.at(5).hasClass('1-1')).toBeTruthy();
-		expect(cells.at(5).text()).toEqual(DATA[1].age);
+		expect(cells[0]).toHaveClass('0-0');
+		expect(cells[0]).toHaveTextContent(DATA[0].name);
+		expect(cells[4]).toHaveClass('1-0');
+		expect(cells[4]).toHaveTextContent(DATA[1].name);
+		expect(cells[5]).toHaveClass('1-1');
+		expect(cells[5]).toHaveTextContent(DATA[1].age);
 	});
 
 	it('Should correctly set the rowKey for each row', () => {
+		// React keys are not observable in the DOM; verify rows follow `data` order keyed by `rowKey`
 		const key = 'id';
-		const tableComponent = shallow(<Table columns={COLUMNS} data={DATA} rowKey={key} />);
+		const { container } = render(
+			<Table
+				columns={COLUMNS}
+				data={DATA}
+				rowKey={key}
+				renderCell={(row, columnId) => (columnId === 'name' ? row.name : null)}
+			/>
+		);
 
-		const rows = tableComponent.find('tbody > tr');
+		const rows = container.querySelectorAll('tbody > tr');
 
-		expect(rows.at(0).key()).toEqual(`table-row-${DATA[0][key].toString()}`);
-		expect(rows.at(2).key()).toEqual(`table-row-${DATA[2][key].toString()}`);
-		expect(rows.at(3).key()).toEqual(`table-row-${DATA[3][key].toString()}`);
-		expect(rows.at(5).key()).toEqual(`table-row-${DATA[5][key].toString()}`);
+		expect(rows[0]).toHaveTextContent(DATA[0].name);
+		expect(rows[2]).toHaveTextContent(DATA[2].name);
+		expect(rows[3]).toHaveTextContent(DATA[3].name);
+		expect(rows[5]).toHaveTextContent(DATA[5].name);
 	});
 
 	it('Should call `onColumnClick` when a sortable column is clicked', () => {
 		const onColumnClickHandler = jest.fn();
 
-		const ascTableComponent = shallow(
+		render(
 			<Table
 				columns={COLUMNS}
 				data={DATA}
@@ -180,9 +187,7 @@ describe('<Table />', () => {
 			/>
 		);
 
-		const column = ascTableComponent.find('thead > tr > th').first();
-
-		column.simulate('click');
+		fireEvent.click(screen.getAllByRole('columnheader')[0]);
 
 		expect(onColumnClickHandler).toHaveBeenCalled();
 		expect(onColumnClickHandler).toHaveBeenCalledTimes(1);
@@ -192,13 +197,12 @@ describe('<Table />', () => {
 	it('Should not call `onColumnClick` when a non-sortable column is clicked', () => {
 		const onColumnClickHandler = jest.fn();
 
-		const ascTableComponent = shallow(
+		render(
 			<Table columns={COLUMNS} data={DATA} rowKey="id" onColumnClick={onColumnClickHandler} />
 		);
 
-		const column = ascTableComponent.find('thead > tr > th').last();
-
-		column.simulate('click');
+		const headings = screen.getAllByRole('columnheader');
+		fireEvent.click(headings[headings.length - 1]);
 
 		expect(onColumnClickHandler).toHaveBeenCalledTimes(0);
 	});
@@ -206,32 +210,28 @@ describe('<Table />', () => {
 	it('Should render an `emptyStateMessage` when no data is passed', () => {
 		const emptyStateMessage = 'No data test test no data...';
 
-		const tableComponent = mount(
+		const { container } = render(
 			<Table columns={COLUMNS} data={[]} rowKey="id" emptyStateMessage={emptyStateMessage} />
 		);
 
-		const emptyStateParagraph = tableComponent.find('div.u-spacer-left-s.u-spacer-top');
+		const emptyStateParagraph = container.querySelector('div.u-spacer-left-s.u-spacer-top');
 
-		expect(emptyStateParagraph.text()).toEqual(emptyStateMessage);
+		expect(emptyStateParagraph).toHaveTextContent(emptyStateMessage);
 	});
 
 	it('Should not render an `emptyStateMessage` when data is passed', () => {
 		const emptyStateMessage = 'No data test test no data...';
 
-		const tableComponent = shallow(
+		render(
 			<Table columns={COLUMNS} data={DATA} rowKey="id" emptyStateMessage={emptyStateMessage} />
 		);
 
-		const emptyStateParagraph = tableComponent.find('p.u-spacer-top');
-
-		expect(emptyStateParagraph).toHaveLength(0);
+		expect(screen.queryByText(emptyStateMessage)).not.toBeInTheDocument();
 	});
 
 	it('Should not render an `emptyStateMessage` when it was not passed', () => {
-		const tableComponent = shallow(<Table columns={COLUMNS} data={[]} rowKey="id" />);
+		const { container } = render(<Table columns={COLUMNS} data={[]} rowKey="id" />);
 
-		const emptyStateParagraph = tableComponent.find('p.u-spacer-top');
-
-		expect(emptyStateParagraph).toHaveLength(0);
+		expect(container.querySelector('.u-spacer-top')).not.toBeInTheDocument();
 	});
 });

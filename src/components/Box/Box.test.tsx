@@ -1,42 +1,44 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { Box } from './Box';
 
 describe('<Box />', () => {
 	it('Should be able to render', () => {
-		shallow(<Box>test</Box>);
+		render(<Box>test</Box>);
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-box-custom';
 
-		const boxComponent = shallow(<Box className={customClass}>test</Box>);
+		const { container } = render(<Box className={customClass}>test</Box>);
 
-		expect(boxComponent.hasClass('c-box')).toEqual(true);
-		expect(boxComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-box');
+		expect(container.firstChild).toHaveClass(customClass);
 	});
 
 	it('Should set the correct className when passed the `condensed`-prop', () => {
-		const boxComponent = shallow(<Box condensed>test</Box>);
+		const { container } = render(<Box condensed>test</Box>);
 
-		expect(boxComponent.hasClass('c-box--padding-small')).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-box--padding-small');
 	});
 
 	it('Should set the correct className when passed the `backgroundColor`-prop', () => {
-		const boxComponent = shallow(<Box backgroundColor="soft-white">test</Box>);
+		const { container } = render(<Box backgroundColor="soft-white">test</Box>);
 
-		expect(boxComponent.hasClass('c-box--soft-white')).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-box--soft-white');
 	});
 
 	it('Should correctly pass children', () => {
-		const containerComponent = shallow(
+		const { container } = render(
 			<Box>
 				<p className="box-test" />
 			</Box>
 		);
 
-		const paragraph = containerComponent.find('.box-test');
+		const paragraph = container.querySelector('.box-test');
 
-		expect(containerComponent.children().html()).toEqual(paragraph.html());
+		expect(paragraph).toBeInTheDocument();
+		expect((container.firstChild as HTMLElement).children).toHaveLength(1);
+		expect((container.firstChild as HTMLElement).firstChild).toBe(paragraph);
 	});
 });

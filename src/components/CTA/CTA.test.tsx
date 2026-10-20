@@ -1,16 +1,16 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { CTA } from './CTA';
 import { CTA_MOCK } from './CTA.mock';
 
 describe('<CTA />', () => {
 	it('Should be able to render', () => {
-		shallow(<CTA {...CTA_MOCK} />);
+		render(<CTA {...CTA_MOCK} />);
 	});
 
 	it('Should set the correct className', () => {
-		const component = shallow(<CTA {...CTA_MOCK} />);
+		const { container } = render(<CTA {...CTA_MOCK} />);
 
-		expect(component.hasClass('c-cta-item')).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-cta-item');
 	});
 });

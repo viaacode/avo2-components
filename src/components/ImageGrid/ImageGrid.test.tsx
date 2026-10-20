@@ -1,97 +1,81 @@
-import { shallow } from 'enzyme';
-
-import image200x200 from '../../../static/images/200x200.jpg';
+import { fireEvent, render } from '@testing-library/react';
 
 import { ImageGrid } from './ImageGrid';
 
-const images = [
-	image200x200,
-	image200x200,
-	image200x200,
-	image200x200,
-	image200x200,
-	image200x200,
-	image200x200,
-	image200x200,
-	image200x200,
-	image200x200,
-];
+// Unique sources: the component keys items by image source
+const images = Array.from({ length: 10 }, (_, index) => `image-${index}.jpg`);
+
+const getItems = (container: HTMLElement) =>
+	container.querySelectorAll<HTMLElement>('.c-image-grid__item');
 
 describe('<ImageGrid />', () => {
 	it('Should be able to render', () => {
-		shallow(<ImageGrid images={images} />);
+		render(<ImageGrid images={images} />);
 	});
 
 	it('Should set the correct default className and custom className', () => {
 		const customClass = 'test-grid';
 
-		const ImageGridComponent = shallow(<ImageGrid className={customClass} images={images} />);
+		const { container } = render(<ImageGrid className={customClass} images={images} />);
 
-		expect(ImageGridComponent.hasClass(customClass)).toEqual(true);
-		expect(ImageGridComponent.hasClass('c-image-grid')).toEqual(true);
-		expect(ImageGridComponent.hasClass('c-image-grid-selectable')).toEqual(false);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-image-grid');
+		expect(container.firstChild).not.toHaveClass('c-image-grid-selectable');
 	});
 
 	it('Should set the correct className when selectable', () => {
-		const ImageGridComponent = shallow(<ImageGrid images={images} allowSelect={true} />);
+		const { container } = render(<ImageGrid images={images} allowSelect={true} />);
 
-		expect(ImageGridComponent.hasClass('c-image-grid')).toEqual(true);
-		expect(ImageGridComponent.hasClass('c-image-grid-selectable')).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-image-grid');
+		expect(container.firstChild).toHaveClass('c-image-grid-selectable');
 	});
 
 	it('Should set the correct styles for width and height', () => {
 		const width = 123;
 		const height = 321;
-		const ImageGridComponent = shallow(<ImageGrid images={images} width={width} height={height} />);
+		const { container } = render(<ImageGrid images={images} width={width} height={height} />);
 
-		const item = ImageGridComponent.find('.c-image-grid__item').at(0);
+		const item = getItems(container)[0];
 
-		expect(item.prop('style')).toHaveProperty('width', `${width}px`);
-		expect(item.prop('style')).toHaveProperty('height', `${height}px`);
+		expect(item.style.width).toBe(`${width}px`);
+		expect(item.style.height).toBe(`${height}px`);
 	});
 
 	it('Should pass selected item (single)', () => {
 		const onChangeHandler = jest.fn();
 
-		const ImageGridComponent = shallow(
+		const { container } = render(
 			<ImageGrid images={images} allowSelect={true} onChange={onChangeHandler} />
 		);
 
-		const item = ImageGridComponent.find('.c-image-grid__item').at(5);
+		fireEvent.click(getItems(container)[5]);
 
-		item.simulate('click');
+		expect(onChangeHandler).toHaveBeenCalledTimes(1);
+		expect(onChangeHandler).toHaveBeenCalledWith([images[5]]);
 
-		expect(onChangeHandler).toBeCalledTimes(1);
-		expect(onChangeHandler).toBeCalledWith([images[5]]);
+		fireEvent.click(getItems(container)[3]);
 
-		const item2 = ImageGridComponent.find('.c-image-grid__item').at(3);
-
-		item2.simulate('click');
-
-		// expect(item2.hasClass('c-image-grid__item-selected')).toEqual(true);
-		expect(onChangeHandler).toBeCalledTimes(2);
-		expect(onChangeHandler).toBeCalledWith([images[3]]);
+		expect(onChangeHandler).toHaveBeenCalledTimes(2);
+		expect(onChangeHandler).toHaveBeenCalledWith([images[3]]);
 	});
 
 	it('Should pass first selected items (multi)', () => {
 		const onChangeHandler = jest.fn();
 
-		const ImageGridComponent = shallow(
+		const { container } = render(
 			<ImageGrid images={images} allowSelect={true} allowMulti={true} onChange={onChangeHandler} />
 		);
 
-		const item5 = ImageGridComponent.find('.c-image-grid__item').at(5);
+		fireEvent.click(getItems(container)[5]);
 
-		item5.simulate('click');
-
-		expect(onChangeHandler).toBeCalledTimes(1);
-		expect(onChangeHandler).toBeCalledWith([images[5]]);
+		expect(onChangeHandler).toHaveBeenCalledTimes(1);
+		expect(onChangeHandler).toHaveBeenCalledWith([images[5]]);
 	});
 
 	it('Should pass second selected items (multi)', () => {
 		const onChangeHandler = jest.fn();
 
-		const ImageGridComponent = shallow(
+		const { container } = render(
 			<ImageGrid
 				images={images}
 				allowSelect={true}
@@ -101,18 +85,16 @@ describe('<ImageGrid />', () => {
 			/>
 		);
 
-		const item3 = ImageGridComponent.find('.c-image-grid__item').at(3);
+		fireEvent.click(getItems(container)[3]);
 
-		item3.simulate('click');
-
-		expect(onChangeHandler).toBeCalledTimes(1);
-		expect(onChangeHandler).toBeCalledWith([images[5], images[3]]);
+		expect(onChangeHandler).toHaveBeenCalledTimes(1);
+		expect(onChangeHandler).toHaveBeenCalledWith([images[5], images[3]]);
 	});
 
 	it('Should correctly unselect items (multi)', () => {
 		const onChangeHandler = jest.fn();
 
-		const ImageGridComponent = shallow(
+		const { container } = render(
 			<ImageGrid
 				images={images}
 				allowSelect={true}
@@ -122,11 +104,9 @@ describe('<ImageGrid />', () => {
 			/>
 		);
 
-		const item5 = ImageGridComponent.find('.c-image-grid__item').at(5);
+		fireEvent.click(getItems(container)[5]);
 
-		item5.simulate('click');
-
-		expect(onChangeHandler).toBeCalledTimes(1);
-		expect(onChangeHandler).toBeCalledWith([images[3]]);
+		expect(onChangeHandler).toHaveBeenCalledTimes(1);
+		expect(onChangeHandler).toHaveBeenCalledWith([images[3]]);
 	});
 });

@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { Button } from '../Button/Button';
 
@@ -6,7 +6,7 @@ import { ButtonGroup } from './ButtonGroup';
 
 describe('<ButtonGroup />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<ButtonGroup>
 				<Button label="test1" />
 				<Button label="test2" />
@@ -16,14 +16,14 @@ describe('<ButtonGroup />', () => {
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-button-group-custom';
-		const buttonGroupComponent = shallow(
+		const { container } = render(
 			<ButtonGroup className={customClass}>
 				<Button label="test1" />
 				<Button label="test2" />
 			</ButtonGroup>
 		);
 
-		expect(buttonGroupComponent.hasClass('c-button-group')).toEqual(true);
-		expect(buttonGroupComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-button-group');
+		expect(container.firstChild).toHaveClass(customClass);
 	});
 });

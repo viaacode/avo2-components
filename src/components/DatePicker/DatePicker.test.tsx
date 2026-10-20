@@ -1,40 +1,39 @@
-import { mount, shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { DatePicker } from './DatePicker';
 
 describe('<DatePicker />', () => {
 	it('Should be able to render', () => {
-		shallow(<DatePicker />);
+		render(<DatePicker />);
+
+		expect(screen.getByRole('textbox')).toBeInTheDocument();
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-datepicker-custom';
 
-		const datePickerComponent = mount(<DatePicker className={customClass} />);
+		const { container } = render(<DatePicker className={customClass} />);
 
-		const datePickerElement = datePickerComponent.find('.c-input-with-icon');
+		const datePickerElement = container.querySelector('.c-input-with-icon-right');
 
-		expect(datePickerComponent.hasClass(customClass)).toEqual(true);
-		expect(datePickerElement.children().length).toEqual(2);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('avo__c-datepicker');
+		expect(datePickerElement?.children.length).toEqual(2);
 	});
 
 	it('Should be able to set the disabled state', () => {
-		const datePickerComponent = mount(<DatePicker disabled />);
+		render(<DatePicker disabled />);
 
-		const datePickerElement = datePickerComponent.find('input');
-
-		expect(datePickerElement.prop('disabled')).toEqual(true);
+		expect(screen.getByRole('textbox')).toBeDisabled();
 	});
 
 	it('Should be able to set an initial value', () => {
 		const defaultDateString = '2019/06/22';
 		const defaultDateObject = new Date(defaultDateString);
 
-		const datePickerComponent = mount(<DatePicker value={defaultDateObject} />);
+		render(<DatePicker value={defaultDateObject} />);
 
-		const datePickerElement = datePickerComponent.find('input');
-
-		expect(datePickerElement.prop('value')).toEqual(
+		expect(screen.getByRole('textbox')).toHaveValue(
 			defaultDateString.split('/').reverse().join('/')
 		);
 	});
@@ -42,34 +41,27 @@ describe('<DatePicker />', () => {
 	it('Should be able to set a placeholder value', () => {
 		const placeholder = 'dd-mm-yyyy';
 
-		const datePickerComponent = mount(<DatePicker placeholder={placeholder} />);
+		render(<DatePicker placeholder={placeholder} />);
 
-		const datePickerElement = datePickerComponent.find('input');
-
-		expect(datePickerElement.prop('placeholder')).toEqual(placeholder);
+		expect(screen.getByRole('textbox')).toHaveAttribute('placeholder', placeholder);
 	});
 
 	it('Should call the onChange handler when the input changes', () => {
 		const onChangeHandler = jest.fn();
 
-		const datePickerComponent = mount(<DatePicker onChange={onChangeHandler} />);
+		render(<DatePicker onChange={onChangeHandler} />);
 
-		const datePickerElement = datePickerComponent.find('input');
+		const input = screen.getByRole('textbox');
 
-		const dateObject1 = new Date('2019-06-11');
-		const dateObject2 = new Date('2018-05-10');
-
-		datePickerElement.simulate('change', { target: { value: dateObject1 } });
+		fireEvent.change(input, { target: { value: '11/06/2019' } });
 
 		expect(onChangeHandler).toHaveBeenCalled();
 		expect(onChangeHandler).toHaveBeenCalledTimes(1);
-		const firstCall = onChangeHandler.mock.calls[0];
-		expect(firstCall[firstCall.length - 1].target.value.getTime()).toEqual(dateObject1.getTime());
+		expect(onChangeHandler).toHaveBeenLastCalledWith(new Date(2019, 5, 11));
 
-		datePickerElement.simulate('change', { target: { value: dateObject2 } });
+		fireEvent.change(input, { target: { value: '10/05/2018' } });
 
 		expect(onChangeHandler).toHaveBeenCalledTimes(2);
-		const secondCall = onChangeHandler.mock.calls[1];
-		expect(secondCall[secondCall.length - 1].target.value.getTime()).toEqual(dateObject2.getTime());
+		expect(onChangeHandler).toHaveBeenLastCalledWith(new Date(2018, 4, 10));
 	});
 });

@@ -1,67 +1,61 @@
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Checkbox } from './Checkbox';
 
 describe('<Checkbox />', () => {
 	it('Should be able to render', () => {
-		shallow(<Checkbox label="One" checked={false} />);
+		render(<Checkbox label="One" checked={false} />);
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-checkbox-custom';
 
-		const checkboxComponent = shallow(
-			<Checkbox className={customClass} label="One" checked={false} />
-		);
+		const { container } = render(<Checkbox className={customClass} label="One" checked={false} />);
 
-		expect(checkboxComponent.hasClass('c-checkbox')).toEqual(true);
-		expect(checkboxComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass('c-checkbox');
+		expect(container.firstChild).toHaveClass(customClass);
 	});
 
 	it('Should correctly render `label`', () => {
-		const checkboxComponent = shallow(<Checkbox label="One" checked={false} />);
+		render(<Checkbox label="One" checked={false} />);
 
-		expect(checkboxComponent.find('label').html()).toContain('One');
+		expect(screen.getByRole('checkbox', { name: 'One' })).toBeInTheDocument();
 	});
 
 	it('Should correctly render `checked state`', () => {
-		const checkedCheckboxComponent = shallow(<Checkbox label="One" checked={true} />);
-		const uncheckedCheckboxComponent = shallow(<Checkbox label="Two" checked={false} />);
+		render(<Checkbox label="One" checked={true} />);
+		render(<Checkbox label="Two" checked={false} />);
 
-		expect(checkedCheckboxComponent.find('input').prop('checked')).toEqual(true);
-		expect(uncheckedCheckboxComponent.find('input').prop('checked')).toEqual(false);
+		expect(screen.getByRole('checkbox', { name: 'One' })).toBeChecked();
+		expect(screen.getByRole('checkbox', { name: 'Two' })).not.toBeChecked();
 	});
 
 	it('Should correctly render `id`', () => {
 		const id = 'test';
 
-		const checkboxComponent = shallow(<Checkbox label="One" checked={false} id={id} />);
+		render(<Checkbox label="One" checked={false} id={id} />);
 
-		expect(checkboxComponent.find('[type="checkbox"]').prop('id')).toEqual(id);
+		expect(screen.getByRole('checkbox')).toHaveAttribute('id', id);
 	});
 
 	it('Should be able to render without `id`', () => {
-		const checkboxComponent = shallow(<Checkbox label="One" checked={false} />);
+		render(<Checkbox label="One" checked={false} />);
 
-		expect(checkboxComponent.find('[type="checkbox"]').prop('id')).toEqual(undefined);
+		expect(screen.getByRole('checkbox')).not.toHaveAttribute('id');
 	});
 
 	it('Should be able to set the disabled state', () => {
-		const checkboxComponent = shallow(<Checkbox label="One" checked={false} disabled />);
+		render(<Checkbox label="One" checked={false} disabled />);
 
-		expect(checkboxComponent.find('input').prop('disabled')).toEqual(true);
+		expect(screen.getByRole('checkbox')).toBeDisabled();
 	});
 
 	it('Should call `onChange` when toggling checkbox', () => {
 		const onChangeHandler = jest.fn();
 
-		const checkboxComponent = shallow(
-			<Checkbox label="One" checked={false} id="one" onChange={onChangeHandler} />
-		);
+		render(<Checkbox label="One" checked={false} id="one" onChange={onChangeHandler} />);
 
-		const checkboxElement = checkboxComponent.find('[type="checkbox"]');
-
-		checkboxElement.simulate('change', { target: { checked: true } });
+		fireEvent.click(screen.getByRole('checkbox'));
 
 		expect(onChangeHandler).toHaveBeenCalled();
 		expect(onChangeHandler).toHaveBeenCalledTimes(1);

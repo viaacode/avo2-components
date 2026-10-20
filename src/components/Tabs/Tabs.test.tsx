@@ -1,6 +1,5 @@
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
-import { Tab } from './Tab/Tab';
 import { Tabs } from './Tabs';
 
 const mockTabs = [
@@ -17,50 +16,48 @@ const mockTabs = [
 
 describe('<Tabs />', () => {
 	it('Should be able to render', () => {
-		shallow(<Tabs tabs={mockTabs} />);
+		render(<Tabs tabs={mockTabs} />);
 	});
 
 	it('Should set the correct className', () => {
 		const customClass = 'c-column-custom';
 
-		const tabsComponent = shallow(<Tabs className={customClass} tabs={mockTabs} />);
+		const { container } = render(<Tabs className={customClass} tabs={mockTabs} />);
 
-		expect(tabsComponent.hasClass(customClass)).toEqual(true);
-		expect(tabsComponent.hasClass('c-tabs')).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-tabs');
 	});
 
 	it('Should set the correct className when border is passed', () => {
-		const tabsComponent1 = shallow(<Tabs tabs={mockTabs} border />);
-		const tabsComponent2 = shallow(<Tabs tabs={mockTabs} />);
+		const { container: container1 } = render(<Tabs tabs={mockTabs} border />);
+		const { container: container2 } = render(<Tabs tabs={mockTabs} />);
 
-		expect(tabsComponent1.hasClass('c-tabs__bottom-border')).toEqual(true);
-		expect(tabsComponent2.hasClass('c-tabs__bottom-border')).toEqual(false);
+		expect(container1.firstChild).toHaveClass('c-tabs__bottom-border');
+		expect(container2.firstChild).not.toHaveClass('c-tabs__bottom-border');
 	});
 
 	it('Should correctly render `Tab`-components as children', () => {
-		const tabsComponent = shallow(<Tabs tabs={mockTabs} />);
+		const { container } = render(<Tabs tabs={mockTabs} />);
 
-		const tabElement = tabsComponent.find(Tab);
-
-		expect(tabElement).toHaveLength(2);
+		expect(container.querySelectorAll('.c-tab-item')).toHaveLength(2);
+		expect(screen.getByText('Videos')).toBeInTheDocument();
+		expect(screen.getByText('Folder')).toBeInTheDocument();
 	});
 
 	it('Should trigger onClick when clicking a tab', () => {
 		const onClickHandler = jest.fn();
 
-		const tabsComponent = shallow(<Tabs tabs={mockTabs} onClick={onClickHandler} />);
+		render(<Tabs tabs={mockTabs} onClick={onClickHandler} />);
 
-		const tabElement = tabsComponent.find(Tab);
+		fireEvent.click(screen.getByText('Videos'));
 
-		tabElement.at(0).simulate('click');
+		expect(onClickHandler).toHaveBeenCalled();
+		expect(onClickHandler).toHaveBeenCalledTimes(1);
+		expect(onClickHandler).toHaveBeenCalledWith(mockTabs[0].id);
 
-		expect(onClickHandler).toBeCalled();
-		expect(onClickHandler).toBeCalledTimes(1);
-		expect(onClickHandler).toBeCalledWith(mockTabs[0].id);
+		fireEvent.click(screen.getByText('Folder'));
 
-		tabElement.at(1).simulate('click');
-
-		expect(onClickHandler).toBeCalledTimes(2);
-		expect(onClickHandler).toBeCalledWith(mockTabs[1].id);
+		expect(onClickHandler).toHaveBeenCalledTimes(2);
+		expect(onClickHandler).toHaveBeenCalledWith(mockTabs[1].id);
 	});
 });

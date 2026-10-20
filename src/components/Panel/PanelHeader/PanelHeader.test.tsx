@@ -1,11 +1,11 @@
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { Fragment } from 'react';
 
 import { PanelHeader } from './PanelHeader';
 
 describe('<PanelHeader />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<PanelHeader>
 				<Fragment />
 			</PanelHeader>
@@ -15,25 +15,23 @@ describe('<PanelHeader />', () => {
 	it('Should set the correct className(s)', () => {
 		const customClass = 'c-panel__header-custom';
 
-		const panelHeaderComponent = shallow(
+		const { container } = render(
 			<PanelHeader className={customClass}>
 				<Fragment />
 			</PanelHeader>
 		);
 
-		expect(panelHeaderComponent.hasClass(customClass)).toEqual(true);
-		expect(panelHeaderComponent.hasClass('c-panel__header')).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-panel__header');
 	});
 
 	it('Should correctly pass children', () => {
-		const panelHeaderComponent = shallow(
+		const { container } = render(
 			<PanelHeader>
 				<p id="panel-header-test">Testing 123</p>
 			</PanelHeader>
 		);
 
-		const paragraph = panelHeaderComponent.find('#panel-header-test');
-
-		expect(panelHeaderComponent.html()).toContain(paragraph.html());
+		expect(container.firstChild).toContainElement(screen.getByText('Testing 123'));
 	});
 });

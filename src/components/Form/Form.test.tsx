@@ -1,11 +1,11 @@
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { Fragment } from 'react';
 
 import { Form } from './Form';
 
 describe('<Form />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<Form>
 				<Fragment />
 			</Form>
@@ -15,47 +15,56 @@ describe('<Form />', () => {
 	it('Should correctly set the className', () => {
 		const customClass = 'c-form-custom';
 
-		const formComponent = shallow(
+		const { container } = render(
 			<Form className={customClass}>
 				<Fragment />
 			</Form>
 		);
 
-		expect(formComponent.hasClass(customClass)).toEqual(true);
-		expect(formComponent.hasClass('o-form-group-layout')).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('o-form-group-layout');
 	});
 
 	it('Should set the correct type className', () => {
-		const formComponent = shallow(
+		const { container: formContainer } = render(
 			<Form>
 				<Fragment />
 			</Form>
 		);
-		const horizontalFormComponent = shallow(
+		const { container: horizontalFormContainer } = render(
 			<Form type="horizontal">
 				<Fragment />
 			</Form>
 		);
-		const inlineFormComponent = shallow(
+		const { container: inlineFormContainer } = render(
 			<Form type="inline">
 				<Fragment />
 			</Form>
 		);
 
-		expect(formComponent.hasClass('o-form-group-layout--standard')).toEqual(true);
-		expect(horizontalFormComponent.hasClass('o-form-group-layout--horizontal')).toEqual(true);
-		expect(inlineFormComponent.hasClass('o-form-group-layout--inline')).toEqual(true);
+		expect(formContainer.firstChild).toHaveClass('o-form-group-layout--standard');
+		expect(formContainer.firstChild).not.toHaveClass('o-form-group-layout--horizontal');
+		expect(formContainer.firstChild).not.toHaveClass('o-form-group-layout--inline');
+
+		expect(horizontalFormContainer.firstChild).not.toHaveClass('o-form-group-layout--standard');
+		expect(horizontalFormContainer.firstChild).toHaveClass('o-form-group-layout--horizontal');
+		expect(horizontalFormContainer.firstChild).not.toHaveClass('o-form-group-layout--inline');
+
+		expect(inlineFormContainer.firstChild).not.toHaveClass('o-form-group-layout--standard');
+		expect(inlineFormContainer.firstChild).not.toHaveClass('o-form-group-layout--horizontal');
+		expect(inlineFormContainer.firstChild).toHaveClass('o-form-group-layout--inline');
 	});
 
 	it('Should correctly pass children', () => {
-		const formComponent = shallow(
+		const { container } = render(
 			<Form>
 				<div id="form-test">Testing 123</div>
 			</Form>
 		);
 
-		const testElement = formComponent.find('#form-test');
+		const testElement = screen.getByText('Testing 123');
 
-		expect(formComponent.children().html()).toEqual(testElement.html());
+		expect(testElement).toHaveAttribute('id', 'form-test');
+		expect(container.firstChild?.firstChild).toBe(testElement);
 	});
 });

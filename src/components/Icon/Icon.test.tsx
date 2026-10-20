@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { Icon } from './Icon';
 import { IconNameSchema } from './Icon.types';
@@ -6,71 +6,91 @@ import { Download, Slash, ThumbsUp } from './Icons';
 
 describe('<Icon />', () => {
 	it('Should render when a known icon is passed', () => {
-		const iconComponent = mount(<Icon name={IconNameSchema.download} />);
+		const { container } = render(<Icon name={IconNameSchema.download} />);
+		const { container: expected } = render(<Download />);
 
-		expect(iconComponent.find(Download)).toHaveLength(1);
+		expect((container.firstChild as HTMLElement).innerHTML).toEqual(expected.innerHTML);
 	});
 
 	it('Should render slash icon when an unknown icon name is passed', () => {
-		const iconComponent = shallow(<Icon name={'foobar' as IconNameSchema} />);
+		const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+		const { container } = render(<Icon name={'foobar' as IconNameSchema} />);
+		const { container: expected } = render(<Slash />);
 
-		expect(iconComponent.find(Slash)).toHaveLength(1);
+		expect((container.firstChild as HTMLElement).innerHTML).toEqual(expected.innerHTML);
+		expect(consoleErrorSpy).toHaveBeenCalledWith('Icon with name: foobar was not found.');
+		consoleErrorSpy.mockRestore();
 	});
 
 	it('Should render icon when name was passed as kebab-case', () => {
-		const iconComponent = mount(<Icon name={IconNameSchema.thumbsUp} />);
+		const { container } = render(<Icon name={'thumbs-up' as IconNameSchema} />);
+		const { container: expected } = render(<ThumbsUp />);
 
-		expect(iconComponent.find(ThumbsUp)).toHaveLength(1);
+		expect((container.firstChild as HTMLElement).innerHTML).toEqual(expected.innerHTML);
 	});
 
 	it('Should correctly pass a custom className', () => {
 		const customClass = 'c-icon-custom';
 
-		const iconComponent = shallow(<Icon className={customClass} name={IconNameSchema.download} />);
+		const { container } = render(<Icon className={customClass} name={IconNameSchema.download} />);
 
-		expect(iconComponent.hasClass(customClass)).toEqual(true);
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('o-svg-icon');
 	});
 
 	it('Should correctly set the className without type', () => {
-		const iconComponent = shallow(<Icon name={IconNameSchema.download} />);
+		const { container } = render(<Icon name={IconNameSchema.download} />);
 
-		expect(iconComponent.hasClass('o-svg-icon')).toEqual(true);
-		expect(iconComponent.hasClass('o-svg-icon--download')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-svg-icon');
+		expect(container.firstChild).toHaveClass('o-svg-icon--download');
 	});
 
 	it('Should correctly set the className with type', () => {
-		const socialIconComponent = shallow(<Icon name={IconNameSchema.twitter} type="social" />);
-		const multicolorIconComponent = shallow(
+		const { container: socialContainer } = render(
+			<Icon name={IconNameSchema.twitter} type="social" />
+		);
+		const { container: multicolorContainer } = render(
 			<Icon name={IconNameSchema.circleCheck} type="multicolor" />
 		);
 
-		expect(socialIconComponent.hasClass('o-svg-icon-social-twitter')).toEqual(true);
-		expect(multicolorIconComponent.hasClass('o-svg-icon-multicolor')).toEqual(true);
+		expect(socialContainer.firstChild).toHaveClass('o-svg-icon-social-twitter');
+		expect(socialContainer.firstChild).not.toHaveClass('o-svg-icon-multicolor');
+		expect(multicolorContainer.firstChild).toHaveClass('o-svg-icon-multicolor');
+		expect(multicolorContainer.firstChild).toHaveClass('o-svg-icon-multicolor-circle-check');
+		expect(multicolorContainer.firstChild).not.toHaveClass('o-svg-icon-social-circle-check');
 	});
 
 	it('Should correctly set the subtle class when the subtle option is true', () => {
-		const iconComponent = shallow(<Icon name={IconNameSchema.twitter} subtle />);
+		const { container } = render(<Icon name={IconNameSchema.twitter} subtle />);
 
-		expect(iconComponent.hasClass('o-svg-icon--subtle')).toEqual(true);
+		expect(container.firstChild).toHaveClass('o-svg-icon--subtle');
 	});
 
 	it('Should correctly set the sizing className', () => {
-		const smallIconComponent = shallow(<Icon name={IconNameSchema.circleCheck} size="small" />);
-		const largeIconComponent = shallow(<Icon name={IconNameSchema.circleCheck} size="large" />);
-		const hugeIconComponent = shallow(<Icon name={IconNameSchema.circleCheck} size="huge" />);
+		const { container: smallContainer } = render(
+			<Icon name={IconNameSchema.circleCheck} size="small" />
+		);
+		const { container: largeContainer } = render(
+			<Icon name={IconNameSchema.circleCheck} size="large" />
+		);
+		const { container: hugeContainer } = render(
+			<Icon name={IconNameSchema.circleCheck} size="huge" />
+		);
 
-		expect(smallIconComponent.hasClass('o-svg-icon--small')).toEqual(true);
-		expect(largeIconComponent.hasClass('o-svg-icon--large')).toEqual(true);
-		expect(hugeIconComponent.hasClass('o-svg-icon--huge')).toEqual(true);
+		expect(smallContainer.firstChild).toHaveClass('o-svg-icon--small');
+		expect(largeContainer.firstChild).toHaveClass('o-svg-icon--large');
+		expect(hugeContainer.firstChild).toHaveClass('o-svg-icon--huge');
 	});
 
 	it('Should correctly set the className when active', () => {
-		const activeIconComponent = shallow(<Icon name={IconNameSchema.circleCheck} active={true} />);
-		const inactiveIconComponent = shallow(
+		const { container: activeContainer } = render(
+			<Icon name={IconNameSchema.circleCheck} active={true} />
+		);
+		const { container: inactiveContainer } = render(
 			<Icon name={IconNameSchema.circleCheck} active={false} />
 		);
 
-		expect(activeIconComponent.hasClass('o-svg-icon--action-active')).toEqual(true);
-		expect(inactiveIconComponent.hasClass('o-svg-icon--action-active')).toEqual(false);
+		expect(activeContainer.firstChild).toHaveClass('o-svg-icon--action-active');
+		expect(inactiveContainer.firstChild).not.toHaveClass('o-svg-icon--action-active');
 	});
 });

@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { Fragment } from 'react';
 
 import { Panel } from './Panel';
@@ -6,7 +6,7 @@ import { PanelBody, PanelHeader } from './Panel.slots';
 
 describe('<Panel />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<Panel>
 				<PanelHeader>
 					<Fragment>Header</Fragment>
@@ -21,7 +21,7 @@ describe('<Panel />', () => {
 	it('Should set the correct className(s)', () => {
 		const customClass = 'c-panel-custom';
 
-		const panelComponent = shallow(
+		const { container } = render(
 			<Panel className={customClass}>
 				<PanelHeader>
 					<Fragment>Header</Fragment>
@@ -32,18 +32,15 @@ describe('<Panel />', () => {
 			</Panel>
 		);
 
-		const mainPanelDiv = panelComponent.find('.c-panel');
-		const headerPanelDiv = panelComponent.find('.c-panel__header');
-		const bodyPanelDiv = panelComponent.find('.c-panel__body');
-
-		expect(mainPanelDiv).toHaveLength(1);
-		expect(mainPanelDiv.hasClass(customClass)).toBeTruthy();
-		expect(headerPanelDiv).toHaveLength(1);
-		expect(bodyPanelDiv).toHaveLength(1);
+		expect(container.querySelectorAll('.c-panel')).toHaveLength(1);
+		expect(container.firstChild).toHaveClass('c-panel');
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.querySelectorAll('.c-panel__header')).toHaveLength(1);
+		expect(container.querySelectorAll('.c-panel__body')).toHaveLength(1);
 	});
 
 	it('Should correctly render the panel header', () => {
-		const panelComponent = shallow(
+		const { container } = render(
 			<Panel>
 				<PanelHeader>
 					<p id="test">Hello!</p>
@@ -51,19 +48,15 @@ describe('<Panel />', () => {
 			</Panel>
 		);
 
-		const children = panelComponent.find('#test');
+		const headerElement = container.querySelector('.c-panel__header');
 
-		expect(panelComponent.find('.c-panel__header').children().html()).toContain(children.html());
-
-		const headerElement = panelComponent.find('.c-panel__header');
-		const bodyElement = panelComponent.find('.c-panel__body');
-
-		expect(headerElement).toHaveLength(1);
-		expect(bodyElement).toHaveLength(0);
+		expect(headerElement).toContainElement(screen.getByText('Hello!'));
+		expect(container.querySelectorAll('.c-panel__header')).toHaveLength(1);
+		expect(container.querySelectorAll('.c-panel__body')).toHaveLength(0);
 	});
 
 	it('Should correctly render the panel body', () => {
-		const panelComponent = shallow(
+		const { container } = render(
 			<Panel>
 				<PanelBody>
 					<p id="test">Hello!</p>
@@ -71,14 +64,10 @@ describe('<Panel />', () => {
 			</Panel>
 		);
 
-		const children = panelComponent.find('#test');
+		const bodyElement = container.querySelector('.c-panel__body');
 
-		expect(panelComponent.find('.c-panel__body').children().html()).toContain(children.html());
-
-		const headerElement = panelComponent.find('.c-panel__header');
-		const bodyElement = panelComponent.find('.c-panel__body');
-
-		expect(headerElement).toHaveLength(0);
-		expect(bodyElement).toHaveLength(1);
+		expect(bodyElement).toContainElement(screen.getByText('Hello!'));
+		expect(container.querySelectorAll('.c-panel__header')).toHaveLength(0);
+		expect(container.querySelectorAll('.c-panel__body')).toHaveLength(1);
 	});
 });

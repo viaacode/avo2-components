@@ -1,8 +1,11 @@
-import { mount, shallow } from 'enzyme';
-import { act } from 'react';
+import { act, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { Tooltip } from './Tooltip';
 import { TooltipContent, TooltipTrigger } from './Tooltip.slots';
+
+// floating-ui computes positions asynchronously after mount; flush those updates inside act()
+const flushFloatingUi = () => act(async () => {});
 
 describe('Tooltip', () => {
 	const contentText = 'This is a tooltip';
@@ -20,34 +23,35 @@ describe('Tooltip', () => {
 		</Tooltip>
 	);
 
-	it('should render', () => {
-		shallow(tooltip);
+	it('should render', async () => {
+		render(tooltip);
+		await flushFloatingUi();
 	});
 
-	it('should display the tooltip trigger', () => {
-		const triggerElement = mount(tooltip).find('.trigger');
+	it('should display the tooltip trigger', async () => {
+		render(tooltip);
+		await flushFloatingUi();
 
-		expect(triggerElement).toHaveLength(1);
-		expect(triggerElement.text()).toEqual(triggerText);
+		expect(screen.getByText(triggerText)).toBeInTheDocument();
+		expect(screen.getByText(triggerText)).toHaveClass('trigger');
 	});
 
-	it('should set the correct placement className', () => {
-		const tooltipElement = mount(tooltip).find('.c-tooltip');
+	it('should set the correct placement className', async () => {
+		const { container } = render(tooltip);
+		await flushFloatingUi();
 
-		expect(tooltipElement.hasClass(`c-tooltip--${tooltipPlacement}`)).toBeTruthy();
+		expect(container.querySelector('.c-tooltip')).toHaveClass(`c-tooltip--${tooltipPlacement}`);
 	});
 
-	it('should show the tooltip when hovered', () => {
-		const wrapper = mount(tooltip);
-		const triggerComponent = wrapper.find('span').first();
-		const triggerNode = triggerComponent.getDOMNode();
+	it('should show the tooltip when hovered', async () => {
+		const { container } = render(tooltip);
+		await flushFloatingUi();
 
-		act(() => {
-			triggerNode.dispatchEvent(new Event('mouseover'));
-		});
+		expect(container.querySelector('.c-tooltip')).not.toHaveClass('c-tooltip--show');
 
-		triggerComponent.simulate('mouseover');
+		await userEvent.hover(screen.getByText(triggerText));
+		await flushFloatingUi();
 
-		expect(wrapper.find('.c-tooltip').hasClass('c-tooltip--show')).toBeTruthy();
+		expect(container.querySelector('.c-tooltip')).toHaveClass('c-tooltip--show');
 	});
 });

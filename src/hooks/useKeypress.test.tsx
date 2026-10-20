@@ -1,4 +1,4 @@
-import { mount } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
 
 import { useKeyPress } from './useKeyPress';
 
@@ -15,25 +15,17 @@ const TestComponent = ({
 };
 
 describe('useKeyPress', () => {
-	const events: { [key: string]: any } = {};
-
-	beforeEach(() => {
-		window.addEventListener = jest.fn((event, cb) => {
-			events[event] = cb;
-		});
-	});
-
 	it('Should call onPressDown when pressing target key', () => {
 		const onPressDownHandler = jest.fn();
 
-		mount(<TestComponent onPressDown={onPressDownHandler} />);
+		render(<TestComponent onPressDown={onPressDownHandler} />);
 
-		events.keydown({ key: 'g' });
+		fireEvent.keyDown(window, { key: 'g' });
 
 		expect(onPressDownHandler).toHaveBeenCalled();
 		expect(onPressDownHandler).toHaveBeenCalledTimes(1);
 
-		events.keydown({ key: 'g' });
+		fireEvent.keyDown(window, { key: 'g' });
 
 		expect(onPressDownHandler).toHaveBeenCalledTimes(2);
 	});
@@ -41,14 +33,14 @@ describe('useKeyPress', () => {
 	it('Should call onPressUp when releasing target key', () => {
 		const onPressUpHandler = jest.fn();
 
-		mount(<TestComponent onPressUp={onPressUpHandler} />);
+		render(<TestComponent onPressUp={onPressUpHandler} />);
 
-		events.keyup({ key: 'g' });
+		fireEvent.keyUp(window, { key: 'g' });
 
 		expect(onPressUpHandler).toHaveBeenCalled();
 		expect(onPressUpHandler).toHaveBeenCalledTimes(1);
 
-		events.keyup({ key: 'g' });
+		fireEvent.keyUp(window, { key: 'g' });
 
 		expect(onPressUpHandler).toHaveBeenCalledTimes(2);
 	});
@@ -56,9 +48,9 @@ describe('useKeyPress', () => {
 	it('Should not call onPressDown when pressing a key that is not the target key', () => {
 		const onPressDownHandler = jest.fn();
 
-		mount(<TestComponent onPressDown={onPressDownHandler} />);
+		render(<TestComponent onPressDown={onPressDownHandler} />);
 
-		events.keydown({ key: 'a' });
+		fireEvent.keyDown(window, { key: 'a' });
 
 		expect(onPressDownHandler).toHaveBeenCalledTimes(0);
 	});
@@ -66,9 +58,9 @@ describe('useKeyPress', () => {
 	it('Should not call onPressUp when releasing a key that is not the target key', () => {
 		const onPressUpHandler = jest.fn();
 
-		mount(<TestComponent onPressUp={onPressUpHandler} />);
+		render(<TestComponent onPressUp={onPressUpHandler} />);
 
-		events.keyup({ key: 'a' });
+		fireEvent.keyUp(window, { key: 'a' });
 
 		expect(onPressUpHandler).toHaveBeenCalledTimes(0);
 	});

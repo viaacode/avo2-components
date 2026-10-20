@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Fragment } from 'react';
 
 import { Modal } from './Modal';
@@ -9,11 +9,14 @@ import {
 	ModalHeaderRight,
 	ModalSubHeader,
 } from './Modal.slots';
-import { ModalBackdrop } from './ModalBackdrop';
+
+// Modal renders through a portal into document.body
+const q = (selector: string) => document.body.querySelector(selector);
+const qa = (selector: string) => document.body.querySelectorAll(selector);
 
 describe('<Modal />', () => {
 	it('Should be able to render', () => {
-		shallow(
+		render(
 			<Modal isOpen={false}>
 				<Fragment />
 			</Modal>
@@ -22,183 +25,131 @@ describe('<Modal />', () => {
 
 	it('Should set the correct className(s)', () => {
 		const customClassName = 'c-modal-custom';
-		const modalComponent = shallow(
+		render(
 			<Modal className={customClassName} isOpen={false}>
 				<Fragment />
 			</Modal>
 		);
 
-		const modalWrapperElement = modalComponent.childAt(0);
-		const modalInnerElement = modalWrapperElement.childAt(0);
+		const modalWrapperElement = q('.c-modal-context');
+		const modalInnerElement = modalWrapperElement?.firstElementChild;
 
-		expect(modalWrapperElement).toHaveLength(1);
-		expect(modalWrapperElement.hasClass('c-modal-context')).toEqual(true);
-		expect(modalWrapperElement.hasClass(customClassName)).toEqual(true);
-		expect(modalInnerElement).toHaveLength(1);
-		expect(modalInnerElement.hasClass('c-modal')).toEqual(true);
+		expect(modalWrapperElement).toBeInTheDocument();
+		expect(modalWrapperElement).toHaveClass('c-modal-context');
+		expect(modalWrapperElement).toHaveClass(customClassName);
+		expect(modalInnerElement).toBeInTheDocument();
+		expect(modalInnerElement).toHaveClass('c-modal');
 	});
 
 	it('Should set the correct className for every size', () => {
-		const smallModalComponent = shallow(
-			<Modal isOpen={false} size="small">
-				<Fragment />
-			</Modal>
-		);
+		const sizes = [
+			['small', 'c-modal--small'],
+			['medium', 'c-modal--medium'],
+			['large', 'c-modal--large'],
+			['extra-large', 'c-modal--extra-large'],
+			['fullscreen', 'c-modal--fullscreen'],
+			['fullwidth', 'c-modal--fullwidth'],
+			['auto', 'c-modal--height-auto'],
+		] as const;
 
-		const mediumModalComponent = shallow(
-			<Modal isOpen={false} size="medium">
-				<Fragment />
-			</Modal>
-		);
+		sizes.forEach(([size, className]) => {
+			const { unmount } = render(
+				<Modal isOpen={false} size={size}>
+					<Fragment />
+				</Modal>
+			);
 
-		const largeModalComponent = shallow(
-			<Modal isOpen={false} size="large">
-				<Fragment />
-			</Modal>
-		);
-
-		const extraLargeModalComponent = shallow(
-			<Modal isOpen={false} size="extra-large">
-				<Fragment />
-			</Modal>
-		);
-
-		const fullscreenModalComponent = shallow(
-			<Modal isOpen={false} size="fullscreen">
-				<Fragment />
-			</Modal>
-		);
-
-		const fullwidthModalComponent = shallow(
-			<Modal isOpen={false} size="fullwidth">
-				<Fragment />
-			</Modal>
-		);
-
-		const autoSizeModalComponent = shallow(
-			<Modal isOpen={false} size="auto">
-				<Fragment />
-			</Modal>
-		);
-
-		const smallModalInnerElement = smallModalComponent.find('.c-modal');
-		const mediumModalInnerElement = mediumModalComponent.find('.c-modal');
-		const largeModalInnerElement = largeModalComponent.find('.c-modal');
-		const extraLargeModalInnerElement = extraLargeModalComponent.find('.c-modal');
-		const fullscreenModalInnerElement = fullscreenModalComponent.find('.c-modal');
-		const fullwidthModalInnerElement = fullwidthModalComponent.find('.c-modal');
-		const autoSizeModalModalInnerElement = autoSizeModalComponent.find('.c-modal');
-
-		expect(smallModalInnerElement.hasClass('c-modal--small')).toEqual(true);
-		expect(mediumModalInnerElement.hasClass('c-modal--medium')).toEqual(true);
-		expect(largeModalInnerElement.hasClass('c-modal--large')).toEqual(true);
-		expect(extraLargeModalInnerElement.hasClass('c-modal--extra-large')).toEqual(true);
-		expect(fullscreenModalInnerElement.hasClass('c-modal--fullscreen')).toEqual(true);
-		expect(fullwidthModalInnerElement.hasClass('c-modal--fullwidth')).toEqual(true);
-		expect(autoSizeModalModalInnerElement.hasClass('c-modal--height-auto')).toEqual(true);
+			expect(q('.c-modal')).toHaveClass(className);
+			unmount();
+		});
 	});
 
 	it('Should set the correct className for scrollable modals', () => {
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={false} size="small" scrollable={true}>
 				<Fragment />
 			</Modal>
 		);
 
-		const modalInnerElement = modalComponent.find('.c-modal');
-
-		expect(modalInnerElement.hasClass('c-modal--scrollable')).toEqual(true);
+		expect(q('.c-modal')).toHaveClass('c-modal--scrollable');
 	});
 
 	it('Should be able to render with a title', () => {
 		const title = 'Modal test';
 
-		const modalComponent = mount(
+		render(
 			<Modal isOpen={false} title={title}>
 				<Fragment />
 			</Modal>
 		);
 
-		const titleElement = modalComponent.find('.c-modal__title');
-
-		expect(titleElement.text()).toEqual(title);
+		expect(screen.getByRole('heading', { name: title })).toHaveClass('c-modal__title');
 	});
 
 	it('Should be able to render without a title', () => {
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={false}>
 				<Fragment />
 			</Modal>
 		);
 
-		const titleElement = modalComponent.find('.c-modal__title');
-
-		expect(titleElement).toHaveLength(0);
+		expect(qa('.c-modal__title')).toHaveLength(0);
 	});
 
 	it('Should be able to be rendered invisible', () => {
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={false}>
 				<Fragment />
 			</Modal>
 		);
 
-		const modalWrapperElement = modalComponent.childAt(0);
-
-		expect(modalWrapperElement.hasClass('c-modal-context--visible')).toEqual(false);
+		expect(q('.c-modal-context')).not.toHaveClass('c-modal-context--visible');
 	});
 
 	it('Should be able to be rendered visible ', () => {
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={true}>
 				<Fragment />
 			</Modal>
 		);
 
-		const modalWrapperElement = modalComponent.childAt(0);
-
-		expect(modalWrapperElement.hasClass('c-modal-context--visible')).toEqual(true);
+		expect(q('.c-modal-context')).toHaveClass('c-modal-context--visible');
 	});
 
 	it('Should not show the backdrop when invisible', () => {
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={false}>
 				<Fragment />
 			</Modal>
 		);
 
-		const modalBackdropComponent = modalComponent.find(ModalBackdrop);
-
-		expect(modalBackdropComponent.prop('visible')).toEqual(false);
+		expect(q('.c-modal-backdrop')).toBeInTheDocument();
+		expect(q('.c-modal-backdrop')).not.toHaveClass('c-modal-backdrop--visible');
 	});
 
 	it('Should show the backdrop when visible', () => {
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={true}>
 				<Fragment />
 			</Modal>
 		);
 
-		const modalBackdropComponent = modalComponent.find(ModalBackdrop);
-
-		expect(modalBackdropComponent.prop('visible')).toEqual(true);
+		expect(q('.c-modal-backdrop')).toHaveClass('c-modal-backdrop--visible');
 	});
 
 	it('Should call the onClose handler when closing the modal', () => {
 		const onCloseHandler = jest.fn();
 
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={true} onClose={onCloseHandler}>
 				<Fragment />
 			</Modal>
 		);
 
-		const modalWrapperElement = modalComponent.childAt(0);
+		const modalWrapperElement = q('.c-modal-context') as HTMLElement;
 
-		modalWrapperElement.simulate('click', {
-			target: '.c-modal-context',
-			currentTarget: '.c-modal-context',
-		});
+		fireEvent.mouseDown(modalWrapperElement, { clientX: 10, clientY: 10 });
+		fireEvent.mouseUp(modalWrapperElement, { clientX: 10, clientY: 10 });
 
 		expect(onCloseHandler).toHaveBeenCalled();
 		expect(onCloseHandler).toHaveBeenCalledTimes(1);
@@ -207,24 +158,22 @@ describe('<Modal />', () => {
 	it('Should not call `onClose` when clicking inside the modal ', () => {
 		const onCloseHandler = jest.fn();
 
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={true} onClose={onCloseHandler}>
 				<Fragment />
 			</Modal>
 		);
 
-		const modalWrapperElement = modalComponent.childAt(0);
+		const modalInnerElement = q('.c-modal') as HTMLElement;
 
-		modalWrapperElement.simulate('click', {
-			target: '.c-modal',
-			currentTarget: '.c-modal-context',
-		});
+		fireEvent.mouseDown(modalInnerElement, { clientX: 10, clientY: 10 });
+		fireEvent.mouseUp(modalInnerElement, { clientX: 10, clientY: 10 });
 
 		expect(onCloseHandler).toHaveBeenCalledTimes(0);
 	});
 
 	it('Should correctly render the body', () => {
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={true}>
 				<ModalBody>
 					<p id="test">Hello!</p>
@@ -232,13 +181,11 @@ describe('<Modal />', () => {
 			</Modal>
 		);
 
-		const children = modalComponent.find('#test');
-
-		expect(modalComponent.find('.c-modal__body').children().html()).toEqual(children.html());
+		expect(q('.c-modal__body')?.innerHTML).toEqual('<p id="test">Hello!</p>');
 	});
 
 	it('Should be able to render items in the header (right)', () => {
-		const modalComponent = mount(
+		render(
 			<Modal isOpen={true}>
 				<ModalHeaderRight>
 					<p>Test (right)</p>
@@ -246,15 +193,13 @@ describe('<Modal />', () => {
 			</Modal>
 		);
 
-		const headerRightElement = modalComponent.find(
-			'.c-modal__header .c-toolbar__right .c-toolbar__item'
-		);
+		const headerRightElement = q('.c-modal__header .c-toolbar__right .c-toolbar__item');
 
-		expect(headerRightElement.at(0).children().html()).toEqual('<p>Test (right)</p>');
+		expect(headerRightElement?.innerHTML).toEqual('<p>Test (right)</p>');
 	});
 
 	it('Should be able to render items in the footer (left)', () => {
-		const modalComponent = mount(
+		render(
 			<Modal isOpen={true}>
 				<ModalFooterLeft>
 					<p>Test (left)</p>
@@ -262,16 +207,14 @@ describe('<Modal />', () => {
 			</Modal>
 		);
 
-		const footerLeftElement = modalComponent.find(
-			'.c-modal__footer .c-toolbar__left .c-button-toolbar'
-		);
+		const footerLeftElement = qa('.c-modal__footer .c-toolbar__left .c-button-toolbar');
 
 		expect(footerLeftElement).toHaveLength(1);
-		expect(footerLeftElement.children().html()).toEqual('<p>Test (left)</p>');
+		expect(footerLeftElement[0].innerHTML).toEqual('<p>Test (left)</p>');
 	});
 
 	it('Should be able to render items in the footer (right)', () => {
-		const modalComponent = mount(
+		render(
 			<Modal isOpen={true}>
 				<ModalFooterRight>
 					<p>Test (right)</p>
@@ -279,28 +222,24 @@ describe('<Modal />', () => {
 			</Modal>
 		);
 
-		const footerRightElement = modalComponent.find(
-			'.c-modal__footer .c-toolbar__right .c-button-toolbar'
-		);
+		const footerRightElement = qa('.c-modal__footer .c-toolbar__right .c-button-toolbar');
 
 		expect(footerRightElement).toHaveLength(1);
-		expect(footerRightElement.children().html()).toEqual('<p>Test (right)</p>');
+		expect(footerRightElement[0].innerHTML).toEqual('<p>Test (right)</p>');
 	});
 
 	it('Should not render the footer when no footer render props are passed', () => {
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={true}>
 				<Fragment />
 			</Modal>
 		);
 
-		const footerElement = modalComponent.find('.c-modal__footer');
-
-		expect(footerElement).toHaveLength(0);
+		expect(qa('.c-modal__footer')).toHaveLength(0);
 	});
 
 	it('Should not render the left side of the footer when no ModalFooterLeft-slot is passed', () => {
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={true}>
 				<ModalFooterRight>
 					<div />
@@ -308,13 +247,11 @@ describe('<Modal />', () => {
 			</Modal>
 		);
 
-		const footerLeftElement = modalComponent.find('.c-modal__footer .c-toolbar__left');
-
-		expect(footerLeftElement).toHaveLength(0);
+		expect(qa('.c-modal__footer .c-toolbar__left')).toHaveLength(0);
 	});
 
 	it('Should not render the right side of the footer when no ModalFooterRight-slot is passed', () => {
-		const modalComponent = shallow(
+		render(
 			<Modal isOpen={true}>
 				<ModalFooterLeft>
 					<div />
@@ -322,13 +259,11 @@ describe('<Modal />', () => {
 			</Modal>
 		);
 
-		const footerLeftElement = modalComponent.find('.c-modal__footer .c-toolbar__right');
-
-		expect(footerLeftElement).toHaveLength(0);
+		expect(qa('.c-modal__footer .c-toolbar__right')).toHaveLength(0);
 	});
 
 	it('Should be able to render items in the subheader', () => {
-		const modalComponent = mount(
+		render(
 			<Modal isOpen={true}>
 				<ModalSubHeader>
 					<p>Test</p>
@@ -336,9 +271,9 @@ describe('<Modal />', () => {
 			</Modal>
 		);
 
-		const subheaderElement = modalComponent.find('.c-modal__subheader');
+		const subheaderElement = qa('.c-modal__subheader');
 
 		expect(subheaderElement).toHaveLength(1);
-		expect(subheaderElement.children().html()).toEqual('<p>Test</p>');
+		expect(subheaderElement[0].innerHTML).toEqual('<p>Test</p>');
 	});
 });
