@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const Slash = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={24}

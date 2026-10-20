@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const Sliders2 = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={14}

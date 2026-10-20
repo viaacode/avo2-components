@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const Headphone = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={12}

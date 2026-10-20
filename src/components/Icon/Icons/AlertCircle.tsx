@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const AlertCircle = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={24}

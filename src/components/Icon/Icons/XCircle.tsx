@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const XCircle = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={24}
