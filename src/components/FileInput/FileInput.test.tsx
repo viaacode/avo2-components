@@ -13,6 +13,7 @@ describe('<TextInput />', () => {
 		const { container } = render(<FileInput className={customClass} />);
 
 		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-button--file');
 	});
 
 	it('Should pass on the id', () => {

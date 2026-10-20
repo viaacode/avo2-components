@@ -5,6 +5,8 @@ import { DatePicker } from './DatePicker';
 describe('<DatePicker />', () => {
 	it('Should be able to render', () => {
 		render(<DatePicker />);
+
+		expect(screen.getByRole('textbox')).toBeInTheDocument();
 	});
 
 	it('Should set the correct className', () => {
@@ -55,15 +57,11 @@ describe('<DatePicker />', () => {
 
 		expect(onChangeHandler).toHaveBeenCalled();
 		expect(onChangeHandler).toHaveBeenCalledTimes(1);
-		expect((onChangeHandler.mock.calls[0][0] as Date).getTime()).toEqual(
-			new Date(2019, 5, 11).getTime()
-		);
+		expect(onChangeHandler).toHaveBeenLastCalledWith(new Date(2019, 5, 11));
 
 		fireEvent.change(input, { target: { value: '10/05/2018' } });
 
 		expect(onChangeHandler).toHaveBeenCalledTimes(2);
-		expect((onChangeHandler.mock.calls[1][0] as Date).getTime()).toEqual(
-			new Date(2018, 4, 10).getTime()
-		);
+		expect(onChangeHandler).toHaveBeenLastCalledWith(new Date(2018, 4, 10));
 	});
 });

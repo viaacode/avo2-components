@@ -46,16 +46,23 @@ describe('<Table />', () => {
 		const { rerender } = render(<Table columns={COLUMNS} data={DATA} rowKey="id" />);
 
 		expect(screen.getByRole('table')).not.toHaveClass('c-table--styled');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--bordered');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--invisible');
 
 		rerender(<Table columns={COLUMNS} data={DATA} rowKey="id" variant="styled" />);
 		expect(screen.getByRole('table')).toHaveClass('c-table--styled');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--bordered');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--invisible');
 
 		rerender(<Table columns={COLUMNS} data={DATA} rowKey="id" variant="bordered" />);
 		expect(screen.getByRole('table')).toHaveClass('c-table--bordered');
 		expect(screen.getByRole('table')).toHaveClass('c-table--styled');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--invisible');
 
 		rerender(<Table columns={COLUMNS} data={DATA} rowKey="id" variant="invisible" />);
 		expect(screen.getByRole('table')).toHaveClass('c-table--invisible');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--bordered');
+		expect(screen.getByRole('table')).not.toHaveClass('c-table--styled');
 	});
 
 	it('Should be able to render the table head from `columns`', () => {
@@ -63,7 +70,7 @@ describe('<Table />', () => {
 
 		const headings = screen.getAllByRole('columnheader');
 
-		expect(headings).toHaveLength(COLUMNS.length);
+		expect(headings).toHaveLength(5);
 	});
 
 	it('Should render a chevron based on `sortColumn` & `sortOrder` when a column is sortable', () => {

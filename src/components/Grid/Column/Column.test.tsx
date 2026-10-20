@@ -17,6 +17,7 @@ describe('<Column />', () => {
 		);
 
 		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('o-grid-col-12');
 	});
 
 	it('Should correctly set the sizing className', () => {
@@ -28,9 +29,9 @@ describe('<Column />', () => {
 		const { container: container2 } = render(<Column size={size2}>Hello!</Column>);
 		const { container: container3 } = render(<Column size={size3}>Hello!</Column>);
 
-		expect(container1.firstChild).toHaveClass(`o-grid-col-${size1}`);
-		expect(container2.firstChild).toHaveClass(`o-grid-col-bp${size2}`);
-		expect(container3.firstChild).toHaveClass(`o-grid-col-bp${size3}`);
+		expect(container1.firstChild).toHaveClass('o-grid-col-12');
+		expect(container2.firstChild).toHaveClass('o-grid-col-bp1-4');
+		expect(container3.firstChild).toHaveClass('o-grid-col-bp2-11');
 	});
 
 	it('Should correctly set multiple sizing clasnames', () => {
@@ -40,9 +41,9 @@ describe('<Column />', () => {
 
 		const { container } = render(<Column size={[size1, size2, size3]}>Hello!</Column>);
 
-		expect(container.firstChild).toHaveClass(`o-grid-col-${size1}`);
-		expect(container.firstChild).toHaveClass(`o-grid-col-bp${size2}`);
-		expect(container.firstChild).toHaveClass(`o-grid-col-bp${size3}`);
+		expect(container.firstChild).toHaveClass('o-grid-col-12');
+		expect(container.firstChild).toHaveClass('o-grid-col-bp1-4');
+		expect(container.firstChild).toHaveClass('o-grid-col-bp2-11');
 	});
 
 	it('Should correctly pass children', () => {

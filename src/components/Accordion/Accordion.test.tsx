@@ -7,7 +7,9 @@ const customClassName = 'c-custom-accordion';
 
 describe('<Accordion />', () => {
 	it('should render', () => {
-		render(<Accordion className={customClassName} isOpen />);
+		const { container } = render(<Accordion className={customClassName} isOpen />);
+
+		expect(container.firstChild).toBeInTheDocument();
 	});
 
 	it('Should set the correct className', () => {

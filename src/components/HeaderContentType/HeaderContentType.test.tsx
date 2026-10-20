@@ -19,5 +19,7 @@ describe('<HeaderContentType />', () => {
 		);
 
 		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-content-type');
+		expect(container.firstChild).toHaveClass('c-content-type--collection');
 	});
 });

@@ -31,10 +31,10 @@ describe('<Grid />', () => {
 				<Column size="6">Hello</Column>
 			</Grid>
 		);
-		const { container: columnContainer } = render(<Column size="6">Hello</Column>);
+		const column = screen.getByText('Hello');
 
-		expect((container.firstChild as HTMLElement).innerHTML).toEqual(columnContainer.innerHTML);
-		expect(screen.getAllByText('Hello')).toHaveLength(2);
+		expect(column).toHaveClass('o-grid-col-6');
+		expect(container.firstChild?.firstChild).toBe(column);
 	});
 
 	it('Should render with a custom tag', () => {

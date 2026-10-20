@@ -23,7 +23,7 @@ describe('<Icon />', () => {
 	});
 
 	it('Should render icon when name was passed as kebab-case', () => {
-		const { container } = render(<Icon name={IconNameSchema.thumbsUp} />);
+		const { container } = render(<Icon name={'thumbs-up' as IconNameSchema} />);
 		const { container: expected } = render(<ThumbsUp />);
 
 		expect((container.firstChild as HTMLElement).innerHTML).toEqual(expected.innerHTML);
@@ -35,6 +35,7 @@ describe('<Icon />', () => {
 		const { container } = render(<Icon className={customClass} name={IconNameSchema.download} />);
 
 		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('o-svg-icon');
 	});
 
 	it('Should correctly set the className without type', () => {
@@ -53,7 +54,10 @@ describe('<Icon />', () => {
 		);
 
 		expect(socialContainer.firstChild).toHaveClass('o-svg-icon-social-twitter');
+		expect(socialContainer.firstChild).not.toHaveClass('o-svg-icon-multicolor');
 		expect(multicolorContainer.firstChild).toHaveClass('o-svg-icon-multicolor');
+		expect(multicolorContainer.firstChild).toHaveClass('o-svg-icon-multicolor-circle-check');
+		expect(multicolorContainer.firstChild).not.toHaveClass('o-svg-icon-social-circle-check');
 	});
 
 	it('Should correctly set the subtle class when the subtle option is true', () => {

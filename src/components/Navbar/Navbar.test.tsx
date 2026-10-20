@@ -21,6 +21,7 @@ describe('<Navbar />', () => {
 			</Navbar>
 		);
 		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-navbar');
 	});
 
 	it('Should set the correct classnames when placement is passed', () => {

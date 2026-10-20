@@ -49,6 +49,8 @@ describe('<FormGroup />', () => {
 			</FormGroup>
 		);
 
+		expect(container.firstChild).toHaveClass('o-form-group');
+		expect(container.querySelector('.o-form-group__controls')).toBeInTheDocument();
 		expect(container.querySelector('label.o-form-group__label')).not.toBeInTheDocument();
 	});
 
@@ -63,7 +65,9 @@ describe('<FormGroup />', () => {
 
 		const errorElement = container.querySelector('.c-form-help-text--error');
 
-		expect(errorElement?.textContent).toEqual(error);
+		expect(container.firstChild).toHaveClass('o-form-group--error');
+		expect(errorElement).toBeInTheDocument();
+		expect((errorElement as HTMLElement).textContent).toEqual('Field is invalid.');
 	});
 
 	it('Should set className and render multiple errors when they are passed', () => {
@@ -113,11 +117,7 @@ describe('<FormGroup />', () => {
 		);
 
 		expect(container.firstChild).not.toHaveClass('o-form-group--error');
-		// FormGroup currently renders one empty error element when no error is passed
-		// (errorArray = [undefined]); assert no error content is shown.
-		container.querySelectorAll('.c-form-help-text--error').forEach((el) => {
-			expect(el).toBeEmptyDOMElement();
-		});
+		expect(container.querySelectorAll('.c-form-help-text--error')).toHaveLength(0);
 	});
 
 	it('Should correctly pass children', () => {

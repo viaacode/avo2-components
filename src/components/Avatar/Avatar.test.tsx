@@ -12,6 +12,14 @@ describe('<Avatar />', () => {
 		const { container } = render(<Avatar className={customClass} initials="JD" />);
 
 		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-avatar');
+	});
+
+	it('should not have the custom className when none is passed', () => {
+		const { container } = render(<Avatar initials="JD" />);
+
+		expect(container.firstChild).toHaveClass('c-avatar');
+		expect(container.firstChild).not.toHaveClass('c-avatar-custom');
 	});
 
 	it('should set the large class when setting size to large', () => {

@@ -28,7 +28,7 @@ describe('<MenuItem />', () => {
 	it('Should render the correct number of menu items', () => {
 		const { container } = render(<Menu menuItems={menuItems} />);
 
-		expect(container.querySelectorAll('.c-menu__item')).toHaveLength(menuItems.length);
+		expect(container.querySelectorAll('.c-menu__item')).toHaveLength(4);
 	});
 
 	it('should render children when given', () => {
@@ -44,7 +44,7 @@ describe('<MenuItem />', () => {
 	it('Should render icons if provided', () => {
 		const { container } = render(<Menu menuItems={menuItemsWithIcons} />);
 
-		expect(container.querySelectorAll('.o-svg-icon')).toHaveLength(menuItemsWithIcons.length);
+		expect(container.querySelectorAll('.o-svg-icon')).toHaveLength(4);
 	});
 
 	it('Should render with search results', () => {
@@ -56,7 +56,7 @@ describe('<MenuItem />', () => {
 
 		expect(container.firstChild).toHaveClass('c-menu');
 		expect(container.firstChild).toHaveClass('c-menu--search-result');
-		expect(container.querySelectorAll('.c-menu__item')).toHaveLength(menuItemsWithSearch.length);
+		expect(container.querySelectorAll('.c-menu__item')).toHaveLength(5);
 	});
 
 	it('Should render no results label if provided', () => {
@@ -69,10 +69,8 @@ describe('<MenuItem />', () => {
 	it('Should render the correct number of dividers', () => {
 		const { container } = render(<Menu menuItems={menuItemsWithDivider} />);
 
-		expect(container.querySelectorAll('.c-menu__item')).toHaveLength(menuItems.length);
-		expect(container.querySelectorAll('.c-menu__divider')).toHaveLength(
-			menuItemsWithDivider.length - 1
-		);
+		expect(container.querySelectorAll('.c-menu__item')).toHaveLength(4);
+		expect(container.querySelectorAll('.c-menu__divider')).toHaveLength(2);
 	});
 
 	it('Should render using custom render function', () => {
@@ -90,8 +88,8 @@ describe('<MenuItem />', () => {
 
 		const customItems = container.querySelectorAll('.custom-item');
 
-		expect(customItems).toHaveLength(menuItems.length);
-		expect(customItems[1].textContent).toEqual(menuItems[1].label);
+		expect(customItems).toHaveLength(4);
+		expect(customItems[1].textContent).toEqual('Cadmium');
 	});
 
 	it('Should call onClick when item is clicked', () => {

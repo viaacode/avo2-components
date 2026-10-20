@@ -81,9 +81,21 @@ describe('<TextArea />', () => {
 		const { container: large } = render(<TextArea width="large" />);
 
 		expect(xsmall.firstChild).toHaveClass('c-input--w-xsmall');
+		expect(xsmall.firstChild).not.toHaveClass('c-input--w-small');
+		expect(xsmall.firstChild).not.toHaveClass('c-input--w-medium');
+		expect(xsmall.firstChild).not.toHaveClass('c-input--w-large');
 		expect(small.firstChild).toHaveClass('c-input--w-small');
+		expect(small.firstChild).not.toHaveClass('c-input--w-xsmall');
+		expect(small.firstChild).not.toHaveClass('c-input--w-medium');
+		expect(small.firstChild).not.toHaveClass('c-input--w-large');
 		expect(medium.firstChild).toHaveClass('c-input--w-medium');
+		expect(medium.firstChild).not.toHaveClass('c-input--w-xsmall');
+		expect(medium.firstChild).not.toHaveClass('c-input--w-small');
+		expect(medium.firstChild).not.toHaveClass('c-input--w-large');
 		expect(large.firstChild).toHaveClass('c-input--w-large');
+		expect(large.firstChild).not.toHaveClass('c-input--w-xsmall');
+		expect(large.firstChild).not.toHaveClass('c-input--w-small');
+		expect(large.firstChild).not.toHaveClass('c-input--w-medium');
 	});
 
 	it('Should call the onChange handler when the textArea changes', () => {

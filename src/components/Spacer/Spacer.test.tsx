@@ -16,6 +16,12 @@ describe('<Spacer />', () => {
 		expect(container.firstChild).toHaveClass('u-spacer');
 	});
 
+	it('Should set the default u-spacer className when no margin is passed', () => {
+		const { container } = render(<Spacer />);
+
+		expect((container.firstChild as HTMLElement).className).toBe('u-spacer');
+	});
+
 	it('Should set the correct className when margin/padding is passed (string)', () => {
 		const { container } = render(<Spacer margin="left-small" padding="left-small" />);
 
@@ -26,6 +32,9 @@ describe('<Spacer />', () => {
 	it('Should set no padding/margin when none is passed', () => {
 		const { container } = render(<Spacer margin="none" padding="none" />);
 
+		// 'none' intentionally renders no spacer classes (e.g. margin on desktop, none on mobile)
+		expect(container.firstChild).not.toHaveClass('u-spacer');
+		expect(container.firstChild).not.toHaveClass('u-padding');
 		expect((container.firstChild as HTMLElement).className).toBe('');
 	});
 

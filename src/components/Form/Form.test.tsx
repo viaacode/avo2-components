@@ -43,7 +43,15 @@ describe('<Form />', () => {
 		);
 
 		expect(formContainer.firstChild).toHaveClass('o-form-group-layout--standard');
+		expect(formContainer.firstChild).not.toHaveClass('o-form-group-layout--horizontal');
+		expect(formContainer.firstChild).not.toHaveClass('o-form-group-layout--inline');
+
+		expect(horizontalFormContainer.firstChild).not.toHaveClass('o-form-group-layout--standard');
 		expect(horizontalFormContainer.firstChild).toHaveClass('o-form-group-layout--horizontal');
+		expect(horizontalFormContainer.firstChild).not.toHaveClass('o-form-group-layout--inline');
+
+		expect(inlineFormContainer.firstChild).not.toHaveClass('o-form-group-layout--standard');
+		expect(inlineFormContainer.firstChild).not.toHaveClass('o-form-group-layout--horizontal');
 		expect(inlineFormContainer.firstChild).toHaveClass('o-form-group-layout--inline');
 	});
 

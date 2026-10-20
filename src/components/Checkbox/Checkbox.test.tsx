@@ -19,15 +19,15 @@ describe('<Checkbox />', () => {
 	it('Should correctly render `label`', () => {
 		render(<Checkbox label="One" checked={false} />);
 
-		expect(screen.getByLabelText('One')).toBeInTheDocument();
+		expect(screen.getByRole('checkbox', { name: 'One' })).toBeInTheDocument();
 	});
 
 	it('Should correctly render `checked state`', () => {
 		render(<Checkbox label="One" checked={true} />);
 		render(<Checkbox label="Two" checked={false} />);
 
-		expect(screen.getByLabelText('One')).toBeChecked();
-		expect(screen.getByLabelText('Two')).not.toBeChecked();
+		expect(screen.getByRole('checkbox', { name: 'One' })).toBeChecked();
+		expect(screen.getByRole('checkbox', { name: 'Two' })).not.toBeChecked();
 	});
 
 	it('Should correctly render `id`', () => {

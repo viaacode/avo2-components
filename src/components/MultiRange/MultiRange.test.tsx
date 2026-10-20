@@ -13,6 +13,7 @@ describe('<MultiRange />', () => {
 		const { container } = render(<MultiRange className={customClass} />);
 
 		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('c-input-range');
 	});
 
 	it('Should pass on the id', () => {

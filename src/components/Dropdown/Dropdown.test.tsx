@@ -1,6 +1,5 @@
-import type { ReactElement } from 'react';
-
 import { act, fireEvent, render, screen } from '@testing-library/react';
+import type { ReactElement } from 'react';
 
 import { Button } from '../Button/Button';
 
@@ -145,8 +144,20 @@ describe('<Dropdown />', () => {
 			</Dropdown>
 		);
 
-		expect(container.querySelector('.c-button__label')).toHaveTextContent(label);
-		expect(container.querySelector('.firstItem')).toHaveTextContent('OneOneOneOneOneOne');
+		const trigger = container.querySelector('.c-dropdown__trigger') as HTMLElement;
+		const menu = container.querySelector('.c-dropdown__menu') as HTMLElement;
+
+		// button slot is rendered inside the trigger, not in the menu
+		expect(trigger.querySelector('.c-button__label')).toHaveTextContent(label);
+		expect(menu.querySelector('.c-button__label')).not.toBeInTheDocument();
+		// default trigger button (with caret icon) is replaced by the slot
+		expect(trigger.querySelectorAll('.c-button')).toHaveLength(1);
+		expect(trigger.querySelector('.o-svg-icon')).not.toBeInTheDocument();
+
+		// content slot is rendered inside the menu, not in the trigger
+		expect(menu.querySelector('.firstItem')).toHaveTextContent('OneOneOneOneOneOne');
+		expect(menu).toHaveTextContent('OneOneOneOneOneOneTwoThreeFourFive');
+		expect(trigger.querySelector('.firstItem')).not.toBeInTheDocument();
 	});
 
 	it('Should correctly pass triggerWidth', async () => {
@@ -165,18 +176,32 @@ describe('<Dropdown />', () => {
 		);
 
 		expect(fullWidthContainer.querySelector('.c-button')).toHaveClass('c-button--block');
-		expect(fitContentContainer.querySelectorAll('.c-dropdown__trigger')).toHaveLength(1);
+		expect(fullWidthContainer.querySelector('.c-dropdown__trigger')).not.toBeInTheDocument();
+
+		expect(fitContentContainer.querySelector('.c-button')).not.toHaveClass('c-button--block');
+		expect(fitContentContainer.querySelector('.c-dropdown__trigger')).toBeInTheDocument();
 	});
 
-	it('Should correctly pass menuWidth', async () => {
-		const { container } = await renderDropdown(
+	it('Should ignore menuWidth (currently not implemented, see TODO in Dropdown.tsx)', async () => {
+		const { container: fitContentContainer } = await renderDropdown(
 			<Dropdown label="Show options" isOpen={true} menuWidth="fit-content">
 				<div>One</div>
 				<div>Two</div>
 			</Dropdown>
 		);
-		const fitContentMenu = container.querySelector('.c-dropdown__menu') as HTMLElement;
+		const { container: fitTriggerContainer } = await renderDropdown(
+			<Dropdown label="Show options" isOpen={true} menuWidth="fit-trigger">
+				<div>One</div>
+				<div>Two</div>
+			</Dropdown>
+		);
 
-		expect(fitContentMenu.style.width).toBe('');
+		const fitContentMenu = fitContentContainer.querySelector('.c-dropdown__menu') as HTMLElement;
+		const fitTriggerMenu = fitTriggerContainer.querySelector('.c-dropdown__menu') as HTMLElement;
+
+		// The menuWidth prop is commented out in the component, so neither variant sets an inline width.
+		// Update this test once menuWidth is re-enabled.
+		expect(fitContentMenu).not.toHaveAttribute('style');
+		expect(fitTriggerMenu).not.toHaveAttribute('style');
 	});
 });

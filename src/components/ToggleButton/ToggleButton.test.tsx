@@ -34,7 +34,9 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 			'toggle favorite (currently not active)'
 		);
 
-		rerender(<ToggleButton ariaLabel="toggle favorite" icon={IconNameSchema.heart} active={true} />);
+		rerender(
+			<ToggleButton ariaLabel="toggle favorite" icon={IconNameSchema.heart} active={true} />
+		);
 
 		expect(screen.getByRole('button')).toHaveAttribute(
 			'aria-label',
@@ -70,6 +72,7 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 		);
 
 		expect(container.querySelector('.o-svg-icon--bookmark-filled')).toBeInTheDocument();
+		expect(container.querySelector('.o-svg-icon--bookmark')).not.toBeInTheDocument();
 	});
 
 	it('Should call the `onClick`-handler when clicked', () => {
@@ -92,11 +95,11 @@ describe('<ToggleButton ariaLabel="test button" />', () => {
 
 		expect(onClickHandler).toHaveBeenCalled();
 		expect(onClickHandler).toHaveBeenCalledTimes(1);
-		expect(onClickHandler).toHaveBeenCalledWith(!active);
+		expect(onClickHandler).toHaveBeenLastCalledWith(false);
 
 		fireEvent.click(buttonElement);
 
 		expect(onClickHandler).toHaveBeenCalledTimes(2);
-		expect(onClickHandler).toHaveBeenCalledWith(active);
+		expect(onClickHandler).toHaveBeenLastCalledWith(true);
 	});
 });

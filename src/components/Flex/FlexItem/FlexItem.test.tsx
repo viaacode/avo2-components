@@ -22,6 +22,13 @@ describe('<Flex />', () => {
 		expect(container.firstChild).toHaveClass('o-flex__item--shrink');
 	});
 
+	it('Should not set the shrink className when shrink is not passed', () => {
+		const { container } = render(<FlexItem />);
+
+		expect(container.firstChild).toHaveClass('o-flex__item');
+		expect(container.firstChild).not.toHaveClass('o-flex__item--shrink');
+	});
+
 	it('Should correctly pass children', () => {
 		const { container } = render(
 			<FlexItem>

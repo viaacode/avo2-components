@@ -31,6 +31,21 @@ describe('<Container />', () => {
 		);
 
 		expect(container.firstChild).toHaveClass(customClass);
+		// without a mode, no base container class is set
+		expect(container.firstChild).not.toHaveClass('o-container');
+		expect(container.firstChild).not.toHaveClass('o-container-vertical');
+	});
+
+	it('Should keep the base classname when passing a custom classname', () => {
+		const customClass = 'o-container-vertical-title';
+		const { container } = render(
+			<Container className={customClass} mode="horizontal">
+				<Fragment />
+			</Container>
+		);
+
+		expect(container.firstChild).toHaveClass(customClass);
+		expect(container.firstChild).toHaveClass('o-container');
 	});
 
 	it('Should set the correct classnames when passing `size` and no mode is passed', () => {
