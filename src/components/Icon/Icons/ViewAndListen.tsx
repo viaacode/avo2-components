@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const ViewAndListen = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={13}

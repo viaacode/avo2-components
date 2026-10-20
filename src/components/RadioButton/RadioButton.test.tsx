@@ -43,9 +43,7 @@ describe('<RadioButton />', () => {
 	});
 
 	it('Should set the defaultChecked-prop as the initial state', () => {
-		const { unmount } = render(
-			<RadioButton name="List7" label="One" value="one" checked={true} />
-		);
+		const { unmount } = render(<RadioButton name="List7" label="One" value="one" checked={true} />);
 		expect(screen.getByRole('radio')).toBeChecked();
 		unmount();
 

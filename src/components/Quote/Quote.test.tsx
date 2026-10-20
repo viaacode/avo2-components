@@ -5,7 +5,7 @@ import { MOCK_QUOTE_WITH_IMG } from './Quote.mock';
 
 const CUSTOM_CLASS = 'c-block-custom';
 
-export const quoteExample = <Quote className={CUSTOM_CLASS} {...MOCK_QUOTE_WITH_IMG} />;
+const quoteExample = <Quote className={CUSTOM_CLASS} {...MOCK_QUOTE_WITH_IMG} />;
 
 describe('<Quote />', () => {
 	it('Should be able to render', () => {

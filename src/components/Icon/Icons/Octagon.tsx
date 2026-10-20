@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const Octagon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={24}

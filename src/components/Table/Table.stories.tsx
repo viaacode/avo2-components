@@ -1,12 +1,11 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import type { AvoSearchOrderDirection } from '@viaa/avo2-types';
 import { type ReactElement, useCallback, useEffect, useState } from 'react';
 import { action } from 'storybook/actions';
-
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { IconNameSchema } from '../Icon/Icon.types';
 import { Table, type TableColumnSchema, type TablePropsSchema } from './Table';
-import type { AvoSearchOrderDirection } from '@viaa/avo2-types';
 
 const COLUMNS: TableColumnSchema[] = [
 	{ id: 'name', label: 'Name', sortable: true },
@@ -61,7 +60,9 @@ const TableStoryComponent = ({ children }: { children: ReactElement<TablePropsSc
 	);
 
 	const [selectedItemIds, setSelectedItemIds] = useState<(string | number)[]>(
-		sort(children.props.data ?? []).slice(2, 4).map((item: any) => item.id)
+		sort(children.props.data ?? [])
+			.slice(2, 4)
+			.map((item: any) => item.id)
 	);
 	const [data, setData] = useState<any[]>(sort(children.props.data ?? []));
 
@@ -73,7 +74,7 @@ const TableStoryComponent = ({ children }: { children: ReactElement<TablePropsSc
 
 	return (
 		<Table
-			{...children.props as TablePropsSchema}
+			{...(children.props as TablePropsSchema)}
 			data={data}
 			sortColumn={sortColumn}
 			sortOrder={sortOrder as AvoSearchOrderDirection}

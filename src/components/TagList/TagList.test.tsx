@@ -33,12 +33,8 @@ describe('<TagList />', () => {
 
 	it('Should correctly render the labels', () => {
 		const { container: tagListContainer } = render(<TagList tags={tags} />);
-		const { container: tagListClosableContainer } = render(
-			<TagList tags={tags} closable={true} />
-		);
-		const { container: tagListSwatchesContainer } = render(
-			<TagList tags={tags} swatches={true} />
-		);
+		const { container: tagListClosableContainer } = render(<TagList tags={tags} closable={true} />);
+		const { container: tagListSwatchesContainer } = render(<TagList tags={tags} swatches={true} />);
 		const { container: tagListClickableContainer } = render(
 			<TagList tags={tags} onTagClicked={noop} />
 		);
@@ -108,9 +104,7 @@ describe('<TagList />', () => {
 	it('Should call `onTagClosed` when closing a tag', () => {
 		const onTagClosedHandler = jest.fn();
 
-		const { container } = render(
-			<TagList tags={tags} closable onTagClosed={onTagClosedHandler} />
-		);
+		const { container } = render(<TagList tags={tags} closable onTagClosed={onTagClosedHandler} />);
 
 		const closeTagElements = container.querySelectorAll('a');
 

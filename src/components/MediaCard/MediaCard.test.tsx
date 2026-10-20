@@ -9,7 +9,9 @@ import { MediaCardMetaData, MediaCardThumbnail } from './MediaCard.slots';
 
 describe('<MediaCard />', () => {
 	it('Should be able to render', () => {
-		render(<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.COLLECTION} />);
+		render(
+			<MediaCard title="What an amazing title!" category={AvoContentTypeEnglish.COLLECTION} />
+		);
 	});
 
 	it('Should set the correct className', () => {

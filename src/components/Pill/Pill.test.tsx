@@ -5,8 +5,8 @@ import { MOCK_PILL, MOCK_PILL__ACTIVE } from './Pill.mock';
 
 const CUSTOM_CLASS = 'c-pill--custom';
 
-export const pillExample = <Pill className={CUSTOM_CLASS} {...MOCK_PILL} />;
-export const pillVariantExample = <Pill {...MOCK_PILL__ACTIVE} />;
+const pillExample = <Pill className={CUSTOM_CLASS} {...MOCK_PILL} />;
+const pillVariantExample = <Pill {...MOCK_PILL__ACTIVE} />;
 
 describe('<Pill />', () => {
 	it('Should be able to render', () => {

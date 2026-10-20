@@ -59,9 +59,7 @@ describe('<TextInput />', () => {
 	it('Should call the onChange handler when the input changes', () => {
 		const onChangeHandler = jest.fn();
 
-		const { container, rerender } = render(
-			<TagsInput options={tags} onChange={onChangeHandler} />
-		);
+		const { container, rerender } = render(<TagsInput options={tags} onChange={onChangeHandler} />);
 
 		// https://stackoverflow.com/questions/41991077/testing-react-select-component
 		const tagsInputControl = container.querySelector('.c-tags-input__control') as HTMLElement;

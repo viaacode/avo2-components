@@ -17,9 +17,7 @@ describe('<Badge />', () => {
 
 	it('Should set the correct className for every type', () => {
 		const { container: defaultContainer } = render(<Badge text="this is a badge" />);
-		const { container: successContainer } = render(
-			<Badge text="this is a badge" type="success" />
-		);
+		const { container: successContainer } = render(<Badge text="this is a badge" type="success" />);
 		const { container: errorContainer } = render(<Badge text="this is a badge" type="error" />);
 
 		expect(defaultContainer.firstChild).toHaveClass('c-badge--default');

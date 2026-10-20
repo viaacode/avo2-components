@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const Pointer = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={9}

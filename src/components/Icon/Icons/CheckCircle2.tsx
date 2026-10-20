@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const CheckCircle2 = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={16}
