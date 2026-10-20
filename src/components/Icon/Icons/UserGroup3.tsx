@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const UserGroup3 = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={15}

@@ -1,7 +1,7 @@
- import clsx from 'clsx';
-import type { FunctionComponent, ReactNode } from 'react';
-import { useFloating, autoUpdate } from '@floating-ui/react';
 import type { Placement } from '@floating-ui/react';
+import { autoUpdate, useFloating } from '@floating-ui/react';
+import clsx from 'clsx';
+import type { FunctionComponent, ReactNode } from 'react';
 import { noop } from '../../helpers/noop';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
@@ -58,19 +58,17 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	triggerWidth = 'fit-content',
 	buttonType = 'secondary',
 }) => {
-
 	const dropdownButtonSlot = useSlot(DropdownButton, children);
 	const dropdownContentSlot = useSlot(DropdownContent, children);
 
 	// const { update, styles, attributes } = usePopper(referenceElement, popperElement, {
 	// 	placement
 	// });
-	
-	const { x, y, strategy, refs, update } = useFloating({
-			placement,
-			whileElementsMounted: autoUpdate,
-		});
 
+	const { x, y, strategy, refs, update } = useFloating({
+		placement,
+		whileElementsMounted: autoUpdate,
+	});
 
 	const toggle = async (openState = !isOpen) => {
 		await update?.();
@@ -82,7 +80,9 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 	const toggleClosed = () => toggle(false);
 
 	useKeyPress('Escape', toggleClosed);
-	useClickOutside(refs.floating.current as Element, toggleClosed, [refs.reference.current as Element]);
+	useClickOutside(refs.floating.current as Element, toggleClosed, [
+		refs.reference.current as Element,
+	]);
 
 	return (
 		<>
@@ -113,18 +113,13 @@ export const Dropdown: FunctionComponent<DropdownPropsSchema> = ({
 			</div>
 
 			<div
-
-                ref={refs.setFloating}
-                style={{
-                    position: strategy,
-                    top: y ?? 0,
-                    left: x ?? 0,
-                }}
-                className={
-                    isOpen
-                        ? 'c-dropdown__content-open'
-                        : 'c-dropdown__content-closed'
-                }
+				ref={refs.setFloating}
+				style={{
+					position: strategy,
+					top: y ?? 0,
+					left: x ?? 0,
+				}}
+				className={isOpen ? 'c-dropdown__content-open' : 'c-dropdown__content-closed'}
 			>
 				<Menu
 					className={clsx(menuClassName, 'c-dropdown__menu')}

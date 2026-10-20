@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const Trash = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={14}

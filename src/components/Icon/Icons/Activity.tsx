@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+
 const Activity = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		width={24}

@@ -41,7 +41,7 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 }) => {
 	const safeOnTagClicked = onTagClicked || noop;
 
-	return !!tags && !!tags.length ? (
+	return tags && tags.length ? (
 		<ul className={clsx(className, 'c-tag-list', styles['c-tag-list'])}>
 			{tags.map((tag: TagOptionSchema, index) => (
 				<li
@@ -108,11 +108,9 @@ export const TagList: FunctionComponent<TagListPropsSchema> = ({
 					)}
 					{/* output close button element */}
 					{closable && (
-						// biome-ignore lint/a11y/noStaticElementInteractions: TODO fix
-						// biome-ignore lint/a11y/useValidAnchor: TODO fix
-						<a onClick={(evt: MouseEvent) => onTagClosed(tag.id, evt)}>
+						<button type="button" onClick={(evt: MouseEvent) => onTagClosed(tag.id, evt)}>
 							<Icon name={IconNameSchema.close} />
-						</a>
+						</button>
 					)}
 				</li>
 			))}
