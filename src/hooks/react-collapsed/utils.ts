@@ -3,7 +3,7 @@ import type React from 'react';
 import type { RefObject } from 'react';
 
 export function getElementHeight(el: RefObject<HTMLElement | null>): number | 'auto' {
-	if (!el || !el.current) {
+	if (!el?.current) {
 		return 'auto';
 	}
 	return el.current.scrollHeight;

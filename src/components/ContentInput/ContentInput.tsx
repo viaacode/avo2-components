@@ -3,6 +3,7 @@ import {
 	forwardRef,
 	type KeyboardEvent,
 	type MouseEvent,
+	type ReactElement,
 	type ReactNode,
 	useCallback,
 	useState,
@@ -123,7 +124,7 @@ const ContentInput: FC<ContentInputPropsSchema> = forwardRef<
 		 */
 
 		const isSingleElement = (node: ReactNode) => {
-			const el = node as JSX.Element;
+			const el = node as ReactElement<{ children?: ReactNode[] }>;
 			return !(el?.props?.children && el.props.children.length > 1);
 		};
 

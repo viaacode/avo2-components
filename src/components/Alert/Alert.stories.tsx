@@ -1,4 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import type { ReactElement } from 'react';
 import { action } from 'storybook/actions';
 
 import { Box } from '../Box/Box';
@@ -20,7 +21,7 @@ function getMultiLineAlertMessage(type: string) {
 	);
 }
 
-function renderAlertStories(props?: AlertPropsSchema, message?: (type: string) => JSX.Element) {
+function renderAlertStories(props?: AlertPropsSchema, message?: (type: string) => ReactElement) {
 	const types: AlertTypeSchema[] = ['info', 'success', 'warn', 'danger', 'spinner'];
 
 	return (
