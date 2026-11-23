@@ -1,10 +1,10 @@
-.husky
-.idea
-.storybook
-node_modules
-openshift
-scripts
-src
+/.husky
+/.idea
+/.storybook
+/node_modules
+/openshift
+/scripts
+/src
 .dcignore
 .editorconfig
 .gitignore
