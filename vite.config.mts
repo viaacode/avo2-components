@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import svgrPlugin from 'vite-plugin-svgr';
-import pkg from './package.json';
+import pkg from './package.json' with { type: 'json' };
 
 const peerDependencies: string[] = Object.keys(pkg.peerDependencies);
 
@@ -18,7 +18,7 @@ const external = [
 export default defineConfig({
 	build: {
 		lib: {
-			entry: resolve(__dirname, 'src/index.ts'),
+			entry: resolve(import.meta.dirname, 'src/index.ts'),
 			name: '@viaa/avo2-components',
 			fileName: (_, entryName) => {
 				if (entryName === 'src/index') {
