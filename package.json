@@ -46,7 +46,7 @@
   },
   "peerDependencies": {
     "@popperjs/core": "2.11.6",
-    "@viaa/avo2-types": "5.0.31",
+    "@viaa/avo2-types": "5.0.33",
     "autosize": "6.0.1",
     "clsx": "2.0.0",
     "date-fns": "3.6.0",
