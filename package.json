@@ -1,6 +1,6 @@
 {
   "name": "@viaa/avo2-components",
-  "version": "7.0.22",
+  "version": "7.0.23",
   "sideEffects": [
     "*.css"
   ],
